@@ -1,0 +1,11 @@
+{
+  "SmartPiano-A8":
+  {
+    "dbName": "test",
+    "dbAddress": "192.168.0.0",
+    "dbPort": 8080,
+    "dbUser": "Papaio",
+    "dbPassword": "asd4568eff",
+    "timeScrapping": 150
+  }
+}

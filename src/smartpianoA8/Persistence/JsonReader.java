@@ -40,22 +40,22 @@ public class JsonReader {
     }
 
     private String readName(JsonObject rootObject) {
-
+        return rootObject.get("dbName").getAsString();
     }
     private String readAddress(JsonObject rootObject) {
-
+        return rootObject.get("dbAddress").getAsString();
     }
     private String readPort(JsonObject rootObject) {
-
+        return rootObject.get("dbPort").getAsString();
     }
     private String readUser(JsonObject rootObject) {
-
+        return rootObject.get("dbUser").getAsString();
     }
     private String readPassword(JsonObject rootObject) {
-
+        return rootObject.get("dbPassword").getAsString();
     }
     private String readScrapping(JsonObject rootObject) {
-
+        return rootObject.get("timeScrapping").getAsString();
     }
 
 
