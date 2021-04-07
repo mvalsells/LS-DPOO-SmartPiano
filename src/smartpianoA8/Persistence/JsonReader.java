@@ -9,18 +9,67 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-public class JsonReader {
+public class JsonReader implements Readable {
 
-    /*private String      dbName;
+    private String      dbName;
     private String      dbAddress;
     private int         dbPort;
     private String      dbUser;
     private String      dbPassword;
-    private int         timeScrapping; //In seconds*/
+    private int         timeScrapping; //In seconds
 
     public JsonReader(){}
 
-    public String readDatabaseData(String whatToRead) throws FileNotFoundException {
+    public void readJsonConfig() throws FileNotFoundException {
+
+        FileInputStream configFile = new FileInputStream("resources/config.json");
+        Reader reader = new InputStreamReader(configFile);
+        JsonElement rootElement = JsonParser.parseReader(reader);
+        JsonObject rootObject = rootElement.getAsJsonObject();
+        JsonObject smartPianoA8 = rootObject.getAsJsonObject("SmartPiano-A8");
+
+        dbName = smartPianoA8.get("dbName").getAsString();
+        dbAddress = smartPianoA8.get("dbAddress").getAsString();
+        dbPort = smartPianoA8.get("dbPort").getAsInt();
+        dbUser = smartPianoA8.get("dbUser").getAsString();
+        dbPassword = smartPianoA8.get("dbPassword").getAsString();
+        timeScrapping = smartPianoA8.get("timeScrapping").getAsInt();
+
+    }
+
+    @Override
+    public String getDbName() {
+        return dbName;
+    }
+
+    @Override
+    public String getDbAddress() {
+        return dbAddress;
+    }
+
+    @Override
+    public int getDbPort() {
+        return dbPort;
+    }
+
+    @Override
+    public String getDbUser() {
+        return dbUser;
+    }
+
+    @Override
+    public String getDbPassword() {
+        return dbPassword;
+    }
+
+    @Override
+    public int gettimeScrapping() {
+        return timeScrapping;
+    }
+
+
+
+    /*public String readDatabaseData(String whatToRead) throws FileNotFoundException {
 
         FileInputStream configFile = new FileInputStream("resources/config.json");
         Reader reader = new InputStreamReader(configFile);
@@ -56,7 +105,7 @@ public class JsonReader {
     }
     private String readScrapping(JsonObject rootObject) {
         return rootObject.get("timeScrapping").getAsString();
-    }
+    }*/
 
 
 }

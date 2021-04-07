@@ -14,12 +14,9 @@ public class Main {
 
         try {
 
-            System.out.println(reader.readDatabaseData("Name"));
-            System.out.println(reader.readDatabaseData("Address"));
-            System.out.println(reader.readDatabaseData("Port"));
-            System.out.println(reader.readDatabaseData("User"));
-            System.out.println(reader.readDatabaseData("Password"));
-            System.out.println(reader.readDatabaseData("Scrapping"));
+            reader.readJsonConfig();
+
+            System.out.println(reader.getDbUser());
 
         }catch (FileNotFoundException ignored) {
         }
