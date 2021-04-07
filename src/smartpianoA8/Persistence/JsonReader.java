@@ -1,4 +1,4 @@
-package smartpianoA8.Business;
+package smartpianoA8.Persistence;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -20,7 +20,7 @@ public class JsonReader {
 
     public JsonReader(){}
 
-    public static String readDatabaseData(String whatToRead) throws FileNotFoundException {
+    public String readDatabaseData(String whatToRead) throws FileNotFoundException {
 
         FileInputStream configFile = new FileInputStream("resources/config.json");
         Reader reader = new InputStreamReader(configFile);
@@ -39,22 +39,22 @@ public class JsonReader {
 
     }
 
-    private static String readName(JsonObject rootObject) {
+    private String readName(JsonObject rootObject) {
 
     }
-    private static String readAddress(JsonObject rootObject) {
+    private String readAddress(JsonObject rootObject) {
 
     }
-    private static String readPort(JsonObject rootObject) {
+    private String readPort(JsonObject rootObject) {
 
     }
-    private static String readUser(JsonObject rootObject) {
+    private String readUser(JsonObject rootObject) {
 
     }
-    private static String readPassword(JsonObject rootObject) {
+    private String readPassword(JsonObject rootObject) {
 
     }
-    private static String readScrapping(JsonObject rootObject) {
+    private String readScrapping(JsonObject rootObject) {
 
     }
 
