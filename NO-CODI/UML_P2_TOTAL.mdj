@@ -1128,7 +1128,7 @@
 							"left": 744,
 							"top": 104,
 							"width": 216.27978515625,
-							"height": 191,
+							"height": 206,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4P0krKWH4zj8="
 							},
@@ -4568,7 +4568,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 525,
-									"top": 164,
+									"top": 167,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4589,7 +4589,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 526,
-									"top": 149,
+									"top": 152,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4610,7 +4610,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 524,
-									"top": 193,
+									"top": 196,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4631,7 +4631,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 333,
-									"top": 156,
+									"top": 157,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -4652,7 +4652,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 336,
-									"top": 142,
+									"top": 144,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -4672,8 +4672,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 328,
-									"top": 183,
+									"left": 327,
+									"top": 184,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -4694,7 +4694,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 717,
-									"top": 171,
+									"top": 177,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -4713,8 +4713,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 715,
-									"top": 158,
+									"left": 716,
+									"top": 164,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -4734,7 +4734,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 720,
-									"top": 199,
+									"top": 205,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -4779,7 +4779,7 @@
 								"$ref": "AAAAAAF4P1XDUGT3PmY="
 							},
 							"lineStyle": 1,
-							"points": "307:176;743:194",
+							"points": "307:177;743:200",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4P1dydGfn1R0="
@@ -4931,7 +4931,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 524,
-									"top": 193,
+									"top": 196,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4952,7 +4952,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 523,
-									"top": 208,
+									"top": 211,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4973,7 +4973,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 525,
-									"top": 164,
+									"top": 167,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4991,7 +4991,7 @@
 								"$ref": "AAAAAAF4P0krKGH3sLg="
 							},
 							"lineStyle": 1,
-							"points": "743:194;307:176",
+							"points": "743:200;307:177",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4P1eb1Wjedtg="
@@ -5970,7 +5970,7 @@
 											"font": "Arial;13;1",
 											"left": 181,
 											"top": 2431,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
 											"text": "SQLPlayListDAO"
 										},
@@ -6005,7 +6005,7 @@
 									"font": "Arial;13;0",
 									"left": 176,
 									"top": 2424,
-									"width": 446.76318359375,
+									"width": 485.794921875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4lvt0FPVEoKM="
@@ -6032,7 +6032,7 @@
 									"font": "Arial;13;0",
 									"left": 176,
 									"top": 2449,
-									"width": 446.76318359375,
+									"width": 485.794921875,
 									"height": 10
 								},
 								{
@@ -6057,9 +6057,9 @@
 											"font": "Arial;13;0",
 											"left": 181,
 											"top": 2464,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+createPlayList(name: String, usuari: Usuari): void",
+											"text": "+createPlayList(name: String, username: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6074,9 +6074,9 @@
 											"font": "Arial;13;0",
 											"left": 181,
 											"top": 2479,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+addSongToPlayList(song: Song, playlist: PlayList, user: User): void",
+											"text": "+addSongToPlayList(song: Song, playlist: PlayList, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6091,9 +6091,9 @@
 											"font": "Arial;13;0",
 											"left": 181,
 											"top": 2494,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+removeSongFromPlayList(playlist: PlayList, song: Song, user: User): void",
+											"text": "+removeSongFromPlayList(playlist: PlayList, song: Song, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6108,9 +6108,9 @@
 											"font": "Arial;13;0",
 											"left": 181,
 											"top": 2509,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+changePlayListName(playlist: PlayList, newName: String, user: User): void",
+											"text": "+changePlayListName(playlist: PlayList, newName: String, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6125,17 +6125,34 @@
 											"font": "Arial;13;0",
 											"left": 181,
 											"top": 2524,
-											"width": 436.76318359375,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+removePlayList(playlist: PlayList, user: User): void",
+											"text": "+removePlayList(playlist: PlayList, username: String): void",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usnCgdKMBHo=",
+											"_parent": {
+												"$ref": "AAAAAAF4lvt0FPVJOwg="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usnBvdJ3krE="
+											},
+											"font": "Arial;13;0",
+											"left": 181,
+											"top": 2539,
+											"width": 475.794921875,
+											"height": 13,
+											"text": "+getPlayListDataByUser(username: String): PlayList",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 176,
 									"top": 2459,
-									"width": 446.76318359375,
-									"height": 83
+									"width": 485.794921875,
+									"height": 98
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -6177,8 +6194,8 @@
 							"containerChangeable": true,
 							"left": 176,
 							"top": 2424,
-							"width": 446.76318359375,
-							"height": 118,
+							"width": 485.794921875,
+							"height": 133,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4lvt0FPVD3xs="
 							},
@@ -6711,8 +6728,8 @@
 											},
 											"font": "Arial;13;1",
 											"left": 989,
-											"top": 2454,
-											"width": 449.77587890625,
+											"top": 2469,
+											"width": 475.794921875,
 											"height": 13,
 											"text": "PlayListDAO"
 										},
@@ -6746,8 +6763,8 @@
 									],
 									"font": "Arial;13;0",
 									"left": 984,
-									"top": 2447,
-									"width": 459.77587890625,
+									"top": 2462,
+									"width": 485.794921875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4lv04QwI5CJ8="
@@ -6799,10 +6816,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 989,
-											"top": 2477,
-											"width": 449.77587890625,
+											"top": 2492,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+createPlayList(name: String, usuari: Usuari): void",
+											"text": "+createPlayList(name: String, username: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6816,10 +6833,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 989,
-											"top": 2492,
-											"width": 449.77587890625,
+											"top": 2507,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+addSongToPlayList(song: Song, playlist: PlayList, user: User): void",
+											"text": "+addSongToPlayList(song: Song, playlist: PlayList, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6833,10 +6850,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 989,
-											"top": 2507,
-											"width": 449.77587890625,
+											"top": 2522,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+removeSongFromPlayList(playlist: PlayList, song: Song, user: User): void",
+											"text": "+removeSongFromPlayList(playlist: PlayList, song: Song, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6850,10 +6867,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 989,
-											"top": 2522,
-											"width": 449.77587890625,
+											"top": 2537,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+changePlayListName(playlist: PlayList, newName: String, user: User): void",
+											"text": "+changePlayListName(playlist: PlayList, newName: String, username: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6867,18 +6884,52 @@
 											},
 											"font": "Arial;13;0",
 											"left": 989,
-											"top": 2537,
-											"width": 449.77587890625,
+											"top": 2552,
+											"width": 475.794921875,
 											"height": 13,
-											"text": "+removePlayList(playlist: PlayList, user: User): void",
+											"text": "+removePlayList(playlist: PlayList, username: String): void",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4uscjL8yeE68=",
+											"_parent": {
+												"$ref": "AAAAAAF4lv04RAI+LeY="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uscioMyJfdg="
+											},
+											"font": "Arial;13;0",
+											"left": 989,
+											"top": 2567,
+											"width": 475.794921875,
+											"height": 13,
+											"text": "+getPlayListSongsByUser(username: String): ArrayList<Song>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4uslIjM9m13c=",
+											"_parent": {
+												"$ref": "AAAAAAF4lv04RAI+LeY="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uslIRc9RoDQ="
+											},
+											"font": "Arial;13;0",
+											"left": 989,
+											"top": 2582,
+											"width": 475.794921875,
+											"height": 13,
+											"text": "+getPlayListDataByUser(username: String): PlayList",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 984,
-									"top": 2472,
-									"width": 459.77587890625,
-									"height": 83
+									"top": 2487,
+									"width": 485.794921875,
+									"height": 113
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -6920,8 +6971,8 @@
 							"containerChangeable": true,
 							"left": 984,
 							"top": 2424,
-							"width": 459.77587890625,
-							"height": 132,
+							"width": 485.794921875,
+							"height": 177,
 							"stereotypeDisplay": "icon",
 							"nameCompartment": {
 								"$ref": "AAAAAAF4lv04QwI418Y="
@@ -7054,8 +7105,8 @@
 										"$ref": "AAAAAAF4lv1/mQd7G+Q="
 									},
 									"font": "Arial;13;0",
-									"left": 883,
-									"top": 2414,
+									"left": 906,
+									"top": 2422,
 									"width": 56.01171875,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -7077,8 +7128,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 911,
-									"top": 2399,
+									"left": 934,
+									"top": 2407,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7098,8 +7149,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 911,
-									"top": 2444,
+									"left": 934,
+									"top": 2452,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7116,7 +7167,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4lvt0FPVCYdA="
 							},
-							"points": "622:2435;1201.887939453125:2435",
+							"points": "661:2443;1207.3974609375:2443",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4lv1/mQd9THw="
@@ -8201,7 +8252,7 @@
 											"font": "Arial;13;1",
 											"left": 1245,
 											"top": 2886,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "SongDAO"
 										},
@@ -8236,7 +8287,7 @@
 									"font": "Arial;13;0",
 									"left": 1240,
 									"top": 2879,
-									"width": 317.44873046875,
+									"width": 355.7822265625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4srwRNgGW+30="
@@ -8289,7 +8340,7 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 2909,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+addSong(song: Song, user: User): void",
 											"horizontalAlignment": 0
@@ -8306,7 +8357,7 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 2924,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+removeSong(song: Song): void",
 											"horizontalAlignment": 0
@@ -8323,7 +8374,7 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 2939,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+getFavouriteSongs(user: User): ArrayList<songList>",
 											"horizontalAlignment": 0
@@ -8340,17 +8391,34 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 2954,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
-											"text": "+addSongToFavourites(user: User, song: Song): void",
+											"text": "+addSongToFavourites(username: String, song: Song): void",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usZx5MUuaAg=",
+											"_parent": {
+												"$ref": "AAAAAAF4srwROAGbex8="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usZxQ8UZAgg="
+											},
+											"font": "Arial;13;0",
+											"left": 1245,
+											"top": 2969,
+											"width": 345.7822265625,
+											"height": 13,
+											"text": "+getSong(song: Song): Song",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1240,
 									"top": 2904,
-									"width": 317.44873046875,
-									"height": 68
+									"width": 355.7822265625,
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -8392,8 +8460,8 @@
 							"containerChangeable": true,
 							"left": 1240,
 							"top": 2856,
-							"width": 317.44873046875,
-							"height": 117,
+							"width": 355.7822265625,
+							"height": 132,
 							"stereotypeDisplay": "icon",
 							"nameCompartment": {
 								"$ref": "AAAAAAF4srwRNgGVyss="
@@ -8591,7 +8659,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 485,
+									"left": 524,
 									"top": 2801,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -8612,7 +8680,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 488,
+									"left": 527,
 									"top": 2787,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -8633,7 +8701,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 481,
+									"left": 520,
 									"top": 2828,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -8743,7 +8811,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4sryWvQOEIwg="
 							},
-							"points": "460:2822;840:2822;840:2920;1240:2920",
+							"points": "499:2822;840:2822;840:2920;1240:2920",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4sr4WmwnDcWc="
@@ -8820,7 +8888,7 @@
 											"font": "Arial;13;1",
 											"left": 149,
 											"top": 2807,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "SQLSongDAO"
 										},
@@ -8855,7 +8923,7 @@
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 2800,
-									"width": 317.44873046875,
+									"width": 355.7822265625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4sryWvgOG8XQ="
@@ -8882,7 +8950,7 @@
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 2825,
-									"width": 317.44873046875,
+									"width": 355.7822265625,
 									"height": 10
 								},
 								{
@@ -8907,7 +8975,7 @@
 											"font": "Arial;13;0",
 											"left": 149,
 											"top": 2840,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+addSong(song: Song, user: User): void",
 											"horizontalAlignment": 0
@@ -8924,7 +8992,7 @@
 											"font": "Arial;13;0",
 											"left": 149,
 											"top": 2855,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+removeSong(song: Song): void",
 											"horizontalAlignment": 0
@@ -8941,7 +9009,7 @@
 											"font": "Arial;13;0",
 											"left": 149,
 											"top": 2870,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
 											"text": "+getFavouriteSongs(user: User): ArrayList<songList>",
 											"horizontalAlignment": 0
@@ -8958,17 +9026,34 @@
 											"font": "Arial;13;0",
 											"left": 149,
 											"top": 2885,
-											"width": 307.44873046875,
+											"width": 345.7822265625,
 											"height": 13,
-											"text": "+addSongToFavourites(user: User, song: Song): void",
+											"text": "+addSongToFavourites(username: String, song: Song): void",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usbsEsk80GY=",
+											"_parent": {
+												"$ref": "AAAAAAF4sryWvwOL8Gg="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usbrhskk/Fw="
+											},
+											"font": "Arial;13;0",
+											"left": 149,
+											"top": 2900,
+											"width": 345.7822265625,
+											"height": 13,
+											"text": "+getSong(song: Song): Song",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 2835,
-									"width": 317.44873046875,
-									"height": 68
+									"width": 355.7822265625,
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -9010,8 +9095,8 @@
 							"containerChangeable": true,
 							"left": 144,
 							"top": 2800,
-							"width": 317.44873046875,
-							"height": 103,
+							"width": 355.7822265625,
+							"height": 118,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4sryWvgOFp8A="
 							},
@@ -9139,13 +9224,30 @@
 											"height": 13,
 											"text": "+SEPARAR LOGIN I REGISTRE EN 2 CLASSES",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF4us7Vme6gwOk=",
+											"_parent": {
+												"$ref": "AAAAAAF4t4z03e5d44Y="
+											},
+											"model": {
+												"$ref": "AAAAAAF4us7U7+6I6u0="
+											},
+											"font": "Arial;13;0",
+											"left": 1197,
+											"top": 101,
+											"width": 286.20947265625,
+											"height": 13,
+											"text": "+flaten constructors a presentation",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1192,
 									"top": 81,
 									"width": 296.20947265625,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -9158,7 +9260,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1192,
-									"top": 104,
+									"top": 119,
 									"width": 296.20947265625,
 									"height": 10
 								},
@@ -9196,7 +9298,7 @@
 							"left": 1192,
 							"top": 56,
 							"width": 296.20947265625,
-							"height": 58,
+							"height": 73,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4t4z03e5YDyA="
 							},
@@ -11074,7 +11176,7 @@
 											"font": "Arial;13;1",
 											"left": 93,
 											"top": 991,
-											"width": 97.9189453125,
+											"width": 609.7177734375,
 											"height": 13,
 											"text": "SongManager"
 										},
@@ -11109,7 +11211,7 @@
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 984,
-									"width": 107.9189453125,
+									"width": 619.7177734375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4uqF31NnVa9A="
@@ -11136,7 +11238,7 @@
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 1009,
-									"width": 107.9189453125,
+									"width": 619.7177734375,
 									"height": 10
 								},
 								{
@@ -11161,17 +11263,68 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 1024,
-											"width": 97.9189453125,
+											"width": 609.7177734375,
 											"height": 13,
 											"text": "+SongManager()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usJAi7gEyK4=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqF31dna8aU="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 1039,
+											"width": 609.7177734375,
+											"height": 13,
+											"text": "+addSong(nom: String, autor: String, duracio: Time, directori: String, isPublic: boolean, nomUsuari: String)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usPwdrz/cQk=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqF31dna8aU="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usPv1Lzkc98="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 1054,
+											"width": 609.7177734375,
+											"height": 13,
+											"text": "+removeSong(song: Song): void",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4usUw3L75bjM=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqF31dna8aU="
+											},
+											"model": {
+												"$ref": "AAAAAAF4usUwVL7eJF8="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 1069,
+											"width": 609.7177734375,
+											"height": 13,
+											"text": "+getSongIdFromDB(song: Song): int",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 1019,
-									"width": 107.9189453125,
-									"height": 23
+									"width": 619.7177734375,
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -11213,8 +11366,8 @@
 							"containerChangeable": true,
 							"left": 88,
 							"top": 984,
-							"width": 107.9189453125,
-							"height": 58,
+							"width": 619.7177734375,
+							"height": 103,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4uqF309nULW0="
 							},
@@ -11663,13 +11816,47 @@
 											"height": 13,
 											"text": "+modifyPassword(currentName: String, newPasswordHash: String): boolean",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4us3j4ei27Yw=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqM4i+VzAJk="
+											},
+											"model": {
+												"$ref": "AAAAAAF4us3jJuibNvM="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 763,
+											"width": 530.6767578125,
+											"height": 13,
+											"text": "+getUserByEmail(email: String): User",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4us4ipeqwB2o=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqM4i+VzAJk="
+											},
+											"model": {
+												"$ref": "AAAAAAF4us4h7OqVTjw="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 778,
+											"width": 530.6767578125,
+											"height": 13,
+											"text": "+getUserByUsername(username: String): User",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 683,
 									"width": 540.6767578125,
-									"height": 83
+									"height": 113
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -11712,7 +11899,7 @@
 							"left": 88,
 							"top": 648,
 							"width": 540.6767578125,
-							"height": 133,
+							"height": 148,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4uqM4ieVtXzI="
 							},
@@ -12027,7 +12214,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 400,
-									"top": 799,
+									"top": 814,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -12048,7 +12235,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 413,
-									"top": 802,
+									"top": 817,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -12069,7 +12256,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 372,
-									"top": 795,
+									"top": 810,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -12176,7 +12363,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uqM4ieVszSQ="
 							},
-							"points": "385:780;385:1344;1912:1344;1912:2728;1342:2728",
+							"points": "385:795;385:1344;1912:1344;1912:2728;1342:2728",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4ur2/fpFxsNU="
@@ -12359,7 +12546,7 @@
 										"$ref": "AAAAAAF4ur3aEpJfJOE="
 									},
 									"font": "Arial;13;0",
-									"left": 1428,
+									"left": 1454,
 									"top": 2432,
 									"width": 81.28173828125,
 									"height": 13,
@@ -12381,7 +12568,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1471,
+									"left": 1497,
 									"top": 2446,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -12400,7 +12587,7 @@
 										"$ref": "AAAAAAF4ur3aEpJfJOE="
 									},
 									"font": "Arial;13;0",
-									"left": 1461,
+									"left": 1487,
 									"top": 2405,
 									"width": 7.22998046875,
 									"height": 13,
@@ -12447,7 +12634,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uqH2rt5/3Kk="
 							},
-							"points": "277:911;277:1360;1808:1360;1808:2424;1443:2424",
+							"points": "277:911;277:1360;1808:1360;1808:2424;1469:2424",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4ur3aE5Ji+R0="
@@ -12569,7 +12756,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 176,
-									"top": 1060,
+									"top": 1105,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -12590,7 +12777,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 189,
-									"top": 1063,
+									"top": 1108,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -12611,7 +12798,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 148,
-									"top": 1056,
+									"top": 1101,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -12630,7 +12817,7 @@
 										"$ref": "AAAAAAF4ur6bQ5bguis="
 									},
 									"font": "Arial;13;0",
-									"left": 1548,
+									"left": 1587,
 									"top": 2912,
 									"width": 66.12353515625,
 									"height": 13,
@@ -12652,7 +12839,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1584,
+									"left": 1623,
 									"top": 2926,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -12671,7 +12858,7 @@
 										"$ref": "AAAAAAF4ur6bQ5bguis="
 									},
 									"font": "Arial;13;0",
-									"left": 1574,
+									"left": 1613,
 									"top": 2885,
 									"width": 7.22998046875,
 									"height": 13,
@@ -12718,7 +12905,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uqF309nTde0="
 							},
-							"points": "161:1041;161:1744;1976:1744;1976:2904;1556:2904",
+							"points": "161:1086;161:1744;1976:1744;1976:2904;1595:2904",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4ur6bRJbjeCs="
@@ -12850,6 +13037,130 @@
 										"$ref": "AAAAAAF4uqF30dnR4Nk="
 									},
 									"name": "SongManager"
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4usI/97fpHWE=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqF30dnR4Nk="
+									},
+									"name": "addSong",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usKVobi28l8=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "nom",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usKVo7i3t3c=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "autor",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usKVpbi4Pc0=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "duracio",
+											"type": "Time"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usPQRbqLMjg=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "directori",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usPQR7qMDDg=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "isPublic",
+											"type": "boolean"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usPQSbqNWTE=",
+											"_parent": {
+												"$ref": "AAAAAAF4usI/97fpHWE="
+											},
+											"name": "nomUsuari",
+											"type": "String"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4usPv1Lzkc98=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqF30dnR4Nk="
+									},
+									"name": "removeSong",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usUSAL2xkJM=",
+											"_parent": {
+												"$ref": "AAAAAAF4usPv1Lzkc98="
+											},
+											"name": "song",
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usUSAb2yfaA=",
+											"_parent": {
+												"$ref": "AAAAAAF4usPv1Lzkc98="
+											},
+											"type": "void",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4usUwVL7eJF8=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqF30dnR4Nk="
+									},
+									"name": "getSongIdFromDB",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usYx9b+rCr4=",
+											"_parent": {
+												"$ref": "AAAAAAF4usUwVL7eJF8="
+											},
+											"name": "song",
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usYx97+sNA8=",
+											"_parent": {
+												"$ref": "AAAAAAF4usUwVL7eJF8="
+											},
+											"type": "int",
+											"direction": "return"
+										}
+									]
 								}
 							]
 						},
@@ -13268,6 +13579,62 @@
 												"$ref": "AAAAAAF4urAeskpQ3Z4="
 											},
 											"type": "boolean",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4us3jJuibNvM=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqM4hOVqUMU="
+									},
+									"name": "getUserByEmail",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4us4VH+locg8=",
+											"_parent": {
+												"$ref": "AAAAAAF4us3jJuibNvM="
+											},
+											"name": "email",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4us4VI+lpypY=",
+											"_parent": {
+												"$ref": "AAAAAAF4us3jJuibNvM="
+											},
+											"type": "User",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4us4h7OqVTjw=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqM4hOVqUMU="
+									},
+									"name": "getUserByUsername",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4us5k2utBdDg=",
+											"_parent": {
+												"$ref": "AAAAAAF4us4h7OqVTjw="
+											},
+											"name": "username",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4us5k3utCAWM=",
+											"_parent": {
+												"$ref": "AAAAAAF4us4h7OqVTjw="
+											},
+											"type": "User",
 											"direction": "return"
 										}
 									]
@@ -14126,6 +14493,14 @@
 							},
 							"name": "SEPARAR LOGIN I REGISTRE EN 2 CLASSES",
 							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF4us7U7+6I6u0=",
+							"_parent": {
+								"$ref": "AAAAAAF4t4z03O5VVPY="
+							},
+							"name": "flaten constructors a presentation"
 						}
 					]
 				},
@@ -14418,7 +14793,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssN7TR4skHw="
 											},
-											"type": "void",
+											"type": "boolean",
 											"direction": "return"
 										},
 										{
@@ -14436,8 +14811,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssN7TR4skHw="
 											},
-											"name": "usuari",
-											"type": "Usuari"
+											"name": "username",
+											"type": "String"
 										}
 									]
 								},
@@ -14465,7 +14840,9 @@
 												"$ref": "AAAAAAF4ssOldR8FmY0="
 											},
 											"name": "song",
-											"type": "Song"
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14474,7 +14851,9 @@
 												"$ref": "AAAAAAF4ssOldR8FmY0="
 											},
 											"name": "playlist",
-											"type": "PlayList"
+											"type": {
+												"$ref": "AAAAAAF4upmVAraAIZE="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14482,8 +14861,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssOldR8FmY0="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
 										}
 									]
 								},
@@ -14511,7 +14890,9 @@
 												"$ref": "AAAAAAF4ssQJsSFyljE="
 											},
 											"name": "playlist",
-											"type": "PlayList"
+											"type": {
+												"$ref": "AAAAAAF4upmVAraAIZE="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14520,7 +14901,9 @@
 												"$ref": "AAAAAAF4ssQJsSFyljE="
 											},
 											"name": "song",
-											"type": "Song"
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14528,8 +14911,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssQJsSFyljE="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
 										}
 									]
 								},
@@ -14557,7 +14940,9 @@
 												"$ref": "AAAAAAF4ssTbzSYeiaw="
 											},
 											"name": "playlist",
-											"type": "PlayList"
+											"type": {
+												"$ref": "AAAAAAF4upmVAraAIZE="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14574,8 +14959,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssTbzSYeiaw="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
 										}
 									]
 								},
@@ -14603,7 +14988,9 @@
 												"$ref": "AAAAAAF4ssUzjSf1tF8="
 											},
 											"name": "playlist",
-											"type": "PlayList"
+											"type": {
+												"$ref": "AAAAAAF4upmVAraAIZE="
+											}
 										},
 										{
 											"_type": "UMLParameter",
@@ -14611,8 +14998,66 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssUzjSf1tF8="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4uscioMyJfdg=",
+									"_parent": {
+										"$ref": "AAAAAAF4lv04QwI1imw="
+									},
+									"name": "getPlayListSongsByUser",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4uskC+c01VhE=",
+											"_parent": {
+												"$ref": "AAAAAAF4uscioMyJfdg="
+											},
+											"name": "username",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4uskC/c02ROM=",
+											"_parent": {
+												"$ref": "AAAAAAF4uscioMyJfdg="
+											},
+											"type": "ArrayList<Song>",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4uslIRc9RoDQ=",
+									"_parent": {
+										"$ref": "AAAAAAF4lv04QwI1imw="
+									},
+									"name": "getPlayListDataByUser",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usmTUs/9PY0=",
+											"_parent": {
+												"$ref": "AAAAAAF4uslIRc9RoDQ="
+											},
+											"name": "username",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usmTVc/+hcE=",
+											"_parent": {
+												"$ref": "AAAAAAF4uslIRc9RoDQ="
+											},
+											"type": {
+												"$ref": "AAAAAAF4upmVAraAIZE="
+											},
+											"direction": "return"
 										}
 									]
 								}
@@ -14772,8 +15217,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4ssbvKzK0V3Q="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
 										},
 										{
 											"_type": "UMLParameter",
@@ -14782,7 +15227,41 @@
 												"$ref": "AAAAAAF4ssbvKzK0V3Q="
 											},
 											"name": "song",
-											"type": "Song"
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4usZxQ8UZAgg=",
+									"_parent": {
+										"$ref": "AAAAAAF4srwRLQGSFVc="
+									},
+									"name": "getSong",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usbCNcYHwEA=",
+											"_parent": {
+												"$ref": "AAAAAAF4usZxQ8UZAgg="
+											},
+											"name": "song",
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											}
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4usbUAsdU7kc=",
+											"_parent": {
+												"$ref": "AAAAAAF4usZxQ8UZAgg="
+											},
+											"type": {
+												"$ref": "AAAAAAF4upJyKHNeIMw="
+											},
+											"direction": "return"
 										}
 									]
 								}
@@ -15079,8 +15558,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st5r+ms9pKk="
 													},
-													"name": "usuari",
-													"type": "Usuari"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15088,7 +15567,7 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st5r+ms9pKk="
 													},
-													"type": "void",
+													"type": "boolean",
 													"direction": "return"
 												}
 											]
@@ -15108,7 +15587,9 @@
 														"$ref": "AAAAAAF4st67XG0Y/LQ="
 													},
 													"name": "song",
-													"type": "Song"
+													"type": {
+														"$ref": "AAAAAAF4upJyKHNeIMw="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15117,7 +15598,9 @@
 														"$ref": "AAAAAAF4st67XG0Y/LQ="
 													},
 													"name": "playlist",
-													"type": "PlayList"
+													"type": {
+														"$ref": "AAAAAAF4upmVAraAIZE="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15125,8 +15608,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st67XG0Y/LQ="
 													},
-													"name": "user",
-													"type": "User"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15154,7 +15637,9 @@
 														"$ref": "AAAAAAF4st7PsG4OOW4="
 													},
 													"name": "playlist",
-													"type": "PlayList"
+													"type": {
+														"$ref": "AAAAAAF4upmVAraAIZE="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15163,7 +15648,9 @@
 														"$ref": "AAAAAAF4st7PsG4OOW4="
 													},
 													"name": "song",
-													"type": "Song"
+													"type": {
+														"$ref": "AAAAAAF4upJyKHNeIMw="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15171,8 +15658,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st7PsG4OOW4="
 													},
-													"name": "user",
-													"type": "User"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15200,7 +15687,9 @@
 														"$ref": "AAAAAAF4st8JdnB+hb8="
 													},
 													"name": "playlist",
-													"type": "PlayList"
+													"type": {
+														"$ref": "AAAAAAF4upmVAraAIZE="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15217,8 +15706,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st8JdnB+hb8="
 													},
-													"name": "user",
-													"type": "User"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15246,7 +15735,9 @@
 														"$ref": "AAAAAAF4st8bd3F0hSo="
 													},
 													"name": "playlist",
-													"type": "PlayList"
+													"type": {
+														"$ref": "AAAAAAF4upmVAraAIZE="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15254,8 +15745,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st8bd3F0hSo="
 													},
-													"name": "user",
-													"type": "User"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15264,6 +15755,36 @@
 														"$ref": "AAAAAAF4st8bd3F0hSo="
 													},
 													"type": "void",
+													"direction": "return"
+												}
+											]
+										},
+										{
+											"_type": "UMLOperation",
+											"_id": "AAAAAAF4usnBvdJ3krE=",
+											"_parent": {
+												"$ref": "AAAAAAF4lvt0E/VAyMM="
+											},
+											"name": "getPlayListDataByUser",
+											"parameters": [
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAF4usnJ89MjB60=",
+													"_parent": {
+														"$ref": "AAAAAAF4usnBvdJ3krE="
+													},
+													"name": "username",
+													"type": "String"
+												},
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAF4usnJ99Mkgq4=",
+													"_parent": {
+														"$ref": "AAAAAAF4usnBvdJ3krE="
+													},
+													"type": {
+														"$ref": "AAAAAAF4upmVAraAIZE="
+													},
 													"direction": "return"
 												}
 											]
@@ -15890,8 +16411,8 @@
 													"_parent": {
 														"$ref": "AAAAAAF4suA7yX+ajK0="
 													},
-													"name": "user",
-													"type": "User"
+													"name": "username",
+													"type": "String"
 												},
 												{
 													"_type": "UMLParameter",
@@ -15900,7 +16421,9 @@
 														"$ref": "AAAAAAF4suA7yX+ajK0="
 													},
 													"name": "song",
-													"type": "Song"
+													"type": {
+														"$ref": "AAAAAAF4upJyKHNeIMw="
+													}
 												},
 												{
 													"_type": "UMLParameter",
@@ -15909,6 +16432,38 @@
 														"$ref": "AAAAAAF4suA7yX+ajK0="
 													},
 													"type": "void",
+													"direction": "return"
+												}
+											]
+										},
+										{
+											"_type": "UMLOperation",
+											"_id": "AAAAAAF4usbrhskk/Fw=",
+											"_parent": {
+												"$ref": "AAAAAAF4sryWuwOCst8="
+											},
+											"name": "getSong",
+											"parameters": [
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAF4usb178nQCk0=",
+													"_parent": {
+														"$ref": "AAAAAAF4usbrhskk/Fw="
+													},
+													"name": "song",
+													"type": {
+														"$ref": "AAAAAAF4upJyKHNeIMw="
+													}
+												},
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAF4usb18snR4ao=",
+													"_parent": {
+														"$ref": "AAAAAAF4usbrhskk/Fw="
+													},
+													"type": {
+														"$ref": "AAAAAAF4upJyKHNeIMw="
+													},
 													"direction": "return"
 												}
 											]
