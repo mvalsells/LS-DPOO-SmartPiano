@@ -8785,8 +8785,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 640,
-									"top": 152,
+									"left": 712,
+									"top": 144,
 									"width": 10,
 									"height": 10
 								},
@@ -8801,8 +8801,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 640,
-									"top": 152,
+									"left": 712,
+									"top": 144,
 									"width": 10,
 									"height": 10
 								}
@@ -10572,7 +10572,7 @@
 											"top": 1508,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyPassword(currentName: String, newPasswordHash: String): boolean",
+											"text": "+modifyPassword(currentName: String, newPassword: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10625,13 +10625,30 @@
 											"height": 13,
 											"text": "+modifyUserUserName(currentUserName: String, newUserName: String): boolean",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4u2POCiNmyvM=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqM4i+VzAJk="
+											},
+											"model": {
+												"$ref": "AAAAAAF4u2PN0yNL3Ys="
+											},
+											"font": "Arial;13;0",
+											"left": 1277,
+											"top": 1568,
+											"width": 530.6767578125,
+											"height": 13,
+											"text": "~encryptPassword(plainTextPassword: String): String",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1272,
 									"top": 1443,
 									"width": 540.6767578125,
-									"height": 128
+									"height": 143
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -10674,7 +10691,7 @@
 							"left": 1272,
 							"top": 1408,
 							"width": 540.6767578125,
-							"height": 163,
+							"height": 178,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4uqM4ieVtXzI="
 							},
@@ -10989,7 +11006,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1759,
-									"top": 1589,
+									"top": 1604,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -11010,7 +11027,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1772,
-									"top": 1592,
+									"top": 1607,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -11031,7 +11048,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1731,
-									"top": 1585,
+									"top": 1600,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -11142,7 +11159,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uqM4ieVszSQ="
 							},
-							"points": "1744:1570;1744:2640;1342:2640",
+							"points": "1744:1585;1744:2640;1342:2640",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4ur2/fpFxsNU="
@@ -12068,8 +12085,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 456,
-									"top": 408,
+									"left": 528,
+									"top": 400,
 									"width": 10,
 									"height": 10
 								},
@@ -12084,8 +12101,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 456,
-									"top": 408,
+									"left": 528,
+									"top": 400,
 									"width": 10,
 									"height": 10
 								}
@@ -12353,8 +12370,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 520,
-									"top": 480,
+									"left": 592,
+									"top": 472,
 									"width": 10,
 									"height": 10
 								},
@@ -12369,8 +12386,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 520,
-									"top": 480,
+									"left": 592,
+									"top": 472,
 									"width": 10,
 									"height": 10
 								}
@@ -12568,7 +12585,7 @@
 											"top": 931,
 											"width": 609.7177734375,
 											"height": 13,
-											"text": "+createUser(userName: String, email: String, passwordHash: String, type: String): boolean",
+											"text": "+createUser(userName: String, email: String, password: String, type: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12687,7 +12704,7 @@
 											"top": 1036,
 											"width": 609.7177734375,
 											"height": 13,
-											"text": "+modifyPassword(currentName: String, newPasswordHash: String): boolean",
+											"text": "+modifyPassword(currentName: String, newPassword: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12938,7 +12955,7 @@
 											"top": 1102,
 											"width": 609.7177734375,
 											"height": 13,
-											"text": "+createUser(userName: String, email: String, passwordHash: String, type: String): boolean",
+											"text": "+createUser(userName: String, email: String, password: String, type: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -13057,7 +13074,7 @@
 											"top": 1207,
 											"width": 609.7177734375,
 											"height": 13,
-											"text": "+modifyPassword(currentName: String, newPasswordHash: String): boolean",
+											"text": "+modifyPassword(currentName: String, newPassword: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -15053,7 +15070,7 @@
 											"font": "Arial;13;1",
 											"left": 621,
 											"top": 151,
-											"width": 105.47900390625,
+											"width": 137.6298828125,
 											"height": 13,
 											"text": "LoginView"
 										},
@@ -15088,7 +15105,7 @@
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 144,
-									"width": 115.47900390625,
+									"width": 147.6298828125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF4u1tNNpb3/5Y="
@@ -15125,7 +15142,7 @@
 											"font": "Arial;13;0",
 											"left": 621,
 											"top": 174,
-											"width": 105.47900390625,
+											"width": 137.6298828125,
 											"height": 13,
 											"text": "-userName: String",
 											"horizontalAlignment": 0
@@ -15142,7 +15159,7 @@
 											"font": "Arial;13;0",
 											"left": 621,
 											"top": 189,
-											"width": 105.47900390625,
+											"width": 137.6298828125,
 											"height": 13,
 											"text": "-password: String",
 											"horizontalAlignment": 0
@@ -15151,7 +15168,7 @@
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 169,
-									"width": 115.47900390625,
+									"width": 147.6298828125,
 									"height": 38
 								},
 								{
@@ -15163,11 +15180,47 @@
 									"model": {
 										"$ref": "AAAAAAF4u1tNNZbzE+8="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4u1+0wMaTktk=",
+											"_parent": {
+												"$ref": "AAAAAAF4u1tNNpb8W78="
+											},
+											"model": {
+												"$ref": "AAAAAAF4u1+0jMZj5+Q="
+											},
+											"font": "Arial;13;0",
+											"left": 621,
+											"top": 212,
+											"width": 137.6298828125,
+											"height": 13,
+											"text": "+getUserName(): String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF4u1/1n8iLOqA=",
+											"_parent": {
+												"$ref": "AAAAAAF4u1tNNpb8W78="
+											},
+											"model": {
+												"$ref": "AAAAAAF4u1/1c8hbrbo="
+											},
+											"font": "Arial;13;0",
+											"left": 621,
+											"top": 227,
+											"width": 137.6298828125,
+											"height": 13,
+											"text": "+getPassword(): String",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 207,
-									"width": 115.47900390625,
-									"height": 10
+									"width": 147.6298828125,
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -15209,8 +15262,8 @@
 							"containerChangeable": true,
 							"left": 616,
 							"top": 144,
-							"width": 115.47900390625,
-							"height": 73,
+							"width": 147.6298828125,
+							"height": 101,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4u1tNNpb2qBk="
 							},
@@ -15904,7 +15957,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4urAeskpQ3Z4="
 											},
-											"name": "newPasswordHash",
+											"name": "newPassword",
 											"type": "String"
 										},
 										{
@@ -16007,6 +16060,35 @@
 												"$ref": "AAAAAAF4uyiFmaOedt0="
 											},
 											"type": "boolean",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4u2PN0yNL3Ys=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqM4hOVqUMU="
+									},
+									"name": "encryptPassword",
+									"visibility": "package",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4u2U0RSSOIFI=",
+											"_parent": {
+												"$ref": "AAAAAAF4u2PN0yNL3Ys="
+											},
+											"name": "plainTextPassword",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4u2U0RiSP7ME=",
+											"_parent": {
+												"$ref": "AAAAAAF4u2PN0yNL3Ys="
+											},
+											"type": "String",
 											"direction": "return"
 										}
 									]
@@ -16147,7 +16229,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uxxcLzgLQo8="
 											},
-											"name": "passwordHash",
+											"name": "password",
 											"type": "String"
 										},
 										{
@@ -16379,7 +16461,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4u0n3WCx0ZeA="
 											},
-											"name": "newPasswordHash",
+											"name": "newPassword",
 											"type": "String"
 										},
 										{
@@ -16716,7 +16798,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uxxHoDVyGuU="
 											},
-											"name": "passwordHash",
+											"name": "password",
 											"type": "String"
 										},
 										{
@@ -16948,7 +17030,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4u0oMcS9R9Lo="
 											},
-											"name": "newPasswordHash",
+											"name": "newPassword",
 											"type": "String"
 										},
 										{
@@ -20910,6 +20992,46 @@
 									"name": "password",
 									"visibility": "private",
 									"type": "String"
+								}
+							],
+							"operations": [
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4u1+0jMZj5+Q=",
+									"_parent": {
+										"$ref": "AAAAAAF4u1tNNZbzE+8="
+									},
+									"name": "getUserName",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4u1/nv8dL8S0=",
+											"_parent": {
+												"$ref": "AAAAAAF4u1+0jMZj5+Q="
+											},
+											"type": "String",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF4u1/1c8hbrbo=",
+									"_parent": {
+										"$ref": "AAAAAAF4u1tNNZbzE+8="
+									},
+									"name": "getPassword",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF4u2AVOclwmuk=",
+											"_parent": {
+												"$ref": "AAAAAAF4u1/1c8hbrbo="
+											},
+											"type": "String",
+											"direction": "return"
+										}
+									]
 								}
 							]
 						}
