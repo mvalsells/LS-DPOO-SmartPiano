@@ -63,7 +63,7 @@
 											"top": 1630,
 											"width": 1967,
 											"height": 13,
-											"text": "Persistance Layer"
+											"text": "Persistance Layer     Model"
 										},
 										{
 											"_type": "LabelView",
@@ -11306,9 +11306,9 @@
 											"font": "Arial;13;0",
 											"left": -320,
 											"top": 320,
-											"width": 142.32080078125,
+											"width": 195.787109375,
 											"height": 13,
-											"text": "(from Persistance Layer)"
+											"text": "(from Persistance Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -11695,9 +11695,9 @@
 											"font": "Arial;13;0",
 											"left": -192,
 											"top": 464,
-											"width": 142.32080078125,
+											"width": 195.787109375,
 											"height": 13,
-											"text": "(from Persistance Layer)"
+											"text": "(from Persistance Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -17617,7 +17617,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1143,
+									"left": 1071,
 									"top": 1224,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -17638,7 +17638,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1158,
+									"left": 1086,
 									"top": 1224,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -17659,7 +17659,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1113,
+									"left": 1041,
 									"top": 1225,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -17742,7 +17742,7 @@
 										"$ref": "AAAAAAF4zM0gAAhyXT0="
 									},
 									"font": "Arial;13;0",
-									"left": 1088,
+									"left": 1016,
 									"top": 2232,
 									"width": 111.642578125,
 									"height": 13,
@@ -17764,7 +17764,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1156,
+									"left": 1084,
 									"top": 2229,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -17783,7 +17783,7 @@
 										"$ref": "AAAAAAF4zM0gAAhyXT0="
 									},
 									"font": "Arial;13;0",
-									"left": 1112,
+									"left": 1040,
 									"top": 2236,
 									"width": 7.22998046875,
 									"height": 13,
@@ -17830,7 +17830,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uv/5Chd3mUE="
 							},
-							"points": "1288:1231;1128:1231;1128:2264",
+							"points": "1288:1231;1056:1231;1056:2264",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4zM0gAgh1Y84="
@@ -19835,7 +19835,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Persistance Layer",
+					"name": "Persistance Layer     Model",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
