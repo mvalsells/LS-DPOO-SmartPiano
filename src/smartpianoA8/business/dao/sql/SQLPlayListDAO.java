@@ -3,6 +3,7 @@ package smartpianoA8.business.dao.sql;
 import smartpianoA8.business.dao.PlayListDAO;
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class SQLPlayListDAO implements PlayListDAO {
     }
 
     @Override
-    public void addSongToPlayList(Song song, PlayList playList, String username) {
+    public void addSongToPlayList(Song song, PlayList playList, User user) {
 
     }
 
@@ -30,7 +31,7 @@ public class SQLPlayListDAO implements PlayListDAO {
     }
 
     @Override
-    public ArrayList<PlayList> getPlayListsByUsers(String username) {
+    public ArrayList<PlayList> getPlayListsByUser(User user) {
         return null;
     }
 

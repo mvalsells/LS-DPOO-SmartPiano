@@ -5798,7 +5798,7 @@
 											"top": 2745,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+getUserByEmail(email: String): String",
+											"text": "+getUserByEmail(email: String): User",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5815,7 +5815,7 @@
 											"top": 2760,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+getUserByUsername(username: String): String",
+											"text": "+getUserByUsername(username: String): User",
 											"horizontalAlignment": 0
 										}
 									],
@@ -21520,7 +21520,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4sspSy0KlZMY="
 											},
-											"type": "String",
+											"type": "User",
 											"direction": "return"
 										}
 									]
@@ -21548,7 +21548,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4sstotkNtP90="
 											},
-											"type": "String",
+											"type": "User",
 											"direction": "return"
 										}
 									]
