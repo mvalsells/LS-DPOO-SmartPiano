@@ -3,7 +3,7 @@ package smartpianoA8.business.entity;
 public class User {
     private String userName;
     private String email;
-    private String type;
+    private final String type;
     private String passwordHash;
 
     User(String userName, String email, String type, String passwordHash){

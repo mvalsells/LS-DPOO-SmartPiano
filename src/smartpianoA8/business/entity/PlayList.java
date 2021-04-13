@@ -7,9 +7,9 @@ import java.util.ArrayList;
  */
 public class PlayList {
     private String nom;
-    private int idPlayList;
+    private final int idPlayList;
     private ArrayList<Song> songs;
-    private String nomUsuari;
+    private final String nomUsuari;
 
     /**
      *
