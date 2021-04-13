@@ -394,7 +394,7 @@
 											"top": 846,
 											"width": 2407,
 											"height": 13,
-											"text": "Busines Layer"
+											"text": "Busines Layer     Model"
 										},
 										{
 											"_type": "LabelView",
@@ -9632,9 +9632,9 @@
 											"font": "Arial;13;0",
 											"left": 3296,
 											"top": 896,
-											"width": 120.64990234375,
+											"width": 174.1162109375,
 											"height": 13,
-											"text": "(from Busines Layer)"
+											"text": "(from Busines Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -9881,9 +9881,9 @@
 											"font": "Arial;13;0",
 											"left": 1168,
 											"top": 968,
-											"width": 120.64990234375,
+											"width": 174.1162109375,
 											"height": 13,
-											"text": "(from Busines Layer)"
+											"text": "(from Busines Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -10147,9 +10147,9 @@
 											"font": "Arial;13;0",
 											"left": 2488,
 											"top": 504,
-											"width": 120.64990234375,
+											"width": 174.1162109375,
 											"height": 13,
-											"text": "(from Busines Layer)"
+											"text": "(from Busines Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -11981,9 +11981,9 @@
 											"font": "Arial;13;0",
 											"left": -1488,
 											"top": 256,
-											"width": 120.64990234375,
+											"width": 174.1162109375,
 											"height": 13,
-											"text": "(from Busines Layer)"
+											"text": "(from Busines Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -12352,9 +12352,9 @@
 											"font": "Arial;13;0",
 											"left": 1872,
 											"top": 792,
-											"width": 120.64990234375,
+											"width": 174.1162109375,
 											"height": 13,
-											"text": "(from Busines Layer)"
+											"text": "(from Busines Layer     Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -17882,7 +17882,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Busines Layer",
+					"name": "Busines Layer     Model",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
