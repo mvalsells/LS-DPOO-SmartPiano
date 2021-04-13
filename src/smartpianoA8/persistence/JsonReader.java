@@ -1,4 +1,4 @@
-package smartpianoA8.Persistence;
+package smartpianoA8.persistence;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

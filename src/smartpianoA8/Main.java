@@ -1,11 +1,10 @@
 package smartpianoA8;
 
-import smartpianoA8.Persistence.*;
-import smartpianoA8.Presentation.Views.RegisterView;
+import smartpianoA8.persistence.*;
+import smartpianoA8.presentation.views.RegisterView;
 //import smartpianoA8.Business.*;
 //import smartpianoA8.Presentation.*;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 
 public class Main {
