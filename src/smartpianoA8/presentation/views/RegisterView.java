@@ -86,7 +86,7 @@ public class RegisterView extends JFrame {
         OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),85);
+        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),90);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
         OmplirEstLabel.setBorder(OmplirEstBorder);
@@ -149,19 +149,19 @@ public class RegisterView extends JFrame {
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(220,40));
+        Correu.setMaximumSize(new Dimension(230,40));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(220,40));
+        Contrasenya.setMaximumSize(new Dimension(230,40));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(220,40));
+        RepetirContrasenya.setMaximumSize(new Dimension(230,40));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
@@ -188,17 +188,17 @@ public class RegisterView extends JFrame {
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setBackground(new Color(0,0,255));
         FaceBookButton.setForeground(new Color(255,255,255));
-        FaceBookButton.setMaximumSize(new Dimension(220,45));
+        FaceBookButton.setMaximumSize(new Dimension(230,45));
 
 
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setBackground(new Color(255,0,0));
         GoogleButton.setForeground(new Color(255,255,255));
-        GoogleButton.setMaximumSize(new Dimension(220,45));
+        GoogleButton.setMaximumSize(new Dimension(230,45));
 
         JLabel JaTensCompte2 = new JLabel(" ");
-        JaTensCompte2.setPreferredSize(new Dimension(140,200));
+        JaTensCompte2.setPreferredSize(new Dimension(140,393));
         JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 220));
         JaTensCompte2.setOpaque(false);
 
