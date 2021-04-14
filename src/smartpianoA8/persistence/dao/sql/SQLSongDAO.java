@@ -1,6 +1,6 @@
-package smartpianoA8.business.dao.sql;
+package smartpianoA8.persistence.dao.sql;
 
-import smartpianoA8.business.dao.SongDAO;
+import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 

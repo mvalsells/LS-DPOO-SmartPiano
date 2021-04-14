@@ -1,6 +1,6 @@
-package smartpianoA8.business.dao.sql;
+package smartpianoA8.persistence.dao.sql;
 
-import smartpianoA8.business.dao.UserDAO;
+import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.business.entity.User;
 
 public class SQLUserDAO implements UserDAO {

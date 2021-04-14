@@ -1,4 +1,4 @@
-package smartpianoA8.business.dao.sql;
+package smartpianoA8.persistence.dao.sql;
 
 import java.sql.*;
 
