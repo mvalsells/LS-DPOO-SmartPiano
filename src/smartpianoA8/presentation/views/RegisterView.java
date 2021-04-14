@@ -44,6 +44,7 @@ public class RegisterView extends JFrame {
         JFrame frame = new JFrame();
         frame.setLayout(new CardLayout());
 
+
         /*Panell principal on anira imatge*/
         JPanel panel = new JPanel();
         panel.setBackground(Color.GRAY);
@@ -69,13 +70,14 @@ public class RegisterView extends JFrame {
         PosicionamentBotonsNord.setBackground(Color.GREEN);
 
         /*Botons i textos nord*/
-        JButton IniciarSessio = new JButton("Iniciar sessiÃ³");
+        JButton IniciarSessio = new JButton("Iniciar sesion");
         IniciarSessio.setBackground(Color.orange);
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setVisible(true);
 
-        JLabel JaTensCompte = new JLabel("Ja tens un compte?");
-        JaTensCompte.setPreferredSize(new Dimension(130,100));
+        JLabel JaTensCompte = new JLabel("¿Ya tienes una cuenta?");
+        JaTensCompte.setPreferredSize(new Dimension(140,100));
+        JaTensCompte.setFont(new Font("Verdana", Font.PLAIN, 11));
 
         /*------------------------------------------PART CENTRAL------------------------------------------*/
 
@@ -84,7 +86,7 @@ public class RegisterView extends JFrame {
         OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),100);
+        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),85);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
         OmplirEstLabel.setBorder(OmplirEstBorder);
@@ -93,7 +95,7 @@ public class RegisterView extends JFrame {
         OmplirOestPanel.setBackground(new Color(101,58,156));
         OmplirOestPanel.setLayout(new BoxLayout(OmplirOestPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),100);
+        LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),85);
         JLabel OmplirOestLabel = new JLabel();
         OmplirOestLabel.setMinimumSize(new Dimension(200,300));
         OmplirOestLabel.setBorder(OmplirOestBorder);
@@ -103,13 +105,14 @@ public class RegisterView extends JFrame {
         PartCentral.setBackground(new Color(102,178,255));
         PartCentral.setLayout(new BorderLayout());
 
+
         /*-------------Part Centre-Nord-------------*/
         /*Text*/
-        JLabel Titular = new JLabel("Crea un compte i comenci ara!");
-        Titular.setPreferredSize(new Dimension(300,75));
-        Titular.setFont(new Font("Verdana", Font.PLAIN, 30));
+        JLabel Titular = new JLabel("Crea una cuenta y empieze ahora");
+        Titular.setPreferredSize(new Dimension(300,100));
+        Titular.setFont(new Font("Verdana", Font.PLAIN, 37));
         /*Creem un border per posicionar el text*/
-        EmptyBorder TitularBorder = new EmptyBorder(50,100,0,0);
+        EmptyBorder TitularBorder = new EmptyBorder(50,0,0,0);
         Titular.setBorder(TitularBorder);
 
         /*-------------Part Centre-Est-------------*/
@@ -140,25 +143,25 @@ public class RegisterView extends JFrame {
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
-        Nom.setMaximumSize(new Dimension(220,50));
+        Nom.setMaximumSize(new Dimension(230,40));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(220,50));
+        Correu.setMaximumSize(new Dimension(220,40));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(220,50));
+        Contrasenya.setMaximumSize(new Dimension(220,40));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(220,50));
+        RepetirContrasenya.setMaximumSize(new Dimension(220,40));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
@@ -170,7 +173,7 @@ public class RegisterView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
-        EmptyBorder EntreButtonBorder = new EmptyBorder(10,0,10, 0);
+        EmptyBorder EntreButtonBorder = new EmptyBorder(10,10,10, 0);
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
@@ -182,14 +185,16 @@ public class RegisterView extends JFrame {
 
         /*Botons*/
         JButton FaceBookButton = new JButton("FACEBOOK");
-        FaceBookButton.setPreferredSize(new Dimension(220,50));
+        FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setBackground(new Color(0,0,255));
         FaceBookButton.setForeground(new Color(255,255,255));
 
+
         JButton GoogleButton = new JButton("Google");
-        GoogleButton.setPreferredSize(new Dimension(220,50));
+        GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setBackground(new Color(255,0,0));
         GoogleButton.setForeground(new Color(255,255,255));
+        
 
         /*Packin' area*/
         /*Part Superior*/
@@ -228,10 +233,10 @@ public class RegisterView extends JFrame {
         OmplirOestPanel.add(OmplirOestLabel);
         panel.add(OmplirOestPanel,BorderLayout.WEST);
 
-
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add("Ref_1",panel);
-        frame.setPreferredSize(new Dimension(1111,820));
+        frame.setPreferredSize(new Dimension(1000,820));
         frame.pack();
         frame.setVisible(true);
 
