@@ -1,9 +1,7 @@
 package smartpianoA8;
 
-import smartpianoA8.persistence.*;
-import smartpianoA8.presentation.views.RegisterView;
-//import smartpianoA8.Business.*;
-//import smartpianoA8.Presentation.*;
+import smartpianoA8.Presentation.views.RegisterView;
+import smartpianoA8.persistence.JsonReader;
 
 import java.io.FileNotFoundException;
 
