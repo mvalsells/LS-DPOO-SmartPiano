@@ -86,7 +86,7 @@ public class RegisterView extends JFrame {
         OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),90);
+        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),100);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
         OmplirEstLabel.setBorder(OmplirEstBorder);
@@ -143,25 +143,25 @@ public class RegisterView extends JFrame {
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
-        Nom.setMaximumSize(new Dimension(230,40));
+        Nom.setMaximumSize(new Dimension(240,40));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(230,40));
+        Correu.setMaximumSize(new Dimension(240,40));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(230,40));
+        Contrasenya.setMaximumSize(new Dimension(240,40));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(230,40));
+        RepetirContrasenya.setMaximumSize(new Dimension(240,40));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
