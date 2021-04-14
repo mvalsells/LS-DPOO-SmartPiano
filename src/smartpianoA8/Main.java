@@ -1,6 +1,6 @@
 package smartpianoA8;
 
-import smartpianoA8.Presentation.views.RegisterView;
+import smartpianoA8.presentation.views.RegisterView;
 import smartpianoA8.persistence.JsonReader;
 
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package smartpianoA8.Presentation.views;
+package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -71,7 +71,7 @@ public class RegisterView extends JFrame {
 
         /*Botons i textos nord*/
         JButton IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setBackground(Color.orange);
+        IniciarSessio.setBackground(Color.ORANGE);
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setVisible(true);
 
@@ -173,7 +173,7 @@ public class RegisterView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
-        EmptyBorder EntreButtonBorder = new EmptyBorder(10,10,10, 0);
+        EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
@@ -188,12 +188,22 @@ public class RegisterView extends JFrame {
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setBackground(new Color(0,0,255));
         FaceBookButton.setForeground(new Color(255,255,255));
+        FaceBookButton.setMaximumSize(new Dimension(220,45));
 
 
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setBackground(new Color(255,0,0));
         GoogleButton.setForeground(new Color(255,255,255));
+        GoogleButton.setMaximumSize(new Dimension(220,45));
+
+        JLabel JaTensCompte2 = new JLabel("");
+        JaTensCompte2.setPreferredSize(new Dimension(140,200));
+        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 220));
+        JaTensCompte2.setOpaque(false);
+
+
+
         
 
         /*Packin' area*/
@@ -225,6 +235,9 @@ public class RegisterView extends JFrame {
         PanelAccounts.add(FaceBookButton);
         PanelAccounts.add(EntreButtonLabel);
         PanelAccounts.add(GoogleButton);
+        PanelAccounts.add(JaTensCompte2);
+        //nelAccounts.add(EntreButtonLabel);
+        //PanelAccounts.add(EntreButtonLabel);
         PartCentral.add(PanelAccounts,BorderLayout.WEST);
         /*Part Dreta*/
         OmplirEstPanel.add(OmplirEstLabel);
