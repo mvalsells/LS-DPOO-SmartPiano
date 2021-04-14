@@ -1,4 +1,4 @@
-package smartpianoA8.Presentation.views;
+package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;

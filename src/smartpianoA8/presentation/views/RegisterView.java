@@ -12,8 +12,8 @@ public class RegisterView extends JFrame {
 
     }
     private void conifgureInici(){
-        /*ImageView panel = new ImageView(new ImageIcon("7faf81f4bf8807cfa0d1.jpg").getImage());
-        JPanel CapaSuperior = new JPanel();
+        ImageView panel = new ImageView(new ImageIcon("7faf81f4bf8807cfa0d1.jpg").getImage());
+        /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
 
         frame.setLayout(new CardLayout());
@@ -46,14 +46,14 @@ public class RegisterView extends JFrame {
 
 
         /*Panell principal on anira imatge*/
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.GRAY);
+        //JPanel panel = new JPanel();
+        //panel.setBackground(Color.GRAY);
         panel.setLayout(new BorderLayout());
 
         /*-----------------------------------------PART SUPERIOR-----------------------------------------*/
         /*Panell secundari Nord*/
         JPanel PartSuperior = new JPanel();
-        PartSuperior.setBackground(Color.BLUE);
+        //PartSuperior.setBackground(Color.BLUE);
         PartSuperior.setLayout(new BorderLayout());
 
         /*
@@ -67,11 +67,11 @@ public class RegisterView extends JFrame {
         /*Panell auxiliar posicionament botons Nord*/
         JPanel PosicionamentBotonsNord = new JPanel(); //Panel per situar els botons del Nord a la dreta
         PosicionamentBotonsNord.setLayout(new FlowLayout());
-        PosicionamentBotonsNord.setBackground(Color.GREEN);
+        //PosicionamentBotonsNord.setBackground(Color.GREEN);
 
         /*Botons i textos nord*/
         JButton IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setBackground(Color.ORANGE);
+        //IniciarSessio.setBackground(Color.ORANGE);
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setVisible(true);
 
@@ -83,7 +83,7 @@ public class RegisterView extends JFrame {
 
         /*Extra*/
         JPanel OmplirEstPanel = new JPanel();
-        OmplirEstPanel.setBackground(new Color(101,58,156));
+        //OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
         LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),100);
@@ -92,7 +92,7 @@ public class RegisterView extends JFrame {
         OmplirEstLabel.setBorder(OmplirEstBorder);
 
         JPanel OmplirOestPanel = new JPanel();
-        OmplirOestPanel.setBackground(new Color(101,58,156));
+        //OmplirOestPanel.setBackground(new Color(101,58,156));
         OmplirOestPanel.setLayout(new BoxLayout(OmplirOestPanel,BoxLayout.Y_AXIS));
 
         LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),85);
@@ -102,7 +102,7 @@ public class RegisterView extends JFrame {
 
         /*Panell secundari Central*/
         JPanel PartCentral = new JPanel();
-        PartCentral.setBackground(new Color(102,178,255));
+        //PartCentral.setBackground(new Color(102,178,255));
         PartCentral.setLayout(new BorderLayout());
 
 
@@ -117,7 +117,7 @@ public class RegisterView extends JFrame {
 
         /*-------------Part Centre-Est-------------*/
         JPanel PanelRegistre = new JPanel();
-        PanelRegistre.setBackground(new Color(178,102,255));
+        //PanelRegistre.setBackground(new Color(178,102,255));
         PanelRegistre.setLayout(new BoxLayout(PanelRegistre,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
@@ -168,7 +168,7 @@ public class RegisterView extends JFrame {
 
         /*-------------Part Centre-Oest-------------*/
         JPanel PanelAccounts = new JPanel();
-        PanelAccounts.setBackground(new Color(178,102,255));
+        //anelAccounts.setBackground(new Color(178,102,255));
         PanelAccounts.setLayout(new BoxLayout(PanelAccounts,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
