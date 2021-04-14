@@ -5,6 +5,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+import static java.awt.Color.*;
+
 public class RegisterView extends JFrame {
     //ImageView imageView = new ImageView();
     public RegisterView(){
@@ -73,13 +75,22 @@ public class RegisterView extends JFrame {
 
         /*Botons i textos nord*/
         JButton IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setBackground(Color.ORANGE);
+        IniciarSessio.setBackground(ORANGE);
         IniciarSessio.setPreferredSize(new Dimension(130,35));
+        IniciarSessio.setBorderPainted(false);
+        IniciarSessio.setOpaque(true);
         IniciarSessio.setVisible(true);
 
+
         JLabel JaTensCompte = new JLabel("¿Ya tienes una cuenta?");
+        JaTensCompte.setForeground(new Color(255,255,255));
         JaTensCompte.setPreferredSize(new Dimension(140,100));
         JaTensCompte.setFont(new Font("Verdana", Font.PLAIN, 11));
+
+        JLabel Espai = new JLabel(" ");
+        Espai.setForeground(new Color(255,255,255));
+        Espai.setPreferredSize(new Dimension(20,100));
+        Espai.setFont(new Font("Verdana", Font.PLAIN, 11));
 
         /*------------------------------------------PART CENTRAL------------------------------------------*/
 
@@ -114,6 +125,7 @@ public class RegisterView extends JFrame {
         /*-------------Part Centre-Nord-------------*/
         /*Text*/
         JLabel Titular = new JLabel("Crea una cuenta y empieze ahora");
+        Titular.setForeground(new Color(255,255,255));
         Titular.setPreferredSize(new Dimension(300,100));
         Titular.setFont(new Font("Verdana", Font.PLAIN, 37));
         /*Creem un border per posicionar el text*/
@@ -196,6 +208,8 @@ public class RegisterView extends JFrame {
         FaceBookButton.setBackground(new Color(0,0,255));
         FaceBookButton.setForeground(new Color(255,255,255));
         FaceBookButton.setMaximumSize(new Dimension(230,45));
+        FaceBookButton.setBorderPainted(false);
+        FaceBookButton.setOpaque(true);
 
 
         JButton GoogleButton = new JButton("Google");
@@ -203,6 +217,8 @@ public class RegisterView extends JFrame {
         GoogleButton.setBackground(new Color(255,0,0));
         GoogleButton.setForeground(new Color(255,255,255));
         GoogleButton.setMaximumSize(new Dimension(230,45));
+        GoogleButton.setBorderPainted(false);
+        GoogleButton.setOpaque(true);
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,393));
@@ -218,6 +234,7 @@ public class RegisterView extends JFrame {
         //PartSuperior.add(OmplirEstPartSuperior);
         PosicionamentBotonsNord.add(JaTensCompte);
         PosicionamentBotonsNord.add(IniciarSessio);
+        PosicionamentBotonsNord.add(Espai);
         PartSuperior.add(PosicionamentBotonsNord,BorderLayout.EAST);
         panel.add(PartSuperior,BorderLayout.NORTH);
 

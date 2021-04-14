@@ -10,10 +10,10 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("SmartPiano-A8\n");
 
-        //RegisterView registerView = new RegisterView();
-        smartpianoA8.Presentation.views.LoginView loginView = new LoginView();
+        RegisterView registerView = new RegisterView();
+        //smartpianoA8.Presentation.views.LoginView loginView = new LoginView();
         //registerView.setSize(400,400);
-        //registerView.setVisible(true);
+        registerView.setVisible(true);
 
     }
 }
