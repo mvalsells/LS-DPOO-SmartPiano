@@ -16,7 +16,7 @@ public class PlayList {
      * @param nom nom de la playlist
      * @param idPlayList codi identificador
      */
-    PlayList(String nom, int idPlayList, String nomUsuari){
+    public PlayList(String nom, int idPlayList, String nomUsuari){
         this.nom = nom;
         this.idPlayList = idPlayList;
         this.nomUsuari = nomUsuari;

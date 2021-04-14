@@ -5,7 +5,7 @@ import smartpianoA8.business.entity.User;
 
 public class SQLUserDAO implements UserDAO {
     @Override
-    public void addUser(User user) {
+    public Boolean addUser(User user) {
 
     }
 
