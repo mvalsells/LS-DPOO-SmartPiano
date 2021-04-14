@@ -1,4 +1,9 @@
 package smartpianoA8.Presentation.views;
 
-public class LoginView {
+import javax.swing.*;
+
+public class LoginView extends JFrame {
+
+
+
 }
