@@ -16,5 +16,6 @@ public interface BusinessFacade {
     public boolean modifyUserEmail(String currentEmail, String newEmail);
     public boolean modifyPassword(String currentName, String newPassword);
     public boolean modifyUserName(String currentUserName, String newUserName);
+    public boolean startDB();
 
 }

@@ -12265,7 +12265,7 @@
 											"top": 1066,
 											"width": 701.974609375,
 											"height": 13,
-											"text": "+startDB(dbName: String, dbAddress: String, dbPort: int, dbUser: String, dbPassword: String, timeScrapping: int): boolean",
+											"text": "+startDB(): boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -12652,7 +12652,7 @@
 											"top": 1229,
 											"width": 701.974609375,
 											"height": 13,
-											"text": "+startDB(dbName: String, dbAddress: String, dbPort: int, dbUser: String, dbPassword: String, timeScrapping: int): boolean",
+											"text": "+startDB(): boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -18234,7 +18234,7 @@
 											"top": 1455,
 											"width": 701.974609375,
 											"height": 13,
-											"text": "+startDB(dbName: String, dbAddress: String, dbPort: int, dbUser: String, dbPassword: String, timeScrapping: int): boolean",
+											"text": "+startDB(): boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -20767,60 +20767,6 @@
 									"parameters": [
 										{
 											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMw1jg4lc=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "dbName",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMxFjh+6E=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "dbAddress",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMxFjiWvE=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "dbPort",
-											"type": "int"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMxVjjM1E=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "dbUser",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMxVjk+1k=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "dbPassword",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zymMxVjleL8=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyltcFbMZs8="
-											},
-											"name": "timeScrapping",
-											"type": "int"
-										},
-										{
-											"_type": "UMLParameter",
 											"_id": "AAAAAAF4zymMxljmuUo=",
 											"_parent": {
 												"$ref": "AAAAAAF4zyltcFbMZs8="
@@ -21510,60 +21456,6 @@
 											},
 											"type": "boolean",
 											"direction": "return"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/VlQdOEc=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "dbName",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/VlQejMY=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "dbAddress",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/V1Qf5rg=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "dbPort",
-											"type": "int"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/V1Qg6A8=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "dbUser",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/WFQhFx8=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "dbPassword",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zyk/WVQiqP4=",
-											"_parent": {
-												"$ref": "AAAAAAF4zyf3iVCOnYI="
-											},
-											"name": "timeScrapping",
-											"type": "int"
 										}
 									]
 								}
@@ -21641,60 +21533,6 @@
 											},
 											"type": "boolean",
 											"direction": "return"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX+2zXUiw=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "dbName",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX+2zYXZQ=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "dbAddress",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX/GzZbf4=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "dbPort",
-											"type": "int"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX/GzasmA=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "dbUser",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX/GzbWtA=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "dbPassword",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zywX/WzcF4Q=",
-											"_parent": {
-												"$ref": "AAAAAAF4zytEtGeGXb4="
-											},
-											"name": "timeScrapping",
-											"type": "int"
 										}
 									]
 								}

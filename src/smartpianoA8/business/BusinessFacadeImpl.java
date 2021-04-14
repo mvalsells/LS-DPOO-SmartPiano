@@ -61,4 +61,9 @@ public class BusinessFacadeImpl implements BusinessFacade {
     public boolean modifyUserName(String currentUserName, String newUserName) {
         return false;
     }
+
+    @Override
+    public boolean startDB() {
+        return false;
+    }
 }
