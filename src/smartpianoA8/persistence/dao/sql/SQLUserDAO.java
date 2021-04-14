@@ -1,12 +1,17 @@
 package smartpianoA8.persistence.dao.sql;
 
-import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.*;
+import smartpianoA8.business.entity.PlayList;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.persistence.dao.sql.SQLConnector;
 
 public class SQLUserDAO implements UserDAO {
     @Override
     public Boolean addUser(User user) {
+        Boolean returnBool = false;
 
+        return returnBool;
     }
 
     @Override

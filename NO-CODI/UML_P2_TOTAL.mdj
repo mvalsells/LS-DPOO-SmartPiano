@@ -4999,7 +4999,7 @@
 											"top": 2696,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+addUser(user: User): void",
+											"text": "+addUser(user: User): Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5033,7 +5033,7 @@
 											"top": 2726,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+getUserByEmail(email: String): String",
+											"text": "+getUserByEmail(email: String): User",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5050,7 +5050,7 @@
 											"top": 2741,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+getUserByUsername(username: String): String",
+											"text": "+getUserByUsername(username: String): User",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5101,7 +5101,7 @@
 							"left": 160,
 							"top": 2656,
 							"width": 287.08154296875,
-							"height": 103,
+							"height": 118,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4lvtvKvScPh4="
 							},
@@ -5771,7 +5771,7 @@
 											"top": 2739,
 											"width": 277.08154296875,
 											"height": 13,
-											"text": "+addUser(user: User): void",
+											"text": "+addUser(user: User): Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -22986,7 +22986,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4sshhhTv8bo0="
 											},
-											"type": "void",
+											"type": "Boolean",
 											"direction": "return"
 										},
 										{
@@ -23676,7 +23676,7 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st9fGHOOKdo="
 													},
-													"type": "void",
+													"type": "Boolean",
 													"direction": "return"
 												}
 											]
@@ -23732,7 +23732,7 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st+cVXbX4pU="
 													},
-													"type": "String",
+													"type": "User",
 													"direction": "return"
 												}
 											]
@@ -23760,7 +23760,7 @@
 													"_parent": {
 														"$ref": "AAAAAAF4st+2m3hcMf4="
 													},
-													"type": "String",
+													"type": "User",
 													"direction": "return"
 												}
 											]

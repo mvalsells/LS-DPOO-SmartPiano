@@ -1,5 +1,6 @@
 package smartpianoA8.persistence.dao;
 
+import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 

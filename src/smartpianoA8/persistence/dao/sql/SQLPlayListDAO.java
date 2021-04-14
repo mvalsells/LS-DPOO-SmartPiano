@@ -58,12 +58,13 @@ public class SQLPlayListDAO implements PlayListDAO{
                     String NomUsuari = result.getString("NomUsuari");
 
                     returnedPlayList = new PlayList(Nom, id, NomUsuari);
-                    return();
+                    return(returnedPlayList);
                 }
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
+        return(null);
     }
 
     @Override
