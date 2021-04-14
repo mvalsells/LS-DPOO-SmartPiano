@@ -197,7 +197,7 @@ public class RegisterView extends JFrame {
         GoogleButton.setForeground(new Color(255,255,255));
         GoogleButton.setMaximumSize(new Dimension(220,45));
 
-        JLabel JaTensCompte2 = new JLabel("");
+        JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,200));
         JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 220));
         JaTensCompte2.setOpaque(false);
