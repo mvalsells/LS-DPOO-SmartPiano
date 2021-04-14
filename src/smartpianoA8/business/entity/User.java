@@ -6,7 +6,7 @@ public class User {
     private final String type;
     private String passwordHash;
 
-    User(String userName, String email, String type, String passwordHash){
+    public User(String userName, String email, String type, String passwordHash){
         this.userName = userName;
         this.email = email;
         this.type = type;

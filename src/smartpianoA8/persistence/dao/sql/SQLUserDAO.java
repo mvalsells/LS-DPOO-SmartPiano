@@ -16,7 +16,6 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public void removeUser(User user) {
-
     }
 
     @Override
