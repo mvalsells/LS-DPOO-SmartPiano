@@ -1,11 +1,13 @@
 package smartpianoA8.persistence.dao.sql;
 
+import smartpianoA8.persistence.dao.DBStarter;
+
 import java.sql.*;
 
 /**
  * The SQLConnector class will abstract the specifics of the connection to a MySQL database.
  */
-public class SQLConnector {
+public class SQLConnector implements DBStarter {
     private static SQLConnector instance = null;
 
     // Attributes to connect to the database.
