@@ -18,8 +18,15 @@ public class JsonReader implements Readable {
     private String      dbPassword;
     private int         timeScrapping; //In seconds
 
+    /**
+     *
+     */
     public JsonReader(){}
 
+    /**
+     *
+     * @throws FileNotFoundException
+     */
     public void readJsonConfig() throws FileNotFoundException {
 
         FileInputStream configFile = new FileInputStream("resources/config.json");
@@ -37,31 +44,55 @@ public class JsonReader implements Readable {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getDbName() {
         return dbName;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getDbAddress() {
         return dbAddress;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDbPort() {
         return dbPort;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getDbUser() {
         return dbUser;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getDbPassword() {
         return dbPassword;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int gettimeScrapping() {
         return timeScrapping;

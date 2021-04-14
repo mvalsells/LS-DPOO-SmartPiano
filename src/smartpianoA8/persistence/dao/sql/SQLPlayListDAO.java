@@ -11,6 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SQLPlayListDAO implements PlayListDAO{
+
+    /**
+     *
+     * @param name
+     * @param username
+     */
     @Override
     public void addPlayList(String name, String username) {
         String query = "INSERT INTO playlist(Nom, NomUsuari) VALUES ('" +
@@ -18,17 +24,32 @@ public class SQLPlayListDAO implements PlayListDAO{
                 username + "');";
     }
 
+    /**
+     *
+     * @param song
+     * @param playList
+     * @param user
+     */
     @Override
     public void addSongToPlayList(Song song, PlayList playList, User user) {
         String query = "";
 
     }
 
+    /**
+     *
+     * @param playList
+     * @param song
+     */
     @Override
     public void removeSongFromPlayList(PlayList playList, Song song) {
 
     }
 
+    /**
+     *
+     * @param playList
+     */
     @Override
     public void removePlayList(PlayList playList) {
         int id = playList.getIdPlayList();
@@ -37,11 +58,21 @@ public class SQLPlayListDAO implements PlayListDAO{
         SQLConnector.getInstance().deleteQuery(query);
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Override
     public ArrayList<PlayList> getPlayListsByUser(User user) {
         return null;
     }
 
+    /**
+     *
+     * @param playList
+     * @return
+     */
     @Override
     public PlayList getPlayListData(PlayList playList) {
         PlayList returnedPlayList;
@@ -67,6 +98,11 @@ public class SQLPlayListDAO implements PlayListDAO{
         return(null);
     }
 
+    /**
+     *
+     * @param playList
+     * @return
+     */
     @Override
     public ArrayList<Song> getPlayListSongs(PlayList playList) {
         ArrayList<Song> songs = new ArrayList<>();

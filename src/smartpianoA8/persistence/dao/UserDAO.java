@@ -8,12 +8,31 @@ import java.util.ArrayList;
 
 public interface UserDAO {
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     Boolean addUser(User user);
 
+    /**
+     *
+     * @param user
+     */
     void removeUser(User user);
 
+    /**
+     *
+     * @param email
+     * @return
+     */
     User getUserByEmail(String email);
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     User getUserByUsername(String username);
 
 }
