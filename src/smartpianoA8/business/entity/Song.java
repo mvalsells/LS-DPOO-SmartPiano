@@ -15,7 +15,7 @@ public class Song {
     private Boolean isPublic;
     private final String nomUsuari;
 
-    Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari){
+    public Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari){
         this.idSong = idSong;
         this.nom = nom;
         this. autor = autor;
