@@ -10260,7 +10260,7 @@
 											"top": 1447,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+createUser(userName: String, email: String, passwordHash: String, type: String): boolean",
+											"text": "+addUser(user: User): Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10277,7 +10277,7 @@
 											"top": 1462,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+removeUser(currentUser: String): void",
+											"text": "+removeUser(user: User): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10294,7 +10294,7 @@
 											"top": 1477,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyUserEmail(currentEmail: String, newEmail: String): boolean",
+											"text": "+modifyUserEmail(user: User, newEmail: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10311,7 +10311,7 @@
 											"top": 1492,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyPassword(currentName: String, newPassword: String): boolean",
+											"text": "+modifyPassword(user: User, newPassword: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10362,7 +10362,7 @@
 											"top": 1537,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyUserUserName(currentUserName: String, newUserName: String): boolean",
+											"text": "+modifyUserUserName(user: User, newUserName: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -20008,7 +20008,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF4uqM4hOVqUMU="
 									},
-									"name": "createUser",
+									"name": "addUser",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -20016,35 +20016,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uqwU9DpQqMs="
 											},
-											"name": "userName",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4uqzX8zseyZU=",
-											"_parent": {
-												"$ref": "AAAAAAF4uqwU9DpQqMs="
-											},
-											"name": "email",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4uqzX9TsfcpY=",
-											"_parent": {
-												"$ref": "AAAAAAF4uqwU9DpQqMs="
-											},
-											"name": "passwordHash",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4uqzX9jsgahU=",
-											"_parent": {
-												"$ref": "AAAAAAF4uqwU9DpQqMs="
-											},
-											"name": "type",
-											"type": "String"
+											"name": "user",
+											"type": "User"
 										},
 										{
 											"_type": "UMLParameter",
@@ -20052,7 +20025,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uqwU9DpQqMs="
 											},
-											"type": "boolean",
+											"type": "Boolean",
 											"direction": "return"
 										}
 									]
@@ -20071,8 +20044,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uq0etkBTmJ0="
 											},
-											"name": "currentUser",
-											"type": "String"
+											"name": "user",
+											"type": "User"
 										},
 										{
 											"_type": "UMLParameter",
@@ -20099,8 +20072,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uq4TUkUlGVo="
 											},
-											"name": "currentEmail",
-											"type": "String"
+											"name": "user",
+											"type": "User"
 										},
 										{
 											"_type": "UMLParameter",
@@ -20136,8 +20109,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4urAeskpQ3Z4="
 											},
-											"name": "currentName",
-											"type": "String"
+											"name": "user",
+											"type": "User"
 										},
 										{
 											"_type": "UMLParameter",
@@ -20229,8 +20202,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uyiFmaOedt0="
 											},
-											"name": "currentUserName",
-											"type": "String"
+											"name": "user",
+											"type": "User"
 										},
 										{
 											"_type": "UMLParameter",
