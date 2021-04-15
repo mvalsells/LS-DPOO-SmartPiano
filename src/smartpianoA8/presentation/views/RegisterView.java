@@ -14,9 +14,9 @@ public class RegisterView extends JFrame {
 
     }
     private void conifgureInici(){
-        ImageView panel = new ImageView(new ImageIcon("FINAL.png").getImage());
-        ImageIcon facebook = new ImageIcon("unknown.jpg");
-        ImageIcon google = new ImageIcon("googleRegistre.jpg");
+        ImageView panel = new ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
+        ImageIcon facebook = new ImageIcon("Imagen/RegistrarseFacebook.jpg");
+        ImageIcon google = new ImageIcon("Imagen/RegistrarseGoogle.jpg");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -158,25 +158,25 @@ public class RegisterView extends JFrame {
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
-        Nom.setMaximumSize(new Dimension(240,45));
+        Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(240,45));
+        Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(240,45));
+        Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(240,45));
+        RepetirContrasenya.setMaximumSize(new Dimension(281,39));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
@@ -202,7 +202,7 @@ public class RegisterView extends JFrame {
         /*Botons*/
         JButton FaceBookButton = new JButton("FACEBOOK");
         FaceBookButton.setPreferredSize(new Dimension(270,50));
-        FaceBookButton.setMaximumSize(new Dimension(240,45));
+        FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorderPainted(false);
         FaceBookButton.setIcon(facebook);
 
@@ -210,7 +210,7 @@ public class RegisterView extends JFrame {
 
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
-        GoogleButton.setMaximumSize(new Dimension(240,45));
+        GoogleButton.setMaximumSize(new Dimension(281,40));
         GoogleButton.setBorderPainted(false);
         GoogleButton.setIcon(google);
 

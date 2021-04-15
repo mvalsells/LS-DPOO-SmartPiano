@@ -19,9 +19,9 @@ public class LoginView extends JFrame {
 
     private void runLogin() {
 
-        ImageView panel = new ImageView(new ImageIcon("FINAL.png").getImage());
-        ImageIcon facebook = new ImageIcon("unknown.jpg");
-        ImageIcon google = new ImageIcon("googleRegistre.jpg");
+        ImageView panel = new ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
+        ImageIcon facebook = new ImageIcon("Imagen/IniciarSesionFacebook.jpg");
+        ImageIcon google = new ImageIcon("Imagen/IniciarSesionGoogle.jpg");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -64,7 +64,6 @@ public class LoginView extends JFrame {
         /*Panell secundari Nord*/
         JPanel PartSuperior = new JPanel();
         PartSuperior.setOpaque(false);
-        //PartSuperior.setBackground(Color.BLUE);
         PartSuperior.setLayout(new BorderLayout());
 
 
@@ -72,28 +71,13 @@ public class LoginView extends JFrame {
         JPanel PosicionamentBotonsNord = new JPanel(); //Panel per situar els botons del Nord a la dreta
         PosicionamentBotonsNord.setOpaque(false);
         PosicionamentBotonsNord.setLayout(new FlowLayout());
-        //PosicionamentBotonsNord.setBackground(Color.GREEN);
 
         /*Botons i textos nord*/
-        /*JButton IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setForeground(new Color(255,255,255));
-        IniciarSessio.setBackground(new Color(249,136,3));
-        IniciarSessio.setPreferredSize(new Dimension(130,35));
-        IniciarSessio.setBorderPainted(false);
-        IniciarSessio.setOpaque(true);
-        IniciarSessio.setVisible(true);*/
-
-
         JLabel JaTensCompte = new JLabel(" ");
         JaTensCompte.setForeground(new Color(255,255,255));
         JaTensCompte.setPreferredSize(new Dimension(140,100));
         JaTensCompte.setFont(new Font("Verdana", Font.PLAIN, 11));
 
-        /*JLabel Espai = new JLabel(" ");
-        Espai.setForeground(new Color(255,255,255));
-        Espai.setPreferredSize(new Dimension(20,100));
-        Espai.setFont(new Font("Verdana", Font.PLAIN, 11));
-        */
 
 
         /*------------------------------------------PART CENTRAL------------------------------------------*/
@@ -128,10 +112,8 @@ public class LoginView extends JFrame {
 
         /*-------------Part Centre-Nord-------------*/
         /*Text*/
-        JLabel Titular = new JLabel("Crea una cuenta y empieze ahora");
-        Titular.setForeground(new Color(255,255,255));
+        JLabel Titular = new JLabel();
         Titular.setPreferredSize(new Dimension(300,100));
-        Titular.setFont(new Font("Verdana", Font.PLAIN, 37));
         /*Creem un border per posicionar el text*/
         EmptyBorder TitularBorder = new EmptyBorder(50,0,0,0);
         Titular.setBorder(TitularBorder);
@@ -139,7 +121,6 @@ public class LoginView extends JFrame {
         /*-------------Part Centre-Est-------------*/
         JPanel PanelRegistre = new JPanel();
         PanelRegistre.setOpaque(false);
-        //PanelRegistre.setBackground(new Color(178,102,255));
         PanelRegistre.setLayout(new BoxLayout(PanelRegistre,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
@@ -165,19 +146,19 @@ public class LoginView extends JFrame {
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
-        Nom.setMaximumSize(new Dimension(240,45));
+        Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(240,45));
+        Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(240,45));
+        Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
@@ -209,7 +190,7 @@ public class LoginView extends JFrame {
         /*Botons*/
         JButton FaceBookButton = new JButton("FACEBOOK");
         FaceBookButton.setPreferredSize(new Dimension(270,50));
-        FaceBookButton.setMaximumSize(new Dimension(240,45));
+        FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorderPainted(false);
         FaceBookButton.setIcon(facebook);
 
@@ -217,13 +198,13 @@ public class LoginView extends JFrame {
 
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
-        GoogleButton.setMaximumSize(new Dimension(240,45));
+        GoogleButton.setMaximumSize(new Dimension(281,40));
         GoogleButton.setBorderPainted(false);
         GoogleButton.setIcon(google);
 
         JLabel JaTensCompte2 = new JLabel(" ");
-        JaTensCompte2.setPreferredSize(new Dimension(140,393));
-        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 220));
+        JaTensCompte2.setPreferredSize(new Dimension(140,395));
+        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 228));
         JaTensCompte2.setOpaque(false);
 
 
