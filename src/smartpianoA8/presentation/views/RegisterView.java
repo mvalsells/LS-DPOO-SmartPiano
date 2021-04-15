@@ -189,7 +189,7 @@ public class RegisterView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
-        EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
+        EmptyBorder EntreButtonBorder = new EmptyBorder(7,0,7, 0);
         LineBorder FacebookButtonBorder = new LineBorder(new Color(0,0,0,1),0);
         LineBorder GoogleButtonBorder = new LineBorder(new Color(0,0,0,1),0);
         /*Creem labels per establir espais entre components*/
@@ -202,7 +202,7 @@ public class RegisterView extends JFrame {
         EntreButtonLabel.setBorder(EntreButtonBorder);
 
         /*Botons*/
-        JButton FaceBookButton = new JButton("FACEBOOK");
+        JButton FaceBookButton = new JButton();
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorder(FacebookButtonBorder);
@@ -210,7 +210,7 @@ public class RegisterView extends JFrame {
 
 
 
-        JButton GoogleButton = new JButton("Google");
+        JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
         GoogleButton.setBorder(GoogleButtonBorder);
