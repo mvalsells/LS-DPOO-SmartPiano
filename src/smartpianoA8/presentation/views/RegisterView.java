@@ -72,7 +72,7 @@ public class RegisterView extends JFrame {
         /*Botons i textos nord*/
         JButton IniciarSessio = new JButton("Iniciar sesion");
         IniciarSessio.setForeground(new Color(255,255,255));
-        IniciarSessio.setBackground(new Color(249,136,3));
+        IniciarSessio.setBackground(new Color(249,171,15));
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setBorderPainted(false);
         IniciarSessio.setOpaque(true);
@@ -137,8 +137,9 @@ public class RegisterView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
-        EmptyBorder TopTextFieldBorder = new EmptyBorder(150,0,10,0);
+        EmptyBorder TopTextFieldBorder = new EmptyBorder(100,0,10,0);
         EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
+        EmptyBorder RegisterButtonBorder = new EmptyBorder(20,0,0,0);
         /*Creem labels per establir espais entre components*/
         JLabel TopTextFieldLabel0 = new JLabel();
         TopTextFieldLabel0.setPreferredSize(new Dimension(5,20));
@@ -155,6 +156,14 @@ public class RegisterView extends JFrame {
         JLabel EntreTextFieldLabel2 = new JLabel();
         EntreTextFieldLabel2.setPreferredSize(new Dimension(5,20));
         EntreTextFieldLabel2.setBorder(EntreTextFieldBorder);
+
+        JLabel EntreTextCheck = new JLabel();
+        EntreTextCheck.setPreferredSize(new Dimension(5,20));
+        EntreTextCheck.setBorder(EntreTextFieldBorder);
+
+        JLabel UpperButtonLabel = new JLabel();
+        UpperButtonLabel.setPreferredSize(new Dimension(5,20));
+        UpperButtonLabel.setBorder(RegisterButtonBorder);
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
@@ -181,6 +190,22 @@ public class RegisterView extends JFrame {
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
 
+        JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
+        AcceptTandC.setOpaque(false);
+        AcceptTandC.setForeground(new Color(255,255,255));
+        AcceptTandC.setFont(new Font("Arial",Font.PLAIN,8));
+
+
+        JButton RegisterButton = new JButton("Registrarse");
+        RegisterButton.setPreferredSize(new Dimension(170,35));
+        RegisterButton.setBackground(new Color(249,171,15));
+        RegisterButton.setForeground(new Color(255,255,255));
+        RegisterButton.setBorderPainted(false);
+        //RegisterButton.setBorder(RegisterButtonBorder);
+        RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
+        RegisterButton.setVisible(true);
+
+
         /*-------------Part Centre-Oest-------------*/
         JPanel PanelAccounts = new JPanel();
         PanelAccounts.setOpaque(false);
@@ -188,7 +213,7 @@ public class RegisterView extends JFrame {
         PanelAccounts.setLayout(new BoxLayout(PanelAccounts,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
-        EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
+        EmptyBorder TopButtonBorder = new EmptyBorder(175,0,10,0);
         EmptyBorder EntreButtonBorder = new EmptyBorder(7,0,7, 0);
         LineBorder FacebookButtonBorder = new LineBorder(new Color(0,0,0,1),0);
         LineBorder GoogleButtonBorder = new LineBorder(new Color(0,0,0,1),0);
@@ -207,8 +232,6 @@ public class RegisterView extends JFrame {
         FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorder(FacebookButtonBorder);
         FaceBookButton.setIcon(facebook);
-
-
 
         JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
@@ -249,6 +272,10 @@ public class RegisterView extends JFrame {
         PanelRegistre.add(Contrasenya);
         PanelRegistre.add(EntreTextFieldLabel2);
         PanelRegistre.add(RepetirContrasenya);
+        PanelRegistre.add(EntreTextCheck);
+        PanelRegistre.add(AcceptTandC);
+        PanelRegistre.add(UpperButtonLabel);
+        PanelRegistre.add(RegisterButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);
