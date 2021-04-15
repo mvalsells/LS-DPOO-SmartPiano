@@ -2,13 +2,13 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class UserManager {
     //Constructor
@@ -16,47 +16,66 @@ public class UserManager {
 
     }
 
-    public boolean createUser (String userName, String email, String passwordHash, String type){
+    public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
 
         UserDAO userDao = new SQLUserDAO();
-        //Check if users exists
-        if (userDao.getUserByUsername(userName) == null && userDao.getUserByEmail(email) == null){
-            User userTmp = new User(userName,email,type,passwordHash);
-            if (userDao.addUser(userTmp)) {
-                return true;
-            } else {
-                return false;
-            }
+
+        //Check user data
+        boolean usernameExists = false;
+        boolean emailExists = false;
+        boolean typeIncorrect = false;
+
+        User newUser = new User(username, email, type);
+
+        if (userDao.getUserByUsername(username) != null){
+            usernameExists = true;
+        }
+
+        if (userDao.getUserByEmail(email) != null){
+            emailExists = true;
+        }
+
+        if (!type.equals("")) {
+            typeIncorrect = true;
+        }
+
+        checkPassword(newUser, password);
+
+        if (usernameExists || emailExists || typeIncorrect) {
+            throw new UserManagerException(usernameExists, emailExists, typeIncorrect);
         } else {
-            return false;
+            newUser.setPasswordHash(encryptPassword(password));
+            userDao.addUser(newUser);
         }
     }
 
     public void removeUser(User user){
         UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUserName()) != null) {
+        if (usrTmp.getUserByUsername(user.getUsername()) != null) {
             usrTmp.removeUser(user);
         }
     }
 
-    public boolean modifyUserEmail(User user, String newEmail){
+    public boolean modifyEmail(User user, String newEmail){
         UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUserName()) != null){
+        if (usrTmp.getUserByUsername(user.getUsername()) != null){
             //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;
     }
 
-    public boolean modifyUserPassword(User user, String newPasswordHash){
+    public boolean modifyPassword(User user, String newPassword) throws PasswordException {
         UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUserName()) != null){
+        checkPassword(user, newPassword);
+
+        if (usrTmp.getUserByUsername(user.getUsername()) != null){
             //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;
     }
-    public boolean modifyUserUserName(User user, String newUsername){
+    public boolean modifyUsername(User user, String newUsername){
         UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUserName()) != null){
+        if (usrTmp.getUserByUsername(user.getUsername()) != null){
             //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;
@@ -68,7 +87,7 @@ public class UserManager {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             md.reset();
-            md.update(input.getBytes("utf8"));
+            md.update(input.getBytes(StandardCharsets.UTF_8));
             toReturn = String.format("%064x", new BigInteger(1, md.digest()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +96,7 @@ public class UserManager {
         return toReturn;
     }
 
-    private boolean checkPassword(String password, User user) throws PasswordException {
+    private void checkPassword(User user,String password) throws PasswordException {
         boolean passwordToShort = false;
         boolean equalsEmail = false;
         boolean equalsUsername = false;
@@ -90,7 +109,7 @@ public class UserManager {
         }
 
         if (user != null) {
-            if (user.getUserName().equals(password)) {
+            if (user.getUsername().equals(password)) {
                 equalsUsername = true;
             }
             if (user.getEmail().equals(password)) {
@@ -101,7 +120,7 @@ public class UserManager {
 
         //Comprovació mínim una majuscual, una minuscula i un nombre
         for (int i=0; i < password.length(); i++){
-            Character c = password.charAt(i);
+            char c = password.charAt(i);
             if (Character.isDigit(c)){
                 hasNumber = true;
             } else if (Character.isLowerCase(c)) {
@@ -116,9 +135,7 @@ public class UserManager {
             }
         }
 
-        if (!passwordToShort && !equalsEmail && !equalsUsername && hasUpperCase && hasLowerCase && hasNumber) {
-            return true;
-        } else {
+        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasNumber) {
             throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasNumber);
         }
     }

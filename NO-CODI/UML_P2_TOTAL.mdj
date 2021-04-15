@@ -10260,7 +10260,7 @@
 											"top": 1447,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+addUser(user: User): Boolean",
+											"text": "+registerUser(username: String, email: String, password: String, type: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10294,7 +10294,7 @@
 											"top": 1477,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyUserEmail(user: User, newEmail: String): boolean",
+											"text": "+modifyEmail(user: User, newEmail: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10362,7 +10362,7 @@
 											"top": 1537,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "+modifyUserUserName(user: User, newUserName: String): boolean",
+											"text": "+modifyUsername(user: User, newUserName: String): boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10379,7 +10379,24 @@
 											"top": 1552,
 											"width": 530.6767578125,
 											"height": 13,
-											"text": "~encryptPassword(plainTextPassword: String): String",
+											"text": "-encryptPassword(plainTextPassword: String): String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF41qg4hIUxm8I=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqM4i+VzAJk="
+											},
+											"model": {
+												"$ref": "AAAAAAF41qg4VYUWXm0="
+											},
+											"font": "Arial;13;0",
+											"left": 1701,
+											"top": 1567,
+											"width": 530.6767578125,
+											"height": 13,
+											"text": "-checkPassword(user: User, password: String): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -10387,7 +10404,7 @@
 									"left": 1696,
 									"top": 1427,
 									"width": 540.6767578125,
-									"height": 143
+									"height": 158
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -10430,7 +10447,7 @@
 							"left": 1696,
 							"top": 1392,
 							"width": 540.6767578125,
-							"height": 178,
+							"height": 193,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4uqM4ieVtXzI="
 							},
@@ -10533,7 +10550,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1759,
-									"top": 1588,
+									"top": 1603,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -10554,7 +10571,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1772,
-									"top": 1591,
+									"top": 1606,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -10575,7 +10592,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1731,
-									"top": 1584,
+									"top": 1599,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -10686,7 +10703,7 @@
 							"tail": {
 								"$ref": "AAAAAAF4uqM4ieVszSQ="
 							},
-							"points": "1744:1569;1744:2729;1334:2729",
+							"points": "1744:1584;1744:2729;1334:2729",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4ur2/fpFxsNU="
@@ -20025,7 +20042,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF4uqM4hOVqUMU="
 									},
-									"name": "addUser",
+									"name": "registerUser",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -20033,8 +20050,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uqwU9DpQqMs="
 											},
-											"name": "user",
-											"type": "User"
+											"name": "username",
+											"type": "String"
 										},
 										{
 											"_type": "UMLParameter",
@@ -20042,8 +20059,35 @@
 											"_parent": {
 												"$ref": "AAAAAAF4uqwU9DpQqMs="
 											},
-											"type": "Boolean",
+											"type": "void",
 											"direction": "return"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41puunXWhQoA=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqwU9DpQqMs="
+											},
+											"name": "email",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41puunnWiNwE=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqwU9DpQqMs="
+											},
+											"name": "password",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41puun3WjzO8=",
+											"_parent": {
+												"$ref": "AAAAAAF4uqwU9DpQqMs="
+											},
+											"name": "type",
+											"type": "String"
 										}
 									]
 								},
@@ -20081,7 +20125,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF4uqM4hOVqUMU="
 									},
-									"name": "modifyUserEmail",
+									"name": "modifyEmail",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -20211,7 +20255,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF4uqM4hOVqUMU="
 									},
-									"name": "modifyUserUserName",
+									"name": "modifyUsername",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -20249,7 +20293,7 @@
 										"$ref": "AAAAAAF4uqM4hOVqUMU="
 									},
 									"name": "encryptPassword",
-									"visibility": "package",
+									"visibility": "private",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -20267,6 +20311,44 @@
 												"$ref": "AAAAAAF4u2PN0yNL3Ys="
 											},
 											"type": "String",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF41qg4VYUWXm0=",
+									"_parent": {
+										"$ref": "AAAAAAF4uqM4hOVqUMU="
+									},
+									"name": "checkPassword",
+									"visibility": "private",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41qi4G4cVYYk=",
+											"_parent": {
+												"$ref": "AAAAAAF41qg4VYUWXm0="
+											},
+											"name": "user",
+											"type": "User"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41qi4HIcWETg=",
+											"_parent": {
+												"$ref": "AAAAAAF41qg4VYUWXm0="
+											},
+											"name": "password",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF41qi4HYcXfYU=",
+											"_parent": {
+												"$ref": "AAAAAAF41qg4VYUWXm0="
+											},
+											"type": "void",
 											"direction": "return"
 										}
 									]
