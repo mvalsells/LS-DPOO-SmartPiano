@@ -7,9 +7,9 @@ public class Main {
         System.out.println("SmartPiano-A8\n");
 
 
-        //IniciView menuView = new IniciView();
+        IniciView menuView = new IniciView();
         //menuView.setVisible(true);
-        smartpianoA8.Presentation.views.LoginView loginView = new smartpianoA8.Presentation.views.LoginView();
+        //smartpianoA8.Presentation.views.LoginView loginView = new LoginView();
         ///registerView.setSize(400,400);
         //RegisterView registerView = new RegisterView();
         //registerView.setVisible(true);
