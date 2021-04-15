@@ -22,6 +22,8 @@ public class LoginView extends JFrame {
         ImageView panel = new ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/IniciarSesionFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/IniciarSesionGoogle.jpg");
+        ImageIcon googlePressed = new ImageIcon("Imagen/IniciarSesionGooglePressed.png");
+        ImageIcon facebookPressed = new ImageIcon("Imagen/IniciarSesionFacebookPressed.png");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -223,6 +225,7 @@ public class LoginView extends JFrame {
         FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorder(ButtonLineBorder);
         FaceBookButton.setIcon(facebook);
+        FaceBookButton.setPressedIcon(facebookPressed);
 
 
 
@@ -231,6 +234,7 @@ public class LoginView extends JFrame {
         GoogleButton.setMaximumSize(new Dimension(281,40));
         GoogleButton.setBorder(ButtonLineBorder);
         GoogleButton.setIcon(google);
+        GoogleButton.setPressedIcon(googlePressed);
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,395));
