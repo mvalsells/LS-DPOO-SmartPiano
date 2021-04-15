@@ -15,8 +15,8 @@ public class Main {
         System.out.println("SmartPiano-A8\n");
 
         RegisterView registerView = new RegisterView();
-        /*//smartpianoA8.Presentation.views.LoginView loginView = new LoginView();
-        //registerView.setSize(400,400);
+        smartpianoA8.presentation.views.LoginView loginView = new LoginView();
+        /*//registerView.setSize(400,400);
         registerView.setVisible(true);*/
 
 
