@@ -22,6 +22,8 @@ public class LoginView extends JFrame {
         ImageView panel = new ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/IniciarSesionFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/IniciarSesionGoogle.jpg");
+        ImageIcon googlePressed = new ImageIcon("Imagen/IniciarSesionGooglePressed.png");
+        ImageIcon facebookPressed = new ImageIcon("Imagen/IniciarSesionFacebookPressed.png");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -125,8 +127,10 @@ public class LoginView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
+        LineBorder ButtonTextBorder = new LineBorder(new Color(255,255,255,0),0);
         EmptyBorder TopTextFieldBorder = new EmptyBorder(150,0,10,0);
         EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
+        EmptyBorder EntreButtonButtonBorder = new EmptyBorder(0,0,10,0);
         /*Creem labels per establir espais entre components*/
         JLabel TopTextFieldLabel0 = new JLabel();
         TopTextFieldLabel0.setPreferredSize(new Dimension(5,20));
@@ -143,6 +147,14 @@ public class LoginView extends JFrame {
         JLabel EntreTextFieldLabel2 = new JLabel();
         EntreTextFieldLabel2.setPreferredSize(new Dimension(5,20));
         EntreTextFieldLabel2.setBorder(EntreTextFieldBorder);
+
+        JLabel EntreTextButtonLabel = new JLabel();
+        EntreTextButtonLabel.setPreferredSize(new Dimension(5,20));
+        EntreTextButtonLabel.setBorder(EntreTextFieldBorder);
+
+        JLabel EntreButtonButtonLabel = new JLabel();
+        EntreButtonButtonLabel.setPreferredSize(new Dimension(5,20));
+        EntreButtonButtonLabel.setBorder(EntreButtonButtonBorder);
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
@@ -163,6 +175,25 @@ public class LoginView extends JFrame {
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
+        JButton IniciarSessioButton = new JButton("Iniciar sesion");
+        IniciarSessioButton.setFont(new Font("Verdana",Font.BOLD,12));
+        IniciarSessioButton.setForeground(new Color(255,255,255));
+        IniciarSessioButton.setBackground(new Color(249,171,15));
+        IniciarSessioButton.setPreferredSize(new Dimension(170,35));
+        IniciarSessioButton.setBorderPainted(false);
+        IniciarSessioButton.setOpaque(true);
+        IniciarSessioButton.setVisible(true);
+
+        JButton NoTensCompteButton = new JButton("¿Aun no tienes cuenta?");
+        NoTensCompteButton.setHorizontalTextPosition(SwingConstants.LEFT);
+        NoTensCompteButton.setFont(new Font("Verdana",Font.BOLD,8));
+        NoTensCompteButton.setForeground(new Color(255,255,255));
+        NoTensCompteButton.setBackground(new Color(249,171,15));
+        NoTensCompteButton.setPreferredSize(new Dimension(120,25));
+        NoTensCompteButton.setBorder(ButtonTextBorder);
+        NoTensCompteButton.setOpaque(false);
+        NoTensCompteButton.setVisible(true);
+
         /*JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
         RepetirContrasenya.setMaximumSize(new Dimension(240,45));
         RepetirContrasenya.setForeground(new Color(255,255,255));
@@ -178,6 +209,7 @@ public class LoginView extends JFrame {
         /*Creem borders per posicionar componetns*/
         EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
         EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
+        LineBorder ButtonLineBorder = new LineBorder(new Color(255,255,255,1),0);
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
@@ -188,25 +220,26 @@ public class LoginView extends JFrame {
         EntreButtonLabel.setBorder(EntreButtonBorder);
 
         /*Botons*/
-        JButton FaceBookButton = new JButton("FACEBOOK");
+        JButton FaceBookButton = new JButton();
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setMaximumSize(new Dimension(281,40));
-        FaceBookButton.setBorderPainted(false);
+        FaceBookButton.setBorder(ButtonLineBorder);
         FaceBookButton.setIcon(facebook);
+        FaceBookButton.setPressedIcon(facebookPressed);
 
 
 
-        JButton GoogleButton = new JButton("Google");
+        JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
-        GoogleButton.setBorderPainted(false);
+        GoogleButton.setBorder(ButtonLineBorder);
         GoogleButton.setIcon(google);
+        GoogleButton.setPressedIcon(googlePressed);
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,395));
         JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 228));
         JaTensCompte2.setOpaque(false);
-
 
 
 
@@ -233,8 +266,12 @@ public class LoginView extends JFrame {
         PanelRegistre.add(Correu);
         PanelRegistre.add(EntreTextFieldLabel1);
         PanelRegistre.add(Contrasenya);
-        PanelRegistre.add(EntreTextFieldLabel2);
+        //PanelRegistre.add(EntreTextFieldLabel2);
         //PanelRegistre.add(RepetirContrasenya);
+        PanelRegistre.add(EntreTextButtonLabel);
+        PanelRegistre.add(IniciarSessioButton);
+        PanelRegistre.add(EntreButtonButtonLabel);
+        PanelRegistre.add(NoTensCompteButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);
