@@ -1,23 +1,15 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.views.LoginView;
-import smartpianoA8.business.UserManager;
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.presentation.views.RegisterView;
-import smartpianoA8.persistence.JsonReader;
-
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import smartpianoA8.Presentation.views.RegisterView;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("SmartPiano-A8\n");
 
-        //RegisterView registerView = new RegisterView();
-        smartpianoA8.presentation.views.LoginView loginView = new LoginView();
-        /*//registerView.setSize(400,400);
-        registerView.setVisible(true);*/
+        RegisterView registerView = new RegisterView();
+        //smartpianoA8.Presentation.views.LoginView loginView = new LoginView();
+        ///registerView.setSize(400,400);
+        registerView.setVisible(true);
 
 
         //Per comprobar la contrasenya
