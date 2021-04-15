@@ -5,8 +5,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-import static java.awt.Color.*;
-
 public class RegisterView extends JFrame {
     //ImageView imageView = new ImageView();
     public RegisterView(){
@@ -202,6 +200,8 @@ public class RegisterView extends JFrame {
         RegisterButton.setForeground(new Color(255,255,255));
         RegisterButton.setBorderPainted(false);
         //RegisterButton.setBorder(RegisterButtonBorder);
+        //IniciarSessio.setBorderPainted(false);
+        RegisterButton.setOpaque(true);
         RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
         RegisterButton.setVisible(true);
 
