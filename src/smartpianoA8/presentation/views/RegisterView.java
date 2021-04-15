@@ -97,7 +97,7 @@ public class RegisterView extends JFrame {
         //OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),100);
+        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),90);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
         OmplirEstLabel.setBorder(OmplirEstBorder);
@@ -190,6 +190,8 @@ public class RegisterView extends JFrame {
         /*Creem borders per posicionar componetns*/
         EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
         EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
+        LineBorder FacebookButtonBorder = new LineBorder(new Color(0,0,0,1),0);
+        LineBorder GoogleButtonBorder = new LineBorder(new Color(0,0,0,1),0);
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
@@ -203,7 +205,7 @@ public class RegisterView extends JFrame {
         JButton FaceBookButton = new JButton("FACEBOOK");
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setMaximumSize(new Dimension(281,40));
-        FaceBookButton.setBorderPainted(false);
+        FaceBookButton.setBorder(FacebookButtonBorder);
         FaceBookButton.setIcon(facebook);
 
 
@@ -211,7 +213,7 @@ public class RegisterView extends JFrame {
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
-        GoogleButton.setBorderPainted(false);
+        GoogleButton.setBorder(GoogleButtonBorder);
         GoogleButton.setIcon(google);
 
         JLabel JaTensCompte2 = new JLabel(" ");
