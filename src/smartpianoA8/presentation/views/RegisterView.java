@@ -15,6 +15,9 @@ public class RegisterView extends JFrame {
     }
     private void conifgureInici(){
         ImageView panel = new ImageView(new ImageIcon("FINAL.png").getImage());
+        ImageIcon facebook = new ImageIcon("unknown.jpg");
+        ImageIcon google = new ImageIcon("googleRegistre.jpg");
+
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
 
@@ -59,13 +62,6 @@ public class RegisterView extends JFrame {
         //PartSuperior.setBackground(Color.BLUE);
         PartSuperior.setLayout(new BorderLayout());
 
-        /*
-        LineBorder OmplirEstPart = new LineBorder(new Color(0,0,0,0),30);
-        JLabel OmplirEstPartSuperior = new JLabel();
-        OmplirEstPartSuperior.setMinimumSize(new Dimension(100,100));
-        OmplirEstPartSuperior.setBorder(OmplirEstPart);
-        */
-
 
         /*Panell auxiliar posicionament botons Nord*/
         JPanel PosicionamentBotonsNord = new JPanel(); //Panel per situar els botons del Nord a la dreta
@@ -75,7 +71,8 @@ public class RegisterView extends JFrame {
 
         /*Botons i textos nord*/
         JButton IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setBackground(ORANGE);
+        IniciarSessio.setForeground(new Color(255,255,255));
+        IniciarSessio.setBackground(new Color(249,136,3));
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setBorderPainted(false);
         IniciarSessio.setOpaque(true);
@@ -161,25 +158,25 @@ public class RegisterView extends JFrame {
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("Nom",20);
-        Nom.setMaximumSize(new Dimension(240,40));
+        Nom.setMaximumSize(new Dimension(240,45));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("Correu",20);
-        Correu.setMaximumSize(new Dimension(240,40));
+        Correu.setMaximumSize(new Dimension(240,45));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(240,40));
+        Contrasenya.setMaximumSize(new Dimension(240,45));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(240,40));
+        RepetirContrasenya.setMaximumSize(new Dimension(240,45));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
@@ -205,20 +202,17 @@ public class RegisterView extends JFrame {
         /*Botons*/
         JButton FaceBookButton = new JButton("FACEBOOK");
         FaceBookButton.setPreferredSize(new Dimension(270,50));
-        FaceBookButton.setBackground(new Color(0,0,255));
-        FaceBookButton.setForeground(new Color(255,255,255));
-        FaceBookButton.setMaximumSize(new Dimension(230,45));
+        FaceBookButton.setMaximumSize(new Dimension(240,45));
         FaceBookButton.setBorderPainted(false);
-        FaceBookButton.setOpaque(true);
+        FaceBookButton.setIcon(facebook);
+
 
 
         JButton GoogleButton = new JButton("Google");
         GoogleButton.setPreferredSize(new Dimension(270,50));
-        GoogleButton.setBackground(new Color(255,0,0));
-        GoogleButton.setForeground(new Color(255,255,255));
-        GoogleButton.setMaximumSize(new Dimension(230,45));
+        GoogleButton.setMaximumSize(new Dimension(240,45));
         GoogleButton.setBorderPainted(false);
-        GoogleButton.setOpaque(true);
+        GoogleButton.setIcon(google);
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,393));
