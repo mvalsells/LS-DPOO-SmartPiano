@@ -207,7 +207,7 @@ public class LoginView extends JFrame {
         PanelAccounts.setLayout(new BoxLayout(PanelAccounts,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
-        EmptyBorder TopButtonBorder = new EmptyBorder(225,0,10,0);
+        EmptyBorder TopButtonBorder = new EmptyBorder(175,0,10,0);
         EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
         LineBorder ButtonLineBorder = new LineBorder(new Color(255,255,255,1),0);
         /*Creem labels per establir espais entre components*/
@@ -278,7 +278,7 @@ public class LoginView extends JFrame {
         PanelAccounts.add(FaceBookButton);
         PanelAccounts.add(EntreButtonLabel);
         PanelAccounts.add(GoogleButton);
-        PanelAccounts.add(JaTensCompte2);
+        //PanelAccounts.add(JaTensCompte2);
         //nelAccounts.add(EntreButtonLabel);
         //PanelAccounts.add(EntreButtonLabel);
         PartCentral.add(PanelAccounts,BorderLayout.WEST);
