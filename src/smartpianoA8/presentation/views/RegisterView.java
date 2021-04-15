@@ -216,7 +216,7 @@ public class RegisterView extends JFrame {
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,393));
-        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 220));
+        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 229));
         JaTensCompte2.setOpaque(false);
 
 
