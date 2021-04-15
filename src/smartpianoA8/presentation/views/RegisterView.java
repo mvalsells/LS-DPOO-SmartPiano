@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.Presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,7 +12,7 @@ public class RegisterView extends JFrame {
 
     }
     private void conifgureInici(){
-        ImageView panel = new ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
+        smartpianoA8.Presentation.views.ImageView panel = new smartpianoA8.Presentation.views.ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/RegistrarseFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/RegistrarseGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/RegistrarseGooglePressed.png");
@@ -197,7 +197,7 @@ public class RegisterView extends JFrame {
 
 
         JButton RegisterButton = new JButton("Registrarse");
-        RegisterButton.setPreferredSize(new Dimension(170,35));
+        RegisterButton.setPreferredSize(new Dimension(281,39));
         RegisterButton.setBackground(new Color(249,171,15));
         RegisterButton.setForeground(new Color(255,255,255));
         RegisterButton.setBorderPainted(false);
@@ -245,7 +245,7 @@ public class RegisterView extends JFrame {
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,393));
-        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 229));
+        JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 285));
         JaTensCompte2.setOpaque(false);
 
 
@@ -276,10 +276,10 @@ public class RegisterView extends JFrame {
         PanelRegistre.add(Contrasenya);
         PanelRegistre.add(EntreTextFieldLabel2);
         PanelRegistre.add(RepetirContrasenya);
-        PanelRegistre.add(EntreTextCheck);
-        PanelRegistre.add(AcceptTandC);
-        PanelRegistre.add(UpperButtonLabel);
-        PanelRegistre.add(RegisterButton);
+        //PanelRegistre.add(EntreTextCheck);
+        //PanelRegistre.add(AcceptTandC);
+        //PanelRegistre.add(UpperButtonLabel);
+        //PanelRegistre.add(RegisterButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);

@@ -1,13 +1,9 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.Presentation.views;
 
-import smartpianoA8.presentation.views.ImageView;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.IOException;
 
 public class LoginView extends JFrame {
 
@@ -269,9 +265,9 @@ public class LoginView extends JFrame {
         //PanelRegistre.add(EntreTextFieldLabel2);
         //PanelRegistre.add(RepetirContrasenya);
         PanelRegistre.add(EntreTextButtonLabel);
-        PanelRegistre.add(IniciarSessioButton);
-        PanelRegistre.add(EntreButtonButtonLabel);
-        PanelRegistre.add(NoTensCompteButton);
+        //PanelRegistre.add(IniciarSessioButton);
+        //PanelRegistre.add(EntreButtonButtonLabel);
+        //PanelRegistre.add(NoTensCompteButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);
