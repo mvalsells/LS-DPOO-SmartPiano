@@ -15,6 +15,8 @@ public class RegisterView extends JFrame {
         ImageView panel = new ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/RegistrarseFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/RegistrarseGoogle.jpg");
+        ImageIcon googlePressed = new ImageIcon("Imagen/RegistrarseGooglePressed.png");
+        ImageIcon facebookPressed = new ImageIcon("Imagen/RegistrarseFacebookPressed.png");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -232,12 +234,14 @@ public class RegisterView extends JFrame {
         FaceBookButton.setMaximumSize(new Dimension(281,40));
         FaceBookButton.setBorder(FacebookButtonBorder);
         FaceBookButton.setIcon(facebook);
+        FaceBookButton.setPressedIcon(facebookPressed);
 
         JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
         GoogleButton.setBorder(GoogleButtonBorder);
         GoogleButton.setIcon(google);
+        GoogleButton.setPressedIcon(googlePressed);
 
         JLabel JaTensCompte2 = new JLabel(" ");
         JaTensCompte2.setPreferredSize(new Dimension(140,393));
