@@ -50,6 +50,7 @@ public class UserManager {
         }
     }
 
+
     public void login(User user) throws UserManagerException{
         boolean passwordIncorrect = true;
         boolean usernameIncorrect = true;
