@@ -1,4 +1,4 @@
-package smartpianoA8.Presentation.views;
+package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,7 +12,7 @@ public class RegisterView extends JFrame {
 
     }
     private void conifgureInici(){
-        smartpianoA8.Presentation.views.ImageView panel = new smartpianoA8.Presentation.views.ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
+        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/RegistrarseFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/RegistrarseGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/RegistrarseGooglePressed.png");

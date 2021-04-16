@@ -1,4 +1,4 @@
-package smartpianoA8.Presentation.views;
+package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +15,7 @@ public class LoginView extends JFrame {
 
     private void runLogin() {
 
-        smartpianoA8.Presentation.views.ImageView panel = new smartpianoA8.Presentation.views.ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
+        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/IniciarSesionFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/IniciarSesionGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/IniciarSesionGooglePressed.png");
