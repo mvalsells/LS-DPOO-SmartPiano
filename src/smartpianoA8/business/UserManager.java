@@ -11,14 +11,14 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 public class UserManager {
+    //Atributs
+    private UserDAO userDAO;
     //Constructor
     public UserManager(){
-
+        userDAO = new SQLUserDAO();
     }
 
     public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
-
-        UserDAO userDao = new SQLUserDAO();
 
         //Check user data
         boolean usernameExists = false;
@@ -27,11 +27,11 @@ public class UserManager {
 
         User newUser = new User(username, email, type);
 
-        if (userDao.getUserByUsername(username) != null){
+        if (userDAO.getUserByUsername(username) != null){
             usernameExists = true;
         }
 
-        if (userDao.getUserByEmail(email) != null){
+        if (userDAO.getUserByEmail(email) != null){
             emailExists = true;
         }
 
@@ -45,20 +45,18 @@ public class UserManager {
             throw new UserManagerException(usernameExists, emailExists, typeIncorrect);
         } else {
             newUser.setPasswordHash(encryptPassword(password));
-            userDao.addUser(newUser);
+            userDAO.addUser(newUser);
         }
     }
 
     public void removeUser(User user){
-        UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUsername()) != null) {
-            usrTmp.removeUser(user);
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.removeUser(user);
         }
     }
 
     public boolean modifyEmail(User user, String newEmail){
-        UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUsername()) != null){
+        if (userDAO.getUserByUsername(user.getUsername()) != null){
             //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;

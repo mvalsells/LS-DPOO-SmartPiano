@@ -2,12 +2,14 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
 
 public interface BusinessFacade {
 
     public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari);
     public void removeSong(Song song);
-    public boolean createUser(String userName, String email, String password, String type);
+    public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException;
     public void  removeUser(String currentUser);
     public User getUserByEmail(String email);
     public User getUserByUsername(String username);

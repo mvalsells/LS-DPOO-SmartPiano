@@ -2,10 +2,20 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
 
 public class BusinessFacadeImpl implements BusinessFacade {
 
+    //Atributs
+    UserManager userManager;
 
+    //Constructor
+    public BusinessFacadeImpl(){
+        userManager = new UserManager();
+    }
+
+    //Metodes
     @Override
     public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari) {
 
@@ -17,9 +27,8 @@ public class BusinessFacadeImpl implements BusinessFacade {
     }
 
     @Override
-    public boolean createUser(String userName, String email, String password, String type) {
-
-        return false;
+    public void registerUser(String userName, String email, String password, String type) throws PasswordException, UserManagerException {
+        userManager.registerUser(userName,email,password,type);
     }
 
     @Override
