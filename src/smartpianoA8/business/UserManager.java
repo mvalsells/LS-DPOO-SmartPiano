@@ -12,9 +12,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class UserManager {
-
-    //Prova Christian
-
     //Atributs
     private UserDAO userDAO;
     //Constructor
@@ -23,7 +20,6 @@ public class UserManager {
     }
 
     //TODO Hablar con diseño de vistas para en lugar de crear funciones para cambiar usuario, contraseña, email... Una SOLA funcion a la que mandamos un string con QUE cambiar y el que así nos ahorramos muchas funciones y simplificamos codigo.
-
 
     public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
 
