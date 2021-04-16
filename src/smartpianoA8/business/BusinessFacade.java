@@ -10,7 +10,7 @@ public interface BusinessFacade {
     public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari);
     public void removeSong(Song song);
     public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException;
-    public void  removeUser(String currentUser);
+    public boolean removeUser(User user);
     public User getUserByEmail(String email);
     public User getUserByUsername(String username);
     public boolean newPlayList(String nom, String nomUsuari);

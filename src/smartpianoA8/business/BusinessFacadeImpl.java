@@ -32,8 +32,8 @@ public class BusinessFacadeImpl implements BusinessFacade {
     }
 
     @Override
-    public void removeUser(String currentUser) {
-
+    public boolean removeUser(User user) {
+        return userManager.removeUser(user);
     }
 
     @Override

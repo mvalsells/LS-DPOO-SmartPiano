@@ -49,9 +49,12 @@ public class UserManager {
         }
     }
 
-    public void removeUser(User user){
+    public boolean removeUser(User user){
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
             userDAO.removeUser(user);
+            return true;
+        } else {
+            return false;
         }
     }
 
