@@ -9,10 +9,11 @@ public class BusinessFacadeImpl implements BusinessFacade {
 
     //Atributs
     UserManager userManager;
-
+    User currentUser;
     //Constructor
     public BusinessFacadeImpl(){
         userManager = new UserManager();
+        currentUser = null;
     }
 
     //Metodes

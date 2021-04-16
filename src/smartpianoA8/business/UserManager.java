@@ -42,10 +42,34 @@ public class UserManager {
         checkPassword(newUser, password);
 
         if (usernameExists || emailExists || typeIncorrect) {
-            throw new UserManagerException(usernameExists, emailExists, typeIncorrect);
+            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, true);
         } else {
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
+        }
+    }
+
+    public void login(User user) throws UserManagerException{
+        boolean passwordIncorrect = true;
+        boolean usernameIncorrect = true;
+        boolean emailIncorrect = true;
+        User userTmp = userDAO.getUserByUsername(user.getUsername());
+        if (userTmp != null) {
+            usernameIncorrect = false;
+            if (userTmp.getPasswordHash() == user.getPasswordHash()) {
+                passwordIncorrect = false;
+            }
+        }
+        userTmp = userDAO.getUserByEmail(user.getEmail());
+        if (userTmp != null){
+            emailIncorrect = false;
+            if (userTmp.getPasswordHash() != user.getPasswordHash()){
+                passwordIncorrect = false;
+            }
+        }
+
+        if (passwordIncorrect) {
+           // throw new UserManagerException(!usernameIncorrect)
         }
     }
 
