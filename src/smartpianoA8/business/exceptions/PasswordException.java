@@ -2,12 +2,12 @@ package smartpianoA8.business.exceptions;
 
 public class PasswordException extends Exception{
     //Atributs de la exception
-    boolean passwordToShort = false;
-    boolean equalsEmail = false;
-    boolean equalsUsername = false;
-    boolean hasNotUpperCase = false;
-    boolean hasNotLowerCase = false;
-    boolean hasNotNumber = false;
+    boolean passwordToShort;
+    boolean equalsEmail;
+    boolean equalsUsername;
+    boolean hasNotUpperCase;
+    boolean hasNotLowerCase;
+    boolean hasNotNumber;
 
     public PasswordException(boolean passwordToShort, boolean equalsEmail, boolean equalsUsername, boolean hasNotUpperCase, boolean hasNotLowerCase, boolean hasNotNumber) {
         super();
@@ -17,7 +17,7 @@ public class PasswordException extends Exception{
         this.hasNotUpperCase = hasNotUpperCase;
         this.hasNotLowerCase = hasNotLowerCase;
         this.hasNotNumber = hasNotNumber;
-        toString();
+     //   toString();
     }
 
     public boolean isPasswordToShort() {

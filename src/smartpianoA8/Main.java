@@ -1,6 +1,11 @@
 package smartpianoA8;
 
 import smartpianoA8.Presentation.views.IniciView;
+import smartpianoA8.business.UserManager;
+import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,10 +29,9 @@ public class Main {
             System.out.print("Password: ");
             input = sc.nextLine();
             try {
-                if (um.checkPassword(input, u)) {
+                um.checkPassword(u, input);
                     System.out.println("Password OK");
                     System.out.println(um.encryptPassword(input));
-                }
             } catch (PasswordException e) {
                 e.printStackTrace();
             }

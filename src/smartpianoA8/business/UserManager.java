@@ -9,6 +9,7 @@ import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class UserManager {
     //Atributs
@@ -107,21 +108,21 @@ public class UserManager {
     }
 
 
-    private String encryptPassword(String input){
+    public String encryptPassword(String input){
         String toReturn = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             md.reset();
             md.update(input.getBytes(StandardCharsets.UTF_8));
             toReturn = String.format("%064x", new BigInteger(1, md.digest()));
-        } catch (Exception e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
         return toReturn;
     }
 
-    private void checkPassword(User user,String password) throws PasswordException {
+    public void checkPassword(User user,String password) throws PasswordException {
         boolean passwordToShort = false;
         boolean equalsEmail = false;
         boolean equalsUsername = false;
@@ -144,6 +145,7 @@ public class UserManager {
         }
 
         //Comprovació mínim una majuscual, una minuscula i un nombre
+        //TODO Mirar si se puede hacer sin for
         for (int i=0; i < password.length(); i++){
             char c = password.charAt(i);
             if (Character.isDigit(c)){
