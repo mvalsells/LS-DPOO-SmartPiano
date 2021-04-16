@@ -12,6 +12,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class UserManager {
+
+    //Prova Christian
+
     //Atributs
     private UserDAO userDAO;
     //Constructor
