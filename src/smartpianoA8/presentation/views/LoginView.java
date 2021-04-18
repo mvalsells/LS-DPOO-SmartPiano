@@ -15,11 +15,11 @@ public class LoginView extends JFrame {
 
     private void runLogin() {
 
-        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/LoginImage.jpg").getImage());
-        ImageIcon facebook = new ImageIcon("Imagen/IniciarSesionFacebook.jpg");
-        ImageIcon google = new ImageIcon("Imagen/IniciarSesionGoogle.jpg");
-        ImageIcon googlePressed = new ImageIcon("Imagen/IniciarSesionGooglePressed.png");
-        ImageIcon facebookPressed = new ImageIcon("Imagen/IniciarSesionFacebookPressed.png");
+        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesLogin/LoginImage.jpg").getImage());
+        ImageIcon facebook = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionFacebook.jpg");
+        ImageIcon google = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGoogle.jpg");
+        ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGooglePressed.png");
+        ImageIcon facebookPressed = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionFacebookPressed.png");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();

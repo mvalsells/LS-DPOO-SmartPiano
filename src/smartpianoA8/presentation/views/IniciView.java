@@ -11,18 +11,28 @@ public class IniciView extends JFrame {
     }
 
     private void configureMenu(){
+
+        ImageView Desplegable = new ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
+        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.jpg");
+        ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
+        ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
+        ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
+        ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
         JFrame jFrameMenu = new JFrame();
         jFrameMenu.setLayout(new CardLayout());
 
         /*Panell principal on anira imatge*/
+        //CardLayout Menu = new CardLayout();
         JPanel PanelMenu = new JPanel();
+
+        //JPanel Pro = new JPanel();
         PanelMenu.setBackground(Color.GRAY);
         PanelMenu.setLayout(new BorderLayout());
 
         /*-----------------------------------------PART NORD-----------------------------------------*/
         JPanel PanelLateral = new JPanel();
         //PanelLateral.setOpaque(true);
-        PanelLateral.setBackground(Color.BLUE);
+        PanelLateral.setBackground(new Color(20,22,33));
         PanelLateral.setLayout(new BorderLayout());
 
         /*Botons*/
@@ -30,55 +40,62 @@ public class IniciView extends JFrame {
         Botons.setOpaque(false);
         Botons.setLayout(new BoxLayout(Botons,BoxLayout.Y_AXIS));
 
-        JButton BotoCanço = new JButton("Canciones");
-        BotoCanço.setForeground(new Color(255,255,255));
-        BotoCanço.setBackground(new Color(249,171,15));
-        BotoCanço.setPreferredSize(new Dimension(84,50));
+        JButton BotoCanço = new JButton();
+        //BotoCanço.setForeground(new Color(255,255,255));
+        //BotoCanço.setBackground(new Color(249,171,15));
+        BotoCanço.setPreferredSize(new Dimension(68,60));
         BotoCanço.setBorderPainted(false);
-        BotoCanço.setOpaque(true);
+        BotoCanço.setOpaque(false);
+        BotoCanço.setIcon(Canciones);
         BotoCanço.setVisible(true);
 
-        JButton BotoPreferit = new JButton("Mis favoritas");
-        BotoPreferit.setForeground(new Color(255,255,255));
-        BotoPreferit.setBackground(new Color(249,171,15));
-        BotoPreferit.setPreferredSize(new Dimension(85,50));
+        JButton BotoPreferit = new JButton();
+        //BotoPreferit.setForeground(new Color(255,255,255));
+        //BotoPreferit.setBackground(new Color(249,171,15));
+        BotoPreferit.setPreferredSize(new Dimension(68,68));
         BotoPreferit.setBorderPainted(false);
-        BotoPreferit.setOpaque(true);
+        BotoPreferit.setOpaque(false);
+        BotoPreferit.setIcon(Mis_Favoritas);
         BotoPreferit.setVisible(true);
 
-        JButton BotoPiano = new JButton("Piano   ");
-        BotoPiano.setForeground(new Color(255,255,255));
-        BotoPiano.setBackground(new Color(249,171,15));
-        BotoPiano.setPreferredSize(new Dimension(85,50));
+        JButton BotoPiano = new JButton();
+        //BotoPiano.setForeground(new Color(255,255,255));
+        //BotoPiano.setBackground(new Color(249,171,15));
+        BotoPiano.setPreferredSize(new Dimension(68,68));
         BotoPiano.setBorderPainted(false);
-        BotoPiano.setOpaque(true);
+        BotoPiano.setOpaque(false);
+        BotoPiano.setIcon(Piano);
         BotoPiano.setVisible(true);
 
-        JButton BotoDescargar = new JButton("Descargar");
-        BotoDescargar.setForeground(new Color(255,255,255));
-        BotoDescargar.setBackground(new Color(249,171,15));
-        BotoDescargar.setPreferredSize(new Dimension(85,50));
+        JButton BotoDescargar = new JButton();
+        //BotoDescargar.setForeground(new Color(255,255,255));
+        //BotoDescargar.setBackground(new Color(249,171,15));
+        BotoDescargar.setPreferredSize(new Dimension(68,68));
         BotoDescargar.setBorderPainted(false);
-        BotoDescargar.setOpaque(true);
+        BotoDescargar.setOpaque(false);
+        BotoDescargar.setIcon(Descargar);
         BotoDescargar.setVisible(true);
 
-        JButton BotoAjustes = new JButton("Ajustes");
-        BotoAjustes.setForeground(new Color(255,255,255));
-        BotoAjustes.setBackground(new Color(249,171,15));
-        BotoAjustes.setPreferredSize(new Dimension(85,50));
+        JButton BotoAjustes = new JButton();
+        //BotoAjustes.setForeground(new Color(255,255,255));
+        //BotoAjustes.setBackground(new Color(249,171,15));
+        BotoAjustes.setPreferredSize(new Dimension(85,68));
         BotoAjustes.setBorderPainted(false);
-        BotoAjustes.setOpaque(true);
+        BotoAjustes.setOpaque(false);
+        BotoAjustes.setIcon(Ajustes);
         BotoAjustes.setVisible(true);
+
+
 
         /*-----------------------------------------PART CENTRAL-----------------------------------------*/
         /*Panell general centre*/
         JPanel PanellGeneralCentre = new JPanel();
-        PanellGeneralCentre.setBackground(Color.PINK);
+        PanellGeneralCentre.setBackground(new Color(12,14,22));
         PanellGeneralCentre.setLayout(new BorderLayout());
 
         /*Posicio Nord per separar*/
         JPanel SeparacioNord = new JPanel();
-        SeparacioNord.setBackground(Color.RED);
+        SeparacioNord.setBackground(new Color(12,14,22));
         SeparacioNord.setLayout(new BorderLayout());
 
         JPanel SepaacioNord2 = new JPanel();
@@ -98,12 +115,12 @@ public class IniciView extends JFrame {
         JLabel EspaiNovedadesProva = new JLabel(" ");
         Novedades.setForeground(new Color(255,255,255));
         Novedades.setPreferredSize(new Dimension(140,30));
-        Novedades.setFont(new Font("Verdana", Font.BOLD, 80));
+        Novedades.setFont(new Font("Verdana", Font.BOLD, 15));
 
         //SeparacioNord.setLayout(new BorderLayout());
         /*LLoc on estan les cancons mes escoltades*/
         JPanel CancionesMasEscuchadas = new JPanel();
-        CancionesMasEscuchadas.setBackground(Color.CYAN);
+        CancionesMasEscuchadas.setBackground(new Color(12,14,22));
         CancionesMasEscuchadas.setLayout(new BorderLayout());
 
         JPanel RecuadroMasEscuchadas = new JPanel();
@@ -111,26 +128,26 @@ public class IniciView extends JFrame {
         RecuadroMasEscuchadas.setLayout(new BorderLayout());
 
         JPanel VisualitzarRecuadre = new JPanel();
-        VisualitzarRecuadre.setBackground(Color.BLACK);
+        VisualitzarRecuadre.setBackground(new Color(12,14,22));
 
         /*Segona separacio*/
         JPanel SegonaSeparacio = new JPanel();
-        SegonaSeparacio.setBackground(Color.GREEN);
+        SegonaSeparacio.setBackground(new Color(12,14,22));
         SegonaSeparacio.setLayout(new BorderLayout());
 
         JPanel SeparacioEspai = new JPanel();
-        SeparacioEspai.setBackground(Color.RED);
+        SeparacioEspai.setBackground(new Color(12,14,22));
 
         JPanel SeparacioPerNovedades = new JPanel();
-        SeparacioPerNovedades.setBackground(Color.BLACK);
+        SeparacioPerNovedades.setBackground(new Color(12,14,22));
         SeparacioPerNovedades.setLayout(new BorderLayout());
 
         JPanel SeparacioNovedades = new JPanel();
-        SeparacioNovedades.setBackground(Color.BLACK);
+        SeparacioNovedades.setBackground(new Color(12,14,22));
         SeparacioNovedades.setLayout(new BorderLayout());
 
         JPanel TerceraSeparacio = new JPanel();
-        TerceraSeparacio.setBackground(Color.YELLOW);
+        TerceraSeparacio.setBackground(new Color(12,14,22));
         TerceraSeparacio.setLayout(new BorderLayout());
 
         JPanel EspaiNovedades = new JPanel();
@@ -141,6 +158,24 @@ public class IniciView extends JFrame {
         JPanel EspaiNovedades2 = new JPanel();
         EspaiNovedades2.setBackground(Color.GRAY);
 
+        JPanel MenuOpcions = new JPanel();
+        MenuOpcions.setBackground(new Color(12,14,22));
+        MenuOpcions.setLayout(new BorderLayout());
+
+        //JPanel Desplegable = new JPanel();
+        //Desplegable.setBackground(Color.RED);
+
+        //Desplegable1.setLayout(new BorderLayout());
+
+        JPanel EspaiDesplegable = new JPanel();
+        EspaiDesplegable.setBackground(new Color(12,14,22));
+        JPanel EspaiDesplegable2 = new JPanel();
+        EspaiDesplegable2.setBackground(new Color(12,14,22));
+
+        JPanel Desplega = new JPanel();
+        Desplega.setBackground(new Color(20,22,33));
+        //EspaiDesplegable.setLayout(new BorderLayout());
+
 
 
 
@@ -149,6 +184,7 @@ public class IniciView extends JFrame {
         EmptyBorder TopSeparacio = new EmptyBorder(40,0,10,0);
         EmptyBorder EntreSeparacio = new EmptyBorder(500,0,10, 0);
         EmptyBorder EntreSeparacio02 = new EmptyBorder(40,0,500, 0);
+        EmptyBorder EntreSeparacio03 = new EmptyBorder(0,0,0, 400);
 
         /*Creem labels per establir espais entre components*/
         JLabel TopSeparacio0 = new JLabel();
@@ -176,7 +212,7 @@ public class IniciView extends JFrame {
         EntreSeparacio2.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio3 = new JLabel();
-        EntreSeparacio3.setPreferredSize(new Dimension(5,340));
+        EntreSeparacio3.setPreferredSize(new Dimension(5,300));
         EntreSeparacio3.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio4 = new JLabel();
@@ -192,12 +228,26 @@ public class IniciView extends JFrame {
         EntreSeparacio6.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio7 = new JLabel();
-        EntreSeparacio7.setPreferredSize(new Dimension(5,350));
+        EntreSeparacio7.setPreferredSize(new Dimension(5,160));
         EntreSeparacio7.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio8 = new JLabel();
-        EntreSeparacio8.setPreferredSize(new Dimension(5,340));
+        EntreSeparacio8.setPreferredSize(new Dimension(5,170));
         EntreSeparacio8.setBorder(EntreSeparacio02);
+
+        JLabel EntreSeparacio9 = new JLabel();
+        EntreSeparacio9.setPreferredSize(new Dimension(5,160));
+        EntreSeparacio9.setBorder(EntreSeparacio02);
+
+        JLabel EntreSeparacio10 = new JLabel();
+        EntreSeparacio10.setPreferredSize(new Dimension(5,50));
+        EntreSeparacio10.setBorder(EntreSeparacio);
+
+        JLabel EntreSeparacio11 = new JLabel();
+        EntreSeparacio11.setPreferredSize(new Dimension(170,50));
+        EntreSeparacio11.setBorder(EntreSeparacio03);
+
+
 
 
         /*Packin' area*/
@@ -222,30 +272,43 @@ public class IniciView extends JFrame {
         //SeparacioNord.add(CancionesMasEscuchadas,BorderLayout.SOUTH);
         SeparacioNord.add(EntreSeparacio4);
 
-        VisualitzarRecuadre.add(TopSeparacio2);
+        //VisualitzarRecuadre.add(TopSeparacio2);
         RecuadroMasEscuchadas.add(VisualitzarRecuadre,BorderLayout.NORTH);
         RecuadroMasEscuchadas.add(EntreSeparacio5);
         CancionesMasEscuchadas.add(RecuadroMasEscuchadas,BorderLayout.NORTH);
         //SeparacioNovedades.add(EntreSeparacio6);
         //SeparacioNovedades.add(Novedades,BorderLayout.WEST);
         SeparacioEspai.add(EntreSeparacio6);
-        SeparacioPerNovedades.add(SeparacioNovedades,BorderLayout.NORTH);
-        SeparacioNovedades.add(Novedades,BorderLayout.WEST);
+        //eparacioNovedades.add(Novedades,BorderLayout.WEST);
+        SeparacioPerNovedades.add(Novedades,BorderLayout.NORTH);
         SegonaSeparacio.add(SeparacioPerNovedades,BorderLayout.CENTER);
         SegonaSeparacio.add(SeparacioEspai,BorderLayout.NORTH);
         CancionesMasEscuchadas.add(SegonaSeparacio,BorderLayout.CENTER);
 
-        //EspaiNovedades2.add(EntreSeparacio8);
-        EspaiNovedades2.add(EspaiNovedadesProva);
-        EspaiNovedades.add(EspaiNovedades2, BorderLayout.CENTER);
+        EspaiNovedades2.add(EntreSeparacio8);
+        //EspaiNovedades2.add(EspaiNovedadesProva);
+        //EspaiNovedades.add(Novedades,BorderLayout.WEST);
+        EspaiNovedades.add(EspaiNovedades2,BorderLayout.NORTH);
+        EspaiDesplegable.add(EntreSeparacio10);
+        Desplegable.add(EntreSeparacio11);
+        MenuOpcions.add(EspaiDesplegable,BorderLayout.NORTH);
+        Desplega.add(Desplegable);
+        //MenuOpcions.add(EspaiDesplegable2,BorderLayout.SOUTH);
+        MenuOpcions.add(Desplega, BorderLayout.WEST);
+        MenuOpcions.add(EntreSeparacio9);
+        //MenuOpcions.add(EntreSeparacio9);
         TerceraSeparacio.add(EntreSeparacio7);
+        //TerceraSeparacio.add()
+        TerceraSeparacio.add(MenuOpcions,BorderLayout.CENTER);
+        //TerceraSeparacio.add(EspaiNovedades, BorderLayout.NORTH);
         TerceraSeparacio.add(EspaiNovedades,BorderLayout.NORTH);
         CancionesMasEscuchadas.add(TerceraSeparacio,BorderLayout.SOUTH);
+
 
         PanellGeneralCentre.add(CancionesMasEscuchadas,BorderLayout.CENTER);
         PanellGeneralCentre.add(SeparacioNord,BorderLayout.NORTH);
         PanelMenu.add(PanellGeneralCentre,BorderLayout.CENTER);
-
+        //BotoAjustes.addActionListener(e -> Prova1.next(MenuOpcions));
 
         jFrameMenu.setResizable(false);
         jFrameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

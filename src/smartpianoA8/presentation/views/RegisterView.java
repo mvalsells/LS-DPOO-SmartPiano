@@ -12,11 +12,11 @@ public class RegisterView extends JFrame {
 
     }
     private void conifgureInici(){
-        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/RegisterImage.jpg").getImage());
-        ImageIcon facebook = new ImageIcon("Imagen/RegistrarseFacebook.jpg");
-        ImageIcon google = new ImageIcon("Imagen/RegistrarseGoogle.jpg");
-        ImageIcon googlePressed = new ImageIcon("Imagen/RegistrarseGooglePressed.png");
-        ImageIcon facebookPressed = new ImageIcon("Imagen/RegistrarseFacebookPressed.png");
+        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesRegister/RegisterImage.jpg").getImage());
+        ImageIcon facebook = new ImageIcon("Imagen/ImagenesRegister/RegistrarseFacebook.jpg");
+        ImageIcon google = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGoogle.jpg");
+        ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGooglePressed.png");
+        ImageIcon facebookPressed = new ImageIcon("Imagen/ImagenesRegister/RegistrarseFacebookPressed.png");
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
