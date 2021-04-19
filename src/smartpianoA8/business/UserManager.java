@@ -107,10 +107,8 @@ public class UserManager {
 
         User userTmp = userDAO.getUserByUsername(user.getUsername());
 
-        if (userDAO.getUserByUsername(user.getUsername()) != null){
-            userTmp.setUsername(user.getUsername());
-            userTmp.setEmail(user.getEmail());
-            userTmp.setPasswordHash(user.getPasswordHash());
+        if (userTmp != null){
+            userTmp.setEmail(newEmail);
 
             userDAO.removeUser(user);
             userDAO.addUser(userTmp);
@@ -129,11 +127,22 @@ public class UserManager {
         }
         return true;
     }
+
     public boolean modifyUsername(User user, String newUsername){
-        UserDAO usrTmp = new SQLUserDAO();
-        if (usrTmp.getUserByUsername(user.getUsername()) != null){
+
+        User userTmp = userDAO.getUserByUsername(user.getUsername());
+
+        if(userTmp != null) {
+
+            userTmp.setUsername(newUsername);
+
+            userDAO.removeUser(user);
+            userDAO.addUser(userTmp);
+
             //TODO Falta implementació a la interifcie UsuariDAO
+
         }
+
         return true;
     }
 
