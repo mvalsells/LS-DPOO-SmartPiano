@@ -1,5 +1,6 @@
 package smartpianoA8;
 
+import smartpianoA8.presentation.views.LoginView;
 import smartpianoA8.presentation.views.RegisterView;
 
 public class Main {
@@ -11,8 +12,8 @@ public class Main {
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
         ///registerView.setSize(400,400);
-        RegisterView registerView = new RegisterView();
-        registerView.setVisible(true);
+        //RegisterView registerView = new RegisterView();
+        //registerView.setVisible(true);
 
 
         //Per comprobar la contrasenya

@@ -53,28 +53,45 @@ public class UserManager {
     }
 
 
-    public void login(User user) throws UserManagerException{
+    public void login(User user) throws UserManagerException {
         boolean passwordIncorrect = true;
         boolean usernameIncorrect = true;
         boolean emailIncorrect = true;
+
         User userTmp = userDAO.getUserByUsername(user.getUsername());
+
         if (userTmp != null) {
             usernameIncorrect = false;
-            if (userTmp.getPasswordHash() == user.getPasswordHash()) {
-                passwordIncorrect = false;
+            if (userTmp.getEmail().equals(user.getEmail())) {
+                emailIncorrect = false;
             }
-        }
-        userTmp = userDAO.getUserByEmail(user.getEmail());
-        if (userTmp != null){
-            emailIncorrect = false;
-            if (userTmp.getPasswordHash() != user.getPasswordHash()){
+            if (userTmp.getPasswordHash().equals(user.getPasswordHash())) {
                 passwordIncorrect = false;
             }
         }
 
-        if (passwordIncorrect) {
-           // throw new UserManagerException(!usernameIncorrect)
+        if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
+            //throw new UserManagerException(!usernameIncorrect);
+            throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
         }
+
+        userTmp = userDAO.getUserByEmail(user.getEmail());
+
+        if (userTmp != null) {
+            emailIncorrect = false;
+            if (userTmp.getUsername().equals(user.getUsername())) {
+                usernameIncorrect = false;
+            }
+            if (userTmp.getPasswordHash().equals(user.getPasswordHash())) {
+                passwordIncorrect = false;
+            }
+        }
+
+        if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
+            //throw new UserManagerException(!usernameIncorrect);
+            throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
+        }
+
     }
 
     public boolean removeUser(User user){
