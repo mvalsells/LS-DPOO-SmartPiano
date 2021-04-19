@@ -104,7 +104,17 @@ public class UserManager {
     }
 
     public boolean modifyEmail(User user, String newEmail){
+
+        User userTmp = userDAO.getUserByUsername(user.getUsername());
+
         if (userDAO.getUserByUsername(user.getUsername()) != null){
+            userTmp.setUsername(user.getUsername());
+            userTmp.setEmail(user.getEmail());
+            userTmp.setPasswordHash(user.getPasswordHash());
+
+            userDAO.removeUser(user);
+            userDAO.addUser(userTmp);
+
             //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;
