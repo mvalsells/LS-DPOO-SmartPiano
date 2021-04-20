@@ -139,7 +139,6 @@ public class RegisterView extends JFrame {
         LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
         EmptyBorder TopTextFieldBorder = new EmptyBorder(100,0,10,0);
         EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
-        EmptyBorder RegisterButtonBorder = new EmptyBorder(20,0,0,0);
         /*Creem labels per establir espais entre components*/
         JLabel TopTextFieldLabel0 = new JLabel();
         TopTextFieldLabel0.setPreferredSize(new Dimension(5,20));
@@ -161,51 +160,33 @@ public class RegisterView extends JFrame {
         EntreTextCheck.setPreferredSize(new Dimension(5,20));
         EntreTextCheck.setBorder(EntreTextFieldBorder);
 
-        JLabel UpperButtonLabel = new JLabel();
-        UpperButtonLabel.setPreferredSize(new Dimension(5,20));
-        UpperButtonLabel.setBorder(RegisterButtonBorder);
 
         /*Creem les zones per escriure*/
-        JTextField Nom = new JTextField("Nom",20);
+        JTextField Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
-        JTextField Correu = new JTextField("Correu",20);
+        JTextField Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
-        JTextField Contrasenya = new JTextField("Contrasenya",20);
+        JTextField Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);
         Contrasenya.setOpaque(false);
 
-        JTextField RepetirContrasenya = new JTextField("Repetir Contrasenya",20);
+        JTextField RepetirContrasenya = new JTextField("  Repetir Contrasenya",20);
         RepetirContrasenya.setMaximumSize(new Dimension(281,39));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(TextFieldBorder);
         RepetirContrasenya.setOpaque(false);
 
-        JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
-        AcceptTandC.setOpaque(false);
-        AcceptTandC.setForeground(new Color(255,255,255));
-        AcceptTandC.setFont(new Font("Arial",Font.PLAIN,8));
 
-
-        JButton RegisterButton = new JButton("Registrarse");
-        RegisterButton.setPreferredSize(new Dimension(281,39));
-        RegisterButton.setBackground(new Color(249,171,15));
-        RegisterButton.setForeground(new Color(255,255,255));
-        RegisterButton.setBorderPainted(false);
-        //RegisterButton.setBorder(RegisterButtonBorder);
-        //IniciarSessio.setBorderPainted(false);
-        RegisterButton.setOpaque(true);
-        RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
-        RegisterButton.setVisible(true);
 
 
         /*-------------Part Centre-Oest-------------*/
@@ -248,7 +229,56 @@ public class RegisterView extends JFrame {
         JaTensCompte2.setFont(new Font("Verdana", Font.PLAIN, 285));
         JaTensCompte2.setOpaque(false);
 
+        /*------------------------------------------PART INFERIOR------------------------------------------*/
+        /*Extra(omplir south)*/
+        JPanel PanelSouth = new JPanel();
+        PanelSouth.setOpaque(false);
+        //PanelSouth.setBackground(new Color(0,0,255));
+        PanelSouth.setLayout(new BoxLayout(PanelSouth,BoxLayout.PAGE_AXIS));
 
+        /*Boto register*/
+        /*Borders*/
+        LineBorder RegisterButtonBorder = new LineBorder(new Color(249,171,15),10);
+        JLabel UpperButtonLabel = new JLabel();
+        UpperButtonLabel.setPreferredSize(new Dimension(5,20));
+        UpperButtonLabel.setBorder(RegisterButtonBorder);
+
+        JPanel PartInferior = new JPanel();
+        PartInferior.setLayout(new BorderLayout());
+        PartInferior.setOpaque(false);
+
+
+        JPanel ComplementRegistre = new JPanel();
+        ComplementRegistre.setLayout(new BoxLayout(ComplementRegistre,BoxLayout.Y_AXIS));
+        ComplementRegistre.setOpaque(false);
+
+        JButton RegisterButton = new JButton("               Registrarse               ");
+        //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
+        RegisterButton.setPreferredSize(new Dimension(220,39));
+        RegisterButton.setBackground(new Color(249,171,15));
+        RegisterButton.setForeground(new Color(255,255,255));
+        RegisterButton.setBorderPainted(true);
+        RegisterButton.setBorder(RegisterButtonBorder);
+        //IniciarSessio.setBorderPainted(false);
+        RegisterButton.setOpaque(true);
+        RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
+        RegisterButton.setVisible(true);
+
+        JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
+        AcceptTandC.setOpaque(false);
+        AcceptTandC.setForeground(new Color(255,255,255));
+        AcceptTandC.setFont(new Font("Arial",Font.PLAIN,8));
+
+        JPanel OmplirSouthPrincipalPanel = new JPanel();
+        OmplirSouthPrincipalPanel.setOpaque(false);
+        //OmplirSouthPrincipalPanel.setBackground(new Color(101,58,156));
+        OmplirSouthPrincipalPanel.setLayout(new BoxLayout(OmplirSouthPrincipalPanel,BoxLayout.Y_AXIS));
+
+        LineBorder OmplirSouthPrincipalBorder = new LineBorder(new Color(0,0,0,1),90);
+        JLabel OmplirSouthPrincipalLabel = new JLabel();
+        OmplirSouthPrincipalLabel.setOpaque(false);
+        OmplirSouthPrincipalLabel.setMinimumSize(new Dimension(200,300));
+        OmplirSouthPrincipalLabel.setBorder(OmplirSouthPrincipalBorder);
 
         
 
@@ -276,11 +306,15 @@ public class RegisterView extends JFrame {
         PanelRegistre.add(Contrasenya);
         PanelRegistre.add(EntreTextFieldLabel2);
         PanelRegistre.add(RepetirContrasenya);
-        //PanelRegistre.add(EntreTextCheck);
-        //PanelRegistre.add(AcceptTandC);
-        //PanelRegistre.add(UpperButtonLabel);
-        //PanelRegistre.add(RegisterButton);
+        PanelRegistre.add(EntreTextCheck);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
+
+        /*South*/
+        ComplementRegistre.add(AcceptTandC);
+        ComplementRegistre.add(RegisterButton);
+        PartInferior.add(ComplementRegistre,BorderLayout.EAST);
+        PartCentral.add(PartInferior,BorderLayout.SOUTH);
+
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);
         PanelAccounts.add(FaceBookButton);
@@ -296,6 +330,11 @@ public class RegisterView extends JFrame {
         /*Part Esquerra*/
         OmplirOestPanel.add(OmplirOestLabel);
         panel.add(OmplirOestPanel,BorderLayout.WEST);
+
+        /*Part inferior*/
+        OmplirSouthPrincipalPanel.add(OmplirSouthPrincipalLabel);
+        PanelSouth.add(OmplirSouthPrincipalPanel);
+        panel.add(PanelSouth,BorderLayout.SOUTH);
 
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
