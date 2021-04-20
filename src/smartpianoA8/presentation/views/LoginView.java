@@ -76,6 +76,54 @@ public class LoginView extends JFrame {
         JaTensCompte.setPreferredSize(new Dimension(140,100));
         JaTensCompte.setFont(new Font("Verdana", Font.PLAIN, 11));
 
+        /*------------------------------------------PART INFERIOR------------------------------------------*/
+        /*Extra(omplir south)*/
+        JPanel PanelSouth = new JPanel();
+        PanelSouth.setOpaque(false);
+        //PanelSouth.setBackground(new Color(0,0,255));
+        PanelSouth.setLayout(new BoxLayout(PanelSouth,BoxLayout.PAGE_AXIS));
+
+        /*Boto register*/
+        /*Borders*/
+        LineBorder LoginButtonBorder = new LineBorder(new Color(249,171,15),10);
+        JLabel UpperButtonLabel = new JLabel();
+        UpperButtonLabel.setPreferredSize(new Dimension(5,20));
+        UpperButtonLabel.setBorder(LoginButtonBorder);
+
+        JPanel PartInferior = new JPanel();
+        PartInferior.setLayout(new BorderLayout());
+        PartInferior.setOpaque(false);
+
+
+        JPanel ComplementLogin = new JPanel();
+        ComplementLogin.setLayout(new BoxLayout(ComplementLogin,BoxLayout.Y_AXIS));
+        ComplementLogin.setOpaque(false);
+
+        JButton LoginButton = new JButton("             Iniciar sesion             ");
+        //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
+        LoginButton.setPreferredSize(new Dimension(220,39));
+        LoginButton.setBackground(new Color(249,171,15));
+        LoginButton.setForeground(new Color(255,255,255));
+        LoginButton.setBorderPainted(true);
+        LoginButton.setBorder(LoginButtonBorder);
+        //IniciarSessio.setBorderPainted(false);
+        LoginButton.setOpaque(true);
+        LoginButton.setFont(new Font("Verdana",Font.BOLD,12));
+        LoginButton.setVisible(true);
+
+
+        JPanel OmplirSouthPrincipalPanel = new JPanel();
+        OmplirSouthPrincipalPanel.setOpaque(false);
+        //OmplirSouthPrincipalPanel.setBackground(new Color(101,58,156));
+        OmplirSouthPrincipalPanel.setLayout(new BoxLayout(OmplirSouthPrincipalPanel,BoxLayout.Y_AXIS));
+
+        LineBorder OmplirSouthPrincipalBorder = new LineBorder(new Color(0,0,0,1),90);
+        JLabel OmplirSouthPrincipalLabel = new JLabel();
+        OmplirSouthPrincipalLabel.setOpaque(false);
+        OmplirSouthPrincipalLabel.setMinimumSize(new Dimension(200,300));
+        OmplirSouthPrincipalLabel.setBorder(OmplirSouthPrincipalBorder);
+
+
 
 
         /*------------------------------------------PART CENTRAL------------------------------------------*/
@@ -269,6 +317,10 @@ public class LoginView extends JFrame {
         //PanelRegistre.add(EntreButtonButtonLabel);
         //PanelRegistre.add(NoTensCompteButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
+        /*South*/
+        ComplementLogin.add(LoginButton);
+        PartInferior.add(ComplementLogin,BorderLayout.EAST);
+        PartCentral.add(PartInferior,BorderLayout.SOUTH);
         /*Oest*/
         PanelAccounts.add(TopButtonLabel);
         PanelAccounts.add(FaceBookButton);
@@ -284,6 +336,11 @@ public class LoginView extends JFrame {
         /*Part Esquerra*/
         OmplirOestPanel.add(OmplirOestLabel);
         panel.add(OmplirOestPanel,BorderLayout.WEST);
+
+        /*Part inferior*/
+        OmplirSouthPrincipalPanel.add(OmplirSouthPrincipalLabel);
+        PanelSouth.add(OmplirSouthPrincipalPanel);
+        panel.add(PanelSouth,BorderLayout.SOUTH);
 
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
