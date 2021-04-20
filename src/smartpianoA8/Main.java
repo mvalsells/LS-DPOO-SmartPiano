@@ -1,19 +1,19 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.views.LoginView;
-import smartpianoA8.presentation.views.RegisterView;
+import smartpianoA8.Presentation.views.PianoView;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("SmartPiano-A8\n");
 
-
+        PianoView pianoView = new PianoView();
+        ///pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
         ///registerView.setSize(400,400);
-        //RegisterView registerView = new RegisterView();
-        //registerView.setVisible(true);
+        /*smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
+        registerView.setVisible(true);*/
 
 
         //Per comprobar la contrasenya

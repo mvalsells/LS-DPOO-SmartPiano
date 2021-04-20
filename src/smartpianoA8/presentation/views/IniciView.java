@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.Presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,8 +12,8 @@ public class IniciView extends JFrame {
 
     private void configureMenu(){
 
-        ImageView Desplegable = new ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
-        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.jpg");
+        smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
+        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
         ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
         ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
@@ -251,7 +251,7 @@ public class IniciView extends JFrame {
 
 
         /*Packin' area*/
-        /*Part Nord Botons*/
+        /*Part West Botons*/
         Botons.add(TopSeparacio0);
         Botons.add(BotoCanço);
         Botons.add(EntreSeparacio0);
