@@ -6,6 +6,10 @@ public class User {
     private String type;
     private String passwordHash;
 
+    public static final String TYPE_SMARTPIANO = "";
+    public static final String TYPE_FACEBOOK = "facebook";
+    public static final String TYPE_GOOGLE = "google";
+
     public User(){
     }
 

@@ -169,7 +169,7 @@
 									"top": 749,
 									"width": 183.13720703125,
 									"height": 13,
-									"text": "Estadístiques"
+									"text": "Stats"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -1112,7 +1112,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF4ls41dP9TyCc="
 					},
-					"name": "Estadístiques",
+					"name": "Stats",
 					"columns": [
 						{
 							"_type": "ERDColumn",

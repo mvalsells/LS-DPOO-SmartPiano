@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 public class UserManager {
     //Atributs
     private UserDAO userDAO;
+
     //Constructor
     public UserManager(){
         userDAO = new SQLUserDAO();
@@ -108,12 +109,12 @@ public class UserManager {
         User userTmp = userDAO.getUserByUsername(user.getUsername());
 
         if (userTmp != null){
+            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
+            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
             userTmp.setEmail(newEmail);
-
             userDAO.removeUser(user);
             userDAO.addUser(userTmp);
 
-            //TODO Falta implementació a la interifcie UsuariDAO
         }
         return true;
     }
@@ -133,13 +134,12 @@ public class UserManager {
         User userTmp = userDAO.getUserByUsername(user.getUsername());
 
         if(userTmp != null) {
-
+            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
+            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
             userTmp.setUsername(newUsername);
 
             userDAO.removeUser(user);
             userDAO.addUser(userTmp);
-
-            //TODO Falta implementació a la interifcie UsuariDAO
 
         }
 
@@ -161,7 +161,7 @@ public class UserManager {
         return toReturn;
     }
 
-    public void checkPassword(User user,String password) throws PasswordException {
+    private void checkPassword(User user,String password) throws PasswordException {
         boolean passwordToShort = false;
         boolean equalsEmail = false;
         boolean equalsUsername = false;
@@ -207,7 +207,6 @@ public class UserManager {
     }
 
     /*public String encryptPassword(String plainTextPassword){
-        //TODO Acabar de mirar bé
         // https://howtodoinjava.com/java/java-security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
         // https://mkyong.com/java/how-do-convert-byte-array-to-string-in-java/
         String passwordHash = null;
