@@ -46,7 +46,7 @@ public class SQLUserDAO implements UserDAO {
      */
     @Override
     public void removeUser(User user) {
-        String query = "DELETE FROM Users WHERE NomUsuari = '" + user.getUsername() + "';";
+        String query = "DELETE FROM Users WHERE NomUsuari LIKE '" + user.getUsername() + "';";
         SQLConnector.getInstance().deleteQuery(query);
     }
 

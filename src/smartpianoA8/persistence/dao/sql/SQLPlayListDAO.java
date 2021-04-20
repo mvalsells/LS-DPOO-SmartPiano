@@ -35,6 +35,8 @@ public class SQLPlayListDAO implements PlayListDAO{
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
         SQLConnector.getInstance().insertQuery(query);
+
+
     }
 
     /**
@@ -44,7 +46,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void removeSongFromPlayList(PlayList playList, Song song) {
-        String query = "DELETE FROM SongPlaylist WHERE idSong = '" + song.getIdSong() + "';";
+        String query = "DELETE FROM SongPlaylist WHERE idSong = " + song.getIdSong() + ";";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
@@ -54,8 +56,13 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void removePlayList(PlayList playList) {
-        String query = "DELETE FROM PlayList WHERE IDPlayList = '" + playList.getIdPlayList() + "';";
+        //borrar de la cançó, la playlist (la relació)
+        String query = "DELETE FROM PlayList WHERE IDPlayList = " + playList.getIdPlayList() + ";";
         SQLConnector.getInstance().deleteQuery(query);
+
+        //borrar la playlist sencera (data playlist)
+        query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
+        SQLConnector.getInstance().selectQuery(query);
     }
 
     /**
@@ -117,7 +124,7 @@ public class SQLPlayListDAO implements PlayListDAO{
 
         try{
             while(result.next()) {
-                query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = '" + result.getInt("idSong") + "';";
+                query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = " + result.getInt("idSong") + ";";
                 ResultSet result2 = SQLConnector.getInstance().selectQuery(query2);
                 songs.add(new Song(result2.getInt("IDSong"), result2.getTime("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("Directori"), result2.getBoolean("isPublic"), result2.getString("Nomusuari")));
             }
