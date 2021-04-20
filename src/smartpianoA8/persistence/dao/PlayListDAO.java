@@ -44,10 +44,10 @@ public interface PlayListDAO {
 
     /**
      *
-     * @param playList
+     * @param IDPlaylist
      * @return
      */
-    PlayList getPlayListData(PlayList playList);
+    PlayList getPlayListData(int IDPlaylist);
 
     /**
      *

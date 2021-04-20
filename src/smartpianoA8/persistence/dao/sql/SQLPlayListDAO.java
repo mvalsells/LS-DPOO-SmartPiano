@@ -60,20 +60,43 @@ public class SQLPlayListDAO implements PlayListDAO{
 
     /**
      * Retorna una ArrayList amb les PlayList que coincideixen amb el NomUsuari de l'usuari.
-     * @param user
+     * @param user Usuari amb el UserName a buscar a les PlayLists de la bbdd
      * @return NULL si no n'ha trobat cap, una ArrayList<PlayList> amb les que ha trobat si n'ha trobat.
      */
     @Override
     public ArrayList<PlayList> getPlayListsByUser(User user) {
         ArrayList<PlayList> llista = null;
 
-        String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari = '" + user.getUsername() + "';";
+        String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari LIKE '" + user.getUsername() + "';";
         ResultSet result = SQLConnector.getInstance().selectQuery(query);
         try{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
             }
+
+        }catch (SQLException e){
+            e.printStackTrace();//TODO aixo potser printa coses innecessaries
             return llista;
+        }
+        return null;
+    }
+
+    /**
+     * Retorna la PlayList buscada amb IDPlayList.
+     * @param IDPlaylist ID de la PlayList a buscar les dades.
+     * @return  PlayList demanada completa.
+     */
+    @Override
+    public PlayList getPlayListData(int IDPlaylist) {
+        String query = "SELECT Nom, NomUsuari, IDPlayList FROM Users;";
+        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        try{
+            while(result.next()) {
+                if(result.getInt("IDPlayList") == IDPlaylist){
+                    return new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+                }
+
+            }
         }catch (SQLException e){
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
         }
@@ -81,45 +104,28 @@ public class SQLPlayListDAO implements PlayListDAO{
     }
 
     /**
-     *
-     * @param playList
-     * @return
-     */
-    @Override
-    public PlayList getPlayListData(PlayList playList) {
-        PlayList returnedPlayList;
-        String query = "SELECT Nom, idPlayList, NomUsuari FROM playlist;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
-
-        //busca per cada playlist si l'id és igual. si ho és, retorna-la
-
-        try{
-            while(result.next()){
-                if(result.getInt("idPlayList") == playList.getIdPlayList()){
-                    String Nom = result.getString("Nom");
-                    int id = result.getInt("idPlayList");
-                    String NomUsuari = result.getString("NomUsuari");
-
-                    returnedPlayList = new PlayList(Nom, id, NomUsuari);
-                    return(returnedPlayList);
-                }
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return(null);
-    }
-
-    /**
-     *
-     * @param playList
-     * @return
+     * Retorna la llista de cançons d'una PlayList
+     * @param playList la PlayList (amb l'ID que és l'important) a rebre les cançons
+     * @return  ArrayList<Song> amb les cançons dins
      */
     @Override
     public ArrayList<Song> getPlayListSongs(PlayList playList) {
-        ArrayList<Song> songs = new ArrayList<>();
-        String query = "";
+        ArrayList<Song> songs = null;
+        String query = "SELECT idSong FROM SongPlaylist WHERE IDPlayList LIKE '" + playList.getIdPlayList() + "';";
+        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        String query2;
 
-        return songs;
+        try{
+            while(result.next()) {
+                query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = '" + result.getInt("idSong") + "';";
+                ResultSet result2 = SQLConnector.getInstance().selectQuery(query2);
+                songs.add(new Song(result2.getInt("IDSong"), result2.getTime("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("Directori"), result2.getBoolean("isPublic"), result2.getString("Nomusuari")));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            return songs;
+
+        }
+        return null;
     }
 }
