@@ -16,7 +16,6 @@ public class SQLSongDAO implements SongDAO {
      */
     @Override
     public void addSong(Song song, User user) {
-        String username = user.getUsername();
 
         String query = "INSERT INTO Song(NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari) VALUES ('" +
                     0 + "', '" +

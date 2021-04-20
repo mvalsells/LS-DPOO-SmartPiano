@@ -34,6 +34,7 @@ public class SQLUserDAO implements UserDAO {
             }
         }catch (SQLException e){
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            return false;
         }
         return false;
 
