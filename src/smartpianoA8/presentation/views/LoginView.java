@@ -201,19 +201,19 @@ public class LoginView extends JFrame {
         EntreButtonButtonLabel.setBorder(EntreButtonButtonBorder);
 
         /*Creem les zones per escriure*/
-        JTextField Nom = new JTextField("Nom",20);
+        JTextField Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(TextFieldBorder);
         Nom.setOpaque(false);
 
-        JTextField Correu = new JTextField("Correu",20);
+        JTextField Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(TextFieldBorder);
         Correu.setOpaque(false);
 
-        JTextField Contrasenya = new JTextField("Contrasenya",20);
+        JTextField Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(TextFieldBorder);

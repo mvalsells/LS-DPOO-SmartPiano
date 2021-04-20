@@ -1,5 +1,6 @@
 package smartpianoA8;
 
+import smartpianoA8.presentation.views.IniciView;
 import smartpianoA8.presentation.views.LoginView;
 import smartpianoA8.presentation.views.RegisterView;
 
@@ -12,7 +13,7 @@ public class Main {
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
         //registerView.setSize(400,400);
-        //RegisterView registerView = new RegisterView();
+        RegisterView registerView = new RegisterView();
         //registerView.setVisible(true);
 
 
