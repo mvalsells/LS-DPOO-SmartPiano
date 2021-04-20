@@ -21,11 +21,11 @@ public class SQLConnector implements DBStarter {
 
     // Parametrized constructor
     private SQLConnector(String username, String password, String ip, int port, String database) {
-        SQLConnector.username = username;
-        SQLConnector.password = password;
-        SQLConnector.port = port;
-        SQLConnector.ip = ip;
-        SQLConnector.database = database;
+        SQLConnector.username = "a8-app";//username;
+        SQLConnector.password = "qVT1lm3Z8Dkuo7vL";//password;
+        SQLConnector.port = 3306;//port;
+        SQLConnector.ip = "dpoo-a8.valsells.me";//ip;
+        SQLConnector.database = "smartpianoa8";//database;
         this.url = "jdbc:mysql://" + ip + ":" + port + "/" + database;
     }
 

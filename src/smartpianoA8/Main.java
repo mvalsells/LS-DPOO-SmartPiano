@@ -1,8 +1,13 @@
 package smartpianoA8;
 
+import smartpianoA8.business.*;
+import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.presentation.views.IniciView;
 import smartpianoA8.presentation.views.LoginView;
 import smartpianoA8.presentation.views.RegisterView;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,22 +23,23 @@ public class Main {
 
 
         //Per comprobar la contrasenya
-        /*UserManager um = new UserManager();
+        /* um = new UserManager();
         Scanner sc = new Scanner(System.in);
-        User u = new User("mvalsells", "marc@valsells.me","a","1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75");
-        String input;
+
         do {
+            User u = new User();
+            System.out.print("Username: ");
+            String username = sc.nextLine();
+            System.out.print("Email: ");
+            String email = sc.nextLine();
             System.out.print("Password: ");
-            input = sc.nextLine();
+            String password = sc.nextLine();
             try {
-                if (um.checkPassword(input, u)) {
-                    System.out.println("Password OK");
-                    System.out.println(um.encryptPassword(input));
-                }
-            } catch (PasswordException e) {
+                um.registerUser(username, email, password, User.TYPE_SMARTPIANO);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        } while (true);*/
-
+        } while (true);
+        */
     }
 }
