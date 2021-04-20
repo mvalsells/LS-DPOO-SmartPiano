@@ -44,9 +44,6 @@ public class SQLConnector implements DBStarter {
         return instance;
     }
 
-
-
-
     /**
      * Method that starts the inner connection to the database. Ideally, users would disconnect after
      * using the shared instance.

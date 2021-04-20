@@ -3,8 +3,11 @@ package smartpianoA8.business.entity;
 public class User {
     private String username;
     private String email;
-    private final String type;
+    private String type;
     private String passwordHash;
+
+    public User(){
+    }
 
     public User(String username, String email, String type, String passwordHash){
         this.username = username;
@@ -44,4 +47,5 @@ public class User {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
+
 }
