@@ -21,7 +21,7 @@ public class SQLUserDAO implements UserDAO {
         try{
             while(result.next()) {
                 if(result.getString("Email").compareTo(user.getEmail()) == 0 && result.getString("NomUsuari").compareTo(user.getUsername()) == 0){
-                    query = "INSERT INTO Course(NomUsuari, Email, Contrassenya, tipus) VALUES ('" +
+                    query = "INSERT INTO User(NomUsuari, Email, Contrassenya, tipus) VALUES ('" +
                             user.getUsername() + "', '" +
                             user.getEmail() + "', '" +
                             user.getPasswordHash() + "', '" +

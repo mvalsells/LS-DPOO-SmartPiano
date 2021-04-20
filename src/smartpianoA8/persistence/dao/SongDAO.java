@@ -40,5 +40,5 @@ public interface SongDAO {
      * @param song
      * @return
      */
-    Song getSong(Song song);
+    Song getSong(int IDSong);
 }

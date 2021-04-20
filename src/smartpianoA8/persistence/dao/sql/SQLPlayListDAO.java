@@ -13,58 +13,70 @@ import java.util.ArrayList;
 public class SQLPlayListDAO implements PlayListDAO{
 
     /**
-     *
-     * @param name
-     * @param username
+     * Afegeix / Crea una Playlist a un usuari
+     * @param name nom de la playlist
+     * @param username nom de l'usuari propietari de la PlayList
      */
     @Override
     public void addPlayList(String name, String username) {
         String query = "INSERT INTO playlist(Nom, NomUsuari) VALUES ('" +
                 name + "', '" +
                 username + "');";
+        SQLConnector.getInstance().insertQuery(query);
     }
 
     /**
-     *
-     * @param song
-     * @param playList
-     * @param user
+     * Afegeix una cançó existent a una PlayList existent
+     * @param song cançó existent a afegir
+     * @param playList playlist a modificar
      */
     @Override
-    public void addSongToPlayList(Song song, PlayList playList, User user) {
-        String query = "";
-
+    public void addSongToPlayList(Song song, PlayList playList) {
+        String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
+                song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
+        SQLConnector.getInstance().insertQuery(query);
     }
 
     /**
-     *
-     * @param playList
-     * @param song
+     * Borra una cançó d'una PlayList
+     * @param playList playlist a modificar amb el seu ID
+     * @param song cançó a treure de la PlayList amb el seu ID
      */
     @Override
     public void removeSongFromPlayList(PlayList playList, Song song) {
-
-    }
-
-    /**
-     *
-     * @param playList
-     */
-    @Override
-    public void removePlayList(PlayList playList) {
-        int id = playList.getIdPlayList();
-        String query = "DELETE FROM playlist WHERE IdPlayList = '"
-                + id + "';";
+        String query = "DELETE FROM SongPlaylist WHERE idSong = '" + song.getIdSong() + "';";
         SQLConnector.getInstance().deleteQuery(query);
     }
 
     /**
-     *
+     *   Borra una playlist segons el seu ID
+     * @param playList playlist amb ID
+     */
+    @Override
+    public void removePlayList(PlayList playList) {
+        String query = "DELETE FROM PlayList WHERE IDPlayList = '" + playList.getIdPlayList() + "';";
+        SQLConnector.getInstance().deleteQuery(query);
+    }
+
+    /**
+     * Retorna una ArrayList amb les PlayList que coincideixen amb el NomUsuari de l'usuari.
      * @param user
-     * @return
+     * @return NULL si no n'ha trobat cap, una ArrayList<PlayList> amb les que ha trobat si n'ha trobat.
      */
     @Override
     public ArrayList<PlayList> getPlayListsByUser(User user) {
+        ArrayList<PlayList> llista = null;
+
+        String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari = '" + user.getUsername() + "';";
+        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        try{
+            while(result.next()) {
+                llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
+            }
+            return llista;
+        }catch (SQLException e){
+            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+        }
         return null;
     }
 

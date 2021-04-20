@@ -19,9 +19,8 @@ public interface PlayListDAO {
      *
      * @param song
      * @param playList
-     * @param user
      */
-    void addSongToPlayList(Song song, PlayList playList, User user);
+    void addSongToPlayList(Song song, PlayList playList);
 
     /**
      *
