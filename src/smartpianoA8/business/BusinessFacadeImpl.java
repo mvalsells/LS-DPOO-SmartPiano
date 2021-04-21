@@ -1,14 +1,9 @@
 package smartpianoA8.business;
 
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.business.exceptions.UserManagerException;
+//public class BusinessFacadeImpl implements BusinessFacade {
 import smartpianoA8.persistence.dao.UserDAO;
 
-public class BusinessFacadeImpl implements BusinessFacade {
-
-    //Atributs
+   /* //Atributs
     UserManager userManager;
     User currentUser;
     //Constructor
@@ -80,4 +75,6 @@ public class BusinessFacadeImpl implements BusinessFacade {
 
         return false;
     }
-}
+    */
+
+//}

@@ -1,20 +1,8 @@
 package smartpianoA8.business;
 
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.business.exceptions.UserManagerException;
-import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.SQLUserDAO;
-
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.regex.Pattern;
-
 public class UserManager {
     //Atributs
-    private UserDAO userDAO;
+    /*private UserDAO userDAO;
 
     //Constructor
     public UserManager(UserDAO userDAO){

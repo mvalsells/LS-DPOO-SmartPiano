@@ -1,6 +1,6 @@
 package smartpianoA8;
 
-import smartpianoA8.Presentation.views.PianoView;
+import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.business.UserManager;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
@@ -58,7 +58,7 @@ public class Main {
 
 
 
-        //PianoView pianoView = new PianoView();
+        PianoView pianoView = new PianoView();
 
 
         ///pianoView.setVisible(true);
