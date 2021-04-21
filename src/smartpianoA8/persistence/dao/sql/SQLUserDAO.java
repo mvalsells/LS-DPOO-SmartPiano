@@ -101,17 +101,18 @@ public class SQLUserDAO implements UserDAO {
         return null;
     }
 
-
-
+    @Override
     public User loginUser(String id, String passwordHash) throws UserManagerException{
 
         return null;
     }
 
-    public void updateDataUser(String email, String whatToUpdate, String dataToUpdate){
+    @Override
+    public void updateDataUser(String email, String whatToUpdate, String dataToUpdate) {
 
     }
 
+    @Override
     public Boolean userExists(String whatToCheck, String dataToCheck){
         return false;
     }

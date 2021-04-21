@@ -32,8 +32,6 @@ public interface UserDAO {
      */
     User getUserByUsername(String username);
 
-    void updateDataUser(User user, String whatToUpdate, String data);
-
     User loginUser(String id, String passwordHash) throws UserManagerException;
 
     void updateDataUser(String email, String whatToUpdate, String dataToUpdate);
