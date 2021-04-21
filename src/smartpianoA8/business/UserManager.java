@@ -106,44 +106,38 @@ public class UserManager {
 
     public boolean modifyEmail(User user, String newEmail){
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
-
-        if (userTmp != null){
-            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
-            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
-            userTmp.setEmail(newEmail);
-            userDAO.removeUser(user);
-            userDAO.addUser(userTmp);
-
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user, "Email", newEmail);
+            return true;
+        }else {
+            System.err.println("Not able to change Email from user: " + user.getUsername());
+            return false;
         }
-        return true;
+
     }
 
     public boolean modifyPassword(User user, String newPassword) throws PasswordException {
-        UserDAO usrTmp = new SQLUserDAO();
-        checkPassword(user, newPassword);
 
-        if (usrTmp.getUserByUsername(user.getUsername()) != null){
-            //TODO Falta implementació a la interifcie UsuariDAO
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user, "Password", newPassword);
+            return true;
+        }else {
+            System.err.println("Not able to change Password from user: " + user.getUsername());
+            return false;
         }
-        return true;
+
     }
 
     public boolean modifyUsername(User user, String newUsername){
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
-
-        if(userTmp != null) {
-            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
-            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
-            userTmp.setUsername(newUsername);
-
-            userDAO.removeUser(user);
-            userDAO.addUser(userTmp);
-
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user, "Username", newUsername);
+            return true;
+        }else {
+            System.err.println("Not able to change Username from user: " + user.getUsername());
+            return false;
         }
 
-        return true;
     }
 
 
@@ -185,6 +179,10 @@ public class UserManager {
 
         //Comprovació mínim una majuscual, una minuscula i un nombre
         //TODO Mirar si se puede hacer sin for
+
+
+
+
         for (int i=0; i < password.length(); i++){
             char c = password.charAt(i);
             if (Character.isDigit(c)){
