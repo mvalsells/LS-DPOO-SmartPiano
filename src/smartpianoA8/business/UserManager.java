@@ -25,10 +25,28 @@ public class UserManager {
 
     public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
 
-        //Check user data
+        //mirar si estam bien los datos recibidos
+        boolean correctEmail = false;
         boolean usernameExists = false;
         boolean emailExists = false;
         boolean typeIncorrect = false;
+
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(email.matches(regex)) {
+            correctEmail = true;
+            emailExists = userDAO.userExists(User.TERM_EMAIL, email);
+        }
+
+        usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
+
+
+
+
+
+
+
+
+        --------------
 
         User newUser = new User(username, email, type);
 
@@ -112,7 +130,7 @@ public class UserManager {
     public boolean modifyEmail(User user, String newEmail){
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user.getEmail(), User.UPDATE_EMAIL, newEmail);
+            userDAO.updateDataUser(user.getEmail(), User.TERM_EMAIL, newEmail);
             return true;
         }else {
             System.err.println("Not able to change Email from user: " + user.getUsername());
@@ -124,7 +142,7 @@ public class UserManager {
     public boolean modifyPassword(User user, String newPassword) throws PasswordException {
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user.getEmail(), User.UPDATE_PASSWORD, newPassword);
+            userDAO.updateDataUser(user.getEmail(), User.TERM_PASSWORD, newPassword);
             return true;
         }else {
             System.err.println("Not able to change Password from user: " + user.getUsername());
@@ -136,7 +154,7 @@ public class UserManager {
     public boolean modifyUsername(User user, String newUsername){
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user.getEmail(), User.UPDATE_USERNAME, newUsername);
+            userDAO.updateDataUser(user.getEmail(), User.TERM_USERNAME, newUsername);
             return true;
         }else {
             System.err.println("Not able to change Username from user: " + user.getUsername());
