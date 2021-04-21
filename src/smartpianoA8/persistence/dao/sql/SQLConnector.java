@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * The SQLConnector class will abstract the specifics of the connection to a MySQL database.
  */
-public class SQLConnector implements DBStarter {
+public class SQLConnector {
     // Attributes to connect to the database.
     private final String url;
     private Connection conn;

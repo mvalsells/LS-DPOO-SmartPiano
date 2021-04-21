@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLUserDAO implements UserDAO {
+    private SQLConnector connector;
+    public SQLUserDAO(String username, String password, int port, String ip, String databaseName){
+        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    }
+
+
     /**
      * Busca si un usuari ja existeix per email i username i l'afegeix si no hi és.
      * @param user amb nom i email nous
@@ -16,7 +22,7 @@ public class SQLUserDAO implements UserDAO {
     public Boolean addUser(User user) {
         String buit = "null";
         String query = "SELECT NomUsuari, Email FROM Users;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
 
         try{
             while(result.next()) {
@@ -27,7 +33,7 @@ public class SQLUserDAO implements UserDAO {
                             user.getPasswordHash() + "', '" +
                             buit +
                             "');";
-                    SQLConnector.getInstance().insertQuery(query);
+                    connector.insertQuery(query);
                     return true;
                 }
 
@@ -47,7 +53,7 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public void removeUser(User user) {
         String query = "DELETE FROM Users WHERE NomUsuari LIKE '" + user.getUsername() + "';";
-        SQLConnector.getInstance().deleteQuery(query);
+        connector.deleteQuery(query);
     }
 
     /**
@@ -58,7 +64,7 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User getUserByEmail(String email) {
         String query = "SELECT NomUsuari, Email, Contrassenya FROM Users;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getString("Email").compareTo(email) == 0){
@@ -80,7 +86,7 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User getUserByUsername(String username) {
         String query = "SELECT NomUsuari, Email, Contrassenya FROM Users;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getString("NomUsuari").compareTo(username) == 0){

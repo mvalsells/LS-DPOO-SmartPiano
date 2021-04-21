@@ -6,9 +6,14 @@ import smartpianoA8.business.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class SQLSongDAO implements SongDAO {
+    private SQLConnector connector;
+    public SQLSongDAO(String username, String password, int port, String ip, String databaseName){
+        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    }
+
+
     /**
      * Afegeix una cançó a la bbdd
      * @param song la cançó completa a afegir
@@ -26,7 +31,7 @@ public class SQLSongDAO implements SongDAO {
                 song.getDirectori() + "', '" +
                 song.getPublic() + "', '" +
                 user.getUsername() + "');";
-        SQLConnector.getInstance().insertQuery(query);
+        connector.insertQuery(query);
     }
 
     /**
@@ -37,7 +42,7 @@ public class SQLSongDAO implements SongDAO {
     public void removeSong(Song song) {
         //borra la cançó total (data)
         String query = "DELETE FROM Users WHERE NomUsuari = " + song.getIdSong() + ";";
-        SQLConnector.getInstance().deleteQuery(query);
+        connector.deleteQuery(query);
 
         //TODO borrar també la relació SongPlaylist també, però amb SQL no sé com fer la crida/query (preguntar POL)
 
@@ -51,7 +56,7 @@ public class SQLSongDAO implements SongDAO {
     @Override
     public Song getSong(int IDSong) {
         String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getInt("IDSong") == IDSong) {
