@@ -1,6 +1,7 @@
 package smartpianoA8;
 
 import smartpianoA8.Presentation.views.PianoView;
+import smartpianoA8.business.entity.User;
 import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReader;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -30,6 +31,8 @@ public class Main {
         //connectar
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
         UserDAO user = new SQLUserDAO(connectorSQL);
+        User usuariJoquese = user.getUserByUsername("albertgarangou@emporda.cat");
+        System.out.printf("final");
 
         //PianoView pianoView = new PianoView();
 

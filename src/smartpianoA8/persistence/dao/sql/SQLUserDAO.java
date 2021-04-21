@@ -1,5 +1,6 @@
 package smartpianoA8.persistence.dao.sql;
 
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.User;
 
@@ -98,5 +99,16 @@ public class SQLUserDAO implements UserDAO {
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
         }
         return null;
+    }
+
+
+
+    public User loginUser(String id, String passwordHash) throws UserManagerException{
+
+        return null;
+    }
+
+    public void updateDataUser(String email, String whatToUpdate, String dataToUpdate){
+
     }
 }
