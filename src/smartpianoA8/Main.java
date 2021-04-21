@@ -1,12 +1,29 @@
 package smartpianoA8;
 
 import smartpianoA8.Presentation.views.PianoView;
+import smartpianoA8.persistence.JsonReader;
+
+import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("SmartPiano-A8\n");
 
         PianoView pianoView = new PianoView();
+        JsonReader jsonReader = new JsonReader();
+        try {
+            jsonReader.readJsonConfig();
+        }catch (FileNotFoundException e) {
+            System.err.println("Error reading file");
+        }
+
+        System.out.println(jsonReader.getDbName());
+        System.out.println(jsonReader.getDbUser());
+        System.out.println(jsonReader.getDbPassword());
+        System.out.println(jsonReader.getDbAddress());
+        System.out.println(jsonReader.getDbPort());
+        System.out.println(jsonReader.gettimeScrapping());
+
         ///pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
