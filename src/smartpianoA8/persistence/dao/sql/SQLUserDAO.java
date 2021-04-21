@@ -1,5 +1,6 @@
 package smartpianoA8.persistence.dao.sql;
 
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.User;
 
@@ -8,8 +9,8 @@ import java.sql.SQLException;
 
 public class SQLUserDAO implements UserDAO {
     private SQLConnector connector;
-    public SQLUserDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLUserDAO(SQLConnector connector){
+        this.connector = connector;
     }
 
 
@@ -99,4 +100,21 @@ public class SQLUserDAO implements UserDAO {
         }
         return null;
     }
+
+    @Override
+    public User loginUser(String id, String passwordHash) throws UserManagerException{
+
+        return null;
+    }
+
+    @Override
+    public void updateDataUser(String email, String whatToUpdate, String dataToUpdate) {
+
+    }
+
+    @Override
+    public Boolean userExists(String whatToCheck, String dataToCheck){
+        return false;
+    }
+
 }

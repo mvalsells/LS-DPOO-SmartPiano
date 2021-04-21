@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 public class SQLPlayListDAO implements PlayListDAO{
     private SQLConnector connector;
-
-    public SQLPlayListDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLPlayListDAO(SQLConnector connector){
+        this.connector = connector;
     }
     /**
      * Afegeix / Crea una Playlist a un usuari
@@ -59,12 +58,9 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void removePlayList(PlayList playList) {
-        //borrar de la cançó, la playlist (la relació)
-        String query = "DELETE FROM PlayList WHERE IDPlayList = " + playList.getIdPlayList() + ";";
-        connector.deleteQuery(query);
 
         //borrar la playlist sencera (data playlist)
-        query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
+        String query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
         connector.selectQuery(query);
     }
 

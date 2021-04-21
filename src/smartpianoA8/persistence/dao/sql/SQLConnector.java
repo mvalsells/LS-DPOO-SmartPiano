@@ -23,6 +23,7 @@ public class SQLConnector {
     public void connect(String username, String password) {
         try {
             conn = DriverManager.getConnection(url, username, password);
+            System.out.println("lele");
         } catch(SQLException e) {
             System.err.println("Couldn't connect to --> " + url + " (" + e.getMessage() + ")");
         }

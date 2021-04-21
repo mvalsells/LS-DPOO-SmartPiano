@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class SQLSongDAO implements SongDAO {
     private SQLConnector connector;
-    public SQLSongDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLSongDAO(SQLConnector connector){
+        this.connector = connector;
     }
 
 
@@ -43,9 +43,6 @@ public class SQLSongDAO implements SongDAO {
         //borra la cançó total (data)
         String query = "DELETE FROM Users WHERE NomUsuari = " + song.getIdSong() + ";";
         connector.deleteQuery(query);
-
-        //TODO borrar també la relació SongPlaylist també, però amb SQL no sé com fer la crida/query (preguntar POL)
-
     }
 
     /**
