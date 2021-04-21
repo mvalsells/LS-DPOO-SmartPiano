@@ -6,7 +6,7 @@ import smartpianoA8.business.entity.User;
 
 import java.util.ArrayList;
 
-public interface PlayListDAO {
+public interface PlayListDAO{
 
     /**
      *

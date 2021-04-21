@@ -1,10 +1,6 @@
 package smartpianoA8.persistence.dao;
 
-import smartpianoA8.business.entity.PlayList;
-import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
-
-import java.util.ArrayList;
 
 public interface UserDAO {
 
@@ -34,5 +30,7 @@ public interface UserDAO {
      * @return
      */
     User getUserByUsername(String username);
+
+    //void updateDataUser(User user, String whatToUpdate, String data);
 
 }

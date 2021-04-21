@@ -1,10 +1,7 @@
 package smartpianoA8.persistence.dao;
 
-import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
-
-import java.util.ArrayList;
 
 public interface SongDAO {
 
@@ -23,21 +20,7 @@ public interface SongDAO {
 
     /**
      *
-     * @param user
-     * @return
-     */
-    ArrayList<Song> getFavouriteSongs(User user);
-
-    /**
-     *
-     * @param song
-     * @param user
-     */
-    void addSongToFavourite(Song song, User user);
-
-    /**
-     *
-     * @param song
+     * @param IDSong
      * @return
      */
     Song getSong(int IDSong);

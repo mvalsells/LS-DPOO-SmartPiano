@@ -1,6 +1,8 @@
 package smartpianoA8.persistence;
 
-public interface Readable {
+import java.io.FileNotFoundException;
+
+public interface JsonReadable {
 
     /**
      *
@@ -37,5 +39,11 @@ public interface Readable {
      * @return
      */
     public int gettimeScrapping();
+
+    /**
+     *
+     * @throws FileNotFoundException
+     */
+    public void readJsonConfig() throws FileNotFoundException;
 
 }
