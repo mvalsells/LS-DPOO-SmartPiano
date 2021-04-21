@@ -33,8 +33,11 @@ public class UserManager {
 
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         if(email.matches(regex)) {
+            System.out.println("Email Matches: " + email);
             correctEmail = true;
             emailExists = userDAO.userExists(User.TERM_EMAIL, email);
+        }else {
+            System.out.println("Email failed: " + email);
         }
 
         usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
