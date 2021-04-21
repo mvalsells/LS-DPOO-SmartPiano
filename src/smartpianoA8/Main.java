@@ -1,21 +1,36 @@
 package smartpianoA8;
 
 import smartpianoA8.Presentation.views.PianoView;
+import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReader;
+import smartpianoA8.persistence.dao.sql.SQLConnector;
 
 import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("SmartPiano-A8\n");
 
-        PianoView pianoView = new PianoView();
-        JsonReader jsonReader = new JsonReader();
+        final int ERROR_CODE_FILE = 1;
+        //BBDD v
+        //rebre dades fitxer
+        JsonReadable jsonReader = new JsonReader();
+
         try {
             jsonReader.readJsonConfig();
-        }catch (FileNotFoundException e) {
-            System.err.println("Error reading file");
+        }catch (FileNotFoundException f){
+            System.out.println("ERROR: No s'ha pogut llegir el fitxer de configuració");
+            System.exit(ERROR_CODE_FILE);
         }
+
+        String username = jsonReader.getDbUser();
+        String password = jsonReader.getDbPassword();
+        String ip = jsonReader.getDbAddress();
+        int port = jsonReader.getDbPort();
+        String DBname = jsonReader.getDbName();
+
+        System.out.println("SmartPiano-A8\n");
+
+
 
         System.out.println(jsonReader.getDbName());
         System.out.println(jsonReader.getDbUser());
@@ -23,6 +38,16 @@ public class Main {
         System.out.println(jsonReader.getDbAddress());
         System.out.println(jsonReader.getDbPort());
         System.out.println(jsonReader.gettimeScrapping());
+        //connectar
+        SQLConnector connectorSQL = new SQLConnector(username,password,ip,port,DBname);
+
+
+
+
+
+
+        PianoView pianoView = new PianoView();
+
 
         ///pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
