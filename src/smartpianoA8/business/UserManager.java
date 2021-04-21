@@ -39,6 +39,18 @@ public class UserManager {
 
         usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
 
+        if (!type.equals("")) {
+            typeIncorrect = false;
+        }
+
+        if(!usernameExists && !emailExists && !typeIncorrect && correctEmail) {
+            User newUser = new User(username, email, type);
+            checkPassword(newUser, password);
+            newUser.setPasswordHash(encryptPassword(password));
+            userDAO.addUser(newUser);
+        }else {
+            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, true);
+        }
 
 
 
@@ -46,7 +58,10 @@ public class UserManager {
 
 
 
-        --------------
+
+
+
+        /*--------------
 
         User newUser = new User(username, email, type);
 
@@ -69,7 +84,7 @@ public class UserManager {
         } else {
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
-        }
+        }*/
     }
 
 
