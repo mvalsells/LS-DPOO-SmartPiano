@@ -17,8 +17,8 @@ public class UserManager {
     private UserDAO userDAO;
 
     //Constructor
-    public UserManager(){
-        userDAO = new SQLUserDAO();
+    public UserManager(UserDAO userDAO){
+        this.userDAO = userDAO;
     }
 
     //TODO Hablar con diseño de vistas para en lugar de crear funciones para cambiar usuario, contraseña, email... Una SOLA funcion a la que mandamos un string con QUE cambiar y el que así nos ahorramos muchas funciones y simplificamos codigo.
@@ -55,12 +55,16 @@ public class UserManager {
     }
 
 
-    public void login(User user) throws UserManagerException {
-        boolean passwordIncorrect = true;
-        boolean usernameIncorrect = true;
-        boolean emailIncorrect = true;
+    public User login(String id, String password) throws UserManagerException {
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
+        /*boolean passwordIncorrect = false;
+        boolean usernameIncorrect = false;
+        boolean emailIncorrect = false;
+        boolean userIncorrect = false;*/
+
+        return userDAO.loginUser(id, encryptPassword(password));
+
+        /*User userTmp = userDAO.getUserByUsername(user.getUsername());
 
         if (userTmp != null) {
             usernameIncorrect = false;
@@ -92,7 +96,7 @@ public class UserManager {
         if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
             //throw new UserManagerException(!usernameIncorrect);
             throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
-        }
+        }*/
 
     }
 
@@ -108,7 +112,7 @@ public class UserManager {
     public boolean modifyEmail(User user, String newEmail){
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user, "Email", newEmail);
+            userDAO.updateDataUser(user.getEmail(), User.UPDATE_EMAIL, newEmail);
             return true;
         }else {
             System.err.println("Not able to change Email from user: " + user.getUsername());
@@ -120,7 +124,7 @@ public class UserManager {
     public boolean modifyPassword(User user, String newPassword) throws PasswordException {
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user, "Password", newPassword);
+            userDAO.updateDataUser(user.getEmail(), User.UPDATE_PASSWORD, newPassword);
             return true;
         }else {
             System.err.println("Not able to change Password from user: " + user.getUsername());
@@ -132,7 +136,7 @@ public class UserManager {
     public boolean modifyUsername(User user, String newUsername){
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user, "Username", newUsername);
+            userDAO.updateDataUser(user.getEmail(), User.UPDATE_USERNAME, newUsername);
             return true;
         }else {
             System.err.println("Not able to change Username from user: " + user.getUsername());
@@ -162,7 +166,7 @@ public class UserManager {
         boolean equalsUsername = false;
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
-        boolean hasNumber = false;
+        boolean hasSpecialChar = false;
 
         Pattern specialCharPattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern upperCasePattern = Pattern.compile("[A-Z ]");
@@ -185,8 +189,8 @@ public class UserManager {
 
         //Ver sin for si tenemos los datos necesarios para una password correcta
 
-        if(specialCharPattern.matcher(password).find()) {
-            hasNumber = true;
+        if(specialCharPattern.matcher(password).find() || digitCasePatten.matcher(password).find()) {
+            hasSpecialChar = true;
         }
         if(upperCasePattern.matcher(password).find()) {
             hasUpperCase = true;
@@ -195,8 +199,8 @@ public class UserManager {
             hasLowerCase = true;
         }
 
-        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasNumber) {
-            throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasNumber);
+        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+            throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasSpecialChar);
         }
     }
 

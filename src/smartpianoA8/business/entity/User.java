@@ -9,6 +9,9 @@ public class User {
     public static final String TYPE_SMARTPIANO = "";
     public static final String TYPE_FACEBOOK = "facebook";
     public static final String TYPE_GOOGLE = "google";
+    public static final String UPDATE_EMAIL = "Email";
+    public static final String UPDATE_USERNAME = "Username";
+    public static final String UPDATE_PASSWORD = "Password";
 
     public User(){
     }
