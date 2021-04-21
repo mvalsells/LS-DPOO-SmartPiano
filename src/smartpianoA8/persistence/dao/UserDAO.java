@@ -31,6 +31,6 @@ public interface UserDAO {
      */
     User getUserByUsername(String username);
 
-    void updateDataUser(User user, String whatToUpdate, String data);
+    //void updateDataUser(User user, String whatToUpdate, String data);
 
 }
