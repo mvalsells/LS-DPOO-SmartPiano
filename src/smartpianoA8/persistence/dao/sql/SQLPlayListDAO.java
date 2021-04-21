@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class SQLPlayListDAO implements PlayListDAO{
 
+    public SQLPlayListDAO(){
+    }
     /**
      * Afegeix / Crea una Playlist a un usuari
      * @param name nom de la playlist
@@ -22,7 +24,7 @@ public class SQLPlayListDAO implements PlayListDAO{
         String query = "INSERT INTO playlist(Nom, NomUsuari) VALUES ('" +
                 name + "', '" +
                 username + "');";
-        SQLConnector.getInstance().insertQuery(query);
+        SQLConnector.insertQuery(query);
     }
 
     /**

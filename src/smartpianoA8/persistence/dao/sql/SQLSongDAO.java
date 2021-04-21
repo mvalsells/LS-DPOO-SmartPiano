@@ -44,26 +44,6 @@ public class SQLSongDAO implements SongDAO {
     }
 
     /**
-     *
-     * @param user
-     * @return
-     */
-    @Override
-    public ArrayList<Song> getFavouriteSongs(User user) {
-        return null;
-    }
-
-    /**
-     *
-     * @param song
-     * @param user
-     */
-    @Override
-    public void addSongToFavourite(Song song, User user) {
-
-    }
-
-    /**
      * Retorna una cançó existent segons l'IDSong d'una Song.
      * @param IDSong Cançó amb IDSong a buscar
      * @return  La cançó SONG a buscar o FALSE si no es troba.

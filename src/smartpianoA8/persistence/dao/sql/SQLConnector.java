@@ -1,61 +1,32 @@
 package smartpianoA8.persistence.dao.sql;
 
-import smartpianoA8.persistence.dao.DBStarter;
-
 import java.sql.*;
 
 /**
  * The SQLConnector class will abstract the specifics of the connection to a MySQL database.
  */
 public class SQLConnector implements DBStarter {
-    private static SQLConnector instance = null;
-
     // Attributes to connect to the database.
-    private static String username;
-    private static String password;
-    private static String ip;
-    private static int port;
     private final String url;
-    private static Connection conn;
-    private static String database;
+    private Connection conn;
 
     // Parametrized constructor
-    private SQLConnector(String username, String password, String ip, int port, String database) {
-        SQLConnector.username = "a8-app";//username;
-        SQLConnector.password = "qVT1lm3Z8Dkuo7vL";//password;
-        SQLConnector.port = 3306;//port;
-        SQLConnector.ip = "dpoo-a8.valsells.me";//ip;
-        SQLConnector.database = "smartpianoa8";//database;
+    public SQLConnector(String username, String password, String ip, int port, String database) {
         this.url = "jdbc:mysql://" + ip + ":" + port + "/" + database;
-    }
-
-
-    /**
-     * Static method that returns the shared instance managed by the singleton.
-     *
-     * @return The shared SQLConnector instance.
-     */
-    public static SQLConnector getInstance(){
-        if (instance == null ){
-            // NOT a good practice to hardcode connection data! Be aware of this for your project delivery ;)
-            instance = new SQLConnector(username, password, ip, port, database);
-            instance.connect();
-        }
-        return instance;
+        connect(username, password);
     }
 
     /**
      * Method that starts the inner connection to the database. Ideally, users would disconnect after
      * using the shared instance.
      */
-    public void connect() {
+    public void connect(String username, String password) {
         try {
             conn = DriverManager.getConnection(url, username, password);
         } catch(SQLException e) {
             System.err.println("Couldn't connect to --> " + url + " (" + e.getMessage() + ")");
         }
     }
-
 
     /**
      * Method that executes an insertion query to the connected database.

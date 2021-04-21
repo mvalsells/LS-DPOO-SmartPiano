@@ -23,21 +23,7 @@ public interface SongDAO {
 
     /**
      *
-     * @param user
-     * @return
-     */
-    ArrayList<Song> getFavouriteSongs(User user);
-
-    /**
-     *
-     * @param song
-     * @param user
-     */
-    void addSongToFavourite(Song song, User user);
-
-    /**
-     *
-     * @param song
+     * @param IDSong
      * @return
      */
     Song getSong(int IDSong);
