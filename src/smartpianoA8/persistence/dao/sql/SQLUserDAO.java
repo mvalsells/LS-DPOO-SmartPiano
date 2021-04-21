@@ -111,4 +111,9 @@ public class SQLUserDAO implements UserDAO {
     public void updateDataUser(String email, String whatToUpdate, String dataToUpdate){
 
     }
+
+    public Boolean userExists(String whatToCheck, String dataToCheck){
+        return false;
+    }
+
 }
