@@ -3,7 +3,10 @@ package smartpianoA8;
 import smartpianoA8.Presentation.views.PianoView;
 import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReader;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.SQLConnector;
+import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 
 import java.io.FileNotFoundException;
 
@@ -22,29 +25,11 @@ public class Main {
             System.exit(ERROR_CODE_FILE);
         }
 
-        String username = jsonReader.getDbUser();
-        String password = jsonReader.getDbPassword();
-        String ip = jsonReader.getDbAddress();
-        int port = jsonReader.getDbPort();
-        String DBname = jsonReader.getDbName();
-
         System.out.println("SmartPiano-A8\n");
 
-
-
-        System.out.println(jsonReader.getDbName());
-        System.out.println(jsonReader.getDbUser());
-        System.out.println(jsonReader.getDbPassword());
-        System.out.println(jsonReader.getDbAddress());
-        System.out.println(jsonReader.getDbPort());
-        System.out.println(jsonReader.gettimeScrapping());
         //connectar
-        SQLConnector connectorSQL = new SQLConnector(username,password,ip,port,DBname);
-
-
-
-
-
+        SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
+        UserDAO user = new SQLUserDAO(connectorSQL);
 
         //PianoView pianoView = new PianoView();
 

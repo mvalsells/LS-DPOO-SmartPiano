@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 public class SQLPlayListDAO implements PlayListDAO{
     private SQLConnector connector;
-
-    public SQLPlayListDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLPlayListDAO(SQLConnector connector){
+        this.connector = connector;
     }
     /**
      * Afegeix / Crea una Playlist a un usuari

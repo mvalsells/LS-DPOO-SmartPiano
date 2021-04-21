@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class SQLSongDAO implements SongDAO {
     private SQLConnector connector;
-    public SQLSongDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLSongDAO(SQLConnector connector){
+        this.connector = connector;
     }
 
 

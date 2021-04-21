@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class SQLUserDAO implements UserDAO {
     private SQLConnector connector;
-    public SQLUserDAO(String username, String password, int port, String ip, String databaseName){
-        SQLConnector connector = new SQLConnector(username,  password,  ip,  port, databaseName);
+    public SQLUserDAO(SQLConnector connector){
+        this.connector = connector;
     }
 
 
