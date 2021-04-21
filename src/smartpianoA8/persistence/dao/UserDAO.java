@@ -38,4 +38,6 @@ public interface UserDAO {
 
     void updateDataUser(String email, String whatToUpdate, String dataToUpdate);
 
+    Boolean userExists(String whatToCheck, String dataToCheck);
+
 }
