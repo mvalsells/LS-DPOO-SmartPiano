@@ -46,7 +46,7 @@ public class Main {
 
 
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
 
 
         ///pianoView.setVisible(true);
