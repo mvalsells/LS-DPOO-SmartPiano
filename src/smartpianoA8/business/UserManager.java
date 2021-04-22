@@ -1,5 +1,15 @@
 package smartpianoA8.business;
 
+import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
+
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
+
 public class UserManager {
     //Atributs
     /*private UserDAO userDAO;
@@ -80,7 +90,6 @@ public class UserManager {
 
 
     public User login(String id, String password) throws UserManagerException {
-
         /*boolean passwordIncorrect = false;
         boolean usernameIncorrect = false;
         boolean emailIncorrect = false;
