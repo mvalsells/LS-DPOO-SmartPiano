@@ -132,11 +132,11 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public void updateDataUser(String email, String whatToUpdate, String dataToUpdate) {
         String query = null;
-        if(whatToUpdate.compareTo(TERM_EMAIL) == 0){
+        if(whatToUpdate.compareTo(User.TERM_EMAIL) == 0){
              query = "UPDATE Users SET Email = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
-        }else if(whatToUpdate.compareTo(TERM_USERNAME) == 0){
+        }else if(whatToUpdate.compareTo(User.TERM_USERNAME) == 0){
              query = "UPDATE Users SET NomUsuari = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
-        }else if(whatToUpdate.compareTo(TERM_PASSWORD) == 0){
+        }else if(whatToUpdate.compareTo(User.TERM_PASSWORD) == 0){
              query = "UPDATE Users SET Contrassenya = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
         }else{
             System.out.print("ERROR: query incorrecta UPDATE, camp passat no coincideix amb res (SQLUserDAO)");
@@ -149,15 +149,15 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public Boolean userExists(String whatToCheck, String dataToCheck){
         String query = null;
-        Boolean bool = false;
-        if(whatToCheck.compareTo(TERM_EMAIL)==0){
+        //Boolean bool = false; Mai s'utilitza, comentat per si de cas, però s'hauria de poder borrar
+        if(whatToCheck.compareTo(User.TERM_EMAIL)==0){
             query = "SELECT Email FROM Users;";
 
 
-        }else if(whatToCheck.compareTo(TERM_PASSWORD)==0){
+        }else if(whatToCheck.compareTo(User.TERM_PASSWORD)==0){
             query = "SELECT Contrassenya FROM Users;";
 
-        }else if(whatToCheck.compareTo(TERM_USERNAME)==0){
+        }else if(whatToCheck.compareTo(User.TERM_USERNAME)==0){
             query = "SELECT NomUsuari FROM Users;";
 
         }else{
@@ -168,7 +168,7 @@ public class SQLUserDAO implements UserDAO {
 
 
         try {
-            while (result.next()) {
+            if (result.next()) {
                 //s'ha trobat mínim un
                 return true;
             }
