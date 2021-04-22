@@ -146,16 +146,19 @@ public class SQLUserDAO implements UserDAO {
         connector.updateQuery(query);
     }
 
+    /**
+     *
+     * @param whatToCheck tipus Email o Username a buscar
+     * @param dataToCheck contingut del Email o Username
+     * @return true o false trobat
+     */
     @Override
     public Boolean userExists(String whatToCheck, String dataToCheck){
         String query = null;
-        //Boolean bool = false; Mai s'utilitza, comentat per si de cas, però s'hauria de poder borrar
+
         if(whatToCheck.compareTo(User.TERM_EMAIL)==0){
             query = "SELECT Email FROM Users;";
 
-
-        }else if(whatToCheck.compareTo(User.TERM_PASSWORD)==0){
-            query = "SELECT Contrassenya FROM Users;";
 
         }else if(whatToCheck.compareTo(User.TERM_USERNAME)==0){
             query = "SELECT NomUsuari FROM Users;";
@@ -164,20 +167,28 @@ public class SQLUserDAO implements UserDAO {
             System.out.print("ERROR: query incorrecta UPDATE, camp passat no coincideix amb res (SQLUserDAO)");
             System.exit(1);
         }
+
+
+
         ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()) {
+                if(whatToCheck.compareTo(User.TERM_EMAIL)==0 && result.getString("Email").compareTo(dataToCheck) == 0){
+                    return true;//un existeix i és email
+                }
 
-
-        try {
-            if (result.next()) {
-                //s'ha trobat mínim un
-                return true;
+                if(whatToCheck.compareTo(User.TERM_USERNAME)==0 && result.getString("NomUsuari").compareTo(dataToCheck) == 0) {
+                    return true;//un existeix i és username
+                }
             }
-        }catch (SQLException e){
-            //no s'ha trobat cap
+            //cap coincideix però algun s'ha trobat
             return false;
+        }catch (SQLException e){
+            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            System.out.print("ERROR: No s'ha trobat CAP usuari (SQLUserDAO)");
+        return false;
         }
 
-        return false;   //necessari pq no peti
     }
 
 }
