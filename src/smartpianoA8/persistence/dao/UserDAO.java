@@ -35,6 +35,12 @@ public interface UserDAO {
 
     void updateDataUser(String email, String whatToUpdate, String dataToUpdate);
 
+    /**
+     *
+     * @param whatToCheck tipus Email o Username a buscar
+     * @param dataToCheck contingut del Email o Username
+     * @return true o false trobat
+     */
     Boolean userExists(String whatToCheck, String dataToCheck);
 
 }
