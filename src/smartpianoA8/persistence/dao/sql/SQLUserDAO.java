@@ -103,18 +103,81 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public User loginUser(String id, String passwordHash) throws UserManagerException{
+        //mirem si és UserName
+        User testUser = getUserByEmail(id);
+        if(testUser != null){
+            if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
+                return testUser;
+            }else{
+                throw new UserManagerException(true, false, false, true);
+            }
 
-        return null;
+        }
+
+        //mirem si és Email
+        testUser = getUserByUsername(id);
+            if(testUser != null){
+                if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
+                    return testUser;
+                }else{
+                    throw new UserManagerException(true, false, false, true);
+                }
+
+            }else{
+                throw new UserManagerException(false, false, false, false);
+            }
+
     }
 
     @Override
     public void updateDataUser(String email, String whatToUpdate, String dataToUpdate) {
+        String query = null;
+        if(whatToUpdate.compareTo(TERM_EMAIL) == 0){
+             query = "UPDATE Users SET Email = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
+        }else if(whatToUpdate.compareTo(TERM_USERNAME) == 0){
+             query = "UPDATE Users SET NomUsuari = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
+        }else if(whatToUpdate.compareTo(TERM_PASSWORD) == 0){
+             query = "UPDATE Users SET Contrassenya = '" + dataToUpdate + "' WHERE Email = '" + email + "';";
+        }else{
+            System.out.print("ERROR: query incorrecta UPDATE, camp passat no coincideix amb res (SQLUserDAO)");
+            System.exit(1);
+        }
 
+        connector.updateQuery(query);
     }
 
     @Override
     public Boolean userExists(String whatToCheck, String dataToCheck){
-        return false;
+        String query = null;
+        Boolean bool = false;
+        if(whatToCheck.compareTo(TERM_EMAIL)==0){
+            query = "SELECT Email FROM Users;";
+
+
+        }else if(whatToCheck.compareTo(TERM_PASSWORD)==0){
+            query = "SELECT Contrassenya FROM Users;";
+
+        }else if(whatToCheck.compareTo(TERM_USERNAME)==0){
+            query = "SELECT NomUsuari FROM Users;";
+
+        }else{
+            System.out.print("ERROR: query incorrecta UPDATE, camp passat no coincideix amb res (SQLUserDAO)");
+            System.exit(1);
+        }
+        ResultSet result = connector.selectQuery(query);
+
+
+        try {
+            while (result.next()) {
+                //s'ha trobat mínim un
+                return true;
+            }
+        }catch (SQLException e){
+            //no s'ha trobat cap
+            return false;
+        }
+
+        return false;   //necessari pq no peti
     }
 
 }
