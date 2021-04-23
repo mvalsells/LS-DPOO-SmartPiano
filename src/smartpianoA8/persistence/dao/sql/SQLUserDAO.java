@@ -20,31 +20,13 @@ public class SQLUserDAO implements UserDAO {
      * @return true si s'ha afegit o false si ja existia
      */
     @Override
-    public Boolean addUser(User user) {
-        String buit = "null";
-        String query = "SELECT NomUsuari, Email FROM Users;";
-        ResultSet result = connector.selectQuery(query);
-
-        try{
-            while(result.next()) {
-                if(result.getString("Email").compareTo(user.getEmail()) == 0 && result.getString("NomUsuari").compareTo(user.getUsername()) == 0){
-                    query = "INSERT INTO User(NomUsuari, Email, Contrassenya, tipus) VALUES ('" +
+    public void addUser(User user) {
+        String query = "INSERT INTO Users(NomUsuari, Email, Contrassenya) VALUES ('" +
                             user.getUsername() + "', '" +
                             user.getEmail() + "', '" +
-                            user.getPasswordHash() + "', '" +
-                            buit +
+                            user.getPasswordHash() +
                             "');";
-                    connector.insertQuery(query);
-                    return true;
-                }
-
-            }
-        }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
-            return false;
-        }
-        return false;
-
+        connector.insertQuery(query);
     }
 
     /**
