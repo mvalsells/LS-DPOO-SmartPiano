@@ -4,14 +4,16 @@ import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
-import smartpianoA8.persistence.dao.sql.SQLConnector;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SQLPlayListDAO implements PlayListDAO{
-
+    private SQLConnector connector;
+    public SQLPlayListDAO(SQLConnector connector){
+        this.connector = connector;
+    }
     /**
      * Afegeix / Crea una Playlist a un usuari
      * @param name nom de la playlist
@@ -22,7 +24,7 @@ public class SQLPlayListDAO implements PlayListDAO{
         String query = "INSERT INTO playlist(Nom, NomUsuari) VALUES ('" +
                 name + "', '" +
                 username + "');";
-        SQLConnector.getInstance().insertQuery(query);
+        connector.insertQuery(query);
     }
 
     /**
@@ -34,7 +36,7 @@ public class SQLPlayListDAO implements PlayListDAO{
     public void addSongToPlayList(Song song, PlayList playList) {
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
-        SQLConnector.getInstance().insertQuery(query);
+        connector.insertQuery(query);
 
 
     }
@@ -47,7 +49,7 @@ public class SQLPlayListDAO implements PlayListDAO{
     @Override
     public void removeSongFromPlayList(PlayList playList, Song song) {
         String query = "DELETE FROM SongPlaylist WHERE idSong = " + song.getIdSong() + ";";
-        SQLConnector.getInstance().deleteQuery(query);
+        connector.deleteQuery(query);
     }
 
     /**
@@ -56,13 +58,10 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void removePlayList(PlayList playList) {
-        //borrar de la cançó, la playlist (la relació)
-        String query = "DELETE FROM PlayList WHERE IDPlayList = " + playList.getIdPlayList() + ";";
-        SQLConnector.getInstance().deleteQuery(query);
 
         //borrar la playlist sencera (data playlist)
-        query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
-        SQLConnector.getInstance().selectQuery(query);
+        String query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
+        connector.selectQuery(query);
     }
 
     /**
@@ -75,7 +74,7 @@ public class SQLPlayListDAO implements PlayListDAO{
         ArrayList<PlayList> llista = null;
 
         String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari LIKE '" + user.getUsername() + "';";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
@@ -96,7 +95,7 @@ public class SQLPlayListDAO implements PlayListDAO{
     @Override
     public PlayList getPlayListData(int IDPlaylist) {
         String query = "SELECT Nom, NomUsuari, IDPlayList FROM Users;";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getInt("IDPlayList") == IDPlaylist){
@@ -119,13 +118,13 @@ public class SQLPlayListDAO implements PlayListDAO{
     public ArrayList<Song> getPlayListSongs(PlayList playList) {
         ArrayList<Song> songs = null;
         String query = "SELECT idSong FROM SongPlaylist WHERE IDPlayList LIKE '" + playList.getIdPlayList() + "';";
-        ResultSet result = SQLConnector.getInstance().selectQuery(query);
+        ResultSet result = connector.selectQuery(query);
         String query2;
 
         try{
             while(result.next()) {
                 query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = " + result.getInt("idSong") + ";";
-                ResultSet result2 = SQLConnector.getInstance().selectQuery(query2);
+                ResultSet result2 = connector.selectQuery(query2);
                 songs.add(new Song(result2.getInt("IDSong"), result2.getTime("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("Directori"), result2.getBoolean("isPublic"), result2.getString("Nomusuari")));
             }
         }catch (SQLException e){

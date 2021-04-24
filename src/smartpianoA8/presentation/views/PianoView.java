@@ -1,4 +1,4 @@
-package smartpianoA8.Presentation.views;
+package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -97,10 +97,10 @@ public class PianoView extends JFrame {
         PanellGeneralCentre.setLayout(new BorderLayout());
 
         JPanel PanellNordGeneral = new JPanel();
-        PanellNordGeneral.setBackground(Color.BLUE);
+        PanellNordGeneral.setBackground(new Color(211,216,221));
 
         JPanel PanellSudGeneral = new JPanel();
-        PanellSudGeneral.setBackground(Color.BLUE);
+        PanellSudGeneral.setBackground(new Color(211,216,221));
 
         JPanel PanelCentralGeneral = new JPanel();
         PanelCentralGeneral.setBackground(Color.CYAN);
@@ -108,10 +108,10 @@ public class PianoView extends JFrame {
 
         /* Panell borders piano*/
         JPanel LateralWest =  new JPanel();
-        LateralWest.setBackground(Color.RED);
+        LateralWest.setBackground(new Color(31,26,26));
 
         JPanel LateralEast = new JPanel();
-        LateralEast.setBackground(Color.RED);
+        LateralEast.setBackground(new Color(31,26,26));
 
         JPanel PosicioCentral= new JPanel();
         PosicioCentral.setBackground(Color.green);
@@ -126,6 +126,7 @@ public class PianoView extends JFrame {
 
         JPanel NordPanellCentre = new JPanel();
         NordPanellCentre.setBackground(Color.GREEN);
+        NordPanellCentre.setLayout(new BorderLayout());
 
         JPanel CentrePanellCentre = new JPanel();
         CentrePanellCentre.setBackground(Color.GRAY);
@@ -146,10 +147,44 @@ public class PianoView extends JFrame {
         ResteCentre.setLayout(new BorderLayout());
 
         JPanel ResteCentreNord = new JPanel();
-        ResteCentreNord.setBackground(Color.PINK);
+        ResteCentreNord.setBackground(new Color(43,43,44));
 
         JPanel ContinuacioCentre = new JPanel();
         ContinuacioCentre.setBackground(Color.orange);
+        ContinuacioCentre.setLayout(new BorderLayout());
+
+        JPanel EastCentre = new JPanel();
+        EastCentre.setBackground(new Color(50,51,51));
+
+        JPanel Teclat = new JPanel();
+        Teclat.setBackground(Color.WHITE);
+
+        /* Botons Piano*/
+
+        JPanel SeparacioBotoWest = new JPanel();
+        SeparacioBotoWest.setBackground(Color.PINK);
+        SeparacioBotoWest.setLayout(new BorderLayout());
+
+        JPanel SeparacioBotoCentre = new JPanel();
+        SeparacioBotoCentre.setBackground(Color.CYAN);
+
+        JPanel SeparacioBotoEast = new JPanel();
+        SeparacioBotoEast.setBackground(Color.MAGENTA);
+
+        /*Botons Piano West*/
+
+        JPanel WestBotoPianoWest = new JPanel();
+        WestBotoPianoWest.setBackground(Color.green);
+
+        JPanel CenterBotoPianoWest = new JPanel();
+        CenterBotoPianoWest.setBackground(Color.DARK_GRAY);
+
+        JPanel EastBotoPianoWest = new JPanel();
+        EastBotoPianoWest.setBackground(Color.BLUE);
+
+
+
+
 
 
 
@@ -201,7 +236,7 @@ public class PianoView extends JFrame {
         SeparacioLateralEast.setBorder(EntreSeparacio);
 
         JLabel SeparacioPanellCentreNord = new JLabel();
-        SeparacioPanellCentreNord.setPreferredSize(new Dimension(5,120));
+        SeparacioPanellCentreNord.setPreferredSize(new Dimension(5,140));
         SeparacioPanellCentreNord.setBorder(EntreSeparacio);
 
         JLabel SeparacioPanellCentreSud = new JLabel();
@@ -212,9 +247,26 @@ public class PianoView extends JFrame {
         SeparacioCentreWest.setPreferredSize(new Dimension(50,0));
         SeparacioCentreWest.setBorder(EntreSeparacio);
 
-        JLabel SeparacioRestaCentreNord= new JLabel();
-        SeparacioRestaCentreNord.setPreferredSize(new Dimension(50,0));
+        JLabel SeparacioCentreEast= new JLabel();
+        SeparacioCentreEast.setPreferredSize(new Dimension(40,0));
+        SeparacioCentreEast.setBorder(EntreSeparacio);
+
+        JLabel SeparacioRestaCentreNord = new JLabel();
+        SeparacioRestaCentreNord.setPreferredSize(new Dimension(0,32));
         SeparacioRestaCentreNord.setBorder(EntreSeparacio);
+
+        JLabel SeparacioPosBotoWest = new JLabel();
+        SeparacioPosBotoWest.setPreferredSize(new Dimension(280,0));
+        SeparacioPosBotoWest.setBorder(EntreSeparacio);
+
+        JLabel SeparacioPosBotoEast = new JLabel();
+        SeparacioPosBotoEast.setPreferredSize(new Dimension(280,0));
+        SeparacioPosBotoEast.setBorder(EntreSeparacio);
+
+
+
+
+
 
 
 
@@ -237,13 +289,30 @@ public class PianoView extends JFrame {
         /*Part Piano*/
 
         /*Centre Piano*/
+        EastCentre.add(SeparacioCentreEast);
+        ContinuacioCentre.add(EastCentre,BorderLayout.EAST);
+        ContinuacioCentre.add(Teclat,BorderLayout.CENTER);
+
+        ResteCentreNord.add(SeparacioRestaCentreNord);
         ResteCentre.add(ResteCentreNord,BorderLayout.NORTH);
+        ResteCentre.add(ContinuacioCentre,BorderLayout.CENTER);
 
         WestCentre.add(SeparacioCentreWest);
         CentrePanellCentre.add(WestCentre,BorderLayout.WEST);
         CentrePanellCentre.add(ResteCentre,BorderLayout.CENTER);
         WestCentre.add(SombrejatWest);
 
+        /*Botons*/
+        SeparacioBotoWest.add(WestBotoPianoWest,BorderLayout.WEST);
+        SeparacioBotoWest.add(CenterBotoPianoWest,BorderLayout.CENTER);
+        SeparacioBotoWest.add(EastBotoPianoWest,BorderLayout.EAST);
+
+        SeparacioBotoWest.add(SeparacioPosBotoWest);
+        SeparacioBotoEast.add(SeparacioPosBotoEast);
+
+        NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
+        NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);
+        NordPanellCentre.add(SeparacioBotoEast,BorderLayout.EAST);
 
         /*Bores*/
         NordPanellCentre.add(SeparacioPanellCentreNord);

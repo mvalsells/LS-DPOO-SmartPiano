@@ -4,30 +4,66 @@ import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
 
 public class UserManager {
     //Atributs
     private UserDAO userDAO;
 
     //Constructor
-    public UserManager(){
-        userDAO = new SQLUserDAO();
+    public UserManager(UserDAO userDAO){
+        this.userDAO = userDAO;
     }
 
     //TODO Hablar con diseño de vistas para en lugar de crear funciones para cambiar usuario, contraseña, email... Una SOLA funcion a la que mandamos un string con QUE cambiar y el que así nos ahorramos muchas funciones y simplificamos codigo.
 
     public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
 
-        //Check user data
+        //mirar si estam bien los datos recibidos
+        boolean correctEmail = false;
         boolean usernameExists = false;
         boolean emailExists = false;
         boolean typeIncorrect = false;
+
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(email.matches(regex)) {
+            System.out.println("Email Matches: " + email);
+            correctEmail = true;
+            emailExists = userDAO.userExists(User.TERM_EMAIL, email);
+        }else {
+            System.out.println("Email failed: " + email);
+        }
+
+        usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
+
+        if (!type.equals("")) {
+            typeIncorrect = false;
+        }
+
+        if(!usernameExists && !emailExists && !typeIncorrect && correctEmail) {
+            User newUser = new User(username, email, type);
+            checkPassword(newUser, password);
+            newUser.setPasswordHash(encryptPassword(password));
+            userDAO.addUser(newUser);
+        }else {
+            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, true);
+        }
+
+
+
+
+
+
+
+
+
+
+        /*--------------
 
         User newUser = new User(username, email, type);
 
@@ -50,16 +86,19 @@ public class UserManager {
         } else {
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
-        }
+        }*/
     }
 
 
-    public void login(User user) throws UserManagerException {
-        boolean passwordIncorrect = true;
-        boolean usernameIncorrect = true;
-        boolean emailIncorrect = true;
+    public User login(String id, String password) throws UserManagerException {
+        /*boolean passwordIncorrect = false;
+        boolean usernameIncorrect = false;
+        boolean emailIncorrect = false;
+        boolean userIncorrect = false;*/
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
+        return userDAO.loginUser(id, encryptPassword(password));
+
+        /*User userTmp = userDAO.getUserByUsername(user.getUsername());
 
         if (userTmp != null) {
             usernameIncorrect = false;
@@ -91,7 +130,7 @@ public class UserManager {
         if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
             //throw new UserManagerException(!usernameIncorrect);
             throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
-        }
+        }*/
 
     }
 
@@ -106,44 +145,38 @@ public class UserManager {
 
     public boolean modifyEmail(User user, String newEmail){
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
-
-        if (userTmp != null){
-            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
-            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
-            userTmp.setEmail(newEmail);
-            userDAO.removeUser(user);
-            userDAO.addUser(userTmp);
-
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user.getEmail(), User.TERM_EMAIL, newEmail);
+            return true;
+        }else {
+            System.err.println("Not able to change Email from user: " + user.getUsername());
+            return false;
         }
-        return true;
+
     }
 
     public boolean modifyPassword(User user, String newPassword) throws PasswordException {
-        UserDAO usrTmp = new SQLUserDAO();
-        checkPassword(user, newPassword);
 
-        if (usrTmp.getUserByUsername(user.getUsername()) != null){
-            //TODO Falta implementació a la interifcie UsuariDAO
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user.getEmail(), User.TERM_PASSWORD, newPassword);
+            return true;
+        }else {
+            System.err.println("Not able to change Password from user: " + user.getUsername());
+            return false;
         }
-        return true;
+
     }
 
     public boolean modifyUsername(User user, String newUsername){
 
-        User userTmp = userDAO.getUserByUsername(user.getUsername());
-
-        if(userTmp != null) {
-            //TODO no es pot fer així donat que és borrari tot relacionat amb el usuari, inclus les playlists
-            // És necessari un metode a userDAO que actualitzes només el correu (funcion SQL tipus UPDATE)
-            userTmp.setUsername(newUsername);
-
-            userDAO.removeUser(user);
-            userDAO.addUser(userTmp);
-
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            userDAO.updateDataUser(user.getEmail(), User.TERM_USERNAME, newUsername);
+            return true;
+        }else {
+            System.err.println("Not able to change Username from user: " + user.getUsername());
+            return false;
         }
 
-        return true;
     }
 
 
@@ -167,7 +200,12 @@ public class UserManager {
         boolean equalsUsername = false;
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
-        boolean hasNumber = false;
+        boolean hasSpecialChar = false;
+
+        Pattern specialCharPattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern upperCasePattern = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePatten = Pattern.compile("[a-z ]");
+        Pattern digitCasePatten = Pattern.compile("[0-9 ]");
 
         if (password.length()<8) {
             passwordToShort = true;
@@ -183,26 +221,20 @@ public class UserManager {
 
         }
 
-        //Comprovació mínim una majuscual, una minuscula i un nombre
-        //TODO Mirar si se puede hacer sin for
-        for (int i=0; i < password.length(); i++){
-            char c = password.charAt(i);
-            if (Character.isDigit(c)){
-                hasNumber = true;
-            } else if (Character.isLowerCase(c)) {
-                hasLowerCase=true;
-            } else if (Character.isUpperCase(c)) {
-                hasUpperCase = true;
-            }
+        //Ver sin for si tenemos los datos necesarios para una password correcta
 
-            //Si ja hem fet les 3 comprovacions podem sortir del for
-            if (hasLowerCase && hasUpperCase && hasNumber) {
-                break;
-            }
+        if(specialCharPattern.matcher(password).find() || digitCasePatten.matcher(password).find()) {
+            hasSpecialChar = true;
+        }
+        if(upperCasePattern.matcher(password).find()) {
+            hasUpperCase = true;
+        }
+        if(lowerCasePatten.matcher(password).find()) {
+            hasLowerCase = true;
         }
 
-        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasNumber) {
-            throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasNumber);
+        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+            throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasSpecialChar);
         }
     }
 

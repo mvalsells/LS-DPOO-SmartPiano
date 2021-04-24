@@ -9,6 +9,9 @@ public class User {
     public static final String TYPE_SMARTPIANO = "";
     public static final String TYPE_FACEBOOK = "facebook";
     public static final String TYPE_GOOGLE = "google";
+    public static final String TERM_EMAIL = "Email";
+    public static final String TERM_USERNAME = "Username";
+    public static final String TERM_PASSWORD = "Password";
 
     public User(){
     }
@@ -51,5 +54,4 @@ public class User {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
-
 }

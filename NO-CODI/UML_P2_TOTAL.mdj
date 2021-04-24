@@ -18651,7 +18651,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 1061,
-											"top": 2014,
+											"top": 2074,
 											"width": 571.54296875,
 											"height": 13,
 											"text": "DBStarter"
@@ -18686,7 +18686,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 1056,
-									"top": 2007,
+									"top": 2067,
 									"width": 581.54296875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -18739,7 +18739,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1061,
-											"top": 2037,
+											"top": 2097,
 											"width": 571.54296875,
 											"height": 13,
 											"text": "+getInstance(): SQL Connector",
@@ -18756,7 +18756,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1061,
-											"top": 2052,
+											"top": 2112,
 											"width": 571.54296875,
 											"height": 13,
 											"text": "+connect(): void",
@@ -18773,78 +18773,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1061,
-											"top": 2067,
-											"width": 571.54296875,
-											"height": 13,
-											"text": "-SQLConnector(username: String, password: String, ip: String, port: int, ip: String, database: String)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF4zy5dVY6L2zU=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy2nSIJoS68="
-											},
-											"model": {
-												"$ref": "AAAAAAF4zy5dQY46jhw="
-											},
-											"font": "Arial;13;0",
-											"left": 1061,
-											"top": 2082,
-											"width": 571.54296875,
-											"height": 13,
-											"text": "+insertQuerry(query: String): void",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF4zy5fdY97tlU=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy2nSIJoS68="
-											},
-											"model": {
-												"$ref": "AAAAAAF4zy5fYY8qyg8="
-											},
-											"font": "Arial;13;0",
-											"left": 1061,
-											"top": 2097,
-											"width": 571.54296875,
-											"height": 13,
-											"text": "+updateQuery(query: String): void",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF4zy5hjpBr4rs=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy2nSIJoS68="
-											},
-											"model": {
-												"$ref": "AAAAAAF4zy5hfJAaWpg="
-											},
-											"font": "Arial;13;0",
-											"left": 1061,
-											"top": 2112,
-											"width": 571.54296875,
-											"height": 13,
-											"text": "+deleteQuery(query: String): void",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF4zy79dp9+K3Q=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy2nSIJoS68="
-											},
-											"model": {
-												"$ref": "AAAAAAF4zy79Yp8tVq8="
-											},
-											"font": "Arial;13;0",
-											"left": 1061,
 											"top": 2127,
 											"width": 571.54296875,
 											"height": 13,
-											"text": "+selectQuery(query: String): void",
+											"text": "-SQLConnector(username: String, password: String, ip: String, port: int, ip: String, database: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -18867,9 +18799,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 1056,
-									"top": 2032,
+									"top": 2092,
 									"width": 581.54296875,
-									"height": 128
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -19661,9 +19593,9 @@
 										"$ref": "AAAAAAF473hwtuMeOS4="
 									},
 									"font": "Arial;13;0",
-									"left": 487,
+									"left": 486,
 									"top": 1419,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -19933,9 +19865,9 @@
 										"$ref": "AAAAAAF473kF6Pa+yG0="
 									},
 									"font": "Arial;13;0",
-									"left": 771,
+									"left": 770,
 									"top": 1383,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -25938,118 +25870,6 @@
 											},
 											"name": "database",
 											"type": "String"
-										}
-									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAF4zy5dQY46jhw=",
-									"_parent": {
-										"$ref": "AAAAAAF4zy2nR4JfMeg="
-									},
-									"name": "insertQuerry",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy6xBZgdHvw=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5dQY46jhw="
-											},
-											"name": "query",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy6xBZge82M=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5dQY46jhw="
-											},
-											"type": "void",
-											"direction": "return"
-										}
-									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAF4zy5fYY8qyg8=",
-									"_parent": {
-										"$ref": "AAAAAAF4zy2nR4JfMeg="
-									},
-									"name": "updateQuery",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy7E1ZpElXU=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5fYY8qyg8="
-											},
-											"name": "query",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy7E1ZpFzmE=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5fYY8qyg8="
-											},
-											"type": "void",
-											"direction": "return"
-										}
-									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAF4zy5hfJAaWpg=",
-									"_parent": {
-										"$ref": "AAAAAAF4zy2nR4JfMeg="
-									},
-									"name": "deleteQuery",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy7cApxrVqE=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5hfJAaWpg="
-											},
-											"name": "query",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy7cApxsokg=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy5hfJAaWpg="
-											},
-											"type": "void",
-											"direction": "return"
-										}
-									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAF4zy79Yp8tVq8=",
-									"_parent": {
-										"$ref": "AAAAAAF4zy2nR4JfMeg="
-									},
-									"name": "selectQuery",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy8WY6N+ejI=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy79Yp8tVq8="
-											},
-											"name": "query",
-											"type": "String"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAF4zy8WZKN/Um0=",
-											"_parent": {
-												"$ref": "AAAAAAF4zy79Yp8tVq8="
-											},
-											"type": "void",
-											"direction": "return"
 										}
 									]
 								},
