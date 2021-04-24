@@ -1,12 +1,14 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class RegisterView extends JFrame {
     //ImageView imageView = new ImageView();
+    BordersView bordersView = new BordersView();
     public RegisterView(){
         conifgureInici();
 
@@ -97,20 +99,18 @@ public class RegisterView extends JFrame {
         //OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),90);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
-        OmplirEstLabel.setBorder(OmplirEstBorder);
+        OmplirEstLabel.setBorder(bordersView.getOmplirEstBorder());
 
         JPanel OmplirOestPanel = new JPanel();
         OmplirOestPanel.setOpaque(false);
         //OmplirOestPanel.setBackground(new Color(101,58,156));
         OmplirOestPanel.setLayout(new BoxLayout(OmplirOestPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),85);
         JLabel OmplirOestLabel = new JLabel();
         OmplirOestLabel.setMinimumSize(new Dimension(200,300));
-        OmplirOestLabel.setBorder(OmplirOestBorder);
+        OmplirOestLabel.setBorder(bordersView.getOmplirOestBorder());
 
         /*Panell secundari Central*/
         JPanel PartCentral = new JPanel();
@@ -126,8 +126,7 @@ public class RegisterView extends JFrame {
         Titular.setPreferredSize(new Dimension(300,100));
         Titular.setFont(new Font("Verdana", Font.PLAIN, 37));
         /*Creem un border per posicionar el text*/
-        EmptyBorder TitularBorder = new EmptyBorder(50,0,0,0);
-        Titular.setBorder(TitularBorder);
+        Titular.setBorder(bordersView.getRegisterTitularBorder());
 
         /*-------------Part Centre-Est-------------*/
         JPanel PanelRegistre = new JPanel();
@@ -135,55 +134,51 @@ public class RegisterView extends JFrame {
         //PanelRegistre.setBackground(new Color(178,102,255));
         PanelRegistre.setLayout(new BoxLayout(PanelRegistre,BoxLayout.Y_AXIS));
 
-        /*Creem borders per posicionar componetns*/
-        LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
-        EmptyBorder TopTextFieldBorder = new EmptyBorder(100,0,10,0);
-        EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
         /*Creem labels per establir espais entre components*/
         JLabel TopTextFieldLabel0 = new JLabel();
         TopTextFieldLabel0.setPreferredSize(new Dimension(5,20));
-        TopTextFieldLabel0.setBorder(TopTextFieldBorder);
+        TopTextFieldLabel0.setBorder(bordersView.getRegisterTopTextFieldBorder());
 
         JLabel EntreTextFieldLabel0 = new JLabel();
         EntreTextFieldLabel0.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel0.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel0.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextFieldLabel1 = new JLabel();
         EntreTextFieldLabel1.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel1.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel1.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextFieldLabel2 = new JLabel();
         EntreTextFieldLabel2.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel2.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel2.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextCheck = new JLabel();
         EntreTextCheck.setPreferredSize(new Dimension(5,20));
-        EntreTextCheck.setBorder(EntreTextFieldBorder);
+        EntreTextCheck.setBorder(bordersView.getEntreTextFieldBorder());
 
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
-        Nom.setBorder(TextFieldBorder);
+        Nom.setBorder(bordersView.getTextFieldBorder());
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
-        Correu.setBorder(TextFieldBorder);
+        Correu.setBorder(bordersView.getTextFieldBorder());
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
-        Contrasenya.setBorder(TextFieldBorder);
+        Contrasenya.setBorder(bordersView.getTextFieldBorder());
         Contrasenya.setOpaque(false);
 
         JTextField RepetirContrasenya = new JTextField("  Repetir Contrasenya",20);
         RepetirContrasenya.setMaximumSize(new Dimension(281,39));
         RepetirContrasenya.setForeground(new Color(255,255,255));
-        RepetirContrasenya.setBorder(TextFieldBorder);
+        RepetirContrasenya.setBorder(bordersView.getTextFieldBorder());
         RepetirContrasenya.setOpaque(false);
 
 
@@ -195,32 +190,27 @@ public class RegisterView extends JFrame {
         //anelAccounts.setBackground(new Color(178,102,255));
         PanelAccounts.setLayout(new BoxLayout(PanelAccounts,BoxLayout.Y_AXIS));
 
-        /*Creem borders per posicionar componetns*/
-        EmptyBorder TopButtonBorder = new EmptyBorder(175,0,10,0);
-        EmptyBorder EntreButtonBorder = new EmptyBorder(7,0,7, 0);
-        LineBorder FacebookButtonBorder = new LineBorder(new Color(0,0,0,1),0);
-        LineBorder GoogleButtonBorder = new LineBorder(new Color(0,0,0,1),0);
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
-        TopButtonLabel.setBorder(TopButtonBorder);
+        TopButtonLabel.setBorder(bordersView.getTopButtonBorder());
 
         JLabel EntreButtonLabel = new JLabel();
         EntreButtonLabel.setPreferredSize(new Dimension(5,20));
-        EntreButtonLabel.setBorder(EntreButtonBorder);
+        EntreButtonLabel.setBorder(bordersView.getEntreButtonBorder());
 
         /*Botons*/
         JButton FaceBookButton = new JButton();
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setMaximumSize(new Dimension(281,40));
-        FaceBookButton.setBorder(FacebookButtonBorder);
+        FaceBookButton.setBorder(bordersView.getFacebookButtonBorder());
         FaceBookButton.setIcon(facebook);
         FaceBookButton.setPressedIcon(facebookPressed);
 
         JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
-        GoogleButton.setBorder(GoogleButtonBorder);
+        GoogleButton.setBorder(bordersView.getGoogleButtonBorder());
         GoogleButton.setIcon(google);
         GoogleButton.setPressedIcon(googlePressed);
 
@@ -237,11 +227,10 @@ public class RegisterView extends JFrame {
         PanelSouth.setLayout(new BoxLayout(PanelSouth,BoxLayout.PAGE_AXIS));
 
         /*Boto register*/
-        /*Borders*/
-        LineBorder RegisterButtonBorder = new LineBorder(new Color(249,171,15),10);
+
         JLabel UpperButtonLabel = new JLabel();
         UpperButtonLabel.setPreferredSize(new Dimension(5,20));
-        UpperButtonLabel.setBorder(RegisterButtonBorder);
+        UpperButtonLabel.setBorder(bordersView.getRegisterButtonBorder());
 
         JPanel PartInferior = new JPanel();
         PartInferior.setLayout(new BorderLayout());
@@ -252,13 +241,13 @@ public class RegisterView extends JFrame {
         ComplementRegistre.setLayout(new BoxLayout(ComplementRegistre,BoxLayout.Y_AXIS));
         ComplementRegistre.setOpaque(false);
 
-        JButton RegisterButton = new JButton("               Registrarse               ");
+        JButton RegisterButton = new JButton("Registrarse");
         //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
         RegisterButton.setPreferredSize(new Dimension(220,39));
         RegisterButton.setBackground(new Color(249,171,15));
         RegisterButton.setForeground(new Color(255,255,255));
         RegisterButton.setBorderPainted(true);
-        RegisterButton.setBorder(RegisterButtonBorder);
+        RegisterButton.setBorder(bordersView.getRegisterButtonBorder());
         //IniciarSessio.setBorderPainted(false);
         RegisterButton.setOpaque(true);
         RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
@@ -274,11 +263,10 @@ public class RegisterView extends JFrame {
         //OmplirSouthPrincipalPanel.setBackground(new Color(101,58,156));
         OmplirSouthPrincipalPanel.setLayout(new BoxLayout(OmplirSouthPrincipalPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirSouthPrincipalBorder = new LineBorder(new Color(0,0,0,1),90);
         JLabel OmplirSouthPrincipalLabel = new JLabel();
         OmplirSouthPrincipalLabel.setOpaque(false);
         OmplirSouthPrincipalLabel.setMinimumSize(new Dimension(200,300));
-        OmplirSouthPrincipalLabel.setBorder(OmplirSouthPrincipalBorder);
+        OmplirSouthPrincipalLabel.setBorder(bordersView.getOmplirSouthPrincipalBorder());
 
         
 

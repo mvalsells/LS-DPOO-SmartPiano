@@ -1,9 +1,11 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import smartpianoA8.presentation.views.BordersView;
 
 public class LoginView extends JFrame {
 
@@ -20,6 +22,8 @@ public class LoginView extends JFrame {
         ImageIcon google = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGooglePressed.png");
         ImageIcon facebookPressed = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionFacebookPressed.png");
+
+        BordersView bordersView = new BordersView();
 
         /*JPanel CapaSuperior = new JPanel();
         JFrame frame = new JFrame();
@@ -84,11 +88,9 @@ public class LoginView extends JFrame {
         PanelSouth.setLayout(new BoxLayout(PanelSouth,BoxLayout.PAGE_AXIS));
 
         /*Boto register*/
-        /*Borders*/
-        LineBorder LoginButtonBorder = new LineBorder(new Color(249,171,15),10);
         JLabel UpperButtonLabel = new JLabel();
         UpperButtonLabel.setPreferredSize(new Dimension(5,20));
-        UpperButtonLabel.setBorder(LoginButtonBorder);
+        UpperButtonLabel.setBorder(bordersView.getLoginButtonBorder());
 
         JPanel PartInferior = new JPanel();
         PartInferior.setLayout(new BorderLayout());
@@ -99,13 +101,13 @@ public class LoginView extends JFrame {
         ComplementLogin.setLayout(new BoxLayout(ComplementLogin,BoxLayout.Y_AXIS));
         ComplementLogin.setOpaque(false);
 
-        JButton LoginButton = new JButton("             Iniciar sesion             ");
+        JButton LoginButton = new JButton("Iniciar sesion");
         //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
         LoginButton.setPreferredSize(new Dimension(220,39));
         LoginButton.setBackground(new Color(249,171,15));
         LoginButton.setForeground(new Color(255,255,255));
         LoginButton.setBorderPainted(true);
-        LoginButton.setBorder(LoginButtonBorder);
+        LoginButton.setBorder(bordersView.getLoginButtonBorder());
         //IniciarSessio.setBorderPainted(false);
         LoginButton.setOpaque(true);
         LoginButton.setFont(new Font("Verdana",Font.BOLD,12));
@@ -117,11 +119,11 @@ public class LoginView extends JFrame {
         //OmplirSouthPrincipalPanel.setBackground(new Color(101,58,156));
         OmplirSouthPrincipalPanel.setLayout(new BoxLayout(OmplirSouthPrincipalPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirSouthPrincipalBorder = new LineBorder(new Color(0,0,0,1),90);
+
         JLabel OmplirSouthPrincipalLabel = new JLabel();
         OmplirSouthPrincipalLabel.setOpaque(false);
         OmplirSouthPrincipalLabel.setMinimumSize(new Dimension(200,300));
-        OmplirSouthPrincipalLabel.setBorder(OmplirSouthPrincipalBorder);
+        OmplirSouthPrincipalLabel.setBorder(bordersView.getOmplirSouthPrincipalBorder());
 
 
 
@@ -134,20 +136,18 @@ public class LoginView extends JFrame {
         //OmplirEstPanel.setBackground(new Color(101,58,156));
         OmplirEstPanel.setLayout(new BoxLayout(OmplirEstPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),100);
         JLabel OmplirEstLabel = new JLabel();
         OmplirEstLabel.setMinimumSize(new Dimension(200,300));
-        OmplirEstLabel.setBorder(OmplirEstBorder);
+        OmplirEstLabel.setBorder(bordersView.getOmplirEstBorder());
 
         JPanel OmplirOestPanel = new JPanel();
         OmplirOestPanel.setOpaque(false);
         //OmplirOestPanel.setBackground(new Color(101,58,156));
         OmplirOestPanel.setLayout(new BoxLayout(OmplirOestPanel,BoxLayout.Y_AXIS));
 
-        LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),85);
         JLabel OmplirOestLabel = new JLabel();
         OmplirOestLabel.setMinimumSize(new Dimension(200,300));
-        OmplirOestLabel.setBorder(OmplirOestBorder);
+        OmplirOestLabel.setBorder(bordersView.getOmplirOestBorder());
 
         /*Panell secundari Central*/
         JPanel PartCentral = new JPanel();
@@ -158,11 +158,6 @@ public class LoginView extends JFrame {
 
         /*-------------Part Centre-Nord-------------*/
         /*Text*/
-        JLabel Titular = new JLabel();
-        Titular.setPreferredSize(new Dimension(300,100));
-        /*Creem un border per posicionar el text*/
-        EmptyBorder TitularBorder = new EmptyBorder(50,0,0,0);
-        Titular.setBorder(TitularBorder);
 
         /*-------------Part Centre-Est-------------*/
         JPanel PanelRegistre = new JPanel();
@@ -170,63 +165,52 @@ public class LoginView extends JFrame {
         PanelRegistre.setLayout(new BoxLayout(PanelRegistre,BoxLayout.Y_AXIS));
 
         /*Creem borders per posicionar componetns*/
-        LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
-        LineBorder ButtonTextBorder = new LineBorder(new Color(255,255,255,0),0);
-        EmptyBorder TopTextFieldBorder = new EmptyBorder(150,0,10,0);
-        EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
-        EmptyBorder EntreButtonButtonBorder = new EmptyBorder(0,0,10,0);
+
         /*Creem labels per establir espais entre components*/
         JLabel TopTextFieldLabel0 = new JLabel();
         TopTextFieldLabel0.setPreferredSize(new Dimension(5,20));
-        TopTextFieldLabel0.setBorder(TopTextFieldBorder);
+        TopTextFieldLabel0.setBorder(bordersView.getLoginTopTextFieldBorder());
 
         JLabel EntreTextFieldLabel0 = new JLabel();
         EntreTextFieldLabel0.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel0.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel0.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextFieldLabel1 = new JLabel();
         EntreTextFieldLabel1.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel1.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel1.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextFieldLabel2 = new JLabel();
         EntreTextFieldLabel2.setPreferredSize(new Dimension(5,20));
-        EntreTextFieldLabel2.setBorder(EntreTextFieldBorder);
+        EntreTextFieldLabel2.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreTextButtonLabel = new JLabel();
         EntreTextButtonLabel.setPreferredSize(new Dimension(5,20));
-        EntreTextButtonLabel.setBorder(EntreTextFieldBorder);
+        EntreTextButtonLabel.setBorder(bordersView.getEntreTextFieldBorder());
 
         JLabel EntreButtonButtonLabel = new JLabel();
         EntreButtonButtonLabel.setPreferredSize(new Dimension(5,20));
-        EntreButtonButtonLabel.setBorder(EntreButtonButtonBorder);
+        EntreButtonButtonLabel.setBorder(bordersView.getEntreButtonButtonBorder());
 
         /*Creem les zones per escriure*/
         JTextField Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
-        Nom.setBorder(TextFieldBorder);
+        Nom.setBorder(bordersView.getTextFieldBorder());
         Nom.setOpaque(false);
 
         JTextField Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
-        Correu.setBorder(TextFieldBorder);
+        Correu.setBorder(bordersView.getTextFieldBorder());
         Correu.setOpaque(false);
 
         JTextField Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
-        Contrasenya.setBorder(TextFieldBorder);
+        Contrasenya.setBorder(bordersView.getTextFieldBorder());
         Contrasenya.setOpaque(false);
 
-        JButton IniciarSessioButton = new JButton("Iniciar sesion");
-        IniciarSessioButton.setFont(new Font("Verdana",Font.BOLD,12));
-        IniciarSessioButton.setForeground(new Color(255,255,255));
-        IniciarSessioButton.setBackground(new Color(249,171,15));
-        IniciarSessioButton.setPreferredSize(new Dimension(170,35));
-        IniciarSessioButton.setBorderPainted(false);
-        IniciarSessioButton.setOpaque(true);
-        IniciarSessioButton.setVisible(true);
+
 
         JButton NoTensCompteButton = new JButton("¿Aun no tienes cuenta?");
         NoTensCompteButton.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -234,7 +218,7 @@ public class LoginView extends JFrame {
         NoTensCompteButton.setForeground(new Color(255,255,255));
         NoTensCompteButton.setBackground(new Color(249,171,15));
         NoTensCompteButton.setPreferredSize(new Dimension(120,25));
-        NoTensCompteButton.setBorder(ButtonTextBorder);
+        NoTensCompteButton.setBorder(bordersView.getButtonTextBorder());
         NoTensCompteButton.setOpaque(false);
         NoTensCompteButton.setVisible(true);
 
@@ -250,24 +234,21 @@ public class LoginView extends JFrame {
         //anelAccounts.setBackground(new Color(178,102,255));
         PanelAccounts.setLayout(new BoxLayout(PanelAccounts,BoxLayout.Y_AXIS));
 
-        /*Creem borders per posicionar componetns*/
-        EmptyBorder TopButtonBorder = new EmptyBorder(175,0,10,0);
-        EmptyBorder EntreButtonBorder = new EmptyBorder(7,10,7, 0);
-        LineBorder ButtonLineBorder = new LineBorder(new Color(255,255,255,1),0);
+
         /*Creem labels per establir espais entre components*/
         JLabel TopButtonLabel = new JLabel();
         TopButtonLabel.setPreferredSize(new Dimension(5,20));
-        TopButtonLabel.setBorder(TopButtonBorder);
+        TopButtonLabel.setBorder(bordersView.getTopButtonBorder());
 
         JLabel EntreButtonLabel = new JLabel();
         EntreButtonLabel.setPreferredSize(new Dimension(5,20));
-        EntreButtonLabel.setBorder(EntreButtonBorder);
+        EntreButtonLabel.setBorder(bordersView.getEntreButtonBorder());
 
         /*Botons*/
         JButton FaceBookButton = new JButton();
         FaceBookButton.setPreferredSize(new Dimension(270,50));
         FaceBookButton.setMaximumSize(new Dimension(281,40));
-        FaceBookButton.setBorder(ButtonLineBorder);
+        FaceBookButton.setBorder(bordersView.getFacebookButtonBorder());
         FaceBookButton.setIcon(facebook);
         FaceBookButton.setPressedIcon(facebookPressed);
 
@@ -276,7 +257,7 @@ public class LoginView extends JFrame {
         JButton GoogleButton = new JButton();
         GoogleButton.setPreferredSize(new Dimension(270,50));
         GoogleButton.setMaximumSize(new Dimension(281,40));
-        GoogleButton.setBorder(ButtonLineBorder);
+        GoogleButton.setBorder(bordersView.getGoogleButtonBorder());
         GoogleButton.setIcon(google);
         GoogleButton.setPressedIcon(googlePressed);
 
@@ -301,7 +282,6 @@ public class LoginView extends JFrame {
         panel.add(PartCentral,BorderLayout.CENTER);
 
         /*Nord*/
-        PartCentral.add(Titular,BorderLayout.NORTH);
 
         /*Est*/
         PanelRegistre.add(TopTextFieldLabel0);
