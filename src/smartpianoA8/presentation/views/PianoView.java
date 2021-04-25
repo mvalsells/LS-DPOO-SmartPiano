@@ -11,14 +11,19 @@ public class PianoView extends JFrame {
     public PianoView(){
         configurePiano();
     }
+    BordersView bordersView = new BordersView();
 
     private void configurePiano(){
 
         smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
         smartpianoA8.presentation.views.ImageView SombrejatWest = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
+        smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
         ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
+        ImageIcon CancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
         ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
-        ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.png");
+        ImageIcon Mis_FavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
+        ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
+        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.png");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
 
@@ -46,48 +51,48 @@ public class PianoView extends JFrame {
 
         JButton BotoCanço = new JButton();
         //BotoCanço.setForeground(new Color(255,255,255));
-        //BotoCanço.setBackground(new Color(249,171,15));
-        BotoCanço.setPreferredSize(new Dimension(68,60));
-        BotoCanço.setBorderPainted(false);
-        BotoCanço.setOpaque(false);
+        BotoCanço.setAlignmentY(SwingConstants.RIGHT);
+        BotoCanço.setBackground(new Color(20,22,33));
+        BotoCanço.setPreferredSize(new Dimension(68,68));
+        BotoCanço.setBorder(bordersView.getGoogleButtonBorder());
+        BotoCanço.setBorderPainted(true);
         BotoCanço.setIcon(Canciones);
-        BotoCanço.setVisible(true);
+        BotoCanço.setPressedIcon(CancionesSelect);
 
         JButton BotoPreferit = new JButton();
         //BotoPreferit.setForeground(new Color(255,255,255));
-        //BotoPreferit.setBackground(new Color(249,171,15));
+        BotoPreferit.setBackground(new Color(20,22,33));
         BotoPreferit.setPreferredSize(new Dimension(68,68));
-        BotoPreferit.setBorderPainted(false);
-        BotoPreferit.setOpaque(false);
+        BotoPreferit.setBorder(bordersView.getGoogleButtonBorder());
+        BotoPreferit.setBorderPainted(true);
         BotoPreferit.setIcon(Mis_Favoritas);
-        BotoPreferit.setVisible(true);
+        BotoPreferit.setPressedIcon(Mis_FavoritasSelect);
 
         JButton BotoPiano = new JButton();
         //BotoPiano.setForeground(new Color(255,255,255));
-        //BotoPiano.setBackground(new Color(249,171,15));
-        BotoPiano.setPreferredSize(new Dimension(70,70));
-        BotoPiano.setBorderPainted(false);
-        BotoPiano.setOpaque(false);
+        BotoPiano.setBackground(new Color(20,22,33));
+        BotoPiano.setPreferredSize(new Dimension(68,68));
+        BotoPiano.setBorder(bordersView.getGoogleButtonBorder());
+        BotoPiano.setBorderPainted(true);
         BotoPiano.setIcon(Piano);
-        BotoPiano.setVisible(true);
+        BotoPiano.setPressedIcon(PianoSelect);
 
         JButton BotoDescargar = new JButton();
         //BotoDescargar.setForeground(new Color(255,255,255));
-        //BotoDescargar.setBackground(new Color(249,171,15));
+        BotoDescargar.setBackground(new Color(20,22,33));
         BotoDescargar.setPreferredSize(new Dimension(68,68));
-        BotoDescargar.setBorderPainted(false);
-        BotoDescargar.setOpaque(false);
+        BotoDescargar.setBorderPainted(true);
         BotoDescargar.setIcon(Descargar);
-        BotoDescargar.setVisible(true);
+        BotoDescargar.setBorder(bordersView.getGoogleButtonBorder());
+
 
         JButton BotoAjustes = new JButton();
         //BotoAjustes.setForeground(new Color(255,255,255));
-        //BotoAjustes.setBackground(new Color(249,171,15));
-        BotoAjustes.setPreferredSize(new Dimension(85,68));
-        BotoAjustes.setBorderPainted(false);
-        BotoAjustes.setOpaque(false);
+        BotoAjustes.setBackground(new Color(20,22,33));
+        BotoAjustes.setPreferredSize(new Dimension(68,68));
+        BotoAjustes.setBorderPainted(true);
+        BotoAjustes.setBorder(bordersView.getGoogleButtonBorder());
         BotoAjustes.setIcon(Ajustes);
-        BotoAjustes.setVisible(true);
 
 
         /*-----------------------------------------PART CENTRE-----------------------------------------*/
@@ -167,6 +172,7 @@ public class PianoView extends JFrame {
 
         JPanel SeparacioBotoCentre = new JPanel();
         SeparacioBotoCentre.setBackground(Color.RED);
+        SeparacioBotoCentre.setBorder(new LineBorder(new Color(0,155,255),20));
 
         JPanel SeparacioBotoEast = new JPanel();
         SeparacioBotoEast.setBackground(Color.MAGENTA);
@@ -308,6 +314,7 @@ public class PianoView extends JFrame {
 
         SeparacioBotoWest.add(SeparacioPosBotoWest);
         SeparacioBotoEast.add(SeparacioPosBotoEast);
+
 
         NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
         NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);

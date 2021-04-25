@@ -9,6 +9,13 @@ import java.awt.*;
 public class BordersView {
 
     /*Classe on inicialitzarem els borders*/
+    /*IniciView*/
+    /*Barra lateral botons*/
+    private final LineBorder IniciViewButtonLineBorder = new LineBorder(new Color(249,171,15,1),0);
+    private final EmptyBorder IniciViewButtonEmptyBorder = new EmptyBorder(0,5,0,0);
+    private final CompoundBorder IniciViewButtonBorder = new CompoundBorder(IniciViewButtonEmptyBorder,IniciViewButtonLineBorder);
+
+
     /*Register and Login*/
         /*------------------------------------------PART INFERIOR------------------------------------------*/
             private final LineBorder OmplirSouthPrincipalBorder = new LineBorder(new Color(0,0,0,1),90);
@@ -53,7 +60,12 @@ public class BordersView {
 
 
     /*GETTERS*/
+    /*IniciView*/
+    public Border getIniciViewButtonBorder(){
 
+        return this.IniciViewButtonBorder;
+
+    }
     /*Register and Login*/
     public Border getOmplirSouthPrincipalBorder(){
 

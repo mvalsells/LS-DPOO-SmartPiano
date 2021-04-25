@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -9,13 +10,16 @@ public class IniciView extends JFrame {
     public IniciView(){
         configureMenu();
     }
-
+    BordersView bordersView = new BordersView();
     private void configureMenu(){
 
         smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
-        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
+        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
+        ImageIcon CancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
         ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
+        ImageIcon Mis_FavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
         ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
+        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.png");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
         JFrame jFrameMenu = new JFrame();
@@ -40,50 +44,55 @@ public class IniciView extends JFrame {
         Botons.setOpaque(false);
         Botons.setLayout(new BoxLayout(Botons,BoxLayout.Y_AXIS));
 
+
+
+
         JButton BotoCanço = new JButton();
         //BotoCanço.setForeground(new Color(255,255,255));
-        //BotoCanço.setBackground(new Color(249,171,15));
-        BotoCanço.setPreferredSize(new Dimension(68,60));
-        BotoCanço.setBorderPainted(false);
-        BotoCanço.setOpaque(false);
+        BotoCanço.setAlignmentY(SwingConstants.RIGHT);
+        BotoCanço.setBackground(new Color(20,22,33));
+        BotoCanço.setPreferredSize(new Dimension(68,68));
+        BotoCanço.setBorder(bordersView.getGoogleButtonBorder());
+        BotoCanço.setBorderPainted(true);
         BotoCanço.setIcon(Canciones);
-        BotoCanço.setVisible(true);
+        BotoCanço.setPressedIcon(CancionesSelect);
 
         JButton BotoPreferit = new JButton();
         //BotoPreferit.setForeground(new Color(255,255,255));
-        //BotoPreferit.setBackground(new Color(249,171,15));
+        BotoPreferit.setBackground(new Color(20,22,33));
         BotoPreferit.setPreferredSize(new Dimension(68,68));
-        BotoPreferit.setBorderPainted(false);
-        BotoPreferit.setOpaque(false);
+        BotoPreferit.setBorder(bordersView.getGoogleButtonBorder());
+        BotoPreferit.setBorderPainted(true);
         BotoPreferit.setIcon(Mis_Favoritas);
-        BotoPreferit.setVisible(true);
+        BotoPreferit.setPressedIcon(Mis_FavoritasSelect);
 
         JButton BotoPiano = new JButton();
         //BotoPiano.setForeground(new Color(255,255,255));
-        //BotoPiano.setBackground(new Color(249,171,15));
+        BotoPiano.setBackground(new Color(20,22,33));
         BotoPiano.setPreferredSize(new Dimension(68,68));
-        BotoPiano.setBorderPainted(false);
-        BotoPiano.setOpaque(false);
+        BotoPiano.setBorder(bordersView.getGoogleButtonBorder());
+        BotoPiano.setBorderPainted(true);
         BotoPiano.setIcon(Piano);
-        BotoPiano.setVisible(true);
+        BotoPiano.setPressedIcon(PianoSelect);
 
         JButton BotoDescargar = new JButton();
         //BotoDescargar.setForeground(new Color(255,255,255));
-        //BotoDescargar.setBackground(new Color(249,171,15));
+        BotoDescargar.setBackground(new Color(20,22,33));
         BotoDescargar.setPreferredSize(new Dimension(68,68));
-        BotoDescargar.setBorderPainted(false);
-        BotoDescargar.setOpaque(false);
+        BotoDescargar.setBorderPainted(true);
         BotoDescargar.setIcon(Descargar);
-        BotoDescargar.setVisible(true);
+        BotoDescargar.setBorder(bordersView.getGoogleButtonBorder());
+
+        LineBorder prova = new LineBorder(new Color(0,0,0,1),0);
 
         JButton BotoAjustes = new JButton();
         //BotoAjustes.setForeground(new Color(255,255,255));
-        //BotoAjustes.setBackground(new Color(249,171,15));
-        BotoAjustes.setPreferredSize(new Dimension(85,68));
-        BotoAjustes.setBorderPainted(false);
-        BotoAjustes.setOpaque(false);
+        BotoAjustes.setBackground(new Color(20,22,33));
+        BotoAjustes.setPreferredSize(new Dimension(68,68));
+        BotoAjustes.setBorderPainted(true);
+        BotoAjustes.setBorder(bordersView.getGoogleButtonBorder());
         BotoAjustes.setIcon(Ajustes);
-        BotoAjustes.setVisible(true);
+
 
 
 
@@ -173,7 +182,7 @@ public class IniciView extends JFrame {
         EspaiDesplegable2.setBackground(new Color(12,14,22));
 
         JPanel Desplega = new JPanel();
-        Desplega.setBackground(new Color(20,22,33));
+        Desplega.setBackground(new Color(12,14,22));
         //EspaiDesplegable.setLayout(new BorderLayout());
 
 
@@ -181,8 +190,9 @@ public class IniciView extends JFrame {
 
         /*Creem borders per posicionar componetns*/
         LineBorder Separacio = new LineBorder(new Color(255,255,255),2);
-        EmptyBorder TopSeparacio = new EmptyBorder(40,0,10,0);
-        EmptyBorder EntreSeparacio = new EmptyBorder(500,0,10, 0);
+        EmptyBorder TopSeparacio = new EmptyBorder(20,0,10,0);
+        EmptyBorder EntreSeparacio = new EmptyBorder(20,0,10, 0);
+        EmptyBorder EntreSeparacioPatata = new EmptyBorder(300,0,10, 0);
         EmptyBorder EntreSeparacio02 = new EmptyBorder(40,0,500, 0);
         EmptyBorder EntreSeparacio03 = new EmptyBorder(0,0,0, 400);
 
@@ -200,7 +210,7 @@ public class IniciView extends JFrame {
         TopSeparacio2.setBorder(TopSeparacio);
 
         JLabel EntreSeparacio0 = new JLabel();
-        EntreSeparacio0.setPreferredSize(new Dimension(5,40));
+        EntreSeparacio0.setPreferredSize(new Dimension(5,20));
         EntreSeparacio0.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio1 = new JLabel();
@@ -212,8 +222,7 @@ public class IniciView extends JFrame {
         EntreSeparacio2.setBorder(EntreSeparacio);
 
         JLabel EntreSeparacio3 = new JLabel();
-        EntreSeparacio3.setPreferredSize(new Dimension(5,300));
-        EntreSeparacio3.setBorder(EntreSeparacio);
+        EntreSeparacio3.setBorder(EntreSeparacioPatata);
 
         JLabel EntreSeparacio4 = new JLabel();
         EntreSeparacio4.setPreferredSize(new Dimension(5,80));
