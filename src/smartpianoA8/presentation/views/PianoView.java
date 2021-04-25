@@ -166,7 +166,7 @@ public class PianoView extends JFrame {
         SeparacioBotoWest.setLayout(new BorderLayout());
 
         JPanel SeparacioBotoCentre = new JPanel();
-        SeparacioBotoCentre.setBackground(Color.CYAN);
+        SeparacioBotoCentre.setBackground(Color.RED);
 
         JPanel SeparacioBotoEast = new JPanel();
         SeparacioBotoEast.setBackground(Color.MAGENTA);
@@ -181,6 +181,7 @@ public class PianoView extends JFrame {
 
         JPanel EastBotoPianoWest = new JPanel();
         EastBotoPianoWest.setBackground(Color.BLUE);
+        //EastBotoPianoWest.setLayout(new BorderLayout());
 
 
 
@@ -263,6 +264,13 @@ public class PianoView extends JFrame {
         SeparacioPosBotoEast.setPreferredSize(new Dimension(280,0));
         SeparacioPosBotoEast.setBorder(EntreSeparacio);
 
+        JLabel SeparacioEastBotoWest = new JLabel();
+        SeparacioEastBotoWest.setPreferredSize(new Dimension(200,0));
+        SeparacioEastBotoWest.setBorder(EntreSeparacio);
+
+        JLabel SeparacioWestBotoWest = new JLabel();
+        SeparacioWestBotoWest.setPreferredSize(new Dimension(200,0));
+        SeparacioWestBotoWest.setBorder(EntreSeparacio);
 
 
 
@@ -287,6 +295,23 @@ public class PianoView extends JFrame {
         PanelMenu.add(PanelLateral,BorderLayout.WEST);
 
         /*Part Piano*/
+        /*Botons*/
+
+        //EastBotoPianoWest.add(SeparacioEastBotoWest);
+
+        //WestBotoPianoWest.add(SeparacioWestBotoWest);
+        SeparacioBotoWest.add(WestBotoPianoWest,BorderLayout.WEST);
+        SeparacioBotoWest.add(CenterBotoPianoWest,BorderLayout.CENTER);
+        SeparacioBotoWest.add(EastBotoPianoWest,BorderLayout.EAST);
+
+
+
+        SeparacioBotoWest.add(SeparacioPosBotoWest);
+        SeparacioBotoEast.add(SeparacioPosBotoEast);
+
+        NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
+        NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);
+        NordPanellCentre.add(SeparacioBotoEast,BorderLayout.EAST);
 
         /*Centre Piano*/
         EastCentre.add(SeparacioCentreEast);
@@ -302,17 +327,7 @@ public class PianoView extends JFrame {
         CentrePanellCentre.add(ResteCentre,BorderLayout.CENTER);
         WestCentre.add(SombrejatWest);
 
-        /*Botons*/
-        SeparacioBotoWest.add(WestBotoPianoWest,BorderLayout.WEST);
-        SeparacioBotoWest.add(CenterBotoPianoWest,BorderLayout.CENTER);
-        SeparacioBotoWest.add(EastBotoPianoWest,BorderLayout.EAST);
 
-        SeparacioBotoWest.add(SeparacioPosBotoWest);
-        SeparacioBotoEast.add(SeparacioPosBotoEast);
-
-        NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
-        NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);
-        NordPanellCentre.add(SeparacioBotoEast,BorderLayout.EAST);
 
         /*Bores*/
         NordPanellCentre.add(SeparacioPanellCentreNord);
