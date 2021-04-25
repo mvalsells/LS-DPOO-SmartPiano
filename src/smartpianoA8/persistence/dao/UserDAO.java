@@ -9,7 +9,7 @@ public interface UserDAO {
      * @param user
      * @return
      */
-    Boolean addUser(User user);
+    void addUser(User user);
 
     /**
      *

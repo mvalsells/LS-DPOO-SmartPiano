@@ -1,5 +1,6 @@
 package smartpianoA8;
 
+import smartpianoA8.business.UserManager;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
@@ -8,10 +9,10 @@ import smartpianoA8.persistence.JsonReader;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.SQLConnector;
 import smartpianoA8.persistence.dao.sql.SQLUserDAO;
-import smartpianoA8.presentation.views.IniciView;
 import smartpianoA8.presentation.views.PianoView;
 
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws PasswordException, UserManagerException {
@@ -40,7 +41,7 @@ public class Main {
 
 
         //Test register
-        /*UserManager userManager = new UserManager(user);
+        UserManager userManager = new UserManager(user);
         Scanner sc = new Scanner(System.in);
         System.out.print("\n\n\nUsername: ");
         String username = sc.nextLine();
@@ -51,7 +52,7 @@ public class Main {
         System.out.print("Type: ");
         String type = sc.nextLine();
 
-        userManager.registerUser(username,email,password,type);*/
+        userManager.registerUser(username,email,password,type);
 
 
 
@@ -59,8 +60,8 @@ public class Main {
         PianoView pianoView = new PianoView();
 
 
-        //pianoView.setVisible(true);
-        IniciView menuView = new IniciView();
+        ///pianoView.setVisible(true);
+        //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
         ///registerView.setSize(400,400);
