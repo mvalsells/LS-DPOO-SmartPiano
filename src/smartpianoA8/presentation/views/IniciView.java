@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -19,7 +18,7 @@ public class IniciView extends JFrame {
         ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
         ImageIcon Mis_FavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
         ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.png");
+        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
         JFrame jFrameMenu = new JFrame();

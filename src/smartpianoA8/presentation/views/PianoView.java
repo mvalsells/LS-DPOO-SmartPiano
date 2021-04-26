@@ -1,21 +1,73 @@
 package smartpianoA8.presentation.views;
 
+import javax.sound.midi.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class PianoView extends JFrame {
+public class PianoView extends JFrame implements MouseListener {
 
     public PianoView(){
         configurePiano();
+        try {
+            Synthesizer synth = MidiSystem.getSynthesizer();
+            synth.open();
+            synth.loadAllInstruments(synth.getDefaultSoundbank());
+            Instrument[] insts = synth.getLoadedInstruments();
+            MidiChannel channels[] = synth.getChannels();
+            for (int i = 0; i < channels.length; i++) {
+                if (channels[i] != null) {
+                    channel = channels[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < insts.length; i++) {
+                if (insts[i].toString()
+                        .startsWith("Instrument MidiPiano")) {
+                    channel.programChange(i);
+                    break;
+                }
+            }
+        } catch (MidiUnavailableException ex) {
+            ex.printStackTrace();
+        }
     }
     BordersView bordersView = new BordersView();
+    final int OCTAVES = 3; // change as desired
+
+    private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
+    private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
+
+    MidiChannel channel;
+
+    public void mousePressed(MouseEvent e) {
+        Key key = (Key) e.getSource();
+        channel.noteOn(key.getNote(), 127);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        Key key = (Key) e.getSource();
+        channel.noteOff(key.getNote());
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
+    }
 
     private void configurePiano(){
 
         smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
+
         smartpianoA8.presentation.views.ImageView SombrejatWest = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
         smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
         ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
@@ -23,9 +75,11 @@ public class PianoView extends JFrame {
         ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
         ImageIcon Mis_FavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
         ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.png");
+        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
+
+
 
 
 
@@ -161,8 +215,39 @@ public class PianoView extends JFrame {
         JPanel EastCentre = new JPanel();
         EastCentre.setBackground(new Color(50,51,51));
 
-        JPanel Teclat = new JPanel();
-        Teclat.setBackground(Color.WHITE);
+        JPanel Teclat = new JPanel(null){
+            @Override
+            public Dimension getPreferredSize() {
+                int count = getComponentCount();
+                Component last = getComponent(count - 1);
+                Rectangle bounds = last.getBounds();
+                int width = 10 + bounds.x + bounds.width;
+                int height = 10 + bounds.y + bounds.height;
+
+                return new Dimension(width, height);
+            }
+
+
+        };
+        Teclat.setBackground(Color.BLACK);
+
+        for (int i = 0; i < blacks.length; i++) {
+            blacks[i] = new BlackKey(i);
+            blacks[i].setBackground(Color.BLACK);
+            //blacks[i].setOpaque(true);
+            //blacks[i].setContentAreaFilled(true);
+            Teclat.add(blacks[i]);
+            blacks[i].addMouseListener( this);
+
+        }
+        for (int i = 0; i < whites.length; i++) {
+            whites[i] = new WhiteKey(i);
+            Teclat.add(whites[i]);
+            whites[i].addMouseListener(this);
+        }
+
+        JPanel BordrePiano = new JPanel();
+        BordrePiano.setBackground(Color.BLACK);
 
         /* Botons Piano*/
 
@@ -188,9 +273,6 @@ public class PianoView extends JFrame {
         JPanel EastBotoPianoWest = new JPanel();
         EastBotoPianoWest.setBackground(Color.BLUE);
         //EastBotoPianoWest.setLayout(new BorderLayout());
-
-
-
 
 
 
@@ -285,6 +367,7 @@ public class PianoView extends JFrame {
 
 
 
+
         /*Packin' area*/
         /*Part West Botons*/
         Botons.add(TopSeparacio0);
@@ -365,7 +448,7 @@ public class PianoView extends JFrame {
         PanellGeneralCentre.add(PanellNordGeneral,BorderLayout.NORTH);
         PanelMenu.add(PanellGeneralCentre,BorderLayout.CENTER);
 
-        jFramePiano.setResizable(false);
+        jFramePiano.setResizable(true);
         jFramePiano.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFramePiano.getContentPane().add("Ref_1",PanelMenu);
         jFramePiano.setPreferredSize(new Dimension(1000,820));
