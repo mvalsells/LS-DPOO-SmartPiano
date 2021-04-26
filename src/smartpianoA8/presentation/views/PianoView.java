@@ -257,10 +257,12 @@ public class PianoView extends JFrame implements MouseListener {
 
         JPanel SeparacioBotoCentre = new JPanel();
         SeparacioBotoCentre.setBackground(Color.RED);
-        SeparacioBotoCentre.setBorder(new LineBorder(new Color(0,155,255),20));
+        //SeparacioBotoCentre.setOpaque(true);
+        //SeparacioBotoCentre.setBorder(new LineBorder(new Color(0,155,255),20));
 
         JPanel SeparacioBotoEast = new JPanel();
         SeparacioBotoEast.setBackground(Color.MAGENTA);
+        SeparacioBotoEast.setLayout(new BorderLayout());
 
         /*Botons Piano West*/
 
@@ -272,7 +274,17 @@ public class PianoView extends JFrame implements MouseListener {
 
         JPanel EastBotoPianoWest = new JPanel();
         EastBotoPianoWest.setBackground(Color.BLUE);
-        //EastBotoPianoWest.setLayout(new BorderLayout());
+
+        /*Botons Piano East*/
+
+        JPanel WestBotoPianoEast = new JPanel();
+        WestBotoPianoEast.setBackground(Color.green);
+
+        JPanel CenterBotoPianoEast = new JPanel();
+        CenterBotoPianoEast.setBackground(Color.DARK_GRAY);
+
+        JPanel EastBotoPianoEast = new JPanel();
+        EastBotoPianoEast.setBackground(Color.BLUE);
 
 
 
@@ -368,6 +380,8 @@ public class PianoView extends JFrame implements MouseListener {
 
 
 
+
+
         /*Packin' area*/
         /*Part West Botons*/
         Botons.add(TopSeparacio0);
@@ -385,19 +399,25 @@ public class PianoView extends JFrame implements MouseListener {
 
         /*Part Piano*/
         /*Botons*/
+        /*Botons Piano East*/
+        EastBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
+        WestBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
+        CenterBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,60));
+        SeparacioBotoEast.add(WestBotoPianoEast,BorderLayout.WEST);
+        SeparacioBotoEast.add(CenterBotoPianoEast,BorderLayout.CENTER);
+        SeparacioBotoEast.add(EastBotoPianoEast,BorderLayout.EAST);
 
-        //EastBotoPianoWest.add(SeparacioEastBotoWest);
-
-        //WestBotoPianoWest.add(SeparacioWestBotoWest);
+        /*Botons Piano West*/
+        EastBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
+        WestBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
+        CenterBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,60));
         SeparacioBotoWest.add(WestBotoPianoWest,BorderLayout.WEST);
         SeparacioBotoWest.add(CenterBotoPianoWest,BorderLayout.CENTER);
         SeparacioBotoWest.add(EastBotoPianoWest,BorderLayout.EAST);
 
-
-
-        SeparacioBotoWest.add(SeparacioPosBotoWest);
-        SeparacioBotoEast.add(SeparacioPosBotoEast);
-
+        SeparacioBotoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        SeparacioBotoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        SeparacioBotoCentre.setBorder(BorderFactory.createEmptyBorder(120,0,0,0));
 
         NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
         NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);
@@ -420,7 +440,8 @@ public class PianoView extends JFrame implements MouseListener {
 
 
         /*Bores*/
-        NordPanellCentre.add(SeparacioPanellCentreNord);
+        //SeparacioPanellCentreNord.add(SeparacioBotoCentre);
+        //NordPanellCentre.add(SeparacioPanellCentreNord);
         SudPanellCentre.add(SeparacioPanellCentreSud);
         SudPanellCentre.add(SombrejatSud, BorderLayout.CENTER);
 
