@@ -17,10 +17,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws PasswordException, UserManagerException {
 
-        //PianoView pianoView = new PianoView();
+        PianoView pianoView = new PianoView();
 
 
-        //pianoView.setVisible(true);
+        pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
