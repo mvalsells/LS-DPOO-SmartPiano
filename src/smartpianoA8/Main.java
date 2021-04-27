@@ -17,52 +17,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws PasswordException, UserManagerException {
 
-        final int ERROR_CODE_FILE = 1;
-        //BBDD v
-        //rebre dades fitxer
-        JsonReadable jsonReader = new JsonReader();
-
-        try {
-            jsonReader.readJsonConfig();
-        }catch (FileNotFoundException f){
-            System.out.println("ERROR: No s'ha pogut llegir el fitxer de configuració");
-            System.exit(ERROR_CODE_FILE);
-        }
-
-        System.out.println("SmartPiano-A8\n");
-
-        //connectar
-        SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
-        UserDAO user = new SQLUserDAO(connectorSQL);
-        User usuariJoquese = user.getUserByEmail("albertgarangou@emporda.cat");
-        //System.out.println(usuariJoquese.getEmail());
-        //user.updateDataUser(usuariJoquese.getEmail(),User.TERM_EMAIL, "albertgarangou2@emporda.cat");
-        //usuariJoquese.setEmail("albertgarangou2@emporda.cat");
-        //user.updateDataUser(usuariJoquese.getEmail(),User.TERM_USERNAME, "albertgarangou");
-
-        user.updateDataUser(usuariJoquese.getEmail(),User.TERM_PASSWORD,"contrassenyaNovaDesprotegida");
-        System.out.print("lele");
-
-
-        /*
-        //Test register
-        UserManager userManager = new UserManager(user);
-        Scanner sc = new Scanner(System.in);
-        System.out.print("\n\n\nUsername: ");
-        String username = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-        System.out.print("Password: ");
-        String password = sc.nextLine();
-        System.out.print("Type: ");
-        String type = sc.nextLine();
-
-        userManager.registerUser(username,email,password,type);
-        */
-
-
-
-
         //PianoView pianoView = new PianoView();
 
 
