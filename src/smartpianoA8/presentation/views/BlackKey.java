@@ -13,8 +13,9 @@ public class BlackKey extends JButton implements Key {
                 + ((WD * 3) / 2) * (pos + (pos / 5)
                 + ((pos + 3) / 5));
         //this.setIcon((Icon) TeclaNegra);
-        setBackground (Color.BLACK);
+        //setBackground (Color.BLACK);
         setBounds (left, 10, WD, HT);
+        setBorder(BorderFactory.createLineBorder(Color.BLACK,10));
     }
 
     public int getNote () {
