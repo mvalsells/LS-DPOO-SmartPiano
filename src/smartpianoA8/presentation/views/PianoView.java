@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
-public class PianoView extends JFrame implements MouseListener {
+public class PianoView extends JFrame implements MouseListener{
 
     public PianoView(){
         configurePiano();
@@ -42,6 +42,8 @@ public class PianoView extends JFrame implements MouseListener {
 
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
+    private final Eventos eventos = new Eventos();
+
 
     MidiChannel channel;
 
@@ -63,6 +65,9 @@ public class PianoView extends JFrame implements MouseListener {
 
     public void mouseExited(MouseEvent e) {
     }
+
+
+
 
     private void configurePiano(){
 
@@ -238,7 +243,6 @@ public class PianoView extends JFrame implements MouseListener {
             //blacks[i].setContentAreaFilled(true);
             Teclat.add(blacks[i]);
             blacks[i].addMouseListener( this);
-
         }
         for (int i = 0; i < whites.length; i++) {
             whites[i] = new WhiteKey(i);
@@ -478,5 +482,6 @@ public class PianoView extends JFrame implements MouseListener {
 
 
     }
+
 
 }
