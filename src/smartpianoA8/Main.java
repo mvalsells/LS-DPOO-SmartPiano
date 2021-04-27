@@ -1,13 +1,23 @@
 package smartpianoA8;
 
+import smartpianoA8.business.UserManager;
+import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.JsonReadable;
+import smartpianoA8.persistence.JsonReader;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.SQLConnector;
+import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 import smartpianoA8.presentation.views.PianoView;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws PasswordException, UserManagerException {
 
-        /*final int ERROR_CODE_FILE = 1;
+        final int ERROR_CODE_FILE = 1;
         //BBDD v
         //rebre dades fitxer
         JsonReadable jsonReader = new JsonReader();
@@ -24,12 +34,17 @@ public class Main {
         //connectar
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
         UserDAO user = new SQLUserDAO(connectorSQL);
-        User usuariJoquese = user.getUserByUsername("albertgarangou@emporda.cat");
-        System.out.printf("final");
+        User usuariJoquese = user.getUserByEmail("albertgarangou@emporda.cat");
+        //System.out.println(usuariJoquese.getEmail());
+        //user.updateDataUser(usuariJoquese.getEmail(),User.TERM_EMAIL, "albertgarangou2@emporda.cat");
+        //usuariJoquese.setEmail("albertgarangou2@emporda.cat");
+        //user.updateDataUser(usuariJoquese.getEmail(),User.TERM_USERNAME, "albertgarangou");
+
+        user.updateDataUser(usuariJoquese.getEmail(),User.TERM_PASSWORD,"contrassenyaNovaDesprotegida");
+        System.out.print("lele");
 
 
-
-
+        /*
         //Test register
         UserManager userManager = new UserManager(user);
         Scanner sc = new Scanner(System.in);
@@ -48,10 +63,10 @@ public class Main {
 
 
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
 
 
-        pianoView.setVisible(true);
+        //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
