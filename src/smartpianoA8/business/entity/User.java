@@ -6,7 +6,7 @@ public class User {
     private String type;
     private String passwordHash;
 
-    public static final String TYPE_SMARTPIANO = "";
+    public static final String TYPE_SMARTPIANO = "null";
     public static final String TYPE_FACEBOOK = "facebook";
     public static final String TYPE_GOOGLE = "google";
     public static final String TERM_EMAIL = "Email";
@@ -49,6 +49,10 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setPasswordHash(String passwordHash) {
