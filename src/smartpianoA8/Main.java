@@ -1,21 +1,63 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.views.IniciView;
-import smartpianoA8.presentation.views.LoginView;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.presentation.views.PianoView;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PasswordException, UserManagerException {
+
+        /*final int ERROR_CODE_FILE = 1;
+        //BBDD v
+        //rebre dades fitxer
+        JsonReadable jsonReader = new JsonReader();
+
+        try {
+            jsonReader.readJsonConfig();
+        }catch (FileNotFoundException f){
+            System.out.println("ERROR: No s'ha pogut llegir el fitxer de configuració");
+            System.exit(ERROR_CODE_FILE);
+        }
+
         System.out.println("SmartPiano-A8\n");
 
+        //connectar
+        SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
+        UserDAO user = new SQLUserDAO(connectorSQL);
+        User usuariJoquese = user.getUserByUsername("albertgarangou@emporda.cat");
+        System.out.printf("final");
+
+
+
+
+        //Test register
+        UserManager userManager = new UserManager(user);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\n\n\nUsername: ");
+        String username = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        System.out.print("Password: ");
+        String password = sc.nextLine();
+        System.out.print("Type: ");
+        String type = sc.nextLine();
+
+        userManager.registerUser(username,email,password,type);
+        */
+
+
+
+
         PianoView pianoView = new PianoView();
-        ///pianoView.setVisible(true);
+
+
+        pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
         ///registerView.setSize(400,400);
-        //smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
-
+        /*smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
+        registerView.setVisible(true);*/
 
 
         //Per comprobar la contrasenya

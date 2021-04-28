@@ -6,11 +6,13 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
-public class PianoView extends JFrame implements MouseListener{
+public class PianoView extends JFrame implements MouseListener, KeyListener {
 
     public PianoView(){
         configurePiano();
@@ -48,6 +50,10 @@ public class PianoView extends JFrame implements MouseListener{
 
     MidiChannel channel;
 
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
     public void mousePressed(MouseEvent e) {
         Key key = (Key) e.getSource();
         channel.noteOn(key.getNote(), 127);
@@ -58,14 +64,31 @@ public class PianoView extends JFrame implements MouseListener{
         channel.noteOff(key.getNote());
     }
 
-    public void mouseClicked(MouseEvent e) {
-    }
-
     public void mouseEntered(MouseEvent e) {
+
     }
 
     public void mouseExited(MouseEvent e) {
+
     }
+
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    public void keyPressed(KeyEvent e) {
+        Key key = (Key) e.getSource();
+        channel.noteOn(key.getNote(), 127);
+    }
+
+    public void keyReleased(KeyEvent e) {
+        Key key = (Key) e.getSource();
+        channel.noteOff(key.getNote());
+    }
+
+
+
+
 
 
 
@@ -251,6 +274,7 @@ public class PianoView extends JFrame implements MouseListener{
             whites[i] = new WhiteKey(i);
             Teclat.add(whites[i]);
             whites[i].addMouseListener(this);
+            whites[i].addKeyListener(this);
         }
 
         JPanel BordrePiano = new JPanel();
@@ -551,6 +575,7 @@ public class PianoView extends JFrame implements MouseListener{
 
 
     }
+
 
 
 }

@@ -21,10 +21,11 @@ public class SQLUserDAO implements UserDAO {
      */
     @Override
     public void addUser(User user) {
-        String query = "INSERT INTO Users(NomUsuari, Email, Contrassenya) VALUES ('" +
+        String query = "INSERT INTO Users (NomUsuari, Email, Contrassenya, tipus) VALUES ('" +
                             user.getUsername() + "', '" +
                             user.getEmail() + "', '" +
-                            user.getPasswordHash() +
+                            user.getPasswordHash() + "', '" +
+                            user.getType() +
                             "');";
         connector.insertQuery(query);
     }
