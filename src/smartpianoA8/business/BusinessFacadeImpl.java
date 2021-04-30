@@ -1,7 +1,7 @@
 package smartpianoA8.business;
 
 //public class BusinessFacadeImpl implements BusinessFacade {
-import smartpianoA8.persistence.dao.UserDAO;
+//import smartpianoA8.persistence.dao.UserDAO;
 
    /* //Atributs
     UserManager userManager;

@@ -1,5 +1,8 @@
 package smartpianoA8;
 
+import smartpianoA8.business.BusinessFacade;
+
+import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.presentation.views.PianoView;
@@ -7,10 +10,14 @@ import smartpianoA8.presentation.views.PianoView;
 public class Main {
     public static void main(String[] args) throws PasswordException, UserManagerException {
 
-        /*final int ERROR_CODE_FILE = 1;
+        final int ERROR_CODE_FILE = 1;
         //BBDD v
         //rebre dades fitxer
-        JsonReadable jsonReader = new JsonReader();
+
+
+
+
+        /*JsonReadable jsonReader = new JsonReader();
 
         try {
             jsonReader.readJsonConfig();

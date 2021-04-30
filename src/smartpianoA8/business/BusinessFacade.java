@@ -10,14 +10,13 @@ public interface BusinessFacade {
     public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari);
     public void removeSong(Song song);
     public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException;
-    public boolean removeUser(User user);
-    public User getUserByEmail(String email);
-    public User getUserByUsername(String username);
+    public boolean removeCurrentUser();
+    public void login(String id, String password) throws UserManagerException;
     public boolean newPlayList(String nom, String nomUsuari);
     public void removePlayList(int idPlayList);
-    public boolean modifyUserEmail(String currentEmail, String newEmail);
-    public boolean modifyPassword(String currentName, String newPassword);
-    public boolean modifyUserName(String currentUserName, String newUserName);
+    public boolean modifyCurrentUserEmail(String newEmail);
+    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException;
+    public boolean modifyCurrentUserName(String newUserName);
     public boolean startDB();
 
 }
