@@ -2,7 +2,6 @@ package smartpianoA8.presentation.views;
 
 import javax.sound.midi.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -77,13 +76,219 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-        Key key = (Key) e.getSource();
-        channel.noteOn(key.getNote(), 127);
+        int key2 = e.getKeyCode();
+
+        //WHITE KEYS
+        if(key2 == KeyEvent.VK_A){
+            channel.noteOn(48, 127);
+        }
+        if(key2 == KeyEvent.VK_B){
+            channel.noteOn(50, 127);
+        }
+        if(key2 == KeyEvent.VK_C){
+            channel.noteOn(52, 127);
+        }
+        if(key2 == KeyEvent.VK_D){
+            channel.noteOn(53, 127);
+        }
+        if(key2 == KeyEvent.VK_E){
+            channel.noteOn(55, 127);
+        }
+        if(key2 == KeyEvent.VK_F){
+            channel.noteOn(57, 127);
+        }
+        if(key2 == KeyEvent.VK_G){
+            channel.noteOn(59, 127);
+        }
+        if(key2 == KeyEvent.VK_H){
+            channel.noteOn(60, 127);
+        }
+        if(key2 == KeyEvent.VK_I){
+            channel.noteOn(62, 127);
+        }
+        if(key2 == KeyEvent.VK_J){
+            channel.noteOn(64, 127);
+        }
+        if(key2 == KeyEvent.VK_K){
+            channel.noteOn(65, 127);
+        }
+        if(key2 == KeyEvent.VK_L){
+            channel.noteOn(67, 127);
+        }
+        if(key2 == KeyEvent.VK_M){
+            channel.noteOn(69, 127);
+        }
+        if(key2 == KeyEvent.VK_N){
+            channel.noteOn(71, 127);
+        }
+        if(key2 == KeyEvent.VK_O){
+            channel.noteOn(72, 127);
+        }
+        if(key2 == KeyEvent.VK_P){
+            channel.noteOn(74, 127);
+        }
+        if(key2 == KeyEvent.VK_Q){
+            channel.noteOn(76, 127);
+        }
+        if(key2 == KeyEvent.VK_R){
+            channel.noteOn(77, 127);
+        }
+        if(key2 == KeyEvent.VK_S){
+            channel.noteOn(79, 127);
+        }
+
+        //BLACK KEYS
+        if(key2 == KeyEvent.VK_0){
+            channel.noteOn(49, 127);
+        }
+        if(key2 == KeyEvent.VK_1){
+            channel.noteOn(51, 127);
+        }
+        if(key2 == KeyEvent.VK_2){
+            channel.noteOn(54, 127);
+        }
+        if(key2 == KeyEvent.VK_3){
+            channel.noteOn(56, 127);
+        }
+        if(key2 == KeyEvent.VK_4){
+            channel.noteOn(58, 127);
+        }
+        if(key2 == KeyEvent.VK_5){
+            channel.noteOn(61, 127);
+        }
+        if(key2 == KeyEvent.VK_6){
+            channel.noteOn(63, 127);
+        }
+        if(key2 == KeyEvent.VK_7){
+            channel.noteOn(63, 127);
+        }
+        if(key2 == KeyEvent.VK_8){
+            channel.noteOn(68, 127);
+        }
+        if(key2 == KeyEvent.VK_9){
+            channel.noteOn(70, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+58){
+            channel.noteOn(73, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+59){
+            channel.noteOn(75, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+60){
+            channel.noteOn(78, 127);
+        }
+
+
+
+       
     }
 
     public void keyReleased(KeyEvent e) {
-        Key key = (Key) e.getSource();
-        channel.noteOff(key.getNote());
+        /*Key key2 = (Key) e.getSource();
+        channel.noteOff(key2.getNote());*7
+
+         */
+        int key2 = e.getKeyCode();
+
+        //WHITE KEYS
+        if(key2 == KeyEvent.VK_A){
+            channel.noteOff(48, 127);
+        }
+        if(key2 == KeyEvent.VK_B){
+            channel.noteOff(50, 127);
+        }
+        if(key2 == KeyEvent.VK_C){
+            channel.noteOff(52, 127);
+        }
+        if(key2 == KeyEvent.VK_D){
+            channel.noteOff(53, 127);
+        }
+        if(key2 == KeyEvent.VK_E){
+            channel.noteOff(55, 127);
+        }
+        if(key2 == KeyEvent.VK_F){
+            channel.noteOff(57, 127);
+        }
+        if(key2 == KeyEvent.VK_G){
+            channel.noteOff(59, 127);
+        }
+        if(key2 == KeyEvent.VK_H){
+            channel.noteOff(60, 127);
+        }
+        if(key2 == KeyEvent.VK_I){
+            channel.noteOff(62, 127);
+        }
+        if(key2 == KeyEvent.VK_J){
+            channel.noteOff(64, 127);
+        }
+        if(key2 == KeyEvent.VK_K){
+            channel.noteOff(65, 127);
+        }
+        if(key2 == KeyEvent.VK_L){
+            channel.noteOff(67, 127);
+        }
+        if(key2 == KeyEvent.VK_M){
+            channel.noteOff(69, 127);
+        }
+        if(key2 == KeyEvent.VK_N){
+            channel.noteOff(71, 127);
+        }
+        if(key2 == KeyEvent.VK_O){
+            channel.noteOff(72, 127);
+        }
+        if(key2 == KeyEvent.VK_P){
+            channel.noteOff(74, 127);
+        }
+        if(key2 == KeyEvent.VK_Q){
+            channel.noteOff(76, 127);
+        }
+        if(key2 == KeyEvent.VK_R){
+            channel.noteOff(77, 127);
+        }
+        if(key2 == KeyEvent.VK_S){
+            channel.noteOff(79, 127);
+        }
+
+        //BLACK KEYS
+        if(key2 == KeyEvent.VK_0){
+            channel.noteOff(49, 127);
+        }
+        if(key2 == KeyEvent.VK_1){
+            channel.noteOff(51, 127);
+        }
+        if(key2 == KeyEvent.VK_2){
+            channel.noteOff(54, 127);
+        }
+        if(key2 == KeyEvent.VK_3){
+            channel.noteOff(56, 127);
+        }
+        if(key2 == KeyEvent.VK_4){
+            channel.noteOff(58, 127);
+        }
+        if(key2 == KeyEvent.VK_5){
+            channel.noteOff(61, 127);
+        }
+        if(key2 == KeyEvent.VK_6){
+            channel.noteOff(63, 127);
+        }
+        if(key2 == KeyEvent.VK_7){
+            channel.noteOff(63, 127);
+        }
+        if(key2 == KeyEvent.VK_8){
+            channel.noteOff(68, 127);
+        }
+        if(key2 == KeyEvent.VK_9){
+            channel.noteOff(70, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+58){
+            channel.noteOff(73, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+59){
+            channel.noteOff(75, 127);
+        }
+        if(key2 == KeyEvent.VK_ALT+60){
+            channel.noteOff(78, 127);
+        }
     }
 
 
@@ -264,20 +469,45 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
         };
         Teclat.setBackground(Color.BLACK);
-
+        char lletresBlack = '0';
         for (int i = 0; i < blacks.length; i++) {
             blacks[i] = new BlackKey(i);
-            blacks[i].setBackground(Color.BLACK);
-            //blacks[i].setOpaque(true);
-            //blacks[i].setContentAreaFilled(true);
+
+            if(lletresBlack < 'a'){
+               blacks[i].setText(String.valueOf(lletresBlack));
+                lletresBlack++;
+
+            }else {
+                lletresBlack = '0';
+                blacks[i].setText(String.valueOf(lletresBlack));
+            }
+            blacks[i].setForeground(Color.WHITE);
+            blacks[i].setFont(new Font("Verdana", Font.PLAIN, 6));
             Teclat.add(blacks[i]);
+
             blacks[i].addMouseListener( this);
+            blacks[i].addKeyListener( this);
+
         }
+
+        char lletresWhite = 'a';
         for (int i = 0; i < whites.length; i++) {
+
             whites[i] = new WhiteKey(i);
-            Teclat.add(whites[i]);
+            if(lletresWhite < 'z'){
+                //whites[i].setAlignmentX(0);
+                whites[i].setText(String.valueOf(lletresWhite));
+
+                lletresWhite ++;
+            }else {
+                lletresWhite = 'a';
+                whites[i].setText(String.valueOf(lletresWhite));
+            }
+
             whites[i].addMouseListener(this);
             whites[i].addKeyListener(this);
+            Teclat.add(whites[i]);
+
         }
 
         JPanel BordrePiano = new JPanel();
