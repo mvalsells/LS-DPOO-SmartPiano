@@ -51,7 +51,7 @@ public class Main {
         PianoView pianoView = new PianoView();
 
 
-        pianoView.setVisible(true);
+        //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
         //smartpianoA8.presentation.views.LoginView loginView = new LoginView();

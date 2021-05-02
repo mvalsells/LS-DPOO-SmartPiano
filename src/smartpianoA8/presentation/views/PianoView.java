@@ -109,8 +109,11 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
         ImageIcon BotoRegPiano = new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg");
         ImageIcon BotoRegPianoPressed = new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg");
-
-
+        ImageIcon BotoTriangleInferior = new ImageIcon("Imagen/ImagenesMenu/TriangleInferior.png");
+        ImageIcon BotoTriangleSuperior = new ImageIcon("Imagen/ImagenesMenu/TriangleSuperior.png");
+        ImageIcon BotoRodaReal = new ImageIcon("Imagen/ImagenesMenu/BotoRodaReal.png");
+        ImageIcon BotoRodaMax = new ImageIcon("Imagen/ImagenesMenu/BotoRodaMax.png");
+        ImageIcon PantallaPiano = new ImageIcon("Imagen/ImagenesMenu/PanellPiano.png");
 
 
 
@@ -287,16 +290,18 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         SeparacioBotoWest.setLayout(new BorderLayout());
 
         JPanel SeparacioBotoCentre = new JPanel();
-        SeparacioBotoCentre.setBackground(Color.RED);
+        SeparacioBotoCentre.setBackground(Color.darkGray);
         //SeparacioBotoCentre.setOpaque(true);
         //SeparacioBotoCentre.setBorder(new LineBorder(new Color(0,155,255),20));
+        ImageView pantallaPianoPanel = new ImageView(PantallaPiano.getImage());
+
 
         JPanel SeparacioBotoEast = new JPanel();
         SeparacioBotoEast.setBackground(Color.MAGENTA);
         SeparacioBotoEast.setLayout(new BorderLayout());
 
         /*Botons Piano West*/
-
+        /*West piano West*/
         JPanel WestBotoPianoWest = new JPanel();
         WestBotoPianoWest.setBackground(Color.darkGray);
         WestBotoPianoWest.setLayout(new BorderLayout());
@@ -316,30 +321,105 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         playButton.setBorder(BorderFactory.createEmptyBorder(0,0,25,10));
         playButton.setContentAreaFilled(false);
         /*North*/
-        JPanel PanellTextBotonsWest = new JPanel();
-        PanellTextBotonsWest.setOpaque(false);
-        PanellTextBotonsWest.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel PanellTextBotonsWestWest = new JPanel();
+        PanellTextBotonsWestWest.setOpaque(false);
+        PanellTextBotonsWestWest.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel textBotonsWest = new JLabel("REG  -  PLAY");
         textBotonsWest.setBorder(BorderFactory.createEmptyBorder(20,5,5,5));
         textBotonsWest.setFont(new Font("Arial",Font.PLAIN,12));
         textBotonsWest.setForeground(new Color(255,255,255));
         textBotonsWest.setBackground(Color.darkGray);
 
-
+        /*Centre piano West*/
         JPanel CenterBotoPianoWest = new JPanel();
-        CenterBotoPianoWest.setBackground(Color.white);
+        CenterBotoPianoWest.setBackground(Color.darkGray);
 
+        /*East piano West*/
         JPanel EastBotoPianoWest = new JPanel();
-        EastBotoPianoWest.setBackground(Color.BLUE);
+        EastBotoPianoWest.setLayout(new BorderLayout());
+        EastBotoPianoWest.setBackground(Color.darkGray);
+
+        /*North*/
+        JPanel PanellTextBotonsNorthWest = new JPanel();
+        PanellTextBotonsNorthWest.setOpaque(false);
+        PanellTextBotonsNorthWest.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JLabel textBotonsNorth = new JLabel("NOTAS - TIPO");
+        textBotonsNorth.setBorder(BorderFactory.createEmptyBorder(20,5,5,5));
+        textBotonsNorth.setFont(new Font("Arial",Font.PLAIN,12));
+        textBotonsNorth.setForeground(new Color(255,255,255));
+        textBotonsNorth.setBackground(Color.darkGray);
+
+        /*West*/
+        JButton notesButton = new JButton();
+        notesButton.setIcon(BotoRegPiano);
+        notesButton.setPressedIcon(BotoRegPianoPressed);
+        notesButton.setPreferredSize(new Dimension(38,44));
+        notesButton.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
+        notesButton.setContentAreaFilled(false);
+
+        /*East*/
+        JButton tipoButton = new JButton();
+        tipoButton.setIcon(BotoRodaReal);
+        tipoButton.setPressedIcon(BotoRodaMax);
+        tipoButton.setPreferredSize(new Dimension(38,44));
+        tipoButton.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
+        tipoButton.setContentAreaFilled(false);
+
+        /*North*/
+        JPanel PanellTextBotonsSouthWest = new JPanel();
+        PanellTextBotonsSouthWest.setOpaque(false);
+        PanellTextBotonsSouthWest.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        JLabel textBotonsSouth = new JLabel("MAX - REAL");
+        textBotonsSouth.setBorder(BorderFactory.createEmptyBorder(0,50,5,0));
+        textBotonsSouth.setFont(new Font("Arial",Font.PLAIN,12));
+        textBotonsSouth.setForeground(new Color(255,255,255));
+        textBotonsSouth.setBackground(Color.darkGray);
+
 
         /*Botons Piano East*/
-
+        /*West piano East*/
         JPanel WestBotoPianoEast = new JPanel();
-        WestBotoPianoEast.setBackground(Color.green);
+        WestBotoPianoEast.setLayout(new BoxLayout(WestBotoPianoEast,BoxLayout.Y_AXIS));
+        WestBotoPianoEast.setBackground(Color.darkGray);
+
+        JLabel textBotonCançonsEast = new JLabel("CANCIONES");
+        textBotonCançonsEast.setBorder(BorderFactory.createEmptyBorder(25,5,5,25));
+        textBotonCançonsEast.setFont(new Font("Arial",Font.PLAIN,12));
+        textBotonCançonsEast.setForeground(new Color(255,255,255));
+        textBotonCançonsEast.setBackground(Color.darkGray);
+
+        JButton cançonsButton = new JButton();
+        cançonsButton.setIcon(BotoRegPiano);
+        cançonsButton.setPressedIcon(BotoRegPianoPressed);
+        cançonsButton.setPreferredSize(new Dimension(38,44));
+        cançonsButton.setBorder(BorderFactory.createEmptyBorder(10,25,0,25));
+        cançonsButton.setContentAreaFilled(false);
 
 
+        /*Center piano East*/
         JPanel CenterBotoPianoEast = new JPanel();
-        CenterBotoPianoEast.setBackground(Color.white);
+        CenterBotoPianoEast.setLayout(new BoxLayout(CenterBotoPianoEast,BoxLayout.Y_AXIS));
+        CenterBotoPianoEast.setBackground(Color.darkGray);
+        /*Up*/
+        JButton triangelSuperiorButton = new JButton();
+        triangelSuperiorButton.setIcon(BotoTriangleSuperior);
+        triangelSuperiorButton.setPreferredSize(new Dimension(38,44));
+        triangelSuperiorButton.setBorder(BorderFactory.createEmptyBorder(25,5,5,5));
+        triangelSuperiorButton.setContentAreaFilled(false);
+        /*Center*/
+        JLabel textCentreTriangles = new JLabel("TEMPO");
+        textCentreTriangles.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        textCentreTriangles.setFont(new Font("Arial",Font.PLAIN,12));
+        textCentreTriangles.setForeground(new Color(255,255,255));
+        textCentreTriangles.setBackground(Color.darkGray);
+        /*Down*/
+        JButton triangelInferiorButton = new JButton();
+        triangelInferiorButton.setIcon(BotoTriangleInferior);
+        triangelInferiorButton.setPreferredSize(new Dimension(38,44));
+        triangelInferiorButton.setBorder(BorderFactory.createEmptyBorder(5,5,0,5));
+        triangelInferiorButton.setContentAreaFilled(false);
+
+
 
         /*East piano East*/
         JPanel EastBotoPianoEast = new JPanel();
@@ -492,9 +572,16 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         EastBotoPianoEast.add(escalaButton,BorderLayout.WEST);
         EastBotoPianoEast.add(metroButton,BorderLayout.EAST);
 
+        CenterBotoPianoEast.add(triangelSuperiorButton);
+        CenterBotoPianoEast.add(textCentreTriangles);
+        CenterBotoPianoEast.add(triangelInferiorButton);
+
+        WestBotoPianoEast.add(textBotonCançonsEast);
+        WestBotoPianoEast.add(cançonsButton);
+
         //EastBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
-        WestBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
-        CenterBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,60));
+        //WestBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
+        //CenterBotoPianoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,60));
         SeparacioBotoEast.add(WestBotoPianoEast,BorderLayout.WEST);
         SeparacioBotoEast.add(CenterBotoPianoEast,BorderLayout.CENTER);
         SeparacioBotoEast.add(EastBotoPianoEast,BorderLayout.EAST);
@@ -502,10 +589,17 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         /*Botons Piano West*/
         WestBotoPianoWest.add(regButton,BorderLayout.WEST);
         WestBotoPianoWest.add(playButton,BorderLayout.EAST);
-        PanellTextBotonsWest.add(textBotonsWest);
-        WestBotoPianoWest.add(PanellTextBotonsWest,BorderLayout.NORTH);
+        PanellTextBotonsWestWest.add(textBotonsWest);
+        WestBotoPianoWest.add(PanellTextBotonsWestWest,BorderLayout.NORTH);
 
-        EastBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
+        PanellTextBotonsNorthWest.add(textBotonsNorth);
+        PanellTextBotonsSouthWest.add(textBotonsSouth);
+        EastBotoPianoWest.add(PanellTextBotonsNorthWest,BorderLayout.NORTH);
+        EastBotoPianoWest.add(notesButton,BorderLayout.WEST);
+        EastBotoPianoWest.add(PanellTextBotonsSouthWest,BorderLayout.SOUTH);
+        EastBotoPianoWest.add(tipoButton);
+
+        //EastBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
         //WestBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
         CenterBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,60));
         SeparacioBotoWest.add(WestBotoPianoWest,BorderLayout.WEST);
@@ -514,7 +608,10 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
         SeparacioBotoEast.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         SeparacioBotoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-        SeparacioBotoCentre.setBorder(BorderFactory.createEmptyBorder(120,0,0,0));
+        SeparacioBotoCentre.setBorder(BorderFactory.createEmptyBorder(22,0,0,0));
+
+        SeparacioBotoCentre.add(pantallaPianoPanel);
+        //NordPanellCentre.add(pantallaPianoPanel,BorderLayout.CENTER);
 
         NordPanellCentre.add(SeparacioBotoWest,BorderLayout.WEST);
         NordPanellCentre.add(SeparacioBotoCentre,BorderLayout.CENTER);
