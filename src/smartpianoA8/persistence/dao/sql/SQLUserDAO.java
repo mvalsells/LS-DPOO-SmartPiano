@@ -87,7 +87,7 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User loginUser(String id, String passwordHash) throws UserManagerException{
         //mirem si és UserName
-        User testUser = getUserByEmail(id);
+        User testUser = getUserByUsername(id);
         if(testUser != null){
             if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
                 return testUser;
@@ -98,12 +98,12 @@ public class SQLUserDAO implements UserDAO {
         }
 
         //mirem si és Email
-        testUser = getUserByUsername(id);
+        testUser = getUserByEmail(id);
             if(testUser != null){
                 if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
                     return testUser;
                 }else{
-                    throw new UserManagerException(true, false, false, true);
+                    throw new UserManagerException(false, true, false, true);
                 }
 
             }else{

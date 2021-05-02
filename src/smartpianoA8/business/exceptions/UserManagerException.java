@@ -28,4 +28,14 @@ public class UserManagerException extends Exception{
     public boolean isPasswordIncorrect() {
         return passwordIncorrect;
     }
+
+    @Override
+    public String toString() {
+        return "UserManagerException{" +
+                "usernameExists=" + usernameExists +
+                ", emailExists=" + emailExists +
+                ", typeIncorrect=" + typeIncorrect +
+                ", passwordIncorrect=" + passwordIncorrect +
+                '}';
+    }
 }

@@ -6,7 +6,7 @@ public class User {
     private String type;
     private String passwordHash;
 
-    public static final String TYPE_SMARTPIANO = "null";
+    public static final String TYPE_SMARTPIANO = "smartpiano";
     public static final String TYPE_FACEBOOK = "facebook";
     public static final String TYPE_GOOGLE = "google";
     public static final String TERM_EMAIL = "Email";

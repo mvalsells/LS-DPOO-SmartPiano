@@ -1,80 +1,57 @@
 package smartpianoA8.business;
 
-//public class BusinessFacadeImpl implements BusinessFacade {
-//import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.dao.UserDAO;
 
-   /* //Atributs
-    UserManager userManager;
-    User currentUser;
-    //Constructor
+public class BusinessFacadeImpl implements BusinessFacade{
+
+    private UserManager userManager;
+
     public BusinessFacadeImpl(UserDAO userDAO){
         userManager = new UserManager(userDAO);
-        currentUser = null;
     }
 
-    //Metodes
-    @Override
-    public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari) {
-
-    }
-
-    @Override
-    public void removeSong(Song song) {
-
-    }
-
-    @Override
-    public void registerUser(String userName, String email, String password, String type) throws PasswordException, UserManagerException {
-        userManager.registerUser(userName,email,password,type);
-    }
-
-    @Override
-    public boolean removeUser(User user) {
-        return userManager.removeUser(user);
-    }
-
-    @Override
-    public User getUserByEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public User getUserByUsername(String username) {
-        return null;
-    }
-
-    @Override
-    public boolean newPlayList(String nom, String nomUsuari) {
-        return false;
-    }
-
-    @Override
-    public void removePlayList(int idPlayList) {
-
-    }
-
-    @Override
-    public boolean modifyUserEmail(String currentEmail, String newEmail) {
-        return false;
-    }
-
-    @Override
-    public boolean modifyPassword(String currentName, String newPassword) {
-        return false;
-    }
-
-    @Override
-    public boolean modifyUserName(String currentUserName, String newUserName) {
-        return false;
-    }
 
     @Override
     public boolean startDB() {
-
-
-
         return false;
     }
-    */
 
-//}
+    // ------------------------------------------------------
+    //  START user implementation
+    // ------------------------------------------------------
+    @Override
+    public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException {
+        userManager.registerUser(username, email, password, type);
+    }
+
+    @Override
+    public void login(String id, String password) throws UserManagerException {
+        userManager.login(id,password);
+    }
+
+    @Override
+    public void removeCurrentUser() {
+        userManager.removeCurrentUser();
+    }
+
+    @Override
+    public boolean modifyCurrentUserEmail(String newEmail) {
+        return userManager.modifyCurrentUserEmail(newEmail);
+    }
+
+    @Override
+    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException {
+        return userManager.modifyCurrentUserPassword(newPassword);
+    }
+
+    @Override
+    public boolean modifyCurrentUserName(String newUserName) {
+        return userManager.modifyCurrentUserName(newUserName);
+    }
+    // ------------------------------------------------------
+    //  END user implementation
+    // ------------------------------------------------------
+
+}

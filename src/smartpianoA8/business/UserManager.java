@@ -9,40 +9,34 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class UserManager {
     //Atributs
     private UserDAO userDAO;
+    private User currentUser;
 
     //Constructor
     public UserManager(UserDAO userDAO){
         this.userDAO = userDAO;
+        currentUser = null;
     }
 
-    //TODO Hablar con diseño de vistas para en lugar de crear funciones para cambiar usuario, contraseña, email... Una SOLA funcion a la que mandamos un string con QUE cambiar y el que así nos ahorramos muchas funciones y simplificamos codigo.
 
     public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
-
+        email = email.toLowerCase();
+        username = username.toLowerCase();
         //mirar si estam bien los datos recibidos
-        boolean correctEmail = false;
-        boolean usernameExists = false;
-        boolean emailExists = false;
-        boolean typeIncorrect = false;
+        boolean correctEmail =  checkEmail(email);
+        boolean usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
+        boolean emailExists = userDAO.userExists(User.TERM_EMAIL, email);
+        boolean typeIncorrect;
 
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        if(email.matches(regex)) {
-            System.out.println("Email Matches: " + email);
-            correctEmail = true;
-            emailExists = userDAO.userExists(User.TERM_EMAIL, email);
-        }else {
-            System.out.println("Email failed: " + email);
-        }
-
-        usernameExists = userDAO.userExists(User.TERM_USERNAME, username);
-
-        if (!type.equals("")) {
+        if (type.equals(User.TYPE_SMARTPIANO)){
             typeIncorrect = false;
+        } else {
+            typeIncorrect = true;
         }
 
         if(!usernameExists && !emailExists && !typeIncorrect && correctEmail) {
@@ -51,90 +45,21 @@ public class UserManager {
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
         }else {
-            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, true);
+            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, false);
         }
-
-
-
-
-
-
-
-
-
-
-        /*--------------
-
-        User newUser = new User(username, email, type);
-
-        if (userDAO.getUserByUsername(username) != null){
-            usernameExists = true;
-        }
-
-        if (userDAO.getUserByEmail(email) != null){
-            emailExists = true;
-        }
-
-        if (!type.equals("")) {
-            typeIncorrect = true;
-        }
-
-        checkPassword(newUser, password);
-
-        if (usernameExists || emailExists || typeIncorrect) {
-            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, true);
-        } else {
-            newUser.setPasswordHash(encryptPassword(password));
-            userDAO.addUser(newUser);
-        }*/
     }
 
 
-    public User login(String id, String password) throws UserManagerException {
-        /*boolean passwordIncorrect = false;
-        boolean usernameIncorrect = false;
-        boolean emailIncorrect = false;
-        boolean userIncorrect = false;*/
-
-        return userDAO.loginUser(id, encryptPassword(password));
-
-        /*User userTmp = userDAO.getUserByUsername(user.getUsername());
-
-        if (userTmp != null) {
-            usernameIncorrect = false;
-            if (userTmp.getEmail().equals(user.getEmail())) {
-                emailIncorrect = false;
-            }
-            if (userTmp.getPasswordHash().equals(user.getPasswordHash())) {
-                passwordIncorrect = false;
-            }
-        }
-
-        if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
-            //throw new UserManagerException(!usernameIncorrect);
-            throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
-        }
-
-        userTmp = userDAO.getUserByEmail(user.getEmail());
-
-        if (userTmp != null) {
-            emailIncorrect = false;
-            if (userTmp.getUsername().equals(user.getUsername())) {
-                usernameIncorrect = false;
-            }
-            if (userTmp.getPasswordHash().equals(user.getPasswordHash())) {
-                passwordIncorrect = false;
-            }
-        }
-
-        if (!passwordIncorrect || !usernameIncorrect || !emailIncorrect) {
-            //throw new UserManagerException(!usernameIncorrect);
-            throw new UserManagerException(!usernameIncorrect, !emailIncorrect, false, !passwordIncorrect);
-        }*/
-
+    public void login(String id, String password) throws UserManagerException {
+        id = id.toLowerCase();
+        currentUser = userDAO.loginUser(id, encryptPassword(password));
     }
 
-    public boolean removeUser(User user){
+
+    public void removeCurrentUser(){
+        removeUser(currentUser);
+    }
+    private boolean removeUser(User user){
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
             userDAO.removeUser(user);
             return true;
@@ -143,31 +68,43 @@ public class UserManager {
         }
     }
 
-    public boolean modifyEmail(User user, String newEmail){
 
-        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+    public boolean modifyCurrentUserEmail(String newEmail){
+        return modifyEmail(currentUser, newEmail);
+    }
+    private boolean modifyEmail(User user, String newEmail){
+        newEmail = newEmail.toLowerCase();
+        if (userDAO.getUserByUsername(user.getUsername()) != null && checkEmail(newEmail)) {
             userDAO.updateDataUser(user.getEmail(), User.TERM_EMAIL, newEmail);
             return true;
         }else {
-            System.err.println("Not able to change Email from user: " + user.getUsername());
+            //System.err.println("Not able to change Email from user: " + user.getUsername());
             return false;
         }
 
     }
 
-    public boolean modifyPassword(User user, String newPassword) throws PasswordException {
+    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException{
+        return modifyPassword(currentUser,newPassword);
+    }
+    private boolean modifyPassword(User user, String newPassword) throws PasswordException {
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user.getEmail(), User.TERM_PASSWORD, newPassword);
+            checkPassword(user, newPassword);
+            userDAO.updateDataUser(user.getEmail(), User.TERM_PASSWORD, encryptPassword(newPassword));
             return true;
         }else {
-            System.err.println("Not able to change Password from user: " + user.getUsername());
+            //System.err.println("Not able to change Password from user: " + user.getUsername());
             return false;
         }
 
     }
 
-    public boolean modifyUsername(User user, String newUsername){
+
+    public boolean modifyCurrentUserName(String newUsername){
+        return modifyUsername(currentUser, newUsername);
+    }
+    private boolean modifyUsername(User user, String newUsername){
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
             userDAO.updateDataUser(user.getEmail(), User.TERM_USERNAME, newUsername);
@@ -238,17 +175,12 @@ public class UserManager {
         }
     }
 
-    /*public String encryptPassword(String plainTextPassword){
-        // https://howtodoinjava.com/java/java-security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
-        // https://mkyong.com/java/how-do-convert-byte-array-to-string-in-java/
-        String passwordHash = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = md.digest(plainTextPassword.getBytes());
-            passwordHash = new String(hashBytes, StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+    private boolean checkEmail(String email){
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(email.matches(regex)) {
+            return true;
+        }else {
+            return false;
         }
-        return passwordHash;
-    }*/
+    }
 }
