@@ -35,6 +35,7 @@ public class HtmlScrapping {
                 for(Element row : table.select("tr")) {
 
                     Elements tds = row.select("td");
+                    //TODO save tds in an arraylist of midisong with all data for every row for every table.
                     System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
                 }
 
