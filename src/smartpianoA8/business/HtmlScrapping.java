@@ -33,6 +33,7 @@ public class HtmlScrapping {
             for(Element table : document.select("table[class=table-bordered result-table]")) {
 
                 for(Element row : table.select("tr")) {
+
                     Elements tds = row.select("td");
                     System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
                 }
@@ -65,7 +66,7 @@ public class HtmlScrapping {
         try {
             response = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).ignoreHttpErrors(true).execute();
         } catch (IOException e) {
-            System.err.println("Exception in obtainig status code: " + e.getMessage());
+            System.err.println("Exception in obtainig status code: " + response.statusCode());
         }
         return response.statusCode();
     }
