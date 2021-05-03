@@ -28,6 +28,8 @@ public class HtmlScrapping {
             //Elements entry = document.select("table-bordered result-table");
             //System.out.println("lele");
 
+            System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
+
             for(Element table : document.select("table[class=table-bordered result-table]")) {
 
                 for(Element row : table.select("tr")) {
