@@ -25,8 +25,23 @@ public class HtmlScrapping {
 
         if(getConnectionStatus(url1.concat(page+url2)) == 200) {
             Document document = getHtmlDocument(url1.concat(page+url2));
-            Elements entry = document.select("table-bordered result-table");
-            System.out.println("lele");
+            //Elements entry = document.select("table-bordered result-table");
+            //System.out.println("lele");
+
+            for(Element table : document.select("table[class=table-bordered result-table]")) {
+
+                for(Element row : table.select("tr")) {
+                    Elements tds = row.select("td");
+                    System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
+                }
+
+            }
+
+
+
+
+
+
         }
 
     }
