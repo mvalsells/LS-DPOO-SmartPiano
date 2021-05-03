@@ -30,7 +30,7 @@ public class Main {
 
 
         //Llegir fitxer config
-        JsonReadableImpl jsonReader = new JsonReadableImpl();
+        JsonReadable jsonReader = new JsonReadableImpl();
 
         try {
             jsonReader.readJsonConfig();
