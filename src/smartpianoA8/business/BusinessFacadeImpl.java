@@ -2,13 +2,17 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 
 public class BusinessFacadeImpl implements BusinessFacade{
 
     private UserManager userManager;
+    private SongDAO songDAO;
+    private PlayListDAO playListDAO;
 
-    public BusinessFacadeImpl(UserDAO userDAO){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO){
         userManager = new UserManager(userDAO);
     }
 

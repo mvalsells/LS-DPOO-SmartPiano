@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-public class JsonReader implements JsonReadable {
+public class JsonReadableImpl implements JsonReadable {
 
     private String      dbName;
     private String      dbAddress;
@@ -21,7 +21,7 @@ public class JsonReader implements JsonReadable {
     /**
      *
      */
-    public JsonReader(){}
+    public JsonReadableImpl(){}
 
     /**
      *

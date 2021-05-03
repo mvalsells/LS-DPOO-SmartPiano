@@ -4,89 +4,69 @@ import smartpianoA8.business.BusinessFacade;
 
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.HtmlScrapping;
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.JsonReadable;
-import smartpianoA8.persistence.JsonReader;
+import smartpianoA8.persistence.JsonReadableImpl;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.SQLConnector;
+import smartpianoA8.persistence.dao.sql.SQLPlayListDAO;
+import smartpianoA8.persistence.dao.sql.SQLSongDAO;
 import smartpianoA8.persistence.dao.sql.SQLUserDAO;
-import smartpianoA8.presentation.views.PianoView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        // ------------------------------
+        // START Main smart piano
+        // ------------------------------
+        ///*
+        //Exit Status
+        final int EXIT_UnableToReadConfigFile = 1;
+        final int EXIT_UnableToConnectToDDBB = 2;
 
-        final int ERROR_CODE_FILE = 1;
-        //BBDD v
-        //rebre dades fitxer
 
-
-        HtmlScrapping htmlScrapping = new HtmlScrapping();
-        htmlScrapping.Scrapping();
-
-        /*JsonReadable jsonReader = new JsonReader();
+        //Llegir fitxer config
+        JsonReadableImpl jsonReader = new JsonReadableImpl();
 
         try {
             jsonReader.readJsonConfig();
         }catch (FileNotFoundException f){
             System.out.println("ERROR: No s'ha pogut llegir el fitxer de configuració");
-            System.exit(ERROR_CODE_FILE);
+            System.exit(EXIT_UnableToReadConfigFile);
         }
 
-        System.out.println("SmartPiano-A8\n");
-
-        //connectar
+        //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
+
+        //DAOs BBDD
         UserDAO userDAO = new SQLUserDAO(connectorSQL);
-        User usuariJoquese = userDAO.getUserByUsername("albertgarangou@emporda.cat");
-        System.out.printf("final");
+        SongDAO songDAO = new SQLSongDAO(connectorSQL);
+        PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
+
+        //Business <-> Presentation
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO);
+
+        //*/
+        // ------------------------------
+        // END Main smart piano
+        // ------------------------------
 
 
+        // ------------------------------
+        // START proves
+        // ------------------------------
+        ///*
 
-
-        //Test register
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO);
-        Scanner sc = new Scanner(System.in);
-
-        /*while (true) {
-            System.out.print("\n\n\nUsername: ");
-            String username = sc.nextLine();
-            System.out.print("Email: ");
-            String email = sc.nextLine();
-            System.out.print("Password: ");
-            String password = sc.nextLine();
-
-            try {
-                businessFacade.registerUser(username, email, password, User.TYPE_SMARTPIANO);
-            } catch (PasswordException e) {
-                System.out.println("Password KO");
-                e.printStackTrace();
-            } catch (UserManagerException e) {
-                System.out.println("User KO");
-                e.printStackTrace();
-            }
-
-        }*/
-        /*try {
-            businessFacade.login("mvalsells","Dpoo12345");
-        } catch (UserManagerException e) {
+        HtmlScrapping htmlScrapping = new HtmlScrapping();
+        try {
+            htmlScrapping.Scrapping();
+        } catch (IOException e){
             e.printStackTrace();
         }
-        businessFacade.modifyCurrentUserEmail("marc.valsells@gmail.com");
-        sc.nextLine();
-        businessFacade.modifyCurrentUserName("marc.valsells");
-        sc.nextLine();
-        try {
-            businessFacade.modifyCurrentUserPassword("DpoO12345");
-        } catch (PasswordException e) {
-            e.printStackTrace();
-        }*/
-
 
         //PianoView pianoView = new PianoView();
 
@@ -99,6 +79,6 @@ public class Main {
         /*smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
         registerView.setVisible(true);*/
 
-
+        //*/
     }
 }

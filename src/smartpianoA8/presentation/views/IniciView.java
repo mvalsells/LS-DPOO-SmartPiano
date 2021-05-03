@@ -1,5 +1,7 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.business.entity.User;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -11,7 +13,6 @@ public class IniciView extends JFrame {
     }
     BordersView bordersView = new BordersView();
     private void configureMenu(){
-
         smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
         ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
         ImageIcon CancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
