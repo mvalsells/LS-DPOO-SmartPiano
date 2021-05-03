@@ -3,6 +3,7 @@ package smartpianoA8;
 import smartpianoA8.business.BusinessFacade;
 
 import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.HtmlScrapping;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
@@ -14,19 +15,21 @@ import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 import smartpianoA8.presentation.views.PianoView;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         final int ERROR_CODE_FILE = 1;
         //BBDD v
         //rebre dades fitxer
 
 
+        HtmlScrapping htmlScrapping = new HtmlScrapping();
+        htmlScrapping.Scrapping();
 
-
-        JsonReadable jsonReader = new JsonReader();
+        /*JsonReadable jsonReader = new JsonReader();
 
         try {
             jsonReader.readJsonConfig();
@@ -95,7 +98,6 @@ public class Main {
         ///registerView.setSize(400,400);
         /*smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
         registerView.setVisible(true);*/
-
 
 
     }
