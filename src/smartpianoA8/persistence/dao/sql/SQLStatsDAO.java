@@ -1,8 +1,5 @@
 package smartpianoA8.persistence.dao.sql;
 
-//import org.jetbrains.annotations.NotNull;
-import smartpianoA8.business.entity.EstadisticaMinuts;
-import smartpianoA8.business.entity.EstadisticaReproduccions;
 import smartpianoA8.persistence.dao.StatsDAO;
 
 import java.sql.ResultSet;
@@ -12,7 +9,8 @@ import java.util.ArrayList;
 
 public class SQLStatsDAO implements StatsDAO {
     private SQLConnector connector;
-    public SQLStatsDAO(SQLConnector connector){
+
+    public SQLStatsDAO(SQLConnector connector) {
         this.connector = connector;
     }
 
@@ -22,7 +20,7 @@ public class SQLStatsDAO implements StatsDAO {
     @Override
     public void startupStats(String user) {
         String query;
-        for(int i=0; i<24;i++) {
+        for (int i = 0; i < 24; i++) {
             query = "INSERT INTO Stats(NumCancons, NumMinuts, Hora, NomUsuari) VALUES ('" +
                     0 + "', '" +
                     0 + "', '" +
@@ -39,14 +37,14 @@ public class SQLStatsDAO implements StatsDAO {
         String query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
 
-        try{
+        try {
             result.next();//get select once
 
             int num = result.getInt("NumCancons") + 1;
             query = "UPDATE Stats SET NumCancons " + num + " WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
             connector.updateQuery(query);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de cancons");
         }
@@ -60,13 +58,13 @@ public class SQLStatsDAO implements StatsDAO {
         String query = "SELECT NumMinuts FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
 
-        try{
+        try {
             result.next();//get select once
 
             segons = result.getInt("NumSegons") + tempsAfegir.getSecond();
             minuts = result.getInt("NumMinuts") + tempsAfegir.getMinute();
 
-            if(segons >= 60) {
+            if (segons >= 60) {
                 minuts++;
                 segons -= 60;
             }
@@ -75,7 +73,7 @@ public class SQLStatsDAO implements StatsDAO {
                     "AND Hora = " + hora + ";";
             connector.updateQuery(query);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de minuts/segons");
         }
@@ -83,12 +81,13 @@ public class SQLStatsDAO implements StatsDAO {
     }
 
     /**
-     *  Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
+     * Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
+     *
      * @param duradaSong durada en LocalTime de la cançó
-     * @param username NomUsuari UserName de l'usuari que l'ha reproduit (actual)
+     * @param username   NomUsuari UserName de l'usuari que l'ha reproduit (actual)
      */
     @Override
-    public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username){    //TODO cridar la funció quan es reprodueixi
+    public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username) {    //TODO cridar la funció quan es reprodueixi
         updateNumMinuts(LocalTime.now().getHour(), duradaSong, username);
         updateNumReproduccions(LocalTime.now().getHour(), username);
     }
@@ -98,8 +97,26 @@ public class SQLStatsDAO implements StatsDAO {
      * @return ArrayList amb els valors dits
      */
     @Override
-    public ArrayList<EstadisticaReproduccions> getDataReproduccions() {
-        return null;
+    public ArrayList<Integer> getDataReproduccions(String user) {
+        ArrayList<Integer> returner = new ArrayList<>();
+        String query;
+        int i = 0;
+        ResultSet result;
+
+        try {
+            while (i < 24) {//del 1 al 23 fa la query
+                query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + i + ";";
+                result = connector.selectQuery(query);
+                result.next();
+                returner.add(result.getInt("NumCancons"));
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("ERROR CREANT ESTADISTIQUES BBDD -> getDataReproduccions. Can't SELECT.");
+            return null;
+        }
+        return returner;
     }
 
     /**
@@ -107,8 +124,26 @@ public class SQLStatsDAO implements StatsDAO {
      * @return ArrayList amb els valors dits
      */
     @Override
-    public ArrayList<EstadisticaMinuts> getDataMinuts() {
-        return null;
+    public ArrayList<Float> getDataMinuts(String user) {
+        ArrayList<Float> returner = new ArrayList<>();
+        String query;
+        int i = 0;
+        ResultSet result;
+
+        try {
+            while (i < 24) {//del 1 al 23 fa la query
+                query = "SELECT NumMinuts, NumSegons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + i + ";";
+                result = connector.selectQuery(query);
+                result.next();
+                returner.add((float) result.getInt("NumMinuts") + result.getInt("NumSegons") / 60);
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("ERROR CREANT ESTADISTIQUES BBDD -> getDataReproduccions. Can't SELECT.");
+            return null;
+        }
+        return returner;
     }
 
 }
