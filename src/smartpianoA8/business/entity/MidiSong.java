@@ -21,6 +21,15 @@ public class MidiSong {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof MidiSong) {
+            return this.songName.equals(((MidiSong) obj).songName);
+        }else {
+            return false;
+        }
+    }
+
     public String getSongName() {
         return songName;
     }

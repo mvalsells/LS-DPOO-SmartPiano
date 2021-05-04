@@ -19,7 +19,7 @@ public class HtmlScrapping extends TimerTask {
     private static final String url2 = "&Instrument=Piano";
     private ArrayList<MidiSong> midiSongs = new ArrayList<MidiSong>();
 
-    //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA
+    //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
 
     @Override
     public void run() {
@@ -71,7 +71,10 @@ public class HtmlScrapping extends TimerTask {
                     counter = 0;
 
                     MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
-                    midiSongs.add(midiSong);
+
+                    if(!midiSongs.contains(midiSong)) {
+                        midiSongs.add(midiSong);
+                    }
 
                 }
 
@@ -81,7 +84,7 @@ public class HtmlScrapping extends TimerTask {
         }
 
 
-        page = page + 11;
+        page = page + 1;
 
     }
 
