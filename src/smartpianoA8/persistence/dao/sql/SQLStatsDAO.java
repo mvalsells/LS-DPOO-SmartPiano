@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class SQLStatsDAO implements StatsDAO {
     private SQLConnector connector;
@@ -96,7 +94,6 @@ public class SQLStatsDAO implements StatsDAO {
 
     /**
      * Obté una arrayList amb els valors de reproduccions
-     *
      * @return ArrayList amb els valors dits
      */
     @Override
@@ -124,7 +121,6 @@ public class SQLStatsDAO implements StatsDAO {
 
     /**
      * Obté una arrayList amb els valors de minuts (amb decimals de segons /100 i no /60).
-     *
      * @return ArrayList amb els valors dits
      */
     @Override
@@ -149,4 +145,5 @@ public class SQLStatsDAO implements StatsDAO {
         }
         return returner;
     }
+
 }

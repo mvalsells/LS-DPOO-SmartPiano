@@ -5,17 +5,26 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.http.WebSocket;
+
+import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.WellcomeFrame;
 import smartpianoA8.presentation.views.BordersView;
 
-public class LoginView extends JFrame {
+public class LoginView extends JPanel  {
 
     private static JLabel backgroundImage;
 
-    public LoginView() {
-        runLogin();
+    private JButton Registrarse;
+
+
+    public  LoginView() {
+
     }
 
-    private void runLogin() {
+    public ImageView runLogin() {
 
         smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesLogin/LoginImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionFacebook.jpg");
@@ -53,8 +62,8 @@ public class LoginView extends JFrame {
         frame.setVisible(true);
         */
         /*FRAME*/
-        JFrame frame = new JFrame();
-        frame.setLayout(new CardLayout());
+        /*JFrame frame = new JFrame();
+        frame.setLayout(new CardLayout());*/
 
 
         /*Panell principal on anira imatge*/
@@ -73,6 +82,20 @@ public class LoginView extends JFrame {
         JPanel PosicionamentBotonsNord = new JPanel(); //Panel per situar els botons del Nord a la dreta
         PosicionamentBotonsNord.setOpaque(false);
         PosicionamentBotonsNord.setLayout(new FlowLayout());
+
+        Registrarse = new JButton("Registrarse");
+        Registrarse.setForeground(new Color(255,255,255));
+        Registrarse.setBackground(new Color(249,171,15));
+        Registrarse.setPreferredSize(new Dimension(130,35));
+        Registrarse.setBorderPainted(false);
+        Registrarse.setOpaque(true);
+        Registrarse.setVisible(true);
+        Registrarse.setActionCommand("ToRegister");
+
+        JLabel Espai = new JLabel(" ");
+        Espai.setForeground(new Color(255,255,255));
+        Espai.setPreferredSize(new Dimension(20,100));
+        Espai.setFont(new Font("Verdana", Font.PLAIN, 11));
 
         /*Botons i textos nord*/
         JLabel JaTensCompte = new JLabel(" ");
@@ -112,6 +135,7 @@ public class LoginView extends JFrame {
         LoginButton.setOpaque(true);
         LoginButton.setFont(new Font("Verdana",Font.BOLD,12));
         LoginButton.setVisible(true);
+
 
 
         JPanel OmplirSouthPrincipalPanel = new JPanel();
@@ -273,8 +297,8 @@ public class LoginView extends JFrame {
         /*Part Superior*/
         //PartSuperior.add(OmplirEstPartSuperior);
         PosicionamentBotonsNord.add(JaTensCompte);
-        //PosicionamentBotonsNord.add(IniciarSessio);
-        //PosicionamentBotonsNord.add(Espai);
+        PosicionamentBotonsNord.add(Registrarse);
+        PosicionamentBotonsNord.add(Espai);
         PartSuperior.add(PosicionamentBotonsNord,BorderLayout.EAST);
         panel.add(PartSuperior,BorderLayout.NORTH);
 
@@ -322,14 +346,20 @@ public class LoginView extends JFrame {
         PanelSouth.add(OmplirSouthPrincipalPanel);
         panel.add(PanelSouth,BorderLayout.SOUTH);
 
-        frame.setResizable(false);
+
+        /*frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add("Ref_1",panel);
         frame.setPreferredSize(new Dimension(1000,820));
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(true);*/
 
-
+        return panel;
     }
+
+    public JButton getRegistrarse(){
+        return  this.Registrarse;
+    }
+
 
 }
