@@ -97,7 +97,7 @@ public class SQLStatsDAO implements StatsDAO {
      * @return ArrayList amb els valors dits
      */
     @Override
-    public ArrayList<Integer> getDataReproduccions(String user) {//TODO acabar aixo
+    public ArrayList<Integer> getDataReproduccions(String user) {
         ArrayList<Integer> returner = new ArrayList<>();
         String query;
         int i = 0;
@@ -124,7 +124,7 @@ public class SQLStatsDAO implements StatsDAO {
      * @return ArrayList amb els valors dits
      */
     @Override
-    public ArrayList<Float> getDataMinuts(String user) {    //TODO acabar aixo
+    public ArrayList<Float> getDataMinuts(String user) {
         ArrayList<Float> returner = new ArrayList<>();
         String query;
         int i = 0;
