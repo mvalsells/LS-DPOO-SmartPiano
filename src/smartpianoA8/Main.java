@@ -11,6 +11,7 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.PianoController;
 import smartpianoA8.presentation.Controller.WellcomeController;
 import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.WellcomeFrame;
@@ -25,7 +26,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        ///*
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -52,7 +53,8 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
-
+        PianoController pianoController = new PianoController(businessFacade);
+        pianoController.registerAllControlers();
         //*/
         // ------------------------------
         // END Main smart piano
@@ -78,7 +80,7 @@ public class Main {
 
         //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
-        WellcomeController wellcomeController = new WellcomeController();
+        //WellcomeController wellcomeController = new WellcomeController();
 
         //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
