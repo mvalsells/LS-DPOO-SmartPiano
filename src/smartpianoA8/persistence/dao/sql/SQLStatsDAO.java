@@ -93,11 +93,19 @@ public class SQLStatsDAO implements StatsDAO {
         updateNumReproduccions(LocalTime.now().getHour(), username);
     }
 
+    /**
+     * Obté una arrayList amb els valors de reproduccions
+     * @return ArrayList amb els valors dits
+     */
     @Override
     public ArrayList<EstadisticaReproduccions> getDataReproduccions() {
         return null;
     }
 
+    /**
+     * Obté una arrayList amb els valors de minuts (amb decimals de segons /100 i no /60).
+     * @return ArrayList amb els valors dits
+     */
     @Override
     public ArrayList<EstadisticaMinuts> getDataMinuts() {
         return null;

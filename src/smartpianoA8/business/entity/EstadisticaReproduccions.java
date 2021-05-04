@@ -1,6 +1,6 @@
 package smartpianoA8.business.entity;
 
-public class EstadisticaReproduccions extends Estadistica{
+public class EstadisticaReproduccions {
 
     private int Reproduccions;
 

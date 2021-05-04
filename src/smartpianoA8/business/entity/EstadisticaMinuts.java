@@ -1,6 +1,6 @@
 package smartpianoA8.business.entity;
 
-public class EstadisticaMinuts extends Estadistica{
+public class EstadisticaMinuts {
     private int minuts;
     private int segons;
 
