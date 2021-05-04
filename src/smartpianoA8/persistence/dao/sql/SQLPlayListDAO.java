@@ -21,7 +21,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void addPlayList(String name, String username) {
-        String query = "INSERT INTO playlist(Nom, NomUsuari) VALUES ('" +
+        String query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
                 name + "', '" +
                 username + "');";
         connector.insertQuery(query);
