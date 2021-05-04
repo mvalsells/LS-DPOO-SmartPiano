@@ -11,6 +11,8 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.WellcomeFrame;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        ///*
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -68,13 +70,14 @@ public class Main {
             e.printStackTrace();
         }*/
 
-        Timer timer = new Timer();
+        /*Timer timer = new Timer();
         timer.schedule(new HtmlScrapping(), 0, 5000);
 
-        System.out.println("leleleleel");
+        System.out.println("leleleleel");*/
 
         //PianoView pianoView = new PianoView();
-
+        //WellcomeFrame wellcomeFrame = new WellcomeFrame();
+        WellcomeController wellcomeController = new WellcomeController();
 
         //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();

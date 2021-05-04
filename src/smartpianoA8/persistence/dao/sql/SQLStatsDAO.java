@@ -1,6 +1,6 @@
 package smartpianoA8.persistence.dao.sql;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 import smartpianoA8.business.entity.EstadisticaMinuts;
 import smartpianoA8.business.entity.EstadisticaReproduccions;
 import smartpianoA8.persistence.dao.StatsDAO;

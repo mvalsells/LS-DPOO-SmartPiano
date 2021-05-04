@@ -2,15 +2,19 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class RegisterView extends JFrame {
+public class RegisterView extends JPanel  {
     //ImageView imageView = new ImageView();
     BordersView bordersView = new BordersView();
-    public RegisterView(){
-        conifgureInici();
+    private JButton IniciarSessio;
 
+    public RegisterView() {
+        IniciarSessio = new JButton();
     }
-    private void conifgureInici(){
+
+    public ImageView runRegister(){
         smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesRegister/RegisterImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/ImagenesRegister/RegistrarseFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGoogle.jpg");
@@ -45,10 +49,6 @@ public class RegisterView extends JFrame {
         frame.setVisible(true);
         */
         /*FRAME*/
-        JFrame frame = new JFrame();
-        frame.setLayout(new CardLayout());
-
-
         /*Panell principal on anira imatge*/
         //JPanel panel = new JPanel();
         //panel.setBackground(Color.GRAY);
@@ -69,13 +69,14 @@ public class RegisterView extends JFrame {
         //PosicionamentBotonsNord.setBackground(Color.GREEN);
 
         /*Botons i textos nord*/
-        JButton IniciarSessio = new JButton("Iniciar sesion");
+        IniciarSessio = new JButton("Iniciar sesion");
         IniciarSessio.setForeground(new Color(255,255,255));
         IniciarSessio.setBackground(new Color(249,171,15));
         IniciarSessio.setPreferredSize(new Dimension(130,35));
         IniciarSessio.setBorderPainted(false);
         IniciarSessio.setOpaque(true);
         IniciarSessio.setVisible(true);
+        IniciarSessio.setActionCommand("ToLogin");
 
 
         JLabel JaTensCompte = new JLabel("¿Ya tienes una cuenta?");
@@ -321,24 +322,16 @@ public class RegisterView extends JFrame {
         PanelSouth.add(OmplirSouthPrincipalPanel);
         panel.add(PanelSouth,BorderLayout.SOUTH);
 
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add("Ref_1",panel);
-        frame.setPreferredSize(new Dimension(1000,820));
-        frame.pack();
-        frame.setVisible(true);
-
-
-
+        return panel;
 
 
 
 
     }
 
-
-
-
+    public JButton getIniciarSessio(){
+        return this.IniciarSessio;
+    }
 
 
 }
