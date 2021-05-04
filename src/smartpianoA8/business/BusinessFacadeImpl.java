@@ -4,6 +4,7 @@ import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 
 public class BusinessFacadeImpl implements BusinessFacade{
@@ -11,11 +12,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private UserManager userManager;
     private SongDAO songDAO;
     private PlayListDAO playListDAO;
+    private StatsDAO statsDAO;
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO){
         userManager = new UserManager(userDAO);
     }
-
 
     @Override
     public boolean startDB() {

@@ -8,11 +8,9 @@ import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReadableImpl;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.SQLConnector;
-import smartpianoA8.persistence.dao.sql.SQLPlayListDAO;
-import smartpianoA8.persistence.dao.sql.SQLSongDAO;
-import smartpianoA8.persistence.dao.sql.SQLUserDAO;
+import smartpianoA8.persistence.dao.sql.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -47,9 +45,10 @@ public class Main {
         UserDAO userDAO = new SQLUserDAO(connectorSQL);
         SongDAO songDAO = new SQLSongDAO(connectorSQL);
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
+        StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
 
         //*/
         // ------------------------------
