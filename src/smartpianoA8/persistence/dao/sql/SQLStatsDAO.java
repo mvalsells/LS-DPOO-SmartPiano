@@ -1,10 +1,11 @@
 package smartpianoA8.persistence.dao.sql;
 
+import org.jetbrains.annotations.NotNull;
 import smartpianoA8.persistence.dao.StatsDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.time.LocalTime;
 
 public class SQLStatsDAO implements StatsDAO {
     private SQLConnector connector;
@@ -13,7 +14,7 @@ public class SQLStatsDAO implements StatsDAO {
     }
 
     /**
-     * Mètode que posa a 0 tots els minuts i reprod d'un usuari havent-hi 0 entrades a la seva taula abans
+     * Mètode que posa a 0 tots els minuts i reprod d'un usuari havent-hi 0 entrades a la seva taula abans.
      */
     @Override
     public void startupStats(String user) {
@@ -26,21 +27,20 @@ public class SQLStatsDAO implements StatsDAO {
                     user + "');";
             connector.insertQuery(query);
         }
-    }
+    }   //TODO cridar la funció quan es crei un nou usuari
 
     /**
      * incrementa +1 un num reproduccions
      */
-    @Override
-    public void updateNumReproduccions(int hora, String user) {
+    private void updateNumReproduccions(int hora, String user) {
         String query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
 
         try{
             result.next();//get select once
 
-            int num = result.getInt("NumCancons");
-            query = "UPDATE Stats SET NumCancons " + num++ + " WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
+            int num = result.getInt("NumCancons") + 1;
+            query = "UPDATE Stats SET NumCancons " + num + " WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
             connector.updateQuery(query);
 
         }catch (SQLException e){
@@ -50,10 +50,9 @@ public class SQLStatsDAO implements StatsDAO {
     }
 
     /**
-     * Afegeix uns minuts al que ja hi havia
+     * Afegeix uns minuts al que ja hi havia.
      */
-    @Override
-    public void updateNumMinuts(int hora, Time tempsAfegir, String user) {
+    private void updateNumMinuts(int hora, @NotNull LocalTime tempsAfegir, String user) {
         int minuts, segons;
         String query = "SELECT NumMinuts FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
@@ -61,8 +60,8 @@ public class SQLStatsDAO implements StatsDAO {
         try{
             result.next();//get select once
 
-            segons = result.getInt("NumSegons") + tempsAfegir.getSeconds();
-            minuts = result.getInt("NumMinuts") + tempsAfegir.getMinutes();
+            segons = result.getInt("NumSegons") + tempsAfegir.getSecond();
+            minuts = result.getInt("NumMinuts") + tempsAfegir.getMinute();
 
             if(segons >= 60) {
                 minuts++;
@@ -78,6 +77,17 @@ public class SQLStatsDAO implements StatsDAO {
             System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de minuts/segons");
         }
 
+    }
+
+    /**
+     *  Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
+     * @param duradaSong durada en LocalTime de la cançó
+     * @param username NomUsuari UserName de l'usuari que l'ha reproduit (actual)
+     */
+    @Override
+    public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username){    //TODO cridar la funció quan es reprodueixi
+        updateNumMinuts(LocalTime.now().getHour(), duradaSong, username);
+        updateNumReproduccions(LocalTime.now().getHour(), username);
     }
 
 }
