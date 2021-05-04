@@ -34,6 +34,13 @@ public class StaticsView extends JFrame {
         //gràfic minuts
         //TODO crear el gràfic esquerra
         //TODO afegir el gráfic al panell "esquerra"
+
+
+
+        //parametres finals
+        add(fons);
+        setMinimumSize(new Dimension(200, 400));
+        pack();//TODO mirar si aixó ajuda o empitjora
     }
 
 }
