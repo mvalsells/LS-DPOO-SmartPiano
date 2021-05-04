@@ -1,15 +1,11 @@
 package smartpianoA8.presentation.views;
-import smartpianoA8.business.entity.EstadisticaMinuts;
-import smartpianoA8.business.entity.EstadisticaReproduccions;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class StaticsView extends JFrame {
-    public  StaticsView(ArrayList<EstadisticaMinuts> valorsMinuts, ArrayList<EstadisticaReproduccions> valorsReproduccions){
-        //la vista en si
-
+    public  StaticsView(ArrayList<Integer> valorsMinuts, ArrayList<Float> valorsReproduccions){
         //parametres
         setResizable(true);
         setTitle("Estadístiques");
