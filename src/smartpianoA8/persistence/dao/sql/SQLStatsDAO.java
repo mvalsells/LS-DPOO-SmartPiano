@@ -1,11 +1,14 @@
 package smartpianoA8.persistence.dao.sql;
 
 import org.jetbrains.annotations.NotNull;
+import smartpianoA8.business.entity.EstadisticaMinuts;
+import smartpianoA8.business.entity.EstadisticaReproduccions;
 import smartpianoA8.persistence.dao.StatsDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class SQLStatsDAO implements StatsDAO {
     private SQLConnector connector;
@@ -52,7 +55,7 @@ public class SQLStatsDAO implements StatsDAO {
     /**
      * Afegeix uns minuts al que ja hi havia.
      */
-    private void updateNumMinuts(int hora, @NotNull LocalTime tempsAfegir, String user) {
+    private void updateNumMinuts(int hora, LocalTime tempsAfegir, String user) {
         int minuts, segons;
         String query = "SELECT NumMinuts FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
@@ -88,6 +91,16 @@ public class SQLStatsDAO implements StatsDAO {
     public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username){    //TODO cridar la funció quan es reprodueixi
         updateNumMinuts(LocalTime.now().getHour(), duradaSong, username);
         updateNumReproduccions(LocalTime.now().getHour(), username);
+    }
+
+    @Override
+    public ArrayList<EstadisticaReproduccions> getDataReproduccions() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<EstadisticaMinuts> getDataMinuts() {
+        return null;
     }
 
 }
