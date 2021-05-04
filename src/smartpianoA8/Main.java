@@ -17,6 +17,7 @@ import smartpianoA8.persistence.dao.sql.SQLUserDAO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class Main {
     public static void main(String[] args) {
@@ -61,12 +62,17 @@ public class Main {
         // ------------------------------
         ///*
 
-        HtmlScrapping htmlScrapping = new HtmlScrapping();
+        /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
             htmlScrapping.Scrapping();
         } catch (IOException e){
             e.printStackTrace();
-        }
+        }*/
+
+        Timer timer = new Timer();
+        timer.schedule(new HtmlScrapping(), 0, 5000);
+
+        System.out.println("leleleleel");
 
         //PianoView pianoView = new PianoView();
 
