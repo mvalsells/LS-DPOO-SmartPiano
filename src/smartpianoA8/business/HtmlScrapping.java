@@ -72,7 +72,6 @@ public class HtmlScrapping extends TimerTask {
                     MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
                     midiSongs.add(midiSong);
 
-
                 }
 
             }
