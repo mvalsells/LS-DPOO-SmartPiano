@@ -32,22 +32,32 @@ public class WellcomeController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if(e.getActionCommand().equals("ToRegister")){
             changePanel("ToRegister",wellcomeFrame.getCards(),wellcomeFrame.getMainPanel());
-
         }else if(e.getActionCommand().equals("ToLogin")){
             changePanel("ToLogin",wellcomeFrame.getCards(),wellcomeFrame.getMainPanel());
+        }else if(e.getActionCommand().equals("TryRegister")){
+            System.out.println(wellcomeFrame.getRegisterView().getNom().getText());
+            System.out.println(wellcomeFrame.getRegisterView().getCorreu().getText());
+            System.out.println(wellcomeFrame.getRegisterView().getContrasenya().getText());
+            registerUser(wellcomeFrame.getRegisterView().getNom().getText(),wellcomeFrame.getRegisterView().getCorreu().getText(),wellcomeFrame.getRegisterView().getContrasenya().getText());
         }
 
     }
+
+
 
     private void registerUser(String username, String email, String password){
         try {
             pianoController.registerUser(username, email, password, User.TYPE_SMARTPIANO);
         } catch (PasswordException e) {
-            e.printStackTrace();
+            e.isHasNotLowerCase();
+            e.isHasNotNumber();
+            e.isHasNotUpperCase();
+            e.isPasswordToShort();
         } catch (UserManagerException e) {
-            e.printStackTrace();
+            e.isUsernameExists();
         }
     }
 
