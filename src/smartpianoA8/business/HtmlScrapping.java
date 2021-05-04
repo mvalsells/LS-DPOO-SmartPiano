@@ -5,20 +5,102 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.persistence.dao.UserDAO;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.TimerTask;
 
-public class HtmlScrapping {
+public class HtmlScrapping extends TimerTask {
 
-    public static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
-    public static int page = 0;
-    public static final String url2 = "&Instrument=Piano";
+    private static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
+    private static int page = 0;
+    private static final String url2 = "&Instrument=Piano";
+    private ArrayList<MidiSong> midiSongs = new ArrayList<MidiSong>();
 
-    public HtmlScrapping(/*UserDAO userDAO*/){
+    //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
+
+    @Override
+    public void run() {
+
+        int counter = 0;
+        String author = null;
+        String songName = null;
+        String datePublished = null;
+        String midiAddress = null;
+
+        System.out.println(url1.concat(page+url2));
+
+
+        try {
+            if(getConnectionStatus(url1.concat(page+url2)) == 200) {
+                Document document = getHtmlDocument(url1.concat(page+url2));
+                //Elements entry = document.select("table-bordered result-table");
+                //System.out.println("lele");
+
+                System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
+
+                for(Element table : document.select("table[class=table-bordered result-table]")) {
+
+                    for(Element row : table.select("tr")) {
+
+                        Elements tds = row.select("td");
+                        //TODO save tds in an arraylist of midisong with all data for every row for every table.
+                        //System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
+
+                        switch (counter) {
+                            case 0:
+                                songName = tds.get(0).text();
+                                author = tds.get(1).text();
+                                break;
+                            case 1:
+                                datePublished = tds.get(1).text();
+                                break;
+                            case 3:
+                                Element link = tds.get(1).select("a").first();
+                                midiAddress = link.attr("abs:href");
+                                //midiAddress = tds.get(1).getElementsByAttribute("abd:href").text();
+                                break;
+                            default:
+                        }
+
+                        counter++;
+                    }
+
+                    counter = 0;
+
+                    MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
+
+                    if(!midiSongs.contains(midiSong)) {
+                        midiSongs.add(midiSong);
+                    }
+
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        page = page + 1;
+
     }
 
-    public void Scrapping() throws IOException {
+
+
+    //public HtmlScrapping(/*UserDAO userDAO*/){
+    //}
+
+    /*public void Scrapping() throws IOException {
+
+        ArrayList<MidiSong> midiSongs = new ArrayList<MidiSong>();
+        int counter = 0;
+        String author = null;
+        String songName = null;
+        String datePublished = null;
+        String midiAddress = null;
 
         page=0;
         System.out.println(url1.concat(page+url2));
@@ -37,18 +119,36 @@ public class HtmlScrapping {
                     Elements tds = row.select("td");
                     //TODO save tds in an arraylist of midisong with all data for every row for every table.
                     System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
+
+                    switch (counter) {
+                        case 0:
+                            songName = tds.get(0).text();
+                            author = tds.get(1).text();
+                            break;
+                        case 1:
+                            datePublished = tds.get(1).text();
+                            break;
+                        case 3:
+                            Element link = tds.get(1).select("a").first();
+                            midiAddress = link.attr("abs:href");
+                            //midiAddress = tds.get(1).getElementsByAttribute("abd:href").text();
+                            break;
+                        default:
+                    }
+
+                    counter++;
                 }
+
+                counter = 0;
+                MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
+                midiSongs.add(midiSong);
+
 
             }
 
-
-
-
-
-
         }
 
-    }
+    }*/
 
 
     /**
