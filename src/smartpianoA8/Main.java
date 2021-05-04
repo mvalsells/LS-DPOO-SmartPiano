@@ -12,6 +12,7 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.WellcomeFrame;
 
 import java.io.FileNotFoundException;
@@ -24,7 +25,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        /*
+        ///*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;

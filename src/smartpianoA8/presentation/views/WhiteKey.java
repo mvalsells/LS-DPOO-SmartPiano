@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
+import java.awt.*;
 
 class WhiteKey  extends JButton implements Key {
 
@@ -16,9 +17,8 @@ class WhiteKey  extends JButton implements Key {
         // I think metal looks better!
        // setBackground (Color.WHITE);
         setBounds (left, 10, WWD, WHT);
-        //setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+        setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         setOpaque(false);
-
     }
 
     public int getNote () {
