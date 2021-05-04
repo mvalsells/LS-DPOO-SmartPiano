@@ -112,6 +112,12 @@ public class SQLUserDAO implements UserDAO {
 
     }
 
+    /**
+     * Fucnió que actualitza email, psswd o username
+     * @param email ID de l'usuari
+     * @param whatToUpdate terme a actualitzar (user.atribut-TERM)
+     * @param dataToUpdate contingut a posar a la nova user.atribut-TERM
+     */
     @Override
     public void updateDataUser(String email, String whatToUpdate, String dataToUpdate) {
         String query = null;

@@ -32,16 +32,20 @@ public class SQLStatsDAO implements StatsDAO {
      * incrementa +1 un num reproduccions
      */
     @Override
-    public void updateNumReproduccions(Time hora, String user) {
-        String query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "';";
+    public void updateNumReproduccions(int hora, String user) {
+        String query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
         ResultSet result = connector.selectQuery(query);
-        try{
-            while(result.next()){
 
-            }
+        try{
+            result.next();//get select once
+
+            int num = result.getInt("NumCancons");
+            query = "UPDATE Stats SET NumCancons " + num++ + " WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
+            connector.updateQuery(query);
+
         }catch (SQLException e){
             e.printStackTrace();
-
+            System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de cancons");
         }
     }
 
@@ -49,7 +53,30 @@ public class SQLStatsDAO implements StatsDAO {
      * Afegeix uns minuts al que ja hi havia
      */
     @Override
-    public void updateNumMinuts(Time hora, Time minutsAfegir, String user) {
+    public void updateNumMinuts(int hora, Time tempsAfegir, String user) {
+        int minuts, segons;
+        String query = "SELECT NumMinuts FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
+        ResultSet result = connector.selectQuery(query);
+
+        try{
+            result.next();//get select once
+
+            segons = result.getInt("NumSegons") + tempsAfegir.getSeconds();
+            minuts = result.getInt("NumMinuts") + tempsAfegir.getMinutes();
+
+            if(segons >= 60) {
+                minuts++;
+                segons -= 60;
+            }
+
+            query = "UPDATE Stats SET NumMinuts = " + minuts + ", NumSegons = " + segons + " WHERE NumUsuari LIKE '" + user + "' " +
+                    "AND Hora = " + hora + ";";
+            connector.updateQuery(query);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de minuts/segons");
+        }
 
     }
 
