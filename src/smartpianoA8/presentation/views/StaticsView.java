@@ -10,16 +10,10 @@ public class StaticsView extends JFrame {
     }
 
     void carregaDades(){
-
-
-
-
-
+        //obté les dades a mostrar i passa-les o guarda en atributs
     }
     void showStatics(){
-
-
-
+        //la vista en si
 
     }
 
