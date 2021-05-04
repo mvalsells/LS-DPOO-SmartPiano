@@ -21,5 +21,7 @@ public class MidiSong {
 
     }
 
-
+    public String getSongName() {
+        return songName;
+    }
 }
