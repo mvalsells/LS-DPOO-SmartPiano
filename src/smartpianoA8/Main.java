@@ -1,6 +1,7 @@
 package smartpianoA8;
 
-import smartpianoA8.business.*;
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.persistence.*;
@@ -10,16 +11,10 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.Controller.WellcomeController;
-import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
-import smartpianoA8.presentation.views.WellcomeFrame;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -69,7 +64,7 @@ public class Main {
         ///*
 
         //BERTU--------------------------------STATISTICS
-        /*
+
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -81,7 +76,7 @@ public class Main {
         }
 
         StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
-        */
+
         //BERTU--------------------------------STATISTICS
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
