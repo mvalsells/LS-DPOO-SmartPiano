@@ -12,7 +12,8 @@ public class Song {
     private final int numReproduccions;
     private final String autor;
     private final Time duracio;
-    private final LocalDate dataEnregistrament;
+    private LocalDate dataEnregistrament;
+    private String datePublished;
     private final String directori;
     private Boolean isPublic;
     private final String nomUsuari;
@@ -29,6 +30,23 @@ public class Song {
         this.duracio = duracio;
         this.dataEnregistrament = LocalDate.now();
         this.midi = midi;
+    }
+
+    public Song(int idSong, Time duracio, String nom, String autor, String datePublished, String directori, Boolean isPublic, String nomUsuari, String midi) {
+        this.idSong = idSong;
+        this.nom = nom;
+        this. autor = autor;
+        this.directori = directori;
+        this.isPublic = isPublic;
+        this. nomUsuari = nomUsuari;
+        this.numReproduccions = 0;
+        this.duracio = duracio;
+        this.datePublished = datePublished;
+        this.midi = midi;
+    }
+
+    public void setDataEnregistrament(LocalDate dataEnregistrament) {
+        this.dataEnregistrament = dataEnregistrament;
     }
 
     public void changePrivatePublic(Boolean newIsPublic){
@@ -73,5 +91,14 @@ public class Song {
 
     public String getMidi(){
         return midi;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Song) {
+            return this.nom.equals(((Song) obj).nom);
+        }else {
+            return false;
+        }
     }
 }

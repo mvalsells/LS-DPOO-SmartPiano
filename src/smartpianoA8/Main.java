@@ -4,6 +4,7 @@ import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -56,7 +57,10 @@ public class Main {
         //Business <-> Persitance
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
         Timer timer = new Timer();
-        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60*1000L);
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
+        Thread.sleep(3000);
+        ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        System.out.println("lele");
 
         //*/
         // ------------------------------

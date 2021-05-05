@@ -6,15 +6,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import smartpianoA8.business.BusinessFacade;
-import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.persistence.HtmlScrapping;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
@@ -28,14 +24,14 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
     private static int page = 0;
     private static final String url2 = "&Instrument=Piano";
-    private ArrayList<MidiSong> midiSongs;
+    private ArrayList<Song> midiSongs;
     private int newData;
     private BusinessFacade businessFacade;
 
     //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
 
     public HtmlScrappingImpl(BusinessFacade businessFacade){
-        midiSongs = new ArrayList<MidiSong>();
+        midiSongs = new ArrayList<Song>();
         newData = 0;
         this.businessFacade=businessFacade;
     }
@@ -94,16 +90,20 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                     String localMidiAddress = downloadMidiFile(midiAddress, songName);
 
                     if(datePublished.equals("")) {
-                        MidiSong midiSong = new MidiSong(songName, author, "Unknown", localMidiAddress);
-                        if(!midiSongs.contains(midiSong)) {
-                            midiSongs.add(midiSong);
+                        Song song = new Song(0, null, songName, author, "Unknown", localMidiAddress, true, Song.Master, midiAddress);
+                        //MidiSong midiSong = new MidiSong(songName, author, "Unknown", localMidiAddress);
+                        if(!midiSongs.contains(song)) {
+                            midiSongs.add(song);
                             newData = 1;
+                            saveSong(song);
                         }
                     }else {
-                        MidiSong midiSong = new MidiSong(songName, author, datePublished, localMidiAddress);
-                        if(!midiSongs.contains(midiSong)) {
-                            midiSongs.add(midiSong);
+                        Song song = new Song(0, null, songName, author, datePublished, localMidiAddress, true, Song.Master, midiAddress);
+                        //MidiSong midiSong = new MidiSong(songName, author, datePublished, localMidiAddress);
+                        if(!midiSongs.contains(song)) {
+                            midiSongs.add(song);
                             newData = 1;
+                            saveSong(song);
                         }
                     }
 
@@ -123,8 +123,8 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private String downloadMidiFile(String addr, String songName) {
 
         String whereIsTheFile;
-        File out = new File("resources/midiFiles/"+songName+".mid");
-        whereIsTheFile = "resources/midiFiles/"+songName+".mid";
+        File out = new File("resources/midiFiles/Master/"+songName+".mid");
+        whereIsTheFile = "resources/midiFiles/Master/"+songName+".mid";
 
         try {
             URL url = new URL(addr);
@@ -159,7 +159,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     }
 
     @Override
-    public ArrayList<MidiSong> getMidiSongs() {
+    public ArrayList<Song> getMidiSongs() {
         return midiSongs;
     }
 
@@ -273,8 +273,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
         return document;
     }
 
-    private void saveSong(){
-        Song song = new Song(0,new Time(9),"","","",false,"","");
+    private void saveSong(Song song){
         businessFacade.addSong(song,Song.Master);
     }
 
