@@ -14,8 +14,9 @@ public class Song {
     private final String directori;
     private Boolean isPublic;
     private final String nomUsuari;
+    private final String midi;
 
-    public Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari){
+    public Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari, String midi){
         this.idSong = idSong;
         this.nom = nom;
         this. autor = autor;
@@ -25,6 +26,7 @@ public class Song {
         this.numReproduccions = 0;
         this.duracio = duracio;
         this.dataEnregistrament = LocalDate.now();
+        this.midi = midi;
     }
 
     public void changePrivatePublic(Boolean newIsPublic){
@@ -65,5 +67,9 @@ public class Song {
 
     public Boolean getPublic() {
         return isPublic;
+    }
+
+    public String getMidi(){
+        return midi;
     }
 }

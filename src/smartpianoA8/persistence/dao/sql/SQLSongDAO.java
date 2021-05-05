@@ -52,12 +52,12 @@ public class SQLSongDAO implements SongDAO {
      */
     @Override
     public Song getSong(int IDSong) {
-        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song;";
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song;";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getInt("IDSong") == IDSong) {
-                    return new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"));
+                    return new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"), result.getString("Midi"));
                 }
             }
         }catch (SQLException e){
