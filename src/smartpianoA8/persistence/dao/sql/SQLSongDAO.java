@@ -83,7 +83,7 @@ public class SQLSongDAO implements SongDAO {
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
     @Override
-    public void SongPlayed(int IDSong){
+    public void SongPlayed(int IDSong){ //TODO cridar aixo quan es reprodueixi una cançó
         String query = "SELECT NumReproduccions FROM Song WHERE idSong = " + IDSong + ";";
         ResultSet result = connector.selectQuery(query);
 
