@@ -6,8 +6,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import smartpianoA8.business.entity.MidiSong;
+import smartpianoA8.persistence.HtmlScrapping;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
@@ -80,12 +84,14 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                     if(datePublished.equals("")) {
                         MidiSong midiSong = new MidiSong(songName, author, "Unknown", midiAddress);
                         if(!midiSongs.contains(midiSong)) {
+                            String localMidiAddress = downloadMidiFile(midiAddress, songName);
                             midiSongs.add(midiSong);
                             newData = 1;
                         }
                     }else {
                         MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
                         if(!midiSongs.contains(midiSong)) {
+                            String localMidiAddress = downloadMidiFile(midiAddress, songName);
                             midiSongs.add(midiSong);
                             newData = 1;
                         }
@@ -100,7 +106,45 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
         }
 
 
-        page = page + 4;
+        page = page + 2;
+
+    }
+
+    private String downloadMidiFile(String addr, String songName) {
+
+        String whereIsTheFile;
+        File out = new File("resources/midiFiles/"+songName+".mid");
+        whereIsTheFile = "resources/midiFiles/"+songName+".mid";
+
+        try {
+            URL url = new URL(addr);
+            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+            double fileSize = (double) httpURLConnection.getContentLengthLong();
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(httpURLConnection.getInputStream());
+            FileOutputStream fileOutputStream = new FileOutputStream(out);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream, 1024);
+            byte[] buffer = new byte[1024];
+            double downloaded = 0.00;
+            int read = 0;
+            double percentDownloaded = 0.00;
+
+            while ((read = bufferedInputStream.read(buffer, 0, 1024)) >= 0) {
+                bufferedOutputStream.write(buffer, 0, read);
+                downloaded += read;
+                percentDownloaded = (downloaded*100)/fileSize;
+                String percent = String.format("%.4f", percentDownloaded);
+                System.out.println("Downloaded: " + percent + " of a file.");
+            }
+            bufferedOutputStream.close();
+            bufferedInputStream.close();
+            System.out.println("Download complete.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return whereIsTheFile;
 
     }
 
