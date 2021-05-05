@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class StatisticsView extends JFrame {
     /**
      * Constructor de la vista
@@ -22,28 +23,37 @@ public class StatisticsView extends JFrame {
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
         setSize(700,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // NO SÉ QUÈ FA AIXÒ HAHA
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setVisible(true);
+        //pack();
 
         //fons |__|
         JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
         fons.setBackground(Color.yellow);
+        add(fons);
+
 
         //panells bessos |[][]|
         JPanel dreta = new JPanel();
         JPanel esquerra = new JPanel();
 
         dreta.setLayout(new BorderLayout());
+        esquerra.setLayout(new BorderLayout());
         dreta.setBackground(Color.pink);
         esquerra.setBackground(Color.red);
-        esquerra.setLayout(new BorderLayout());
 
-        fons.add(dreta, BorderLayout.WEST);
-        fons.add(esquerra, BorderLayout.EAST);
+        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));//ara joqueseaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
+        //esquerra.setBorder(BorderFactory.createEmptyBorder(0,0,0,getWidth()/2));
 
-        dreta.add(new JLabel("#Songs"), BorderLayout.NORTH);
-        esquerra.add(new JLabel("#Minutes"), BorderLayout.NORTH);
+        System.out.println(getWidth());
 
+        fons.add(esquerra, BorderLayout.WEST);
+        fons.add(dreta, BorderLayout.EAST);
+
+        dreta.add(new JLabel("Songs Played"), BorderLayout.NORTH);
+        esquerra.add(new JLabel("Minutes Listened"), BorderLayout.NORTH);
+/*
         JPanel llegenda1 = new JPanel();
         JPanel llegenda2 = new JPanel();
         llegenda1.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -52,18 +62,12 @@ public class StatisticsView extends JFrame {
         llegenda1.add(new JLabel("#Songs"));
         //llegenda2.add(); //linia taronja
         llegenda2.add(new JLabel("#Minutes"));
-        dreta.add(llegenda2, BorderLayout.SOUTH);
-        esquerra.add(llegenda1, BorderLayout.SOUTH);
+        dreta.add(llegenda1, BorderLayout.SOUTH);
+        esquerra.add(llegenda2, BorderLayout.SOUTH);
 
 
         JPanel llistaHores = new JPanel();
-        llistaHores.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JLabel[] hores = new JLabel[24];
-        for(int i=0; i<24;i++) {
-            hores[i] = new JLabel(i + ":00");
-            llistaHores.add(hores[i], FlowLayout.CENTER);
-        }
+        llistaHores.setLayout(new FlowLayout(FlowLayout.CENTER))
 
 
         JPanel dretaIntern = new JPanel();
@@ -76,14 +80,9 @@ public class StatisticsView extends JFrame {
 
         esquerraIntern.add(llistaHores, BorderLayout.SOUTH);
         dretaIntern.add(llistaHores, BorderLayout.SOUTH);
-
-
-
-        //parametres finals
-        add(fons);
-        setMinimumSize(new Dimension(700, 400));
-        pack();//TODO mirar si aixó ajuda o empitjora
-        setVisible(true);
+*/
+        repaint();
+        revalidate();
     }
 
 }

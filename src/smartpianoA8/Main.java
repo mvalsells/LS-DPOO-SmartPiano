@@ -11,13 +11,14 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PianoController;
 import smartpianoA8.presentation.Controller.WellcomeController;
 import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.StatisticsView;
 import smartpianoA8.presentation.views.WellcomeFrame;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -65,6 +66,29 @@ public class Main {
         // START proves
         // ------------------------------
         ///*
+
+        //BERTU--------------------------------STATISTICS
+
+        ArrayList<Integer> valorsCancons = new ArrayList<>();
+        ArrayList<Float> valorsMinuts = new ArrayList<>();
+        //rand valors
+        float j = 0;
+        for(int i = 0; i<24;i++){
+            valorsCancons.add(i);
+            valorsMinuts.add(j);
+            j += 1.0f;
+        }
+
+        StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
+
+        //BERTU--------------------------------STATISTICS
+
+
+
+
+
+
+
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
