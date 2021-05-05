@@ -49,6 +49,8 @@ public class Main {
         // ------------------------------
         ///*
 
+        //BERTU--------------------------------STATISTICS
+        /*
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -60,7 +62,9 @@ public class Main {
         }
 
         StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
-
+        */
+         */
+        //BERTU--------------------------------STATISTICS
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
