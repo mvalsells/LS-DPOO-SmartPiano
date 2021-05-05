@@ -9,7 +9,11 @@ public class RegisterView extends JPanel  {
     //ImageView imageView = new ImageView();
     BordersView bordersView = new BordersView();
     private JButton IniciarSessio;
-
+    private JTextField Nom;
+    private JTextField Correu;
+    private JTextField Contrasenya;
+    private JTextField RepetirContrasenya;
+    private JButton RegisterButton;
     public RegisterView() {
         IniciarSessio = new JButton();
     }
@@ -155,25 +159,25 @@ public class RegisterView extends JPanel  {
 
 
         /*Creem les zones per escriure*/
-        JTextField Nom = new JTextField("  Nom",20);
+        Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(bordersView.getTextFieldBorder());
         Nom.setOpaque(false);
 
-        JTextField Correu = new JTextField("  Correu",20);
+        Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(bordersView.getTextFieldBorder());
         Correu.setOpaque(false);
 
-        JTextField Contrasenya = new JTextField("  Contrasenya",20);
+        Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(bordersView.getTextFieldBorder());
         Contrasenya.setOpaque(false);
 
-        JTextField RepetirContrasenya = new JTextField("  Repetir Contrasenya",20);
+        RepetirContrasenya = new JTextField("  Repetir Contrasenya",20);
         RepetirContrasenya.setMaximumSize(new Dimension(281,39));
         RepetirContrasenya.setForeground(new Color(255,255,255));
         RepetirContrasenya.setBorder(bordersView.getTextFieldBorder());
@@ -239,7 +243,7 @@ public class RegisterView extends JPanel  {
         ComplementRegistre.setLayout(new BoxLayout(ComplementRegistre,BoxLayout.Y_AXIS));
         ComplementRegistre.setOpaque(false);
 
-        JButton RegisterButton = new JButton("Registrarse");
+        RegisterButton = new JButton("Registrarse");
         //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
         RegisterButton.setPreferredSize(new Dimension(220,39));
         RegisterButton.setBackground(new Color(249,171,15));
@@ -250,6 +254,7 @@ public class RegisterView extends JPanel  {
         RegisterButton.setOpaque(true);
         RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
         RegisterButton.setVisible(true);
+        RegisterButton.setActionCommand("TryRegister");
 
         JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
         AcceptTandC.setOpaque(false);
@@ -332,6 +337,19 @@ public class RegisterView extends JPanel  {
     public JButton getIniciarSessio(){
         return this.IniciarSessio;
     }
-
-
+    public JTextField getNom(){
+        return this.Nom;
+    }
+    public JTextField getCorreu(){
+        return this.Correu;
+    }
+    public JTextField getContrasenya(){
+        return this.Contrasenya;
+    }
+    public JTextField getRepetirContrasenya(){
+        return this.RepetirContrasenya;
+    }
+    public JButton getRegisterButton(){
+        return  this.RegisterButton;
+    }
 }

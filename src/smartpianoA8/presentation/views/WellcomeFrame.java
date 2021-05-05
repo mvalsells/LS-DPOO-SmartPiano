@@ -50,6 +50,7 @@ public class WellcomeFrame extends JFrame {
     public void registerController(ActionListener controller){
         loginView.getRegistrarse().addActionListener(controller);
         registerView.getIniciarSessio().addActionListener(controller);
+        registerView.getRegisterButton().addActionListener(controller);
     }
 
 
@@ -65,5 +66,8 @@ public class WellcomeFrame extends JFrame {
 
     }
 
+    public RegisterView getRegisterView(){
+        return this.registerView;
+    }
 
 }
