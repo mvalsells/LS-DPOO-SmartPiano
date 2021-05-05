@@ -133,7 +133,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                 downloaded += read;
                 percentDownloaded = (downloaded*100)/fileSize;
                 String percent = String.format("%.4f", percentDownloaded);
-                System.out.println("Downloaded: " + percent + " of a file.");
+                System.out.println("Downloaded: " + percent + "% of a file.");
             }
             bufferedOutputStream.close();
             bufferedInputStream.close();
