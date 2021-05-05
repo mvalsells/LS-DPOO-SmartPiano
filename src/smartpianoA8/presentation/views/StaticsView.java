@@ -5,6 +5,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class StaticsView extends JFrame {
+    /**
+     * Constructor de la vista
+     * @param valorsMinuts llista de valors de minuts (amb decimals).
+     * @param valorsReproduccions llista de valors de reproduccions
+     */
     public  StaticsView(ArrayList<Integer> valorsMinuts, ArrayList<Float> valorsReproduccions){
         //parametres
         setResizable(true);
