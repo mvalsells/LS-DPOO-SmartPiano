@@ -70,11 +70,18 @@ public class HtmlScrapping extends TimerTask {
 
                     counter = 0;
 
-                    MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
-
-                    if(!midiSongs.contains(midiSong)) {
-                        midiSongs.add(midiSong);
+                    if(datePublished.equals("")) {
+                        MidiSong midiSong = new MidiSong(songName, author, "Unknown", midiAddress);
+                        if(!midiSongs.contains(midiSong)) {
+                            midiSongs.add(midiSong);
+                        }
+                    }else {
+                        MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
+                        if(!midiSongs.contains(midiSong)) {
+                            midiSongs.add(midiSong);
+                        }
                     }
+
 
                 }
 
