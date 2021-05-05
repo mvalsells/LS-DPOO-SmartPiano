@@ -2,21 +2,21 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegisterView extends JPanel  {
     //ImageView imageView = new ImageView();
     public static final String toLogin = "ToLogin";
+
     private BordersView bordersView = new BordersView();
-    private JButton IniciarSessio;
+    private JButton iniciarSessio;
     private JTextField Nom;
     private JTextField Correu;
     private JTextField Contrasenya;
     private JTextField RepetirContrasenya;
     private JButton RegisterButton;
     public RegisterView() {
-        IniciarSessio = new JButton();
+        iniciarSessio = new JButton();
     }
 
     public ImageView runRegister(){
@@ -74,14 +74,14 @@ public class RegisterView extends JPanel  {
         //PosicionamentBotonsNord.setBackground(Color.GREEN);
 
         /*Botons i textos nord*/
-        IniciarSessio = new JButton("Iniciar sesion");
-        IniciarSessio.setForeground(new Color(255,255,255));
-        IniciarSessio.setBackground(new Color(249,171,15));
-        IniciarSessio.setPreferredSize(new Dimension(130,35));
-        IniciarSessio.setBorderPainted(false);
-        IniciarSessio.setOpaque(true);
-        IniciarSessio.setVisible(true);
-        IniciarSessio.setActionCommand(toLogin);
+        iniciarSessio = new JButton("Iniciar sesion");
+        iniciarSessio.setForeground(new Color(255,255,255));
+        iniciarSessio.setBackground(new Color(249,171,15));
+        iniciarSessio.setPreferredSize(new Dimension(130,35));
+        iniciarSessio.setBorderPainted(false);
+        iniciarSessio.setOpaque(true);
+        iniciarSessio.setVisible(true);
+        iniciarSessio.setActionCommand(toLogin);
 
 
         JLabel JaTensCompte = new JLabel("¿Ya tienes una cuenta?");
@@ -278,7 +278,7 @@ public class RegisterView extends JPanel  {
         /*Part Superior*/
         //PartSuperior.add(OmplirEstPartSuperior);
         PosicionamentBotonsNord.add(JaTensCompte);
-        PosicionamentBotonsNord.add(IniciarSessio);
+        PosicionamentBotonsNord.add(iniciarSessio);
         PosicionamentBotonsNord.add(Espai);
         PartSuperior.add(PosicionamentBotonsNord,BorderLayout.EAST);
         panel.add(PartSuperior,BorderLayout.NORTH);
@@ -335,8 +335,12 @@ public class RegisterView extends JPanel  {
 
     }
 
+    public void registerController(ActionListener controller) {
+        iniciarSessio.addActionListener(controller);
+    }
+
     public JButton getIniciarSessio(){
-        return this.IniciarSessio;
+        return this.iniciarSessio;
     }
     public JTextField getNom(){
         return this.Nom;

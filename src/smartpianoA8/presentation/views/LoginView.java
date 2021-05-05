@@ -1,26 +1,18 @@
 package smartpianoA8.presentation.views;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.http.WebSocket;
-
-import smartpianoA8.presentation.Controller.WellcomeController;
-import smartpianoA8.presentation.views.WellcomeFrame;
-import smartpianoA8.presentation.views.BordersView;
 
 public class LoginView extends JPanel  {
 
+    public static final String toRegister = "toRegister";
+
     private static JLabel backgroundImage;
 
-    private JButton Registrarse;
-    private JTextField Nom;
-    private JTextField Correu;
-    private JTextField Contrasenya;
+    private JButton registrarse;
+    private JTextField nom;
+    private JTextField correu;
+    private JTextField contrasenya;
 
 
     public  LoginView() {
@@ -86,14 +78,14 @@ public class LoginView extends JPanel  {
         PosicionamentBotonsNord.setOpaque(false);
         PosicionamentBotonsNord.setLayout(new FlowLayout());
 
-        Registrarse = new JButton("Registrarse");
-        Registrarse.setForeground(new Color(255,255,255));
-        Registrarse.setBackground(new Color(249,171,15));
-        Registrarse.setPreferredSize(new Dimension(130,35));
-        Registrarse.setBorderPainted(false);
-        Registrarse.setOpaque(true);
-        Registrarse.setVisible(true);
-        Registrarse.setActionCommand("ToRegister");
+        registrarse = new JButton("Registrarse");
+        registrarse.setForeground(new Color(255,255,255));
+        registrarse.setBackground(new Color(249,171,15));
+        registrarse.setPreferredSize(new Dimension(130,35));
+        registrarse.setBorderPainted(false);
+        registrarse.setOpaque(true);
+        registrarse.setVisible(true);
+        registrarse.setActionCommand("ToRegister");
 
         JLabel Espai = new JLabel(" ");
         Espai.setForeground(new Color(255,255,255));
@@ -219,23 +211,23 @@ public class LoginView extends JPanel  {
         EntreButtonButtonLabel.setBorder(bordersView.getEntreButtonButtonBorder());
 
         /*Creem les zones per escriure*/
-        Nom = new JTextField("  Nom",20);
-        Nom.setMaximumSize(new Dimension(281,39));
-        Nom.setForeground(new Color(255,255,255));
-        Nom.setBorder(bordersView.getTextFieldBorder());
-        Nom.setOpaque(false);
+        nom = new JTextField("  Nom",20);
+        nom.setMaximumSize(new Dimension(281,39));
+        nom.setForeground(new Color(255,255,255));
+        nom.setBorder(bordersView.getTextFieldBorder());
+        nom.setOpaque(false);
 
-        Correu = new JTextField("  Correu",20);
-        Correu.setMaximumSize(new Dimension(281,39));
-        Correu.setForeground(new Color(255,255,255));
-        Correu.setBorder(bordersView.getTextFieldBorder());
-        Correu.setOpaque(false);
+        correu = new JTextField("  Correu",20);
+        correu.setMaximumSize(new Dimension(281,39));
+        correu.setForeground(new Color(255,255,255));
+        correu.setBorder(bordersView.getTextFieldBorder());
+        correu.setOpaque(false);
 
-        Contrasenya = new JTextField("  Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(281,39));
-        Contrasenya.setForeground(new Color(255,255,255));
-        Contrasenya.setBorder(bordersView.getTextFieldBorder());
-        Contrasenya.setOpaque(false);
+        contrasenya = new JTextField("  Contrasenya",20);
+        contrasenya.setMaximumSize(new Dimension(281,39));
+        contrasenya.setForeground(new Color(255,255,255));
+        contrasenya.setBorder(bordersView.getTextFieldBorder());
+        contrasenya.setOpaque(false);
 
 
 
@@ -300,7 +292,7 @@ public class LoginView extends JPanel  {
         /*Part Superior*/
         //PartSuperior.add(OmplirEstPartSuperior);
         PosicionamentBotonsNord.add(JaTensCompte);
-        PosicionamentBotonsNord.add(Registrarse);
+        PosicionamentBotonsNord.add(registrarse);
         PosicionamentBotonsNord.add(Espai);
         PartSuperior.add(PosicionamentBotonsNord,BorderLayout.EAST);
         panel.add(PartSuperior,BorderLayout.NORTH);
@@ -312,11 +304,11 @@ public class LoginView extends JPanel  {
 
         /*Est*/
         PanelRegistre.add(TopTextFieldLabel0);
-        PanelRegistre.add(Nom);
+        PanelRegistre.add(nom);
         PanelRegistre.add(EntreTextFieldLabel0);
-        PanelRegistre.add(Correu);
+        PanelRegistre.add(correu);
         PanelRegistre.add(EntreTextFieldLabel1);
-        PanelRegistre.add(Contrasenya);
+        PanelRegistre.add(contrasenya);
         //PanelRegistre.add(EntreTextFieldLabel2);
         //PanelRegistre.add(RepetirContrasenya);
         PanelRegistre.add(EntreTextButtonLabel);
@@ -361,16 +353,16 @@ public class LoginView extends JPanel  {
     }
 
     public JButton getRegistrarse(){
-        return  this.Registrarse;
+        return  this.registrarse;
     }
     public JTextField getNom(){
-        return this.Nom;
+        return this.nom;
     }
     public JTextField getCorreu(){
-        return this.Correu;
+        return this.correu;
     }
     public JTextField getContrasenya(){
-        return this.Contrasenya;
+        return this.contrasenya;
     }
 
 }

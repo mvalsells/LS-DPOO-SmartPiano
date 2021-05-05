@@ -37,6 +37,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     @Override
+    public void logoutCurrentUser() {
+        userManager.logoutCurrentUser();
+    }
+
+    @Override
     public void removeCurrentUser() {
         userManager.removeCurrentUser();
     }

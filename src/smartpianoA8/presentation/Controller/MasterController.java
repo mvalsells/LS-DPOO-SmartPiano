@@ -3,17 +3,29 @@ package smartpianoA8.presentation.Controller;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.presentation.views.WellcomeFrame;
 
-public class PianoController {
+public class MasterController {
     BusinessFacade businessFacade;
     WellcomeController wellcomeController;
-    public PianoController(BusinessFacade businessFacade){
+    WellcomeFrame wellcomeFrame;
+    public MasterController(BusinessFacade businessFacade){
         this.businessFacade=businessFacade;
-        wellcomeController = new WellcomeController();
+
+        //Views
+        wellcomeFrame = new WellcomeFrame();
+
+        //Controllers
+        wellcomeController = new WellcomeController(wellcomeFrame);
     }
 
     public void registerAllControlers(){
+        //Register this controller to other controllers
         wellcomeController.registerController(this);
+
+        //Register other controllers to their views
+        wellcomeFrame.registerController(wellcomeController);
+
     }
     //Change views
 

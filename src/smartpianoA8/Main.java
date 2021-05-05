@@ -1,7 +1,6 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.views.StatisticsView;
-
+import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.HtmlScrapping;
 import smartpianoA8.persistence.JsonReadable;
@@ -11,24 +10,17 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PianoController;
-import smartpianoA8.presentation.Controller.WellcomeController;
-import smartpianoA8.presentation.views.PianoPlayingView;
-import smartpianoA8.presentation.views.PianoView;
-import smartpianoA8.presentation.views.WellcomeFrame;
+import smartpianoA8.presentation.Controller.MasterController;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
 import java.util.Timer;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        /*
+        ///*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -55,7 +47,7 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
-        PianoController pianoController = new PianoController(businessFacade);
+        MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
         //*/
         // ------------------------------
@@ -91,10 +83,10 @@ public class Main {
             e.printStackTrace();
         }*/
 
-        Timer timer = new Timer();
-        timer.schedule(new HtmlScrapping(), 0, 5000);
+        //Timer timer = new Timer();
+       // timer.schedule(new HtmlScrapping(), 0, 5000);
 
-        System.out.println("leleleleel");
+        //System.out.println("leleleleel");
 
         //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();

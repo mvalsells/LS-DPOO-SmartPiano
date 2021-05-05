@@ -185,4 +185,8 @@ public class UserManager {
             return false;
         }
     }
+
+    public void logoutCurrentUser() {
+        currentUser=null;
+    }
 }

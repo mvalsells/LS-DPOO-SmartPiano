@@ -10,6 +10,7 @@ public interface BusinessFacade {
     //Usuari
     public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException;
     public void login(String id, String password) throws UserManagerException;
+    public void logoutCurrentUser();
     public void removeCurrentUser();
     public boolean modifyCurrentUserEmail(String newEmail);
     public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException;

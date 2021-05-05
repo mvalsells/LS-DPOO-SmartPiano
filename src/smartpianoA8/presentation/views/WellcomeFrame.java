@@ -14,6 +14,8 @@ public class WellcomeFrame extends JFrame {
     BordersView bordersView;
     LoginView loginView;
     RegisterView registerView;
+    public static final String chgToLogin = "chgToLogin";
+    public static final String chgToRegister = "chgToRegister";
 
     public WellcomeFrame(){
         cards = new CardLayout();
@@ -47,9 +49,11 @@ public class WellcomeFrame extends JFrame {
     }
 
     public void registerController(ActionListener controller){
+        registerView.registerController(controller);
+
         loginView.getRegistrarse().addActionListener(controller);
-        registerView.getIniciarSessio().addActionListener(controller);
-        registerView.getRegisterButton().addActionListener(controller);
+        //registerView.getIniciarSessio().addActionListener(controller);
+        //registerView.getRegisterButton().addActionListener(controller);
     }
     //Canvi panel view
     public void changeToRegister(){
@@ -58,12 +62,21 @@ public class WellcomeFrame extends JFrame {
     public void changeToLogin(){
         cards.show(mainPanel,"LoginView");
     }
-    public void changePanel(String string){
-        if(string.equals("ToRegister")){
-            changeToRegister();
-        }else if(string.equals(RegisterView.toLogin)){
-            changeToLogin();
+    public void changePanel(String panel){
+        switch (panel) {
+            case chgToLogin:
+                changeToLogin();
+                break;
+            case chgToRegister:
+                changeToRegister();
+                break;
         }
+
+       /* if(panel.equals("ToRegister")){
+            changeToRegister();
+        }else if(panel.equals(RegisterView.toLogin)){
+            changeToLogin();
+        }*/
     }
 /*
     public CardLayout getCards(){
