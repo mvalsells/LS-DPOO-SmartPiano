@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.persistence.HtmlScrapping;
 
@@ -29,6 +30,10 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private int newData = 0;
 
     //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
+
+    public HtmlScrappingImpl(BusinessFacade businessFacade){
+        midiSongs = new ArrayList<MidiSong>();
+    }
 
     @Override
     public void run() {
