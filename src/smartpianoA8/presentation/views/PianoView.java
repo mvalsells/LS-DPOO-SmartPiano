@@ -60,7 +60,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
     public void mouseReleased(MouseEvent e) {
         Key key = (Key) e.getSource();
-        channel.noteOff(key.getNote());
+        channel.noteOff(key.getNote(),127);
     }
 
     public void mouseEntered(MouseEvent e) {
@@ -160,7 +160,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             channel.noteOn(63, 127);
         }
         if(key2 == KeyEvent.VK_7){
-            channel.noteOn(63, 127);
+            channel.noteOn(66, 127);
         }
         if(key2 == KeyEvent.VK_8){
             channel.noteOn(68, 127);
@@ -272,7 +272,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             channel.noteOff(63, 127);
         }
         if(key2 == KeyEvent.VK_7){
-            channel.noteOff(63, 127);
+            channel.noteOff(66, 127);
         }
         if(key2 == KeyEvent.VK_8){
             channel.noteOff(68, 127);
@@ -469,6 +469,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
         };
         Teclat.setBackground(Color.BLACK);
+        //Teclat.addKeyListener(this);
         char lletresBlack = '0';
         for (int i = 0; i < blacks.length; i++) {
             blacks[i] = new BlackKey(i);
@@ -485,8 +486,9 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             blacks[i].setFont(new Font("Verdana", Font.PLAIN, 6));
             Teclat.add(blacks[i]);
 
-            blacks[i].addMouseListener( this);
             blacks[i].addKeyListener( this);
+            blacks[i].addMouseListener( this);
+
 
         }
 
