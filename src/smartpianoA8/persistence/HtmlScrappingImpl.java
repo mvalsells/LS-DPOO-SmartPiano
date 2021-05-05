@@ -81,17 +81,17 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
                     counter = 0;
 
+                    String localMidiAddress = downloadMidiFile(midiAddress, songName);
+
                     if(datePublished.equals("")) {
-                        MidiSong midiSong = new MidiSong(songName, author, "Unknown", midiAddress);
+                        MidiSong midiSong = new MidiSong(songName, author, "Unknown", localMidiAddress);
                         if(!midiSongs.contains(midiSong)) {
-                            String localMidiAddress = downloadMidiFile(midiAddress, songName);
                             midiSongs.add(midiSong);
                             newData = 1;
                         }
                     }else {
-                        MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
+                        MidiSong midiSong = new MidiSong(songName, author, datePublished, localMidiAddress);
                         if(!midiSongs.contains(midiSong)) {
-                            String localMidiAddress = downloadMidiFile(midiAddress, songName);
                             midiSongs.add(midiSong);
                             newData = 1;
                         }

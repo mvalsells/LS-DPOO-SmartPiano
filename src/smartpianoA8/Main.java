@@ -90,10 +90,10 @@ public class Main {
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
-        /*Thread.sleep(3000);
+        Thread.sleep(3000);
         ArrayList<MidiSong> midiSongs = htmlScrapping.getMidiSongs();
 
-        System.out.println("lele");*/
+        System.out.println("lele");
 
         /*HtmlScrapping HtmlScrapping = new HtmlScrapping();
         Timer timer = new Timer();
