@@ -41,7 +41,7 @@ public class PianoPlayingView extends JFrame implements MouseListener, KeyListen
         }
     }
     BordersView bordersView = new BordersView();
-    final int OCTAVES = 8; // change as desired
+    final int OCTAVES = 4; // change as desired
 
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];

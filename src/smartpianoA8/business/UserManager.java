@@ -55,6 +55,8 @@ public class UserManager {
         currentUser = userDAO.loginUser(id, encryptPassword(password));
     }
 
+    //TODO opt encontrar usuario segun id y comprobar en el manager si contra correctas o no.
+
 
     public void removeCurrentUser(){
         removeUser(currentUser);

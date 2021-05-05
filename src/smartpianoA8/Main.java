@@ -2,6 +2,25 @@ package smartpianoA8;
 
 import smartpianoA8.presentation.views.StatisticsView;
 
+import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.HtmlScrapping;
+import smartpianoA8.persistence.JsonReadable;
+import smartpianoA8.persistence.JsonReadableImpl;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.PianoController;
+import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.PianoPlayingView;
+import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.WellcomeFrame;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Timer;
 import java.util.ArrayList;
 
 public class Main {
@@ -72,15 +91,15 @@ public class Main {
             e.printStackTrace();
         }*/
 
-        /*Timer timer = new Timer();
+        Timer timer = new Timer();
         timer.schedule(new HtmlScrapping(), 0, 5000);
 
-        System.out.println("leleleleel");*/
+        System.out.println("leleleleel");
 
         //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
-
+        //PianoPlayingView pianoPlayingView = new PianoPlayingView();
         //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
