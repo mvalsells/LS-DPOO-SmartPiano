@@ -63,7 +63,6 @@ public class Main {
 
         StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
         */
-         */
         //BERTU--------------------------------STATISTICS
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
