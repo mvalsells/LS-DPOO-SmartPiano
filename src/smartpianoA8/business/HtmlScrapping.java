@@ -91,11 +91,15 @@ public class HtmlScrapping extends TimerTask {
         }
 
 
-        page = page + 1;
+        page = page + 11;
 
     }
 
-//todo preguntar como recortar escalas a pol
+    public ArrayList<MidiSong> getMidiSongs() {
+        return midiSongs;
+    }
+
+    //todo preguntar como recortar escalas a pol
 
     //public HtmlScrapping(/*UserDAO userDAO*/){
     //}

@@ -3,6 +3,7 @@ package smartpianoA8;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.HtmlScrapping;
+import smartpianoA8.business.entity.MidiSong;
 import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReadableImpl;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -13,10 +14,12 @@ import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
@@ -83,8 +86,18 @@ public class Main {
             e.printStackTrace();
         }*/
 
+        HtmlScrapping HtmlScrapping = new HtmlScrapping();
+        Timer timer = new Timer();
+        timer.schedule(HtmlScrapping, 0, 100);
+
+
+        //Todo preguntar si se puede hacer asi
+        Thread.sleep(5000);
+        ArrayList<MidiSong> midiSongs = HtmlScrapping.getMidiSongs();
+        System.out.println("lele");
+
         //Timer timer = new Timer();
-       // timer.schedule(new HtmlScrapping(), 0, 5000);
+        //timer.schedule(new HtmlScrapping(), 0, jsonReader.gettimeScrapping()* 1000L);
 
         //System.out.println("leleleleel");
 
