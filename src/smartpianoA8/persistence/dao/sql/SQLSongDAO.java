@@ -6,6 +6,7 @@ import smartpianoA8.business.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SQLSongDAO implements SongDAO {
     private SQLConnector connector;
@@ -64,5 +65,38 @@ public class SQLSongDAO implements SongDAO {
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
         }
         return null;
+    }
+
+
+    /**
+     * Metode que retorna les 5 top Songs per numero de reproduccions.
+     * @return ArrayList<Song> amb les 5 millor songs
+     */
+    @Override
+    public ArrayList<Song> getTop5() {
+
+        return null;
+    }
+
+    /**
+     * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
+     * @param IDSong id de la cançó a la que augmentar el num de reproduccions
+     */
+    @Override
+    public void SongPlayed(int IDSong){ //TODO cridar aixo quan es reprodueixi una cançó
+        String query = "SELECT NumReproduccions FROM Song WHERE idSong = " + IDSong + ";";
+        ResultSet result = connector.selectQuery(query);
+
+        try {
+            result.next();//get select once
+
+            int reproduccions = result.getInt("NumReproduccions") + 1;
+            query = "UPDATE Song SET NumReproduccions " + reproduccions + " WHERE idSong = " + IDSong + ";";
+            connector.updateQuery(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQLSongDAO ERROR no s'ha pogut incrementar el valor de reproduccions de la cançó");
+        }
     }
 }

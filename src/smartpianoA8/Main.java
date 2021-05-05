@@ -88,12 +88,12 @@ public class Main {
 
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl();
         Timer timer = new Timer();
-        timer.schedule((TimerTask) htmlScrapping,0,100);
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
-        Thread.sleep(3000);
+        /*Thread.sleep(3000);
         ArrayList<MidiSong> midiSongs = htmlScrapping.getMidiSongs();
 
-        System.out.println("lele");
+        System.out.println("lele");*/
 
         /*HtmlScrapping HtmlScrapping = new HtmlScrapping();
         Timer timer = new Timer();
@@ -108,12 +108,12 @@ public class Main {
         //parser en persistence
         //MidiParserImpl midiParser = new MidiParserImpl("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/NO-CODI/Unknown_-_pokemon.mid");
 
-        MidiParser midiParser = new MidiParserImpl();
+        /*MidiParser midiParser = new MidiParserImpl();
         midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/NO-CODI/Unknown_-_pokemon.mid");
         System.out.println(midiParser.getTracks());
         ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
 
-        System.out.println("lele");
+        System.out.println("lele");*/
 
         /*Timer timer = new Timer();
         timer.schedule(new HtmlScrapping(), 0, jsonReader.gettimeScrapping()* 1000L);*/
