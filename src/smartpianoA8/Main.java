@@ -73,10 +73,10 @@ public class Main {
             e.printStackTrace();
         }*/
 
-        /*Timer timer = new Timer();
+        Timer timer = new Timer();
         timer.schedule(new HtmlScrapping(), 0, 5000);
 
-        System.out.println("leleleleel");*/
+        System.out.println("leleleleel");
 
         //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();

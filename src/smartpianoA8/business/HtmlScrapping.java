@@ -88,7 +88,7 @@ public class HtmlScrapping extends TimerTask {
 
     }
 
-
+//todo preguntar como recortar escalas a pol
 
     //public HtmlScrapping(/*UserDAO userDAO*/){
     //}
