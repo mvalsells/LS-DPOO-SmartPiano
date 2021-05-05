@@ -13,6 +13,7 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PianoController;
 import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.PianoPlayingView;
 import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.WellcomeFrame;
 
@@ -81,7 +82,7 @@ public class Main {
         //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
-
+        //PianoPlayingView pianoPlayingView = new PianoPlayingView();
         //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);

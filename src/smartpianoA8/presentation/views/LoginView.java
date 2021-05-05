@@ -18,6 +18,9 @@ public class LoginView extends JPanel  {
     private static JLabel backgroundImage;
 
     private JButton Registrarse;
+    private JTextField Nom;
+    private JTextField Correu;
+    private JTextField Contrasenya;
 
 
     public  LoginView() {
@@ -216,19 +219,19 @@ public class LoginView extends JPanel  {
         EntreButtonButtonLabel.setBorder(bordersView.getEntreButtonButtonBorder());
 
         /*Creem les zones per escriure*/
-        JTextField Nom = new JTextField("  Nom",20);
+        Nom = new JTextField("  Nom",20);
         Nom.setMaximumSize(new Dimension(281,39));
         Nom.setForeground(new Color(255,255,255));
         Nom.setBorder(bordersView.getTextFieldBorder());
         Nom.setOpaque(false);
 
-        JTextField Correu = new JTextField("  Correu",20);
+        Correu = new JTextField("  Correu",20);
         Correu.setMaximumSize(new Dimension(281,39));
         Correu.setForeground(new Color(255,255,255));
         Correu.setBorder(bordersView.getTextFieldBorder());
         Correu.setOpaque(false);
 
-        JTextField Contrasenya = new JTextField("  Contrasenya",20);
+        Contrasenya = new JTextField("  Contrasenya",20);
         Contrasenya.setMaximumSize(new Dimension(281,39));
         Contrasenya.setForeground(new Color(255,255,255));
         Contrasenya.setBorder(bordersView.getTextFieldBorder());
@@ -360,6 +363,14 @@ public class LoginView extends JPanel  {
     public JButton getRegistrarse(){
         return  this.Registrarse;
     }
-
+    public JTextField getNom(){
+        return this.Nom;
+    }
+    public JTextField getCorreu(){
+        return this.Correu;
+    }
+    public JTextField getContrasenya(){
+        return this.Contrasenya;
+    }
 
 }

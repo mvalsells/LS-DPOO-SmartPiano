@@ -22,26 +22,28 @@ public class WellcomeController implements ActionListener {
     public void registerController(PianoController pianoController){
         this.pianoController=pianoController;
     }
-    public void changePanel(String string, CardLayout cards, JPanel panel){
+    /*public void changePanel(String string, CardLayout cards, JPanel panel){
         if(string.equals("ToRegister")){
             cards.show(panel,"RegisterView");
         }else if(string.equals("ToLogin")){
             cards.show(panel,"LoginView");
         }
-    }
+    }*/
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if(e.getActionCommand().equals("ToRegister")){
-            changePanel("ToRegister",wellcomeFrame.getCards(),wellcomeFrame.getMainPanel());
+            wellcomeFrame.changePanel("ToRegister");
         }else if(e.getActionCommand().equals("ToLogin")){
-            changePanel("ToLogin",wellcomeFrame.getCards(),wellcomeFrame.getMainPanel());
+            wellcomeFrame.changePanel("ToLogin");
         }else if(e.getActionCommand().equals("TryRegister")){
-            System.out.println(wellcomeFrame.getRegisterView().getNom().getText());
-            System.out.println(wellcomeFrame.getRegisterView().getCorreu().getText());
-            System.out.println(wellcomeFrame.getRegisterView().getContrasenya().getText());
-            registerUser(wellcomeFrame.getRegisterView().getNom().getText(),wellcomeFrame.getRegisterView().getCorreu().getText(),wellcomeFrame.getRegisterView().getContrasenya().getText());
+            System.out.println(wellcomeFrame.getRegisterViewNomString());
+            System.out.println(wellcomeFrame.getRegisterViewCorreuString());
+            System.out.println(wellcomeFrame.getRegisterViewContrasenyaString());
+            registerUser(wellcomeFrame.getRegisterViewNomString(),wellcomeFrame.getRegisterViewCorreuString(),wellcomeFrame.getRegisterViewContrasenyaString());
+        }else if(e.getActionCommand().equals("TryLogin")){
+            registerUser(wellcomeFrame.getLoginViewNomString(),wellcomeFrame.getLoginViewCorreuString(),wellcomeFrame.getLoginViewContrasenyaString());
         }
 
     }

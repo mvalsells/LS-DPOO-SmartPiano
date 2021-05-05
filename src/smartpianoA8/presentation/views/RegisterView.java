@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 
 public class RegisterView extends JPanel  {
     //ImageView imageView = new ImageView();
-    BordersView bordersView = new BordersView();
+    public static final String toLogin = "ToLogin";
+    private BordersView bordersView = new BordersView();
     private JButton IniciarSessio;
     private JTextField Nom;
     private JTextField Correu;
@@ -80,7 +81,7 @@ public class RegisterView extends JPanel  {
         IniciarSessio.setBorderPainted(false);
         IniciarSessio.setOpaque(true);
         IniciarSessio.setVisible(true);
-        IniciarSessio.setActionCommand("ToLogin");
+        IniciarSessio.setActionCommand(toLogin);
 
 
         JLabel JaTensCompte = new JLabel("¿Ya tienes una cuenta?");

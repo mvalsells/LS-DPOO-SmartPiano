@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class WellcomeFrame extends JFrame {
 
-    WellcomeController wellcomeController;
 
     CardLayout cards;
     JPanel mainPanel;
@@ -52,9 +51,21 @@ public class WellcomeFrame extends JFrame {
         registerView.getIniciarSessio().addActionListener(controller);
         registerView.getRegisterButton().addActionListener(controller);
     }
-
-
-
+    //Canvi panel view
+    public void changeToRegister(){
+        cards.show(mainPanel,"RegisterView");
+    }
+    public void changeToLogin(){
+        cards.show(mainPanel,"LoginView");
+    }
+    public void changePanel(String string){
+        if(string.equals("ToRegister")){
+            changeToRegister();
+        }else if(string.equals(RegisterView.toLogin)){
+            changeToLogin();
+        }
+    }
+/*
     public CardLayout getCards(){
 
         return this.cards;
@@ -65,9 +76,26 @@ public class WellcomeFrame extends JFrame {
         return this.mainPanel;
 
     }
-
-    public RegisterView getRegisterView(){
-        return this.registerView;
+*/
+    public String getRegisterViewNomString(){
+        return this.registerView.getNom().getText();
     }
-
+    public String getRegisterViewCorreuString(){
+        return this.registerView.getCorreu().getText();
+    }
+    public String getRegisterViewContrasenyaString(){
+        return this.registerView.getContrasenya().getText();
+    }
+    public String getRegisterViewRepetirContrasenyaString(){
+        return this.registerView.getRepetirContrasenya().getText();
+    }
+    public String getLoginViewNomString(){
+        return this.loginView.getNom().getText();
+    }
+    public String getLoginViewCorreuString(){
+        return this.loginView.getCorreu().getText();
+    }
+    public String getLoginViewContrasenyaString(){
+        return this.loginView.getContrasenya().getText();
+    }
 }
