@@ -22,7 +22,8 @@ public class StatisticsView extends JFrame {
         setResizable(true);//TODO fer que sí ho sigui haha
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
-        //setSize(700,400);
+        setSize(700,400);
+        setMinimumSize(new Dimension(700,400));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setVisible(true);
         //pack();
@@ -30,7 +31,6 @@ public class StatisticsView extends JFrame {
         //fons |__|
         JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
-        //fons.setBackground(Color.yellow);
         add(fons);
 
         Box box = Box.createHorizontalBox();
@@ -45,17 +45,18 @@ public class StatisticsView extends JFrame {
         dreta.setBackground(Color.pink);
         esquerra.setBackground(Color.red);
 
-        dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));//ara joqueseaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
-        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));//ara joqueseaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
+        dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
+        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
         box.add(esquerra);
         box.add(dreta);
 
+        JLabel titol1 = new JLabel("Songs Played by user");
+        titol1.setHorizontalAlignment(JLabel.CENTER);
+        JLabel titol2 = new JLabel("Minutes Listened by user");
+        titol2.setHorizontalAlignment(JLabel.CENTER);
 
-        //esquerra.setBorder(BorderFactory.createEmptyBorder(0,0,0,getWidth()/2));
-
-        System.out.println(getWidth());
-        dreta.add(new JLabel("Songs Played"), BorderLayout.NORTH);
-        esquerra.add(new JLabel("Minutes Listened"), BorderLayout.NORTH);
+        dreta.add(titol2, BorderLayout.NORTH);
+        esquerra.add(titol1, BorderLayout.NORTH);
 
         fons.add(box, BorderLayout.CENTER);
         //fons.add(dreta, BorderLayout.EAST);

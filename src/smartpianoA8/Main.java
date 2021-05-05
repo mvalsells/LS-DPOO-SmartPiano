@@ -85,7 +85,7 @@ public class Main {
         } catch (IOException e){
             e.printStackTrace();
         }*/
-
+        /*
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl();
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
@@ -94,7 +94,7 @@ public class Main {
         ArrayList<MidiSong> midiSongs = htmlScrapping.getMidiSongs();
 
         System.out.println("lele");
-
+        */
         /*HtmlScrapping HtmlScrapping = new HtmlScrapping();
         Timer timer = new Timer();
         timer.schedule(HtmlScrapping, 0, 100);
