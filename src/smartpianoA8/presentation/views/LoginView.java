@@ -2,18 +2,20 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class LoginView extends JPanel  {
 
     public static final String toRegister = "toRegister";
+    public static final String tryLogin = "tryLogin";
 
     private static JLabel backgroundImage;
 
-    private JButton registrarse;
+    private JButton registrarse;//Canviat
     private JTextField nom;
     private JTextField correu;
     private JTextField contrasenya;
-
+    private JButton loginButton;
 
     public  LoginView() {
 
@@ -85,7 +87,7 @@ public class LoginView extends JPanel  {
         registrarse.setBorderPainted(false);
         registrarse.setOpaque(true);
         registrarse.setVisible(true);
-        registrarse.setActionCommand("ToRegister");
+        registrarse.setActionCommand(toRegister);
 
         JLabel Espai = new JLabel(" ");
         Espai.setForeground(new Color(255,255,255));
@@ -119,17 +121,18 @@ public class LoginView extends JPanel  {
         ComplementLogin.setLayout(new BoxLayout(ComplementLogin,BoxLayout.Y_AXIS));
         ComplementLogin.setOpaque(false);
 
-        JButton LoginButton = new JButton("Iniciar sesion");
+        loginButton = new JButton("Iniciar sesion");
         //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
-        LoginButton.setPreferredSize(new Dimension(220,39));
-        LoginButton.setBackground(new Color(249,171,15));
-        LoginButton.setForeground(new Color(255,255,255));
-        LoginButton.setBorderPainted(true);
-        LoginButton.setBorder(bordersView.getLoginButtonBorder());
+        loginButton.setPreferredSize(new Dimension(220,39));
+        loginButton.setBackground(new Color(249,171,15));
+        loginButton.setForeground(new Color(255,255,255));
+        loginButton.setBorderPainted(true);
+        loginButton.setBorder(bordersView.getLoginButtonBorder());
         //IniciarSessio.setBorderPainted(false);
-        LoginButton.setOpaque(true);
-        LoginButton.setFont(new Font("Verdana",Font.BOLD,12));
-        LoginButton.setVisible(true);
+        loginButton.setOpaque(true);
+        loginButton.setFont(new Font("Verdana",Font.BOLD,12));
+        loginButton.setVisible(true);
+        loginButton.setActionCommand(tryLogin);
 
 
 
@@ -317,7 +320,7 @@ public class LoginView extends JPanel  {
         //PanelRegistre.add(NoTensCompteButton);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
         /*South*/
-        ComplementLogin.add(LoginButton);
+        ComplementLogin.add(loginButton);
         PartInferior.add(ComplementLogin,BorderLayout.EAST);
         PartCentral.add(PartInferior,BorderLayout.SOUTH);
         /*Oest*/
@@ -352,17 +355,20 @@ public class LoginView extends JPanel  {
         return panel;
     }
 
-    public JButton getRegistrarse(){
-        return  this.registrarse;
+    public void registerController(ActionListener controller) {
+        registrarse.addActionListener(controller);
+        loginButton.addActionListener(controller);
     }
-    public JTextField getNom(){
-        return this.nom;
+
+    public String getNomString(){
+        return this.nom.getText();
     }
-    public JTextField getCorreu(){
-        return this.correu;
+    public String getCorreuString(){
+        return this.correu.getText();
     }
-    public JTextField getContrasenya(){
-        return this.contrasenya;
+    public String getContrasenyaString(){
+        return this.contrasenya.getText();
     }
+
 
 }

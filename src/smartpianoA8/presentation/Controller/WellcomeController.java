@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 
+import com.mysql.cj.log.Log;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
@@ -15,10 +16,13 @@ public class WellcomeController implements ActionListener {
     
     WellcomeFrame wellcomeFrame;
     MasterController masterController;
+    RegisterView registerView;
+    LoginView loginView;
 
-
-    public WellcomeController(WellcomeFrame wellcomeFrame){
+    public WellcomeController(WellcomeFrame wellcomeFrame, RegisterView registerView,LoginView loginView){
         this.wellcomeFrame = wellcomeFrame;
+        this.registerView = registerView;
+        this.loginView = loginView;
     }
     public void registerController(MasterController masterController){
         this.masterController =masterController;
@@ -41,23 +45,18 @@ public class WellcomeController implements ActionListener {
             case LoginView.toRegister:
                 wellcomeFrame.changePanel(WellcomeFrame.chgToRegister);
                 break;
+            case RegisterView.tryRegister:
+                System.out.println(registerView.getNomString());
+                System.out.println(registerView.getCorreuString());
+                System.out.println(registerView.getContrasenyaString());
+                registerUser(registerView.getNomString(),registerView.getCorreuString(),registerView.getContrasenyaString());
+                break;
+            case LoginView.tryLogin:
+                System.out.println(loginView.getNomString());
+                System.out.println(loginView.getCorreuString());
+                System.out.println(loginView.getContrasenyaString());
+                registerUser(loginView.getNomString(),loginView.getCorreuString(),loginView.getContrasenyaString());
         }
-
-        /*if(e.getActionCommand().equals("ToRegister")){
-            wellcomeFrame.changePanel("ToRegister");
-        }else if(e.getActionCommand().equals("ToLogin")){
-            wellcomeFrame.changePanel("ToLogin");
-        }else */
-
-        if(e.getActionCommand().equals("TryRegister")){
-            System.out.println(wellcomeFrame.getRegisterViewNomString());
-            System.out.println(wellcomeFrame.getRegisterViewCorreuString());
-            System.out.println(wellcomeFrame.getRegisterViewContrasenyaString());
-            registerUser(wellcomeFrame.getRegisterViewNomString(),wellcomeFrame.getRegisterViewCorreuString(),wellcomeFrame.getRegisterViewContrasenyaString());
-        }else if(e.getActionCommand().equals("TryLogin")){
-            registerUser(wellcomeFrame.getLoginViewNomString(),wellcomeFrame.getLoginViewCorreuString(),wellcomeFrame.getLoginViewContrasenyaString());
-        }
-
     }
 
 

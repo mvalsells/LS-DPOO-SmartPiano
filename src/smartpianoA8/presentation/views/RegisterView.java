@@ -7,16 +7,21 @@ import java.awt.event.ActionListener;
 public class RegisterView extends JPanel  {
     //ImageView imageView = new ImageView();
     public static final String toLogin = "ToLogin";
+    public static final String tryRegister = "tryRegister";
 
     private BordersView bordersView = new BordersView();
-    private JButton iniciarSessio;
-    private JTextField Nom;
-    private JTextField Correu;
-    private JTextField Contrasenya;
-    private JTextField RepetirContrasenya;
-    private JButton RegisterButton;
+
+    private JButton iniciarSessio;//Canivat
+    private JTextField nom;
+    private JTextField correu;
+    private JTextField contrasenya;
+    private JTextField repetirContrasenya;
+
+    private JButton registerButton;//canviat
+
     public RegisterView() {
         iniciarSessio = new JButton();
+        registerButton = new JButton();
     }
 
     public ImageView runRegister(){
@@ -160,29 +165,29 @@ public class RegisterView extends JPanel  {
 
 
         /*Creem les zones per escriure*/
-        Nom = new JTextField("  Nom",20);
-        Nom.setMaximumSize(new Dimension(281,39));
-        Nom.setForeground(new Color(255,255,255));
-        Nom.setBorder(bordersView.getTextFieldBorder());
-        Nom.setOpaque(false);
+        nom = new JTextField("  Nom",20);
+        nom.setMaximumSize(new Dimension(281,39));
+        nom.setForeground(new Color(255,255,255));
+        nom.setBorder(bordersView.getTextFieldBorder());
+        nom.setOpaque(false);
 
-        Correu = new JTextField("  Correu",20);
-        Correu.setMaximumSize(new Dimension(281,39));
-        Correu.setForeground(new Color(255,255,255));
-        Correu.setBorder(bordersView.getTextFieldBorder());
-        Correu.setOpaque(false);
+        correu = new JTextField("  Correu",20);
+        correu.setMaximumSize(new Dimension(281,39));
+        correu.setForeground(new Color(255,255,255));
+        correu.setBorder(bordersView.getTextFieldBorder());
+        correu.setOpaque(false);
 
-        Contrasenya = new JTextField("  Contrasenya",20);
-        Contrasenya.setMaximumSize(new Dimension(281,39));
-        Contrasenya.setForeground(new Color(255,255,255));
-        Contrasenya.setBorder(bordersView.getTextFieldBorder());
-        Contrasenya.setOpaque(false);
+        contrasenya = new JTextField("  Contrasenya",20);
+        contrasenya.setMaximumSize(new Dimension(281,39));
+        contrasenya.setForeground(new Color(255,255,255));
+        contrasenya.setBorder(bordersView.getTextFieldBorder());
+        contrasenya.setOpaque(false);
 
-        RepetirContrasenya = new JTextField("  Repetir Contrasenya",20);
-        RepetirContrasenya.setMaximumSize(new Dimension(281,39));
-        RepetirContrasenya.setForeground(new Color(255,255,255));
-        RepetirContrasenya.setBorder(bordersView.getTextFieldBorder());
-        RepetirContrasenya.setOpaque(false);
+        repetirContrasenya = new JTextField("  Repetir Contrasenya",20);
+        repetirContrasenya.setMaximumSize(new Dimension(281,39));
+        repetirContrasenya.setForeground(new Color(255,255,255));
+        repetirContrasenya.setBorder(bordersView.getTextFieldBorder());
+        repetirContrasenya.setOpaque(false);
 
 
 
@@ -244,18 +249,18 @@ public class RegisterView extends JPanel  {
         ComplementRegistre.setLayout(new BoxLayout(ComplementRegistre,BoxLayout.Y_AXIS));
         ComplementRegistre.setOpaque(false);
 
-        RegisterButton = new JButton("Registrarse");
+        registerButton = new JButton("Registrarse");
         //RegisterButton.setAlignmentX(Container.RIGHT_ALIGNMENT);
-        RegisterButton.setPreferredSize(new Dimension(220,39));
-        RegisterButton.setBackground(new Color(249,171,15));
-        RegisterButton.setForeground(new Color(255,255,255));
-        RegisterButton.setBorderPainted(true);
-        RegisterButton.setBorder(bordersView.getRegisterButtonBorder());
+        registerButton.setPreferredSize(new Dimension(220,39));
+        registerButton.setBackground(new Color(249,171,15));
+        registerButton.setForeground(new Color(255,255,255));
+        registerButton.setBorderPainted(true);
+        registerButton.setBorder(bordersView.getRegisterButtonBorder());
         //IniciarSessio.setBorderPainted(false);
-        RegisterButton.setOpaque(true);
-        RegisterButton.setFont(new Font("Verdana",Font.BOLD,12));
-        RegisterButton.setVisible(true);
-        RegisterButton.setActionCommand("TryRegister");
+        registerButton.setOpaque(true);
+        registerButton.setFont(new Font("Verdana",Font.BOLD,12));
+        registerButton.setVisible(true);
+        registerButton.setActionCommand(tryRegister);
 
         JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
         AcceptTandC.setOpaque(false);
@@ -291,19 +296,19 @@ public class RegisterView extends JPanel  {
 
         /*Est*/
         PanelRegistre.add(TopTextFieldLabel0);
-        PanelRegistre.add(Nom);
+        PanelRegistre.add(nom);
         PanelRegistre.add(EntreTextFieldLabel0);
-        PanelRegistre.add(Correu);
+        PanelRegistre.add(correu);
         PanelRegistre.add(EntreTextFieldLabel1);
-        PanelRegistre.add(Contrasenya);
+        PanelRegistre.add(contrasenya);
         PanelRegistre.add(EntreTextFieldLabel2);
-        PanelRegistre.add(RepetirContrasenya);
+        PanelRegistre.add(repetirContrasenya);
         PanelRegistre.add(EntreTextCheck);
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
 
         /*South*/
         ComplementRegistre.add(AcceptTandC);
-        ComplementRegistre.add(RegisterButton);
+        ComplementRegistre.add(registerButton);
         PartInferior.add(ComplementRegistre,BorderLayout.EAST);
         PartCentral.add(PartInferior,BorderLayout.SOUTH);
 
@@ -337,24 +342,21 @@ public class RegisterView extends JPanel  {
 
     public void registerController(ActionListener controller) {
         iniciarSessio.addActionListener(controller);
+        registerButton.addActionListener(controller);
     }
 
-    public JButton getIniciarSessio(){
-        return this.iniciarSessio;
+
+    public String getNomString(){
+        return this.nom.getText();
     }
-    public JTextField getNom(){
-        return this.Nom;
+    public String getCorreuString(){
+        return this.correu.getText();
     }
-    public JTextField getCorreu(){
-        return this.Correu;
+    public String getContrasenyaString(){
+        return this.contrasenya.getText();
     }
-    public JTextField getContrasenya(){
-        return this.Contrasenya;
+    public String getRepetirContrasenyaString(){
+        return this.repetirContrasenya.getText();
     }
-    public JTextField getRepetirContrasenya(){
-        return this.RepetirContrasenya;
-    }
-    public JButton getRegisterButton(){
-        return  this.RegisterButton;
-    }
+
 }

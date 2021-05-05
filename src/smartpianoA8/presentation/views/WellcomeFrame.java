@@ -8,21 +8,23 @@ import java.awt.event.ActionListener;
 
 public class WellcomeFrame extends JFrame {
 
-
-    CardLayout cards;
-    JPanel mainPanel;
-    BordersView bordersView;
-    LoginView loginView;
-    RegisterView registerView;
     public static final String chgToLogin = "chgToLogin";
     public static final String chgToRegister = "chgToRegister";
 
-    public WellcomeFrame(){
+
+    private CardLayout cards;
+    private JPanel mainPanel;
+    private BordersView bordersView;
+    private LoginView loginView;
+    private RegisterView registerView;
+
+
+    public WellcomeFrame(RegisterView registerView,LoginView loginView){
         cards = new CardLayout();
         mainPanel = new JPanel(cards);
         bordersView = new BordersView();
-        loginView = new LoginView();
-        registerView = new RegisterView();
+        this.registerView = registerView;
+        this.loginView = loginView;
         createAndShowGUI();
     }
 
@@ -50,10 +52,8 @@ public class WellcomeFrame extends JFrame {
 
     public void registerController(ActionListener controller){
         registerView.registerController(controller);
+        loginView.registerController(controller);
 
-        loginView.getRegistrarse().addActionListener(controller);
-        //registerView.getIniciarSessio().addActionListener(controller);
-        //registerView.getRegisterButton().addActionListener(controller);
     }
     //Canvi panel view
     public void changeToRegister(){
@@ -72,11 +72,6 @@ public class WellcomeFrame extends JFrame {
                 break;
         }
 
-       /* if(panel.equals("ToRegister")){
-            changeToRegister();
-        }else if(panel.equals(RegisterView.toLogin)){
-            changeToLogin();
-        }*/
     }
 /*
     public CardLayout getCards(){
@@ -90,25 +85,5 @@ public class WellcomeFrame extends JFrame {
 
     }
 */
-    public String getRegisterViewNomString(){
-        return this.registerView.getNom().getText();
-    }
-    public String getRegisterViewCorreuString(){
-        return this.registerView.getCorreu().getText();
-    }
-    public String getRegisterViewContrasenyaString(){
-        return this.registerView.getContrasenya().getText();
-    }
-    public String getRegisterViewRepetirContrasenyaString(){
-        return this.registerView.getRepetirContrasenya().getText();
-    }
-    public String getLoginViewNomString(){
-        return this.loginView.getNom().getText();
-    }
-    public String getLoginViewCorreuString(){
-        return this.loginView.getCorreu().getText();
-    }
-    public String getLoginViewContrasenyaString(){
-        return this.loginView.getContrasenya().getText();
-    }
+
 }
