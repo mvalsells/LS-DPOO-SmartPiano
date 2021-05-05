@@ -3,16 +3,15 @@ package smartpianoA8.presentation.views;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
-public class StaticsView extends JFrame {
+public class StatisticsView extends JFrame {
     /**
      * Constructor de la vista
      * @param valorsMinuts llista de valors de minuts (amb decimals).
      * @param valorsReproduccions llista de valors de reproduccions
      */
-    public StaticsView(ArrayList<Integer> valorsMinuts, ArrayList<Float> valorsReproduccions){
+    public StatisticsView(ArrayList<Integer> valorsMinuts, ArrayList<Float> valorsReproduccions){
         //parametres
         int maxMinuts = Collections.max(valorsMinuts);
         int maxReproduccions = Collections.max(valorsReproduccions).intValue();

@@ -1,27 +1,8 @@
 package smartpianoA8;
 
-import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.presentation.views.StatisticsView;
 
-import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.HtmlScrapping;
-import smartpianoA8.persistence.JsonReadable;
-import smartpianoA8.persistence.JsonReadableImpl;
-import smartpianoA8.persistence.dao.PlayListDAO;
-import smartpianoA8.persistence.dao.SongDAO;
-import smartpianoA8.persistence.dao.StatsDAO;
-import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PianoController;
-import smartpianoA8.presentation.Controller.WellcomeController;
-import smartpianoA8.presentation.views.PianoView;
-import smartpianoA8.presentation.views.StaticsView;
-import smartpianoA8.presentation.views.WellcomeFrame;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Timer;
 
 public class Main {
     public static void main(String[] args) {
@@ -78,7 +59,7 @@ public class Main {
             j += 1.0f;
         }
 
-        StaticsView stats = new StaticsView(valorsCancons, valorsMinuts);
+        StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
 
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
