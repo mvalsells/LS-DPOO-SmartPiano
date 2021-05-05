@@ -52,6 +52,12 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
+
+        //Business <-> Persitance
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60*1000L);
+
         //*/
         // ------------------------------
         // END Main smart piano

@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 public class Song {
 
+    public final static String Master = "Master";
+
     private final int idSong;
     private final String nom;
     private final int numReproduccions;

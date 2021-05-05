@@ -7,12 +7,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.MidiSong;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.persistence.HtmlScrapping;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
@@ -26,13 +28,16 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
     private static int page = 0;
     private static final String url2 = "&Instrument=Piano";
-    private ArrayList<MidiSong> midiSongs = new ArrayList<MidiSong>();
-    private int newData = 0;
+    private ArrayList<MidiSong> midiSongs;
+    private int newData;
+    private BusinessFacade businessFacade;
 
     //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
 
     public HtmlScrappingImpl(BusinessFacade businessFacade){
         midiSongs = new ArrayList<MidiSong>();
+        newData = 0;
+        this.businessFacade=businessFacade;
     }
 
     @Override
@@ -266,6 +271,11 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
             System.err.println("Exception in obtaining HTML from page" + ex.getMessage());
         }
         return document;
+    }
+
+    private void saveSong(){
+        Song song = new Song(0,new Time(9),"","","",false,"","");
+        businessFacade.addSong(song,Song.Master);
     }
 
 }
