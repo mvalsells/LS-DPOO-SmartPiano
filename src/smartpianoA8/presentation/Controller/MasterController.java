@@ -37,7 +37,8 @@ public class MasterController {
 
     //Business Faced Methods
     public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException {
-        businessFacade.registerUser(username, email, password, type);
+        //TODO ho he comentat donat que s'ha d'afegir la password repetition i llavors no compila
+        //  businessFacade.registerUser(username, email, password, type);
     }
 
 }

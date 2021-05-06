@@ -8,8 +8,9 @@ public class PasswordException extends Exception{
     boolean hasNotUpperCase;
     boolean hasNotLowerCase;
     boolean hasNotNumber;
+    boolean passwordsDifferent;
 
-    public PasswordException(boolean passwordToShort, boolean equalsEmail, boolean equalsUsername, boolean hasNotUpperCase, boolean hasNotLowerCase, boolean hasNotNumber) {
+    public PasswordException(boolean passwordToShort, boolean passwordsDifferent, boolean equalsEmail, boolean equalsUsername, boolean hasNotUpperCase, boolean hasNotLowerCase, boolean hasNotNumber) {
         super();
         this.passwordToShort = passwordToShort;
         this.equalsEmail = equalsEmail;
@@ -17,6 +18,7 @@ public class PasswordException extends Exception{
         this.hasNotUpperCase = hasNotUpperCase;
         this.hasNotLowerCase = hasNotLowerCase;
         this.hasNotNumber = hasNotNumber;
+        this.passwordsDifferent = passwordsDifferent;
      //   toString();
     }
 
@@ -44,6 +46,9 @@ public class PasswordException extends Exception{
         return hasNotNumber;
     }
 
+    public boolean isPasswordsDifferent() {
+        return passwordsDifferent;
+    }
 
     @Override
     public String toString() {

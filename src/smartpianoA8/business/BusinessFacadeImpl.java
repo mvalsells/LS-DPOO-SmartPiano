@@ -37,8 +37,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  START user implementation
     // ------------------------------------------------------
     @Override
-    public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException {
-        userManager.registerUser(username, email, password, type);
+    public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
+        userManager.registerUser(username, email, password, passwordRepetition, type);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     @Override
-    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException {
-        return userManager.modifyCurrentUserPassword(newPassword);
+    public boolean modifyCurrentUserPassword(String newPassword, String newPasswordRepetition) throws PasswordException {
+        return userManager.modifyCurrentUserPassword(newPassword, newPasswordRepetition);
     }
 
     @Override

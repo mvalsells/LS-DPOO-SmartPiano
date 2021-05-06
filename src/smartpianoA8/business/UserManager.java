@@ -24,7 +24,7 @@ public class UserManager {
     }
 
 
-    public void registerUser (String username, String email, String password, String type) throws PasswordException, UserManagerException {
+    public void registerUser (String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
         email = email.toLowerCase();
         username = username.toLowerCase();
         //mirar si estam bien los datos recibidos
@@ -41,7 +41,7 @@ public class UserManager {
 
         if(!usernameExists && !emailExists && !typeIncorrect && correctEmail) {
             User newUser = new User(username, email, type);
-            checkPassword(newUser, password);
+            checkPassword(newUser, password, passwordRepetition);
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
         }else {
@@ -86,13 +86,13 @@ public class UserManager {
 
     }
 
-    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException{
-        return modifyPassword(currentUser,newPassword);
+    public boolean modifyCurrentUserPassword(String newPassword, String newPasswordRepetition) throws PasswordException{
+        return modifyPassword(currentUser,newPassword, newPasswordRepetition);
     }
-    private boolean modifyPassword(User user, String newPassword) throws PasswordException {
+    private boolean modifyPassword(User user, String newPassword, String newPasswordRepetition) throws PasswordException {
 
         if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            checkPassword(user, newPassword);
+            checkPassword(user, newPassword, newPasswordRepetition);
             userDAO.updateDataUser(user.getEmail(), User.TERM_PASSWORD, encryptPassword(newPassword));
             return true;
         }else {
@@ -133,14 +133,14 @@ public class UserManager {
         return toReturn;
     }
 
-    private void checkPassword(User user,String password) throws PasswordException {
+    private void checkPassword(User user,String password, String passwordRepetition) throws PasswordException {
         boolean passwordToShort = false;
         boolean equalsEmail = false;
         boolean equalsUsername = false;
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
         boolean hasSpecialChar = false;
-
+        boolean passwordDifferent = false;
         Pattern specialCharPattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern upperCasePattern = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
@@ -171,9 +171,12 @@ public class UserManager {
         if(lowerCasePatten.matcher(password).find()) {
             hasLowerCase = true;
         }
+        if(!password.equals(passwordRepetition)){
+            passwordDifferent = true;
+        }
 
-        if (passwordToShort || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
-            throw new PasswordException(passwordToShort, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasSpecialChar);
+        if (passwordToShort || passwordDifferent || equalsEmail || equalsUsername || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+            throw new PasswordException(passwordToShort,passwordDifferent, equalsEmail, equalsUsername, !hasUpperCase, !hasLowerCase, !hasSpecialChar);
         }
     }
 
