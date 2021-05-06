@@ -64,7 +64,7 @@ public class Main {
 
 
         MidiParser midiParser = new MidiParserImpl(businessFacade);
-        midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/testmidi/alkan-op31-1.mid");
+        midiParser.ParseMidi("resources/midiFiles/Master/Sonatine.mid");
         ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
         System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
         System.out.println("BPM =========== " + midiParser.getBPM());
