@@ -64,7 +64,7 @@ public class Main {
 
 
         MidiParser midiParser = new MidiParserImpl(businessFacade);
-        midiParser.ParseMidi("resources/midiFiles/Master/Sonatine.mid");
+        midiParser.ParseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
         ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
         System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
         System.out.println("BPM =========== " + midiParser.getBPM());
