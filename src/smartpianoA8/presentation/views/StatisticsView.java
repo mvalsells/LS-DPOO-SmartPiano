@@ -2,16 +2,13 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
-
 
 public class StatisticsView extends JFrame {
 
     private static Color rosa = new Color(255,216,255);
     private static Color taronja = new Color(255, 204, 139);
-
 
     /**
      * Constructor de la vista
@@ -22,8 +19,6 @@ public class StatisticsView extends JFrame {
         //parametres
         int maxMinuts = Collections.max(valorsMinuts);
         int maxReproduccions = Collections.max(valorsReproduccions).intValue();
-
-
 
         setResizable(true);//TODO fer que sí ho sigui haha
         setTitle("Estadístiques");
@@ -41,15 +36,14 @@ public class StatisticsView extends JFrame {
 
         Box box = Box.createHorizontalBox();
 
-
         //panells bessos |[][]|
         JPanel dreta = new JPanel();
         JPanel esquerra = new JPanel();
 
         dreta.setLayout(new BorderLayout());
         esquerra.setLayout(new BorderLayout());
-        dreta.setBackground(Color.pink);
-        esquerra.setBackground(Color.red);
+        dreta.setBackground(Color.lightGray);
+        esquerra.setBackground(Color.gray);
 
         dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
         esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
@@ -90,7 +84,10 @@ public class StatisticsView extends JFrame {
         dreta.add(llegenda1, BorderLayout.SOUTH);
         esquerra.add(llegenda2, BorderLayout.SOUTH);
 
+        GraficsStatisticsEsquerra graficEsquerra = new GraficsStatisticsEsquerra();
+        GraficsStatisticsDreta graficDreta = new GraficsStatisticsDreta();
+        esquerra.add(graficEsquerra, BorderLayout.CENTER);
+        dreta.add(graficDreta, BorderLayout.CENTER);
 
     }
-
 }
