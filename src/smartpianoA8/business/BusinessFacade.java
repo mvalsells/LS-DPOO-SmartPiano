@@ -18,7 +18,7 @@ public interface BusinessFacade {
 
 
     //Cançons
-    //public void addSong(String nom, String autor, String duracio, String time, String directori, Boolean isPublic, String nomUsuari);
+    public void addSong(Song song, String username);
     //public void removeSong(Song song);
 
 

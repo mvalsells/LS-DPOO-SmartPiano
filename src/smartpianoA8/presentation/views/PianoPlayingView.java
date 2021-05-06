@@ -155,6 +155,7 @@ public class PianoPlayingView extends JFrame implements MouseListener, KeyListen
         BotoPreferit.setBorder(bordersView.getGoogleButtonBorder());
         BotoPreferit.setBorderPainted(true);
         BotoPreferit.setIcon(Mis_Favoritas);
+        System.out.println("Autpa Betis");
         BotoPreferit.setPressedIcon(Mis_FavoritasSelect);
 
         JButton BotoPiano = new JButton();

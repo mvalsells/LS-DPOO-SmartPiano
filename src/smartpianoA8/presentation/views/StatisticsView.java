@@ -2,11 +2,17 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
 
 public class StatisticsView extends JFrame {
+
+    private static Color rosa = new Color(255,216,255);
+    private static Color taronja = new Color(255, 204, 139);
+
+
     /**
      * Constructor de la vista
      * @param valorsMinuts llista de valors de minuts (amb decimals).
@@ -22,7 +28,8 @@ public class StatisticsView extends JFrame {
         setResizable(true);//TODO fer que sí ho sigui haha
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
-        //setSize(700,400);
+        setSize(700,400);
+        setMinimumSize(new Dimension(700,400));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setVisible(true);
         //pack();
@@ -30,7 +37,6 @@ public class StatisticsView extends JFrame {
         //fons |__|
         JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
-        //fons.setBackground(Color.yellow);
         add(fons);
 
         Box box = Box.createHorizontalBox();
@@ -45,51 +51,45 @@ public class StatisticsView extends JFrame {
         dreta.setBackground(Color.pink);
         esquerra.setBackground(Color.red);
 
-        dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));//ara joqueseaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
-        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));//ara joqueseaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
+        dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
+        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
         box.add(esquerra);
         box.add(dreta);
 
+        JLabel titol1 = new JLabel("Songs Played by user");
+        titol1.setHorizontalAlignment(JLabel.CENTER);
+        JLabel titol2 = new JLabel("Minutes Listened by user");
+        titol2.setHorizontalAlignment(JLabel.CENTER);
 
-        //esquerra.setBorder(BorderFactory.createEmptyBorder(0,0,0,getWidth()/2));
-
-        System.out.println(getWidth());
-        dreta.add(new JLabel("Songs Played"), BorderLayout.NORTH);
-        esquerra.add(new JLabel("Minutes Listened"), BorderLayout.NORTH);
+        dreta.add(titol2, BorderLayout.NORTH);
+        esquerra.add(titol1, BorderLayout.NORTH);
 
         fons.add(box, BorderLayout.CENTER);
-        //fons.add(dreta, BorderLayout.EAST);
 
-
-
-/*
+        //------llegendes------//
         JPanel llegenda1 = new JPanel();
         JPanel llegenda2 = new JPanel();
         llegenda1.setLayout(new FlowLayout(FlowLayout.CENTER));
         llegenda2.setLayout(new FlowLayout(FlowLayout.CENTER));
-        //llegenda1.add(); //linia blava
+        llegenda1.setBackground(Color.WHITE);
+        llegenda2.setBackground(Color.white);
+
+        JPanel liniaRosa = new JPanel();
+        JPanel liniaTaronja = new JPanel();
+
+        liniaRosa.setBackground(rosa);
+        liniaTaronja.setBackground(taronja);
+        liniaRosa.setPreferredSize(new Dimension(25,7));
+        liniaTaronja.setPreferredSize(new Dimension(25,7));
+
+
+        llegenda1.add(liniaTaronja);
         llegenda1.add(new JLabel("#Songs"));
-        //llegenda2.add(); //linia taronja
+        llegenda2.add(liniaRosa);
         llegenda2.add(new JLabel("#Minutes"));
         dreta.add(llegenda1, BorderLayout.SOUTH);
         esquerra.add(llegenda2, BorderLayout.SOUTH);
 
-
-        JPanel llistaHores = new JPanel();
-        llistaHores.setLayout(new FlowLayout(FlowLayout.CENTER))
-
-
-        JPanel dretaIntern = new JPanel();
-        dretaIntern.setLayout(new BorderLayout());
-        JPanel esquerraIntern = new JPanel();
-        esquerraIntern.setLayout(new BorderLayout());
-
-        dreta.add(dretaIntern, BorderLayout.CENTER);
-        esquerra.add(esquerraIntern, BorderLayout.CENTER);
-
-        esquerraIntern.add(llistaHores, BorderLayout.SOUTH);
-        dretaIntern.add(llistaHores, BorderLayout.SOUTH);
-*/
 
     }
 

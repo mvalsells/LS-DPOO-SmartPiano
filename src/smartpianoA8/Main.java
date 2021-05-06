@@ -12,7 +12,6 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
 
 import java.io.FileNotFoundException;
@@ -54,6 +53,21 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
+
+        //Business <-> Persitance
+        /*HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
+        Thread.sleep(3000);
+        ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        System.out.println("lele");*/
+
+
+        MidiParser midiParser = new MidiParserImpl(businessFacade);
+        midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/resources/midiFiles/Master/When the Swallows Homeward Fly (Agathe).mid");
+        ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+        System.out.println("lele");
+
         //*/
         // ------------------------------
         // END Main smart piano
@@ -87,16 +101,16 @@ public class Main {
         } catch (IOException e){
             e.printStackTrace();
         }*/
-
+        /*
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl();
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
-        /*Thread.sleep(3000);
+        Thread.sleep(3000);
         ArrayList<MidiSong> midiSongs = htmlScrapping.getMidiSongs();
 
-        System.out.println("lele");*/
-
+        System.out.println("lele");
+        */
         /*HtmlScrapping HtmlScrapping = new HtmlScrapping();
         Timer timer = new Timer();
         timer.schedule(HtmlScrapping, 0, 100);

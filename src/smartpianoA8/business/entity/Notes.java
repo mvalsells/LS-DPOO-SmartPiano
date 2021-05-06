@@ -7,12 +7,14 @@ public class Notes {
     private int velocity = 0;
     private long endTime = 0;
     private long startTime = 0;
+    private String noteName;
 
-    public Notes(long startTime, int channel, int velocity, int pitch) {
+    public Notes(long startTime, int channel, int velocity, int pitch, String noteName) {
         this.startTime = startTime;
         this.channel = channel;
         this.velocity = velocity;
         this.note = pitch;
+        this.noteName = noteName;
     }
 
     public int getChannel() {
