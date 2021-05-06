@@ -1,5 +1,6 @@
 package smartpianoA8.business;
 
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -9,13 +10,18 @@ import smartpianoA8.persistence.dao.UserDAO;
 
 public class BusinessFacadeImpl implements BusinessFacade{
 
+    //Managers
     private UserManager userManager;
+    private SongManager songManager;
+
+    //DAOs
     private SongDAO songDAO;
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
 
     public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO){
         userManager = new UserManager(userDAO);
+        songManager = new SongManager(songDAO);
     }
 
     @Override
@@ -62,6 +68,18 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
     // ------------------------------------------------------
     //  END user implementation
+    // ------------------------------------------------------
+    // ------------------------------------------------------
+    //  START song implementation
+    // ------------------------------------------------------
+
+    @Override
+    public void addSong(Song song, String username) {
+        songManager.addSong(song,username);
+    }
+
+    // ------------------------------------------------------
+    //  END song implementation
     // ------------------------------------------------------
 
 }

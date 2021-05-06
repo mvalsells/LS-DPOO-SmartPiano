@@ -2,21 +2,25 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.HtmlScrapping;
-import smartpianoA8.persistence.JsonReadable;
-import smartpianoA8.persistence.JsonReadableImpl;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.StatisticsView;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
@@ -49,6 +53,25 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
+
+        //Business <-> Persitance
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
+        Thread.sleep(3000);
+        ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        System.out.println("lele");
+
+
+        MidiParser midiParser = new MidiParserImpl(businessFacade);
+        midiParser.ParseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
+        ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+        System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
+        System.out.println("BPM =========== " + midiParser.getBPM());
+        System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
+        System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
+        System.out.println("lele");
+
         //*/
         // ------------------------------
         // END Main smart piano
@@ -61,7 +84,7 @@ public class Main {
         ///*
 
         //BERTU--------------------------------STATISTICS
-        /*
+
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -73,7 +96,7 @@ public class Main {
         }
 
         StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
-        */
+
         //BERTU--------------------------------STATISTICS
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
@@ -82,13 +105,44 @@ public class Main {
         } catch (IOException e){
             e.printStackTrace();
         }*/
+        /*
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl();
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
-        //Timer timer = new Timer();
-       // timer.schedule(new HtmlScrapping(), 0, 5000);
+        Thread.sleep(3000);
+        ArrayList<MidiSong> midiSongs = htmlScrapping.getMidiSongs();
+
+        System.out.println("lele");
+        */
+        /*HtmlScrapping HtmlScrapping = new HtmlScrapping();
+        Timer timer = new Timer();
+        timer.schedule(HtmlScrapping, 0, 100);
+
+        //Todo preguntar si se puede hacer asi - NO. implementar interficie para obtener cosas.
+        Thread.sleep(5000);
+        ArrayList<MidiSong> midiSongs = HtmlScrapping.getMidiSongs();
+        //cada vez que hay nuevos datos decir a la vista que debe actualizarlos
+        System.out.println("lele");*/
+
+        //parser en persistence
+        //MidiParserImpl midiParser = new MidiParserImpl("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/NO-CODI/Unknown_-_pokemon.mid");
+
+        /*MidiParser midiParser = new MidiParserImpl();
+        midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/NO-CODI/Unknown_-_pokemon.mid");
+        System.out.println(midiParser.getTracks());
+        ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+
+        System.out.println("lele");*/
+
+        /*Timer timer = new Timer();
+        timer.schedule(new HtmlScrapping(), 0, jsonReader.gettimeScrapping()* 1000L);*/
+
+
 
         //System.out.println("leleleleel");
 
-        //PianoView pianoView = new PianoView();
+        PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class StatisticsView extends JFrame {
+
+    private static Color rosa = new Color(255,216,255);
+    private static Color taronja = new Color(255, 204, 139);
+
     /**
      * Constructor de la vista
      * @param valorsMinuts llista de valors de minuts (amb decimals).
@@ -16,74 +20,74 @@ public class StatisticsView extends JFrame {
         int maxMinuts = Collections.max(valorsMinuts);
         int maxReproduccions = Collections.max(valorsReproduccions).intValue();
 
-
-
         setResizable(true);//TODO fer que sí ho sigui haha
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
         setSize(700,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // NO SÉ QUÈ FA AIXÒ HAHA
+        setMinimumSize(new Dimension(700,400));
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setVisible(true);
+        //pack();
 
         //fons |__|
         JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
-        fons.setBackground(Color.yellow);
+        add(fons);
+
+        Box box = Box.createHorizontalBox();
 
         //panells bessos |[][]|
         JPanel dreta = new JPanel();
         JPanel esquerra = new JPanel();
 
         dreta.setLayout(new BorderLayout());
-        dreta.setBackground(Color.pink);
-        esquerra.setBackground(Color.red);
         esquerra.setLayout(new BorderLayout());
+        dreta.setBackground(Color.lightGray);
+        esquerra.setBackground(Color.gray);
 
-        fons.add(dreta, BorderLayout.WEST);
-        fons.add(esquerra, BorderLayout.EAST);
+        dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
+        esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
+        box.add(esquerra);
+        box.add(dreta);
 
-        dreta.add(new JLabel("#Songs"), BorderLayout.NORTH);
-        esquerra.add(new JLabel("#Minutes"), BorderLayout.NORTH);
+        JLabel titol1 = new JLabel("Songs Played by user");
+        titol1.setHorizontalAlignment(JLabel.CENTER);
+        JLabel titol2 = new JLabel("Minutes Listened by user");
+        titol2.setHorizontalAlignment(JLabel.CENTER);
 
+        dreta.add(titol2, BorderLayout.NORTH);
+        esquerra.add(titol1, BorderLayout.NORTH);
+
+        fons.add(box, BorderLayout.CENTER);
+
+        //------llegendes------//
         JPanel llegenda1 = new JPanel();
         JPanel llegenda2 = new JPanel();
         llegenda1.setLayout(new FlowLayout(FlowLayout.CENTER));
         llegenda2.setLayout(new FlowLayout(FlowLayout.CENTER));
-        //llegenda1.add(); //linia blava
+        llegenda1.setBackground(Color.WHITE);
+        llegenda2.setBackground(Color.white);
+
+        JPanel liniaRosa = new JPanel();
+        JPanel liniaTaronja = new JPanel();
+
+        liniaRosa.setBackground(rosa);
+        liniaTaronja.setBackground(taronja);
+        liniaRosa.setPreferredSize(new Dimension(25,7));
+        liniaTaronja.setPreferredSize(new Dimension(25,7));
+
+
+        llegenda1.add(liniaTaronja);
         llegenda1.add(new JLabel("#Songs"));
-        //llegenda2.add(); //linia taronja
+        llegenda2.add(liniaRosa);
         llegenda2.add(new JLabel("#Minutes"));
-        dreta.add(llegenda2, BorderLayout.SOUTH);
-        esquerra.add(llegenda1, BorderLayout.SOUTH);
+        dreta.add(llegenda1, BorderLayout.SOUTH);
+        esquerra.add(llegenda2, BorderLayout.SOUTH);
 
+        GraficsStatisticsEsquerra graficEsquerra = new GraficsStatisticsEsquerra();
+        GraficsStatisticsDreta graficDreta = new GraficsStatisticsDreta();
+        esquerra.add(graficEsquerra, BorderLayout.CENTER);
+        dreta.add(graficDreta, BorderLayout.CENTER);
 
-        JPanel llistaHores = new JPanel();
-        llistaHores.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JLabel[] hores = new JLabel[24];
-        for(int i=0; i<24;i++) {
-            hores[i] = new JLabel(i + ":00");
-            llistaHores.add(hores[i], FlowLayout.CENTER);
-        }
-
-
-        JPanel dretaIntern = new JPanel();
-        dretaIntern.setLayout(new BorderLayout());
-        JPanel esquerraIntern = new JPanel();
-        esquerraIntern.setLayout(new BorderLayout());
-
-        dreta.add(dretaIntern, BorderLayout.CENTER);
-        esquerra.add(esquerraIntern, BorderLayout.CENTER);
-
-        esquerraIntern.add(llistaHores, BorderLayout.SOUTH);
-        dretaIntern.add(llistaHores, BorderLayout.SOUTH);
-
-
-
-        //parametres finals
-        add(fons);
-        setMinimumSize(new Dimension(700, 400));
-        pack();//TODO mirar si aixó ajuda o empitjora
-        setVisible(true);
     }
-
 }

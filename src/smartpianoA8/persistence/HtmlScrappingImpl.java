@@ -1,25 +1,40 @@
-package smartpianoA8.business;
+package smartpianoA8.persistence;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import smartpianoA8.business.entity.MidiSong;
-import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.entity.Song;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
-public class HtmlScrapping extends TimerTask {
+public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
+
+    //mover a persistence
+    //controler que reacciona a datos para actualizar vista capa presentation
+    //definir en businesslogic que hablase con persistence como dao y actualizase un controller
+    //!!!!!! TODO interficie para ver si hay nueva data y pasar arraylist. separo capa presentacion con business
 
     private static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
     private static int page = 0;
     private static final String url2 = "&Instrument=Piano";
-    private ArrayList<MidiSong> midiSongs = new ArrayList<MidiSong>();
+    private ArrayList<Song> midiSongs;
+    private int newData;
+    private BusinessFacade businessFacade;
 
     //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
+
+    public HtmlScrappingImpl(BusinessFacade businessFacade){
+        midiSongs = new ArrayList<Song>();
+        newData = 0;
+        this.businessFacade=businessFacade;
+    }
 
     @Override
     public void run() {
@@ -31,6 +46,8 @@ public class HtmlScrapping extends TimerTask {
         String midiAddress = null;
 
         System.out.println(url1.concat(page+url2));
+
+        newData = 0;
 
 
         try {
@@ -70,11 +87,26 @@ public class HtmlScrapping extends TimerTask {
 
                     counter = 0;
 
-                    MidiSong midiSong = new MidiSong(songName, author, datePublished, midiAddress);
+                    String localMidiAddress = downloadMidiFile(midiAddress, songName);
 
-                    if(!midiSongs.contains(midiSong)) {
-                        midiSongs.add(midiSong);
+                    if(datePublished.equals("")) {
+                        Song song = new Song(0, null, songName, author, "Unknown", localMidiAddress, true, Song.Master, midiAddress);
+                        //MidiSong midiSong = new MidiSong(songName, author, "Unknown", localMidiAddress);
+                        if(!midiSongs.contains(song)) {
+                            midiSongs.add(song);
+                            newData = 1;
+                            saveSong(song);
+                        }
+                    }else {
+                        Song song = new Song(0, null, songName, author, datePublished, localMidiAddress, true, Song.Master, midiAddress);
+                        //MidiSong midiSong = new MidiSong(songName, author, datePublished, localMidiAddress);
+                        if(!midiSongs.contains(song)) {
+                            midiSongs.add(song);
+                            newData = 1;
+                            saveSong(song);
+                        }
                     }
+
 
                 }
 
@@ -84,11 +116,63 @@ public class HtmlScrapping extends TimerTask {
         }
 
 
-        page = page + 1;
+        page = page + 2;
 
     }
 
-//todo preguntar como recortar escalas a pol
+    private String downloadMidiFile(String addr, String songName) {
+
+        String whereIsTheFile;
+        File out = new File("resources/midiFiles/Master/"+songName+".mid");
+        whereIsTheFile = "resources/midiFiles/Master/"+songName+".mid";
+
+        try {
+            URL url = new URL(addr);
+            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+            double fileSize = (double) httpURLConnection.getContentLengthLong();
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(httpURLConnection.getInputStream());
+            FileOutputStream fileOutputStream = new FileOutputStream(out);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream, 1024);
+            byte[] buffer = new byte[1024];
+            double downloaded = 0.00;
+            int read = 0;
+            double percentDownloaded = 0.00;
+
+            while ((read = bufferedInputStream.read(buffer, 0, 1024)) >= 0) {
+                bufferedOutputStream.write(buffer, 0, read);
+                downloaded += read;
+                percentDownloaded = (downloaded*100)/fileSize;
+                String percent = String.format("%.4f", percentDownloaded);
+                System.out.println("Downloaded: " + percent + "% of a file.");
+            }
+            bufferedOutputStream.close();
+            bufferedInputStream.close();
+            System.out.println("Download complete.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return whereIsTheFile;
+
+    }
+
+    @Override
+    public ArrayList<Song> getMidiSongs() {
+        return midiSongs;
+    }
+
+    @Override
+    public boolean isNewData() {
+        if(newData == 1) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    //todo preguntar como recortar escalas a pol
 
     //public HtmlScrapping(/*UserDAO userDAO*/){
     //}
@@ -184,9 +268,13 @@ public class HtmlScrapping extends TimerTask {
         try {
             document = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).get();
         } catch (IOException ex) {
-            System.out.println("Exception in obtaining HTML from page" + ex.getMessage());
+            System.err.println("Exception in obtaining HTML from page" + ex.getMessage());
         }
         return document;
+    }
+
+    private void saveSong(Song song){
+        businessFacade.addSong(song,Song.Master);
     }
 
 }

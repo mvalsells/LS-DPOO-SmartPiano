@@ -6,6 +6,7 @@ import smartpianoA8.business.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SQLSongDAO implements SongDAO {
     private SQLConnector connector;
@@ -52,17 +53,59 @@ public class SQLSongDAO implements SongDAO {
      */
     @Override
     public Song getSong(int IDSong) {
-        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song;";
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song;";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 if(result.getInt("IDSong") == IDSong) {
-                    return new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"));
+                    return new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"), result.getString("Midi"));
                 }
             }
         }catch (SQLException e){
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
         }
         return null;
+    }
+
+
+    /**
+     * Metode que retorna les 5 top Songs per numero de reproduccions.
+     * @return ArrayList<Song> amb les 5 millor songs
+     */
+    @Override
+    public ArrayList<Song> getTop5() {
+        ArrayList<Song> retorna = new ArrayList<>();
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song ORDER BY NumReproduccions DESC LIMIT 5;";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()){
+                retorna.add(new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"), result.getString("Midi")));
+            }
+            return retorna;
+        }catch (SQLException e){
+            return retorna;
+        }
+    }
+
+    /**
+     * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
+     * @param IDSong id de la cançó a la que augmentar el num de reproduccions
+     */
+    @Override
+    public void SongPlayed(int IDSong){ //TODO cridar aixo quan es reprodueixi una cançó
+        String query = "SELECT NumReproduccions FROM Song WHERE idSong = " + IDSong + ";";
+        ResultSet result = connector.selectQuery(query);
+
+        try {
+            result.next();//get select once
+
+            int reproduccions = result.getInt("NumReproduccions") + 1;
+            query = "UPDATE Song SET NumReproduccions " + reproduccions + " WHERE idSong = " + IDSong + ";";
+            connector.updateQuery(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQLSongDAO ERROR no s'ha pogut incrementar el valor de reproduccions de la cançó");
+        }
     }
 }

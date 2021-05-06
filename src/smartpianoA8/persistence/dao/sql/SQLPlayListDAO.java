@@ -125,7 +125,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             while(result.next()) {
                 query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = " + result.getInt("idSong") + ";";
                 ResultSet result2 = connector.selectQuery(query2);
-                songs.add(new Song(result2.getInt("IDSong"), result2.getTime("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("Directori"), result2.getBoolean("isPublic"), result2.getString("Nomusuari")));
+                songs.add(new Song(result2.getInt("IDSong"), result2.getTime("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("Directori"), result2.getBoolean("isPublic"), result2.getString("Nomusuari"), result2.getString("Midi")));
             }
         }catch (SQLException e){
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
