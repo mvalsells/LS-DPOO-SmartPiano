@@ -2,11 +2,17 @@ package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
 
 public class StatisticsView extends JFrame {
+
+    private static Color rosa = new Color(255,216,255);
+    private static Color taronja = new Color(255, 204, 139);
+
+
     /**
      * Constructor de la vista
      * @param valorsMinuts llista de valors de minuts (amb decimals).
@@ -59,38 +65,31 @@ public class StatisticsView extends JFrame {
         esquerra.add(titol1, BorderLayout.NORTH);
 
         fons.add(box, BorderLayout.CENTER);
-        //fons.add(dreta, BorderLayout.EAST);
 
-
-
-/*
+        //------llegendes------//
         JPanel llegenda1 = new JPanel();
         JPanel llegenda2 = new JPanel();
         llegenda1.setLayout(new FlowLayout(FlowLayout.CENTER));
         llegenda2.setLayout(new FlowLayout(FlowLayout.CENTER));
-        //llegenda1.add(); //linia blava
+        llegenda1.setBackground(Color.WHITE);
+        llegenda2.setBackground(Color.white);
+
+        JPanel liniaRosa = new JPanel();
+        JPanel liniaTaronja = new JPanel();
+
+        liniaRosa.setBackground(rosa);
+        liniaTaronja.setBackground(taronja);
+        liniaRosa.setPreferredSize(new Dimension(25,7));
+        liniaTaronja.setPreferredSize(new Dimension(25,7));
+
+
+        llegenda1.add(liniaTaronja);
         llegenda1.add(new JLabel("#Songs"));
-        //llegenda2.add(); //linia taronja
+        llegenda2.add(liniaRosa);
         llegenda2.add(new JLabel("#Minutes"));
         dreta.add(llegenda1, BorderLayout.SOUTH);
         esquerra.add(llegenda2, BorderLayout.SOUTH);
 
-
-        JPanel llistaHores = new JPanel();
-        llistaHores.setLayout(new FlowLayout(FlowLayout.CENTER))
-
-
-        JPanel dretaIntern = new JPanel();
-        dretaIntern.setLayout(new BorderLayout());
-        JPanel esquerraIntern = new JPanel();
-        esquerraIntern.setLayout(new BorderLayout());
-
-        dreta.add(dretaIntern, BorderLayout.CENTER);
-        esquerra.add(esquerraIntern, BorderLayout.CENTER);
-
-        esquerraIntern.add(llistaHores, BorderLayout.SOUTH);
-        dretaIntern.add(llistaHores, BorderLayout.SOUTH);
-*/
 
     }
 
