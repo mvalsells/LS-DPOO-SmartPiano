@@ -3,10 +3,8 @@ package smartpianoA8;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.entity.Notes;
-import smartpianoA8.persistence.JsonReadable;
-import smartpianoA8.persistence.JsonReadableImpl;
-import smartpianoA8.persistence.MidiParser;
-import smartpianoA8.persistence.MidiParserImpl;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
@@ -18,6 +16,8 @@ import smartpianoA8.presentation.views.StatisticsView;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -55,12 +55,12 @@ public class Main {
         pianoController.registerAllControlers();
 
         //Business <-> Persitance
-        /*HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
         ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
-        System.out.println("lele");*/
+        System.out.println("lele");
 
 
         MidiParser midiParser = new MidiParserImpl(businessFacade);

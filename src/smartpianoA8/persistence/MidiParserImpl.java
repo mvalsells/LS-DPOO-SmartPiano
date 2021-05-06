@@ -44,7 +44,8 @@ public class MidiParserImpl implements MidiParser {
                 sequencer.setSequence(sequence);
                 BPM = sequencer.getTempoInMPQ();
                 System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + BPM);
-                //sequencer.start();
+                System.out.println("Song Tempo In BPM (Not Needed) " + sequencer.getTempoInBPM());
+                sequencer.start();
             } catch (MidiUnavailableException e) {
                 e.printStackTrace();
             }
