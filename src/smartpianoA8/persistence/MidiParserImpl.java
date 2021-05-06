@@ -12,26 +12,25 @@ import java.util.HashMap;
 
 public class MidiParserImpl implements MidiParser {
 
-    private BusinessFacade businessFacade;
     private ArrayList<ArrayList<Notes>> tracks;
     private long maxTick = 0;
     private HashMap<Long,ArrayList<Notes>> notesBySt = new HashMap<Long,ArrayList<Notes>>();
     private static final int NOTE_ON = 0x90;
     private static final int NOTE_OFF = 0x80;
     public static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+    private float MPQ = 0;
     private float BPM = 0;
     private float totalSongSeconds = 0;
     private float secondsPerTick = 0;
     private long totalTicks = 0;
 
-    public MidiParserImpl(BusinessFacade businessFacade) {
-        this.businessFacade = businessFacade;
+    public MidiParserImpl() {
         tracks = new ArrayList<ArrayList<Notes>>();
     }
 
     //TODO ARREGLAR EL PORQUE ALGUNAS CANCIONES EMPIEZAN EN EL TIEMPO 500-700-12341421323412133 EN LUGAR DE EN EL SEGUNDO 0.
 
-    public void ParseMidi(String dir) {
+    public ArrayList<ArrayList<Notes>> parseMidi(String dir) {
         //tracks = new ArrayList<ArrayList<Notes>>();
         Track[] trx;
         File midiFile = new File(dir);
@@ -44,8 +43,9 @@ public class MidiParserImpl implements MidiParser {
                 Sequencer sequencer = MidiSystem.getSequencer();
                 sequencer.open();
                 sequencer.setSequence(sequence);
-                BPM = sequencer.getTempoInMPQ();
-                System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + BPM);
+                MPQ = sequencer.getTempoInMPQ();
+                BPM = sequencer.getTempoInBPM();
+                System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + MPQ);
                 System.out.println("Song Tempo In BPM (Not Needed) " + sequencer.getTempoInBPM());
                 sequencer.start();
             } catch (MidiUnavailableException e) {
@@ -53,7 +53,7 @@ public class MidiParserImpl implements MidiParser {
             }
 
             int ticks_per_quarter = sequence.getResolution();
-            float µs_per_quarter = BPM;
+            float µs_per_quarter = MPQ;
             float µs_per_tick = µs_per_quarter / ticks_per_quarter;
             secondsPerTick = µs_per_tick / 1000000;
             totalSongSeconds = sequence.getTickLength() * secondsPerTick;
@@ -161,6 +161,7 @@ public class MidiParserImpl implements MidiParser {
         } catch (InvalidMidiDataException | IOException e) {
             e.printStackTrace();
         }
+        return tracks;
     }
 
     private void sortNotes() {
@@ -178,6 +179,7 @@ public class MidiParserImpl implements MidiParser {
         }
     }
 
+    @Override
     public int numTracks() {
         return tracks.size();
     }
@@ -197,10 +199,10 @@ public class MidiParserImpl implements MidiParser {
         return totalSongSeconds;
     }
 
-    @Override
-    public ArrayList<ArrayList<Notes>> getTracks() {
-        return tracks;
-    }
+    //@Override
+    //public ArrayList<ArrayList<Notes>> getTracks() {
+    //    return tracks;
+    //}
 
     @Override
     public long getTotalTicks() {

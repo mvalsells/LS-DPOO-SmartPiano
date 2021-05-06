@@ -11,12 +11,9 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.views.MainView;
-import smartpianoA8.presentation.views.MainViewV2;
 import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -27,7 +24,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        /*
+        ///*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -43,6 +40,8 @@ public class Main {
             System.exit(EXIT_UnableToReadConfigFile);
         }
 
+        MidiParser midiParser = new MidiParserImpl();
+
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
 
@@ -53,7 +52,7 @@ public class Main {
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
 
@@ -65,15 +64,22 @@ public class Main {
         ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
         System.out.println("lele");
 
-    /*
-        MidiParser midiParser = new MidiParserImpl(businessFacade);
-        midiParser.ParseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
-        ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
-        System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
-        System.out.println("BPM =========== " + midiParser.getBPM());
-        System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
-        System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
-        System.out.println("lele");
+
+        //midiParser.parseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
+        //ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+        //System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
+        //System.out.println("BPM =========== " + midiParser.getBPM());
+        //System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
+        //System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
+        //System.out.println("lele");
+
+        Song song = new Song(0,null,null,null,null,"resources/midiFiles/Master/Sonatine.mid",null,null,null);
+        ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
+        System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
+        System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
+        System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
+        System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
+        System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
         //*/
         // ------------------------------
@@ -86,19 +92,8 @@ public class Main {
         // ------------------------------
         ///*
 
-
-        // ---- Marc Inici ----
-        //MainView mainView = new MainView();
-        MainViewV2 mainView = new MainViewV2();
-        JFrame main = new JFrame();
-        main.add(mainView);
-        main.pack();
-        main.setVisible(true);
-        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        // ---- Marc fi ----
-
         //BERTU--------------------------------STATISTICS
-        /*
+
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -156,7 +151,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        //PianoView pianoView = new PianoView();
+        PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();

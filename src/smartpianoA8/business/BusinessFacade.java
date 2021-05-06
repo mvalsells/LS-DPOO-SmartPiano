@@ -1,9 +1,12 @@
 package smartpianoA8.business;
 
+import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+
+import java.util.ArrayList;
 
 public interface BusinessFacade {
 
@@ -19,6 +22,12 @@ public interface BusinessFacade {
 
     //Cançons
     public void addSong(Song song, String username);
+    public ArrayList<ArrayList<Notes>> getMidiNotes(Song song);
+    public long getTotalTicks();
+    public float getTotalSongSeconds();
+    public float getSecondsPerTick();
+    public int getNumTracks();
+    public float getMidiBpm();
     //public void removeSong(Song song);
 
 

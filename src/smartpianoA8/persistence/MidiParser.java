@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public interface MidiParser {
 
-    public void ParseMidi(String dir);
+    public ArrayList<ArrayList<Notes>> parseMidi(String dir);
     public int numTracks();
-    public ArrayList<ArrayList<Notes>> getTracks();
+    //public ArrayList<ArrayList<Notes>> getTracks();
     public float getBPM();
     public float getSecondsPerTick();
     public float getTotalSongSeconds();

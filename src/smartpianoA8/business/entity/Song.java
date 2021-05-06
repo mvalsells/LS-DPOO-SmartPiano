@@ -19,6 +19,10 @@ public class Song {
     private final String nomUsuari;
     private final String midi;
 
+    //TODO cambiar en la BBDD los datos de localdate a string, eliminar midi y poner el time de duracion como string.
+    //todo implementar forma de obtener datos de canciones guardados en la BBDD segun el usuario quiera. (getAllSongsByName
+    // y cuando se quiera alguna cancion en especifico recuperarla con una funcion que devuelva Song.)
+
     public Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari, String midi){
         this.idSong = idSong;
         this.nom = nom;
