@@ -9,5 +9,9 @@ public interface MidiParser {
     public void ParseMidi(String dir);
     public int numTracks();
     public ArrayList<ArrayList<Notes>> getTracks();
+    public float getBPM();
+    public float getSecondsPerTick();
+    public float getTotalSongSeconds();
+    public long getTotalTicks();
 
 }

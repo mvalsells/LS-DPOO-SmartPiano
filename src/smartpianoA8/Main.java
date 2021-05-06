@@ -64,8 +64,12 @@ public class Main {
 
 
         MidiParser midiParser = new MidiParserImpl(businessFacade);
-        midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/dpoo-2021-smartpiano-a8/resources/midiFiles/Master/When the Swallows Homeward Fly (Agathe).mid");
+        midiParser.ParseMidi("/Users/christianhasko/IdeaProjects/testmidi/alkan-op31-1.mid");
         ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+        System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
+        System.out.println("BPM =========== " + midiParser.getBPM());
+        System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
+        System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
         System.out.println("lele");
 
         //*/
