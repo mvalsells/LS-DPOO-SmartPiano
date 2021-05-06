@@ -29,12 +29,8 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             synth.loadAllInstruments(synth.getDefaultSoundbank());
             Instrument[] insts = synth.getLoadedInstruments();
             MidiChannel channels[] = synth.getChannels();
-            for (int i = 0; i < channels.length; i++) {
-                if (channels[i] != null) {
-                    channel = channels[i];
-                    break;
-                }
-            }
+            channel = channels[0];
+
 
             for (int i = 0; i < insts.length; i++) {
                 if (insts[i].toString()
