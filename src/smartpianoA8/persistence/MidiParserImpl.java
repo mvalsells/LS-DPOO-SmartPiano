@@ -59,7 +59,7 @@ public class MidiParserImpl implements MidiParser {
             System.out.println("Total song seconds: " + totalSongSeconds);
             System.out.println("Seconds per tick: " + secondsPerTick);
             System.out.println("Total ticks in Midi File: " + sequence.getTickLength());
-            System.out.println("ATTENTION, To get the time every tick takes in the song multiply the startTime-endTime * seconds_per_tick (getSecondsPerTick)\n");
+            System.out.println("ATTENTION, To get the time every tick takes in the song multiply the endTime-startTime * seconds_per_tick (getSecondsPerTick)\n");
 
             //System.out.println("Longitud de Canción: " + sequence.getTickLength() + " ticks. Resolución de: " + sequence.getResolution() + " PPQ - Pulses per quarter note");
             //System.out.println("Attention: Time in notes are saved as Ticks. startTime = 0 (starts at tick 0) endTime = 128 (end at tick 128). EVERY TICK HAVE A DURATION OF: PLAYBACK SECONDS ABOVE.");
