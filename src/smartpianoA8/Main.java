@@ -2,22 +2,22 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.persistence.HtmlScrapping;
-import smartpianoA8.persistence.HtmlScrappingImpl;
+import smartpianoA8.business.entity.Notes;
 import smartpianoA8.persistence.JsonReadable;
 import smartpianoA8.persistence.JsonReadableImpl;
+import smartpianoA8.persistence.MidiParser;
+import smartpianoA8.persistence.MidiParserImpl;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
