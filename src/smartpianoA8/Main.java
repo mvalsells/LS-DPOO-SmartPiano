@@ -11,9 +11,12 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.MainView;
+import smartpianoA8.presentation.views.MainViewV2;
 import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -24,7 +27,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        ///*
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -62,7 +65,7 @@ public class Main {
         ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
         System.out.println("lele");
 
-
+    /*
         MidiParser midiParser = new MidiParserImpl(businessFacade);
         midiParser.ParseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
         ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
@@ -83,8 +86,18 @@ public class Main {
         // ------------------------------
         ///*
 
-        //BERTU--------------------------------STATISTICS
 
+        // ---- Marc Inici ----
+        //MainView mainView = new MainView();
+        MainViewV2 mainView = new MainViewV2();
+        JFrame main = new JFrame();
+        main.add(mainView);
+        main.pack();
+        main.setVisible(true);
+        // ---- Marc fi ----
+
+        //BERTU--------------------------------STATISTICS
+        /*
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -142,7 +155,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();
