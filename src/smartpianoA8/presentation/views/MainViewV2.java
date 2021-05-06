@@ -1,13 +1,12 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
 import smartpianoA8.presentation.views.customComponents.JBNavBar;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainViewV2 extends JPanel {
-
-    private static final Color NavBar_Background = new Color(20,22,33);
 
     public MainViewV2(){
 
@@ -16,40 +15,41 @@ public class MainViewV2 extends JPanel {
         // ---- END MainView general Panel ----
 
         // ---- START ImageIcon ----
-        ImageIcon canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
-        ImageIcon cancionesPressed = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
-        ImageIcon myFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
-        ImageIcon myFavPressed = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
-        ImageIcon piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon pianoPressed = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
-        ImageIcon ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
-        ImageIcon botoRegPiano = new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg");
-        ImageIcon botoRegPianoPressed = new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg");
+        ImageIcon iconSong = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
+        ImageIcon iconSongPressed = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
+        ImageIcon iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
+        ImageIcon iconMyFavPressed = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
+        ImageIcon iconPiano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
+        ImageIcon iconPianoPressed = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
+        ImageIcon iconSettings = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
         // ---- END ImageIcon ----
 
         // ---- START Navigation Bar (west) ----
         JPanel jpNavBar = new JPanel();
         jpNavBar.setLayout(new BorderLayout());
-        jpNavBar.setBackground(NavBar_Background);
+        jpNavBar.setBackground(ColorScheme.NavBar_Background);
 
         //Panell General north
         JPanel jpNavBarNorth = new JPanel();
         jpNavBarNorth.setOpaque(false);
         jpNavBarNorth.setLayout(new BoxLayout(jpNavBarNorth,BoxLayout.Y_AXIS));
 
-        JButton jbSong = new JBNavBar(canciones, cancionesPressed);
-        JButton jbMyFav = new JBNavBar(myFav, myFavPressed);
-        JButton jbPiano = new JBNavBar(piano, pianoPressed);
+        JButton jbSong = new JBNavBar(iconSong, iconSongPressed);
+        JButton jbMyFav = new JBNavBar(iconMyFav, iconMyFavPressed);
+        JButton jbPiano = new JBNavBar(iconPiano, iconPianoPressed);
 
-        jpNavBarNorth.add(jbPiano);
+
         jpNavBarNorth.add(jbMyFav);
         jpNavBarNorth.add(jbSong);
+        jpNavBarNorth.add(jbPiano);
 
         //Panell General south
 
+        JButton jbSettings = new JBNavBar(iconSettings, iconSettings);
+
         //Navigation bar packing
         jpNavBar.add(jpNavBarNorth,BorderLayout.NORTH);
-
+        jpNavBar.add(jbSettings, BorderLayout.SOUTH);
         // ---- END Navigation Bar (west) ----
 
         // Final Packing

@@ -94,6 +94,7 @@ public class Main {
         main.add(mainView);
         main.pack();
         main.setVisible(true);
+        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // ---- Marc fi ----
 
         //BERTU--------------------------------STATISTICS
