@@ -50,9 +50,9 @@ public class StatisticsView extends JFrame {
         box.add(esquerra);
         box.add(dreta);
 
-        JLabel titol1 = new JLabel("Songs Played by user");
+        JLabel titol1 = new JLabel("Songs Played by User");
         titol1.setHorizontalAlignment(JLabel.CENTER);
-        JLabel titol2 = new JLabel("Minutes Listened by user");
+        JLabel titol2 = new JLabel("Minutes Listened by User");
         titol2.setHorizontalAlignment(JLabel.CENTER);
 
         dreta.add(titol2, BorderLayout.NORTH);
@@ -75,7 +75,6 @@ public class StatisticsView extends JFrame {
         liniaTaronja.setBackground(taronja);
         liniaRosa.setPreferredSize(new Dimension(25,7));
         liniaTaronja.setPreferredSize(new Dimension(25,7));
-
 
         llegenda1.add(liniaTaronja);
         llegenda1.add(new JLabel("#Songs"));
