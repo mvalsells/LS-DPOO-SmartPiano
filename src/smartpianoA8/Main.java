@@ -57,7 +57,7 @@ public class Main {
         pianoController.registerAllControlers();
 
         //Business <-> Persitance
-        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(businessFacade);
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);

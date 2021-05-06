@@ -7,6 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.dao.SongDAO;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -26,14 +27,14 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private static final String url2 = "&Instrument=Piano";
     private ArrayList<Song> midiSongs;
     private int newData;
-    private BusinessFacade businessFacade;
+    private SongDAO songDAO;
 
     //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
 
-    public HtmlScrappingImpl(BusinessFacade businessFacade){
+    public HtmlScrappingImpl(SongDAO songDAO){
         midiSongs = new ArrayList<Song>();
         newData = 0;
-        this.businessFacade=businessFacade;
+        this.songDAO = songDAO;
     }
 
     @Override
@@ -274,7 +275,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     }
 
     private void saveSong(Song song){
-        businessFacade.addSong(song,Song.Master);
+        songDAO.addSong(song, Song.Master);
     }
 
 }
