@@ -9,6 +9,7 @@ import smartpianoA8.presentation.views.LoginView;
 import smartpianoA8.presentation.views.RegisterView;
 import smartpianoA8.presentation.views.WellcomeFrame;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,16 +47,25 @@ public class WellcomeController implements ActionListener {
                 wellcomeFrame.changePanel(WellcomeFrame.chgToRegister);
                 break;
             case RegisterView.tryRegister:
-                System.out.println(registerView.getNomString());
-                System.out.println(registerView.getCorreuString());
-                System.out.println(registerView.getContrasenyaString());
-                registerUser(registerView.getNomString(),registerView.getCorreuString(),registerView.getContrasenyaString());
+
+                if(registerView.isCheckBoxAcceptTandC()) {
+                    System.out.println(registerView.getNomString());
+                    System.out.println(registerView.getCorreuString());
+                    System.out.println(registerView.getContrasenyaString());
+                    registerUser(registerView.getNomString(), registerView.getCorreuString(), registerView.getContrasenyaString());
+
+                }else {
+                    System.out.println("No checkbox!!");
+                }
+
                 break;
             case LoginView.tryLogin:
+
                 System.out.println(loginView.getNomString());
                 System.out.println(loginView.getCorreuString());
                 System.out.println(loginView.getContrasenyaString());
                 registerUser(loginView.getNomString(),loginView.getCorreuString(),loginView.getContrasenyaString());
+
         }
     }
 

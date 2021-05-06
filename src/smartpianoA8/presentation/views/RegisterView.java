@@ -11,13 +11,15 @@ public class RegisterView extends JPanel  {
 
     private BordersView bordersView = new BordersView();
 
-    private JButton iniciarSessio;//Canivat
+
     private JTextField nom;
     private JTextField correu;
     private JTextField contrasenya;
     private JTextField repetirContrasenya;
 
+    private JButton iniciarSessio;//Canivat
     private JButton registerButton;//canviat
+    private JCheckBox acceptTandC;//Canviat
 
     public RegisterView() {
         iniciarSessio = new JButton();
@@ -262,10 +264,10 @@ public class RegisterView extends JPanel  {
         registerButton.setVisible(true);
         registerButton.setActionCommand(tryRegister);
 
-        JCheckBox AcceptTandC = new JCheckBox("Acepto los términos y condiciones");
-        AcceptTandC.setOpaque(false);
-        AcceptTandC.setForeground(new Color(255,255,255));
-        AcceptTandC.setFont(new Font("Arial",Font.PLAIN,8));
+        acceptTandC = new JCheckBox("Acepto los términos y condiciones");
+        acceptTandC.setOpaque(false);
+        acceptTandC.setForeground(new Color(255,255,255));
+        acceptTandC.setFont(new Font("Arial",Font.PLAIN,8));
 
         JPanel OmplirSouthPrincipalPanel = new JPanel();
         OmplirSouthPrincipalPanel.setOpaque(false);
@@ -307,7 +309,7 @@ public class RegisterView extends JPanel  {
         PartCentral.add(PanelRegistre, BorderLayout.EAST);
 
         /*South*/
-        ComplementRegistre.add(AcceptTandC);
+        ComplementRegistre.add(acceptTandC);
         ComplementRegistre.add(registerButton);
         PartInferior.add(ComplementRegistre,BorderLayout.EAST);
         PartCentral.add(PartInferior,BorderLayout.SOUTH);
@@ -345,6 +347,7 @@ public class RegisterView extends JPanel  {
         registerButton.addActionListener(controller);
     }
 
+    public Boolean isCheckBoxAcceptTandC(){return acceptTandC.isSelected();}
 
     public String getNomString(){
         return this.nom.getText();
