@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 
         JFrame frame  = new JFrame();
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1000,820));
+        frame.setPreferredSize(new Dimension(1085,455));
 
         mainPanel.add(JPPiano,JPPianoString);
 
