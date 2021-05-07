@@ -35,12 +35,17 @@ public class MainViewV2 extends JPanel {
         jpNavBarNorth.setLayout(new BoxLayout(jpNavBarNorth,BoxLayout.Y_AXIS));
 
         JButton jbSong = new JBNavBar(iconSong, iconSongPressed);
+        jbSong.setBackground(Color.BLUE);
+        jbSong.setBorder(BorderFactory.createEmptyBorder(80,0,0,275));
         JButton jbMyFav = new JBNavBar(iconMyFav, iconMyFavPressed);
+        jbMyFav.setBackground(Color.CYAN);
+        jbMyFav.setBorder(BorderFactory.createEmptyBorder(275,0,0,275));
         JButton jbPiano = new JBNavBar(iconPiano, iconPianoPressed);
+        jbPiano.setBackground(Color.RED);
+        jbPiano.setBorder(BorderFactory.createEmptyBorder(275,0,0,0));
 
-
-        jpNavBarNorth.add(jbMyFav);
         jpNavBarNorth.add(jbSong);
+        jpNavBarNorth.add(jbMyFav);
         jpNavBarNorth.add(jbPiano);
 
         //Panell General south
