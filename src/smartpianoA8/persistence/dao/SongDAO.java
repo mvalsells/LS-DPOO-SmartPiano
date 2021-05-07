@@ -10,15 +10,15 @@ public interface SongDAO {
     /**
      *
      * @param song
-     * @param user
+     * @param username
      */
-    void addSong(Song song, User user);
+    void addSong(Song song, String username);
 
     /**
      *
      * @param song
      */
-    void removeSong(Song song);
+    void removeSong(int IDSong);
 
     /**
      *

@@ -72,7 +72,7 @@ public class Main {
         //System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
         //System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
         //System.out.println("lele");
-
+/*
         Song song = new Song(0,null,null,null,null,"resources/midiFiles/Master/Sonatine.mid",null,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
@@ -80,7 +80,7 @@ public class Main {
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
-
+*/
         //*/
         // ------------------------------
         // END Main smart piano

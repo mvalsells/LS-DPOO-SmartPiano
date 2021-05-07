@@ -21,7 +21,7 @@ public class SongManager {
     }
 
     public void addSong(Song song, String userName) {
-        //songDAO.addSong(song,);
+        songDAO.addSong(song, userName);
     }
 
     public ArrayList<ArrayList<Notes>> getMidiNotesParsed(Song song) {

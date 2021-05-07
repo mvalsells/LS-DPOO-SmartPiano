@@ -18,10 +18,10 @@ public class SQLSongDAO implements SongDAO {
     /**
      * Afegeix una cançó a la bbdd
      * @param song la cançó completa a afegir
-     * @param user l'usuari propietari de la cançó (actual)
+     * @param username l'usuari propietari de la cançó (actual)
      */
     @Override
-    public void addSong(Song song, User user) {
+    public void addSong(Song song, String username) {
 
         String query = "INSERT INTO Song(NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari) VALUES ('" +
                     0 + "', '" +
@@ -31,18 +31,19 @@ public class SQLSongDAO implements SongDAO {
                 song.getDataEnregistrament() + "', '" +
                 song.getDirectori() + "', '" +
                 song.getPublic() + "', '" +
-                user.getUsername() + "');";
+                username + "');";
         connector.insertQuery(query);
     }
 
+
     /**
      * Elimina una caçó de la bbdd
-     * @param song cançó amb l' IdSong a borrar
+     * @param IDSong cançó amb l' IdSong a borrar
      */
     @Override
-    public void removeSong(Song song) {
+    public void removeSong(int IDSong) {
         //borra la cançó total (data)
-        String query = "DELETE FROM Users WHERE NomUsuari = " + song.getIdSong() + ";";
+        String query = "DELETE FROM Users WHERE NomUsuari = " + IDSong + ";";
         connector.deleteQuery(query);
     }
 
