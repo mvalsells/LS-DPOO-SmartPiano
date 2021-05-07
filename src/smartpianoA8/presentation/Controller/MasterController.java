@@ -4,6 +4,9 @@ import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.presentation.views.*;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
+
+import javax.sound.midi.*;
 
 public class MasterController {
     BusinessFacade businessFacade;
@@ -17,23 +20,47 @@ public class MasterController {
     //Views
     RegisterView registerView;
     LoginView loginView;
-    MainViewV2 mainViewV2;
+    JPPiano jpPiano;
+
+    //Channel
+    MidiChannel midiChannel;
 
     public MasterController(BusinessFacade businessFacade){
         this.businessFacade = businessFacade;
+        //Channel
+        try {
+            Synthesizer synth = MidiSystem.getSynthesizer();
+            synth.open();
+            synth.loadAllInstruments(synth.getDefaultSoundbank());
+            Instrument[] insts = synth.getLoadedInstruments();
+            MidiChannel channels[] = synth.getChannels();
+            //channel = channels[test.getChanel];
+            midiChannel = channels[0];
+
+
+            for (int i = 0; i < insts.length; i++) {
+                if (insts[i].toString()
+                        .startsWith("Instrument MidiPiano")) {
+                    midiChannel.programChange(i);
+                    break;
+                }
+            }
+        } catch (MidiUnavailableException ex) {
+            ex.printStackTrace();
+        }
 
         //Views
         registerView = new RegisterView();  
         loginView = new LoginView();
-        mainViewV2 = new MainViewV2();
+        jpPiano = new JPPiano();
 
         //Frames
         wellcomeFrame = new WellcomeFrame(registerView,loginView);
-        mainFrame = new MainFrame(mainViewV2);
+        mainFrame = new MainFrame(jpPiano);
 
         //Controllers
         wellcomeController = new WellcomeController(wellcomeFrame);
-        mainController = new MainController(mainFrame);
+        mainController = new MainController(mainFrame,midiChannel);
     }
 
     public void registerAllControlers(){
@@ -43,7 +70,7 @@ public class MasterController {
 
         //Register other controllers to their views
         wellcomeFrame.registerController(wellcomeController);
-        mainFrame.registerController(mainController);
+        mainFrame.registerController(mainController,mainController,mainController);
     }
     //Change views
 

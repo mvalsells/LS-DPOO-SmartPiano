@@ -20,7 +20,7 @@ public class JPPiano extends JPanel {
 
     public JPPiano() {
 
-        smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
+        smartpianoA8.presentation.views.ImageView sombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
         ImageIcon botoRodaReal = new ImageIcon("Imagen/ImagenesMenu/BotoRodaReal.png");
         ImageIcon botoRodaMax = new ImageIcon("Imagen/ImagenesMenu/BotoRodaMax.png");
         ImageIcon pantallaPiano = new ImageIcon("Imagen/ImagenesMenu/PanellPiano.png");
@@ -41,7 +41,7 @@ public class JPPiano extends JPanel {
         posicioCentral.setLayout(new BorderLayout());
 
         JPanel partNord = new JPanel();
-        partNord.setBackground(Color.CYAN);
+        partNord.setBackground(Color.GRAY);
 
         JPanel panelCentre = new JPanel();
         panelCentre.setBackground(Color.PINK);
@@ -426,9 +426,11 @@ public class JPPiano extends JPanel {
 
 
         /*Bores*/
-        SombrejatSud.getScaledInsance(1250,48 ,Image.SCALE_SMOOTH);
+        //SombrejatSud.getScaledInsance(1250,48 ,Image.SCALE_SMOOTH);
         sudPanellCentre.add(separacioPanellCentreSud);
-        sudPanellCentre.add(SombrejatSud, BorderLayout.CENTER);
+        //sombrejatSud.setImg(pantallaPiano.getImage());
+        sombrejatSud.setImgSize(1250,48);
+        sudPanellCentre.add(sombrejatSud, BorderLayout.CENTER);
 
         panelCentre.add(nordPanellCentre,BorderLayout.NORTH);
         panelCentre.add(centrePanellCentre, BorderLayout.CENTER);

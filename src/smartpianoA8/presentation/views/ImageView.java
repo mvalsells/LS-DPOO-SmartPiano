@@ -15,6 +15,7 @@ public class ImageView extends JPanel{
     }
 
     public ImageView(Image img) {
+
         this.img = img;
         Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
         setPreferredSize(size);
@@ -24,15 +25,31 @@ public class ImageView extends JPanel{
         setLayout(null);
     }
 
+    public void setImg(Image img){
+
+        this.img = img;
+
+        repaint();
+
+    }
+
+    public void setImgSize(int width, int height){
+
+        Image newImage = img.getScaledInstance(width,height,Image.SCALE_SMOOTH);
+
+        setImg(newImage);
+
+    }
+
     public void paintComponent(Graphics g) {
 
         g.drawImage(img, 0, 0, null);
 
     }
 
-    public Image getScaledInsance(int width, int height,int hints){
-        return img.getScaledInstance(width,height,hints);
-    }
+    /*public void getScaledInsance(int width, int height,int hints){
+         (width,height,hints);
+    }*/
 
     @Override
     public boolean isOptimizedDrawingEnabled() {

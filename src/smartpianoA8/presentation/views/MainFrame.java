@@ -1,24 +1,29 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+import java.net.http.WebSocket;
 
 public class MainFrame extends JFrame {
 
-    public static final String mainViewV2String = "MainViewV2String";
+    public static final String JPPianoString = "JPPianoString";
 
     private CardLayout cards;
     private JPanel mainPanel;
-    private MainViewV2 mainViewV2;
+    private JPPiano JPPiano;
 
-    public MainFrame(MainViewV2 mainViewV2){
+    public MainFrame(JPPiano JPPiano){
 
         cards = new CardLayout();
         mainPanel = new JPanel(cards);
 
-        this.mainViewV2 = mainViewV2;
+        this.JPPiano = JPPiano;
 
+        createAndShowGUI();
     }
 
     public void createAndShowGUI(){
@@ -27,7 +32,7 @@ public class MainFrame extends JFrame {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1000,820));
 
-        mainPanel.add(mainViewV2,mainViewV2String);
+        mainPanel.add(JPPiano,JPPianoString);
 
         frame.getContentPane().add(mainPanel);
         frame.pack();
@@ -35,9 +40,9 @@ public class MainFrame extends JFrame {
 
     }
 
-    public void registerController(ActionListener controller){
+    public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
 
-        //mainViewV2.registerController(controller);
+        JPPiano.registerController(controller,keyListener,mouseListener);
 
     }
 
