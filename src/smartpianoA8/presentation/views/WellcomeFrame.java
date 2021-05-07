@@ -50,6 +50,8 @@ public class WellcomeFrame extends JFrame {
 
     }
 
+
+
     public void registerController(ActionListener controller){
         registerView.registerController(controller);
         loginView.registerController(controller);

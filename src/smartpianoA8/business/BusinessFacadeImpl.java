@@ -1,12 +1,16 @@
 package smartpianoA8.business;
 
+import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
+
+import java.util.ArrayList;
 
 public class BusinessFacadeImpl implements BusinessFacade{
 
@@ -19,9 +23,9 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
         userManager = new UserManager(userDAO);
-        songManager = new SongManager(songDAO);
+        songManager = new SongManager(songDAO, midiParser);
     }
 
     @Override
@@ -33,8 +37,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  START user implementation
     // ------------------------------------------------------
     @Override
-    public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException {
-        userManager.registerUser(username, email, password, type);
+    public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
+        userManager.registerUser(username, email, password, passwordRepetition, type);
     }
 
     @Override
@@ -58,8 +62,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     @Override
-    public boolean modifyCurrentUserPassword(String newPassword) throws PasswordException {
-        return userManager.modifyCurrentUserPassword(newPassword);
+    public boolean modifyCurrentUserPassword(String newPassword, String newPasswordRepetition) throws PasswordException {
+        return userManager.modifyCurrentUserPassword(newPassword, newPasswordRepetition);
     }
 
     @Override
@@ -77,6 +81,37 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public void addSong(Song song, String username) {
         songManager.addSong(song,username);
     }
+
+    public ArrayList<ArrayList<Notes>> getMidiNotes(Song song) {
+        return songManager.getMidiNotesParsed(song);
+    }
+
+    @Override
+    public float getMidiBpm() {
+        return songManager.getMidiBpm();
+    }
+
+    @Override
+    public int getNumTracks() {
+        return songManager.getMidiNumTracks();
+    }
+
+    @Override
+    public float getSecondsPerTick() {
+        return songManager.getMidiSecondsPerTick();
+    }
+
+    @Override
+    public float getTotalSongSeconds() {
+        return songManager.getMidiTotalSongSeconds();
+    }
+
+    @Override
+    public long getTotalTicks() {
+        return songManager.getMidiTotalTicks();
+    }
+
+
 
     // ------------------------------------------------------
     //  END song implementation
