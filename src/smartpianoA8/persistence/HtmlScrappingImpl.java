@@ -9,6 +9,9 @@ import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.persistence.dao.SongDAO;
 
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Sequencer;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
