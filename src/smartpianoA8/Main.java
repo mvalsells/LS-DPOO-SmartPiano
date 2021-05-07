@@ -67,7 +67,7 @@ public class Main {
 
 
 
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Queen - Bohemian Rhapsody.mid",1,null,null);
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/OASIS.Wonderwall K.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
