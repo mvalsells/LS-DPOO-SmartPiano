@@ -11,45 +11,31 @@ public class Song {
     private final String nom;
     private final int numReproduccions;
     private final String autor;
-    private final Time duracio;
-    private LocalDate dataEnregistrament;
-    private String datePublished;
+    private final float duracio;
+    private String dataEnregistrament;
     private final String directori;
     private Boolean isPublic;
     private final String nomUsuari;
     private final String midi;
 
-    //TODO cambiar en la BBDD los datos de localdate a string, eliminar midi y poner el time de duracion como string.
+    //TODO eliminar midi
     //todo implementar forma de obtener datos de canciones guardados en la BBDD segun el usuario quiera. (getAllSongsByName
     // y cuando se quiera alguna cancion en especifico recuperarla con una funcion que devuelva Song.)
 
-    public Song(int idSong, Time duracio, String nom, String autor, String directori, Boolean isPublic, String nomUsuari, String midi){
+    public Song(int idSong, float duracio, String nom, String autor, String datePublished, String directori, Boolean isPublic, String nomUsuari, String midi) {
         this.idSong = idSong;
         this.nom = nom;
         this. autor = autor;
         this.directori = directori;
         this.isPublic = isPublic;
-        this. nomUsuari = nomUsuari;
+        this.nomUsuari = nomUsuari;
         this.numReproduccions = 0;
         this.duracio = duracio;
-        this.dataEnregistrament = LocalDate.now();
+        this.dataEnregistrament = datePublished;
         this.midi = midi;
     }
 
-    public Song(int idSong, Time duracio, String nom, String autor, String datePublished, String directori, Boolean isPublic, String nomUsuari, String midi) {
-        this.idSong = idSong;
-        this.nom = nom;
-        this. autor = autor;
-        this.directori = directori;
-        this.isPublic = isPublic;
-        this. nomUsuari = nomUsuari;
-        this.numReproduccions = 0;
-        this.duracio = duracio;
-        this.datePublished = datePublished;
-        this.midi = midi;
-    }
-
-    public void setDataEnregistrament(LocalDate dataEnregistrament) {
+    public void setDataEnregistrament(String dataEnregistrament) {
         this.dataEnregistrament = dataEnregistrament;
     }
 
@@ -73,11 +59,11 @@ public class Song {
         return nomUsuari;
     }
 
-    public Time getDuracio() {
+    public float getDuracio() {
         return duracio;
     }
 
-    public LocalDate getDataEnregistrament() {
+    public String getDataEnregistrament() {
         return dataEnregistrament;
     }
 

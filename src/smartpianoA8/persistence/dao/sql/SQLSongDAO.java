@@ -2,7 +2,6 @@ package smartpianoA8.persistence.dao.sql;
 
 import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.business.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,6 @@ public class SQLSongDAO implements SongDAO {
      */
     @Override
     public void addSong(Song song, String username) {
-
         String query = "INSERT INTO Song(NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari) VALUES ('" +
                     0 + "', '" +
                 song.getNom() + "', '" +
@@ -59,7 +57,7 @@ public class SQLSongDAO implements SongDAO {
         try{
             while(result.next()) {
                 if(result.getInt("IDSong") == IDSong) {
-                    return new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"), result.getString("Midi"));
+                    return new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("NomUsuari"), result.getString("Midi"));
                 }
             }
         }catch (SQLException e){
@@ -80,7 +78,7 @@ public class SQLSongDAO implements SongDAO {
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()){
-                retorna.add(new Song(result.getInt("IDSong"), result.getTime("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("Nomusuari"), result.getString("Midi")));
+                retorna.add(new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
             }
             return retorna;
         }catch (SQLException e){
