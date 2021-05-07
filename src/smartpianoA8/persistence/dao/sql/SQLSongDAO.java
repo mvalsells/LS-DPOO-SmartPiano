@@ -57,7 +57,7 @@ public class SQLSongDAO implements SongDAO {
         try{
             while(result.next()) {
                 if(result.getInt("IDSong") == IDSong) {
-                    return new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("NomUsuari"), result.getString("Midi"));
+                    return new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi"));
                 }
             }
         }catch (SQLException e){
@@ -78,7 +78,7 @@ public class SQLSongDAO implements SongDAO {
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()){
-                retorna.add(new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getBoolean("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+                retorna.add(new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
             }
             return retorna;
         }catch (SQLException e){
