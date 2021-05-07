@@ -350,16 +350,16 @@ public class RegisterView extends JPanel  {
     public Boolean isCheckBoxAcceptTandC(){return acceptTandC.isSelected();}
 
     public String getNomString(){
-        return this.nom.getText();
+        return nom.getText();
     }
     public String getCorreuString(){
-        return this.correu.getText();
+        return correu.getText();
     }
     public String getContrasenyaString(){
-        return this.contrasenya.getText();
+        return contrasenya.getText();
     }
     public String getRepetirContrasenyaString(){
-        return this.repetirContrasenya.getText();
+        return repetirContrasenya.getText();
     }
 
 }

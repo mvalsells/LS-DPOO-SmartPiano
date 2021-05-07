@@ -296,12 +296,6 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
     }
 
 
-
-
-
-
-
-
     private void configurePiano(){
 
         smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());

@@ -15,15 +15,12 @@ import java.awt.event.ActionListener;
 
 public class WellcomeController implements ActionListener {
     
-    WellcomeFrame wellcomeFrame;
-    MasterController masterController;
-    RegisterView registerView;
-    LoginView loginView;
+    private WellcomeFrame wellcomeFrame;
+    private MasterController masterController;
 
-    public WellcomeController(WellcomeFrame wellcomeFrame, RegisterView registerView,LoginView loginView){
+    public WellcomeController(WellcomeFrame wellcomeFrame){
         this.wellcomeFrame = wellcomeFrame;
-        this.registerView = registerView;
-        this.loginView = loginView;
+
     }
     public void registerController(MasterController masterController){
         this.masterController =masterController;
@@ -48,11 +45,11 @@ public class WellcomeController implements ActionListener {
                 break;
             case RegisterView.tryRegister:
 
-                if(registerView.isCheckBoxAcceptTandC()) {
-                    System.out.println(registerView.getNomString());
-                    System.out.println(registerView.getCorreuString());
-                    System.out.println(registerView.getContrasenyaString());
-                    registerUser(registerView.getNomString(), registerView.getCorreuString(), registerView.getContrasenyaString());
+                if(wellcomeFrame.isRegisterCheckBoxAcceptTandC()) {
+                    System.out.println(wellcomeFrame.getRegisterNomString());
+                    System.out.println(wellcomeFrame.getRegisterCorreuString());
+                    System.out.println(wellcomeFrame.getRegisterContrasenyaString());
+                    registerUser(wellcomeFrame.getRegisterNomString(),wellcomeFrame.getRegisterCorreuString(),wellcomeFrame.getRegisterContrasenyaString());
 
                 }else {
                     System.out.println("No checkbox!!");
@@ -60,11 +57,10 @@ public class WellcomeController implements ActionListener {
 
                 break;
             case LoginView.tryLogin:
-
-                System.out.println(loginView.getNomString());
-                System.out.println(loginView.getCorreuString());
-                System.out.println(loginView.getContrasenyaString());
-                registerUser(loginView.getNomString(),loginView.getCorreuString(),loginView.getContrasenyaString());
+                System.out.println(wellcomeFrame.getLoginNomString());
+                System.out.println(wellcomeFrame.getLoginCorreuString());
+                System.out.println(wellcomeFrame.getLoginContrasenyaString());
+                registerUser(wellcomeFrame.getLoginNomString(),wellcomeFrame.getLoginCorreuString(),wellcomeFrame.getLoginContrasenyaString());
 
         }
     }

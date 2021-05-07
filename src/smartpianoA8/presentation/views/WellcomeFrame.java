@@ -10,6 +10,8 @@ public class WellcomeFrame extends JFrame {
 
     public static final String chgToLogin = "chgToLogin";
     public static final String chgToRegister = "chgToRegister";
+    public static final String registerViewString = "RegisterView";
+    public static final String loginViewString = "LoginView";
 
 
     private CardLayout cards;
@@ -41,8 +43,8 @@ public class WellcomeFrame extends JFrame {
         ImageView loginView;
         loginView = this.CreateLoginView();*/
 
-        mainPanel.add(registerView.runRegister(),"RegisterView");
-        mainPanel.add(loginView.runLogin(),"LoginView");
+        mainPanel.add(registerView.runRegister(),registerViewString);
+        mainPanel.add(loginView.runLogin(),loginViewString);
 
         frame.getContentPane().add(mainPanel);
         frame.pack();
@@ -59,10 +61,10 @@ public class WellcomeFrame extends JFrame {
     }
     //Canvi panel view
     public void changeToRegister(){
-        cards.show(mainPanel,"RegisterView");
+        cards.show(mainPanel,registerViewString);
     }
     public void changeToLogin(){
-        cards.show(mainPanel,"LoginView");
+        cards.show(mainPanel,loginViewString);
     }
     public void changePanel(String panel){
         switch (panel) {
@@ -87,5 +89,26 @@ public class WellcomeFrame extends JFrame {
 
     }
 */
+    //Getters register
+    public String getRegisterNomString(){ return registerView.getNomString(); }
+    public String getRegisterCorreuString(){
+        return registerView.getCorreuString();
+    }
+    public String getRegisterContrasenyaString(){
+        return registerView.getContrasenyaString();
+    }
+    public Boolean isRegisterCheckBoxAcceptTandC(){return registerView.isCheckBoxAcceptTandC();}
+    public String getRegisterRepetirContrasenyaString(){
+        return registerView.getRepetirContrasenyaString();
+    }
+
+    //Getters login
+    public String getLoginNomString(){ return loginView.getNomString();}
+    public String getLoginCorreuString(){
+        return loginView.getCorreuString();
+    }
+    public String getLoginContrasenyaString(){
+        return loginView.getContrasenyaString();
+    }
 
 }
