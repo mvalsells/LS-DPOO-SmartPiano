@@ -12,6 +12,7 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.StatisticsView;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
@@ -87,13 +88,14 @@ public class Main {
         //
 
         //----------- albert inici
+        /*
         JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+*/
         //-----Albert fi
 
         // ---- Marc Inici ----
@@ -107,9 +109,9 @@ public class Main {
 
 
         // ---- Marc fi ----
-
+*/
         //BERTU--------------------------------STATISTICS
-        /*
+
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
@@ -167,7 +169,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();

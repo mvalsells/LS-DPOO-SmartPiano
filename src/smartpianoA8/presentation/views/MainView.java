@@ -164,7 +164,7 @@ public class MainView extends JPanel {
 
 
         jFramePiano.setResizable(true);
-        jFramePiano.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFramePiano.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         jFramePiano.getContentPane().add("Ref_1",panelMenu);
         jFramePiano.setPreferredSize(new Dimension(1000,820));
         jFramePiano.pack();

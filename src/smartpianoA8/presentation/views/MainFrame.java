@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
     public void createAndShowGUI(){
 
         JFrame frame  = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1000,820));
 
         mainPanel.add(mainViewV2,mainViewV2String);

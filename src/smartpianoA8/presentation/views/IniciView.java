@@ -319,7 +319,7 @@ public class IniciView extends JFrame {
         //BotoAjustes.addActionListener(e -> Prova1.next(MenuOpcions));
 
         jFrameMenu.setResizable(true);
-        jFrameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrameMenu.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         jFrameMenu.getContentPane().add("Ref_1",PanelMenu);
         jFrameMenu.setPreferredSize(new Dimension(1000,820));
         jFrameMenu.pack();

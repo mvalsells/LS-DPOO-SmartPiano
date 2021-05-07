@@ -670,7 +670,7 @@ public class PianoPlayingView extends JFrame implements MouseListener, KeyListen
 
 
         jFramePiano.setResizable(true);
-        jFramePiano.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFramePiano.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         jFramePiano.getContentPane().add("Ref_1",PanelMenu);
         jFramePiano.setPreferredSize(new Dimension(1000,820));
         jFramePiano.pack();
