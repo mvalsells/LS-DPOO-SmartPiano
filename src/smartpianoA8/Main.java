@@ -1,30 +1,16 @@
 package smartpianoA8;
 
-import smartpianoA8.business.BusinessFacade;
-import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.persistence.*;
-import smartpianoA8.persistence.dao.PlayListDAO;
-import smartpianoA8.persistence.dao.SongDAO;
-import smartpianoA8.persistence.dao.StatsDAO;
-import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.PianoView;
-import smartpianoA8.presentation.views.StatisticsView;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        ///*
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -64,6 +50,15 @@ public class Main {
         ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
         System.out.println("lele");
 
+    /*
+        MidiParser midiParser = new MidiParserImpl(businessFacade);
+        midiParser.ParseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
+        ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
+        System.out.println("\n\nSeconds Per Tick =========== " + midiParser.getSecondsPerTick());
+        System.out.println("BPM =========== " + midiParser.getBPM());
+        System.out.println("Total Song Seconds =========== " + midiParser.getTotalSongSeconds());
+        System.out.println("Total Song Ticks =========== " + midiParser.getTotalTicks() + "\n\n");
+        System.out.println("lele");
 
         //midiParser.parseMidi("resources/midiFiles/Master/Vocalise № 1.mid");
         //ArrayList<ArrayList<Notes>> test = midiParser.getTracks();
@@ -92,8 +87,30 @@ public class Main {
         // ------------------------------
         ///*
 
-        //BERTU--------------------------------STATISTICS
+        //----------- albert inici
+        JPPiano piano = new JPPiano();
+        JFrame main = new JFrame();
+        main.add(piano);
+        main.pack();
+        main.setVisible(true);
+        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        //-----Albert fi
+
+        // ---- Marc Inici ----
+        //MainView mainView = new MainView();
+        /*MainViewV2 mainView = new MainViewV2();
+        JFrame main = new JFrame();
+        main.add(mainView);
+        main.pack();
+        main.setVisible(true);
+        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);*/
+
+
+        // ---- Marc fi ----
+
+        //BERTU--------------------------------STATISTICS
+        /*
         ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors

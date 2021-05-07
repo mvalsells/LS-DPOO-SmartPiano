@@ -30,6 +30,10 @@ public class ImageView extends JPanel{
 
     }
 
+    public Image getScaledInsance(int width, int height,int hints){
+        return img.getScaledInstance(width,height,hints);
+    }
+
     @Override
     public boolean isOptimizedDrawingEnabled() {
         return false;

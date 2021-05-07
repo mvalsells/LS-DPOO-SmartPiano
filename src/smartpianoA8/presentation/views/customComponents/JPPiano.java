@@ -1,406 +1,35 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.presentation.views.customComponents;
 
-import smartpianoA8.presentation.views.customComponents.JBPianoButton;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.JTPianoButtonText;
+import smartpianoA8.presentation.views.BlackKey;
+import smartpianoA8.presentation.views.ImageView;
+import smartpianoA8.presentation.views.WhiteKey;
 
-import javax.sound.midi.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
-public class PianoView extends JFrame implements MouseListener, KeyListener {
-
-    BordersView bordersView;
-    final int OCTAVES = 8; // change as desired
-
+public class JPPiano extends JPanel {
+    final int OCTAVES = 3;
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
-    private final Eventos eventos = new Eventos();
-
-    public PianoView(){
-        bordersView = new BordersView();
-        configurePiano();
-        try {
-            Synthesizer synth = MidiSystem.getSynthesizer();
-            synth.open();
-            synth.loadAllInstruments(synth.getDefaultSoundbank());
-            Instrument[] insts = synth.getLoadedInstruments();
-            MidiChannel channels[] = synth.getChannels();
-            //channel = channels[test.getChanel];
-            channel = channels[0];
 
 
-            for (int i = 0; i < insts.length; i++) {
-                if (insts[i].toString()
-                        .startsWith("Instrument MidiPiano")) {
-                    channel.programChange(i);
-                    break;
-                }
-            }
-        } catch (MidiUnavailableException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-
-
-    MidiChannel channel;
-
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    public void mousePressed(MouseEvent e) {
-        Key key = (Key) e.getSource();
-        channel.noteOn(key.getNote(), 127);
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        Key key = (Key) e.getSource();
-        channel.noteOff(key.getNote(),127);
-    }
-
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    public void keyPressed(KeyEvent e) {
-        int key2 = e.getKeyCode();
-
-        //WHITE KEYS
-        if(key2 == KeyEvent.VK_A){
-            channel.noteOn(48, 127);
-        }
-        if(key2 == KeyEvent.VK_B){
-            channel.noteOn(50, 127);
-        }
-        if(key2 == KeyEvent.VK_C){
-            channel.noteOn(52, 127);
-        }
-        if(key2 == KeyEvent.VK_D){
-            channel.noteOn(53, 127);
-        }
-        if(key2 == KeyEvent.VK_E){
-            channel.noteOn(55, 127);
-        }
-        if(key2 == KeyEvent.VK_F){
-            channel.noteOn(57, 127);
-        }
-        if(key2 == KeyEvent.VK_G){
-            channel.noteOn(59, 127);
-        }
-        if(key2 == KeyEvent.VK_H){
-            channel.noteOn(60, 127);
-        }
-        if(key2 == KeyEvent.VK_I){
-            channel.noteOn(62, 127);
-        }
-        if(key2 == KeyEvent.VK_J){
-            channel.noteOn(64, 127);
-        }
-        if(key2 == KeyEvent.VK_K){
-            channel.noteOn(65, 127);
-        }
-        if(key2 == KeyEvent.VK_L){
-            channel.noteOn(67, 127);
-        }
-        if(key2 == KeyEvent.VK_M){
-            channel.noteOn(69, 127);
-        }
-        if(key2 == KeyEvent.VK_N){
-            channel.noteOn(71, 127);
-        }
-        if(key2 == KeyEvent.VK_O){
-            channel.noteOn(72, 127);
-        }
-        if(key2 == KeyEvent.VK_P){
-            channel.noteOn(74, 127);
-        }
-        if(key2 == KeyEvent.VK_Q){
-            channel.noteOn(76, 127);
-        }
-        if(key2 == KeyEvent.VK_R){
-            channel.noteOn(77, 127);
-        }
-        if(key2 == KeyEvent.VK_S){
-            channel.noteOn(79, 127);
-        }
-
-        //BLACK KEYS
-        if(key2 == KeyEvent.VK_0){
-            channel.noteOn(49, 127);
-        }
-        if(key2 == KeyEvent.VK_1){
-            channel.noteOn(51, 127);
-        }
-        if(key2 == KeyEvent.VK_2){
-            channel.noteOn(54, 127);
-        }
-        if(key2 == KeyEvent.VK_3){
-            channel.noteOn(56, 127);
-        }
-        if(key2 == KeyEvent.VK_4){
-            channel.noteOn(58, 127);
-        }
-        if(key2 == KeyEvent.VK_5){
-            channel.noteOn(61, 127);
-        }
-        if(key2 == KeyEvent.VK_6){
-            channel.noteOn(63, 127);
-        }
-        if(key2 == KeyEvent.VK_7){
-            channel.noteOn(66, 127);
-        }
-        if(key2 == KeyEvent.VK_8){
-            channel.noteOn(68, 127);
-        }
-        if(key2 == KeyEvent.VK_9){
-            channel.noteOn(70, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+58){
-            channel.noteOn(73, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+59){
-            channel.noteOn(75, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+60){
-            channel.noteOn(78, 127);
-        }
-
-
-
-       
-    }
-
-    public void keyReleased(KeyEvent e) {
-        /*Key key2 = (Key) e.getSource();
-        channel.noteOff(key2.getNote());*7
-
-         */
-        int key2 = e.getKeyCode();
-
-        //WHITE KEYS
-        if(key2 == KeyEvent.VK_A){
-            channel.noteOff(48, 127);
-        }
-        if(key2 == KeyEvent.VK_B){
-            channel.noteOff(50, 127);
-        }
-        if(key2 == KeyEvent.VK_C){
-            channel.noteOff(52, 127);
-        }
-        if(key2 == KeyEvent.VK_D){
-            channel.noteOff(53, 127);
-        }
-        if(key2 == KeyEvent.VK_E){
-            channel.noteOff(55, 127);
-        }
-        if(key2 == KeyEvent.VK_F){
-            channel.noteOff(57, 127);
-        }
-        if(key2 == KeyEvent.VK_G){
-            channel.noteOff(59, 127);
-        }
-        if(key2 == KeyEvent.VK_H){
-            channel.noteOff(60, 127);
-        }
-        if(key2 == KeyEvent.VK_I){
-            channel.noteOff(62, 127);
-        }
-        if(key2 == KeyEvent.VK_J){
-            channel.noteOff(64, 127);
-        }
-        if(key2 == KeyEvent.VK_K){
-            channel.noteOff(65, 127);
-        }
-        if(key2 == KeyEvent.VK_L){
-            channel.noteOff(67, 127);
-        }
-        if(key2 == KeyEvent.VK_M){
-            channel.noteOff(69, 127);
-        }
-        if(key2 == KeyEvent.VK_N){
-            channel.noteOff(71, 127);
-        }
-        if(key2 == KeyEvent.VK_O){
-            channel.noteOff(72, 127);
-        }
-        if(key2 == KeyEvent.VK_P){
-            channel.noteOff(74, 127);
-        }
-        if(key2 == KeyEvent.VK_Q){
-            channel.noteOff(76, 127);
-        }
-        if(key2 == KeyEvent.VK_R){
-            channel.noteOff(77, 127);
-        }
-        if(key2 == KeyEvent.VK_S){
-            channel.noteOff(79, 127);
-        }
-
-        //BLACK KEYS
-        if(key2 == KeyEvent.VK_0){
-            channel.noteOff(49, 127);
-        }
-        if(key2 == KeyEvent.VK_1){
-            channel.noteOff(51, 127);
-        }
-        if(key2 == KeyEvent.VK_2){
-            channel.noteOff(54, 127);
-        }
-        if(key2 == KeyEvent.VK_3){
-            channel.noteOff(56, 127);
-        }
-        if(key2 == KeyEvent.VK_4){
-            channel.noteOff(58, 127);
-        }
-        if(key2 == KeyEvent.VK_5){
-            channel.noteOff(61, 127);
-        }
-        if(key2 == KeyEvent.VK_6){
-            channel.noteOff(63, 127);
-        }
-        if(key2 == KeyEvent.VK_7){
-            channel.noteOff(66, 127);
-        }
-        if(key2 == KeyEvent.VK_8){
-            channel.noteOff(68, 127);
-        }
-        if(key2 == KeyEvent.VK_9){
-            channel.noteOff(70, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+58){
-            channel.noteOff(73, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+59){
-            channel.noteOff(75, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+60){
-            channel.noteOff(78, 127);
-        }
-    }
-
-
-    private void configurePiano(){
+    public JPPiano() {
 
         smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
-
-        smartpianoA8.presentation.views.ImageView SombrejatWest = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
-        smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
-        ImageIcon canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
-        ImageIcon cancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
-        ImageIcon misFavoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
-        ImageIcon misFavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
-        ImageIcon piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon pianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
-        ImageIcon descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
-        ImageIcon ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
-        ImageIcon botoTriangleInferior = new ImageIcon("Imagen/ImagenesMenu/TriangleInferior.png");
-        ImageIcon botoTriangleSuperior = new ImageIcon("Imagen/ImagenesMenu/TriangleSuperior.png");
         ImageIcon botoRodaReal = new ImageIcon("Imagen/ImagenesMenu/BotoRodaReal.png");
         ImageIcon botoRodaMax = new ImageIcon("Imagen/ImagenesMenu/BotoRodaMax.png");
         ImageIcon pantallaPiano = new ImageIcon("Imagen/ImagenesMenu/PanellPiano.png");
-
-
-
-        JFrame jFramePiano = new JFrame();
-        jFramePiano.setLayout(new CardLayout());
-
-        JPanel panelMenu = new JPanel();
-
-        //JPanel Pro = new JPanel();
-        panelMenu.setBackground(new Color(211,216,221));
-        panelMenu.setLayout(new BorderLayout());
-
-        /*-----------------------------------------PART WEST-----------------------------------------*/
-        JPanel panelLateral = new JPanel();
-        //panelLateral.setOpaque(true);
-        panelLateral.setBackground(new Color(20,22,33));
-        panelLateral.setLayout(new BorderLayout());
-
-        /*Botons*/
-        JPanel botons = new JPanel(); //Panel per situar els botons del Nord a la dreta
-        botons.setOpaque(false);
-        botons.setLayout(new BoxLayout(botons,BoxLayout.Y_AXIS));
-
-        JButton botoCanço = new JButton();
-        //BotoCanço.setForeground(new Color(255,255,255));
-        botoCanço.setAlignmentY(SwingConstants.RIGHT);
-        botoCanço.setBackground(new Color(20,22,33));
-        botoCanço.setPreferredSize(new Dimension(68,68));
-        botoCanço.setBorder(bordersView.getGoogleButtonBorder());
-        botoCanço.setBorderPainted(true);
-        botoCanço.setIcon(canciones);
-        botoCanço.setPressedIcon(cancionesSelect);
-
-        JButton botoPreferit = new JButton();
-        //botoPreferit.setForeground(new Color(255,255,255));
-        botoPreferit.setBackground(new Color(20,22,33));
-        botoPreferit.setPreferredSize(new Dimension(68,68));
-        botoPreferit.setBorder(bordersView.getGoogleButtonBorder());
-        botoPreferit.setBorderPainted(true);
-        botoPreferit.setIcon(misFavoritas);
-        botoPreferit.setPressedIcon(misFavoritasSelect);
-
-        JButton botoPiano = new JButton();
-        //botoPiano.setForeground(new Color(255,255,255));
-        botoPiano.setBackground(new Color(20,22,33));
-        botoPiano.setPreferredSize(new Dimension(68,68));
-        botoPiano.setBorder(bordersView.getGoogleButtonBorder());
-        botoPiano.setBorderPainted(true);
-        botoPiano.setIcon(piano);
-        botoPiano.setPressedIcon(pianoSelect);
-
-        JButton botoDescargar = new JButton();
-        //botoDescargar.setForeground(new Color(255,255,255));
-        botoDescargar.setBackground(new Color(20,22,33));
-        botoDescargar.setPreferredSize(new Dimension(68,68));
-        botoDescargar.setBorderPainted(true);
-        botoDescargar.setIcon(descargar);
-        botoDescargar.setBorder(bordersView.getGoogleButtonBorder());
-
-
-        JButton botoAjustes = new JButton();
-        //botoAjustes.setForeground(new Color(255,255,255));
-        botoAjustes.setBackground(new Color(20,22,33));
-        botoAjustes.setPreferredSize(new Dimension(68,68));
-        botoAjustes.setBorderPainted(true);
-        botoAjustes.setBorder(bordersView.getGoogleButtonBorder());
-        botoAjustes.setIcon(ajustes);
-
-
-        /*-----------------------------------------PART CENTRE-----------------------------------------*/
-        /*Panell general centre*/
-        JPanel panellGeneralCentre = new JPanel();
-        panellGeneralCentre.setBackground(Color.PINK);
-        panellGeneralCentre.setLayout(new BorderLayout());
-
-        JPanel panellNordGeneral = new JPanel();
-        panellNordGeneral.setBackground(new Color(211,216,221));
-
-        JPanel panellSudGeneral = new JPanel();
-        panellSudGeneral.setBackground(new Color(211,216,221));
-
-        JPanel panelCentralGeneral = new JPanel();
-        panelCentralGeneral.setBackground(Color.CYAN);
-        panelCentralGeneral.setLayout(new BorderLayout());
+        ImageIcon botoTriangleInferior = new ImageIcon("Imagen/ImagenesMenu/TriangleInferior.png");
+        ImageIcon botoTriangleSuperior = new ImageIcon("Imagen/ImagenesMenu/TriangleSuperior.png");
+        ImageView sombrejatWest = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
 
         /* Panell borders piano*/
+        setLayout(new BorderLayout());
         JPanel lateralWest =  new JPanel();
         lateralWest.setBackground(new Color(31,26,26));
 
@@ -471,7 +100,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             blacks[i] = new BlackKey(i);
 
             if(lletresBlack < 'a'){
-               blacks[i].setText(String.valueOf(lletresBlack));
+                blacks[i].setText(String.valueOf(lletresBlack));
                 lletresBlack++;
 
             }else {
@@ -481,11 +110,6 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             blacks[i].setForeground(Color.WHITE);
             blacks[i].setFont(new Font("Verdana", Font.PLAIN, 6));
             teclat.add(blacks[i]);
-
-            blacks[i].addKeyListener( this);
-            blacks[i].addMouseListener( this);
-
-
         }
 
         char lletresWhite = 'a';
@@ -501,9 +125,6 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
                 lletresWhite = 'a';
                 whites[i].setText(String.valueOf(lletresWhite));
             }
-
-            whites[i].addMouseListener(this);
-            whites[i].addKeyListener(this);
             teclat.add(whites[i]);
 
         }
@@ -733,19 +354,6 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
 
         /*Packin' area*/
-        /*Part West Botons*/
-        botons.add(topSeparacio0);
-        botons.add(botoCanço);
-        botons.add(entreSeparacio0);
-        botons.add(botoPreferit);
-        botons.add(entreSeparacio1);
-        botons.add(botoPiano);
-        botons.add(entreSeparacio2);
-        botons.add(botoDescargar);
-        botons.add(entreSeparacio3);
-        botons.add(botoAjustes);
-        panelLateral.add(botons,BorderLayout.NORTH);
-        panelMenu.add(panelLateral,BorderLayout.WEST);
 
         /*Part Piano*/
         /*Botons*/
@@ -813,13 +421,12 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         westCentre.add(separacioCentreWest);
         centrePanellCentre.add(westCentre,BorderLayout.WEST);
         centrePanellCentre.add(resteCentre,BorderLayout.CENTER);
-        westCentre.add(SombrejatWest);
+        westCentre.add(sombrejatWest);
 
 
 
         /*Bores*/
-        //SeparacioPanellCentreNord.add(SeparacioBotoCentre);
-        //NordPanellCentre.add(SeparacioPanellCentreNord);
+        SombrejatSud.getScaledInsance(1250,48 ,Image.SCALE_SMOOTH);
         sudPanellCentre.add(separacioPanellCentreSud);
         sudPanellCentre.add(SombrejatSud, BorderLayout.CENTER);
 
@@ -833,31 +440,18 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
         lateralEast.add(separacioLateralEast);
         lateralWest.add(separacioLateralWest);
-        panelCentralGeneral.add(lateralEast,BorderLayout.EAST);
-        panelCentralGeneral.add(lateralWest,BorderLayout.WEST);
-        panelCentralGeneral.add(posicioCentral,BorderLayout.CENTER);
-
-
-
-        /*Part Central*/
-        JPanel pepeta = new JPPiano();
-        panellNordGeneral.add(entreSeparacio4);
-        panellSudGeneral.add(entreSeparacio5);
-        panellGeneralCentre.add(pepeta,BorderLayout.CENTER);
-        panellGeneralCentre.add(panellSudGeneral,BorderLayout.SOUTH);
-        panellGeneralCentre.add(panellNordGeneral,BorderLayout.NORTH);
-        panelMenu.add(panellGeneralCentre,BorderLayout.CENTER);
-
-        jFramePiano.setResizable(true);
-        jFramePiano.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFramePiano.getContentPane().add("Ref_1",panelMenu);
-        jFramePiano.setPreferredSize(new Dimension(1000,820));
-        jFramePiano.pack();
-        jFramePiano.setVisible(true);
-
-
+        add(lateralEast,BorderLayout.EAST);
+        add(lateralWest,BorderLayout.WEST);
+        add(posicioCentral,BorderLayout.CENTER);
     }
-
-
-
+    public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
+        for (int i = 0; i < blacks.length; i++){
+            blacks[i].addKeyListener(keyListener);
+            blacks[i].addMouseListener(mouseListener);
+        }
+        for (int i = 0; i < whites.length; i++){
+            whites[i].addKeyListener(keyListener);
+            whites[i].addMouseListener(mouseListener);
+        }
+    }
 }

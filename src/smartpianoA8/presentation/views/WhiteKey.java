@@ -3,7 +3,7 @@ package smartpianoA8.presentation.views;
 import javax.swing.*;
 import java.awt.*;
 
-class WhiteKey  extends JButton implements Key {
+public class WhiteKey  extends JButton implements Key {
 
     static int WWD = (int) (((WD * 3) / 2)*1.2);
     static int WHT = (HT * 3) / 2;

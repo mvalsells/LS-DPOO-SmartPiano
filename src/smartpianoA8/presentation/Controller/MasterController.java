@@ -3,35 +3,47 @@ package smartpianoA8.presentation.Controller;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
-import smartpianoA8.presentation.views.LoginView;
-import smartpianoA8.presentation.views.RegisterView;
-import smartpianoA8.presentation.views.WellcomeFrame;
+import smartpianoA8.presentation.views.*;
 
 public class MasterController {
     BusinessFacade businessFacade;
+    //Controllers
     WellcomeController wellcomeController;
+    MainController mainController;
+    //Frames
     WellcomeFrame wellcomeFrame;
+    MainFrame mainFrame;
+
+    //Views
     RegisterView registerView;
     LoginView loginView;
+    MainViewV2 mainViewV2;
+
     public MasterController(BusinessFacade businessFacade){
-        this.businessFacade=businessFacade;
+        this.businessFacade = businessFacade;
 
         //Views
-        registerView = new RegisterView();
+        registerView = new RegisterView();  
         loginView = new LoginView();
+        mainViewV2 = new MainViewV2();
+
+        //Frames
         wellcomeFrame = new WellcomeFrame(registerView,loginView);
+        mainFrame = new MainFrame(mainViewV2);
 
         //Controllers
-        wellcomeController = new WellcomeController(wellcomeFrame,registerView,loginView);
+        wellcomeController = new WellcomeController(wellcomeFrame);
+        mainController = new MainController(mainFrame);
     }
 
     public void registerAllControlers(){
         //Register this controller to other controllers
         wellcomeController.registerController(this);
+        mainController.registerController(this);
 
         //Register other controllers to their views
         wellcomeFrame.registerController(wellcomeController);
-
+        mainFrame.registerController(mainController);
     }
     //Change views
 
