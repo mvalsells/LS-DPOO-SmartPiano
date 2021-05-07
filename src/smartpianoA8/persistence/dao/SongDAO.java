@@ -15,8 +15,14 @@ public interface SongDAO {
     void addSong(Song song, String username);
 
     /**
+     * Metodo que añade una canción en Master sin repetir.
+     * @param song cancion a añadir sin repetir
+     */
+    void addSongInMaster(Song song);
+
+    /**
      *
-     * @param song
+     * @param IDSong
      */
     void removeSong(int IDSong);
 

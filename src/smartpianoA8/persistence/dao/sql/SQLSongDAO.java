@@ -34,6 +34,18 @@ public class SQLSongDAO implements SongDAO {
     }
 
 
+
+    @Override
+    public void addSongInMaster(Song song) {
+        Song foundSong = getSongByNameInMaster(song.getNom());
+        if(foundSong != null) {
+            System.out.println("Song that should be added already exists in Master. this comment can be removed.");
+        } else{
+            addSong(song, "Master");
+        }
+    }
+
+
     /**
      * Elimina una caçó de la bbdd
      * @param IDSong cançó amb l' IdSong a borrar
@@ -46,7 +58,7 @@ public class SQLSongDAO implements SongDAO {
     }
 
     /**
-     * Retorna una cançó existent segons l'IDSong d'una Song.
+     * Retorna una cançó existent segons l'IDSong d'una Song TENINT AQUEST.
      * @param IDSong Cançó amb IDSong a buscar
      * @return  La cançó SONG a buscar o FALSE si no es troba.
      */
@@ -61,10 +73,25 @@ public class SQLSongDAO implements SongDAO {
                 }
             }
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            return null;
         }
         return null;
     }
+
+
+    private Song getSongByNameInMaster(String songName) {
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE Nom LIKE '" + songName + "' AND NomUsuari LIKE 'Master';";
+        ResultSet result = connector.selectQuery(query);
+
+        try {
+            result.next();
+            return (new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+
+        }catch(SQLException e){
+            return null;
+        }
+    }
+
 
 
     /**
