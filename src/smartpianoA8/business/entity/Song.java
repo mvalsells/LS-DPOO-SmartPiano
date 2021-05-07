@@ -14,7 +14,7 @@ public class Song {
     private final float duracio;
     private String dataEnregistrament;
     private final String directori;
-    private Boolean isPublic;
+    private int isPublic;
     private final String nomUsuari;
     private final String midi;
 
@@ -22,7 +22,7 @@ public class Song {
     //todo implementar forma de obtener datos de canciones guardados en la BBDD segun el usuario quiera. (getAllSongsByName
     // y cuando se quiera alguna cancion en especifico recuperarla con una funcion que devuelva Song.)
 
-    public Song(int idSong, float duracio, String nom, String autor, String datePublished, String directori, Boolean isPublic, String nomUsuari, String midi) {
+    public Song(int idSong, float duracio, String nom, String autor, String datePublished, String directori, int isPublic, String nomUsuari, String midi) {
         this.idSong = idSong;
         this.nom = nom;
         this. autor = autor;
@@ -39,7 +39,7 @@ public class Song {
         this.dataEnregistrament = dataEnregistrament;
     }
 
-    public void changePrivatePublic(Boolean newIsPublic){
+    public void changePrivatePublic(int newIsPublic){
         this.isPublic = newIsPublic;
     }
 
@@ -75,7 +75,7 @@ public class Song {
         return idSong;
     }
 
-    public Boolean getPublic() {
+    public int getPublic() {
         return isPublic;
     }
 
