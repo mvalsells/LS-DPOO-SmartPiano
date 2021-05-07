@@ -73,6 +73,8 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                         switch (counter) {
                             case 0:
                                 songName = tds.get(0).text();
+                                songName = songName.replaceAll("[\\№]","N.");
+                                songName = songName.replaceAll("[\\-\\+\\^:,]","");
                                 author = tds.get(1).text();
                                 break;
                             case 1:

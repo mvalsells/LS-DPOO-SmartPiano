@@ -11,6 +11,8 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.MainView;
+import smartpianoA8.presentation.views.MainViewV2;
 import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.StatisticsView;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
@@ -26,7 +28,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -67,8 +69,8 @@ public class Main {
         System.out.println("lele");
 
 
-
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Sonatine.mid",1,null,null);
+        String ruta = "resources/midiFiles/Master/";
+        Song song = new Song(0,0,null,null,null,ruta,1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
@@ -76,7 +78,7 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
-        //
+        //*/
         // ------------------------------
         // END Main smart piano
         // ------------------------------
@@ -88,24 +90,29 @@ public class Main {
         //
 
         //----------- albert inici
-        /*
-        JPPiano piano = new JPPiano();
+        /*JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-*/
+
         //-----Albert fi
 
         // ---- Marc Inici ----
-        //MainView mainView = new MainView();
-        /*MainViewV2 mainView = new MainViewV2();
+        MainView mainView = new MainView();
+        //MainViewV2 mainView = new MainViewV2();
         JFrame main = new JFrame();
         main.add(mainView);
         main.pack();
-        main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        MainViewV2 mainViewV2 = new MainViewV2();
+        JFrame mainV2 = new JFrame();
+        mainV2.add(mainViewV2);
+        mainV2.pack();
+        mainV2.setVisible(true);
+        mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         // ---- Marc fi ----

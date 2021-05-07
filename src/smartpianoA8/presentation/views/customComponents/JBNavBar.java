@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class JBNavBar extends JButton {
     public JBNavBar(ImageIcon normal, ImageIcon pressed){
-        setBackground(new Color(20,22,33));
+        setBackground(ColorScheme.NavBar_Background);
         setPreferredSize(new Dimension(68,68));
         setBorder(new BordersView().getGoogleButtonBorder());
         setBorderPainted(true);

@@ -43,4 +43,12 @@ public class Notes {
     public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
+
+    public void modifyEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
+    public void modifyStartTime(long startTime) {
+        this.startTime = startTime;
+    }
 }
