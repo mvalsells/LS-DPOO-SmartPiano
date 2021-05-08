@@ -1,16 +1,31 @@
 package smartpianoA8;
 
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.MainView;
+import smartpianoA8.presentation.views.StatisticsView;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        /*
+/*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -59,7 +74,7 @@ public class Main {
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
-
+*/
         //*/
         // ------------------------------
         // END Main smart piano
@@ -72,7 +87,7 @@ public class Main {
         //
 
         //----------- albert inici
-        /*JPPiano piano = new JPPiano();
+        JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
@@ -80,9 +95,9 @@ public class Main {
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //-----Albert fi
-*/
-        // ---- Marc Inici ----
 
+        // ---- Marc Inici ----
+/*
         MainView mainView = new MainView();
         JFrame mainV2 = new JFrame();
         mainV2.add(mainView);
@@ -90,24 +105,78 @@ public class Main {
         mainV2.setVisible(true);
         mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
+*/
         // ---- Marc fi ----
-/*
+
+
+
+
+
+
         //BERTU--------------------------------STATISTICS
 
         ArrayList<Integer> valorsCancons = new ArrayList<>();
-        ArrayList<Float> valorsMinuts = new ArrayList<>();
+        ArrayList<Double> valorsMinuts = new ArrayList<>();
         //rand valors
-        float j = 0;
-        for(int i = 0; i<24;i++){
-            valorsCancons.add(i);
-            valorsMinuts.add(j);
-            j += 1.0f;
-        }
+        valorsMinuts.add(0.0);
+        valorsMinuts.add(1.0);
+        valorsMinuts.add(2.0);
+        valorsMinuts.add(3.0);
+        valorsMinuts.add(4.0);
+        valorsMinuts.add(5.0);
+        valorsMinuts.add(6.0);
+        valorsMinuts.add(7.0);
+        valorsMinuts.add(8.0);
+        valorsMinuts.add(9.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(11.0);
+        valorsMinuts.add(12.0);
+        valorsMinuts.add(13.0);
+        valorsMinuts.add(14.0);
+        valorsMinuts.add(15.0);
+        valorsMinuts.add(16.0);
+        valorsMinuts.add(17.0);
+        valorsMinuts.add(18.0);
+        valorsMinuts.add(19.0);
+        valorsMinuts.add(20.0);
+        valorsMinuts.add(21.0);
+        valorsMinuts.add(150.0);
+        valorsMinuts.add(300.0);
+        valorsCancons.add(0);
+        valorsCancons.add(1);
+        valorsCancons.add(1);
+        valorsCancons.add(4);
+        valorsCancons.add(6);
+        valorsCancons.add(12);
+        valorsCancons.add(24);
+        valorsCancons.add(1);
+        valorsCancons.add(5);
+        valorsCancons.add(12);
+        valorsCancons.add(4);
+        valorsCancons.add(7);
+        valorsCancons.add(14);
+        valorsCancons.add(13);
+        valorsCancons.add(8);
+        valorsCancons.add(20);
+        valorsCancons.add(16);
+        valorsCancons.add(13);
+        valorsCancons.add(6);
+        valorsCancons.add(2);
+        valorsCancons.add(0);
+        valorsCancons.add(13);
+        valorsCancons.add(17);
+        valorsCancons.add(5);
 
-        StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
+        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);
 
         //BERTU--------------------------------STATISTICS
+
+
+
+
+
+
+
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
