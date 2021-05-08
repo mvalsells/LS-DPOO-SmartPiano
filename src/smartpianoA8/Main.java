@@ -1,34 +1,15 @@
 package smartpianoA8;
 
-import smartpianoA8.business.BusinessFacade;
-import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.persistence.*;
-import smartpianoA8.persistence.dao.PlayListDAO;
-import smartpianoA8.persistence.dao.SongDAO;
-import smartpianoA8.persistence.dao.StatsDAO;
-import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.MainView;
-import smartpianoA8.presentation.views.MainViewV2;
-import smartpianoA8.presentation.views.PianoView;
-import smartpianoA8.presentation.views.StatisticsView;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        ///*
+        /*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -98,18 +79,12 @@ public class Main {
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //-----Albert fi
-
+*/
         // ---- Marc Inici ----
-        MainView mainView = new MainView();
-        //MainViewV2 mainView = new MainViewV2();
-        JFrame main = new JFrame();
-        main.add(mainView);
-        main.pack();
-        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        MainViewV2 mainViewV2 = new MainViewV2();
+        MainView mainView = new MainView();
         JFrame mainV2 = new JFrame();
-        mainV2.add(mainViewV2);
+        mainV2.add(mainView);
         mainV2.pack();
         mainV2.setVisible(true);
         mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
