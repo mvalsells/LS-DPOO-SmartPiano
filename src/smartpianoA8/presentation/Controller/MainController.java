@@ -2,7 +2,6 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.presentation.views.Key;
 import smartpianoA8.presentation.views.MainFrame;
-import smartpianoA8.presentation.views.MainViewV2;
 
 import javax.sound.midi.MidiChannel;
 import java.awt.event.*;

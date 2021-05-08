@@ -57,7 +57,8 @@ public class BordersView {
             private final EmptyBorder LoginTopTextFieldBorder = new EmptyBorder(150,0,10,0);
             /*-------------Part Centre-Oest-------------*/
 
-
+    //MainView
+    public static final int NavBar_EspaiEntreBotons = 40;
 
     /*GETTERS*/
     /*IniciView*/
