@@ -69,7 +69,7 @@ public class Main {
         System.out.println("lele");
 
 
-        String ruta = "resources/midiFiles/Master/";
+        String ruta = "resources/midiFiles/Master/Sonatine.mid";
         Song song = new Song(0,0,null,null,null,ruta,1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
@@ -116,7 +116,7 @@ public class Main {
 
 
         // ---- Marc fi ----
-*/
+/*
         //BERTU--------------------------------STATISTICS
 
         ArrayList<Integer> valorsCancons = new ArrayList<>();
