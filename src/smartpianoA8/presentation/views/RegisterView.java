@@ -1,13 +1,22 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.ImageView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class RegisterView extends JPanel  {
+
+
     //ImageView imageView = new ImageView();
     public static final String toLogin = "ToLogin";
     public static final String tryRegister = "tryRegister";
+
+    public static final String hasNotLowerCase = "hasNotLowerCase";
+    public static final String hasNotNumber = "hasNotNumber";
+    public static final String hasNotUpperCase = "hasNotUpperCase";
+    public static final String passwordToShort = "passwordToShort";
 
     private BordersView bordersView = new BordersView();
 
@@ -27,7 +36,9 @@ public class RegisterView extends JPanel  {
     }
 
     public ImageView runRegister(){
-        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesRegister/RegisterImage.jpg").getImage());
+        bordersView = new BordersView();
+
+        ImageView panel = new ImageView(new ImageIcon("Imagen/ImagenesRegister/RegisterImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/ImagenesRegister/RegistrarseFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGooglePressed.png");
@@ -182,7 +193,7 @@ public class RegisterView extends JPanel  {
         contrasenya = new JTextField("  Contrasenya",20);
         contrasenya.setMaximumSize(new Dimension(281,39));
         contrasenya.setForeground(new Color(255,255,255));
-        contrasenya.setBorder(BordersView.TextFieldBorder);
+        contrasenya.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
         contrasenya.setOpaque(false);
 
         repetirContrasenya = new JTextField("  Repetir Contrasenya",20);
@@ -347,6 +358,7 @@ public class RegisterView extends JPanel  {
         registerButton.addActionListener(controller);
     }
 
+
     public Boolean isCheckBoxAcceptTandC(){return acceptTandC.isSelected();}
 
     public String getNomString(){
@@ -361,5 +373,8 @@ public class RegisterView extends JPanel  {
     public String getRepetirContrasenyaString(){
         return repetirContrasenya.getText();
     }
+
+
+
 
 }

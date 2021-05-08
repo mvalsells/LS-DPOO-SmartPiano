@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.views.customComponents;
 
 import smartpianoA8.presentation.views.BlackKey;
-import smartpianoA8.presentation.views.ImageView;
 import smartpianoA8.presentation.views.WhiteKey;
 
 import javax.swing.*;
@@ -20,7 +19,7 @@ public class JPPiano extends JPanel {
 
     public JPPiano() {
 
-        smartpianoA8.presentation.views.ImageView sombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
+        ImageView sombrejatSud = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
         ImageIcon botoRodaReal = new ImageIcon("Imagen/ImagenesMenu/BotoRodaReal.png");
         ImageIcon botoRodaMax = new ImageIcon("Imagen/ImagenesMenu/BotoRodaMax.png");
         ImageIcon pantallaPiano = new ImageIcon("Imagen/ImagenesMenu/PanellPiano.png");

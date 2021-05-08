@@ -61,6 +61,7 @@ public class BordersView {
     public static final int NavBar_EspaiEntreBotons = 40;
 
     /*GETTERS*/
+
     /*IniciView*/
     public Border getIniciViewButtonBorder(){
 
@@ -151,5 +152,7 @@ public class BordersView {
         return this.LoginTopTextFieldBorder;
 
     }
+
+
 
 }

@@ -13,6 +13,7 @@ import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;

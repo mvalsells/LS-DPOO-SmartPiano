@@ -2,11 +2,26 @@ package smartpianoA8.presentation.views;
 
 import smartpianoA8.presentation.views.customComponents.ColorScheme;
 import smartpianoA8.presentation.views.customComponents.JBNavBar;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 public class MainView extends JPanel {
+
+
+    public static final String chgToPiano = "jpPiano";
+    public static final String chgToProfile = "jpProfile";
+    public static final String chgToSongs = "jpSongs";
+    public static final String chgToFavs = "jpFavs";
+
+    private JPPiano jpPiano;
+
+    private CardLayout cards;
+    private JPanel jpCardPanel;
 
     public MainView(){
 
@@ -56,7 +71,27 @@ public class MainView extends JPanel {
         // ---- END Navigation Bar (west) ----
 
         // Final Packing
+        cards = new CardLayout();
+        jpCardPanel = new JPanel(cards);
+        jpPiano = new JPPiano();
+
         add(jpNavBar,BorderLayout.WEST);
-        add(new JPProfile(),BorderLayout.CENTER);
+        add(jpCardPanel,BorderLayout.CENTER);
+
+        jpCardPanel.add(jpPiano,chgToPiano);
+
     }
+
+    public void changePanel(String panel){
+
+        switch (panel){
+
+        }
+
+    }
+
+    public void registerControllerJPPiano(ActionListener controller, KeyListener keyListener, MouseListener mouseListener) {
+        jpPiano.registerController(controller,keyListener,mouseListener);
+    }
+
 }

@@ -10,12 +10,15 @@ import smartpianoA8.presentation.views.RegisterView;
 import smartpianoA8.presentation.views.WellcomeFrame;
 
 import javax.sound.midi.MidiChannel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WellcomeController implements ActionListener {
-    
+
+
+
     private WellcomeFrame wellcomeFrame;
     private MasterController masterController;
 
@@ -63,12 +66,32 @@ public class WellcomeController implements ActionListener {
 
     private void registerUser(String username, String email, String password){
         try {
+
             masterController.registerUser(username, email, password, User.TYPE_SMARTPIANO);
+            System.out.println("patata pringada");
         } catch (PasswordException e) {
-            e.isHasNotLowerCase();
-            e.isHasNotNumber();
-            e.isHasNotUpperCase();
-            e.isPasswordToShort();
+
+            StringBuilder sb = new StringBuilder();
+
+            if (e.isHasNotLowerCase()) {
+                sb.append("- No tiene minuscula/s\n");
+                System.out.println("patata");
+            }
+            if (e.isHasNotNumber()) {
+                sb.append("- No tiene numero/s\n");
+                System.out.println("patata");
+            }
+            if (e.isHasNotUpperCase()) {
+                sb.append("- No tiene mayuscula/s\n");
+                System.out.println("patata");
+            }
+            if (e.isPasswordToShort()) {
+                sb.append("- Es demasiado corta\n");
+                System.out.println("patata");
+            }
+
+            JOptionPane.showMessageDialog(wellcomeFrame,sb.toString(),"Contraseña incorrecta",JOptionPane.WARNING_MESSAGE);
+
         } catch (UserManagerException e) {
             e.isUsernameExists();
         }
