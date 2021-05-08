@@ -1,6 +1,7 @@
 package smartpianoA8;
 
 import smartpianoA8.presentation.views.MainView;
+import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
 

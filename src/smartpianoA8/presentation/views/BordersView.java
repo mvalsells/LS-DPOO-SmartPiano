@@ -23,7 +23,7 @@ public class BordersView {
             private final LineBorder OmplirEstBorder = new LineBorder(new Color(0,0,0,1),90);
             private final LineBorder OmplirOestBorder = new LineBorder(new Color(0,0,0,1),85);
             /*-------------Part Centre-Est-------------*/
-            private final LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
+            public static final LineBorder TextFieldBorder = new LineBorder(new Color(255,255,255),2);
             private final LineBorder ButtonTextBorder = new LineBorder(new Color(255,255,255,0),0);
 
             private final EmptyBorder EntreTextFieldBorder = new EmptyBorder(10,0,10, 0);
@@ -83,11 +83,7 @@ public class BordersView {
         return this.OmplirOestBorder;
 
     }
-    public Border getTextFieldBorder(){
 
-        return this.TextFieldBorder;
-
-    }
     public Border getButtonTextBorder(){
 
         return this.ButtonTextBorder;
