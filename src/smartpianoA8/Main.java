@@ -11,11 +11,8 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.views.MainView;
-import smartpianoA8.presentation.views.StatisticsView;
-import smartpianoA8.presentation.views.Top5View;
+import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
@@ -75,7 +72,7 @@ public class Main {
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
-*/
+
         //*/
         // ------------------------------
         // END Main smart piano
@@ -86,7 +83,7 @@ public class Main {
         // START proves
         // ------------------------------
         //
-
+/*
         //----------- albert inici
         JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
@@ -98,7 +95,8 @@ public class Main {
         //-----Albert fi
 
         // ---- Marc Inici ----
-/*
+*/
+        //RegisterView mainView = new RegisterView();
         MainView mainView = new MainView();
         JFrame mainV2 = new JFrame();
         mainV2.add(mainView);
@@ -106,7 +104,7 @@ public class Main {
         mainV2.setVisible(true);
         mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-*/
+//*/
         // ---- Marc fi ----
 
 
