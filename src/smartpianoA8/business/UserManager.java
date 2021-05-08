@@ -45,7 +45,7 @@ public class UserManager {
             newUser.setPasswordHash(encryptPassword(password));
             userDAO.addUser(newUser);
         }else {
-            throw new UserManagerException(usernameExists, emailExists, typeIncorrect, false);
+            throw new UserManagerException(usernameExists, emailExists,!correctEmail, typeIncorrect, false);
         }
     }
 

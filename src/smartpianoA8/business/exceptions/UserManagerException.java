@@ -5,10 +5,12 @@ public class UserManagerException extends Exception{
     boolean emailExists;
     boolean typeIncorrect;
     boolean passwordIncorrect;
+    boolean emailIncorrect;
 
-    public UserManagerException(boolean usernameExists, boolean emailExists, boolean typeIncorrect, boolean passwordIncorrect) {
+    public UserManagerException(boolean usernameExists, boolean emailExists, boolean emailIncorrect, boolean typeIncorrect, boolean passwordIncorrect) {
         this.usernameExists = usernameExists;
         this.emailExists = emailExists;
+        this.emailIncorrect = emailIncorrect;
         this.typeIncorrect = typeIncorrect;
         this.passwordIncorrect = passwordIncorrect;
     }

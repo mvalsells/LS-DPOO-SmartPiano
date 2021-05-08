@@ -1,29 +1,28 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.ColorScheme;
-import smartpianoA8.presentation.views.customComponents.JLColor;
-import smartpianoA8.presentation.views.customComponents.JPMainView;
-import smartpianoA8.presentation.views.customComponents.JTFsettings;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JPUserAcountView extends JPMainView {
+public class JPProfile extends JPMainView {
     private JButton jbLogout;
     private JTextField jtfNewUsername;
     private JTextField jtfNewEmail;
-    private JTextField jtfNewPasword;
+    private JPasswordField jtfNewPasword;
+    private JPasswordField jtfNewPaswordRepetition;
     private JButton jbSaveSettings;
-    public JPUserAcountView(){
+
+    public JPProfile(){
         setLayout(new BorderLayout());
         setBackground(ColorScheme.MainView_Background);
         // ---- Start North ----
         JPanel jpNorth = new JPMainView();
         jpNorth.setLayout(new BorderLayout());
 
-        JLabel jlNorth= new JLColor("username", ColorScheme.Primary);
-        jbLogout = new JButton("Logout");
+        JLabel jlNorth= new JLColor("My profile", ColorScheme.PRIMARY);
+        jbLogout = new JBgeneral("Logout", ColorScheme.RED_DANGER);
 
         //North pack
         jpNorth.add(Box.createVerticalStrut(40),BorderLayout.NORTH);
@@ -37,27 +36,27 @@ public class JPUserAcountView extends JPMainView {
 
         //Username
         JPanel jpUsername = new JPMainView();
-        JLabel jlUsername = new JLColor("Current username: pepito. New username: ", ColorScheme.Primary);
-        jtfNewUsername = new JTFsettings();
-        jpUsername.add(jlUsername);
+        jtfNewUsername = new JTFsettings("New username");
+        jpUsername.add(new JPPrimarySecondaryText("Username", "pepito"));
+        jpUsername.add(Box.createHorizontalStrut(5));
         jpUsername.add(jtfNewUsername);
 
         //Email
         JPanel jpEmail = new JPMainView();
-        JLabel jlEmail = new JLColor("Current email: hola@hola.com", ColorScheme.Primary);
-        jtfNewEmail = new JTFsettings();
-        jpEmail.add(jlEmail);
+        jtfNewEmail = new JTFsettings("New email");
+        jpEmail.add(new JPPrimarySecondaryText("Email", "pepito@pepito.com"));
+        jpUsername.add(Box.createHorizontalStrut(5));
         jpEmail.add(jtfNewEmail);
 
         //Password
         JPanel jpPassword = new JPMainView();
-        JLabel jlPassword = new JLColor("New password: ", ColorScheme.Primary);
-        jtfNewPasword = new JTFsettings();
-        jpPassword.add(jlPassword);
+        jtfNewPasword = new JPFsettings("New password");
+        jpPassword.add(new JPPrimarySecondaryText("Password","**********"));
         jpPassword.add(jtfNewPasword);
 
         //Save button
-        jbSaveSettings = new JButton("Save settings");
+        jbSaveSettings = new JBgeneral("Save settings", ColorScheme.ORANGE_START);
+
         //Center pack
         jpCenter.add(jpUsername);
         jpCenter.add(jpEmail);
@@ -66,12 +65,14 @@ public class JPUserAcountView extends JPMainView {
         // ---- End center
 
 
-        //JPUserAcountView pack
+        //JPProfile pack
         add(jpNorth, BorderLayout.NORTH);
         add(jpCenter, BorderLayout.CENTER);
+        add(Box.createVerticalStrut(40),BorderLayout.SOUTH);
     }
 
     public void registerController(ActionListener controller){
         jbLogout.addActionListener(controller);
+        jbSaveSettings.addActionListener(controller);
     }
 }

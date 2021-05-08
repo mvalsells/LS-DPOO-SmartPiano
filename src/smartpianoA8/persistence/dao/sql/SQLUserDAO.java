@@ -92,7 +92,7 @@ public class SQLUserDAO implements UserDAO {
             if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
                 return testUser;
             }else{
-                throw new UserManagerException(true, false, false, true);
+                throw new UserManagerException(true, false, false,false, true);
             }
 
         }
@@ -103,11 +103,11 @@ public class SQLUserDAO implements UserDAO {
                 if(testUser.getPasswordHash().compareTo(passwordHash) == 0){
                     return testUser;
                 }else{
-                    throw new UserManagerException(false, true, false, true);
+                    throw new UserManagerException(false, true,false, false, true);
                 }
 
             }else{
-                throw new UserManagerException(false, false, false, false);
+                throw new UserManagerException(false, false,false, false, false);
             }
 
     }

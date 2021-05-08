@@ -57,7 +57,6 @@ public class MainView extends JPanel {
 
         // Final Packing
         add(jpNavBar,BorderLayout.WEST);
-        add(new JPUserAcountView(),BorderLayout.CENTER);
-
+        add(new JPProfile(),BorderLayout.CENTER);
     }
 }

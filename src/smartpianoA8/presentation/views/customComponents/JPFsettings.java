@@ -4,8 +4,8 @@ import smartpianoA8.presentation.views.BordersView;
 
 import javax.swing.*;
 
-public class JTFsettings extends JTextField {
-    public JTFsettings(String text){
+public class JPFsettings extends JPasswordField {
+    public JPFsettings(String text){
         setForeground(ColorScheme.PRIMARY);
         setBorder(BordersView.TextFieldBorder);
         setOpaque(false);

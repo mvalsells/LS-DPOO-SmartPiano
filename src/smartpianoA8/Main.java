@@ -97,6 +97,7 @@ public class Main {
         // ---- Marc Inici ----
 */
         //RegisterView mainView = new RegisterView();
+        System.out.println(javax.swing.UIManager.getDefaults().getFont("Label.font"));
         MainView mainView = new MainView();
         JFrame mainV2 = new JFrame();
         mainV2.add(mainView);
