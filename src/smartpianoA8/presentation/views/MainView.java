@@ -12,6 +12,7 @@ public class MainView extends JPanel {
 
         // ---- START MainView general Panel ----
         setLayout(new BorderLayout());
+        setBackground(ColorScheme.MainView_Background);
         // ---- END MainView general Panel ----
 
         // ---- START ImageIcon ----

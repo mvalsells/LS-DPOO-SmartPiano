@@ -217,19 +217,19 @@ public class LoginView extends JPanel  {
         nom = new JTextField("  Nom",20);
         nom.setMaximumSize(new Dimension(281,39));
         nom.setForeground(new Color(255,255,255));
-        nom.setBorder(bordersView.getTextFieldBorder());
+        nom.setBorder(BordersView.TextFieldBorder);
         nom.setOpaque(false);
 
         correu = new JTextField("  Correu",20);
         correu.setMaximumSize(new Dimension(281,39));
         correu.setForeground(new Color(255,255,255));
-        correu.setBorder(bordersView.getTextFieldBorder());
+        correu.setBorder(BordersView.TextFieldBorder);
         correu.setOpaque(false);
 
         contrasenya = new JTextField("  Contrasenya",20);
         contrasenya.setMaximumSize(new Dimension(281,39));
         contrasenya.setForeground(new Color(255,255,255));
-        contrasenya.setBorder(bordersView.getTextFieldBorder());
+        contrasenya.setBorder(BordersView.TextFieldBorder);
         contrasenya.setOpaque(false);
 
 
