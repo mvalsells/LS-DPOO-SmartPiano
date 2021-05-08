@@ -4,16 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GraficsStatisticsDreta extends JPanel {
-    public GraficsStatisticsDreta(){
-    }
+    public GraficsStatisticsDreta(){ }
 
     @Override
     protected void paintComponent(Graphics grafics){
         super.paintComponent(grafics);
 
-        grafics.setColor(Color.red);
-        grafics.drawRect((int) (getWidth()/2 - getWidth()*0.9/2), (int)(getHeight()/2-getHeight()*0.9/2), (int)(getWidth()/2 - getWidth()*0.9/2), (int)(getHeight()/2-getHeight()*0.9/2));
-        //aquí el custom
+        int width = (int)(getWidth()*0.8);
+        int heigh = (int)(getHeight()*0.8);
+        grafics.setColor(Color.black);
+        grafics.drawRect(getWidth()/2 - width/2,getHeight()/2 - heigh/2, width, heigh);
+
     }
 
 
