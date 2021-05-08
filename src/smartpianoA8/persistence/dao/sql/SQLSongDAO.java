@@ -101,11 +101,11 @@ public class SQLSongDAO implements SongDAO {
     @Override
     public ArrayList<Song> getTop5() {
         ArrayList<Song> retorna = new ArrayList<>();
-        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song ORDER BY NumReproduccions DESC LIMIT 5;";
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE isPublic = 1 ORDER BY NumReproduccions DESC LIMIT 5;";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()){
-                retorna.add(new Song(result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+                retorna.add(new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
             }
             return retorna;
         }catch (SQLException e){

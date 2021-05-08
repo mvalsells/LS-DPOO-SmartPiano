@@ -34,6 +34,18 @@ public class Song {
         this.dataEnregistrament = datePublished;
         this.midi = midi;
     }
+    public Song(int numReproduccions, int idSong, float duracio, String nom, String autor, String datePublished, String directori, int isPublic, String nomUsuari, String midi) {
+        this.idSong = idSong;
+        this.nom = nom;
+        this. autor = autor;
+        this.directori = directori;
+        this.isPublic = isPublic;
+        this.nomUsuari = nomUsuari;
+        this.numReproduccions = numReproduccions;
+        this.duracio = duracio;
+        this.dataEnregistrament = datePublished;
+        this.midi = midi;
+    }
 
     public void setDataEnregistrament(String dataEnregistrament) {
         this.dataEnregistrament = dataEnregistrament;

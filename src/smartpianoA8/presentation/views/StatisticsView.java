@@ -20,7 +20,7 @@ public class StatisticsView extends JFrame {
     public StatisticsView(ArrayList<Double> valorsMinuts, ArrayList<Integer> valorsReproduccions){
         //parametres
 
-        setResizable(true);//TODO fer que sí ho sigui haha
+        setResizable(true);
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
         setSize(700,400);
@@ -90,5 +90,8 @@ public class StatisticsView extends JFrame {
         esquerra.add(graficEsquerra, BorderLayout.CENTER);
         dreta.add(graficDreta, BorderLayout.CENTER);
 
+        //repaint();//TODO es pot fer això 2 per actualitzar la pantalla (stats.repaint() i stats.revalidate() des del controller)
+                    //TODO aqui no pq seria recarregar tot 2 cops
+        //revalidate();
     }
 }

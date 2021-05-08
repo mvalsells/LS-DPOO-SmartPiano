@@ -13,6 +13,7 @@ import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.MainView;
 import smartpianoA8.presentation.views.StatisticsView;
+import smartpianoA8.presentation.views.Top5View;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.PianoView;
 
@@ -110,7 +111,7 @@ public class Main {
 
 
 
-
+/*
 
 
         //BERTU--------------------------------STATISTICS
@@ -120,28 +121,28 @@ public class Main {
         //rand valors
         valorsMinuts.add(0.0);
         valorsMinuts.add(1.0);
-        valorsMinuts.add(2.0);
+        valorsMinuts.add(0.0);
         valorsMinuts.add(3.0);
-        valorsMinuts.add(4.0);
+        valorsMinuts.add(5.0);
         valorsMinuts.add(5.0);
         valorsMinuts.add(6.0);
-        valorsMinuts.add(7.0);
+        valorsMinuts.add(12.0);
         valorsMinuts.add(8.0);
         valorsMinuts.add(9.0);
         valorsMinuts.add(10.0);
         valorsMinuts.add(11.0);
-        valorsMinuts.add(12.0);
+        valorsMinuts.add(2.0);
         valorsMinuts.add(13.0);
         valorsMinuts.add(14.0);
-        valorsMinuts.add(15.0);
-        valorsMinuts.add(16.0);
-        valorsMinuts.add(17.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(7.0);
+        valorsMinuts.add(6.0);
         valorsMinuts.add(18.0);
-        valorsMinuts.add(19.0);
+        valorsMinuts.add(12.0);
         valorsMinuts.add(20.0);
         valorsMinuts.add(21.0);
-        valorsMinuts.add(150.0);
-        valorsMinuts.add(300.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(30.0);
         valorsCancons.add(0);
         valorsCancons.add(1);
         valorsCancons.add(1);
@@ -170,10 +171,11 @@ public class Main {
         StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);
 
         //BERTU--------------------------------STATISTICS
+      ArrayList<Song> topSongs = songDAO.getTop5();
+      Top5View top5 = new Top5View(topSongs);
 
 
-
-
+*/
 
 
 
