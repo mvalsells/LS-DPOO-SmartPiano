@@ -20,7 +20,7 @@ public class MasterController {
     //Views
     RegisterView registerView;
     LoginView loginView;
-    JPPiano jpPiano;
+    MainView mainView;
 
     //Channel
     MidiChannel midiChannel;
@@ -52,11 +52,11 @@ public class MasterController {
         //Views
         registerView = new RegisterView();  
         loginView = new LoginView();
-        jpPiano = new JPPiano();
+        mainView = new MainView();
 
         //Frames
         wellcomeFrame = new WellcomeFrame(registerView,loginView);
-        mainFrame = new MainFrame(jpPiano);
+        mainFrame = new MainFrame(mainView);
 
         //Controllers
         wellcomeController = new WellcomeController(wellcomeFrame);
@@ -70,7 +70,7 @@ public class MasterController {
 
         //Register other controllers to their views
         wellcomeFrame.registerController(wellcomeController);
-        mainFrame.registerController(mainController,mainController,mainController);
+        mainFrame.registerControllerJPPiano(mainController,mainController,mainController);
     }
     //Change views
 

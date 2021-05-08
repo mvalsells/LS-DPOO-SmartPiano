@@ -1,5 +1,6 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.ImageView;
 import smartpianoA8.presentation.views.customComponents.JBPianoButton;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.JTPianoButtonText;
@@ -298,10 +299,10 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
 
     private void configurePiano(){
 
-        smartpianoA8.presentation.views.ImageView SombrejatSud = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
+        ImageView SombrejatSud = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
 
-        smartpianoA8.presentation.views.ImageView SombrejatWest = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
-        smartpianoA8.presentation.views.ImageView Desplegable = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
+        ImageView SombrejatWest = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatWest.png").getImage());
+        ImageView Desplegable = new ImageView(new ImageIcon("Imagen/ImagenesMenu/Captura de pantalla 2021-04-18 a las 19.jpg").getImage());
         ImageIcon canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
         ImageIcon cancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
         ImageIcon misFavoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");

@@ -1,5 +1,7 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.ImageView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -23,7 +25,7 @@ public class LoginView extends JPanel  {
 
     public ImageView runLogin() {
 
-        smartpianoA8.presentation.views.ImageView panel = new smartpianoA8.presentation.views.ImageView(new ImageIcon("Imagen/ImagenesLogin/LoginImage.jpg").getImage());
+        ImageView panel = new ImageView(new ImageIcon("Imagen/ImagenesLogin/LoginImage.jpg").getImage());
         ImageIcon facebook = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionFacebook.jpg");
         ImageIcon google = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGoogle.jpg");
         ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesLogin/IniciarSesionGooglePressed.png");

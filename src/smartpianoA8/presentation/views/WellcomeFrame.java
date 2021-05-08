@@ -1,5 +1,6 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.presentation.Controller.WellcomeController;
 import javax.swing.*;
 import java.awt.*;
@@ -110,5 +111,6 @@ public class WellcomeFrame extends JFrame {
     public String getLoginContrasenyaString(){
         return loginView.getContrasenyaString();
     }
+
 
 }
