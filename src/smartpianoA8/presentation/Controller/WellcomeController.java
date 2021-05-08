@@ -41,17 +41,15 @@ public class WellcomeController implements ActionListener {
                 break;
             case RegisterView.tryRegister:
 
-                if(wellcomeFrame.isRegisterCheckBoxAcceptTandC()) {
-                    System.out.println(wellcomeFrame.getRegisterNomString());
-                    System.out.println(wellcomeFrame.getRegisterCorreuString());
-                    System.out.println(wellcomeFrame.getRegisterContrasenyaString());
-                    registerUser(wellcomeFrame.getRegisterNomString(),wellcomeFrame.getRegisterCorreuString(),wellcomeFrame.getRegisterContrasenyaString());
-
+                if(!wellcomeFrame.isRegisterCheckBoxAcceptTandC()) {
+                    System.out.println("No CheckBox");
+                }else if(!wellcomeFrame.getRegisterContrasenyaString().equals(wellcomeFrame.getRegisterRepetirContrasenyaString())){
+                    System.out.println("Contrasenyes no coincideixen");
                 }else {
-                    System.out.println("No checkbox!!");
+                    registerUser(wellcomeFrame.getRegisterNomString(),wellcomeFrame.getRegisterCorreuString(),wellcomeFrame.getRegisterContrasenyaString());
                 }
-
                 break;
+
             case LoginView.tryLogin:
                 System.out.println(wellcomeFrame.getLoginNomString());
                 System.out.println(wellcomeFrame.getLoginCorreuString());
