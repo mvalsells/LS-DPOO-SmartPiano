@@ -6,22 +6,19 @@ import smartpianoA8.presentation.views.customComponents.GraficsStatisticsEsquerr
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class StatisticsView extends JFrame {
 
-    private static Color rosa = new Color(255,216,255);
-    private static Color taronja = new Color(255, 204, 139);
+    private static final Color color1 = new Color(255,216,255);
+    private static final Color color2 = new Color(255, 204, 139);
 
     /**
      * Constructor de la vista
      * @param valorsMinuts llista de valors de minuts (amb decimals).
      * @param valorsReproduccions llista de valors de reproduccions
      */
-    public StatisticsView(ArrayList<Integer> valorsMinuts, ArrayList<Float> valorsReproduccions){
+    public StatisticsView(ArrayList<Double> valorsMinuts, ArrayList<Integer> valorsReproduccions){
         //parametres
-        int maxMinuts = Collections.max(valorsMinuts);
-        int maxReproduccions = Collections.max(valorsReproduccions).intValue();
 
         setResizable(true);//TODO fer que sí ho sigui haha
         setTitle("Estadístiques");
@@ -74,8 +71,8 @@ public class StatisticsView extends JFrame {
         JPanel liniaRosa = new JPanel();
         JPanel liniaTaronja = new JPanel();
 
-        liniaRosa.setBackground(rosa);
-        liniaTaronja.setBackground(taronja);
+        liniaRosa.setBackground(color1);
+        liniaTaronja.setBackground(color2);
         liniaRosa.setPreferredSize(new Dimension(25,7));
         liniaTaronja.setPreferredSize(new Dimension(25,7));
 
@@ -86,8 +83,8 @@ public class StatisticsView extends JFrame {
         dreta.add(llegenda1, BorderLayout.SOUTH);
         esquerra.add(llegenda2, BorderLayout.SOUTH);
 
-        GraficsStatisticsEsquerra graficEsquerra = new GraficsStatisticsEsquerra();
-        GraficsStatisticsDreta graficDreta = new GraficsStatisticsDreta();
+        GraficsStatisticsEsquerra graficEsquerra = new GraficsStatisticsEsquerra(valorsMinuts, color1);
+        GraficsStatisticsEsquerra graficDreta = new GraficsStatisticsEsquerra(valorsMinuts,color2);
         esquerra.add(graficEsquerra, BorderLayout.CENTER);
         dreta.add(graficDreta, BorderLayout.CENTER);
 

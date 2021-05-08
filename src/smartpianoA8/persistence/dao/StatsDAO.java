@@ -29,5 +29,5 @@ public interface StatsDAO {
      * Obté una arrayList amb els valors de minuts (amb decimals de segons /100 i no /60).
      * @return ArrayList amb els valors dits
      */
-    ArrayList<Float> getDataMinuts(String user);
+    ArrayList<Double> getDataMinuts(String user);
 }

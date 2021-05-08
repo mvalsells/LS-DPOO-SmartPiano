@@ -124,18 +124,17 @@ public class SQLStatsDAO implements StatsDAO {
      * @return ArrayList amb els valors dits
      */
     @Override
-    public ArrayList<Float> getDataMinuts(String user) {
-        ArrayList<Float> returner = new ArrayList<>();
+    public ArrayList<Double> getDataMinuts(String user) {
+        ArrayList<Double> returner = new ArrayList<>();
         String query;
         int i = 0;
         ResultSet result;
-
         try {
             while (i < 24) {//del 1 al 23 fa la query
                 query = "SELECT NumMinuts, NumSegons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + i + ";";
                 result = connector.selectQuery(query);
                 result.next();
-                returner.add((float) result.getInt("NumMinuts") + result.getInt("NumSegons") / 60);
+                returner.add((result.getInt("NumMinuts") + result.getInt("NumSegons") / 60.0));
                 i++;
             }
         } catch (SQLException e) {
