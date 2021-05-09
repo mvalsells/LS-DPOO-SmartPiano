@@ -11,11 +11,13 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.Controller.ProfileController;
 import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -99,9 +101,13 @@ public class Main {
 */
         //RegisterView mainView = new RegisterView();
         System.out.println(javax.swing.UIManager.getDefaults().getFont("Label.font"));
-        MainView mainView = new MainView();
+        JPProfile jpProfile = new JPProfile();
+
+        ActionListener profileController = new ProfileController(jpProfile);
+        jpProfile.registerController(profileController);
+        // MainView mainView = new MainView();
         JFrame mainV2 = new JFrame();
-        mainV2.add(mainView);
+        mainV2.add(jpProfile);
         mainV2.pack();
         mainV2.setVisible(true);
         mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
