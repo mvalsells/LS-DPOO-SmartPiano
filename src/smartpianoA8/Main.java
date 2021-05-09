@@ -1,25 +1,9 @@
 package smartpianoA8;
 
-import smartpianoA8.business.BusinessFacade;
-import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.persistence.*;
-import smartpianoA8.persistence.dao.PlayListDAO;
-import smartpianoA8.persistence.dao.SongDAO;
-import smartpianoA8.persistence.dao.StatsDAO;
-import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.Controller.ProfileController;
-import smartpianoA8.presentation.views.*;
+import smartpianoA8.presentation.Controller.PianoController;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.PianoView;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -86,9 +70,11 @@ public class Main {
         // START proves
         // ------------------------------
         //
-/*
+
         //----------- albert inici
         JPPiano piano = new JPPiano();
+        PianoController pianoController = new PianoController(piano);
+        piano.registerController(pianoController,pianoController,pianoController);
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
@@ -98,7 +84,7 @@ public class Main {
         //-----Albert fi
 
         // ---- Marc Inici ----
-*/
+/*
         //RegisterView mainView = new RegisterView();
         System.out.println(javax.swing.UIManager.getDefaults().getFont("Label.font"));
         JPProfile jpProfile = new JPProfile();
