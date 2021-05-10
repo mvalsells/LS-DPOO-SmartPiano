@@ -52,13 +52,15 @@ public class Main {
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, htmlScrapping);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
 
-        //Business <-> Persitance
-        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        //Business <-> Persitence
+        //HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
