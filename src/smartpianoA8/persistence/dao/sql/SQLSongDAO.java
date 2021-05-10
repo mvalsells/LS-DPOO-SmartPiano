@@ -201,8 +201,8 @@ public class SQLSongDAO implements SongDAO {
      */
    @Override
    public ArrayList<Song> getUserAndMasterSongs(String username){
-        ArrayList<Song> retorna = new ArrayList<>();
-        ArrayList<Song> retorna2 = new ArrayList<>();
+        ArrayList<Song> retorna;
+        ArrayList<Song> retorna2;
 
         retorna = getPublicCreatedSongs();
         retorna2 = getMasterSongs();
