@@ -23,8 +23,8 @@ public class StatisticsView extends JFrame {
         setResizable(true);
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
-        setSize(700,400);
-        setMinimumSize(new Dimension(700,400));
+        setSize(1000,800);
+        setMinimumSize(new Dimension(1000,800));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setVisible(true);
         //pack();
@@ -35,6 +35,7 @@ public class StatisticsView extends JFrame {
         add(fons);
 
         Box box = Box.createHorizontalBox();
+        box.setBackground(Color.blue);
 
         //panells bessos |[][]|
         JPanel dreta = new JPanel();
@@ -42,8 +43,8 @@ public class StatisticsView extends JFrame {
 
         dreta.setLayout(new BorderLayout());
         esquerra.setLayout(new BorderLayout());
-        dreta.setBackground(Color.lightGray);
-        esquerra.setBackground(Color.lightGray);
+        dreta.setBackground(Color.white);
+        esquerra.setBackground(Color.white);
 
         dreta.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
         esquerra.setPreferredSize(new Dimension(getWidth()/2, getHeight()));
@@ -65,8 +66,8 @@ public class StatisticsView extends JFrame {
         JPanel llegenda2 = new JPanel();
         llegenda1.setLayout(new FlowLayout(FlowLayout.CENTER));
         llegenda2.setLayout(new FlowLayout(FlowLayout.CENTER));
-        llegenda1.setBackground(Color.lightGray);
-        llegenda2.setBackground(Color.lightGray);
+        llegenda1.setBackground(Color.white);
+        llegenda2.setBackground(Color.white);
 
         JPanel liniaRosa = new JPanel();
         JPanel liniaTaronja = new JPanel();
@@ -89,7 +90,6 @@ public class StatisticsView extends JFrame {
         graficEsquerra.setBackground(Color.white);
         esquerra.add(graficEsquerra, BorderLayout.CENTER);
         dreta.add(graficDreta, BorderLayout.CENTER);
-
         //repaint();//TODO es pot fer això 2 per actualitzar la pantalla (stats.repaint() i stats.revalidate() des del controller)
                     //TODO aqui no pq seria recarregar tot 2 cops
         //revalidate();
