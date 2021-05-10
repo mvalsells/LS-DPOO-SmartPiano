@@ -24,9 +24,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HtmlScrapping htmlScrapping){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
+
     }
 
     @Override
@@ -110,6 +111,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public long getTotalTicks() {
         return songManager.getMidiTotalTicks();
+    }
+
+    public ArrayList<Song> getMasterSongs() {
+        return songManager.getMasterSongs();
     }
 
 

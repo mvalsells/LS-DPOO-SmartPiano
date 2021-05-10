@@ -52,21 +52,23 @@ public class Main {
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
-        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, htmlScrapping);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
 
         //Business <-> Persitence
-        //HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
-        ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
-        System.out.println("lele");
+        //ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        //System.out.println("lele");
 
+        ArrayList<Song> midiSongs = businessFacade.getMasterSongs();
+        System.out.println("lele");
 
 
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);

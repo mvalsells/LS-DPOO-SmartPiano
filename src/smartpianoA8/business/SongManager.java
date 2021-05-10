@@ -49,4 +49,8 @@ public class SongManager {
         return midiParser.getTotalTicks();
     }
 
+    public ArrayList<Song> getMasterSongs() {
+        return songDAO.getMasterSongs();
+    }
+
 }
