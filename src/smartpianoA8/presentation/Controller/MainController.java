@@ -168,7 +168,7 @@ public class MainController implements ActionListener , KeyListener,MouseListene
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("patataMouseR");
+        System.out.println("patataKeyR");
         int key2 = e.getKeyCode();
 
         //WHITE KEYS
