@@ -1,5 +1,7 @@
 package smartpianoA8.persistence.dao;
 
+import smartpianoA8.business.entity.Song;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -30,4 +32,6 @@ public interface StatsDAO {
      * @return ArrayList amb els valors dits
      */
     ArrayList<Double> getDataMinuts(String user);
+
+
 }
