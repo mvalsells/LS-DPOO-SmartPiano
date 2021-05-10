@@ -12,6 +12,8 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.StatisticsView;
+import smartpianoA8.presentation.views.Top5View;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
@@ -111,23 +113,68 @@ public class Main {
 
 
         // ---- Marc fi ----
-
+*/
         //BERTU--------------------------------STATISTICS
-        /*
+
         ArrayList<Integer> valorsCancons = new ArrayList<>();
-        ArrayList<Float> valorsMinuts = new ArrayList<>();
+        ArrayList<Double> valorsMinuts = new ArrayList<>();
         //rand valors
-        float j = 0;
-        for(int i = 0; i<24;i++){
-            valorsCancons.add(i);
-            valorsMinuts.add(j);
-            j += 1.0f;
-        }
+        valorsMinuts.add(0.0);
+        valorsMinuts.add(1.0);
+        valorsMinuts.add(0.0);
+        valorsMinuts.add(3.0);
+        valorsMinuts.add(5.0);
+        valorsMinuts.add(5.0);
+        valorsMinuts.add(6.0);
+        valorsMinuts.add(12.0);
+        valorsMinuts.add(8.0);
+        valorsMinuts.add(9.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(11.0);
+        valorsMinuts.add(2.0);
+        valorsMinuts.add(13.0);
+        valorsMinuts.add(14.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(7.0);
+        valorsMinuts.add(6.0);
+        valorsMinuts.add(18.0);
+        valorsMinuts.add(12.0);
+        valorsMinuts.add(20.0);
+        valorsMinuts.add(21.0);
+        valorsMinuts.add(10.0);
+        valorsMinuts.add(30.0);
+        valorsCancons.add(0);
+        valorsCancons.add(1);
+        valorsCancons.add(1);
+        valorsCancons.add(4);
+        valorsCancons.add(6);
+        valorsCancons.add(12);
+        valorsCancons.add(24);
+        valorsCancons.add(1);
+        valorsCancons.add(5);
+        valorsCancons.add(12);
+        valorsCancons.add(4);
+        valorsCancons.add(7);
+        valorsCancons.add(14);
+        valorsCancons.add(13);
+        valorsCancons.add(8);
+        valorsCancons.add(20);
+        valorsCancons.add(16);
+        valorsCancons.add(13);
+        valorsCancons.add(6);
+        valorsCancons.add(2);
+        valorsCancons.add(0);
+        valorsCancons.add(13);
+        valorsCancons.add(17);
+        valorsCancons.add(5);
 
-        StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
+        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);
 
         //BERTU--------------------------------STATISTICS
+      ArrayList<Song> topSongs = songDAO.getTop5();
+      Top5View top5 = new Top5View(topSongs);
 
+/*
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
             htmlScrapping.Scrapping();
