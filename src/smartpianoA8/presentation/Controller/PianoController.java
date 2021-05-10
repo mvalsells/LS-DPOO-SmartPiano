@@ -4,6 +4,7 @@ import smartpianoA8.presentation.views.Key;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.sound.midi.*;
+import javax.sound.midi.spi.MidiFileWriter;
 import java.awt.event.*;
 
 public class PianoController implements ActionListener, MouseListener, KeyListener {
@@ -21,7 +22,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
             MidiChannel channels[] = synth.getChannels();
             //channel = channels[test.getChanel];
             channel = channels[0];
-
 
             for (int i = 0; i < insts.length; i++) {
                 if (insts[i].toString()

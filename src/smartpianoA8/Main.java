@@ -1,16 +1,34 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.Controller.PianoController;
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.SongsView;
+import smartpianoA8.presentation.views.StatisticsView;
+import smartpianoA8.presentation.views.Top5View;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-/*
+
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -37,22 +55,29 @@ public class Main {
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
+
+
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
 
-        //Business <-> Persitance
+        //Business <-> Persitence
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
-        ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        //ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        //System.out.println("lele");
+
+        ArrayList<Song> midiSongs = businessFacade.getMasterSongs();
         System.out.println("lele");
 
+        //Test vista canciones descargadas
+        SongsView songsView = new SongsView(midiSongs);
 
-        String ruta = "resources/midiFiles/Master/Sonatine.mid";
-        Song song = new Song(0,0,null,null,null,ruta,1,null,null);
+
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
@@ -60,7 +85,7 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
-        //*/
+        //
         // ------------------------------
         // END Main smart piano
         // ------------------------------
@@ -73,8 +98,6 @@ public class Main {
 
         //----------- albert inici
         JPPiano piano = new JPPiano();
-        PianoController pianoController = new PianoController(piano);
-        piano.registerController(pianoController,pianoController,pianoController);
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
@@ -84,28 +107,17 @@ public class Main {
         //-----Albert fi
 
         // ---- Marc Inici ----
-/*
-        //RegisterView mainView = new RegisterView();
-        System.out.println(javax.swing.UIManager.getDefaults().getFont("Label.font"));
-        JPProfile jpProfile = new JPProfile();
+        //MainView mainView = new MainView();
+        /*MainViewV2 mainView = new MainViewV2();
+        JFrame main = new JFrame();
+        main.add(mainView);
+        main.pack();
+        main.setVisible(true);
+        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        ActionListener profileController = new ProfileController(jpProfile);
-        jpProfile.registerController(profileController);
-        // MainView mainView = new MainView();
-        JFrame mainV2 = new JFrame();
-        mainV2.add(jpProfile);
-        mainV2.pack();
-        mainV2.setVisible(true);
-        mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-//*/
         // ---- Marc fi ----
-
-
-
-/*
-
-
+*/
         //BERTU--------------------------------STATISTICS
 
         ArrayList<Integer> valorsCancons = new ArrayList<>();
@@ -166,12 +178,7 @@ public class Main {
       ArrayList<Song> topSongs = songDAO.getTop5();
       Top5View top5 = new Top5View(topSongs);
 
-
-*/
-
-
-
-
+/*
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
             htmlScrapping.Scrapping();

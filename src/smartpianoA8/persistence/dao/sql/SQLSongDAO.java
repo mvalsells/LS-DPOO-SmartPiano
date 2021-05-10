@@ -3,6 +3,7 @@ package smartpianoA8.persistence.dao.sql;
 import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.Song;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class SQLSongDAO implements SongDAO {
         if(foundSong != null) {
             System.out.println("Song that should be added already exists in Master. this comment can be removed.");
         } else{
-            addSong(song, "Master");
+            addSong(song, Song.Master);
         }
     }
 
@@ -134,4 +135,37 @@ public class SQLSongDAO implements SongDAO {
             System.out.println("SQLSongDAO ERROR no s'ha pogut incrementar el valor de reproduccions de la cançó");
         }
     }
+
+    @Override
+   public ArrayList<Song> getUserSongs(String username){
+        ArrayList<Song> retorna = new ArrayList<>();
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE NomUsuari LIKE '" + username + "';";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()){
+                retorna.add(new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+            }
+            return retorna;
+
+        }catch(SQLException e){
+            return retorna;
+        }
+    }
+
+
+   public ArrayList<Song> getMasterSongs(){
+       ArrayList<Song> retorna = new ArrayList<>();
+       String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE NomUsuari LIKE 'Master';";
+       ResultSet result = connector.selectQuery(query);
+       try{
+           while(result.next()){
+               retorna.add(new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+           }
+           return retorna;
+
+       }catch(SQLException e){
+           return retorna;
+       }
+   }
+
 }

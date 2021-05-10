@@ -4,6 +4,7 @@ import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.HtmlScrapping;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -26,6 +27,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
+
     }
 
     @Override
@@ -82,6 +84,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
         songManager.addSong(song,username);
     }
 
+    @Override
     public ArrayList<ArrayList<Notes>> getMidiNotes(Song song) {
         return songManager.getMidiNotesParsed(song);
     }
@@ -109,6 +112,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public long getTotalTicks() {
         return songManager.getMidiTotalTicks();
+    }
+
+    @Override
+    public ArrayList<Song> getMasterSongs() {
+        return songManager.getMasterSongs();
     }
 
 

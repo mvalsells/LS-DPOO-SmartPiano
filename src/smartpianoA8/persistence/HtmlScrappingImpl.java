@@ -51,11 +51,12 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
         System.out.println(url1.concat(page+url2));
 
-        newData = 0;
+        //newData = 0;
 
 
         try {
             if(getConnectionStatus(url1.concat(page+url2)) == 200) {
+                newData = 0;
                 Document document = getHtmlDocument(url1.concat(page+url2));
                 //Elements entry = document.select("table-bordered result-table");
                 //System.out.println("lele");
@@ -74,7 +75,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                             case 0:
                                 songName = tds.get(0).text();
                                 songName = songName.replaceAll("[\\№]","N.");
-                                songName = songName.replaceAll("[\\-\\+\\^:,]","");
+                                songName = songName.replaceAll("[\\-\\+\\?\\¿\\^:,]","");
                                 author = tds.get(1).text();
                                 break;
                             case 1:
@@ -102,6 +103,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                             midiSongs.add(song);
                             newData = 1;
                             saveSong(song);
+                            isNewData();
                         }
                     }else {
                         Song song = new Song(0, 0, songName, author, datePublished, localMidiAddress, 1, Song.Master, midiAddress);
@@ -110,6 +112,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                             midiSongs.add(song);
                             newData = 1;
                             saveSong(song);
+                            isNewData();
                         }
                     }
 
@@ -280,7 +283,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     }
 
     private void saveSong(Song song){
-        songDAO.addSong(song, Song.Master);
+        songDAO.addSongInMaster(song);
     }
 
 }

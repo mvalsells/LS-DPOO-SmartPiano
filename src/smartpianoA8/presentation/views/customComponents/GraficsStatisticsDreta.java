@@ -52,7 +52,7 @@ public class GraficsStatisticsDreta extends JPanel {
         double salt = max/24.0;
         for(int i = 0; i<24; i+=2) {
             temp = (int) (max - salt*i);
-            grafics2d.drawString(Integer.toString(temp), (float)(width + heigh_inicial + 7), (float) (i*heigh/23.0 + heigh_inicial + 5));
+            grafics2d.drawString(Integer.toString(temp), (float)(width + width_inicial + 7), (float) (i*heigh/23.0 + heigh_inicial + 5));
         }
 
     }

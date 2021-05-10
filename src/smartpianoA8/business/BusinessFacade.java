@@ -2,7 +2,6 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 
@@ -28,6 +27,7 @@ public interface BusinessFacade {
     public float getSecondsPerTick();
     public int getNumTracks();
     public float getMidiBpm();
+    public ArrayList<Song> getMasterSongs();
     //public void removeSong(Song song);
 
 

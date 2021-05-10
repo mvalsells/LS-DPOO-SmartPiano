@@ -3,6 +3,7 @@ package smartpianoA8.business;
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.persistence.HtmlScrapping;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.UserDAO;
@@ -46,6 +47,10 @@ public class SongManager {
 
     public long getMidiTotalTicks() {
         return midiParser.getTotalTicks();
+    }
+
+    public ArrayList<Song> getMasterSongs() {
+        return songDAO.getMasterSongs();
     }
 
 }

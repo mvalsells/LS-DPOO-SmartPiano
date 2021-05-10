@@ -44,4 +44,19 @@ public interface SongDAO {
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
     void SongPlayed(int IDSong);
+
+
+
+    /**
+     * Retorna totes les cançons de l'usuari "Master"
+     * @return ArrayList<Song> amb les cançons
+     */
+    ArrayList<Song> getMasterSongs();
+
+    /**
+     * Retorna totes les cançons de l'usuari donat
+     * @param username USERNAME (no email) de l'usuari
+     * @return ArrayList<Song></Song> de les cançons de l'usuari
+     */
+    ArrayList<Song> getUserSongs(String username);
 }
