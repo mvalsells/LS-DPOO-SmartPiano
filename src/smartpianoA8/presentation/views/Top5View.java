@@ -57,7 +57,7 @@ public class Top5View extends JFrame{
         boxDalt.add(panellTitol, BorderLayout.CENTER);
 
         panellImatge.add(imatgeTop5);
-        panellImatge.setMaximumSize(new Dimension(30,30));
+        //panellImatge.setMaximumSize(new Dimension(30,30));
         panellTitol.setLayout(new BorderLayout());
         JLabel titol = new JLabel("TOP 5 DPOO SONGS");
         titol.setFont(new Font("Verdana",Font.BOLD, 22));
@@ -67,16 +67,51 @@ public class Top5View extends JFrame{
 
 
         //baix
+        boxBaix.setLayout(new BorderLayout());
+        JPanel panelBaix = new JPanel();
+        panelBaix.setBackground(Color.BLUE);
+        panelBaix.setBorder(BorderFactory.createEmptyBorder(5,20,20, 5));
+        panelBaix.setLayout(new BorderLayout());
+
+        JPanel top = new JPanel();
+        top.setBackground(Color.RED);
+        JPanel nom = new JPanel();
+        nom.setBackground(Color.GREEN);
+        JPanel numrep = new JPanel();
+        numrep.setBackground(Color.black);
+        JPanel autor = new JPanel();
+        autor.setBackground(Color.GRAY);
+        JPanel distincio = new JPanel();
+
+        top.setBorder(BorderFactory.createEmptyBorder(0,0,130,30));
+        nom.setBorder(BorderFactory.createEmptyBorder(0,0,130,180));
+        autor.setBorder(BorderFactory.createEmptyBorder(0,50,130,150));
+        numrep.setBorder(BorderFactory.createEmptyBorder(0,50,130,70));
+
+
+
+
+
+        distincio.setLayout(new BorderLayout());
+        distincio.add(top, BorderLayout.WEST);
+        distincio.add(nom);
+        distincio.setBorder(BorderFactory.createEmptyBorder());
+        panelBaix.add(numrep,BorderLayout.EAST);
+        panelBaix.add(autor,BorderLayout.CENTER);
+        panelBaix.add(distincio,BorderLayout.WEST);
+        boxBaix.add(panelBaix, BorderLayout.CENTER);
+
         //calaixos
-        JPanel[] calaixos = new JPanel[5];
+        /*JPanel[] calaixos = new JPanel[5];
         JLabel[] top = new JLabel[5];
         JLabel[] nom = new JLabel[5];
         JLabel[] numrep = new JLabel[5];
         JLabel[] autor = new JLabel[5];
-        JLabel[] data = new JLabel[5];
+        JLabel[] data = new JLabel[5];*/
+
 
         //cada una
-        for(int i = 0; i<5; i++) {
+        /*for(int i = 0; i<5; i++) {
             calaixos[i] = new JPanel();
             if(i % 2 !=0){
                 calaixos[i].setBackground(Color.white);
@@ -105,7 +140,7 @@ public class Top5View extends JFrame{
             calaixos[i].add(autor[i]);
             calaixos[i].add(data[i]);
             fons.add(calaixos[i]);
-        }
+        }*/
         add(fonsBox);
 
 
