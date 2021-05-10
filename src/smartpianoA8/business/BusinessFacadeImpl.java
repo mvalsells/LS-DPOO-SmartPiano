@@ -4,6 +4,7 @@ import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.HtmlScrapping;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -23,7 +24,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HtmlScrapping htmlScrapping){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
     }
