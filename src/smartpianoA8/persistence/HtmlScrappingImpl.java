@@ -280,7 +280,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     }
 
     private void saveSong(Song song){
-        songDAO.addSong(song, Song.Master);
+        songDAO.addSongInMaster(song);
     }
 
 }

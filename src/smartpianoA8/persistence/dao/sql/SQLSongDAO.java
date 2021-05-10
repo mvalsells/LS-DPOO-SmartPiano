@@ -41,7 +41,7 @@ public class SQLSongDAO implements SongDAO {
         if(foundSong != null) {
             System.out.println("Song that should be added already exists in Master. this comment can be removed.");
         } else{
-            addSong(song, "Master");
+            addSong(song, Song.Master);
         }
     }
 

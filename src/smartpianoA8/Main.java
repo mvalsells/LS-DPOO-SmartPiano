@@ -1,16 +1,31 @@
 package smartpianoA8;
 
-import smartpianoA8.presentation.Controller.PianoController;
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.views.PianoView;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-/*
+
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -51,8 +66,8 @@ public class Main {
         System.out.println("lele");
 
 
-        String ruta = "resources/midiFiles/Master/Sonatine.mid";
-        Song song = new Song(0,0,null,null,null,ruta,1,null,null);
+
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
@@ -60,7 +75,7 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
-        //*/
+        //
         // ------------------------------
         // END Main smart piano
         // ------------------------------
@@ -73,8 +88,6 @@ public class Main {
 
         //----------- albert inici
         JPPiano piano = new JPPiano();
-        PianoController pianoController = new PianoController(piano);
-        piano.registerController(pianoController,pianoController,pianoController);
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
@@ -84,93 +97,32 @@ public class Main {
         //-----Albert fi
 
         // ---- Marc Inici ----
-/*
-        //RegisterView mainView = new RegisterView();
-        System.out.println(javax.swing.UIManager.getDefaults().getFont("Label.font"));
-        JPProfile jpProfile = new JPProfile();
+        //MainView mainView = new MainView();
+        /*MainViewV2 mainView = new MainViewV2();
+        JFrame main = new JFrame();
+        main.add(mainView);
+        main.pack();
+        main.setVisible(true);
+        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        ActionListener profileController = new ProfileController(jpProfile);
-        jpProfile.registerController(profileController);
-        // MainView mainView = new MainView();
-        JFrame mainV2 = new JFrame();
-        mainV2.add(jpProfile);
-        mainV2.pack();
-        mainV2.setVisible(true);
-        mainV2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-//*/
         // ---- Marc fi ----
 
-
-
-/*
-
-
         //BERTU--------------------------------STATISTICS
-
+        /*
         ArrayList<Integer> valorsCancons = new ArrayList<>();
-        ArrayList<Double> valorsMinuts = new ArrayList<>();
+        ArrayList<Float> valorsMinuts = new ArrayList<>();
         //rand valors
-        valorsMinuts.add(0.0);
-        valorsMinuts.add(1.0);
-        valorsMinuts.add(0.0);
-        valorsMinuts.add(3.0);
-        valorsMinuts.add(5.0);
-        valorsMinuts.add(5.0);
-        valorsMinuts.add(6.0);
-        valorsMinuts.add(12.0);
-        valorsMinuts.add(8.0);
-        valorsMinuts.add(9.0);
-        valorsMinuts.add(10.0);
-        valorsMinuts.add(11.0);
-        valorsMinuts.add(2.0);
-        valorsMinuts.add(13.0);
-        valorsMinuts.add(14.0);
-        valorsMinuts.add(10.0);
-        valorsMinuts.add(7.0);
-        valorsMinuts.add(6.0);
-        valorsMinuts.add(18.0);
-        valorsMinuts.add(12.0);
-        valorsMinuts.add(20.0);
-        valorsMinuts.add(21.0);
-        valorsMinuts.add(10.0);
-        valorsMinuts.add(30.0);
-        valorsCancons.add(0);
-        valorsCancons.add(1);
-        valorsCancons.add(1);
-        valorsCancons.add(4);
-        valorsCancons.add(6);
-        valorsCancons.add(12);
-        valorsCancons.add(24);
-        valorsCancons.add(1);
-        valorsCancons.add(5);
-        valorsCancons.add(12);
-        valorsCancons.add(4);
-        valorsCancons.add(7);
-        valorsCancons.add(14);
-        valorsCancons.add(13);
-        valorsCancons.add(8);
-        valorsCancons.add(20);
-        valorsCancons.add(16);
-        valorsCancons.add(13);
-        valorsCancons.add(6);
-        valorsCancons.add(2);
-        valorsCancons.add(0);
-        valorsCancons.add(13);
-        valorsCancons.add(17);
-        valorsCancons.add(5);
+        float j = 0;
+        for(int i = 0; i<24;i++){
+            valorsCancons.add(i);
+            valorsMinuts.add(j);
+            j += 1.0f;
+        }
 
-        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);
+        StatisticsView stats = new StatisticsView(valorsCancons, valorsMinuts);
 
         //BERTU--------------------------------STATISTICS
-      ArrayList<Song> topSongs = songDAO.getTop5();
-      Top5View top5 = new Top5View(topSongs);
-
-
-*/
-
-
-
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
@@ -215,7 +167,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        //PianoView pianoView = new PianoView();
+        PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();
