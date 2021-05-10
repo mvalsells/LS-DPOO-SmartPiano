@@ -18,10 +18,18 @@ public class MainView extends JPanel {
     public static final String chgToSongs = "jpSongs";
     public static final String chgToFavs = "jpFavs";
 
+
+
     private JPPiano jpPiano;
+    private JPProfile jpUserAcountView;
 
     private CardLayout cards;
     private JPanel jpCardPanel;
+
+    private JButton jbSong;
+    private JButton jbMyFav;
+    private JButton jbPiano;
+
 
     public MainView(){
 
@@ -50,9 +58,14 @@ public class MainView extends JPanel {
         jpNavBarNorth.setOpaque(false);
         jpNavBarNorth.setLayout(new BoxLayout(jpNavBarNorth,BoxLayout.Y_AXIS));
 
-        JButton jbSong = new JBNavBar(iconSong, iconSongPressed);
-        JButton jbMyFav = new JBNavBar(iconMyFav, iconMyFavPressed);
-        JButton jbPiano = new JBNavBar(iconPiano, iconPianoPressed);
+        jbSong = new JBNavBar(iconSong, iconSongPressed);
+        jbSong.setActionCommand(chgToSongs);
+        jbMyFav = new JBNavBar(iconMyFav, iconMyFavPressed);
+        jbMyFav.setActionCommand(chgToFavs);
+        jbPiano = new JBNavBar(iconPiano, iconPianoPressed);
+        jbPiano.setActionCommand(chgToPiano);
+
+
 
         jpNavBarNorth.add(Box.createVerticalStrut(BordersView.NavBar_EspaiEntreBotons/2));
         jpNavBarNorth.add(jbSong);
@@ -74,19 +87,52 @@ public class MainView extends JPanel {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
         jpPiano = new JPPiano();
+        jpUserAcountView = new JPProfile();
+
 
         add(jpNavBar,BorderLayout.WEST);
         add(jpCardPanel,BorderLayout.CENTER);
 
+        jpCardPanel.add(jpUserAcountView,chgToProfile);
         jpCardPanel.add(jpPiano,chgToPiano);
 
+
+
+
     }
+
+    public void changeToJPPiano(){cards.show(jpCardPanel,chgToPiano); }
+    public void changeToJPProfile(){cards.show(jpCardPanel,chgToProfile); }
+    public void changeToJPSongs(){/*cards.show(,chgToSongs); */}
+    public void changeToJPFavs(){/*cards.show(,chgToFavs); */}
+
+
 
     public void changePanel(String panel){
 
         switch (panel){
 
+            case chgToPiano:
+                changeToJPPiano();
+                break;
+            case chgToProfile:
+                changeToJPProfile();
+                break;
+            case chgToSongs:
+                changeToJPSongs();
+                break;
+            case chgToFavs:
+                changeToJPFavs();
+                break;
         }
+
+    }
+
+    public void registerControllerJPNavBar(ActionListener controller){
+
+        jbSong.addActionListener(controller);
+        jbMyFav.addActionListener(controller);
+        jbPiano.addActionListener(controller);
 
     }
 

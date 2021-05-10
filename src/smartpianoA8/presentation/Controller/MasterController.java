@@ -71,6 +71,7 @@ public class MasterController {
         //Register other controllers to their views
         wellcomeFrame.registerController(wellcomeController);
         mainFrame.registerControllerJPPiano(mainController,mainController,mainController);
+        mainFrame.registerControllerJPNavBar(mainController);
     }
     //Change views
 

@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.presentation.views.Key;
-import smartpianoA8.presentation.views.MainFrame;
+import smartpianoA8.presentation.views.*;
 
 import javax.sound.midi.MidiChannel;
 import java.awt.event.*;
@@ -23,152 +22,153 @@ public class MainController implements ActionListener , KeyListener,MouseListene
         this.masterController =masterController;
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
-
-    }
-
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    public void mousePressed(MouseEvent e) {
-        Key key = (Key) e.getSource();
-        midiChannel.noteOn(key.getNote(), 127);
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        Key key = (Key) e.getSource();
-        midiChannel.noteOff(key.getNote(),127);
-    }
-
-    public void mouseEntered(MouseEvent e) {
+        switch (e.getActionCommand()){
+            case MainView.chgToPiano:
+                mainFrame.changePanel(MainView.chgToPiano);
+                break;
+            case MainView.chgToProfile:
+                mainFrame.changePanel(MainView.chgToProfile);
+                break;
+            case MainView.chgToSongs:
+                mainFrame.changePanel(MainView.chgToSongs);
+                break;
+            case MainView.chgToFavs:
+                mainFrame.changePanel(MainView.chgToFavs);
+                break;
+        }
 
     }
 
-    public void mouseExited(MouseEvent e) {
-
-    }
-
+    @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
+    @Override
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
-
+        System.out.println("patataKeyP");
         //WHITE KEYS
-        if(key2 == KeyEvent.VK_A){
-            midiChannel.noteOn(48, 127);
-        }
-        if(key2 == KeyEvent.VK_B){
-            midiChannel.noteOn(50, 127);
-        }
-        if(key2 == KeyEvent.VK_C){
-            midiChannel.noteOn(52, 127);
-        }
-        if(key2 == KeyEvent.VK_D){
-            midiChannel.noteOn(53, 127);
-        }
-        if(key2 == KeyEvent.VK_E){
-            midiChannel.noteOn(55, 127);
-        }
-        if(key2 == KeyEvent.VK_F){
-            midiChannel.noteOn(57, 127);
-        }
-        if(key2 == KeyEvent.VK_G){
-            midiChannel.noteOn(59, 127);
-        }
-        if(key2 == KeyEvent.VK_H){
-            midiChannel.noteOn(60, 127);
-        }
-        if(key2 == KeyEvent.VK_I){
-            midiChannel.noteOn(62, 127);
-        }
-        if(key2 == KeyEvent.VK_J){
-            midiChannel.noteOn(64, 127);
-        }
-        if(key2 == KeyEvent.VK_K){
-            midiChannel.noteOn(65, 127);
-        }
-        if(key2 == KeyEvent.VK_L){
-            midiChannel.noteOn(67, 127);
-        }
-        if(key2 == KeyEvent.VK_M){
-            midiChannel.noteOn(69, 127);
-        }
-        if(key2 == KeyEvent.VK_N){
-            midiChannel.noteOn(71, 127);
-        }
-        if(key2 == KeyEvent.VK_O){
-            midiChannel.noteOn(72, 127);
-        }
-        if(key2 == KeyEvent.VK_P){
-            midiChannel.noteOn(74, 127);
-        }
-        if(key2 == KeyEvent.VK_Q){
-            midiChannel.noteOn(76, 127);
-        }
-        if(key2 == KeyEvent.VK_R){
-            midiChannel.noteOn(77, 127);
-        }
-        if(key2 == KeyEvent.VK_S){
-            midiChannel.noteOn(79, 127);
-        }
+        switch (key2){
+            case KeyEvent.VK_A:
+                midiChannel.noteOn(48, 127);
+                break;
+            case KeyEvent.VK_B:
+                midiChannel.noteOn(50, 127);
+                break;
+            case  KeyEvent.VK_C:
+                midiChannel.noteOn(52, 127);
+                break;
+            case KeyEvent.VK_D:
+                midiChannel.noteOn(53, 127);
+                break;
+            case KeyEvent.VK_E:
+                midiChannel.noteOn(55, 127);
+                break;
+            case KeyEvent.VK_F:
+                midiChannel.noteOn(57, 127);
+                break;
+            case KeyEvent.VK_G:
+                midiChannel.noteOn(59, 127);
+                break;
+            case KeyEvent.VK_H:
+                midiChannel.noteOn(60, 127);
+                break;
+            case KeyEvent.VK_I:
+                midiChannel.noteOn(62, 127);
+                break;
+            case KeyEvent.VK_J:
+                midiChannel.noteOn(64, 127);
+                break;
+            case KeyEvent.VK_K:
+                midiChannel.noteOn(65, 127);
+                break;
+            case KeyEvent.VK_L:
+                midiChannel.noteOn(67, 127);
+                break;
+            case KeyEvent.VK_M:
+                midiChannel.noteOn(69, 127);
+                break;
+            case KeyEvent.VK_N:
+                midiChannel.noteOn(71, 127);
+                break;
+            case KeyEvent.VK_O:
+                midiChannel.noteOn(72, 127);
+                break;
+            case KeyEvent.VK_P:
+                midiChannel.noteOn(74, 127);
+                break;
+            case KeyEvent.VK_Q:
+                midiChannel.noteOn(76, 127);
+                break;
+            case KeyEvent.VK_R:
+                midiChannel.noteOn(77, 127);
+                break;
+            case KeyEvent.VK_S:
+                midiChannel.noteOn(79, 127);
+                break;
+            //BLACK KEYS
+            case KeyEvent.VK_0:
+                midiChannel.noteOn(49, 127);
+                break;
+            case KeyEvent.VK_1:
+                midiChannel.noteOn(51, 127);
+                break;
+            case KeyEvent.VK_2:
+                midiChannel.noteOn(54, 127);
+                break;
+            case  KeyEvent.VK_3:
+                midiChannel.noteOn(56, 127);
+                break;
+            case KeyEvent.VK_4:
+                midiChannel.noteOn(58, 127);
+                break;
+            case KeyEvent.VK_5:
+                midiChannel.noteOn(61, 127);
+                break;
+            case KeyEvent.VK_6:
+                midiChannel.noteOn(63, 127);
+                break;
+            case KeyEvent.VK_7:
+                midiChannel.noteOn(66, 127);
+                break;
+            case KeyEvent.VK_8:
+                midiChannel.noteOn(68, 127);
+                break;
+            case KeyEvent.VK_9:
+                midiChannel.noteOn(70, 127);
+                break;
+            case KeyEvent.VK_SEMICOLON:
+                midiChannel.noteOn(73, 127);
+                break;
+            case KeyEvent.VK_COLON:
+                midiChannel.noteOn(75, 127);
+                break;
+            /*case menor que:
+            channel.noteOn(75, 127);
+            break;*/
+            case KeyEvent.VK_EQUALS:
+                midiChannel.noteOn(78, 127);
+                break;
 
-        //BLACK KEYS
-        if(key2 == KeyEvent.VK_0){
-            midiChannel.noteOn(49, 127);
-        }
-        if(key2 == KeyEvent.VK_1){
-            midiChannel.noteOn(51, 127);
-        }
-        if(key2 == KeyEvent.VK_2){
-            midiChannel.noteOn(54, 127);
-        }
-        if(key2 == KeyEvent.VK_3){
-            midiChannel.noteOn(56, 127);
-        }
-        if(key2 == KeyEvent.VK_4){
-            midiChannel.noteOn(58, 127);
-        }
-        if(key2 == KeyEvent.VK_5){
-            midiChannel.noteOn(61, 127);
-        }
-        if(key2 == KeyEvent.VK_6){
-            midiChannel.noteOn(63, 127);
-        }
-        if(key2 == KeyEvent.VK_7){
-            midiChannel.noteOn(66, 127);
-        }
-        if(key2 == KeyEvent.VK_8){
-            midiChannel.noteOn(68, 127);
-        }
-        if(key2 == KeyEvent.VK_9){
-            midiChannel.noteOn(70, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+58){
-            midiChannel.noteOn(73, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+59){
-            midiChannel.noteOn(75, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+60){
-            midiChannel.noteOn(78, 127);
-        }
 
 
 
+
+
+
+        }
 
     }
 
+    @Override
     public void keyReleased(KeyEvent e) {
-        /*Key key2 = (Key) e.getSource();
-        channel.noteOff(key2.getNote());*7
-
-         */
+        System.out.println("patataMouseR");
         int key2 = e.getKeyCode();
 
         //WHITE KEYS
@@ -270,6 +270,37 @@ public class MainController implements ActionListener , KeyListener,MouseListene
         if(key2 == KeyEvent.VK_ALT+60){
             midiChannel.noteOff(78, 127);
         }
+
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println("patataMouseP");
+        Key key = (Key) e.getSource();
+        midiChannel.noteOn(key.getNote(), 127);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        System.out.println("patataMouseR");
+        Key key = (Key) e.getSource();
+        midiChannel.noteOff(key.getNote(),127);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
 
 }
