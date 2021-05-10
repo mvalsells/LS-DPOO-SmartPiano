@@ -120,7 +120,7 @@ public class Main {
 */
         //BERTU--------------------------------STATISTICS
 
-        ArrayList<Integer> valorsCancons = new ArrayList<>();
+        /*ArrayList<Integer> valorsCancons = new ArrayList<>();
         ArrayList<Double> valorsMinuts = new ArrayList<>();
         //rand valors
         valorsMinuts.add(0.0);
@@ -172,7 +172,7 @@ public class Main {
         valorsCancons.add(17);
         valorsCancons.add(5);
 
-        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);
+        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);*/
 
         //BERTU--------------------------------STATISTICS
       ArrayList<Song> topSongs = songDAO.getTop5();
