@@ -12,6 +12,7 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
 import smartpianoA8.presentation.views.PianoView;
+import smartpianoA8.presentation.views.SongsView;
 import smartpianoA8.presentation.views.StatisticsView;
 import smartpianoA8.presentation.views.Top5View;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
@@ -71,6 +72,9 @@ public class Main {
 
         ArrayList<Song> midiSongs = businessFacade.getMasterSongs();
         System.out.println("lele");
+
+        //Test vista canciones descargadas
+        SongsView songsView = new SongsView(midiSongs);
 
 
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
@@ -218,7 +222,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();

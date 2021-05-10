@@ -38,6 +38,12 @@ public class MainFrame extends JFrame {
         mainView.registerControllerJPPiano(controller,keyListener,mouseListener);
     }
 
+    public void registerControllerJPNavBar(ActionListener controller){
+
+        mainView.registerControllerJPNavBar(controller);
+
+    }
+
     public void changePanel(String panel){ mainView.changePanel(panel); }
 
 }

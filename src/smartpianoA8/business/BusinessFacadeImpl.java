@@ -84,6 +84,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
         songManager.addSong(song,username);
     }
 
+    @Override
     public ArrayList<ArrayList<Notes>> getMidiNotes(Song song) {
         return songManager.getMidiNotesParsed(song);
     }
@@ -113,6 +114,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return songManager.getMidiTotalTicks();
     }
 
+    @Override
     public ArrayList<Song> getMasterSongs() {
         return songManager.getMasterSongs();
     }

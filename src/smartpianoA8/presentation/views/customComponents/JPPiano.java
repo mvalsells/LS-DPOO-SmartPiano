@@ -428,7 +428,7 @@ public class JPPiano extends JPanel {
         //SombrejatSud.getScaledInsance(1250,48 ,Image.SCALE_SMOOTH);
         sudPanellCentre.add(separacioPanellCentreSud);
         //sombrejatSud.setImg(pantallaPiano.getImage());
-        sombrejatSud.setImgSize(1250,48);
+        sombrejatSud.setImgSize(1080,48);
         sudPanellCentre.add(sombrejatSud, BorderLayout.CENTER);
 
         panelCentre.add(nordPanellCentre,BorderLayout.NORTH);
