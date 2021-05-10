@@ -59,4 +59,17 @@ public interface SongDAO {
      * @return ArrayList<Song></Song> de les cançons de l'usuari
      */
     ArrayList<Song> getUserSongs(String username);
+
+    /**
+     * Reotorna les cançons de l'usuari, les públiques (i no usuari) i després les de Master, en aquest ordre
+     * @param username nom d'usuari USERNAME (no email) per enviar a buscar cançons
+     * @return ArrayList amb les cançons de l'usuari, les publiques (no de l'usuari) i les Master
+     */
+    ArrayList<Song> getUserAndMasterSongs(String username);
+
+    /**
+     * Retorna totes les cançons publiques i que no siguin de Master
+     * @return Arraylist de cançons que no són de Master però sí públiques
+     */
+    ArrayList<Song> getPublicCreatedSongs();
 }

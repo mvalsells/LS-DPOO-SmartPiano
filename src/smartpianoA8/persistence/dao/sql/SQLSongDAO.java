@@ -152,8 +152,32 @@ public class SQLSongDAO implements SongDAO {
         }
     }
 
+    /**
+     * Retorna totes les cançons publiques i que no siguin de Master
+     * @return Arraylist de cançons que no són de Master però sí públiques
+     */
+    @Override
+    public ArrayList<Song> getPublicCreatedSongs(){
+        ArrayList<Song> retorna = new ArrayList<>();
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE isPublic = 1 AND NOT NomUsuari 'Master';";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()){
+                retorna.add(new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+            }
+            return retorna;
 
-   public ArrayList<Song> getMasterSongs(){
+        }catch(SQLException e){
+            return retorna;
+        }
+    }
+
+    /**
+     * Retorna les cançons de Master
+     * @return ArrayList amb les cançons de Master
+     */
+    @Override
+    public ArrayList<Song> getMasterSongs(){
        ArrayList<Song> retorna = new ArrayList<>();
        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE NomUsuari LIKE 'Master';";
        ResultSet result = connector.selectQuery(query);
@@ -166,6 +190,29 @@ public class SQLSongDAO implements SongDAO {
        }catch(SQLException e){
            return retorna;
        }
+   }
+
+
+
+    /**
+     * Reotorna les cançons de l'usuari i després les de Master, en aquest ordre
+     * @param username nom d'usuari USERNAME (no email) per enviar a buscar cançons
+     * @return
+     */
+   @Override
+   public ArrayList<Song> getUserAndMasterSongs(String username){
+        ArrayList<Song> retorna = new ArrayList<>();
+        ArrayList<Song> retorna2 = new ArrayList<>();
+
+        retorna = getPublicCreatedSongs();
+        retorna2 = getMasterSongs();
+
+        if(!retorna2.isEmpty()){
+            retorna.addAll(retorna2);
+        }
+
+        return retorna;
+
    }
 
 }
