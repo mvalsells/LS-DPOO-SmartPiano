@@ -204,7 +204,7 @@ public class SQLSongDAO implements SongDAO {
         ArrayList<Song> retorna;
         ArrayList<Song> retorna2;
 
-        retorna = getPublicCreatedSongs();
+        retorna = getUserSongs(username);
         retorna2 = getMasterSongs();
 
         if(!retorna2.isEmpty()){
@@ -214,5 +214,26 @@ public class SQLSongDAO implements SongDAO {
         return retorna;
 
    }
+
+
+    /**
+     * Reotorna les cançons publiques i després les de Master, en aquest ordre
+     * @return
+     */
+    @Override
+    public ArrayList<Song> getPublicAndMasterSongs(){
+        ArrayList<Song> retorna;
+        ArrayList<Song> retorna2;
+
+        retorna = getPublicCreatedSongs();
+        retorna2 = getMasterSongs();
+
+        if(!retorna2.isEmpty()){
+            retorna.addAll(retorna2);
+        }
+
+        return retorna;
+
+    }
 
 }

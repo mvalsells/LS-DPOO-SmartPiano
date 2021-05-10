@@ -72,4 +72,10 @@ public interface SongDAO {
      * @return Arraylist de cançons que no són de Master però sí públiques
      */
     ArrayList<Song> getPublicCreatedSongs();
+
+    /**
+     * Reotorna les cançons publiques i després les de Master, en aquest ordre
+     * @return ArrayList de cançons publiques i després Master.
+     */
+    public ArrayList<Song> getPublicAndMasterSongs();
 }
