@@ -222,7 +222,7 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        PianoView pianoView = new PianoView();
+        //PianoView pianoView = new PianoView();
         //WellcomeFrame wellcomeFrame = new WellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();
