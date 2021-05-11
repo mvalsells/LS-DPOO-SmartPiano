@@ -28,6 +28,7 @@ public interface BusinessFacade {
     public int getNumTracks();
     public float getMidiBpm();
     public ArrayList<Song> getMasterSongs();
+    public int getTrackResolution();
     //public void removeSong(Song song);
 
 

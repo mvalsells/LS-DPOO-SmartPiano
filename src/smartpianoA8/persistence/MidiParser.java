@@ -13,5 +13,6 @@ public interface MidiParser {
     public float getSecondsPerTick();
     public float getTotalSongSeconds();
     public long getTotalTicks();
+    public int getTrackResolution();
 
 }

@@ -115,6 +115,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     @Override
+    public int getTrackResolution() {
+        return songManager.getTrackResolution();
+    }
+
+    @Override
     public ArrayList<Song> getMasterSongs() {
         return songManager.getMasterSongs();
     }
