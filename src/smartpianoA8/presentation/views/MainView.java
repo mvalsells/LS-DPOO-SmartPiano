@@ -128,6 +128,13 @@ public class MainView extends JPanel {
 
     }
 
+    public void jpSetRecordingPressedIcon(){
+        jpPiano.setPressedIcon();
+    }
+    public void jpSetRecordingUnpressedIcon(){
+        jpPiano.setUnpressedIcon();
+    }
+
     public void registerControllerJPNavBar(ActionListener controller){
 
         jbSong.addActionListener(controller);

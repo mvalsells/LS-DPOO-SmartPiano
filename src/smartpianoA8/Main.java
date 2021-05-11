@@ -77,7 +77,8 @@ public class Main {
         SongsView songsView = new SongsView(midiSongs);
 
 
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
+        //Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/papaya/myownfile.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
