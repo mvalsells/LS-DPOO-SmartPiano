@@ -18,6 +18,7 @@ import smartpianoA8.presentation.views.Top5View;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -28,7 +29,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-
+/*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -54,8 +55,6 @@ public class Main {
         SongDAO songDAO = new SQLSongDAO(connectorSQL);
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
-
-
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
@@ -86,7 +85,7 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
-        //
+        //*/
         // ------------------------------
         // END Main smart piano
         // ------------------------------
@@ -96,7 +95,7 @@ public class Main {
         // START proves
         // ------------------------------
         //
-
+/*
         //----------- albert inici
         /*JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
@@ -104,7 +103,7 @@ public class Main {
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-*/
+
         //-----Albert fi
 
         // ---- Marc Inici ----
@@ -116,9 +115,14 @@ public class Main {
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
+//*/
         // ---- Marc fi ----
-*/
+
+
+
+/*
+
+
         //BERTU--------------------------------STATISTICS
 
         /*ArrayList<Integer> valorsCancons = new ArrayList<>();

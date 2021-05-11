@@ -36,10 +36,12 @@ public class JPProfile extends JPMainView {
 
         //Username
         JPanel jpUsername = new JPMainView();
+        jpUsername.setLayout(new BoxLayout(jpUsername,BoxLayout.Y_AXIS));
         jtfNewUsername = new JTFsettings("New username");
         jpUsername.add(new JPPrimarySecondaryText("Username", "pepito"));
-        jpUsername.add(Box.createHorizontalStrut(5));
+        //jpUsername.add(Box.createHorizontalStrut(5));
         jpUsername.add(jtfNewUsername);
+        jpUsername.setBorder(BorderFactory.createEmptyBorder(150,150,150,150));
 
         //Email
         JPanel jpEmail = new JPMainView();
