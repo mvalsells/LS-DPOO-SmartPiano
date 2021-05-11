@@ -63,10 +63,6 @@ public class MasterController {
         mainController = new MainController(mainFrame,midiChannel);
     }
 
-    public int getResolutionFromOriginalSong() {
-        return businessFacade.getTrackResolution();
-    }
-
     public void registerAllControlers(){
         //Register this controller to other controllers
         wellcomeController.registerController(this);
