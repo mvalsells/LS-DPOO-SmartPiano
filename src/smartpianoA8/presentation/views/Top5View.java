@@ -9,17 +9,18 @@ import java.util.ArrayList;
 
 public class Top5View extends JFrame{
     private static final Color gris = new Color(40,45,53);
+    private static final Color lletrta = new Color(186,189,191);
 
     public Top5View(ArrayList<Song> topSongs){
         setResizable(true);
         setTitle("Top 5 cançons");
         setLocationRelativeTo(null);
-        setSize(600,350);
-        setMinimumSize(new Dimension(600,350));
+       // setSize(600,350);
+        setMinimumSize(new Dimension(1400,450));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setVisible(true);
 
-        Font negreta = new Font("Courier", Font.BOLD,14);
+        Font negreta = new Font("ABeeZee", Font.PLAIN,14);
 
 
         //fons
@@ -41,8 +42,7 @@ public class Top5View extends JFrame{
         JPanel boxDalt = new JPanel();
         JPanel boxBaix = new JPanel();
 
-        fonsBox.add(boxDalt);
-        fonsBox.add(boxBaix);
+
 
         //dalt
         boxDalt.setLayout(new BorderLayout());
@@ -69,19 +69,42 @@ public class Top5View extends JFrame{
         //baix
         boxBaix.setLayout(new BorderLayout());
         JPanel panelBaix = new JPanel();
-        panelBaix.setBackground(Color.BLUE);
+        panelBaix.setBackground(gris);
         panelBaix.setBorder(BorderFactory.createEmptyBorder(5,20,20, 5));
         panelBaix.setLayout(new BorderLayout());
 
+
         JPanel top = new JPanel();
-        top.setBackground(Color.RED);
+        top.setBackground(gris);
+        top.setLayout(new GridLayout(6,1));
+
         JPanel nom = new JPanel();
-        nom.setBackground(Color.GREEN);
+        nom.setBackground(gris);
+        nom.setLayout(new GridLayout(6,1));
+
         JPanel numrep = new JPanel();
-        numrep.setBackground(Color.black);
+        numrep.setBackground(gris);
+        numrep.setLayout(new GridLayout(6,1));
+
         JPanel autor = new JPanel();
-        autor.setBackground(Color.GRAY);
+        autor.setBackground(gris);
+        autor.setLayout(new GridLayout(6,1));
+
         JPanel distincio = new JPanel();
+        distincio.setLayout(new BorderLayout());
+
+        /*Calaix top*/
+       // Container calaixTop = this.getContentPane();
+       // calaixTop.setLayout(new GridLayout(5,1));
+        //GridLayout calaixTop = new GridLayout(5,1);
+        JPanel[] calaixTop = new JPanel[6];
+        JPanel[] calaixNom = new JPanel[6];
+        JPanel[] calaixNumrep = new JPanel[6];
+        JPanel[] calaixAutor = new JPanel[6];
+        JLabel[] TOP = new JLabel[6];
+        JLabel[] NOM = new JLabel[6];
+        JLabel[] NUMREP = new JLabel[6];
+        JLabel[] AUTOR = new JLabel[6];
 
         top.setBorder(BorderFactory.createEmptyBorder(0,0,130,30));
         nom.setBorder(BorderFactory.createEmptyBorder(0,0,130,180));
@@ -91,15 +114,109 @@ public class Top5View extends JFrame{
 
 
 
+        /*String[] tops = {"#","1","2","3","4","5"};
+        String[] noms = {"TITULO","TOP","TOP","TOP","TOP","TOP"};
+        String[] autors = {"ARTISTA","TOP","TOP","TOP","TOP","TOP"};
+        String[] reps = {"REPRODUCCIONES",topSongs.get(0).getNumReproduccions(),topSongs.get(1).getNumReproduccions(),topSongs.get(2).getNumReproduccions(),topSongs.get(3).getNumReproduccions(),topSongs.get(4).getNumReproduccions()};
+*/      int j = 0;
+        for(int i = 0; i<6; i++ ){
 
-        distincio.setLayout(new BorderLayout());
+            calaixTop[i] = new JPanel();
+            calaixNom[i] = new JPanel();
+            calaixAutor[i] = new JPanel();
+            calaixNumrep[i] = new JPanel();
+
+            if(i==0){
+                TOP[i]= new JLabel("#");
+                NOM[i]= new JLabel("TITULO");
+                AUTOR[i]= new JLabel("ARTISTA");
+                NUMREP[i]= new JLabel("REPRODUCCIONES");
+            }else{
+                String strAutor = topSongs.get(j).getAutor();
+                TOP[i]= new JLabel(""+i);
+                NOM[i]= new JLabel(topSongs.get(j).getNom());
+                NUMREP[i]= new JLabel(String.valueOf(topSongs.get(j).getNumReproduccions()));
+                AUTOR[i]= new JLabel(strAutor);
+
+                if (strAutor.compareTo("Master") == 0) strAutor = topSongs.get(j).getNomUsuari();
+                j++;
+                //autor[i] = new JLabel(strAutor);
+
+
+            }
+
+
+
+            TOP[i].setForeground(lletrta);
+            TOP[i].setFont(negreta);
+            TOP[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
+
+
+
+            //algo pasa amb el nom
+
+            //NOM[i]= new JLabel("TOP"+i);
+            NOM[i].setForeground(lletrta);
+            NOM[i].setFont(negreta);
+            NOM[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
+
+
+
+           // AUTOR[i]= new JLabel("TOP"+i);
+            AUTOR[i].setForeground(lletrta);
+            AUTOR[i].setFont(negreta);
+            AUTOR[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
+
+
+
+            //NUMREP[i]= new JLabel("TOP"+i);
+            NUMREP[i].setForeground(lletrta);
+            NUMREP[i].setFont(negreta);
+            NUMREP[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
+
+
+
+
+
+            calaixTop[i].add(TOP[i]);
+            calaixTop[i].setOpaque(false);
+
+            calaixNom[i].add(NOM[i]);
+            calaixNom[i].setOpaque(false);
+
+            calaixAutor[i].add(AUTOR[i]);
+            calaixAutor[i].setOpaque(false);
+
+            calaixNumrep[i].add(NUMREP[i]);
+            calaixNumrep[i].setOpaque(false);
+
+            top.add(calaixTop[i]);
+            nom.add(calaixNom[i]);
+            autor.add(calaixAutor[i]);
+            numrep.add(calaixNumrep[i]);
+
+
+
+        }
+
         distincio.add(top, BorderLayout.WEST);
-        distincio.add(nom);
-        distincio.setBorder(BorderFactory.createEmptyBorder());
-        panelBaix.add(numrep,BorderLayout.EAST);
+        distincio.add(nom,BorderLayout.CENTER);
+
         panelBaix.add(autor,BorderLayout.CENTER);
+        //distincio.setBorder(BorderFactory.createEmptyBorder());
+        panelBaix.add(numrep,BorderLayout.EAST);
         panelBaix.add(distincio,BorderLayout.WEST);
+        //((GridLayout)calaixTop.getLayout()).setHgap(10);
+        //((GridLayout)calaixTop.getLayout()).setVgap(10);
+
+
+
+
+
         boxBaix.add(panelBaix, BorderLayout.CENTER);
+
+        fonsBox.add(boxDalt);
+        fonsBox.add(boxBaix);
 
         //calaixos
         /*JPanel[] calaixos = new JPanel[5];
