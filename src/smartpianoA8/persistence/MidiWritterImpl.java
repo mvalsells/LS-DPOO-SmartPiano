@@ -14,11 +14,18 @@ public class MidiWritterImpl implements MidiWritter {
     Sequencer sequencer;
     private boolean recording = false;
     private long startTime = 0;
+    Sequencer finalSequencer;
+
+    private static final int TYPE_SINGLE_TRACK = 0;
+    private static final int TYPE_PARALLEL_TRACKS = 1;
+    private static final int TYPE_SERIAL_TRACKS = 2;
+    private File midiOutputFile;
 
 
     public MidiWritterImpl() {
     }
 
+    @Override
     public void startRecording() {
         try {
 
@@ -44,28 +51,58 @@ public class MidiWritterImpl implements MidiWritter {
         }
     }
 
+    @Override
     public void endRecording() {
         recording = false;
         sequencer.stopRecording();
         try {
-            Sequencer sequencerAux = MidiSystem.getSequencer();
-            sequencerAux.open();
-            sequencerAux.setSequence(sequence);
-            sequencerAux.start();
+            finalSequencer = MidiSystem.getSequencer();
+            finalSequencer.open();
+            finalSequencer.setSequence(sequence);
+            finalSequencer.start();
+            saveToFile();
         } catch (MidiUnavailableException | InvalidMidiDataException e) {
             e.printStackTrace();
         }
     }
 
+    private void saveToFile() {
+        int midiFileType = 0;
+        if(sequence.getTracks().length == 1) {
+            midiFileType = TYPE_SINGLE_TRACK;
+        }else {
+            midiFileType = TYPE_PARALLEL_TRACKS;
+        }
+
+        int[] arrayMidiFiles = MidiSystem.getMidiFileTypes(sequence);
+        try {
+            if (arrayMidiFiles.length > 0) {
+                midiOutputFile = new File("resources/midiFiles/papaya/myownfile.mid");
+                MidiSystem.write(sequence, arrayMidiFiles[0], midiOutputFile);
+
+                sequencer.addMetaEventListener(metaMsg -> {
+                    if (metaMsg.getType() == 0x2F) {
+                        sequencer.close();
+                    }
+                });
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public boolean getIsRecording() {
         return recording;
     }
 
+    @Override
     public void setOnMessage(int key, long startedNote) {
         pianoTrack.add(createMidiEvent(ShortMessage.NOTE_ON, 0, key, 127,/*System.currentTimeMillis()-startTime*/startedNote-startTime));
         System.out.println("Key: " + key + " ONNN");
     }
 
+    @Override
     public void setOffMessage(int key, long endedNote) {
         pianoTrack.add(createMidiEvent(ShortMessage.NOTE_OFF, 0, key, 127, endedNote-startTime));
         System.out.println("Key: " + key + " OFFF");
