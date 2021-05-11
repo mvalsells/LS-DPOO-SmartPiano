@@ -23,6 +23,7 @@ public class MidiParserImpl implements MidiParser {
     private float totalSongSeconds = 0;
     private float secondsPerTick = 0;
     private long totalTicks = 0;
+    private int trackResolution = 0;
 
     public MidiParserImpl() {
         tracks = new ArrayList<ArrayList<Notes>>();
@@ -51,6 +52,8 @@ public class MidiParserImpl implements MidiParser {
             } catch (MidiUnavailableException e) {
                 e.printStackTrace();
             }
+
+            trackResolution = sequence.getResolution();
 
             int ticks_per_quarter = sequence.getResolution();
             float µs_per_quarter = MPQ;
@@ -203,6 +206,11 @@ public class MidiParserImpl implements MidiParser {
     //public ArrayList<ArrayList<Notes>> getTracks() {
     //    return tracks;
     //}
+
+    @Override
+    public int getTrackResolution() {
+        return trackResolution;
+    }
 
     @Override
     public long getTotalTicks() {

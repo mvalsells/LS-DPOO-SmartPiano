@@ -97,13 +97,13 @@ public class Main {
         //
 
         //----------- albert inici
-        JPPiano piano = new JPPiano();
+        /*JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+*/
         //-----Albert fi
 
         // ---- Marc Inici ----

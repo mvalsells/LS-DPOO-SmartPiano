@@ -7,30 +7,40 @@ import javax.sound.midi.*;
 public class MidiWritterImpl implements MidiWritter {
 
     Sequence sequence;
+    Track pianoTrack;
     Sequencer sequencer;
-    Track track;
-    ShortMessage message;
 
-    public MidiWritterImpl() throws InvalidMidiDataException {
-        sequence = new Sequence(Sequence.PPQ, 24);
-        message = new ShortMessage();
-        track = sequence.createTrack();
-        sequencer.setSequence(sequence);
-        sequencer.setTickPosition(0);
-        sequencer.recordEnable(track,-1);
-        sequencer.startRecording();
-
-    }
-
-    public void createOnEvent(Key key) {
-
+    public MidiWritterImpl() {
         try {
-            message.setMessage(ShortMessage.NOTE_ON, message.getChannel(), key.getNote(), 127);
-        } catch (InvalidMidiDataException e) {
+            sequence = new Sequence(Sequence.PPQ, 24);
+            sequencer = MidiSystem.getSequencer();
+            pianoTrack = sequence.createTrack();
+            sequencer.startRecording();
+        } catch (InvalidMidiDataException | MidiUnavailableException e) {
             e.printStackTrace();
         }
     }
 
+    public void setOnMessage(Key key) {
+        pianoTrack.add(createMidiEvent(ShortMessage.NOTE_ON, 0, key.getNote(), 127,sequencer.getTickPosition() * (sequence.getResolution() / 500)));
+    }
+
+    public void setOffMessage(Key key) {
+        pianoTrack.add(createMidiEvent(ShortMessage.NOTE_OFF, 0, key.getNote(), 0, sequencer.getTickPosition() * (sequence.getResolution() / 500)));
+    }
+
+    private static MidiEvent createMidiEvent(int command, int channel, int data1, int data2, long instant) {
+        ShortMessage shortMessage = new ShortMessage();
+        try {
+            shortMessage.setMessage(
+                    command,
+                    channel,
+                    data1,
+                    data2);
+        } catch (InvalidMidiDataException e) {
+        }
+        return new MidiEvent(shortMessage, instant);
+    }
 
 
 

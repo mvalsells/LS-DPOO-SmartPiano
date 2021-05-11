@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.presentation.views.*;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.sound.midi.MidiChannel;
 import java.awt.event.*;
@@ -23,7 +24,6 @@ public class MainController implements ActionListener , KeyListener,MouseListene
     }
 
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -39,6 +39,9 @@ public class MainController implements ActionListener , KeyListener,MouseListene
                 break;
             case MainView.chgToFavs:
                 mainFrame.changePanel(MainView.chgToFavs);
+                break;
+            case JPPiano.startRecording:
+                //Christian aqui tu action listener
                 break;
         }
 
