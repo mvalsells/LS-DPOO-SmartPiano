@@ -449,6 +449,14 @@ public class JPPiano extends JPanel {
         add(lateralWest,BorderLayout.WEST);
         add(posicioCentral,BorderLayout.CENTER);
     }
+
+    public void setPressedIcon(){
+        regButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));
+    }
+    public void setUnpressedIcon(){
+        regButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
+    }
+
     public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
 
         regButton.addActionListener(controller);

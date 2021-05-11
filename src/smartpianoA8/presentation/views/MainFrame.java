@@ -46,4 +46,11 @@ public class MainFrame extends JFrame {
 
     public void changePanel(String panel){ mainView.changePanel(panel); }
 
+    public void jpSetRecordingPressedIcon(){
+        mainView.jpSetRecordingPressedIcon();
+    }
+    public void jpSetRecordingUnpressedIcon(){
+        mainView.jpSetRecordingUnpressedIcon();
+    }
+
 }
