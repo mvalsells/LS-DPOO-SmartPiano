@@ -11,10 +11,7 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
-import smartpianoA8.presentation.views.PianoView;
-import smartpianoA8.presentation.views.SongsView;
-import smartpianoA8.presentation.views.StatisticsView;
-import smartpianoA8.presentation.views.Top5View;
+import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.swing.*;
@@ -103,12 +100,11 @@ public class Main {
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+*/
         //-----Albert fi
 
         // ---- Marc Inici ----
-        //MainView mainView = new MainView();
-        /*MainViewV2 mainView = new MainViewV2();
+        JPProfile mainView = new JPProfile();
         JFrame main = new JFrame();
         main.add(mainView);
         main.pack();
@@ -180,7 +176,7 @@ public class Main {
         StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);*/
 
         //BERTU--------------------------------STATISTICS
-      ArrayList<Song> topSongs = songDAO.getTop5();
+     /* ArrayList<Song> topSongs = songDAO.getTop5();
       Top5View top5 = new Top5View(topSongs);
 
 /*

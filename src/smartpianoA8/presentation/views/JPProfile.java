@@ -14,6 +14,9 @@ public class JPProfile extends JPMainView {
     private JPasswordField jtfNewPaswordRepetition;
     private JButton jbSaveSettings;
 
+    public static final String SaveSettings = "SaveSetting";
+    public static final String Logout = "Logout";
+
     public JPProfile(){
         setLayout(new BorderLayout());
         setBackground(ColorScheme.MainView_Background);
@@ -23,6 +26,7 @@ public class JPProfile extends JPMainView {
 
         JLabel jlNorth= new JLColor("My profile", ColorScheme.PRIMARY);
         jbLogout = new JBgeneral("Logout", ColorScheme.RED_DANGER);
+        jbLogout.setActionCommand(Logout);
 
         //North pack
         jpNorth.add(Box.createVerticalStrut(40),BorderLayout.NORTH);
@@ -58,6 +62,7 @@ public class JPProfile extends JPMainView {
 
         //Save button
         jbSaveSettings = new JBgeneral("Save settings", ColorScheme.ORANGE_START);
+        jbSaveSettings.setActionCommand(SaveSettings);
 
         //Center pack
         jpCenter.add(jpUsername);
