@@ -129,6 +129,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return songManager.getMidiNotesMPQ();
     }
 
+    public float getµsPerTickMidiNotes() {
+        return songManager.getµsPerTickMidiNotes();
+    }
+
 
     // ------------------------------------------------------
     //  END song implementation

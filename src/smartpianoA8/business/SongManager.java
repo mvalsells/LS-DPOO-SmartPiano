@@ -61,6 +61,10 @@ public class SongManager {
         return midiParser.getMPQ();
     }
 
+    public float getµsPerTickMidiNotes() {
+        return midiParser.getusPerTick();
+    }
+
 
 
 }

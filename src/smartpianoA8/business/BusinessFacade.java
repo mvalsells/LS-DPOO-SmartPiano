@@ -30,6 +30,7 @@ public interface BusinessFacade {
     public ArrayList<Song> getMasterSongs();
     public int getTrackResolution();
     public float getMidiNotesMPQ();
+    public float getµsPerTickMidiNotes();
     //public void removeSong(Song song);
 
 
