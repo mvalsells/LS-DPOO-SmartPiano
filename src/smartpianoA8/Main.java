@@ -75,13 +75,14 @@ public class Main {
 
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Prélude.mid",1,null,null);
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/papaya/myownfile.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
+        System.out.println("TOTAL SONG MICROSECONDS PER TICKKKKKK: " + businessFacade.getµsPerTickMidiNotes());
 
         //
         // ------------------------------
