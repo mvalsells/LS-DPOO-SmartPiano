@@ -27,7 +27,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-
+/*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -83,7 +83,7 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
         System.out.println("TOTAL SONG MICROSECONDS PER TICKKKKKK: " + businessFacade.getµsPerTickMidiNotes());
-
+*/
         //
         // ------------------------------
         // END Main smart piano
@@ -182,7 +182,7 @@ public class Main {
      /* ArrayList<Song> topSongs = songDAO.getTop5();
       Top5View top5 = new Top5View(topSongs);
 
-        */
+
 
         ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
         Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getµsPerTickMidiNotes()));
@@ -190,7 +190,7 @@ public class Main {
         //controller.stop();
 
 
-/*
+
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
         try {
             htmlScrapping.Scrapping();
