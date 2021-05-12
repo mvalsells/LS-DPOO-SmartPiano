@@ -57,4 +57,14 @@ public class SongManager {
         return songDAO.getMasterSongs();
     }
 
+    public float getMidiNotesMPQ() {
+        return midiParser.getMPQ();
+    }
+
+    public float getµsPerTickMidiNotes() {
+        return midiParser.getusPerTick();
+    }
+
+
+
 }

@@ -124,6 +124,14 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return songManager.getMasterSongs();
     }
 
+    @Override
+    public float getMidiNotesMPQ() {
+        return songManager.getMidiNotesMPQ();
+    }
+
+    public float getµsPerTickMidiNotes() {
+        return songManager.getµsPerTickMidiNotes();
+    }
 
 
     // ------------------------------------------------------

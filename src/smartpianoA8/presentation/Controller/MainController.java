@@ -124,16 +124,6 @@ public class MainController implements ActionListener , KeyListener,MouseListene
 
     }
 
-    private void startRecording() {
-        midiWritter.startRecording();
-        System.out.println("Recording...");
-    }
-
-    private void endRecording() {
-        midiWritter.endRecording();
-        System.out.println("EEENNDD Recording...");
-    }
-
     @Override
     public void keyTyped(KeyEvent e) {
 
