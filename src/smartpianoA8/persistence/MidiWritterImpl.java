@@ -71,8 +71,8 @@ public class MidiWritterImpl implements MidiWritter {
     }
 
     @Override
-    public void stopRecording() {
-        finalSequencer.stopRecording();
+    public void stopPlayingRecording() {
+        finalSequencer.stop();
     }
 
     @Override
