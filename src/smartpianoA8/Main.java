@@ -11,6 +11,7 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.MasterController;
+import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
@@ -26,7 +27,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-/*
+
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -59,7 +60,7 @@ public class Main {
         pianoController.registerAllControlers();
 
         //Business <-> Persitence
-        /*HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
@@ -80,7 +81,7 @@ public class Main {
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
-        System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());*/
+        System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
 
         //*/
         // ------------------------------
@@ -179,6 +180,15 @@ public class Main {
         //BERTU--------------------------------STATISTICS
      /* ArrayList<Song> topSongs = songDAO.getTop5();
       Top5View top5 = new Top5View(topSongs);
+
+        */
+
+        ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
+        Thread controller = new Thread(new PianoCascadeController(partitura));
+        controller.start();
+        Thread.sleep(5000);
+        controller.stop();
+
 
 /*
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
