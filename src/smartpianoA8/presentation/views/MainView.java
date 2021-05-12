@@ -1,9 +1,6 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.ColorScheme;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
-import smartpianoA8.presentation.views.customComponents.JBNavBar;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +21,7 @@ public class MainView extends JPanel {
     private JPPiano jpPiano;
     private JPProfile jpUserAcountView;
     private JPSongs jpSongs;
+    private JDPianoRegAdd jdPianoRegAdd;
 
     private CardLayout cards;
     private JPanel jpCardPanel;
@@ -34,13 +32,16 @@ public class MainView extends JPanel {
     private JButton jbSettings;
 
 
+
     public MainView(){
 
         // ---- START MainView general Panel ----
         setLayout(new BorderLayout());
         setBackground(ColorScheme.MainView_Background);
         // ---- END MainView general Panel ----
-
+        // ---- START JDPianoRegAdd ----
+        jdPianoRegAdd = new JDPianoRegAdd();
+        // ---- END JDPianoRegAdd ----
         // ---- START ImageIcon ----
         ImageIcon iconSong = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
         ImageIcon iconSongPressed = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
@@ -141,6 +142,12 @@ public class MainView extends JPanel {
         jpPiano.setUnpressedIcon();
     }
 
+    public void jdRun(){jdPianoRegAdd.run();}
+    public void jdClose(){jdPianoRegAdd.close();}
+    public String jdGetTextFieldString(){return jdPianoRegAdd.getTextFieldString();}
+    public boolean jdIsCheckBoxSelected(){return jdPianoRegAdd.isCheckBoxSelected();}
+
+
     public void registerControllerJPNavBar(ActionListener controller){
 
         jbSong.addActionListener(controller);
@@ -152,6 +159,10 @@ public class MainView extends JPanel {
 
     public void registerControllerJPPiano(ActionListener controller, KeyListener keyListener, MouseListener mouseListener) {
         jpPiano.registerController(controller,keyListener,mouseListener);
+    }
+
+    public void registerControllerJDPianoRegAdd(ActionListener controller){
+        jdPianoRegAdd.registerControllerJDPianoRegAdd(controller);
     }
 
 }

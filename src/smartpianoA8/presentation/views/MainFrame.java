@@ -32,6 +32,7 @@ public class MainFrame extends JFrame {
         frame.pack();
         frame.setVisible(true);
 
+
     }
 
     public void registerControllerJPPiano(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
@@ -44,6 +45,10 @@ public class MainFrame extends JFrame {
 
     }
 
+    public void registerControllerJDPianoRegAdd(ActionListener controller){
+        mainView.registerControllerJDPianoRegAdd(controller);
+    }
+
     public void changePanel(String panel){ mainView.changePanel(panel); }
 
     public void jpSetRecordingPressedIcon(){
@@ -52,5 +57,10 @@ public class MainFrame extends JFrame {
     public void jpSetRecordingUnpressedIcon(){
         mainView.jpSetRecordingUnpressedIcon();
     }
+
+    public void jdRun(){mainView.jdRun();}
+    public void jdClose(){mainView.jdClose();}
+    public String jdGetTextFieldString(){return mainView.jdGetTextFieldString();}
+    public boolean jdIsCheckBoxSelected(){return mainView.jdIsCheckBoxSelected();}
 
 }

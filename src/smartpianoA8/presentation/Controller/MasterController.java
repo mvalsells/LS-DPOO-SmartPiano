@@ -72,6 +72,7 @@ public class MasterController {
         wellcomeFrame.registerController(wellcomeController);
         mainFrame.registerControllerJPPiano(mainController,mainController,mainController);
         mainFrame.registerControllerJPNavBar(mainController);
+        mainFrame.registerControllerJDPianoRegAdd(mainController);
     }
     //Change views
 

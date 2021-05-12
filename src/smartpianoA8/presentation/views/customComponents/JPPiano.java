@@ -20,6 +20,7 @@ public class JPPiano extends JPanel {
 
     private JButton regButton;
 
+
     public JPPiano() {
 
         ImageView sombrejatSud = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());

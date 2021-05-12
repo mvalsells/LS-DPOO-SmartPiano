@@ -26,6 +26,7 @@ public class JOPianoRegAdd extends JPanel {
 
 
 
+
         add(jlTextTitul);
         add(jTextField);
         jpExtraFlow.add(jbAdd);

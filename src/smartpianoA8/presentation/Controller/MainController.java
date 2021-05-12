@@ -3,11 +3,13 @@ package smartpianoA8.presentation.Controller;
 import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.persistence.MidiWritterImpl;
 import smartpianoA8.presentation.views.*;
+import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JOPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.MidiChannel;
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +53,7 @@ public class MainController implements ActionListener , KeyListener,MouseListene
                 hmTeclas.put(codeTecla,new Teclas(/*sb.toString(),*/valorMusical));
                 valorMusical++;
                 codeTecla++;
-                if(codeTecla==91){
+                if(codeTecla==KeyEvent.VK_Z+1){
                     codeTecla = KeyEvent.VK_0;
                 }
             }
@@ -65,7 +67,6 @@ public class MainController implements ActionListener , KeyListener,MouseListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("patata");
         switch (e.getActionCommand()){
             case MainView.chgToPiano:
 
@@ -94,12 +95,31 @@ public class MainController implements ActionListener , KeyListener,MouseListene
                     System.out.println("IS NOT RECORDING...");
                     isRecording = defaultIsRecording;
                     midiWritter.endRecording();
-                    JOPianoRegAdd extra = new JOPianoRegAdd();
-                    extra.displayGUI();
+                    mainFrame.jdRun();
 
                 }else{ System.out.println("ERROR patata"); }
-
                 break;
+            case JDPianoRegAdd.GuardarRec:
+
+                if(mainFrame.jdIsCheckBoxSelected()&&!(mainFrame.jdGetTextFieldString().equals(""))){
+                    //Guardar record i ferla publica
+                    //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
+                    mainFrame.jdClose();
+                }else if(!(mainFrame.jdGetTextFieldString().equals(""))){
+                    //Guardar record i NO ferla publica
+                    //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
+                    mainFrame.jdClose();
+                }else if(mainFrame.jdGetTextFieldString().equals("")){
+
+                    JOptionPane.showMessageDialog(mainFrame,"Introduzca un nombre a la grabacion","Titulo no valido", JOptionPane.WARNING_MESSAGE);
+
+                }
+                break;
+            case JDPianoRegAdd.DiscardRec:
+
+                //Borrar recording(no guardar)
+                mainFrame.jdClose();
+
         }
 
     }
@@ -125,7 +145,15 @@ public class MainController implements ActionListener , KeyListener,MouseListene
         System.out.println("patataKeyP");
         //WHITE KEYS
 
-        switch (key2) {
+        if(!hmTeclas.get(key2).isPlaying()){
+            midiChannel.noteOn(hmTeclas.get(key2).getNota(),127);
+            hmTeclas.get(key2).setIsPlaying(Teclas.trueIsPlaying);
+            if (midiWritter.getIsRecording()) {
+                midiWritter.setOnMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+            }
+        }
+
+        /*switch (key2) {
             case KeyEvent.VK_ENTER:
                 if(!hmTeclas.get(KeyEvent.VK_ENTER).isPlaying()){
                     midiChannel.noteOn(hmTeclas.get(KeyEvent.VK_ENTER).getNota(),127);
@@ -685,7 +713,7 @@ public class MainController implements ActionListener , KeyListener,MouseListene
                 }
                 break;
 
-        }
+        }*/
 
     }//NO OBRIR NOMES PAU I CLARIMON
     //NO OBRIR NOMES PAU I CLARIMON
@@ -695,7 +723,15 @@ public class MainController implements ActionListener , KeyListener,MouseListene
         System.out.println("patataKeyR");
         int key2 = e.getKeyCode();
 
-        switch (key2) {
+        if(hmTeclas.get(key2).isPlaying()){
+            midiChannel.noteOff(hmTeclas.get(key2).getNota(),127);
+            hmTeclas.get(key2).setIsPlaying(Teclas.defaultIsPlaying);
+            if (midiWritter.getIsRecording()) {
+                midiWritter.setOffMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+            }
+        }
+
+        /*switch (key2) {
             case KeyEvent.VK_ENTER:
                 if(hmTeclas.get(KeyEvent.VK_ENTER).isPlaying()){
                     midiChannel.noteOff(hmTeclas.get(KeyEvent.VK_ENTER).getNota(),127);
@@ -1254,7 +1290,7 @@ public class MainController implements ActionListener , KeyListener,MouseListene
                     }
                 }
                 break;
-        }
+        }*/
 
     }//NO OBRIR NOMES PAU I CLARIMON
     //NO OBRIR NOMES PAU I CLARIMON
