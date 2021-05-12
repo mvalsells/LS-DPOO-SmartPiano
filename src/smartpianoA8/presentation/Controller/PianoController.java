@@ -7,7 +7,7 @@ import javax.sound.midi.*;
 import javax.sound.midi.spi.MidiFileWriter;
 import java.awt.event.*;
 
-public class PianoController implements ActionListener, MouseListener, KeyListener {
+public class PianoController /*implements ActionListener, MouseListener, KeyListener*/ {
 
     private JPPiano jpPiano;
     private MidiChannel channel;
@@ -36,7 +36,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     }
 
 
-    @Override
+   /* @Override
     public void actionPerformed(ActionEvent e) {
 
     }
@@ -146,9 +146,9 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
             case KeyEvent.VK_COLON:
                     channel.noteOn(75, 127);
                     break;
-            /*case menor que:
-            channel.noteOn(75, 127);
-            break;*/
+            //case menor que:
+            //channel.noteOn(75, 127);
+            //break;
             case KeyEvent.VK_EQUALS:
                 channel.noteOn(78, 127);
                 break;
@@ -295,6 +295,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
+    }*/
 
 }

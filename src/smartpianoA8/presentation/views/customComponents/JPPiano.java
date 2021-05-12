@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 public class JPPiano extends JPanel {
-    final int OCTAVES = 3;
+    public static int OCTAVES = 3;
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
 
@@ -431,8 +431,7 @@ public class JPPiano extends JPanel {
         /*Bores*/
         //SombrejatSud.getScaledInsance(1250,48 ,Image.SCALE_SMOOTH);
         sudPanellCentre.add(separacioPanellCentreSud);
-        //sombrejatSud.setImg(pantallaPiano.getImage());
-        sombrejatSud.setImgSize(1080,48);
+        //sombrejatSud.setImgSize(1080,48);
         sudPanellCentre.add(sombrejatSud, BorderLayout.CENTER);
 
         panelCentre.add(nordPanellCentre,BorderLayout.NORTH);
