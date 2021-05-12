@@ -61,7 +61,7 @@ public class Top5View extends JFrame{
         panellTitol.setLayout(new BorderLayout());
         JLabel titol = new JLabel("TOP 5 DPOO SONGS");
         titol.setFont(new Font("Verdana",Font.BOLD, 22));
-        titol.setBorder(BorderFactory.createEmptyBorder(5,1,100,20));
+        titol.setBorder(BorderFactory.createEmptyBorder(5,3,100,20));
         panellTitol.add(titol, BorderLayout.WEST);
         titol.setForeground(Color.white);
 

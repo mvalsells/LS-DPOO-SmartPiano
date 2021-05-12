@@ -100,11 +100,12 @@ public class Main {
         main.pack();
         main.setVisible(true);
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-*/
+
         //-----Albert fi
 
         // ---- Marc Inici ----
-        JPProfile mainView = new JPProfile();
+        //MainView mainView = new MainView();
+        /*MainViewV2 mainView = new MainViewV2();
         JFrame main = new JFrame();
         main.add(mainView);
         main.pack();
