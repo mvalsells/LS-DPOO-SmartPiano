@@ -55,15 +55,29 @@ public class MidiWritterImpl implements MidiWritter {
     public void endRecording() {
         recording = false;
         sequencer.stopRecording();
+
         try {
             finalSequencer = MidiSystem.getSequencer();
             finalSequencer.open();
             finalSequencer.setSequence(sequence);
-            finalSequencer.start();
-            saveToFile();
         } catch (MidiUnavailableException | InvalidMidiDataException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void playRecording() {
+        finalSequencer.start();
+    }
+
+    @Override
+    public void stopRecording() {
+        finalSequencer.stopRecording();
+    }
+
+    @Override
+    public void saveRecording() {
+        saveToFile();
     }
 
     private void saveToFile() {
