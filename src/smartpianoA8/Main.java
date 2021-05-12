@@ -59,7 +59,7 @@ public class Main {
         pianoController.registerAllControlers();
 
         //Business <-> Persitence
-        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        /*HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
         Thread.sleep(3000);
@@ -80,7 +80,7 @@ public class Main {
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
-        System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
+        System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());*/
 
         //*/
         // ------------------------------

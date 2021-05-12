@@ -17,12 +17,24 @@ public class ImageView extends JPanel{
     public ImageView(Image img) {
 
         this.img = img;
-        Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+        Dimension size = new Dimension(img.getWidth(this), img.getHeight(this));
         setPreferredSize(size);
         setMinimumSize(size);
         setMaximumSize(size);
         setSize(size);
         setLayout(null);
+    }
+    public ImageView(Image img, int width, int height) {
+
+        this.img = img.getScaledInstance(width,height,Image.SCALE_SMOOTH);
+        Dimension size = new Dimension(img.getWidth(this), img.getHeight(this));
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
+        setSize(size);
+        setLayout(null);
+        repaint();
+
     }
 
     public void setImg(Image img){

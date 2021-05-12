@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views;
 
 import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.JPSongs;
 import smartpianoA8.presentation.views.customComponents.JBNavBar;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
@@ -22,6 +23,7 @@ public class MainView extends JPanel {
 
     private JPPiano jpPiano;
     private JPProfile jpUserAcountView;
+    private JPSongs jpSongs;
 
     private CardLayout cards;
     private JPanel jpCardPanel;
@@ -29,6 +31,7 @@ public class MainView extends JPanel {
     private JButton jbSong;
     private JButton jbMyFav;
     private JButton jbPiano;
+    private JButton jbSettings;
 
 
     public MainView(){
@@ -76,7 +79,8 @@ public class MainView extends JPanel {
 
         //Panell General south
 
-        JButton jbSettings = new JBNavBar(iconSettings, iconSettings);
+        jbSettings = new JBNavBar(iconSettings, iconSettings);
+        jbSettings.setActionCommand(chgToProfile);
 
         //Navigation bar packing
         jpNavBar.add(jpNavBarNorth,BorderLayout.NORTH);
@@ -88,6 +92,7 @@ public class MainView extends JPanel {
         jpCardPanel = new JPanel(cards);
         jpPiano = new JPPiano();
         jpUserAcountView = new JPProfile();
+        jpSongs = new JPSongs();
 
 
         add(jpNavBar,BorderLayout.WEST);
@@ -95,6 +100,7 @@ public class MainView extends JPanel {
 
         jpCardPanel.add(jpUserAcountView,chgToProfile);
         jpCardPanel.add(jpPiano,chgToPiano);
+        jpCardPanel.add(jpSongs,chgToSongs);
 
 
 
@@ -103,8 +109,8 @@ public class MainView extends JPanel {
 
     public void changeToJPPiano(){cards.show(jpCardPanel,chgToPiano); }
     public void changeToJPProfile(){cards.show(jpCardPanel,chgToProfile); }
-    public void changeToJPSongs(){/*cards.show(,chgToSongs); */}
-    public void changeToJPFavs(){/*cards.show(,chgToFavs); */}
+    public void changeToJPSongs(){cards.show(jpCardPanel,chgToSongs); }
+    public void changeToJPFavs(){/*cards.show(jpCardPanel,chgToFavs); */}
 
 
 
@@ -140,6 +146,7 @@ public class MainView extends JPanel {
         jbSong.addActionListener(controller);
         jbMyFav.addActionListener(controller);
         jbPiano.addActionListener(controller);
+        jbSettings.addActionListener(controller);
 
     }
 

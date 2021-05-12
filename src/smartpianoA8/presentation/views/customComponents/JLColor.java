@@ -8,4 +8,10 @@ public class JLColor extends JLabel {
         super(text);
         setForeground(color);
     }
+    public JLColor(String text, Color color,Font font ){
+        super(text);
+        setForeground(color);
+        setFont(font);
+
+    }
 }
