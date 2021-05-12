@@ -7,12 +7,14 @@ import java.util.ArrayList;
 
 public class PianoCascadeController extends JPanel implements  Runnable{
     private CascadePanel cascada;
-    private int speed;
+    private Float usPerTick;
     private ArrayList<ArrayList<Notes>> partitura;
+    private int speed;
 
-    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float speed) {//pasarle la cancion y datos
+    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float usPerTick) {//pasarle la cancion y datos
     this.partitura = partitura;
-    this.speed = speed.intValue();
+    this.usPerTick = usPerTick;
+    this.speed = 1;     //-------canviar-------/
     }
 
     @Override

@@ -185,7 +185,7 @@ public class Main {
         */
 
         ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
-        Thread controller = new Thread(new PianoCascadeController(partitura, /*/////////*/));
+        Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getµsPerTickMidiNotes()));
         controller.start();
         //controller.stop();
 
