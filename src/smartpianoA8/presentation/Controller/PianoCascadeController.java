@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class PianoCascadeController extends JPanel implements  Runnable{
     private CascadePanel cascada;
     private int speed;
+    private ArrayList<ArrayList<Notes>> partitura;
 
-    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura) {//pasarle la cancion y datos
-    partitura.
+    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float speed) {//pasarle la cancion y datos
+    this.partitura = partitura;
+    this.speed = speed.intValue();
     }
 
     @Override
