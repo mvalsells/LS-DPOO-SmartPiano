@@ -48,7 +48,7 @@ public class MidiParserImpl implements MidiParser {
                 BPM = sequencer.getTempoInBPM();
                 System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + MPQ);
                 System.out.println("Song Tempo In BPM (Not Needed) " + sequencer.getTempoInBPM());
-                sequencer.start();
+                //sequencer.start();
             } catch (MidiUnavailableException e) {
                 e.printStackTrace();
             }
@@ -215,6 +215,11 @@ public class MidiParserImpl implements MidiParser {
     @Override
     public long getTotalTicks() {
         return totalTicks;
+    }
+
+    @Override
+    public float getMPQ() {
+        return MPQ;
     }
 
     //public HashMap<Long,ArrayList<Notes>> getnotesBySt() {
