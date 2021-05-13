@@ -5,26 +5,30 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
-public class JPSongsView extends JPMainView {
+public class JPPianoCascadeView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
-    private JPSongs jpSongs;
+    private JPanel jpMain;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JPSongsView(){
+    public JPPianoCascadeView(){
         setLayout(new BorderLayout());
-        jpSongs = new JPSongs();
+
+        //Main JPanel
+        jpMain = new JPMainView();
+        jpMain.add(new JLColor("Piano cascade", ColorScheme.PRIMARY));
 
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
         add(jpNavBar,BorderLayout.WEST);
-        add(jpSongs,BorderLayout.CENTER);
+        add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
-    public void registerControllers(ActionListener actionListener) {
+    public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
         jpNavBar.registerController(actionListener);
-        jpSongs.registerController(actionListener);
     }
 }

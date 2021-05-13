@@ -1,21 +1,23 @@
 package smartpianoA8.presentation.Controller;
 
+import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.Key;
 
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+import java.awt.event.*;
 
-public class PianoController /*implements ActionListener, MouseListener, KeyListener*/ {
+public class PianoController implements ActionListener, MouseListener, KeyListener {
     // ---- Inici Atributs ----
-    private JPPiano jpPiano;
     private MidiChannel channel;
     private PresentationController presentationController;
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
-    public PianoController(JPPiano jpPiano) {
-        this.jpPiano = jpPiano;
+    public PianoController() {
+
         try {
             Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
@@ -46,9 +48,31 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
-   /* @Override
-    public void actionPerformed(ActionEvent e) {
 
+
+
+
+   @Override
+    public void actionPerformed(ActionEvent e) {
+       switch (e.getActionCommand()) {
+           //NavBar
+           case JFMainFrame.SONGS:
+               presentationController.changeView(JFMainFrame.SONGS);
+               break;
+           case JFMainFrame.FAVS:
+               presentationController.changeView(JFMainFrame.FAVS);
+               break;
+           case JFMainFrame.PIANO:
+               presentationController.changeView(JFMainFrame.PIANO);
+               break;
+           case JFMainFrame.PROFILE:
+               presentationController.changeView(JFMainFrame.PROFILE);
+               break;
+
+           //Piano View
+            /*case bla:
+                break;*/
+       }
     }
 
     @Override
@@ -305,6 +329,6 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }*/
+    }
 
 }

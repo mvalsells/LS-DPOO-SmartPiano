@@ -26,7 +26,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-/*
+
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;

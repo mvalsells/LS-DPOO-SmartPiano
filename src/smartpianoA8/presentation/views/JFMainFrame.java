@@ -14,12 +14,14 @@ public class JFMainFrame extends JFrame {
     public static final String PROFILE = "profile";
     public static final String SONGS = "songs";
     public static final String FAVS = "favs";
+    public static final String PIANO_CASCADE = "piano_cascade";
 
     //Private
     private JPSongsView jpSongsView;
     private JPFavView jpFavView;
     private JPPianoView jpPianoView;
     private JPProfileView jpProfileView;
+    private JPPianoCascadeView jpPianoCascadeView;
 
     private CardLayout cards;
     private JPanel jpCardPanel;
@@ -38,6 +40,7 @@ public class JFMainFrame extends JFrame {
         jpFavView = new JPFavView();
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView();
+        jpPianoCascadeView = new JPPianoCascadeView();
 
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
@@ -46,7 +49,7 @@ public class JFMainFrame extends JFrame {
         jpCardPanel.add(jpFavView, FAVS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
-
+        jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
         frame.getContentPane().add(jpCardPanel);
         frame.pack();
         frame.setVisible(true);
@@ -69,7 +72,7 @@ public class JFMainFrame extends JFrame {
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);
     }
     public void registerPianoCascadeViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
-       // jpPianoView.registerPianoCascadeViewControllers(actionListener, mouseListener, keyListener);
+        jpPianoCascadeView.registerControllers(actionListener, mouseListener, keyListener);
     }
 
     //Views managment
@@ -86,6 +89,9 @@ public class JFMainFrame extends JFrame {
                 break;
             case PROFILE:
                 cards.show(jpCardPanel,PROFILE);
+                break;
+            case PIANO_CASCADE:
+                cards.show(jpCardPanel,PIANO_CASCADE);
                 break;
         }
     }

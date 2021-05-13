@@ -10,6 +10,7 @@ public class JPFavView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
     private JPanel jpMain;
+    private JButton jbEditar;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPFavView(){
@@ -90,8 +91,8 @@ public class JPFavView extends JPMainView {
 
 
 
-        JButton editar = new JBgeneral("edit", ColorScheme.ORANGE_START);
-        edit.add(editar);
+        jbEditar = new JBgeneral("edit", ColorScheme.ORANGE_START);
+        edit.add(jbEditar);
 
 
 
@@ -120,5 +121,6 @@ public class JPFavView extends JPMainView {
     // ---- Inici Mètodes ----
     public void registerControllers(ActionListener actionListener) {
         jpNavBar.registerController(actionListener);
+        jbEditar.addActionListener(actionListener);
     }
 }

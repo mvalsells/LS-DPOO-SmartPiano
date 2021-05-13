@@ -2,6 +2,7 @@ package smartpianoA8.presentation.views.customComponents;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class JPSongs extends JPanel {
     public JPSongs(){
@@ -106,5 +107,9 @@ public class JPSongs extends JPanel {
         add(fons);
 
 
+    }
+
+    public void registerController(ActionListener controller){
+        //Afegir botons
     }
 }

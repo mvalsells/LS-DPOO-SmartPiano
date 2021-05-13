@@ -12,6 +12,7 @@ public class JPNavBar extends JPanel {
     private JButton jbMyFav;
     private JButton jbPiano;
     private JButton jbProfile;
+    private JButton jbCascade;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPNavBar(String currentView){
@@ -52,7 +53,9 @@ public class JPNavBar extends JPanel {
         jbMyFav.setActionCommand(JFMainFrame.FAVS);
         jbPiano = new JBNavBar(iconPiano);
         jbPiano.setActionCommand(JFMainFrame.PIANO);
-
+        //TODO BORRAR es temporal
+        jbCascade = new JButton("Cascade");
+        jbCascade.setActionCommand(JFMainFrame.PIANO_CASCADE);
 
 
         jpNavBarNorth.add(Box.createVerticalStrut(BordersView.NavBar_EspaiEntreBotons/2));
@@ -61,6 +64,7 @@ public class JPNavBar extends JPanel {
         jpNavBarNorth.add(jbMyFav);
         jpNavBarNorth.add(Box.createVerticalStrut(BordersView.NavBar_EspaiEntreBotons));
         jpNavBarNorth.add(jbPiano);
+        jpNavBarNorth.add(jbCascade);
 
         //Panell General south
         jbProfile = new JBNavBar(iconProfile);
@@ -78,6 +82,6 @@ public class JPNavBar extends JPanel {
         jbMyFav.addActionListener(controller);
         jbPiano.addActionListener(controller);
         jbProfile.addActionListener(controller);
-
+        jbCascade.addActionListener(controller);
     }
 }

@@ -1,11 +1,13 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JPCascadePanel;
 import javax.swing.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class PianoCascadeController extends JPanel implements  Runnable{
+public class PianoCascadeController extends JPanel implements  Runnable, ActionListener, KeyListener, MouseListener {
 
     // ---- Inici Atributs ----
     private PresentationController presentationController;
@@ -45,4 +47,66 @@ public class PianoCascadeController extends JPanel implements  Runnable{
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            //NavBar
+            case JFMainFrame.SONGS:
+                presentationController.changeView(JFMainFrame.SONGS);
+                break;
+            case JFMainFrame.FAVS:
+                presentationController.changeView(JFMainFrame.FAVS);
+                break;
+            case JFMainFrame.PIANO:
+                presentationController.changeView(JFMainFrame.PIANO_CASCADE);
+                break;
+            case JFMainFrame.PROFILE:
+                presentationController.changeView(JFMainFrame.PROFILE);
+                break;
+
+            //PianoCascade View
+            /*case bla:
+                break;*/
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
