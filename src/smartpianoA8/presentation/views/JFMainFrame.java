@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class JFMainFrame extends JFrame {
     // ---- Inici Atributs ----
@@ -95,5 +96,20 @@ public class JFMainFrame extends JFrame {
                 break;
         }
     }
+
+
+    // ---- Start SongView Methods
+    // ---- End SongView Methods
+    // ---- Start FavView Methods
+    // ---- End FavView Methods
+    // ---- Start PianoView Methods
+    // ---- End PianoView Methods
+    // ---- Start PianoCascadeView Methods
+    // ---- End PianoCascadeView Methods
+    // ---- Start ProfileView Methods
+    public ArrayList<String> profileViewGetData() {
+        return jpProfileView.profileViewGetData();
+    }
+    // ---- End ProfileView Methods
 
 }

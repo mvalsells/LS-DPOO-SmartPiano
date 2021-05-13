@@ -72,6 +72,7 @@ public class PresentationController {
     }
     public void logout(){
         businessFacade.logoutCurrentUser();
+        //Canviar de vista que surti el Login
     }
     public boolean updateUsername(String newUsername){
         return businessFacade.modifyCurrentUserName(newUsername);
@@ -95,8 +96,7 @@ public class PresentationController {
     // ---- End PianoCascadeView Methods
     // ---- Start ProfileView Methods
     public ArrayList<String> profileViewGetData(){
-        return null;
-        //jfMainFrame.pro
+        return jfMainFrame.profileViewGetData();
     }
     // ---- End ProfileView Methods
     // ---- Start Dialog/popups Methods

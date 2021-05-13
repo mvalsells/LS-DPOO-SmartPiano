@@ -5,6 +5,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPProfileView extends JPMainView {
     // ---- Inici Atributs ----
@@ -94,5 +95,9 @@ public class JPProfileView extends JPMainView {
         jbLogout.addActionListener(controller);
         jbSaveSettings.addActionListener(controller);
         jpNavBar.registerController(controller);
+    }
+
+    public ArrayList<String> profileViewGetData() {
+        return null;
     }
 }
