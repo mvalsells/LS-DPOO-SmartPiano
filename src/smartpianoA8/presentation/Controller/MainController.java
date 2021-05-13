@@ -100,14 +100,22 @@ public class MainController implements ActionListener , KeyListener,MouseListene
 
                 if(mainFrame.jdIsCheckBoxSelected()&&!(mainFrame.jdGetTextFieldString().equals(""))){
                     //Guardar record i ferla publica
+                    midiWritter.saveRecording();
+                    //todo modify stop
+                    midiWritter.stopPlayingRecording();
                     //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
                     mainFrame.jdClose();
                 }else if(!(mainFrame.jdGetTextFieldString().equals(""))){
                     //Guardar record i NO ferla publica
+                    midiWritter.saveRecording();
+                    //todo modify stop
+                    midiWritter.stopPlayingRecording();
                     //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
                     mainFrame.jdClose();
                 }else if(mainFrame.jdGetTextFieldString().equals("")){
 
+                    //todo remove play
+                    midiWritter.playRecording();
                     JOptionPane.showMessageDialog(mainFrame,"Introduzca un nombre a la grabacion","Titulo no valido", JOptionPane.WARNING_MESSAGE);
 
                 }

@@ -5,18 +5,13 @@ import smartpianoA8.presentation.views.customComponents.JBPianoButton;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.JTPianoButtonText;
 
-import javax.sound.midi.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 
-public class PianoView extends JFrame implements MouseListener, KeyListener {
+public class PianoView extends JFrame {
 
     BordersView bordersView;
     final int OCTAVES = 8; // change as desired
@@ -28,7 +23,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
     public PianoView(){
         bordersView = new BordersView();
         configurePiano();
-        try {
+        /*try {
             Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
             synth.loadAllInstruments(synth.getDefaultSoundbank());
@@ -47,14 +42,14 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             }
         } catch (MidiUnavailableException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
 
 
 
-    MidiChannel channel;
+    //MidiChannel channel;
 
-    public void mouseClicked(MouseEvent e) {
+   /* public void mouseClicked(MouseEvent e) {
 
     }
 
@@ -92,9 +87,9 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         /*Key key2 = (Key) e.getSource();
         channel.noteOff(key2.getNote());*7
 
-         */
 
-    }
+
+    }*/
 
 
     private void configurePiano(){
@@ -268,7 +263,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
         teclat.setBackground(Color.BLACK);
         //teclat.addKeyListener(this);
         char lletresBlack = '0';
-        for (int i = 0; i < blacks.length; i++) {
+        /*for (int i = 0; i < blacks.length; i++) {
             blacks[i] = new BlackKey(i);
 
             if(lletresBlack < 'a'){
@@ -287,10 +282,10 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             blacks[i].addMouseListener( this);
 
 
-        }
+        }*/
 
         char lletresWhite = 'a';
-        for (int i = 0; i < whites.length; i++) {
+        /*for (int i = 0; i < whites.length; i++) {
 
             whites[i] = new WhiteKey(i);
             if(lletresWhite < 'z'){
@@ -307,7 +302,7 @@ public class PianoView extends JFrame implements MouseListener, KeyListener {
             whites[i].addKeyListener(this);
             teclat.add(whites[i]);
 
-        }
+        }*/
 
         JPanel bordrePiano = new JPanel();
         bordrePiano.setBackground(Color.BLACK);

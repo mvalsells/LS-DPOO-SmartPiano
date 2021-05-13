@@ -461,13 +461,13 @@ public class JPPiano extends JPanel {
 
         regButton.addActionListener(controller);
 
-        for (int i = 0; i < blacks.length; i++){
-            blacks[i].addKeyListener(keyListener);
-            blacks[i].addMouseListener(mouseListener);
+        for (BlackKey black : blacks) {
+            black.addKeyListener(keyListener);
+            black.addMouseListener(mouseListener);
         }
-        for (int i = 0; i < whites.length; i++){
-            whites[i].addKeyListener(keyListener);
-            whites[i].addMouseListener(mouseListener);
+        for (WhiteKey white : whites) {
+            white.addKeyListener(keyListener);
+            white.addMouseListener(mouseListener);
         }
     }
 }

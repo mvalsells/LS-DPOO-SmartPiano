@@ -8,7 +8,7 @@ public interface MidiWritter {
     public void setOnMessage(int key, long startedNote);
     public void setOffMessage(int key, long endedNote);
     public void saveRecording();
-    public void stopRecording();
+    public void stopPlayingRecording();
     public void playRecording();
 
 }

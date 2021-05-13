@@ -1,11 +1,11 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.presentation.views.Key;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
-import javax.sound.midi.*;
-import javax.sound.midi.spi.MidiFileWriter;
-import java.awt.event.*;
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Synthesizer;
 
 public class PianoController /*implements ActionListener, MouseListener, KeyListener*/ {
 
@@ -17,19 +17,24 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
         try {
             Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
-            synth.loadAllInstruments(synth.getDefaultSoundbank());
-            Instrument[] insts = synth.getLoadedInstruments();
+            //synth.loadAllInstruments(synth.getDefaultSoundbank());
+            //Instrument[] insts = synth.getLoadedInstruments();
             MidiChannel channels[] = synth.getChannels();
             //channel = channels[test.getChanel];
-            channel = channels[0];
-
-            for (int i = 0; i < insts.length; i++) {
+            //channel = channels[0];
+            for (int i = 0; i < channels.length; i++) {
+                if (channels[i] != null) {
+                    channel = channels[i];
+                    break;
+                }
+            }
+            /*for (int i = 0; i < insts.length; i++) {
                 if (insts[i].toString()
                         .startsWith("Instrument MidiPiano")) {
                     channel.programChange(i);
                     break;
                 }
-            }
+            }*/
         } catch (MidiUnavailableException ex) {
             ex.printStackTrace();
         }
@@ -46,7 +51,7 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
 
     }
 
-    @Override
+
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
 
@@ -163,7 +168,7 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
 
     }
 
-    @Override
+
     public void keyReleased(KeyEvent e) {
         int key2 = e.getKeyCode();
 
