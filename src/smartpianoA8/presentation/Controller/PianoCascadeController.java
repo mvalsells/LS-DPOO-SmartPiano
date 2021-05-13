@@ -2,16 +2,14 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.presentation.views.JFMainFrame;
-import smartpianoA8.presentation.views.JPCascadePanel;
-import javax.swing.*;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class PianoCascadeController extends JPanel implements  Runnable, ActionListener, KeyListener, MouseListener {
+public class PianoCascadeController implements Runnable, ActionListener, KeyListener, MouseListener {
 
     // ---- Inici Atributs ----
     private PresentationController presentationController;
-    private JPCascadePanel cascada;
     private Float usPerTick;
     private ArrayList<ArrayList<Notes>> partitura;
     private int speed;

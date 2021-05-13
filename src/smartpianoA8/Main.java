@@ -10,9 +10,11 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.JFSongsTable;
 import smartpianoA8.presentation.views.customComponents.JPSongs;
+
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
@@ -83,6 +85,7 @@ public class Main {
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
         System.out.println("TOTAL SONG MICROSECONDS PER TICKKKKKK: " + businessFacade.getµsPerTickMidiNotes());
 
+/*
         //
         // ------------------------------
         // END Main smart piano
@@ -182,12 +185,11 @@ public class Main {
       JFTop5View top5 = new JFTop5View(topSongs);
 
 
-
+*/
         ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
-        Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getµsPerTickMidiNotes()));
+        Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getTotalSongSeconds()));
         controller.start();
-        //controller.stop();
-
+/*
 
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();

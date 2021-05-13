@@ -3,23 +3,22 @@ package smartpianoA8.presentation.views.customComponents;
 import java.awt.*;
 
 public class RectanglesCascada extends Rectangle {
-    private int note, velocity, channel, duration, startTime, endTime;
+    private int note, velocity, channel, duration, startTime;
+    private long endTime;
     boolean started = false;
     private final static int margin = 4;
 
-    public RectanglesCascada(int channel, int note, int velocity, int x, int duration, int startTime){
-        this.channel=channel;
-        this.note=note;
-        this.velocity=velocity;
-        this.x = x;
-        this.duration = duration;
+    public RectanglesCascada(int note, Long endTime){
         this.endTime = endTime;
-        this.startTime = startTime;
-        duration = endTime-startTime;
-        this.y= (-duration);
+        this.note = note;
+    }
 
-        setBounds(x+margin, y,2*margin, duration);
-
+    public void run(){
+        //play note
+        long inicial = System.currentTimeMillis();
+        while(System.currentTimeMillis()-inicial <= endTime){
+        }
+        //stop
     }
 
     public void move(){
