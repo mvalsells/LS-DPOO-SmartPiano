@@ -1,8 +1,5 @@
 package smartpianoA8.persistence;
 
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.presentation.views.Key;
-
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;

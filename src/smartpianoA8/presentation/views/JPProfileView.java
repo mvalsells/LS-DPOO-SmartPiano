@@ -6,20 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JPProfile extends JPMainView {
+public class JPProfileView extends JPMainView {
+    // ---- Inici Atributs ----
     private JButton jbLogout;
     private JTextField jtfNewUsername;
     private JTextField jtfNewEmail;
     private JPasswordField jtfNewPasword;
     private JPasswordField jtfNewPaswordRepetition;
     private JButton jbSaveSettings;
+    private JPNavBar jpNavBar;
+    private JPanel jpMain;
 
     public static final String SaveSettings = "SaveSetting";
     public static final String Logout = "Logout";
 
-    public JPProfile(){
-        setLayout(new BorderLayout());
-        setBackground(ColorScheme.MainView_Background);
+    // ---- Fi Atributs ----
+    // ---- Inici Constructors ----
+
+    public JPProfileView(){
+        jpMain = new JPMainView();
+        jpMain.setLayout(new BorderLayout());
         // ---- Start North ----
         JPanel jpNorth = new JPMainView();
         jpNorth.setLayout(new BorderLayout());
@@ -72,14 +78,21 @@ public class JPProfile extends JPMainView {
         // ---- End center
 
 
-        //JPProfile pack
-        add(jpNorth, BorderLayout.NORTH);
-        add(jpCenter, BorderLayout.CENTER);
-        add(Box.createVerticalStrut(40),BorderLayout.SOUTH);
-    }
+        //JPProfileView pack
+        jpMain.add(jpNorth, BorderLayout.NORTH);
+        jpMain.add(jpCenter, BorderLayout.CENTER);
+        jpMain.add(Box.createVerticalStrut(40),BorderLayout.SOUTH);
 
-    public void registerController(ActionListener controller){
+        //Final packing
+        jpNavBar = new JPNavBar(JFMainFrame.SONGS);
+        add(jpNavBar,BorderLayout.WEST);
+        add(jpMain,BorderLayout.CENTER);
+    }
+    // ---- Fi Constructors ----
+    // ---- Inici Mètodes ----
+    public void registerControllers(ActionListener controller){
         jbLogout.addActionListener(controller);
         jbSaveSettings.addActionListener(controller);
+        jpNavBar.registerController(controller);
     }
 }

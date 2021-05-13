@@ -1,6 +1,6 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.ImageView;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.sound.midi.*;
 import javax.swing.*;

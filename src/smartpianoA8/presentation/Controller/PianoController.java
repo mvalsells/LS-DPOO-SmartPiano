@@ -8,10 +8,12 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
 
 public class PianoController /*implements ActionListener, MouseListener, KeyListener*/ {
-
+    // ---- Inici Atributs ----
     private JPPiano jpPiano;
     private MidiChannel channel;
-
+    private PresentationController presentationController;
+    // ---- Fi Atributs ----
+    // ---- Inici Constructor ----
     public PianoController(JPPiano jpPiano) {
         this.jpPiano = jpPiano;
         try {
@@ -39,8 +41,11 @@ public class PianoController /*implements ActionListener, MouseListener, KeyList
             ex.printStackTrace();
         }
     }
-
-
+    // ---- Fi Constructors ----
+    // ---- Inici Mètodes ----
+    public void registerMasterController(PresentationController presentationController) {
+        this.presentationController = presentationController;
+    }
    /* @Override
     public void actionPerformed(ActionEvent e) {
 

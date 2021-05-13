@@ -7,11 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Top5View extends JFrame{
+public class JFTop5View extends JFrame{
     private static final Color gris = new Color(40,45,53);
     private static final Color lletrta = new Color(186,189,191);
 
-    public Top5View(ArrayList<Song> topSongs){
+    public JFTop5View(ArrayList<Song> topSongs){
         setResizable(true);
         setTitle("Top 5 cançons");
         setLocationRelativeTo(null);

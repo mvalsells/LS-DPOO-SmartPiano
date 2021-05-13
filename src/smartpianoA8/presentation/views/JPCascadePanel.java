@@ -1,17 +1,19 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.RectanglesCascada;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CascadePanel extends JPanel {
+public class JPCascadePanel extends JPanel {
     private RectanglesCascada nota;
     private ArrayList<RectanglesCascada> arrayRectangles = new ArrayList<>();
     private HashMap<Integer, ArrayList<RectanglesCascada>> notesVistes = new HashMap<>();
     private int finalPantalla;
 
-    public CascadePanel(){
+    public JPCascadePanel(){
         //vista mínima
         setBackground(Color.white);
     }

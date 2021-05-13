@@ -1102,7 +1102,7 @@
 											"top": 302,
 											"width": 206.27978515625,
 											"height": 13,
-											"text": "+loginView()",
+											"text": "+JPLoginView()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3531,7 +3531,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAF4P1dydGfm6PE="
 									},
-									"text": "+registerView"
+									"text": "+JPRegisterView"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -13616,7 +13616,7 @@
 											"top": 568,
 											"width": 265.31298828125,
 											"height": 13,
-											"text": "«constructor»+loginController(loginView): void",
+											"text": "«constructor»+loginController(JPLoginView): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -14499,7 +14499,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAF4vPfBafsj1CI="
 									},
-									"text": "+loginView"
+									"text": "+JPLoginView"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -22751,7 +22751,7 @@
 										"_parent": {
 											"$ref": "AAAAAAF4P1dydGfipFM="
 										},
-										"name": "registerView",
+										"name": "JPRegisterView",
 										"reference": {
 											"$ref": "AAAAAAF4P0krJ2H1jT8="
 										},
@@ -22781,7 +22781,7 @@
 										"_parent": {
 											"$ref": "AAAAAAF4vPfBZvsfPGY="
 										},
-										"name": "loginView",
+										"name": "JPLoginView",
 										"reference": {
 											"$ref": "AAAAAAF4u1tNNZbzE+8="
 										},
@@ -22805,7 +22805,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF4t8h4x9XTXQQ="
 											},
-											"name": "loginView",
+											"name": "JPLoginView",
 											"type": ""
 										},
 										{
@@ -26336,7 +26336,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF4P0krJ2H1jT8="
 									},
-									"name": "loginView"
+									"name": "JPLoginView"
 								},
 								{
 									"_type": "UMLOperation",

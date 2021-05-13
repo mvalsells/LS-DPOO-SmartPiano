@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.presentation.views.customComponents;
 
 public interface Key {
     // change WD to suit your screen

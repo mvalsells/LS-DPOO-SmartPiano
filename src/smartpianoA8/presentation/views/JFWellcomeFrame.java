@@ -1,33 +1,32 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.presentation.Controller.WellcomeController;
+import smartpianoA8.presentation.views.customComponents.BordersView;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WellcomeFrame extends JFrame {
+public class JFWellcomeFrame extends JFrame {
 
     public static final String chgToLogin = "chgToLogin";
     public static final String chgToRegister = "chgToRegister";
-    public static final String registerViewString = "RegisterView";
-    public static final String loginViewString = "LoginView";
+    public static final String registerViewString = "JPRegisterView";
+    public static final String loginViewString = "JPLoginView";
 
 
     private CardLayout cards;
     private JPanel mainPanel;
     private BordersView bordersView;
-    private LoginView loginView;
-    private RegisterView registerView;
+    private JPLoginView JPLoginView;
+    private JPRegisterView JPRegisterView;
 
 
-    public WellcomeFrame(RegisterView registerView,LoginView loginView){
+    public JFWellcomeFrame(JPRegisterView JPRegisterView, JPLoginView JPLoginView){
         cards = new CardLayout();
         mainPanel = new JPanel(cards);
         bordersView = new BordersView();
-        this.registerView = registerView;
-        this.loginView = loginView;
+        this.JPRegisterView = JPRegisterView;
+        this.JPLoginView = JPLoginView;
         createAndShowGUI();
     }
 
@@ -38,14 +37,14 @@ public class WellcomeFrame extends JFrame {
         frame.setPreferredSize(new Dimension(1000,820));
 
 
-        /*ImageView registerView;
-        registerView = this.CreateRegisterView();
+        /*ImageView JPRegisterView;
+        JPRegisterView = this.CreateRegisterView();
 
-        ImageView loginView;
-        loginView = this.CreateLoginView();*/
+        ImageView JPLoginView;
+        JPLoginView = this.CreateLoginView();*/
 
-        mainPanel.add(registerView.runRegister(),registerViewString);
-        mainPanel.add(loginView.runLogin(),loginViewString);
+        mainPanel.add(JPRegisterView.runRegister(),registerViewString);
+        mainPanel.add(JPLoginView.runLogin(),loginViewString);
 
         frame.getContentPane().add(mainPanel);
         frame.pack();
@@ -56,8 +55,8 @@ public class WellcomeFrame extends JFrame {
 
 
     public void registerController(ActionListener controller){
-        registerView.registerController(controller);
-        loginView.registerController(controller);
+        JPRegisterView.registerController(controller);
+        JPLoginView.registerController(controller);
 
     }
     //Canvi panel view
@@ -91,25 +90,25 @@ public class WellcomeFrame extends JFrame {
     }
 */
     //Getters register
-    public String getRegisterNomString(){ return registerView.getNomString(); }
+    public String getRegisterNomString(){ return JPRegisterView.getNomString(); }
     public String getRegisterCorreuString(){
-        return registerView.getCorreuString();
+        return JPRegisterView.getCorreuString();
     }
     public String getRegisterContrasenyaString(){
-        return registerView.getContrasenyaString();
+        return JPRegisterView.getContrasenyaString();
     }
-    public Boolean isRegisterCheckBoxAcceptTandC(){return registerView.isCheckBoxAcceptTandC();}
+    public Boolean isRegisterCheckBoxAcceptTandC(){return JPRegisterView.isCheckBoxAcceptTandC();}
     public String getRegisterRepetirContrasenyaString(){
-        return registerView.getRepetirContrasenyaString();
+        return JPRegisterView.getRepetirContrasenyaString();
     }
 
     //Getters login
-    public String getLoginNomString(){ return loginView.getNomString();}
+    public String getLoginNomString(){ return JPLoginView.getNomString();}
     public String getLoginCorreuString(){
-        return loginView.getCorreuString();
+        return JPLoginView.getCorreuString();
     }
     public String getLoginContrasenyaString(){
-        return loginView.getContrasenyaString();
+        return JPLoginView.getContrasenyaString();
     }
 
 

@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.presentation.views.customComponents;
 
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -36,7 +36,7 @@ public class BordersView {
             private final LineBorder GoogleButtonBorder = new LineBorder(new Color(0,0,0,1),0);
             private final LineBorder ButtonLineBorder = new LineBorder(new Color(255,255,255,1),0);
 
-    /*RegisterView*/
+    /*JPRegisterView*/
         /*------------------------------------------PART INFERIOR------------------------------------------*/
             private final LineBorder RegisterButtonLineBorder = new LineBorder(new Color(249,171,15),10);
             private final EmptyBorder RegisterButtonEmptyBorder = new EmptyBorder(0,60,0,60);
@@ -47,7 +47,7 @@ public class BordersView {
             /*-------------Part Centre-Est-------------*/
             private final EmptyBorder RegisterTopTextFieldBorder = new EmptyBorder(100,0,10,0);
 
-    /*LoginView*/
+    /*JPLoginView*/
         /*------------------------------------------PART INFERIOR------------------------------------------*/
             private final LineBorder LoginButtonLineBorderInferior = new LineBorder(new Color(249,171,15),10);
             private final EmptyBorder LoginButtonEmptyBorderInferior = new EmptyBorder(0,55,0,55);
@@ -125,7 +125,7 @@ public class BordersView {
         return this.ButtonLineBorder;
 
     }
-    /*RegisterView*/
+    /*JPRegisterView*/
     public Border getRegisterButtonBorder(){
 
         return this.RegisterButtonBorder;
@@ -141,7 +141,7 @@ public class BordersView {
         return this.RegisterTopTextFieldBorder;
 
     }
-    /*LoginView*/
+    /*JPLoginView*/
     public Border getLoginButtonBorder(){
 
         return this.LoginButtonBorder;

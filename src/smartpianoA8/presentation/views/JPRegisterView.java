@@ -1,12 +1,13 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.BordersView;
 import smartpianoA8.presentation.views.customComponents.ImageView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class RegisterView extends JPanel  {
+public class JPRegisterView extends JPanel  {
 
 
     //ImageView imageView = new ImageView();
@@ -30,7 +31,7 @@ public class RegisterView extends JPanel  {
     private JButton registerButton;//canviat
     private JCheckBox acceptTandC;//Canviat
 
-    public RegisterView() {
+    public JPRegisterView() {
         iniciarSessio = new JButton();
         registerButton = new JButton();
     }

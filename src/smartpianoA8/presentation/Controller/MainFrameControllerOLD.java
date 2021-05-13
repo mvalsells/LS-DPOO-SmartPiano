@@ -1,23 +1,28 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.persistence.MidiWritterImpl;
-import smartpianoA8.presentation.views.*;
-import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
-import smartpianoA8.presentation.views.customComponents.JOPianoRegAdd;
+import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.Key;
 import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.MidiChannel;
-import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainController implements ActionListener , KeyListener,MouseListener {
+public class MainFrameControllerOLD implements ActionListener , KeyListener,MouseListener {
 
-    private MainFrame mainFrame;
-    private MasterController masterController;
+    /*
+
+  ======================================================
+  ====== HA D'ANAR AL CEMENTIRI ========================
+  ======================================================
+
+    */
+
+    // ---- Inici Atributs ----
+    private JFMainFrame JFMainFrame;
+    private PresentationController presentationController;
     private final static boolean defaultIsRecording = false;
     private final static boolean trueIsRecording = true;
     boolean isRecording = defaultIsRecording;
@@ -30,9 +35,12 @@ public class MainController implements ActionListener , KeyListener,MouseListene
 
     private HashMap<Integer, Teclas> hmTeclas;
 
-    public MainController(MainFrame mainFrame, MidiChannel midiChannel){
+    // ---- Fi Atributs ----
+    // ---- Inici Constructors ----
 
-        this.mainFrame = mainFrame;
+    public MainFrameControllerOLD(MidiChannel midiChannel){
+
+        this.JFMainFrame = JFMainFrame;
         this.midiChannel = midiChannel;
 
         this.hmTeclas = new HashMap<>();
@@ -59,76 +67,77 @@ public class MainController implements ActionListener , KeyListener,MouseListene
             }
         }
     }
-
-    public void registerController(MasterController masterController){
-        this.masterController =masterController;
+    // ---- Fi Constructors ----
+    // ---- Inici Mètodes ----
+    public void registerMasterController(PresentationController presentationController){
+        this.presentationController = presentationController;
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
+     /*  switch (e.getActionCommand()){
             case MainView.chgToPiano:
 
-                mainFrame.changePanel(MainView.chgToPiano);
+                JFMainFrame.changePanel(MainView.chgToPiano);
                 break;
             case MainView.chgToProfile:
-                mainFrame.changePanel(MainView.chgToProfile);
+                JFMainFrame.changePanel(MainView.chgToProfile);
                 break;
             case MainView.chgToSongs:
-                mainFrame.changePanel(MainView.chgToSongs);
+                JFMainFrame.changePanel(MainView.chgToSongs);
                 break;
             case MainView.chgToFavs:
-                mainFrame.changePanel(MainView.chgToFavs);
+                JFMainFrame.changePanel(MainView.chgToFavs);
                 break;
             case JPPiano.startRecording:
                 //Christian aqui tu action listener
                 if(!isRecording){
                     //StartRecording
-                    mainFrame.jpSetRecordingPressedIcon();
+                    JFMainFrame.jpSetRecordingPressedIcon();
                     isRecording = trueIsRecording;
                     System.out.println("IS RECORDING...");
                     midiWritter.startRecording();
                 }else if (isRecording){
                     //StopRecording
-                    mainFrame.jpSetRecordingUnpressedIcon();
+                    JFMainFrame.jpSetRecordingUnpressedIcon();
                     System.out.println("IS NOT RECORDING...");
                     isRecording = defaultIsRecording;
                     midiWritter.endRecording();
-                    mainFrame.jdRun();
+                    JFMainFrame.jdRun();
 
                 }else{ System.out.println("ERROR patata"); }
                 break;
             case JDPianoRegAdd.GuardarRec:
 
-                if(mainFrame.jdIsCheckBoxSelected()&&!(mainFrame.jdGetTextFieldString().equals(""))){
+                if(JFMainFrame.jdIsCheckBoxSelected()&&!(JFMainFrame.jdGetTextFieldString().equals(""))){
                     //Guardar record i ferla publica
                     midiWritter.saveRecording();
                     //todo modify stop
                     midiWritter.stopPlayingRecording();
-                    //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
-                    mainFrame.jdClose();
-                }else if(!(mainFrame.jdGetTextFieldString().equals(""))){
+                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
+                    JFMainFrame.jdClose();
+                }else if(!(JFMainFrame.jdGetTextFieldString().equals(""))){
                     //Guardar record i NO ferla publica
                     midiWritter.saveRecording();
                     //todo modify stop
                     midiWritter.stopPlayingRecording();
-                    //la funcio que retorna la string es: mainFrame.jdGetTextFieldString();
-                    mainFrame.jdClose();
-                }else if(mainFrame.jdGetTextFieldString().equals("")){
+                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
+                    JFMainFrame.jdClose();
+                }else if(JFMainFrame.jdGetTextFieldString().equals("")){
 
                     //todo remove play
                     midiWritter.playRecording();
-                    JOptionPane.showMessageDialog(mainFrame,"Introduzca un nombre a la grabacion","Titulo no valido", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(JFMainFrame,"Introduzca un nombre a la grabacion","Titulo no valido", JOptionPane.WARNING_MESSAGE);
 
                 }
                 break;
             case JDPianoRegAdd.DiscardRec:
 
                 //Borrar recording(no guardar)
-                mainFrame.jdClose();
+                JFMainFrame.jdClose();
 
-        }
+        }*/
 
     }
 

@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class StatisticsView extends JFrame {
+public class JFStatisticsView extends JFrame {
 
     private static final Color color1 = new Color(255, 218,255);
     private static final Color color2 = new Color(194, 250, 255);
@@ -17,7 +17,7 @@ public class StatisticsView extends JFrame {
      * @param valorsMinuts llista de valors de minuts (amb decimals).
      * @param valorsReproduccions llista de valors de reproduccions
      */
-    public StatisticsView(ArrayList<Double> valorsMinuts, ArrayList<Integer> valorsReproduccions){
+    public JFStatisticsView(ArrayList<Double> valorsMinuts, ArrayList<Integer> valorsReproduccions){
         //parametres
 
         setResizable(true);

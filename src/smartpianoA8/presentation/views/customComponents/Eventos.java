@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.presentation.views.customComponents;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

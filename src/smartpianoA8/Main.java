@@ -1,12 +1,30 @@
 package smartpianoA8;
 
+import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.*;
+import smartpianoA8.persistence.dao.PlayListDAO;
+import smartpianoA8.persistence.dao.SongDAO;
+import smartpianoA8.persistence.dao.StatsDAO;
+import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.views.JFSongsTable;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-/*
+        //
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -35,8 +53,8 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
-        MasterController pianoController = new MasterController(businessFacade);
-        pianoController.registerAllControlers();
+        PresentationController presentationController = new PresentationController(businessFacade);
+        presentationController.registerAllControlers();
 
         //Business <-> Persitence
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
@@ -50,7 +68,7 @@ public class Main {
         System.out.println("lele");
 
         //Test vista canciones descargadas
-        SongsView songsView = new SongsView(midiSongs);
+        JFSongsTable songsView = new JFSongsTable(midiSongs);
 
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
@@ -155,11 +173,11 @@ public class Main {
         valorsCancons.add(17);
         valorsCancons.add(5);
 
-        StatisticsView stats = new StatisticsView(valorsMinuts,valorsCancons);*/
+        JFStatisticsView stats = new JFStatisticsView(valorsMinuts,valorsCancons);*/
 
         //BERTU--------------------------------STATISTICS
      /* ArrayList<Song> topSongs = songDAO.getTop5();
-      Top5View top5 = new Top5View(topSongs);
+      JFTop5View top5 = new JFTop5View(topSongs);
 
 
 
@@ -213,16 +231,16 @@ public class Main {
 
         //System.out.println("leleleleel");
 
-        //PianoView pianoView = new PianoView();
-        //WellcomeFrame wellcomeFrame = new WellcomeFrame();
+        //JFPianoView pianoView = new JFPianoView();
+        //JFWellcomeFrame wellcomeFrame = new JFWellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();
         //pianoView.setVisible(true);
         //IniciView menuView = new IniciView();
         //menuView.setVisible(true);
-        //smartpianoA8.presentation.views.LoginView loginView = new LoginView();
+        //smartpianoA8.presentation.views.JPLoginView loginView = new JPLoginView();
         ///registerView.setSize(400,400);
-        /*smartpianoA8.presentation.views.RegisterView registerView = new smartpianoA8.presentation.views.RegisterView();
+        /*smartpianoA8.presentation.views.JPRegisterView registerView = new smartpianoA8.presentation.views.JPRegisterView();
         registerView.setVisible(true);*/
 
         //*/

@@ -10,7 +10,13 @@ import java.awt.event.MouseListener;
 
 public class MainView extends JPanel {
 
+    /*
 
+   ======================================================
+   ====== HA D'ANAR AL CEMENTIRI ========================
+   ======================================================
+
+     */
     public static final String chgToPiano = "jpPiano";
     public static final String chgToProfile = "jpProfile";
     public static final String chgToSongs = "jpSongs";
@@ -19,7 +25,7 @@ public class MainView extends JPanel {
 
 
     private JPPiano jpPiano;
-    private JPProfile jpUserAcountView;
+    private JPProfileView jpUserAcountView;
     private JPSongs jpSongs;
     private JDPianoRegAdd jdPianoRegAdd;
 
@@ -62,11 +68,11 @@ public class MainView extends JPanel {
         jpNavBarNorth.setOpaque(false);
         jpNavBarNorth.setLayout(new BoxLayout(jpNavBarNorth,BoxLayout.Y_AXIS));
 
-        jbSong = new JBNavBar(iconSong, iconSongPressed);
+        jbSong = null; //new JBNavBar(iconSong, iconSongPressed);
         jbSong.setActionCommand(chgToSongs);
-        jbMyFav = new JBNavBar(iconMyFav, iconMyFavPressed);
+        jbMyFav = null; //new JBNavBar(iconMyFav, iconMyFavPressed);
         jbMyFav.setActionCommand(chgToFavs);
-        jbPiano = new JBNavBar(iconPiano, iconPianoPressed);
+        jbPiano = null; // new JBNavBar(iconPiano, iconPianoPressed);
         jbPiano.setActionCommand(chgToPiano);
 
 
@@ -80,7 +86,7 @@ public class MainView extends JPanel {
 
         //Panell General south
 
-        jbSettings = new JBNavBar(iconSettings, iconSettings);
+        jbSettings = null; //new JBNavBar(iconSettings, iconSettings);
         jbSettings.setActionCommand(chgToProfile);
 
         //Navigation bar packing
@@ -92,7 +98,7 @@ public class MainView extends JPanel {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
         jpPiano = new JPPiano();
-        jpUserAcountView = new JPProfile();
+        jpUserAcountView = new JPProfileView();
         jpSongs = new JPSongs();
 
 

@@ -1,8 +1,5 @@
 package smartpianoA8.presentation.views.customComponents;
 
-import smartpianoA8.presentation.views.BlackKey;
-import smartpianoA8.presentation.views.WhiteKey;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;

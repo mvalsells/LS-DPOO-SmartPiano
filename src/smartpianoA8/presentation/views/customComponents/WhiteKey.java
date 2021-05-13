@@ -1,4 +1,6 @@
-package smartpianoA8.presentation.views;
+package smartpianoA8.presentation.views.customComponents;
+
+import smartpianoA8.presentation.views.customComponents.Key;
 
 import javax.swing.*;
 import java.awt.*;

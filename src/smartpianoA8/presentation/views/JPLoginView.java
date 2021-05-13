@@ -1,12 +1,13 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.presentation.views.customComponents.BordersView;
 import smartpianoA8.presentation.views.customComponents.ImageView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class LoginView extends JPanel  {
+public class JPLoginView extends JPanel  {
 
     public static final String toRegister = "toRegister";
     public static final String tryLogin = "tryLogin";
@@ -19,7 +20,7 @@ public class LoginView extends JPanel  {
     private JTextField contrasenya;
     private JButton loginButton;
 
-    public  LoginView() {
+    public JPLoginView() {
 
     }
 

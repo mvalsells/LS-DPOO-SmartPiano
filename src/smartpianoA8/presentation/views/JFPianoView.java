@@ -1,9 +1,6 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.ImageView;
-import smartpianoA8.presentation.views.customComponents.JBPianoButton;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.JTPianoButtonText;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,7 +8,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 
-public class PianoView extends JFrame {
+public class JFPianoView extends JFrame {
 
     BordersView bordersView;
     final int OCTAVES = 8; // change as desired
@@ -20,7 +17,7 @@ public class PianoView extends JFrame {
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
     private final Eventos eventos = new Eventos();
 
-    public PianoView(){
+    public JFPianoView(){
         bordersView = new BordersView();
         configurePiano();
         /*try {

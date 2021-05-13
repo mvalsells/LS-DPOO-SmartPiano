@@ -8,11 +8,11 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class SongsView extends JFrame {
+public class JFSongsTable extends JFrame {
 
     private final String[] columnas = {"Nombre", "Autor", "Duración", "Fecha Publicación", "Usuario", "Publica"};
 
-    public SongsView(ArrayList<Song> songs) {
+    public JFSongsTable(ArrayList<Song> songs) {
 
         setTitle("Tabla Canciones Descargadas");
         setResizable(false);
