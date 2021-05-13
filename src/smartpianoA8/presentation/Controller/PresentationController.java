@@ -91,9 +91,12 @@ public class PresentationController {
     // ---- End FavView Methods
     // ---- Start PianoView Methods
     // ---- End PianoView Methods
+    // ---- Start PianoCascadeView Methods
+    // ---- End PianoCascadeView Methods
     // ---- Start ProfileView Methods
     public ArrayList<String> profileViewGetData(){
         return null;
+        //jfMainFrame.pro
     }
     // ---- End ProfileView Methods
     // ---- Start Dialog/popups Methods

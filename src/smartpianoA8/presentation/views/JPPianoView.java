@@ -1,9 +1,6 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.ColorScheme;
-import smartpianoA8.presentation.views.customComponents.JLColor;
-import smartpianoA8.presentation.views.customComponents.JPMainView;
-import smartpianoA8.presentation.views.customComponents.JPNavBar;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +13,7 @@ public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
     private JPanel jpMain;
+    private JPPiano jpPiano;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPPianoView(){
@@ -27,11 +25,11 @@ public class JPPianoView extends JPMainView {
         jpMain = new JPMainView();
         jpMain.add(new JLColor("PIANO", ColorScheme.PRIMARY));
 
-
+        jpPiano = new JPPiano();
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.PIANO);
         add(jpNavBar,BorderLayout.WEST);
-        add(jpMain,BorderLayout.CENTER);
+        add(jpPiano,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
