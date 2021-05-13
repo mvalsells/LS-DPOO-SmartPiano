@@ -76,7 +76,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
 
     @Override
     public void actionPerformed(ActionEvent e) {
-     /*  switch (e.getActionCommand()){
+    /*   switch (e.getActionCommand()){
             case MainView.chgToPiano:
 
                 JFMainFrame.changePanel(MainView.chgToPiano);

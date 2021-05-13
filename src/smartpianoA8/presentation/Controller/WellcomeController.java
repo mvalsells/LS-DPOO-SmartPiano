@@ -44,10 +44,8 @@ public class WellcomeController implements ActionListener {
 
                 if(!JFWellcomeFrame.isRegisterCheckBoxAcceptTandC()) {
                     System.out.println("No CheckBox");
-                }else if(!JFWellcomeFrame.getRegisterContrasenyaString().equals(JFWellcomeFrame.getRegisterRepetirContrasenyaString())){
-                    System.out.println("Contrasenyes no coincideixen");
                 }else {
-                    registerUser(JFWellcomeFrame.getRegisterNomString(), JFWellcomeFrame.getRegisterCorreuString(), JFWellcomeFrame.getRegisterContrasenyaString());
+                    registerUser(JFWellcomeFrame.getRegisterNomString(), JFWellcomeFrame.getRegisterCorreuString(), JFWellcomeFrame.getRegisterContrasenyaString(), JFWellcomeFrame.getRegisterRepetirContrasenyaString());
                 }
                 break;
 
@@ -55,17 +53,17 @@ public class WellcomeController implements ActionListener {
                 System.out.println(JFWellcomeFrame.getLoginNomString());
                 System.out.println(JFWellcomeFrame.getLoginCorreuString());
                 System.out.println(JFWellcomeFrame.getLoginContrasenyaString());
-                registerUser(JFWellcomeFrame.getLoginNomString(), JFWellcomeFrame.getLoginCorreuString(), JFWellcomeFrame.getLoginContrasenyaString());
+                registerUser(JFWellcomeFrame.getLoginNomString(), JFWellcomeFrame.getLoginCorreuString(), JFWellcomeFrame.getLoginContrasenyaString(),JFWellcomeFrame.getRegisterRepetirContrasenyaString());
 
         }
     }
 
 
 
-    private void registerUser(String username, String email, String password){
+    private void registerUser(String username, String email, String password, String passwordRepetition){
         try {
 
-            presentationController.registerUser(username, email, password, User.TYPE_SMARTPIANO);
+            presentationController.registerUser(username, email, password, passwordRepetition, User.TYPE_SMARTPIANO);
             System.out.println("patata pringada");
         } catch (PasswordException e) {
 

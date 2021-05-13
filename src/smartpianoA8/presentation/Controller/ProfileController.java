@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JPProfileView;
 
 import java.awt.event.ActionEvent;
@@ -25,6 +26,11 @@ public class ProfileController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
+            //NavBar
+            case JFMainFrame.SONGS:
+                break;
+
+            //Profile View
             case JPProfileView.Logout:
                 presentationController.logout();
                 break;
@@ -46,7 +52,7 @@ public class ProfileController implements ActionListener {
                         presentationController.updatePassword(data.get(2), data.get(3));
                     }
                 } catch (PasswordException exeception){
-                    errorMessage.append("La contraseña no cumple con los requisitos")
+                    errorMessage.append("La contraseña no cumple con los requisitos");
                     if (exeception.isHasNotLowerCase()) {
                         errorMessage.append("\t- No tiene minuscula/s\n");
                     }

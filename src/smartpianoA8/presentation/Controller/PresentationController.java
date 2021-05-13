@@ -4,6 +4,7 @@ import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.JFWellcomeFrame;
 
 import javax.sound.midi.*;
 import javax.swing.*;
@@ -21,9 +22,12 @@ public class PresentationController {
     // ---- Inici Atributs ----
     BusinessFacade businessFacade;
 
+    //Frame
+    JFMainFrame jfMainFrame;
+    JFWellcomeFrame jfWellcomeFrame;
+
     //Controllers
     WellcomeController wellcomeController;
-    JFMainFrame jfMainFrame;
     SongController songController;
     FavController favController;
     ProfileController profileController;
@@ -43,7 +47,7 @@ public class PresentationController {
             synth.open();
             synth.loadAllInstruments(synth.getDefaultSoundbank());
             Instrument[] insts = synth.getLoadedInstruments();
-            MidiChannel channels[] = synth.getChannels();
+            MidiChannel[] channels = synth.getChannels();
             //channel = channels[test.getChanel];
             midiChannel = channels[0];
 
@@ -90,9 +94,9 @@ public class PresentationController {
     //Change views
 
     // ---- Start Business Faced Methods
-    public void registerUser(String username, String email, String password, String type) throws PasswordException, UserManagerException {
+    public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
         //TODO ho he comentat donat que s'ha d'afegir la password repetition i llavors no compila
-        //  businessFacade.registerUser(username, email, password, type);
+          businessFacade.registerUser(username, email, password, passwordRepetition,type);
     }
     public void logout(){
         businessFacade.logoutCurrentUser();
@@ -107,6 +111,10 @@ public class PresentationController {
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
     // ---- END Business Faced Methods
+
+    // ---- Start WellcomeFrame Methods
+    // ---- End WellcomeFrame Methods
+
     // ---- Start SongView Methods
     // ---- End SongView Methods
     // ---- Start FavView Methods
@@ -120,7 +128,7 @@ public class PresentationController {
     // ---- End ProfileView Methods
     // ---- Start Dialog/popups Methods
     public void showWarningDialog(String message){
-        JOptionPane.showMessageDialog(jfMainFrame,message,"Atención",);
+        JOptionPane.showMessageDialog(jfMainFrame,message,"Atención",JOptionPane.WARNING_MESSAGE);
     }
     // ---- End Dialog/popups Methods
 

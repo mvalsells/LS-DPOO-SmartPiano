@@ -12,7 +12,9 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.JFSongsTable;
+import smartpianoA8.presentation.views.customComponents.JPSongs;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -91,9 +93,12 @@ public class Main {
         // START proves
         // ------------------------------
         //
+
+
 /*
         //----------- albert inici
-        /*JPPiano piano = new JPPiano();
+        //JPSongs piano = new JPSongs();
+        JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
