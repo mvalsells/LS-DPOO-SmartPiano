@@ -8,14 +8,23 @@ public class JDPianoRegAdd extends JDialog {
 
     public static final String GuardarRec = "saveRec";
     public static final String DiscardRec = "discardRec";
+    public static final String playRec = "playRec";
+    public static final String pauseRec = "pauseRec";
 
 
     private JTextField jTextField;
     private JButton jbAdd;
     private JButton jbDiscard;
     private JCheckBox jcbCheckBox;
+    private JButton jbPlayButton;
+    private JButton jbPauseButton;
+
 
     public JDPianoRegAdd(){
+
+        ImageIcon playButton = new ImageIcon(new ImageIcon("Imagen/ImagenesMenu/playButton.png").getImage());
+        ImageIcon pauseButton = new ImageIcon(new ImageIcon("Imagen/ImagenesMenu/pauseButton.png").getImage());
+
         this.setVisible(false);
         this.setPreferredSize(new Dimension(500,200));
         setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
@@ -39,6 +48,17 @@ public class JDPianoRegAdd extends JDialog {
         jcbCheckBox.setOpaque(false);
         jcbCheckBox.setForeground(Color.WHITE);
 
+
+        JPanel jpExtraFlow2 = new JPanel(new FlowLayout());
+        jpExtraFlow2.setOpaque(true);
+        jbPlayButton = new JButton();
+        jbPlayButton.setIcon(playButton);
+        jbPlayButton.setActionCommand(playRec);
+        jbPauseButton = new JButton();
+        jbPauseButton.setIcon(pauseButton);
+        jbPauseButton.setActionCommand(pauseRec);
+
+
         jcbCheckBox.setText("Deseas hacerla publica?");
 
 
@@ -48,6 +68,9 @@ public class JDPianoRegAdd extends JDialog {
         jpExtraFlow.add(jbDiscard);
         jpExtraFlow.add(jcbCheckBox);
         panel.add(jpExtraFlow);
+        jpExtraFlow2.add(jbPlayButton);
+        jpExtraFlow2.add(jbPauseButton);
+        panel.add(jpExtraFlow2);
         getContentPane().add(panel);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 

@@ -1,17 +1,14 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.persistence.MidiWritterImpl;
 import smartpianoA8.presentation.views.*;
 import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
-import smartpianoA8.presentation.views.customComponents.JOPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.MidiChannel;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainController implements ActionListener , KeyListener,MouseListener {

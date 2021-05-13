@@ -58,7 +58,7 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         MasterController pianoController = new MasterController(businessFacade);
         pianoController.registerAllControlers();
-
+/*
         //Business <-> Persitence
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
