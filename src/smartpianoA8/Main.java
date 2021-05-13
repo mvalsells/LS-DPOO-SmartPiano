@@ -26,7 +26,7 @@ public class Main {
         // ------------------------------
         // START Main smart piano
         // ------------------------------
-        //
+/*
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
@@ -93,12 +93,9 @@ public class Main {
         // START proves
         // ------------------------------
         //
-
-
 /*
         //----------- albert inici
-        //JPSongs piano = new JPSongs();
-        JPPiano piano = new JPPiano();
+        /*JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
         main.add(piano);
         main.pack();
