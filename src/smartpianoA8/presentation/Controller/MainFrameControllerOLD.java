@@ -1,7 +1,8 @@
-package smartpianoA8.presentation.Controller;
+/*package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.persistence.MidiWritterImpl;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Key;
 import smartpianoA8.presentation.views.customComponents.Teclas;
@@ -18,7 +19,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
   ====== HA D'ANAR AL CEMENTIRI ========================
   ======================================================
 
-    */
+    *//*
 
     // ---- Inici Atributs ----
     private JFMainFrame JFMainFrame;
@@ -43,10 +44,10 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
         this.JFMainFrame = JFMainFrame;
         this.midiChannel = midiChannel;
 
-        this.hmTeclas = new HashMap<>();
+        HashMap<Integer, Teclas> hmTeclas = new HashMap<>();
 
-        int valorMusical = valorMusicalDefault;
-        int codeTecla = codeTeclaDefault;
+        int valorMusical = 48;
+        int codeTecla = KeyEvent.VK_A;
 
         for(int i = 0; i<JPPiano.OCTAVES;i++){
 
@@ -58,7 +59,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
                 sb.append('_');
                 sb.append(j);
 
-                hmTeclas.put(codeTecla,new Teclas(/*sb.toString(),*/valorMusical));
+                hmTeclas.put(codeTecla,new Teclas(/valorMusical));
                 valorMusical++;
                 codeTecla++;
                 if(codeTecla==KeyEvent.VK_Z+1){
@@ -76,8 +77,8 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    /*   switch (e.getActionCommand()){
-            case MainView.chgToPiano:
+    switch (e.getActionCommand()){
+            /*case MainView.chgToPiano:
 
                 JFMainFrame.changePanel(MainView.chgToPiano);
                 break;
@@ -94,7 +95,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
                 //Christian aqui tu action listener
                 if(!isRecording){
                     //StartRecording
-                    JFMainFrame.jpSetRecordingPressedIcon();
+                    presentationController.jpSetRecordingPressedIcon();
                     isRecording = trueIsRecording;
                     System.out.println("IS RECORDING...");
                     midiWritter.startRecording();
@@ -137,7 +138,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
                 //Borrar recording(no guardar)
                 JFMainFrame.jdClose();
 
-        }*/
+        }
 
     }
 
@@ -720,7 +721,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
                 }
                 break;
 
-        }*/
+        }
 
     }//NO OBRIR NOMES PAU I CLARIMON
     //NO OBRIR NOMES PAU I CLARIMON
@@ -1297,7 +1298,7 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
                     }
                 }
                 break;
-        }*/
+        }
 
     }//NO OBRIR NOMES PAU I CLARIMON
     //NO OBRIR NOMES PAU I CLARIMON
@@ -1338,4 +1339,4 @@ public class MainFrameControllerOLD implements ActionListener , KeyListener,Mous
 
     }
 
-}
+}*/

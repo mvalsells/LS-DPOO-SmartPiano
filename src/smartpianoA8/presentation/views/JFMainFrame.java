@@ -103,6 +103,15 @@ public class JFMainFrame extends JFrame {
     // ---- Start FavView Methods
     // ---- End FavView Methods
     // ---- Start PianoView Methods
+    public void pianoViewSetRecordingPressedIcon(){ jpPianoView.setRecordingPressedIcon(); }
+    public void pianoViewSetRecordingUnpressedIcon(){
+        jpPianoView.setRecordingUnpressedIcon();
+    }
+
+    public void pianoViewJDRun(){jpPianoView.jdRun();}
+    public void pianoViewJDClose(){jpPianoView.jdClose();}
+    public String pianoViewJDGetTextFieldString(){return jpPianoView.getTextFieldString();}
+    public boolean pianoViewJDIsCheckBoxSelected(){return jpPianoView.isCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
     // ---- End PianoCascadeView Methods

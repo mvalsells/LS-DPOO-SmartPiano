@@ -10,8 +10,12 @@ import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BusinessFacadeImpl implements BusinessFacade{
 
@@ -131,6 +135,34 @@ public class BusinessFacadeImpl implements BusinessFacade{
 
     public float getµsPerTickMidiNotes() {
         return songManager.getµsPerTickMidiNotes();
+    }
+
+    public  HashMap<Integer, Teclas> getHMTeclas(){
+
+        HashMap<Integer, Teclas> hmTeclas = new HashMap<>();
+
+        int valorMusical = 48;
+        int codeTecla = KeyEvent.VK_A;
+
+        for(int i = 0; i< JPPiano.OCTAVES; i++){
+
+            for(int j=0; j<12;j++){
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.append(i);
+                sb.append('_');
+                sb.append(j);
+
+                hmTeclas.put(codeTecla,new Teclas(/*sb.toString(),*/valorMusical));
+                valorMusical++;
+                codeTecla++;
+                if(codeTecla==KeyEvent.VK_Z+1){
+                    codeTecla = KeyEvent.VK_0;
+                }
+            }
+        }
+        return hmTeclas;
     }
 
 

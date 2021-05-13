@@ -3,13 +3,16 @@ package smartpianoA8.presentation.Controller;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PresentationController {
 
@@ -30,7 +33,7 @@ public class PresentationController {
 
     // ---- Fi Atributs ----
 
-    public PresentationController(BusinessFacade businessFacade){
+    public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter){
         this.businessFacade = businessFacade;
 
         //Controllers
@@ -39,7 +42,7 @@ public class PresentationController {
         songController = new SongController();
         favController = new FavController();
         profileController = new ProfileController();
-        pianoController = new PianoController();
+        pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
         pianoCascadeController = new PianoCascadeController(null,0f);
     }
 
@@ -91,6 +94,17 @@ public class PresentationController {
     // ---- Start FavView Methods
     // ---- End FavView Methods
     // ---- Start PianoView Methods
+    public void pianoViewSetRecordingPressedIcon(){
+        jfMainFrame.pianoViewSetRecordingPressedIcon();
+    }
+    public void pianoViewSetRecordingUnpressedIcon(){
+        jfMainFrame.pianoViewSetRecordingUnpressedIcon();
+    }
+
+    public void pianoViewJDRun(){jfMainFrame.pianoViewJDRun();}
+    public void pianoViewJDClose(){jfMainFrame.pianoViewJDClose();}
+    public String pianoViewJDGetTextFieldString(){return jfMainFrame.pianoViewJDGetTextFieldString();}
+    public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
     // ---- End PianoCascadeView Methods
