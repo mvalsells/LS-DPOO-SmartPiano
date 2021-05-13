@@ -2,7 +2,6 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -10,13 +9,9 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.JFSongsTable;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
 
-
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -76,8 +71,8 @@ public class Main {
 
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Toccatina.mid",1,null,null);
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/papaya/myownfile copia.mid",1,null,null);
-        ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
+        //Song song = new Song(0,0,null,null,null,"resources/midiFiles/papaya/myownfile copia.mid",1,null,null);
+        //ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
         System.out.println("NUM TRACKSSSSS: " + businessFacade.getNumTracks());
         System.out.println("TOTAL TICKSSSSS: " + businessFacade.getTotalTicks());
@@ -96,7 +91,7 @@ public class Main {
         // START proves
         // ------------------------------
         //
-/*
+
         //----------- albert inici
         /*JPPiano piano = new JPPiano();
         JFrame main = new JFrame();
@@ -185,11 +180,11 @@ public class Main {
       JFTop5View top5 = new JFTop5View(topSongs);
 
 
-*/
+/*
         ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
         Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getTotalSongSeconds()));
         controller.start();
-/*
+*/
 
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();

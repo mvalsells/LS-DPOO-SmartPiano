@@ -72,22 +72,36 @@ public class JPFavView extends JPMainView {
 
         //Part Sud
         JPanel partSud = new JPanel();
-        partSud.setBackground(Color.RED);
+        partSud.setBackground(ColorScheme.MainView_Background);
         partSud.setLayout(new BorderLayout());
 
         JPanel panelEdit = new JPanel();
-        panelEdit.setBackground(Color.GREEN);
+        panelEdit.setBackground(ColorScheme.MainView_Background);
         panelEdit.setLayout(new BorderLayout());
 
         JPanel edit = new JPanel();
-        edit.setBackground(Color.BLUE);
-        //edit.setLayout(new BorderLayout());
+        edit.setBackground(ColorScheme.MainView_Background);
 
         JPanel panelcansonetes = new JPanel();
         panelcansonetes.setLayout(new BorderLayout());
 
         JPanel cansonetes = new JPanel();
+        cansonetes.setBorder(BorderFactory.createEmptyBorder(0,0,100,0));
+        cansonetes.setBackground(ColorScheme.MainView_Background);
         cansonetes.setLayout(new FlowLayout());
+
+
+        JButton[] song = new JBgeneral[30];
+
+        for(int i=0; i<30; i++){
+            song[i] = new JBgeneral("prova 1 text flow", ColorScheme.NavBar_Background);
+            song[i].setBorder(BorderFactory.createEmptyBorder(15,10,15,130));
+            //song[i].setBorder();
+            cansonetes.add(song[i]);
+
+
+        }
+
 
 
 
@@ -96,7 +110,7 @@ public class JPFavView extends JPMainView {
 
 
 
-        panelcansonetes.add(cansonetes,BorderLayout.SOUTH);
+        panelcansonetes.add(cansonetes,BorderLayout.CENTER);
 
         panelEdit.add(edit,BorderLayout.EAST);
         partSud.add(panelcansonetes,BorderLayout.CENTER);
