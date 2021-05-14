@@ -4,8 +4,10 @@ import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface BusinessFacade {
 
@@ -42,4 +44,5 @@ public interface BusinessFacade {
     //Altres
     public boolean startDB();
 
+    HashMap<Integer, Teclas> getHMTeclas();
 }

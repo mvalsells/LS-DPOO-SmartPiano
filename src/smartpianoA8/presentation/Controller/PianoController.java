@@ -1,44 +1,62 @@
 package smartpianoA8.presentation.Controller;
 
+import smartpianoA8.persistence.MidiWritter;
+import smartpianoA8.persistence.MidiWritterImpl;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Key;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Synthesizer;
+import javax.sound.midi.*;
+import javax.swing.*;
 import java.awt.event.*;
+import java.util.HashMap;
 
 public class PianoController implements ActionListener, MouseListener, KeyListener {
     // ---- Inici Atributs ----
     private MidiChannel channel;
+    private MidiWritter midiWritter;
     private PresentationController presentationController;
+    private HashMap<Integer, Teclas> hmTeclas;
+    private final static boolean DEFAULT_IS_RECORDING = false;
+    private final static boolean TRUE_IS_RECORDING = true;
+    boolean isRecording = DEFAULT_IS_RECORDING;
+
+    //Atributs a canviar
+    MidiChannel midiChannel;
+    //MidiWritterImpl midiWritter = new MidiWritterImpl();
+
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
-    public PianoController() {
+    public PianoController(HashMap<Integer, Teclas> hmTeclas, MidiWritter midiWritter) {
+
+
+        this.hmTeclas = hmTeclas;
+        this.midiWritter = midiWritter;
+
 
         try {
             Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
-            //synth.loadAllInstruments(synth.getDefaultSoundbank());
-            //Instrument[] insts = synth.getLoadedInstruments();
+            synth.loadAllInstruments(synth.getDefaultSoundbank());
+            Instrument[] insts = synth.getLoadedInstruments();
             MidiChannel channels[] = synth.getChannels();
             //channel = channels[test.getChanel];
-            //channel = channels[0];
-            for (int i = 0; i < channels.length; i++) {
+            channel = channels[0];
+            /*for (int i = 0; i < channels.length; i++) {
                 if (channels[i] != null) {
                     channel = channels[i];
                     break;
                 }
-            }
-            /*for (int i = 0; i < insts.length; i++) {
+            }*/
+            for (int i = 0; i < insts.length; i++) {
                 if (insts[i].toString()
                         .startsWith("Instrument MidiPiano")) {
                     channel.programChange(i);
                     break;
                 }
-            }*/
+            }
         } catch (MidiUnavailableException ex) {
             ex.printStackTrace();
         }
@@ -68,10 +86,53 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
            case JFMainFrame.PROFILE:
                presentationController.changeView(JFMainFrame.PROFILE);
                break;
+               //Piano View
+           case JPPiano.startRecording:
+               //Christian aqui tu action listener
+               if(!isRecording){
+                   //StartRecording
+                   presentationController.pianoViewSetRecordingPressedIcon();
+                   isRecording = TRUE_IS_RECORDING;
+                   System.out.println("IS RECORDING...");
+                   midiWritter.startRecording();
+               }else if (isRecording){
+                   //StopRecording
+                   presentationController.pianoViewSetRecordingUnpressedIcon();
+                   System.out.println("IS NOT RECORDING...");
+                   isRecording = DEFAULT_IS_RECORDING;
+                   midiWritter.endRecording();
+                   presentationController.pianoViewJDRun();
 
-           //Piano View
-            /*case bla:
-                break;*/
+               }else{ System.out.println("ERROR patata"); }
+               break;
+           case JDPianoRegAdd.GuardarRec:
+
+               if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
+                   //Guardar record i ferla publica
+                   midiWritter.saveRecording();
+                   //todo modify stop
+                   midiWritter.stopPlayingRecording();
+                   //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
+                   presentationController.pianoViewJDClose();
+               }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
+                   //Guardar record i NO ferla publica
+                   midiWritter.saveRecording();
+                   //todo modify stop
+                   midiWritter.stopPlayingRecording();
+                   //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
+                   presentationController.pianoViewJDClose();
+               }else if(presentationController.pianoViewJDGetTextFieldString().equals("")){
+
+                   //todo remove play
+                   midiWritter.playRecording();
+                   presentationController.showWarningDialog("Introduzca un nombre a la grabacion");
+               }
+               break;
+           case JDPianoRegAdd.DiscardRec:
+
+               //Borrar recording(no guardar)
+               presentationController.pianoViewJDClose();
+               break;
        }
     }
 
@@ -84,116 +145,17 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
 
-        //WHITE KEYS
-        switch (key2){
-            case KeyEvent.VK_A:
-                channel.noteOn(48, 127);
-                break;
-            case KeyEvent.VK_B:
-                channel.noteOn(50, 127);
-                break;
-            case  KeyEvent.VK_C:
-                channel.noteOn(52, 127);
-                break;
-            case KeyEvent.VK_D:
-                channel.noteOn(53, 127);
-                break;
-            case KeyEvent.VK_E:
-                channel.noteOn(55, 127);
-                break;
-            case KeyEvent.VK_F:
-                channel.noteOn(57, 127);
-                break;
-            case KeyEvent.VK_G:
-                channel.noteOn(59, 127);
-                break;
-            case KeyEvent.VK_H:
-                channel.noteOn(60, 127);
-                break;
-            case KeyEvent.VK_I:
-                channel.noteOn(62, 127);
-                break;
-            case KeyEvent.VK_J:
-                channel.noteOn(64, 127);
-                break;
-            case KeyEvent.VK_K:
-                channel.noteOn(65, 127);
-                break;
-            case KeyEvent.VK_L:
-                channel.noteOn(67, 127);
-                break;
-            case KeyEvent.VK_M:
-                channel.noteOn(69, 127);
-                break;
-            case KeyEvent.VK_N:
-                channel.noteOn(71, 127);
-                break;
-            case KeyEvent.VK_O:
-                channel.noteOn(72, 127);
-                break;
-            case KeyEvent.VK_P:
-                channel.noteOn(74, 127);
-                break;
-            case KeyEvent.VK_Q:
-                channel.noteOn(76, 127);
-                break;
-            case KeyEvent.VK_R:
-                channel.noteOn(77, 127);
-                break;
-            case KeyEvent.VK_S:
-                channel.noteOn(79, 127);
-                break;
-            //BLACK KEYS
-            case KeyEvent.VK_0:
-                channel.noteOn(49, 127);
-                break;
-            case KeyEvent.VK_1:
-                channel.noteOn(51, 127);
-                break;
-            case KeyEvent.VK_2:
-                channel.noteOn(54, 127);
-                break;
-            case  KeyEvent.VK_3:
-                channel.noteOn(56, 127);
-                break;
-            case KeyEvent.VK_4:
-                channel.noteOn(58, 127);
-                break;
-            case KeyEvent.VK_5:
-                channel.noteOn(61, 127);
-                break;
-            case KeyEvent.VK_6:
-                channel.noteOn(63, 127);
-                break;
-            case KeyEvent.VK_7:
-                channel.noteOn(66, 127);
-                break;
-            case KeyEvent.VK_8:
-                channel.noteOn(68, 127);
-                break;
-            case KeyEvent.VK_9:
-                channel.noteOn(70, 127);
-                break;
-            case KeyEvent.VK_SEMICOLON:
-                channel.noteOn(73, 127);
-                break;
-            case KeyEvent.VK_COLON:
-                    channel.noteOn(75, 127);
-                    break;
-            //case menor que:
-            //channel.noteOn(75, 127);
-            //break;
-            case KeyEvent.VK_EQUALS:
-                channel.noteOn(78, 127);
-                break;
 
-
-
-
-
-
-
+        if(!hmTeclas.get(key2).isPlaying()){
+            midiChannel.noteOn(hmTeclas.get(key2).getNota(),127);
+            hmTeclas.get(key2).setIsPlaying(Teclas.trueIsPlaying);
+            if (midiWritter.getIsRecording()) {
+                midiWritter.setOnMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+            }
         }
+
+
+
 
     }
 
@@ -201,104 +163,12 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void keyReleased(KeyEvent e) {
         int key2 = e.getKeyCode();
 
-        //WHITE KEYS
-        if(key2 == KeyEvent.VK_A){
-            channel.noteOff(48, 127);
-        }
-        if(key2 == KeyEvent.VK_B){
-            channel.noteOff(50, 127);
-        }
-        if(key2 == KeyEvent.VK_C){
-            channel.noteOff(52, 127);
-        }
-        if(key2 == KeyEvent.VK_D){
-            channel.noteOff(53, 127);
-        }
-        if(key2 == KeyEvent.VK_E){
-            channel.noteOff(55, 127);
-        }
-        if(key2 == KeyEvent.VK_F){
-            channel.noteOff(57, 127);
-        }
-        if(key2 == KeyEvent.VK_G){
-            channel.noteOff(59, 127);
-        }
-        if(key2 == KeyEvent.VK_H){
-            channel.noteOff(60, 127);
-        }
-        if(key2 == KeyEvent.VK_I){
-            channel.noteOff(62, 127);
-        }
-        if(key2 == KeyEvent.VK_J){
-            channel.noteOff(64, 127);
-        }
-        if(key2 == KeyEvent.VK_K){
-            channel.noteOff(65, 127);
-        }
-        if(key2 == KeyEvent.VK_L){
-            channel.noteOff(67, 127);
-        }
-        if(key2 == KeyEvent.VK_M){
-            channel.noteOff(69, 127);
-        }
-        if(key2 == KeyEvent.VK_N){
-            channel.noteOff(71, 127);
-        }
-        if(key2 == KeyEvent.VK_O){
-            channel.noteOff(72, 127);
-        }
-        if(key2 == KeyEvent.VK_P){
-            channel.noteOff(74, 127);
-        }
-        if(key2 == KeyEvent.VK_Q){
-            channel.noteOff(76, 127);
-        }
-        if(key2 == KeyEvent.VK_R){
-            channel.noteOff(77, 127);
-        }
-        if(key2 == KeyEvent.VK_S){
-            channel.noteOff(79, 127);
-        }
-
-        //BLACK KEYS
-        if(key2 == KeyEvent.VK_0){
-            channel.noteOff(49, 127);
-        }
-        if(key2 == KeyEvent.VK_1){
-            channel.noteOff(51, 127);
-        }
-        if(key2 == KeyEvent.VK_2){
-            channel.noteOff(54, 127);
-        }
-        if(key2 == KeyEvent.VK_3){
-            channel.noteOff(56, 127);
-        }
-        if(key2 == KeyEvent.VK_4){
-            channel.noteOff(58, 127);
-        }
-        if(key2 == KeyEvent.VK_5){
-            channel.noteOff(61, 127);
-        }
-        if(key2 == KeyEvent.VK_6){
-            channel.noteOff(63, 127);
-        }
-        if(key2 == KeyEvent.VK_7){
-            channel.noteOff(66, 127);
-        }
-        if(key2 == KeyEvent.VK_8){
-            channel.noteOff(68, 127);
-        }
-        if(key2 == KeyEvent.VK_9){
-            channel.noteOff(70, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+58){
-            channel.noteOff(73, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+59){
-            channel.noteOff(75, 127);
-        }
-        if(key2 == KeyEvent.VK_ALT+60){
-            channel.noteOff(78, 127);
+        if(hmTeclas.get(key2).isPlaying()){
+            midiChannel.noteOff(hmTeclas.get(key2).getNota(),127);
+            hmTeclas.get(key2).setIsPlaying(Teclas.defaultIsPlaying);
+            if (midiWritter.getIsRecording()) {
+                midiWritter.setOffMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+            }
         }
 
     }
@@ -312,13 +182,19 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void mousePressed(MouseEvent e) {
 
         Key key = (Key) e.getSource();
-        channel.noteOn(key.getNote(), 127);
+        midiChannel.noteOn(key.getNote(), 127);
+        if(midiWritter.getIsRecording()) {
+            midiWritter.setOnMessage(key.getNote(), System.currentTimeMillis());
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         Key key = (Key) e.getSource();
-        channel.noteOff(key.getNote(),127);
+        midiChannel.noteOff(key.getNote(),127);
+        if(midiWritter.getIsRecording()) {
+            midiWritter.setOffMessage(key.getNote(), System.currentTimeMillis());
+        }
     }
 
     @Override

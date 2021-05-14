@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class JFMainFrame extends JFrame {
     // ---- Inici Atributs ----
@@ -45,7 +46,7 @@ public class JFMainFrame extends JFrame {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
 
-        jpCardPanel.add(jpSongsView, SONGS);
+        //jpCardPanel.add(jpSongsView, SONGS);
         jpCardPanel.add(jpFavView, FAVS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
@@ -95,5 +96,29 @@ public class JFMainFrame extends JFrame {
                 break;
         }
     }
+
+
+    // ---- Start SongView Methods
+    // ---- End SongView Methods
+    // ---- Start FavView Methods
+    // ---- End FavView Methods
+    // ---- Start PianoView Methods
+    public void pianoViewSetRecordingPressedIcon(){ jpPianoView.setRecordingPressedIcon(); }
+    public void pianoViewSetRecordingUnpressedIcon(){
+        jpPianoView.setRecordingUnpressedIcon();
+    }
+
+    public void pianoViewJDRun(){jpPianoView.jdRun();}
+    public void pianoViewJDClose(){jpPianoView.jdClose();}
+    public String pianoViewJDGetTextFieldString(){return jpPianoView.getTextFieldString();}
+    public boolean pianoViewJDIsCheckBoxSelected(){return jpPianoView.isCheckBoxSelected();}
+    // ---- End PianoView Methods
+    // ---- Start PianoCascadeView Methods
+    // ---- End PianoCascadeView Methods
+    // ---- Start ProfileView Methods
+    public ArrayList<String> profileViewGetData() {
+        return jpProfileView.profileViewGetData();
+    }
+    // ---- End ProfileView Methods
 
 }

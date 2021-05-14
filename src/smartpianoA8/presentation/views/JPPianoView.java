@@ -12,8 +12,9 @@ import java.awt.event.MouseListener;
 public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
-    private JPanel jpMain;
     private JPPiano jpPiano;
+    private JDPianoRegAdd jdPianoRegAdd;
+
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPPianoView(){
@@ -21,10 +22,8 @@ public class JPPianoView extends JPMainView {
 
 
 
-        //Main JPanel
-        jpMain = new JPMainView();
-        jpMain.add(new JLColor("PIANO", ColorScheme.PRIMARY));
-
+        //ShowDialog
+        jdPianoRegAdd = new JDPianoRegAdd();
         jpPiano = new JPPiano();
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.PIANO);
@@ -33,7 +32,24 @@ public class JPPianoView extends JPMainView {
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
+
+    public void setRecordingPressedIcon(){ jpPiano.setPressedIcon(); }
+    public void setRecordingUnpressedIcon(){
+        jpPiano.setUnpressedIcon();
+    }
+
+
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
         jpNavBar.registerController(actionListener);
+        jdPianoRegAdd.registerControllerJDPianoRegAdd(actionListener);
+        jpPiano.registerController(actionListener,keyListener,mouseListener);
     }
+
+    public void jdRun() {jdPianoRegAdd.run();    }
+
+    public void jdClose() { jdPianoRegAdd.close();}
+
+    public String getTextFieldString() { return jdPianoRegAdd.getTextFieldString();}
+
+    public boolean isCheckBoxSelected() { return jdPianoRegAdd.isCheckBoxSelected();}
 }
