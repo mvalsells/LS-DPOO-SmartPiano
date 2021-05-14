@@ -2,46 +2,43 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.customComponents.RectanglesCascada;
 
 import java.awt.event.*;
 import java.util.ArrayList;
 
 public class PianoCascadeController implements Runnable, ActionListener, KeyListener, MouseListener {
 
-    // ---- Inici Atributs ----
     private PresentationController presentationController;
-    private Float usPerTick;
     private ArrayList<ArrayList<Notes>> partitura;
-    private int speed;
-    // ---- Fi Atributs ----
-    // ---- Inici Constructor ----
-    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float usPerTick) {//pasarle la cancion y datos
-    this.partitura = partitura;
-    this.usPerTick = usPerTick;
-    this.speed = 1;     //-------canviar-------/
+    private ArrayList<Notes> canal1;
+    private final Long maxMilis;
+
+
+    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float maxMilis) {//pasarle la cancion y datos
+        this.partitura = partitura;
+        this.canal1 = partitura.get(1);
+        this.maxMilis = (long)(maxMilis*1000);
     }
-    // ---- Fi Constructors ----
-    // ---- Inici Mètodes ----
+
+
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
     @Override
     public void run(){
-        while(true){
-                System.out.println("macbook pro");
-                try {
-                    Thread.sleep(speed);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                //codigo abajo
-
-
-
-
-
-
-
+        long inicial = System.currentTimeMillis();
+        long actual = System.currentTimeMillis()-inicial;
+        int i = 0;
+        Thread[] rectangle = new Thread[canal1.size()];
+        while(actual <= maxMilis){
+            actual = System.currentTimeMillis()-inicial;
+            if(canal1.get(i).getStartTime() >= actual){
+                rectangle[i] = new Thread(new RectanglesCascada(canal1.get(i).getNote(),canal1.get(i).getEndTime()));
+                rectangle[i].start();
+                i++;
+            }
+            actual = System.currentTimeMillis()-inicial;
         }
     }
 

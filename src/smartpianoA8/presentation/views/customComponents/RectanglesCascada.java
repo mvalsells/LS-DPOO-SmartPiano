@@ -2,7 +2,7 @@ package smartpianoA8.presentation.views.customComponents;
 
 import java.awt.*;
 
-public class RectanglesCascada extends Rectangle {
+public class RectanglesCascada extends Rectangle implements Runnable{
     private int note, velocity, channel, duration, startTime;
     private long endTime;
     boolean started = false;
@@ -14,11 +14,11 @@ public class RectanglesCascada extends Rectangle {
     }
 
     public void run(){
-        //play note
+
         long inicial = System.currentTimeMillis();
         while(System.currentTimeMillis()-inicial <= endTime){
         }
-        //stop
+
     }
 
     public void move(){
