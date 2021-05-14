@@ -11,20 +11,22 @@ import java.awt.event.MouseListener;
 public class JPPianoCascadeView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
-    private JPanel jpMain;
+
+    private JPPiano jpPiano;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPPianoCascadeView(){
         setLayout(new BorderLayout());
 
-        //Main JPanel
-        jpMain = new JPMainView();
-        jpMain.add(new JLColor("Piano cascade", ColorScheme.PRIMARY));
 
+        add(new JLColor("Piano cascade", ColorScheme.PRIMARY));
+        //JPPiano
+        jpPiano  = new JPPiano();
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
         add(jpNavBar,BorderLayout.WEST);
-        add(jpMain,BorderLayout.CENTER);
+        add(jpPiano,BorderLayout.SOUTH);
+        //add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----

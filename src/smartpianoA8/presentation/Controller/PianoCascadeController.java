@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JPPianoView;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
@@ -18,11 +19,11 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     private JPPiano pianoView;
 
 
-    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float maxMilis, JPPiano pianoView) {//pasarle la cancion y datos
-        this.partitura = partitura;
-        this.canal1 = partitura.get(1);
-        this.maxMilis = (long)(maxMilis*1000);
-        this.pianoView = pianoView;
+    public PianoCascadeController() {//pasarle la cancion y datos
+        this.partitura = null;
+        this.canal1 = null;
+        this.maxMilis = null;
+
     }
 
 
@@ -31,8 +32,14 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     }
     @Override
     public void run(){
+        //Song song = new Song();
+        //this.partitura = presentationController.getBusinesMidiNotes(song);
+        this.canal1 = partitura.get(1);
+
         long inicial = System.currentTimeMillis();
         long actual = System.currentTimeMillis()-inicial;
+
+
         int i = 0;
         Thread[] rectangle = new Thread[canal1.size()];
         while(actual <= maxMilis){

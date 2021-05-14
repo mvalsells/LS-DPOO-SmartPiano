@@ -1,14 +1,19 @@
 package smartpianoA8.presentation.Controller;
 
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.customComponents.JPSongs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SongController implements ActionListener {
 
     // ---- Inici Atributs ----
     PresentationController presentationController;
+    Song lastSongPressed;
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
@@ -43,6 +48,11 @@ public class SongController implements ActionListener {
             //Song View
             /*case bla:
                 break;*/
+            case JPSongs.SONG_PRESSED:
+                e.getID();
+
+
         }
     }
+
 }

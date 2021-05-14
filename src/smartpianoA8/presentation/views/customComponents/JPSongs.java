@@ -1,16 +1,30 @@
 package smartpianoA8.presentation.views.customComponents;
 
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPSongs extends JPanel {
-    public JPSongs(){
+    public static final String SONG_PRESSED = "songPressed";
+
+    private int lastSongIDPressed;
+
+    private ArrayList<Song> songs;
+    private JButton[] newButon;
+    private JButton[] masButon;
+    public JPSongs(ArrayList<Song> songs){
+        this.songs = songs;
         configureMenu();
     }
     BordersView bordersView = new BordersView();
     private void configureMenu(){
-
+        
+        
+        
 
         ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
         ImageIcon CancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
@@ -20,7 +34,8 @@ public class JPSongs extends JPanel {
         ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
         ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
         ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
-       
+
+
 
         /*-----------------------------------------PART NORD-----------------------------------------*/
         
@@ -66,8 +81,8 @@ public class JPSongs extends JPanel {
 
         JPanel mas_Escuchadas = new JPanel();
         mas_Escuchadas.setBackground(ColorScheme.MainView_Background);
-        mas_Escuchadas.setLayout(new GridLayout(1,5));
-       mas_Escuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
+        mas_Escuchadas.setLayout(new GridLayout(1,songs.size()));
+        mas_Escuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
 
 
         JLabel novedades = new JLabel("Novedades");
@@ -78,16 +93,18 @@ public class JPSongs extends JPanel {
         JPanel news = new JPanel();
         news.setBackground(ColorScheme.MainView_Background);
         news.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
-        news.setLayout(new GridLayout(1,5));
+        news.setLayout(new GridLayout(1,songs.size()));
 
-        JPanel[] separacioMas = new JPanel[5];
+        JPanel[] separacioMas = new JPanel[songs.size()];
 
-        JButton[] masButon = new JBgeneral[5];
-        JButton[] newButon = new JBgeneral[5];
-        JPanel[] separacioNew = new JPanel[5];
-        for(int i=0; i<5; i++){
+        masButon = new JBgeneral[songs.size()];
+        newButon = new JBgeneral[songs.size()];
+        JPanel[] separacioNew = new JPanel[songs.size()];
+        for(int i=0; i< songs.size(); i++){
             masButon[i] = new JBgeneral("Holi personi", ColorScheme.ORANGE_START);
             newButon[i] = new JBgeneral("Holi personi2", ColorScheme.ORANGE_START);
+            masButon[i].setActionCommand( SONG_PRESSED );
+            newButon[i].setActionCommand(SONG_PRESSED);
             separacioMas[i] = new JPanel();
             separacioMas[i].setLayout(new BorderLayout());
             separacioNew[i] = new JPanel();
@@ -121,6 +138,24 @@ public class JPSongs extends JPanel {
     }
 
     public void registerController(ActionListener controller){
-        //Afegir botons
+
+        for(int i=0; i< songs.size(); i++){
+
+            masButon[i].addActionListener(controller);
+            newButon[i].addActionListener(controller);
+
+        }
+
     }
+    /*public int getSongPressedID(){re}
+    public String getSongPressedIDString(int idButton){
+
+        for(int i=0; i< songs.size(); i++){
+
+            if(masButon.get)
+
+        }
+
+    }*/
+
 }

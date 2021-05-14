@@ -13,9 +13,11 @@ public class JPPiano extends JPanel {
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
 
-    public static final String startRecording = "startRecording";
+    public static final String START_RECORDING = "startRecording";
+    public static final String PLAY_BUTTON = "startPlaying";
 
     private JButton regButton;
+    private JButton playButton;
 
 
     public JPPiano() {
@@ -157,10 +159,11 @@ public class JPPiano extends JPanel {
 
         /*West*/
         regButton = new JBPianoButton();
-        regButton.setActionCommand(startRecording);
+        regButton.setActionCommand(START_RECORDING);
 
         /*East*/
-        JButton playButton = new JBPianoButton();
+        playButton = new JBPianoButton();
+        playButton.setActionCommand(PLAY_BUTTON);
 
         /*North*/
         JPanel panellTextBotonsWestWest = new JPanel();
@@ -457,6 +460,7 @@ public class JPPiano extends JPanel {
     public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
 
         regButton.addActionListener(controller);
+        playButton.addActionListener(controller);
 
         for (BlackKey black : blacks) {
             black.addKeyListener(keyListener);

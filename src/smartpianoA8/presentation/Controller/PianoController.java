@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.persistence.MidiWritter;
-import smartpianoA8.persistence.MidiWritterImpl;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
@@ -9,13 +8,12 @@ import smartpianoA8.presentation.views.customComponents.Key;
 import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.*;
-import javax.swing.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
 public class PianoController implements ActionListener, MouseListener, KeyListener {
     // ---- Inici Atributs ----
-    private MidiChannel channel;
+
     private MidiWritter midiWritter;
     private PresentationController presentationController;
     private HashMap<Integer, Teclas> hmTeclas;
@@ -43,7 +41,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
             Instrument[] insts = synth.getLoadedInstruments();
             MidiChannel channels[] = synth.getChannels();
             //channel = channels[test.getChanel];
-            channel = channels[0];
+            midiChannel = channels[0];
             /*for (int i = 0; i < channels.length; i++) {
                 if (channels[i] != null) {
                     channel = channels[i];
@@ -53,7 +51,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
             for (int i = 0; i < insts.length; i++) {
                 if (insts[i].toString()
                         .startsWith("Instrument MidiPiano")) {
-                    channel.programChange(i);
+                    midiChannel.programChange(i);
                     break;
                 }
             }
@@ -87,7 +85,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                presentationController.changeView(JFMainFrame.PROFILE);
                break;
                //Piano View
-           case JPPiano.startRecording:
+           case JPPiano.START_RECORDING:
                //Christian aqui tu action listener
                if(!isRecording){
                    //StartRecording
@@ -133,6 +131,8 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                //Borrar recording(no guardar)
                presentationController.pianoViewJDClose();
                break;
+           /*case JPPiano.PLAY_BUTTON:
+               presentationController*/
        }
     }
 
@@ -145,15 +145,17 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
 
-
-        if(!hmTeclas.get(key2).isPlaying()){
-            midiChannel.noteOn(hmTeclas.get(key2).getNota(),127);
-            hmTeclas.get(key2).setIsPlaying(Teclas.trueIsPlaying);
-            if (midiWritter.getIsRecording()) {
-                midiWritter.setOnMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+        try {
+            if (!hmTeclas.get(key2).isPlaying()) {
+                midiChannel.noteOn(hmTeclas.get(key2).getNota(), 127);
+                hmTeclas.get(key2).setIsPlaying(Teclas.trueIsPlaying);
+                if (midiWritter.getIsRecording()) {
+                    midiWritter.setOnMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+                }
             }
+        }catch (NullPointerException epa){
+            System.err.println("PATATA OUT OF BOUNDS");
         }
-
 
 
 
@@ -163,14 +165,17 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void keyReleased(KeyEvent e) {
         int key2 = e.getKeyCode();
 
-        if(hmTeclas.get(key2).isPlaying()){
-            midiChannel.noteOff(hmTeclas.get(key2).getNota(),127);
-            hmTeclas.get(key2).setIsPlaying(Teclas.defaultIsPlaying);
-            if (midiWritter.getIsRecording()) {
-                midiWritter.setOffMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+        try {
+            if(hmTeclas.get(key2).isPlaying()){
+                midiChannel.noteOff(hmTeclas.get(key2).getNota(),127);
+                hmTeclas.get(key2).setIsPlaying(Teclas.defaultIsPlaying);
+                if (midiWritter.getIsRecording()) {
+                    midiWritter.setOffMessage(hmTeclas.get(key2).getNota(), System.currentTimeMillis());
+                }
             }
+        }catch (NullPointerException epa){
+            System.err.println("PATATA OUT OF BOUNDS");
         }
-
     }
 
     @Override

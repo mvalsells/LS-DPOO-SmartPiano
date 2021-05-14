@@ -1,5 +1,7 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.business.entity.Song;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -29,7 +31,7 @@ public class JFMainFrame extends JFrame {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JFMainFrame(){
+    public JFMainFrame(ArrayList<Song> masterSongs){
 
         //Frame
         JFrame frame  = new JFrame();
@@ -37,7 +39,7 @@ public class JFMainFrame extends JFrame {
         frame.setPreferredSize(new Dimension(1085,455));
 
         //Panels (Navigation Bar options)
-        jpSongsView = new JPSongsView();
+        jpSongsView = new JPSongsView(masterSongs);
         jpFavView = new JPFavView();
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView();
@@ -99,6 +101,7 @@ public class JFMainFrame extends JFrame {
 
 
     // ---- Start SongView Methods
+    //public int jpSongSetLastIDPressed(){jpSongsView.jpSongSetLastIDPressed();}
     // ---- End SongView Methods
     // ---- Start FavView Methods
     // ---- End FavView Methods

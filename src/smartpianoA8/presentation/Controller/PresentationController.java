@@ -1,6 +1,8 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.BusinessFacade;
+import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
@@ -38,12 +40,13 @@ public class PresentationController {
 
         //Controllers
         wellcomeController = new WellcomeController();
-        jfMainFrame = new JFMainFrame();
+        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs());
         songController = new SongController();
         favController = new FavController();
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
-        pianoCascadeController = new PianoCascadeController(null,0f);
+
+        //pianoCascadeController = new PianoCascadeController();
     }
 
     public void registerAllControlers(){
@@ -53,7 +56,7 @@ public class PresentationController {
         favController.registerMasterController(this);
         profileController.registerMasterController(this);
         pianoController.registerMasterController(this);
-        pianoCascadeController.registerMasterController(this);
+        //pianoCascadeController.registerMasterController(this);
 
         //Register views to their contrller
         //TODO falta wellcome controller, potser no es necessari
@@ -86,10 +89,13 @@ public class PresentationController {
     public void updatePassword(String newPassword, String newPasswordRepetition) throws PasswordException{
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
+    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song){return businessFacade.getMidiNotes(song);}
+    public long getBusinesMaxMilis(){return (long)(businessFacade.getTotalSongSeconds()*1000);}
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
+        //public ArrayList<Song> getMasterSongs(){return businessFacade.getMasterSongs();}
     // ---- End SongView Methods
     // ---- Start FavView Methods
     // ---- End FavView Methods

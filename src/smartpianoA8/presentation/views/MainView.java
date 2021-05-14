@@ -99,7 +99,7 @@ public class MainView extends JPanel {
         jpCardPanel = new JPanel(cards);
         jpPiano = new JPPiano();
         jpUserAcountView = new JPProfileView();
-        jpSongs = new JPSongs();
+        //jpSongs = new JPSongs();
 
 
         add(jpNavBar,BorderLayout.WEST);
@@ -152,6 +152,7 @@ public class MainView extends JPanel {
     public void jdClose(){jdPianoRegAdd.close();}
     public String jdGetTextFieldString(){return jdPianoRegAdd.getTextFieldString();}
     public boolean jdIsCheckBoxSelected(){return jdPianoRegAdd.isCheckBoxSelected();}
+
 
 
     public void registerControllerJPNavBar(ActionListener controller){

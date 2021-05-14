@@ -1,10 +1,12 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPSongsView extends JPMainView {
     // ---- Inici Atributs ----
@@ -12,9 +14,9 @@ public class JPSongsView extends JPMainView {
     private JPSongs jpSongs;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JPSongsView(){
+    public JPSongsView(ArrayList<Song> masterSongs){
         setLayout(new BorderLayout());
-        jpSongs = new JPSongs();
+        jpSongs = new JPSongs(masterSongs);
 
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
@@ -23,6 +25,7 @@ public class JPSongsView extends JPMainView {
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
+    //public int jpSongSetLastIDPressed(){jpSongs.setLastSongID();}
     public void registerControllers(ActionListener actionListener) {
         jpNavBar.registerController(actionListener);
         jpSongs.registerController(actionListener);

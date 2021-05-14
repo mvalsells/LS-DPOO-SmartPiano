@@ -58,19 +58,11 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
         presentationController.registerAllControlers();
-
-        //Business <-> Persitence
-        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
-        Timer timer = new Timer();
-        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
-        Thread.sleep(3000);
-        //ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
-        //System.out.println("lele");
-
+/*
+        //Song
+        //Test vista canciones descargadas
         ArrayList<Song> midiSongs = businessFacade.getMasterSongs();
         System.out.println("lele");
-
-        //Test vista canciones descargadas
         JFSongsTable songsView = new JFSongsTable(midiSongs);
 
 
@@ -83,6 +75,26 @@ public class Main {
         System.out.println("SECONDS PER TICKKKKK: " + businessFacade.getSecondsPerTick());
         System.out.println("TOTAL SONG SECONDSSSSSS: " + businessFacade.getTotalSongSeconds());
         System.out.println("TOTAL SONG MICROSECONDS PER TICKKKKKK: " + businessFacade.getµsPerTickMidiNotes());
+
+
+
+        //Partitura
+        ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
+
+
+
+
+        //Business <-> Persitence
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
+        Thread.sleep(3000);
+        //ArrayList<Song> midiSongs = htmlScrapping.getMidiSongs();
+        //System.out.println("lele");
+
+
+*/
+
 
 /*
         //
@@ -185,11 +197,8 @@ public class Main {
 
 
 */
-        JPPiano pianoView = new JPPiano();
-        ArrayList<ArrayList<Notes>> partitura = businessFacade.getMidiNotes(song);
-        Thread controller = new Thread(new PianoCascadeController(partitura, businessFacade.getTotalSongSeconds(), pianoView));
-        controller.start();
-/*
+        //JPPiano pianoView = new JPPiano();
+
 
 
         /*HtmlScrapping htmlScrapping = new HtmlScrapping();
