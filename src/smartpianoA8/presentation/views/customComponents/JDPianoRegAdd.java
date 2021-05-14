@@ -50,7 +50,7 @@ public class JDPianoRegAdd extends JDialog {
 
 
         JPanel jpExtraFlow2 = new JPanel(new FlowLayout());
-        jpExtraFlow2.setOpaque(true);
+        jpExtraFlow2.setOpaque(false);
         jbPlayButton = new JButton();
         jbPlayButton.setIcon(playButton);
         jbPlayButton.setActionCommand(playRec);

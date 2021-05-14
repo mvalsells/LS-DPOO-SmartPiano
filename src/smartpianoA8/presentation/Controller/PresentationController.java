@@ -46,6 +46,7 @@ public class PresentationController {
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
 
+
         //pianoCascadeController = new PianoCascadeController();
     }
 
