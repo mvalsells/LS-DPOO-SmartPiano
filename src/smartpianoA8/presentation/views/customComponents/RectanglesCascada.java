@@ -1,5 +1,7 @@
 package smartpianoA8.presentation.views.customComponents;
 
+import smartpianoA8.presentation.views.JPPianoView;
+
 import java.awt.*;
 
 public class RectanglesCascada extends Rectangle implements Runnable{
@@ -7,10 +9,12 @@ public class RectanglesCascada extends Rectangle implements Runnable{
     private long endTime;
     boolean started = false;
     private final static int margin = 4;
+    private JPPiano pianoView;
 
-    public RectanglesCascada(int note, Long endTime){
+    public RectanglesCascada(int note, Long endTime, JPPiano pianoView){
         this.endTime = endTime;
         this.note = note;
+        this.pianoView = pianoView;
     }
 
     public void run(){

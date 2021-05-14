@@ -2,6 +2,8 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.JPPianoView;
+import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.RectanglesCascada;
 
 import java.awt.event.*;
@@ -13,12 +15,14 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     private ArrayList<ArrayList<Notes>> partitura;
     private ArrayList<Notes> canal1;
     private final Long maxMilis;
+    private JPPiano pianoView;
 
 
-    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float maxMilis) {//pasarle la cancion y datos
+    public PianoCascadeController(ArrayList<ArrayList<Notes>> partitura, Float maxMilis, JPPiano pianoView) {//pasarle la cancion y datos
         this.partitura = partitura;
         this.canal1 = partitura.get(1);
         this.maxMilis = (long)(maxMilis*1000);
+        this.pianoView = pianoView;
     }
 
 
@@ -34,7 +38,7 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
         while(actual <= maxMilis){
             actual = System.currentTimeMillis()-inicial;
             if(canal1.get(i).getStartTime() >= actual){
-                rectangle[i] = new Thread(new RectanglesCascada(canal1.get(i).getNote(),canal1.get(i).getEndTime()));
+                rectangle[i] = new Thread(new RectanglesCascada(canal1.get(i).getNote(),canal1.get(i).getEndTime(), pianoView));
                 rectangle[i].start();
                 i++;
             }
