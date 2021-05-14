@@ -14,7 +14,6 @@ import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.JFSongsTable;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

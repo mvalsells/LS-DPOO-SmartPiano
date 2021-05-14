@@ -46,7 +46,7 @@ public class JFMainFrame extends JFrame {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
 
-        //jpCardPanel.add(jpSongsView, SONGS);
+        jpCardPanel.add(jpSongsView, SONGS);
         jpCardPanel.add(jpFavView, FAVS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);

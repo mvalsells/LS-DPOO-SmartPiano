@@ -67,7 +67,7 @@ public class JPSongs extends JPanel {
         JPanel mas_Escuchadas = new JPanel();
         mas_Escuchadas.setBackground(ColorScheme.MainView_Background);
         mas_Escuchadas.setLayout(new GridLayout(1,5));
-        mas_Escuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
+       mas_Escuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
 
 
         JLabel novedades = new JLabel("Novedades");
@@ -81,12 +81,23 @@ public class JPSongs extends JPanel {
         news.setLayout(new GridLayout(1,5));
 
         JPanel[] separacioMas = new JPanel[5];
+
+        JButton[] masButon = new JBgeneral[5];
+        JButton[] newButon = new JBgeneral[5];
         JPanel[] separacioNew = new JPanel[5];
         for(int i=0; i<5; i++){
+            masButon[i] = new JBgeneral("Holi personi", ColorScheme.ORANGE_START);
+            newButon[i] = new JBgeneral("Holi personi2", ColorScheme.ORANGE_START);
             separacioMas[i] = new JPanel();
+            separacioMas[i].setLayout(new BorderLayout());
             separacioNew[i] = new JPanel();
+            separacioNew[i].setLayout(new BorderLayout());
+            //masButon[i].setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
+            //newButon[i].setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
             separacioNew[i].setBorder(BorderFactory.createLineBorder(ColorScheme.MainView_Background));
             separacioMas[i].setBorder(BorderFactory.createLineBorder(ColorScheme.MainView_Background));
+            separacioMas[i].add(masButon[i], BorderLayout.CENTER);
+            separacioNew[i].add(newButon[i], BorderLayout.CENTER);
             news.add(separacioNew[i]);
             mas_Escuchadas.add(separacioMas[i]);
         }
