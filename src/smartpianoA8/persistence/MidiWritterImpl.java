@@ -96,7 +96,7 @@ public class MidiWritterImpl implements MidiWritter {
     private void addSongToDatabase(String userName, String songName, boolean isPublic, long totalTimeInMinis) {
 
         LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String formattedString = localDate.format(formatter);
 
         int isPublic2 = 0;
