@@ -20,8 +20,17 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Classe principal
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou.
+ */
 public class Main {
-
+    /**
+     * Mètode principal per executar el programa
+     * @param args arguemnts de la linia cmd (N/A)
+     * @throws InterruptedException interrupció de sortida del programam
+     */
     public static void main(String[] args) throws InterruptedException {
         // ------------------------------
         // START Main smart piano

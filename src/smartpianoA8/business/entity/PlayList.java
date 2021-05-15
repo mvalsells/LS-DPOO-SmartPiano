@@ -3,7 +3,9 @@ package smartpianoA8.business.entity;
 import java.util.ArrayList;
 
 /**
- * Classe PlayList que representa una llista de reproducció
+ * Entity de playlist
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class PlayList {
     private String nom;
@@ -24,30 +26,59 @@ public class PlayList {
 
     }
 
+    /**
+     * Setter del nom
+     * @param nouNom String nom
+     */
     public void changeName(String nouNom){
         this.nom = nouNom;
     }
 
+    /**
+     * Mètode que elimina una cançó ja existent
+     * @param song Cançó de tipus Song a borrar
+     */
     public void removeSong(Song song){
         songs.remove(song);
     }
 
+    /**
+     * Mètode per afegir una cançó ja existent
+     * @param song Song a afegir
+     */
     public void addSong(Song song){
         songs.add(song);
     }
 
+    /**
+     * Mètode per obtenir totes les cançons en ArrayList d'una playlist
+     * @return ArrayList<Song></Song> amb les cançons
+     */
     public ArrayList<Song> getSongs(){
         return this.songs;
     }
 
+    /**
+     * Getter del propietari de la playlist
+     * @return String nom del propietari (usuari)
+     */
     public String getNomUsuari() {
         return nomUsuari;
     }
 
+    /**
+     * Getter del nom de la playlist
+     * @return String nom de la playlist
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Getter de l'ID de la playlist
+     * @deprecated Sense ús
+     * @return
+     */
     public int getIdPlayList() {
         return idPlayList;
     }
