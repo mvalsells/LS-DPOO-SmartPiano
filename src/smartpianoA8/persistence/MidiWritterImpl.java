@@ -1,8 +1,13 @@
 package smartpianoA8.persistence;
 
+import smartpianoA8.business.entity.Song;
+import smartpianoA8.persistence.dao.SongDAO;
+
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MidiWritterImpl implements MidiWritter {
 
@@ -12,6 +17,7 @@ public class MidiWritterImpl implements MidiWritter {
     private boolean recording = false;
     private long startTime = 0;
     Sequencer finalSequencer;
+    SongDAO songDAO;
 
     private static final int TYPE_SINGLE_TRACK = 0;
     private static final int TYPE_PARALLEL_TRACKS = 1;
@@ -19,7 +25,8 @@ public class MidiWritterImpl implements MidiWritter {
     private File midiOutputFile;
 
 
-    public MidiWritterImpl() {
+    public MidiWritterImpl(SongDAO songDAO) {
+        this.songDAO = songDAO;
     }
 
     @Override
@@ -80,9 +87,27 @@ public class MidiWritterImpl implements MidiWritter {
     }
 
     @Override
-    public void saveRecording(String userName, String songName) {
+    public void saveRecording(String userName, String songName, boolean isPublic, long totalTimeInMilis) {
         makeUserDirectory(userName);
         saveToFile(userName, songName);
+        addSongToDatabase(userName, songName, isPublic, totalTimeInMilis);
+    }
+
+    private void addSongToDatabase(String userName, String songName, boolean isPublic, long totalTimeInMinis) {
+
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+        String formattedString = localDate.format(formatter);
+
+        int isPublic2 = 0;
+        if(isPublic) {
+            isPublic2 = 1;
+        }
+
+        Song newSong = new Song(0,totalTimeInMinis,songName,userName, formattedString, "resources/midiFiles/"+userName+"/"+songName+".mid", isPublic2, userName, null);
+
+        songDAO.addSong(newSong, userName);
+
     }
 
     private void saveToFile(String userName, String songName) {

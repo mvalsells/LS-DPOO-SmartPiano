@@ -4,6 +4,9 @@ import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -53,7 +56,6 @@ public class Main {
         }
 
         MidiParser midiParser = new MidiParserImpl();
-        MidiWritter midiWritter = new MidiWritterImpl();
 
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
@@ -64,10 +66,21 @@ public class Main {
         PlayListDAO playListDAO = new SQLPlayListDAO(connectorSQL);
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
+        MidiWritter midiWritter = new MidiWritterImpl(songDAO);
+
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
         presentationController.registerAllControlers();
+
+        try {
+            businessFacade.registerUser("ChristianTestLele", "papaia@gmail.com", "sDFDSfdsfffsd2344323!", "sDFDSfdsfffsd2344323!", User.TYPE_SMARTPIANO);
+        } catch (PasswordException e) {
+            e.printStackTrace();
+        } catch (UserManagerException e) {
+            e.printStackTrace();
+        }
+
 
         songDAO.registerPresentationFacade(presentationController);
 /*

@@ -20,6 +20,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private final static boolean DEFAULT_IS_RECORDING = false;
     private final static boolean TRUE_IS_RECORDING = true;
     boolean isRecording = DEFAULT_IS_RECORDING;
+    private long startRecording = 0;
 
     //Atributs a canviar
     MidiChannel midiChannel;
@@ -93,6 +94,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                    isRecording = TRUE_IS_RECORDING;
                    System.out.println("IS RECORDING...");
                    midiWritter.startRecording();
+                   startRecording = System.currentTimeMillis();
                }else if (isRecording){
                    //StopRecording
                    presentationController.pianoViewSetRecordingUnpressedIcon();
@@ -108,7 +110,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i ferla publica
                    //todo modify username and add song to database
-                   midiWritter.saveRecording("pepito", presentationController.pianoViewJDGetTextFieldString());
+                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), true, System.currentTimeMillis()-startRecording);
                    //todo modify stop
                    midiWritter.stopPlayingRecording();
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
@@ -116,7 +118,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
                    //todo modify username and add song to database
-                   midiWritter.saveRecording("pepito", presentationController.pianoViewJDGetTextFieldString());
+                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), false, System.currentTimeMillis()-startRecording);
                    //todo modify stop
                    midiWritter.stopPlayingRecording();
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
