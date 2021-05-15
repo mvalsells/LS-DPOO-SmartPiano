@@ -62,6 +62,13 @@ public class MidiWritterImpl implements MidiWritter {
         }
     }
 
+    private void makeUserDirectory(String userName) {
+        File directory = new File("resources/midiFiles/"+userName);
+        if(!directory.exists()) {
+            directory.mkdir();
+        }
+    }
+
     @Override
     public void playRecording() {
         finalSequencer.start();
@@ -73,11 +80,12 @@ public class MidiWritterImpl implements MidiWritter {
     }
 
     @Override
-    public void saveRecording() {
-        saveToFile();
+    public void saveRecording(String userName, String songName) {
+        makeUserDirectory(userName);
+        saveToFile(userName, songName);
     }
 
-    private void saveToFile() {
+    private void saveToFile(String userName, String songName) {
         int midiFileType = 0;
         if(sequence.getTracks().length == 1) {
             midiFileType = TYPE_SINGLE_TRACK;
@@ -88,7 +96,7 @@ public class MidiWritterImpl implements MidiWritter {
         int[] arrayMidiFiles = MidiSystem.getMidiFileTypes(sequence);
         try {
             if (arrayMidiFiles.length > 0) {
-                midiOutputFile = new File("resources/midiFiles/papaya/myownfile.mid");
+                midiOutputFile = new File("resources/midiFiles/"+userName+"/"+songName+".mid");
                 MidiSystem.write(sequence, arrayMidiFiles[0], midiOutputFile);
 
                 sequencer.addMetaEventListener(metaMsg -> {
