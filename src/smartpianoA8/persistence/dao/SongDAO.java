@@ -2,6 +2,8 @@ package smartpianoA8.persistence.dao;
 
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.Controller.PresentationFacade;
 
 import java.util.ArrayList;
 
@@ -78,4 +80,6 @@ public interface SongDAO {
      * @return ArrayList de cançons publiques i després Master.
      */
     public ArrayList<Song> getPublicAndMasterSongs();
+
+    void registerPresentationFacade(PresentationFacade presentationFacade);
 }

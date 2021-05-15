@@ -147,6 +147,10 @@ public class JPSongs extends JPanel {
         }
 
     }
+
+    public void nuevasCanciones() {
+        //Actualizar la vista
+    }
     /*public int getSongPressedID(){re}
     public String getSongPressedIDString(int idButton){
 

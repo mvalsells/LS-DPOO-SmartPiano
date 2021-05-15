@@ -12,6 +12,7 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.Controller.PresentationFacade;
 import smartpianoA8.presentation.views.JFSongsTable;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
@@ -67,6 +68,8 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
         presentationController.registerAllControlers();
+
+        songDAO.registerPresentationFacade(presentationController);
 /*
         //Song
         //Test vista canciones descargadas
@@ -126,20 +129,6 @@ public class Main {
         main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //-----Albert fi
-
-        // ---- Marc Inici ----
-        //MainView mainView = new MainView();
-        /*MainViewV2 mainView = new MainViewV2();
-        JFrame main = new JFrame();
-        main.add(mainView);
-        main.pack();
-        main.setVisible(true);
-        main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-//*/
-        // ---- Marc fi ----
-
-
 
 /*
 

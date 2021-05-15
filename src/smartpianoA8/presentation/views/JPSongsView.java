@@ -30,4 +30,8 @@ public class JPSongsView extends JPMainView {
         jpNavBar.registerController(actionListener);
         jpSongs.registerController(actionListener);
     }
+
+    public void nuevasCanciones() {
+        jpSongs.nuevasCanciones();
+    }
 }

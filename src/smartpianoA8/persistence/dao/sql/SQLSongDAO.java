@@ -2,6 +2,7 @@ package smartpianoA8.persistence.dao.sql;
 
 import smartpianoA8.persistence.dao.*;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.Controller.PresentationFacade;
 
 import java.sql.Array;
 import java.sql.ResultSet;
@@ -13,7 +14,7 @@ public class SQLSongDAO implements SongDAO {
     public SQLSongDAO(SQLConnector connector){
         this.connector = connector;
     }
-
+    private PresentationFacade presentationFacade;
 
     /**
      * Afegeix una cançó a la bbdd
@@ -32,6 +33,7 @@ public class SQLSongDAO implements SongDAO {
                 song.getPublic() + "', '" +
                 username + "');";
         connector.insertQuery(query);
+        presentationFacade.nuevasCanciones();
     }
 
 
@@ -234,6 +236,11 @@ public class SQLSongDAO implements SongDAO {
 
         return retorna;
 
+    }
+
+    @Override
+    public void registerPresentationFacade(PresentationFacade presentationFacade) {
+        this.presentationFacade=presentationFacade;
     }
 
 }

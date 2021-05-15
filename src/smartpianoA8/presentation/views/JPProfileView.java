@@ -26,7 +26,7 @@ public class JPProfileView extends JPMainView {
 
     public JPProfileView(){
         jpMain = new JPMainView();
-        jpMain.setLayout(new BorderLayout());
+       /* jpMain.setLayout(new BorderLayout());
         // ---- Start North ----
         JPanel jpNorth = new JPMainView();
         jpNorth.setLayout(new BorderLayout());
@@ -83,17 +83,17 @@ public class JPProfileView extends JPMainView {
         jpMain.add(jpNorth, BorderLayout.NORTH);
         jpMain.add(jpCenter, BorderLayout.CENTER);
         jpMain.add(Box.createVerticalStrut(40),BorderLayout.SOUTH);
-
+*/
         //Final packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
         add(jpNavBar,BorderLayout.WEST);
-        add(jpMain,BorderLayout.CENTER);
+        //add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
     public void registerControllers(ActionListener controller){
-        jbLogout.addActionListener(controller);
-        jbSaveSettings.addActionListener(controller);
+       // jbLogout.addActionListener(controller);
+        //jbSaveSettings.addActionListener(controller);
         jpNavBar.registerController(controller);
     }
 

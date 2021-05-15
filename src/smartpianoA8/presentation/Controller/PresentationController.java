@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PresentationController {
+public class PresentationController implements PresentationFacade{
 
     // ---- Inici Atributs ----
     BusinessFacade businessFacade;
@@ -94,6 +94,9 @@ public class PresentationController {
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
     // ---- End SongView Methods
+    public void nuevasCanciones(){
+        jfMainFrame.nuevaCanciones();
+    }
     // ---- Start FavView Methods
     // ---- End FavView Methods
     // ---- Start PianoView Methods

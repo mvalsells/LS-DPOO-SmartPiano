@@ -102,6 +102,9 @@ public class JFMainFrame extends JFrame {
 
     // ---- Start SongView Methods
     //public int jpSongSetLastIDPressed(){jpSongsView.jpSongSetLastIDPressed();}
+    public void nuevaCanciones() {
+        jpSongsView.nuevasCanciones();
+    }
     // ---- End SongView Methods
     // ---- Start FavView Methods
     // ---- End FavView Methods
@@ -122,6 +125,8 @@ public class JFMainFrame extends JFrame {
     public ArrayList<String> profileViewGetData() {
         return jpProfileView.profileViewGetData();
     }
+
+
     // ---- End ProfileView Methods
 
 }
