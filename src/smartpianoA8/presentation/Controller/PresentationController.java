@@ -19,19 +19,19 @@ import java.util.HashMap;
 public class PresentationController implements PresentationFacade{
 
     // ---- Inici Atributs ----
-    BusinessFacade businessFacade;
+    private BusinessFacade businessFacade;
 
     //Frame
-    JFMainFrame jfMainFrame;
-    JFWellcomeFrame jfWellcomeFrame;
+    private JFMainFrame jfMainFrame;
+    private JFWellcomeFrame jfWellcomeFrame;
 
     //Controllers
-    WellcomeController wellcomeController;
-    SongController songController;
-    FavController favController;
-    ProfileController profileController;
-    PianoController pianoController;
-    PianoCascadeController pianoCascadeController;
+    private WellcomeController wellcomeController;
+    private SongController songController;
+    private FavController favController;
+    private ProfileController profileController;
+    private PianoController pianoController;
+    private PianoCascadeController pianoCascadeController;
 
     // ---- Fi Atributs ----
 
@@ -89,10 +89,13 @@ public class PresentationController implements PresentationFacade{
     public void updatePassword(String newPassword, String newPasswordRepetition) throws PasswordException{
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
+    public Song getSongByID(int id){return businessFacade.getSong(id);}
+    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song){return businessFacade.getMidiNotes(song);}
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
+    public int songControllerGetLastSongPressed(){return songController.getLastSongPressed();}
     // ---- End SongView Methods
     public void nuevasCanciones(){
         jfMainFrame.nuevaCanciones();
@@ -113,6 +116,7 @@ public class PresentationController implements PresentationFacade{
     public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
+
     // ---- End PianoCascadeView Methods
     // ---- Start ProfileView Methods
     public ArrayList<String> profileViewGetData(){

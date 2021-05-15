@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class JPSongs extends JPanel {
-    public static final String SONG_PRESSED = "songPressed";
+    public static final String SONG_PRESSED = "songPressed-";
 
     private int lastSongIDPressed;
 
@@ -22,18 +22,7 @@ public class JPSongs extends JPanel {
     }
     BordersView bordersView = new BordersView();
     private void configureMenu(){
-        
-        
-        
 
-        ImageIcon Canciones = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
-        ImageIcon CancionesSelect = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
-        ImageIcon Mis_Favoritas = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
-        ImageIcon Mis_FavoritasSelect = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
-        ImageIcon Piano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon PianoSelect = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
-        ImageIcon Descargar = new ImageIcon("Imagen/ImagenesMenu/Descargas.jpg");
-        ImageIcon Ajustes = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
 
 
 
@@ -101,10 +90,13 @@ public class JPSongs extends JPanel {
         newButon = new JBgeneral[songs.size()];
         JPanel[] separacioNew = new JPanel[songs.size()];
         for(int i=0; i< songs.size(); i++){
+            StringBuilder sb = new StringBuilder();
+            sb.append(SONG_PRESSED);
+            sb.append(songs.get(i).getIdSong());
             masButon[i] = new JBgeneral("Holi personi", ColorScheme.ORANGE_START);
             newButon[i] = new JBgeneral("Holi personi2", ColorScheme.ORANGE_START);
-            masButon[i].setActionCommand( SONG_PRESSED );
-            newButon[i].setActionCommand(SONG_PRESSED);
+            masButon[i].setActionCommand(sb.toString());
+            newButon[i].setActionCommand(sb.toString());
             separacioMas[i] = new JPanel();
             separacioMas[i].setLayout(new BorderLayout());
             separacioNew[i] = new JPanel();

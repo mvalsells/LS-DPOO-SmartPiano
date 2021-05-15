@@ -32,8 +32,8 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     }
     @Override
     public void run(){
-        //Song song = new Song();
-        //this.partitura = presentationController.getBusinesMidiNotes(song);
+        Song song = presentationController.getSongByID(presentationController.songControllerGetLastSongPressed());
+        this.partitura = presentationController.getBusinesMidiNotes(song);
         this.canal1 = partitura.get(1);
 
         long inicial = System.currentTimeMillis();

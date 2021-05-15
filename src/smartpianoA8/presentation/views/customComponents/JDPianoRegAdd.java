@@ -52,10 +52,19 @@ public class JDPianoRegAdd extends JDialog {
         JPanel jpExtraFlow2 = new JPanel(new FlowLayout());
         jpExtraFlow2.setOpaque(false);
         jbPlayButton = new JButton();
+        jbPlayButton.setBorder(BorderFactory.createLineBorder(new Color(0,0,0,0),0));
         jbPlayButton.setIcon(playButton);
+        jbPlayButton.setOpaque(false);
+        jbPlayButton.setContentAreaFilled(false);
+        jbPlayButton.setBorderPainted(false);
         jbPlayButton.setActionCommand(playRec);
         jbPauseButton = new JButton();
+        jbPauseButton.setBorder(BorderFactory.createLineBorder(new Color(0,0,0,0),0));
         jbPauseButton.setIcon(pauseButton);
+        jbPauseButton.setContentAreaFilled(false);
+        jbPauseButton.setBorderPainted(false);
+        jbPauseButton.setActionCommand(playRec);
+
         jbPauseButton.setActionCommand(pauseRec);
 
 

@@ -13,7 +13,7 @@ public class SongController implements ActionListener {
 
     // ---- Inici Atributs ----
     PresentationController presentationController;
-    Song lastSongPressed;
+    int lastSongPressed;
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
@@ -28,31 +28,42 @@ public class SongController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            //NavBar
-            case JFMainFrame.SONGS:
-                presentationController.changeView(JFMainFrame.SONGS);
-                break;
-            case JFMainFrame.FAVS:
-                presentationController.changeView(JFMainFrame.FAVS);
-                break;
-            case JFMainFrame.PIANO:
-                presentationController.changeView(JFMainFrame.PIANO);
-                break;
-            case JFMainFrame.PROFILE:
-                presentationController.changeView(JFMainFrame.PROFILE);
-                break;
-            case JFMainFrame.PIANO_CASCADE:
-                presentationController.changeView(JFMainFrame.PIANO_CASCADE);
-                break;
-            //Song View
-            /*case bla:
-                break;*/
-            case JPSongs.SONG_PRESSED:
-                e.getID();
+
+        if (e.getActionCommand().contains(JPSongs.SONG_PRESSED)){
+
+            String[] split = e.getActionCommand().split("-");
+
+            this.lastSongPressed = Integer.parseInt(split[1]);
+
+        }else{
+            switch (e.getActionCommand()) {
+                //NavBar
+                case JFMainFrame.SONGS:
+                    presentationController.changeView(JFMainFrame.SONGS);
+                    break;
+                case JFMainFrame.FAVS:
+                    presentationController.changeView(JFMainFrame.FAVS);
+                    break;
+                case JFMainFrame.PIANO:
+                    presentationController.changeView(JFMainFrame.PIANO);
+                    break;
+                case JFMainFrame.PROFILE:
+                    presentationController.changeView(JFMainFrame.PROFILE);
+                    break;
+                case JFMainFrame.PIANO_CASCADE:
+                    presentationController.changeView(JFMainFrame.PIANO_CASCADE);
+                    break;
+                //Song View
+                    /*case bla:
+                        break;*/
+                case JPSongs.SONG_PRESSED:
+                    e.getID();
 
 
+            }
         }
     }
+
+    public int getLastSongPressed(){return lastSongPressed;}
 
 }

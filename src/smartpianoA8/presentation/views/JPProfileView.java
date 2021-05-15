@@ -25,6 +25,7 @@ public class JPProfileView extends JPMainView {
     // ---- Inici Constructors ----
 
     public JPProfileView(){
+        setLayout(new BorderLayout());
         jpMain = new JPMainView();
        /* jpMain.setLayout(new BorderLayout());
         // ---- Start North ----

@@ -272,6 +272,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return hmTeclas;
     }
 
+    public Song getSong(int id){return songDAO.getSong(id);}
+
 
     // ------------------------------------------------------
     //  END song implementation
