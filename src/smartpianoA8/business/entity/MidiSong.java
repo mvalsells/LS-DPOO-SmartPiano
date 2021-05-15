@@ -1,6 +1,5 @@
 package smartpianoA8.business.entity;
 
-import java.time.LocalDate;
 
 /**
  * Entity de cançó codificada en MIDI

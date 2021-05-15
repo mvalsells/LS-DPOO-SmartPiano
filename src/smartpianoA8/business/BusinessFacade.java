@@ -9,6 +9,11 @@ import smartpianoA8.presentation.views.customComponents.Teclas;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Interfície-façada per la implementació de mètodes i accions de la categoria de Business
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public interface BusinessFacade {
 
     //Usuari
