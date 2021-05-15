@@ -51,12 +51,11 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
         System.out.println(url1.concat(page+url2));
 
-        //newData = 0;
+        newData = 0;
 
 
         try {
             if(getConnectionStatus(url1.concat(page+url2)) == 200) {
-                newData = 0;
                 Document document = getHtmlDocument(url1.concat(page+url2));
                 //Elements entry = document.select("table-bordered result-table");
                 //System.out.println("lele");
