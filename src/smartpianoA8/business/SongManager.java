@@ -120,7 +120,4 @@ public class SongManager {
     public float getµsPerTickMidiNotes() {
         return midiParser.getusPerTick();
     }
-
-
-
 }

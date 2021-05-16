@@ -9,50 +9,50 @@ import java.util.ArrayList;
 public interface PlayListDAO{
 
     /**
-     *
-     * @param name
-     * @param username
+     * Mètode per crear una playlist
+     * @param name nom de la playlist
+     * @param username username propietari
      */
     void addPlayList(String name, String username);
 
     /**
-     *
-     * @param song
-     * @param playList
+     * Mètode per afegir una cançó a una playlist
+     * @param song la cançó
+     * @param playList la playlist
      */
     void addSongToPlayList(Song song, PlayList playList);
 
     /**
-     *
-     * @param playList
-     * @param song
+     * Mètode per eliminar una cançó d'una playlist
+     * @param playList la playlist
+     * @param song la cançó
      */
     void removeSongFromPlayList(PlayList playList, Song song);
 
     /**
-     *
-     * @param playList
+     * Mètode per eliminar una playlist
+     * @param playList la playlist
      */
     void removePlayList(PlayList playList);
 
     /**
-     *
-     * @param user
-     * @return
+     * Mètode per obtenir les playlist d'un usuari
+     * @param user l'usuari
+     * @return la playlist
      */
     ArrayList<PlayList> getPlayListsByUser(User user);
 
     /**
-     *
-     * @param IDPlaylist
-     * @return
+     * mètode per obtneir les dades d'una playlist
+     * @param IDPlaylist la playlist ID
+     * @return la playlist
      */
     PlayList getPlayListData(int IDPlaylist);
 
     /**
-     *
-     * @param playList
-     * @return
+     * Mètode per obtenir les cançons d'una playlist
+     * @param playList la playlist
+     * @return Arraylist de cançons
      */
     ArrayList<Song> getPlayListSongs(PlayList playList);
 }
