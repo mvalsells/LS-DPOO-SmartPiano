@@ -90,7 +90,7 @@ public class MidiWritterImpl implements MidiWritter {
     public void saveRecording(String userName, String songName, boolean isPublic, long totalTimeInMilis) {
         makeUserDirectory(userName);
         saveToFile(userName, songName);
-        addSongToDatabase(userName, songName, isPublic, totalTimeInMilis);
+        addSongToDatabase(userName, songName, isPublic, totalTimeInMilis-startTime);
     }
 
     private void addSongToDatabase(String userName, String songName, boolean isPublic, long totalTimeInMinis) {
