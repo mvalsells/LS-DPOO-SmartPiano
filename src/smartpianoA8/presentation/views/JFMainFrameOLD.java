@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+/*package smartpianoA8.presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class JFMainFrameOLD extends JFrame {
       ====== HA D'ANAR AL CEMENTIRI ========================
       ======================================================
 
-        */
+        *//*
     public static final String mainViewString = "mainViewString";
 
     private MainView mainView;
@@ -68,3 +68,4 @@ public class JFMainFrameOLD extends JFrame {
     public boolean jdIsCheckBoxSelected(){return mainView.jdIsCheckBoxSelected();}
 
 }
+*/

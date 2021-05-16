@@ -3,6 +3,7 @@ package smartpianoA8.presentation.Controller;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
@@ -40,7 +41,7 @@ public class PresentationController implements PresentationFacade{
 
         //Controllers
         wellcomeController = new WellcomeController();
-        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs());
+        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser());
         songController = new SongController();
         favController = new FavController();
         profileController = new ProfileController();
@@ -91,6 +92,7 @@ public class PresentationController implements PresentationFacade{
     }
     public Song getSongByID(int id){return businessFacade.getSong(id);}
     public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song){return businessFacade.getMidiNotes(song);}
+    public User getCurrentUser(){return businessFacade.getCurrentUser();}
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
     // ---- End WellcomeFrame Methods

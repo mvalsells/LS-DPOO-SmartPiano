@@ -2,6 +2,7 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.HtmlScrapping;
@@ -132,6 +133,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public boolean modifyCurrentUserName(String newUserName) {
         return userManager.modifyCurrentUserName(newUserName);
+    }
+
+    @Override
+    public User getCurrentUser(){
+        return userManager.getCurrentUser();
     }
     // ------------------------------------------------------
     //  END user implementation

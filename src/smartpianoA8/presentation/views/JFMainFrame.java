@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +32,7 @@ public class JFMainFrame extends JFrame {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JFMainFrame(ArrayList<Song> masterSongs){
-
+    public JFMainFrame(ArrayList<Song> masterSongs, User currentUser){
         //Frame
         JFrame frame  = new JFrame();
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -42,7 +42,7 @@ public class JFMainFrame extends JFrame {
         jpSongsView = new JPSongsView(masterSongs);
         jpFavView = new JPFavView();
         jpPianoView = new JPPianoView();
-        jpProfileView = new JPProfileView();
+        jpProfileView = new JPProfileView(currentUser);
         jpPianoCascadeView = new JPPianoCascadeView();
 
         cards = new CardLayout();

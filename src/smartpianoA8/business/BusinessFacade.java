@@ -2,6 +2,7 @@ package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.presentation.views.customComponents.Teclas;
@@ -24,6 +25,7 @@ public interface BusinessFacade {
     boolean modifyCurrentUserEmail(String newEmail);
     boolean modifyCurrentUserPassword(String newPassword, String passwordRepetition) throws PasswordException;
     boolean modifyCurrentUserName(String newUserName);
+    User getCurrentUser();
 
 
     //Cançons

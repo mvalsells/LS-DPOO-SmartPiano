@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views;
+/*package smartpianoA8.presentation.views;
 
 import smartpianoA8.presentation.views.customComponents.*;
 
@@ -17,6 +17,8 @@ public class MainView extends JPanel {
    ======================================================
 
      */
+
+/*
     public static final String chgToPiano = "jpPiano";
     public static final String chgToProfile = "jpProfile";
     public static final String chgToSongs = "jpSongs";
@@ -98,7 +100,7 @@ public class MainView extends JPanel {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
         jpPiano = new JPPiano();
-        jpUserAcountView = new JPProfileView();
+        //jpUserAcountView = new JPProfileView();
         //jpSongs = new JPSongs();
 
 
@@ -117,7 +119,7 @@ public class MainView extends JPanel {
     public void changeToJPPiano(){cards.show(jpCardPanel,chgToPiano); }
     public void changeToJPProfile(){cards.show(jpCardPanel,chgToProfile); }
     public void changeToJPSongs(){cards.show(jpCardPanel,chgToSongs); }
-    public void changeToJPFavs(){/*cards.show(jpCardPanel,chgToFavs); */}
+    public void changeToJPFavs(){/*cards.show(jpCardPanel,chgToFavs); }
 
 
 
@@ -173,3 +175,4 @@ public class MainView extends JPanel {
     }
 
 }
+*/

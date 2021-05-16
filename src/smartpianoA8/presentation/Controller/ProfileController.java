@@ -40,44 +40,48 @@ public class ProfileController implements ActionListener {
                 presentationController.changeView(JFMainFrame.PROFILE);
                 break;
             //Profile View
-            case JPProfileView.Logout:
+            case JPProfileView.LOGOUT:
                 presentationController.logout();
                 break;
-            case JPProfileView.SaveSettings:
+            case JPProfileView.SAVE_SETTING:
                 ArrayList<String> data = presentationController.profileViewGetData();
-                StringBuilder errorMessage = new StringBuilder();
+                StringBuilder message = new StringBuilder();
                 try {
-                    if (!data.get(0).equals("New username")) {
+                    if (data.get(0) != null) {
                         if(!presentationController.updateUsername(data.get(0))){
-                           errorMessage.append("Username incorrecto o ya en uso\n");
+                           message.append("·Nombre de usuari actualizado\n");
+                        } else {
+                            message.append("·Nombre de usuario incorrecto o ya en uso\n");
                         }
                     }
-                    if (!data.get(1).equals("New email")) {
-                        if(!presentationController.updateEmail(data.get(1))){
-                            errorMessage.append("Email incorrecto o ya en uso\n");
+                    if (data.get(1) != null) {
+                        if(presentationController.updateEmail(data.get(1))) {
+                           message.append("·Email actualizado\n");
+                        } else {
+                                message.append("·Email incorrecto o ya en uso\n");
                         }
                     }
-                    if (!data.get(2).equals("New password")) {
+                    if (data.get(2) != null && data.get(3) != null) {
                         presentationController.updatePassword(data.get(2), data.get(3));
+                        message.append("·Contraseña actualizada\n");
                     }
                 } catch (PasswordException exeception){
-                    errorMessage.append("La contraseña no cumple con los requisitos");
+                    message.append("· La contraseña no cumple con los requisitos:\n");
                     if (exeception.isHasNotLowerCase()) {
-                        errorMessage.append("\t- No tiene minuscula/s\n");
+                        message.append("- No tiene minuscula/s\n");
                     }
                     if (exeception.isHasNotNumber()) {
-                        errorMessage.append("\t- No tiene numero/s\n");
+                        message.append("- No tiene numero/s\n");
                     }
                     if (exeception.isHasNotUpperCase()) {
-                        errorMessage.append("\t- No tiene mayuscula/s\n");
+                        message.append("\t- No tiene mayuscula/s\n");
                     }
                     if (exeception.isPasswordToShort()) {
-                        errorMessage.append("\t- Es demasiado corta\n");
+                        message.append("\t- Es demasiado corta\n");
                     }
-
                 }
-                if (!errorMessage.toString().equals("")){
-                    presentationController.showWarningDialog(errorMessage.toString());
+                if (!message.toString().equals("")){
+                    presentationController.showWarningDialog(message.toString());
                 }
                 break;
         }
