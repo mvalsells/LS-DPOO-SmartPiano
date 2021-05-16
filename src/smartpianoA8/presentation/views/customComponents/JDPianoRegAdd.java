@@ -97,6 +97,8 @@ public class JDPianoRegAdd extends JDialog {
     public void registerControllerJDPianoRegAdd(ActionListener controller){
         jbAdd.addActionListener(controller);
         jbDiscard.addActionListener(controller);
+        jbPlayButton.addActionListener(controller);
+        jbPauseButton.addActionListener(controller);
     }
 
 }

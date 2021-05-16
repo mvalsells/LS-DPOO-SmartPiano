@@ -20,7 +20,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private final static boolean DEFAULT_IS_RECORDING = false;
     private final static boolean TRUE_IS_RECORDING = true;
     boolean isRecording = DEFAULT_IS_RECORDING;
-    private long startRecording = 0;
+    private long endTime = 0;
 
     //Atributs a canviar
     MidiChannel midiChannel;
@@ -94,7 +94,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                    isRecording = TRUE_IS_RECORDING;
                    System.out.println("IS RECORDING...");
                    midiWritter.startRecording();
-                   startRecording = System.currentTimeMillis();
                }else if (isRecording){
                    //StopRecording
                    presentationController.pianoViewSetRecordingUnpressedIcon();
@@ -107,26 +106,21 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                break;
            case JDPianoRegAdd.GuardarRec:
 
+               endTime = System.currentTimeMillis();
+
                if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i ferla publica
                    //todo modify username and add song to database
-                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), true, System.currentTimeMillis()-startRecording);
-                   //todo modify stop
-                   midiWritter.stopPlayingRecording();
+                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), true, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
                    //todo modify username and add song to database
-                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), false, System.currentTimeMillis()-startRecording);
-                   //todo modify stop
-                   midiWritter.stopPlayingRecording();
+                   midiWritter.saveRecording("ChristianTestLele", presentationController.pianoViewJDGetTextFieldString(), false, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(presentationController.pianoViewJDGetTextFieldString().equals("")){
-
-                   //todo remove play
-                   midiWritter.playRecording();
                    presentationController.showWarningDialog("Introduzca un nombre a la grabacion");
                }
                break;
@@ -135,6 +129,11 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                //Borrar recording(no guardar)
                presentationController.pianoViewJDClose();
                break;
+           case JDPianoRegAdd.playRec:
+               midiWritter.playRecording();
+               break;
+           case JDPianoRegAdd.pauseRec:
+               midiWritter.stopPlayingRecording();
            /*case JPPiano.PLAY_BUTTON:
                presentationController*/
        }

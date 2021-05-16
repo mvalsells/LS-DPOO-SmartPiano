@@ -51,6 +51,7 @@ public class PresentationController implements PresentationFacade{
     }
 
     public void registerAllControlers(){
+
         //Register this controller to other controllers
         wellcomeController.registerMasterController(this);
         songController.registerMasterController(this);
