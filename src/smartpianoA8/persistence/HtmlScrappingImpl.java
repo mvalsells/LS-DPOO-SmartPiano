@@ -18,6 +18,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
+/**
+ * Classe per l'obtenció de cançons d'internet
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see Runnable
+ * @see TimerTask
+ */
 public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
     //mover a persistence
@@ -32,14 +39,21 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     private int newData;
     private SongDAO songDAO;
 
-    //TODO FALTA COMPROBAR SI YA EXISTE ESA CANCION SALTARLA - done
-
+    /**
+     * Constructor amb l'interficie de cançons de la bbdd
+     * @param songDAO interficie de cançons de la bbdd
+     */
     public HtmlScrappingImpl(SongDAO songDAO){
         midiSongs = new ArrayList<Song>();
         newData = 0;
         this.songDAO = songDAO;
     }
 
+    /**
+     * Mètode per executar el recolector scrapper de cançons.
+     * @see Thread
+     * @see Runnable
+     */
     @Override
     public void run() {
 
@@ -128,6 +142,12 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
     }
 
+    /**
+     * Mètode per descarregar una cançó de la bbdd
+     * @param addr url
+     * @param songName nom de la cançó
+     * @return url i ruta
+     */
     private String downloadMidiFile(String addr, String songName) {
 
         String whereIsTheFile;
@@ -166,6 +186,10 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
     }
 
+    /**
+     * Mètode epr obtenir el midi de les cançons
+     * @return ArrayList de cançons MIDI
+     */
     @Override
     public ArrayList<Song> getMidiSongs() {
         return midiSongs;
@@ -250,7 +274,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
      * 		400 Bad Request		    403 Forbidden
      * 		404 Not Found		    500 Internal Server Error
      * 		502 Bad Gateway		    503 Service Unavailable
-     * @param url
+     * @param url direcció
      * @return Status Code
      */
     private static int getConnectionStatus(String url) throws IOException {
@@ -267,7 +291,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
     /**
      * Devuelvo un objeto de la clase Document con el contenido del
      * HTML de la web que me permitirá parsearlo con los métodos de la librelia JSoup
-     * @param url
+     * @param url direcció
      * @return Documento con el HTML
      */
     private static Document getHtmlDocument(String url) {
@@ -281,6 +305,10 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
         return document;
     }
 
+    /**
+     * Mètode per guardar uan cançó a la bbddd
+     * @param song la cançó
+     */
     private void saveSong(Song song){
         songDAO.addSongInMaster(song);
     }
