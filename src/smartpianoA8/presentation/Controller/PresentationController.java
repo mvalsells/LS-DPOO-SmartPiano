@@ -78,6 +78,7 @@ public class PresentationController implements PresentationFacade{
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
           businessFacade.registerUser(username, email, password, passwordRepetition,type);
     }
+
     public void logout(){
         businessFacade.logoutCurrentUser();
         //Canviar de vista que surti el Login
