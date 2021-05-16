@@ -96,7 +96,7 @@ public class Main {
         JFSongsTable songsView = new JFSongsTable(midiSongs);
 
 
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/4595.mid",1,null,null);
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/Master/Vocalise N. 1.mid",1,null,null);
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/papaya/myownfile copia.mid",1,null,null);
         ArrayList<ArrayList<Notes>> test = businessFacade.getMidiNotes(song);
         System.out.println("BPMMMM: " + businessFacade.getMidiBpm());
