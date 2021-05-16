@@ -4,6 +4,7 @@ import java.sql.*;
 
 /**
  * The SQLConnector class will abstract the specifics of the connection to a MySQL database.
+ * @author La Salle URL
  */
 public class SQLConnector {
     // Attributes to connect to the database.

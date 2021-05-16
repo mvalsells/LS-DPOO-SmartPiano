@@ -9,6 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Classe pel control de la bbdd de playlists
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class SQLPlayListDAO implements PlayListDAO{
     private SQLConnector connector;
     public SQLPlayListDAO(SQLConnector connector){

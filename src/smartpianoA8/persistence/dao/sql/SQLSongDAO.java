@@ -9,6 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Classe pel control de cançons de la bbdd
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class SQLSongDAO implements SongDAO {
     private SQLConnector connector;
     public SQLSongDAO(SQLConnector connector){
@@ -37,7 +42,10 @@ public class SQLSongDAO implements SongDAO {
     }
 
 
-
+    /**
+     * Mètode per afegir cançons Master d'internet
+     * @param song cancion a añadir sin repetir
+     */
     @Override
     public void addSongInMaster(Song song) {
         Song foundSong = getSongByNameInMaster(song.getNom());
@@ -81,7 +89,11 @@ public class SQLSongDAO implements SongDAO {
         return null;
     }
 
-
+    /**
+     * Mètode per obtenir cançon de Master pel nom
+     * @param songName el nom
+     * @return la cançó
+     */
     private Song getSongByNameInMaster(String songName) {
         String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE Nom LIKE '" + songName + "' AND NomUsuari LIKE 'Master';";
         ResultSet result = connector.selectQuery(query);
@@ -138,6 +150,11 @@ public class SQLSongDAO implements SongDAO {
         }
     }
 
+    /**
+     * Mètode per obtenir les cançons d'un usuari
+     * @param username USERNAME (no email) de l'usuari
+     * @return arrayList de cançons
+     */
     @Override
    public ArrayList<Song> getUserSongs(String username){
         ArrayList<Song> retorna = new ArrayList<>();
@@ -199,7 +216,7 @@ public class SQLSongDAO implements SongDAO {
     /**
      * Reotorna les cançons de l'usuari i després les de Master, en aquest ordre
      * @param username nom d'usuari USERNAME (no email) per enviar a buscar cançons
-     * @return
+     * @return ArrayList de Songs
      */
    @Override
    public ArrayList<Song> getUserAndMasterSongs(String username){
@@ -220,7 +237,7 @@ public class SQLSongDAO implements SongDAO {
 
     /**
      * Reotorna les cançons publiques i després les de Master, en aquest ordre
-     * @return
+     * @return ArrayList amb les cançons
      */
     @Override
     public ArrayList<Song> getPublicAndMasterSongs(){
@@ -238,6 +255,10 @@ public class SQLSongDAO implements SongDAO {
 
     }
 
+    /**
+     *  Mètode per registrar la façada de presentació
+     * @param presentationFacade la classe ja creada
+     */
     @Override
     public void registerPresentationFacade(PresentationFacade presentationFacade) {
         this.presentationFacade=presentationFacade;
