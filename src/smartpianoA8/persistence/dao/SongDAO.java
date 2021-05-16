@@ -7,12 +7,17 @@ import smartpianoA8.presentation.Controller.PresentationFacade;
 
 import java.util.ArrayList;
 
+/**
+ * Interfície pel control de cançons a la bbdd
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public interface SongDAO {
 
     /**
-     *
-     * @param song
-     * @param username
+     * Mètode per crear una cançó
+     * @param song la cançó
+     * @param username el propietari de la cançó
      */
     void addSong(Song song, String username);
 
@@ -23,15 +28,15 @@ public interface SongDAO {
     void addSongInMaster(Song song);
 
     /**
-     *
-     * @param IDSong
+     * Mètode que elimina una cançó
+     * @param IDSong int l'ID de la cançó
      */
     void removeSong(int IDSong);
 
     /**
-     *
-     * @param IDSong
-     * @return
+     * Mètode que retorna una cançó de la bbdd
+     * @param IDSong int l'id de la cançó
+     * @return la canço
      */
     Song getSong(int IDSong);
 
