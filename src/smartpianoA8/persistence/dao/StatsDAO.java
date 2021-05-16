@@ -5,6 +5,11 @@ import smartpianoA8.business.entity.Song;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * Interfície pel control de gràfiques
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public interface StatsDAO {
 
     /**

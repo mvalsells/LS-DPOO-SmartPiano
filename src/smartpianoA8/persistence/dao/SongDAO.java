@@ -52,8 +52,6 @@ public interface SongDAO {
      */
     void SongPlayed(int IDSong);
 
-
-
     /**
      * Retorna totes les cançons de l'usuari "Master"
      * @return ArrayList<Song> amb les cançons
@@ -86,5 +84,9 @@ public interface SongDAO {
      */
     public ArrayList<Song> getPublicAndMasterSongs();
 
+    /**
+     * Mètode per registrar la Presentation Facade
+     * @param presentationFacade la classe ja creada
+     */
     void registerPresentationFacade(PresentationFacade presentationFacade);
 }
