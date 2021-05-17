@@ -7,23 +7,24 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ScrollSongs extends JScrollPane {
+public class jpTiraCançons extends JPMainView {
 
     private  JButton jbMasButton[];
+
     private ArrayList<Song> songs;
 
     ImageIcon musicIcon = new ImageIcon("Imagen/ImagenesMenu/music.png");
 
-    public ScrollSongs(ArrayList<Song> songs){
+    public jpTiraCançons(ArrayList<Song> songs,String titul){
 
         this.songs = songs;
 
-        setLayout(new ScrollPaneLayout());
-        setOpaque(false);
-        setBackground(ColorScheme.MainView_Background);
-        setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
-        
-       jbMasButton = new JBgeneral[songs.size()];
+        setLayout(new BorderLayout());
+
+        JPanel jpAmbSongs = new JPMainView();
+        jpAmbSongs.setLayout(new FlowLayout(FlowLayout.LEADING));
+
+        jbMasButton = new JBgeneral[songs.size()];
         
         for(int i=0; i< songs.size(); i++){
             StringBuilder sb = new StringBuilder();
@@ -39,10 +40,20 @@ public class ScrollSongs extends JScrollPane {
             jbMasButton[i].setContentAreaFilled(false);
             jbMasButton[i].setBorderPainted(false);
 
-            add(jbMasButton[i]);
+            jpAmbSongs.add(jbMasButton[i]);
 
         }
 
+        JScrollPane jsp = new JScrollPane(jpAmbSongs,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jsp.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        jsp.setOpaque(false);
+        jsp.getHorizontalScrollBar().setOpaque(false);
+        jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
+        jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
+        JLabel jlTitul = new JLColor(titul,Color.white);
+
+        add(jlTitul,BorderLayout.NORTH);
+        add(jsp,BorderLayout.CENTER);
 
     }
 

@@ -13,7 +13,7 @@ public class JPSongs extends JPanel {
     private int lastSongIDPressed;
 
     private ArrayList<Song> songs;
-    private ScrollSongs jspMasSongs;
+    private jpTiraCançons jpTiraCançonsMas;
     private JButton[] newButon;
     private JButton[] masButon;
     public JPSongs(ArrayList<Song> songs){
@@ -67,10 +67,10 @@ public class JPSongs extends JPanel {
 
 
 
-        JLabel jlMasEscuchadasText = new JLabel("Mas escuchadas");
+        /*JLabel jlMasEscuchadasText = new JLabel("Mas escuchadas");
         jlMasEscuchadasText.setForeground(ColorScheme.PRIMARY);
         jlMasEscuchadasText.setBorder(BorderFactory.createEmptyBorder(0,0,10,10));
-        jlMasEscuchadasText.setFont(FontBase.TitularRegAdd);
+        jlMasEscuchadasText.setFont(FontBase.TitularRegAdd);*/
 
 
         /*JPanel jpMasEscuchadas = new JPanel();
@@ -78,7 +78,7 @@ public class JPSongs extends JPanel {
         jpMasEscuchadas.setLayout(new GridLayout(1,songs.size()));
         jpMasEscuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));*/
 
-        jspMasSongs = new ScrollSongs(songs);
+        jpTiraCançonsMas = new jpTiraCançons(songs,"Mas escuchadas");
 
 
         JLabel novedades = new JLabel("Novedades");
@@ -126,14 +126,14 @@ public class JPSongs extends JPanel {
             //news.add(scrollPane);
         }*/
 
-        masEscuhadasText.add(jlMasEscuchadasText,BorderLayout.SOUTH);
+        //masEscuhadasText.add(jlMasEscuchadasText,BorderLayout.SOUTH);
         //masEscuhadasPanel.add(jspMasSongs,BorderLayout.CENTER);
 
         novedadesText.add(novedades,BorderLayout.SOUTH);
         novedadesPanel.add(news, BorderLayout.CENTER);
 
-        partNort.add(masEscuhadasText);
-        partNort.add(jspMasSongs);
+        //partNort.add(masEscuhadasText);
+        partNort.add(jpTiraCançonsMas);
         partSud.add(novedadesText);
         partSud.add(novedadesPanel);
 
@@ -146,7 +146,7 @@ public class JPSongs extends JPanel {
 
     public void registerController(ActionListener controller){
 
-        jspMasSongs.registerController(controller);
+        jpTiraCançonsMas.registerController(controller);
 
     }
 
