@@ -17,8 +17,10 @@ import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.Controller.PresentationFacade;
 import smartpianoA8.presentation.views.JFSongsTable;
+import smartpianoA8.presentation.views.customComponents.JPNavPlayer;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -57,6 +59,11 @@ public class Main {
         }
 
         MidiParser midiParser = new MidiParserImpl();
+
+        /*JPNavPlayer jpNavPlayer = new JPNavPlayer();
+        JFrame test = new JFrame();
+        test.add(jpNavPlayer);
+        test.setVisible(true);*/
 
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
