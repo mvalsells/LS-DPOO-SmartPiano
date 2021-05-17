@@ -471,4 +471,12 @@ public class JPPiano extends JPanel {
             white.addMouseListener(mouseListener);
         }
     }
+
+    public void pintarTecla(int note){
+        //.clicarNota();
+    }
+
+    public void despintarTecla(int note){
+        //.desclicarNota();
+    }
 }

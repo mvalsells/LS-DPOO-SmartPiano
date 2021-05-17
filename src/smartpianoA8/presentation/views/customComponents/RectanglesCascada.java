@@ -11,18 +11,23 @@ public class RectanglesCascada extends Rectangle implements Runnable{
     private final static int margin = 4;
     private JPPiano pianoView;
 
+
+
     public RectanglesCascada(int note, Long endTime, JPPiano pianoView){
         this.endTime = endTime;
         this.note = note;
         this.pianoView = pianoView;
     }
 
+    @Override
     public void run(){
-
+        //colorejar una tecla
+        pianoView.pintarTecla(note);
         long inicial = System.currentTimeMillis();
         while(System.currentTimeMillis()-inicial <= endTime){
         }
-
+        //tecla color inicial
+        pianoView.despintarTecla(note);
     }
 
     public void move(){
