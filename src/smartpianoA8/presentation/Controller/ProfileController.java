@@ -8,21 +8,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Classe controller del perfil
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see ActionListener
+ */
 public class ProfileController implements ActionListener {
     // ---- Inici Atributs ----
     private PresentationController presentationController;
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
+
+    /**
+     * Consructor buit
+     */
     public ProfileController(){
 
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
 
+    /**
+     * Mètode per registrar el controller a la presentació
+     * @param presentationController la presentació
+     */
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
 
+    /**
+     * Mètode per detectar i canviar de vista
+     * @param e action event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){

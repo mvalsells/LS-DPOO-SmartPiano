@@ -12,6 +12,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe del controllador de benvinguda login/regitre
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see ActionListener
+ */
 public class WellcomeController implements ActionListener {
 
 
@@ -21,15 +27,27 @@ public class WellcomeController implements ActionListener {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
+    /**
+     * Constructor buit
+     */
     public WellcomeController(){
         //this.JFWellcomeFrame = JFWellcomeFrame;
     }
     // ---- Fi Constructors ----
     // ---- Inici Metodes ----
 
+    /**
+     * Mètode per registrar el controller a la presentació
+     * @param presentationController la presentació
+     */
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
+
+    /**
+     * Mètode per detectar i canviar de vista
+     * @param e action event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -59,7 +77,13 @@ public class WellcomeController implements ActionListener {
     }
 
 
-
+    /**
+     * Mètode per registar un usuari
+     * @param username nom
+     * @param email email
+     * @param password contra
+     * @param passwordRepetition contra repetida x2
+     */
     private void registerUser(String username, String email, String password, String passwordRepetition){
         try {
 
