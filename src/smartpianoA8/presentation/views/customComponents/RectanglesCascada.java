@@ -12,7 +12,6 @@ public class RectanglesCascada extends Rectangle implements Runnable{
     private JPPiano pianoView;
 
 
-
     public RectanglesCascada(int note, Long endTime, JPPiano pianoView){
         this.endTime = endTime;
         this.note = note;

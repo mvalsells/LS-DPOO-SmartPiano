@@ -30,6 +30,8 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     boolean isRecording = DEFAULT_IS_RECORDING;
     private long endTime = 0;
 
+
+
     //Atributs a canviar
     MidiChannel midiChannel;
     //MidiWritterImpl midiWritter = new MidiWritterImpl();
@@ -39,11 +41,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
     /**
      * Constructor amb el teclat
-     * @param hmTeclas
-     * @param midiWritter
+     * @param hmTeclas hashmap de tecles
+     * @param midiWritter editor de midi
      */
     public PianoController(HashMap<Integer, Teclas> hmTeclas, MidiWritter midiWritter) {
-
 
         this.hmTeclas = hmTeclas;
         this.midiWritter = midiWritter;
@@ -54,7 +55,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
             synth.open();
             synth.loadAllInstruments(synth.getDefaultSoundbank());
             Instrument[] insts = synth.getLoadedInstruments();
-            MidiChannel channels[] = synth.getChannels();
+            MidiChannel[] channels = synth.getChannels();
             //channel = channels[test.getChanel];
             midiChannel = channels[0];
             /*for (int i = 0; i < channels.length; i++) {
@@ -268,5 +269,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 }
