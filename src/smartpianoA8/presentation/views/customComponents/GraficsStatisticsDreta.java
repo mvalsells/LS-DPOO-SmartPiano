@@ -54,7 +54,6 @@ public class GraficsStatisticsDreta extends JPanel {
             temp = (int) (max - salt*i);
             grafics2d.drawString(Integer.toString(temp), (float)(width + width_inicial + 7), (float) (i*heigh/23.0 + heigh_inicial + 5));
         }
-
     }
 
     private void drawRotate(Graphics2D g2d, double x, double y, String text)
