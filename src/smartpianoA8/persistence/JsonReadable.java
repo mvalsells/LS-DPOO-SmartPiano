@@ -2,6 +2,11 @@ package smartpianoA8.persistence;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Interficie per l'obtenció de dades del fitxer de configuració
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public interface JsonReadable {
 
     /**

@@ -10,6 +10,12 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Classe la creació i lectura de cançons MIDI
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see MidiParser
+ */
 public class MidiParserImpl implements MidiParser {
 
     private ArrayList<ArrayList<Notes>> tracks;
@@ -28,12 +34,20 @@ public class MidiParserImpl implements MidiParser {
     private float µs_per_quarter;
     private float µs_per_tick;
 
+    /**
+     * Constructor
+     */
     public MidiParserImpl() {
         tracks = new ArrayList<ArrayList<Notes>>();
     }
 
     //TODO ARREGLAR EL PORQUE ALGUNAS CANCIONES EMPIEZAN EN EL TIEMPO 500-700-12341421323412133 EN LUGAR DE EN EL SEGUNDO 0.
 
+    /**
+     * Mètode per la creació d'una cançó MIDI
+     * @param dir ruta de la cançó
+     * @return ArrayList d'ArrayList de notes, notes per cada track
+     */
     public ArrayList<ArrayList<Notes>> parseMidi(String dir) {
         //tracks = new ArrayList<ArrayList<Notes>>();
         Track[] trx;
@@ -172,6 +186,9 @@ public class MidiParserImpl implements MidiParser {
         return tracks;
     }
 
+    /**
+     * Mètode que ordena les notes
+     */
     private void sortNotes() {
         for (ArrayList<Notes> a : tracks) {
             for (Notes n : a) {
@@ -187,21 +204,37 @@ public class MidiParserImpl implements MidiParser {
         }
     }
 
+    /**
+     * Getter del nombre de canals
+     * @return nombre de canals
+     */
     @Override
     public int numTracks() {
         return tracks.size();
     }
 
+    /**
+     * Getter dels BPM
+     * @return BPM
+     */
     @Override
     public float getBPM() {
         return BPM;
     }
 
+    /**
+     * Getter dels segons per tic
+     * @return SpT
+     */
     @Override
     public float getSecondsPerTick() {
         return secondsPerTick;
     }
 
+    /**
+     * Getter del temps total en segons de la cançó
+     * @return temps total en segons
+     */
     @Override
     public float getTotalSongSeconds() {
         return totalSongSeconds;
@@ -212,21 +245,37 @@ public class MidiParserImpl implements MidiParser {
     //    return tracks;
     //}
 
+    /**
+     * Getter de la ressolució del canal
+     * @return resolució del canal
+     */
     @Override
     public int getTrackResolution() {
         return trackResolution;
     }
 
+    /**
+     * Getter dels tics totals de la cançó
+     * @return tics totals
+     */
     @Override
     public long getTotalTicks() {
         return totalTicks;
     }
 
+    /**
+     * Getter dels MPQ
+     * @return MPQ
+     */
     @Override
     public float getMPQ() {
         return MPQ;
     }
 
+    /**
+     * Getter dels microsegons per tic
+     * @return uS per tic
+     */
     public float getusPerTick() {
         return µs_per_tick;
     }
