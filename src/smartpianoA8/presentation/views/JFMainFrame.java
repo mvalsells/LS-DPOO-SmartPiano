@@ -126,7 +126,11 @@ public class JFMainFrame extends JFrame {
         return jpProfileView.profileViewGetData();
     }
 
-
+    public void profileViewRegenerate(){
+        jpProfileView.removeAll();
+        jpProfileView.revalidate();
+        jpProfileView.repaint();
+    }
     // ---- End ProfileView Methods
 
 }

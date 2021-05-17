@@ -66,34 +66,42 @@ public class JPProfileView extends JPMainView {
         // ---- End north ----
         // ---- Start center ----
         JPanel jpCenter = new JPMainView();
-        //jpCenter.setLayout(new BoxLayout(jpCenter,BoxLayout.Y_AXIS));
+        jpCenter.setLayout(new BoxLayout(jpCenter,BoxLayout.Y_AXIS));
 
         //Username
         JPanel jpUsername = new JPMainView();
         jpUsername.setLayout(new BoxLayout(jpUsername,BoxLayout.Y_AXIS));
         jtfNewUsername = new JTFsettings(PH_NEW_USERNAME);
-        jpUsername.add(new JPPrimarySecondaryText("Nombre de usuario", currentUser.getUsername()));
+        jtfNewUsername.setMaximumSize(new Dimension(400, 20));
+        JPanel text=new JPPrimarySecondaryText("Nombre de usuario", currentUser.getUsername());
+        jpUsername.add(text);
         jpUsername.add(Box.createVerticalStrut(5));
         jpUsername.add(jtfNewUsername);
+        jpUsername.add(Box.createVerticalStrut(10));
 
         //Email
         JPanel jpEmail = new JPMainView();
         jpEmail.setLayout(new BoxLayout(jpEmail,BoxLayout.Y_AXIS));
         jtfNewEmail = new JTFsettings(PH_NEW_EMAIL);
+        jtfNewEmail.setMaximumSize(new Dimension(400, 20));
         jpEmail.add(new JPPrimarySecondaryText("Email", currentUser.getEmail()));
         jpEmail.add(Box.createVerticalStrut(5));
         jpEmail.add(jtfNewEmail);
+        jpEmail.add(Box.createVerticalStrut(10));
 
         //Password
         JPanel jpPassword = new JPMainView();
         jpPassword.setLayout(new BoxLayout(jpPassword,BoxLayout.Y_AXIS));
         jpfNewPasword = new JPFsettings(PH_NEW_PASSWORD);
+        jpfNewPasword.setMaximumSize(new Dimension(400, 20));
         jpfRepeatNewPasword = new JPFsettings(PH_NEW_PASSWORD);
+        jpfRepeatNewPasword.setMaximumSize(new Dimension(400, 20));
         jpPassword.add(new JPPrimarySecondaryText("Contraseña","**********"));
         jpPassword.add(Box.createVerticalStrut(5));
         jpPassword.add(jpfNewPasword);
         jpPassword.add(Box.createVerticalStrut(5));
         jpPassword.add(jpfRepeatNewPasword);
+        jpPassword.add(Box.createVerticalStrut(10));
 
         //Save button
         jbSaveSettings = new JBgeneral("Guardar ajustes", ColorScheme.ORANGE_START);
@@ -110,10 +118,11 @@ public class JPProfileView extends JPMainView {
         //JPProfileView pack
         jpMain.add(jpTopBar, BorderLayout.NORTH);
         jpMain.add(jpCenter, BorderLayout.CENTER);
-        jpMain.add(Box.createVerticalStrut(40),BorderLayout.SOUTH);
+        jpMain.add(Box.createHorizontalStrut(40),BorderLayout.WEST);
+        jpMain.add(Box.createHorizontalStrut(40),BorderLayout.EAST);
 
         //Final packing
-        jpNavBar = new JPNavBar(JFMainFrame.SONGS);
+        jpNavBar = new JPNavBar(JFMainFrame.PROFILE);
         add(jpNavBar,BorderLayout.WEST);
         add(jpMain,BorderLayout.CENTER);
     }
@@ -128,24 +137,24 @@ public class JPProfileView extends JPMainView {
 
     public ArrayList<String> profileViewGetData() {
         ArrayList<String> data = new ArrayList<>();
-        if (jtfNewUsername.getText().equals(PH_NEW_USERNAME)){
+        if (jtfNewUsername.getText().equals(PH_NEW_USERNAME) || jtfNewUsername.getText().equals("")){
             data.add(null);
         } else {
             data.add(jtfNewUsername.getText());
         }
-        if (jtfNewEmail.getText().equals(PH_NEW_EMAIL)) {
+        if (jtfNewEmail.getText().equals(PH_NEW_EMAIL) || jtfNewEmail.getText().equals("")) {
             data.add(null);
         } else {
             data.add(jtfNewEmail.getText());
         }
         String newPassword = String.valueOf(jpfNewPasword.getPassword());
-        if(newPassword.equals(PH_NEW_PASSWORD)){
+        if(newPassword.equals(PH_NEW_PASSWORD) || newPassword.equals("")){
             data.add(null);
         } else {
             data.add(newPassword);
         }
         String repetitionNewPassword = String.valueOf(jpfRepeatNewPasword.getPassword());
-        if (repetitionNewPassword.equals(PH_REPEAT_PASSWORD)){
+        if (repetitionNewPassword.equals(PH_REPEAT_PASSWORD) || repetitionNewPassword.equals("")){
             data.add(null);
         } else {
             data.add(repetitionNewPassword);

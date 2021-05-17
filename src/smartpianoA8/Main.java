@@ -73,7 +73,7 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         try {
 
-            businessFacade.login("ChristianTestLele", "sDFDSfdsfffsd2344323!");
+            businessFacade.login("chros", "sDFDSfdsfffsd2344323!");
         } catch (UserManagerException e){
             e.printStackTrace();
         }

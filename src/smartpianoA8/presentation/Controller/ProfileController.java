@@ -62,46 +62,51 @@ public class ProfileController implements ActionListener {
                 presentationController.logout();
                 break;
             case JPProfileView.SAVE_SETTING:
-                ArrayList<String> data = presentationController.profileViewGetData();
-                StringBuilder message = new StringBuilder();
-                try {
-                    if (data.get(0) != null) {
-                        if(!presentationController.updateUsername(data.get(0))){
-                           message.append("·Nombre de usuari actualizado\n");
-                        } else {
-                            message.append("·Nombre de usuario incorrecto o ya en uso\n");
-                        }
-                    }
-                    if (data.get(1) != null) {
-                        if(presentationController.updateEmail(data.get(1))) {
-                           message.append("·Email actualizado\n");
-                        } else {
-                                message.append("·Email incorrecto o ya en uso\n");
-                        }
-                    }
-                    if (data.get(2) != null && data.get(3) != null) {
-                        presentationController.updatePassword(data.get(2), data.get(3));
-                        message.append("·Contraseña actualizada\n");
-                    }
-                } catch (PasswordException exeception){
-                    message.append("· La contraseña no cumple con los requisitos:\n");
-                    if (exeception.isHasNotLowerCase()) {
-                        message.append("- No tiene minuscula/s\n");
-                    }
-                    if (exeception.isHasNotNumber()) {
-                        message.append("- No tiene numero/s\n");
-                    }
-                    if (exeception.isHasNotUpperCase()) {
-                        message.append("\t- No tiene mayuscula/s\n");
-                    }
-                    if (exeception.isPasswordToShort()) {
-                        message.append("\t- Es demasiado corta\n");
-                    }
-                }
-                if (!message.toString().equals("")){
-                    presentationController.showWarningDialog(message.toString());
-                }
+                saveSettings();
                 break;
         }
+    }
+
+    private void saveSettings() {
+        ArrayList<String> data = presentationController.profileViewGetData();
+        StringBuilder message = new StringBuilder();
+        try {
+            if (data.get(0) != null) {
+                if(presentationController.updateUsername(data.get(0))){
+                    message.append("·Nombre de usuari actualizado\n");
+                } else {
+                    message.append("·Nombre de usuario incorrecto o ya en uso\n");
+                }
+            }
+            if (data.get(1) != null) {
+                if(presentationController.updateEmail(data.get(1))) {
+                    message.append("·Email actualizado\n");
+                } else {
+                    message.append("·Email incorrecto o ya en uso\n");
+                }
+            }
+            if (data.get(2) != null && data.get(3) != null) {
+                presentationController.updatePassword(data.get(2), data.get(3));
+                message.append("·Contraseña actualizada\n");
+            }
+        } catch (PasswordException exeception){
+            message.append("· La contraseña no cumple con los requisitos:\n");
+            if (exeception.isHasNotLowerCase()) {
+                message.append("- No tiene minuscula/s\n");
+            }
+            if (exeception.isHasNotNumber()) {
+                message.append("- No tiene numero/s\n");
+            }
+            if (exeception.isHasNotUpperCase()) {
+                message.append("\t- No tiene mayuscula/s\n");
+            }
+            if (exeception.isPasswordToShort()) {
+                message.append("\t- Es demasiado corta\n");
+            }
+        }
+        if (!message.toString().equals("")){
+            presentationController.showWarningDialog(message.toString());
+        }
+        presentationController.profileViewRegenerate();
     }
 }

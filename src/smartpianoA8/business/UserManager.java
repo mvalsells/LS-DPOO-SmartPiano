@@ -78,6 +78,7 @@ public class UserManager {
         newEmail = newEmail.toLowerCase();
         if (userDAO.getUserByUsername(user.getUsername()) != null && checkEmail(newEmail)) {
             userDAO.updateDataUser(user.getEmail(), User.TERM_EMAIL, newEmail);
+            currentUser.setEmail(newEmail);
             return true;
         }else {
             //System.err.println("Not able to change Email from user: " + user.getUsername());
@@ -87,7 +88,12 @@ public class UserManager {
     }
 
     public boolean modifyCurrentUserPassword(String newPassword, String newPasswordRepetition) throws PasswordException{
-        return modifyPassword(currentUser,newPassword, newPasswordRepetition);
+        if (modifyPassword(currentUser,newPassword, newPasswordRepetition)){
+            currentUser.setPasswordHash(encryptPassword(newPassword));
+            return true;
+        } else {
+            return false;
+        }
     }
     private boolean modifyPassword(User user, String newPassword, String newPasswordRepetition) throws PasswordException {
 
@@ -104,7 +110,12 @@ public class UserManager {
 
 
     public boolean modifyCurrentUserName(String newUsername){
-        return modifyUsername(currentUser, newUsername);
+        if (modifyUsername(currentUser, newUsername)){
+            currentUser.setUsername(newUsername);
+            return true;
+        } else {
+            return false;
+        }
     }
     private boolean modifyUsername(User user, String newUsername){
 
