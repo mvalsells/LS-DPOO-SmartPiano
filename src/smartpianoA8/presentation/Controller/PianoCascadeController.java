@@ -10,6 +10,15 @@ import smartpianoA8.presentation.views.customComponents.RectanglesCascada;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ * Classe controller de la vista de les notes en cascada
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see Runnable
+ * @see ActionListener
+ * @see KeyListener
+ * @see MouseListener
+ */
 public class PianoCascadeController implements Runnable, ActionListener, KeyListener, MouseListener {
 
     private PresentationController presentationController;
@@ -18,7 +27,9 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     private final Long maxMilis;
     private JPPiano pianoView;
 
-
+    /**
+     * Constructor
+     */
     public PianoCascadeController() {//pasarle la cancion y datos
         this.partitura = null;
         this.canal1 = null;
@@ -26,10 +37,18 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
 
     }
 
-
+    /**
+     * Mètode per registrar el controller a la presentació
+     * @param presentationController presentaicó
+     */
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
+
+    /**
+     * Mètode per executar la cançó
+     * @see Runnable
+     */
     @Override
     public void run(){
         Song song = presentationController.getSongByID(presentationController.songControllerGetLastSongPressed());
@@ -53,6 +72,10 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
         }
     }
 
+    /**
+     * @param e
+     * @deprecated No hauria d'estar aquí sinó un controlador per sobre
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

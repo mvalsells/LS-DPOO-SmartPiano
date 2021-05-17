@@ -11,6 +11,14 @@ import javax.sound.midi.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
+/**
+ * Classe pel controlador de la vista del piano
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see ActionListener
+ * @see MouseListener
+ * @see KeyListener
+ */
 public class PianoController implements ActionListener, MouseListener, KeyListener {
     // ---- Inici Atributs ----
 
@@ -28,6 +36,12 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
+
+    /**
+     * Constructor amb el teclat
+     * @param hmTeclas
+     * @param midiWritter
+     */
     public PianoController(HashMap<Integer, Teclas> hmTeclas, MidiWritter midiWritter) {
 
 
@@ -62,13 +76,20 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
+
+    /**
+     * Mètode per registrar la classe a la presentació
+     * @param presentationController presentaicó
+     */
     public void registerMasterController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
 
 
-
-
+    /**
+     * Mètode per intercanviar la finestra actual
+     * @param e action event
+     */
    @Override
     public void actionPerformed(ActionEvent e) {
        switch (e.getActionCommand()) {
@@ -139,12 +160,19 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
        }
     }
 
+    /**
+     * Mètode per quan s'ha clicat una tecla
+     * @param e key event
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
-
+    /**
+     * Mètode per quan es clica una tecla
+     * @param e
+     */
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
 
@@ -164,7 +192,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
     }
 
-
+    /**
+     * Mètode per quan es desactiva una tecla
+     * @param e key event
+     */
     public void keyReleased(KeyEvent e) {
         int key2 = e.getKeyCode();
 
@@ -181,11 +212,19 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
         }
     }
 
+    /**
+     * Mètode per quan es clica el ratolí
+     * @param e mouse event
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
 
+    /**
+     * Mètode per quan es manté el ratolí en una tecla
+     * @param e mouse event
+     */
     @Override
     public void mousePressed(MouseEvent e) {
 
@@ -196,6 +235,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
         }
     }
 
+    /**
+     * Mètode per quan es deixa de clicar amb el ratolí una tecla
+     * @param e mouse event
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         Key key = (Key) e.getSource();
@@ -205,11 +248,19 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
         }
     }
 
+    /**
+     * Mètode per quan s'acosta el ratolí
+     * @param e mouse event
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * Mètode per quan s'envà el ratolí
+     * @param e mouse event
+     */
     @Override
     public void mouseExited(MouseEvent e) {
 
