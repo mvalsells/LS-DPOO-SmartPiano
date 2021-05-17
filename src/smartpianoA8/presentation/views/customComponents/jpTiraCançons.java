@@ -49,7 +49,7 @@ public class jpTiraCançons extends JPMainView {
                 int k = 0;
 
                 while(k<songs.get(i).getNom().length()){
-                    if(k!=0){sbName.append("-\n");}
+                    if(k!=0){sbName.append("-<br/>");}else if(k==0){sbName.append("<html>");}
                     sbName.append(nomCanço, k, Math.min(k+24,songs.get(i).getNom().length()));
 
                     System.out.println(sbName.toString());
@@ -57,7 +57,7 @@ public class jpTiraCançons extends JPMainView {
                     k += 25;
 
                 }
-
+                sbName.append("<html>");
             }else{
                 sbName.append(songs.get(i).getNom());
             }
