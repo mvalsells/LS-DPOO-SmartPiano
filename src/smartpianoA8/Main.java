@@ -87,7 +87,7 @@ public class Main {
         } catch (UserManagerException e) {
             e.printStackTrace();
         }*/
-
+/*
         songDAO.registerPresentationFacade(presentationController);
 
         //Song
@@ -124,7 +124,7 @@ public class Main {
         //System.out.println("lele");
 
 
-
+*/
 
 
 /*

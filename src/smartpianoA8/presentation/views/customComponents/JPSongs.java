@@ -14,6 +14,7 @@ public class JPSongs extends JPanel {
 
     private ArrayList<Song> songs;
     private jpTiraCançons jpTiraCançonsMas;
+    private jpTiraCançons jpTiraCançonsNew;
     private JButton[] newButon;
     private JButton[] masButon;
     public JPSongs(ArrayList<Song> songs){
@@ -79,7 +80,7 @@ public class JPSongs extends JPanel {
         jpMasEscuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));*/
 
         jpTiraCançonsMas = new jpTiraCançons(songs,"Mas escuchadas");
-
+        jpTiraCançonsNew = new jpTiraCançons(songs,"Recientes");
 
         JLabel novedades = new JLabel("Novedades");
         novedades.setForeground(ColorScheme.PRIMARY);
@@ -134,8 +135,8 @@ public class JPSongs extends JPanel {
 
         //partNort.add(masEscuhadasText);
         partNort.add(jpTiraCançonsMas);
-        partSud.add(novedadesText);
-        partSud.add(novedadesPanel);
+        //partSud.add(novedadesText);
+        partSud.add(jpTiraCançonsNew);
 
         fons.add(partNort);
         fons.add(partSud);

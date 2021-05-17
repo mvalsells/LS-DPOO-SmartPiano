@@ -24,23 +24,53 @@ public class jpTiraCançons extends JPMainView {
         JPanel jpAmbSongs = new JPMainView();
         jpAmbSongs.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        jbMasButton = new JBgeneral[songs.size()];
+        jbMasButton = new JButton[songs.size()];
         
         for(int i=0; i< songs.size(); i++){
-            StringBuilder sb = new StringBuilder();
-            sb.append(JPSongs.SONG_PRESSED);
-            sb.append(songs.get(i).getIdSong());
-            jbMasButton[i] = new JBgeneral("Holi personi", ColorScheme.ORANGE_START);
+
+            JPanel jpCanço = new JPMainView();
+            jpCanço.setLayout(new BoxLayout(jpCanço,BoxLayout.Y_AXIS));
+
+            StringBuilder sbCommand = new StringBuilder();
+            sbCommand.append(JPSongs.SONG_PRESSED);
+            sbCommand.append(songs.get(i).getIdSong());
+            jbMasButton[i] = new JButton();
             jbMasButton[i].setIcon(musicIcon);
-            jbMasButton[i].setActionCommand(sb.toString());
-
+            jbMasButton[i].setActionCommand(sbCommand.toString());
             jbMasButton[i].setBorder(BorderFactory.createEmptyBorder(0,0,0,15));
-
             jbMasButton[i].setOpaque(false);
             jbMasButton[i].setContentAreaFilled(false);
             jbMasButton[i].setBorderPainted(false);
 
-            jpAmbSongs.add(jbMasButton[i]);
+            String nomCanço = songs.get(i).getNom();
+            StringBuilder sbName = new StringBuilder();
+
+            if(songs.get(i).getNom().length()>24){
+                int k = 0;
+
+                while(k<songs.get(i).getNom().length()){
+                    if(k!=0){sbName.append("-\n");}
+                    sbName.append(nomCanço, k, Math.min(k+24,songs.get(i).getNom().length()));
+
+                    System.out.println(sbName.toString());
+
+                    k += 25;
+
+                }
+
+            }else{
+                sbName.append(songs.get(i).getNom());
+            }
+
+
+            JLabel jlSongNomText = new JLColor(sbName.toString(),ColorScheme.PRIMARY);
+            JLabel jlSongInfoText = new JLColor(songs.get(i).getAutor(),ColorScheme.Secondary);
+
+            jpCanço.add(jbMasButton[i]);
+            jpCanço.add(jlSongNomText);
+            jpCanço.add(jlSongInfoText);
+
+            jpAmbSongs.add(jpCanço);
 
         }
 
