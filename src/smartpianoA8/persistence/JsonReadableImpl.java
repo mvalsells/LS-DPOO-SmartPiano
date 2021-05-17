@@ -9,6 +9,12 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+/**
+ * Classe per la lectura i configuració de la bbdd i el fitxer de configuració
+ * @version 1.0
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see JsonReadable
+ */
 public class JsonReadableImpl implements JsonReadable {
 
     private String      dbName;
@@ -19,13 +25,13 @@ public class JsonReadableImpl implements JsonReadable {
     private int         timeScrapping; //In seconds
 
     /**
-     *
+     * Constructor buit
      */
     public JsonReadableImpl(){}
 
     /**
-     *
-     * @throws FileNotFoundException
+     * Mètode per llegir el fitxer de configuració
+     * @throws FileNotFoundException Exepció de control d'errors
      */
     public void readJsonConfig() throws FileNotFoundException {
 
@@ -45,8 +51,8 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter del nom de la bbdd
+     * @return nom de la bbdd
      */
     @Override
     public String getDbName() {
@@ -54,8 +60,8 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter de l'url de la bbdd
+     * @return url
      */
     @Override
     public String getDbAddress() {
@@ -63,8 +69,8 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter del port de la bbdd
+     * @return port
      */
     @Override
     public int getDbPort() {
@@ -72,8 +78,8 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter de l'username de la bbdd
+     * @return username
      */
     @Override
     public String getDbUser() {
@@ -81,8 +87,8 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter de la contrassenya de la bbdd
+     * @return contrassenya
      */
     @Override
     public String getDbPassword() {
@@ -90,53 +96,12 @@ public class JsonReadableImpl implements JsonReadable {
     }
 
     /**
-     *
-     * @return
+     * Getter del temps de refresc de cançons
+     * @return temps de refresc
      */
     @Override
     public int gettimeScrapping() {
         return timeScrapping;
     }
-
-
-
-    /*public String readDatabaseData(String whatToRead) throws FileNotFoundException {
-
-        FileInputStream configFile = new FileInputStream("resources/config.json");
-        Reader reader = new InputStreamReader(configFile);
-        JsonElement rootElement = JsonParser.parseReader(reader);
-        JsonObject rootObject = rootElement.getAsJsonObject();
-
-        return switch (whatToRead) {
-            case "Name" -> readName(rootObject.getAsJsonObject("SmartPiano-A8"));
-            case "Address" -> readAddress(rootObject.getAsJsonObject("SmartPiano-A8"));
-            case "Port" -> readPort(rootObject.getAsJsonObject("SmartPiano-A8"));
-            case "User" -> readUser(rootObject.getAsJsonObject("SmartPiano-A8"));
-            case "Password" -> readPassword(rootObject.getAsJsonObject("SmartPiano-A8"));
-            case "Scrapping" -> readScrapping(rootObject.getAsJsonObject("SmartPiano-A8"));
-            default -> null;
-        };
-
-    }
-
-    private String readName(JsonObject rootObject) {
-        return rootObject.get("dbName").getAsString();
-    }
-    private String readAddress(JsonObject rootObject) {
-        return rootObject.get("dbAddress").getAsString();
-    }
-    private String readPort(JsonObject rootObject) {
-        return rootObject.get("dbPort").getAsString();
-    }
-    private String readUser(JsonObject rootObject) {
-        return rootObject.get("dbUser").getAsString();
-    }
-    private String readPassword(JsonObject rootObject) {
-        return rootObject.get("dbPassword").getAsString();
-    }
-    private String readScrapping(JsonObject rootObject) {
-        return rootObject.get("timeScrapping").getAsString();
-    }*/
-
 
 }

@@ -5,44 +5,44 @@ import java.io.FileNotFoundException;
 public interface JsonReadable {
 
     /**
-     *
-     * @return
+     * Getter del nom de la bbdd
+     * @return nom de la bbdd
      */
     public String getDbName();
 
     /**
-     *
-     * @return
+     * Getter de l'url de la bbdd
+     * @return url
      */
     public String getDbAddress();
 
     /**
-     *
-     * @return
+     * Getter del port de la bbdd
+     * @return port
      */
     public int getDbPort();
 
     /**
-     *
-     * @return
+     * Getter de l'username de la bbdd
+     * @return username
      */
     public String getDbUser();
 
     /**
-     *
-     * @return
+     * Getter de la contra de la bbdd
+     * @return contrassenya
      */
     public String getDbPassword();
 
     /**
-     *
-     * @return
+     * Getter del temps de refresc de l'scrapper
+     * @return temps de refresc
      */
     public int gettimeScrapping();
 
     /**
-     *
-     * @throws FileNotFoundException
+     * Mètode per llegir el fitxer de configuració
+     * @throws FileNotFoundException Control d'errors del fitxer
      */
     public void readJsonConfig() throws FileNotFoundException;
 
