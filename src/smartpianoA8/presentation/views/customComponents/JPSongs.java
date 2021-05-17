@@ -13,6 +13,7 @@ public class JPSongs extends JPanel {
     private int lastSongIDPressed;
 
     private ArrayList<Song> songs;
+    private ScrollSongs jspMasSongs;
     private JButton[] newButon;
     private JButton[] masButon;
     public JPSongs(ArrayList<Song> songs){
@@ -66,17 +67,18 @@ public class JPSongs extends JPanel {
 
 
 
-        JLabel masEscuchadas = new JLabel("Mas escuchadas");
-        masEscuchadas.setForeground(ColorScheme.PRIMARY);
-        masEscuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,10));
-        masEscuchadas.setFont(FontBase.TitularRegAdd);
+        JLabel jlMasEscuchadasText = new JLabel("Mas escuchadas");
+        jlMasEscuchadasText.setForeground(ColorScheme.PRIMARY);
+        jlMasEscuchadasText.setBorder(BorderFactory.createEmptyBorder(0,0,10,10));
+        jlMasEscuchadasText.setFont(FontBase.TitularRegAdd);
 
 
-        JPanel mas_Escuchadas = new JPanel();
-        mas_Escuchadas.setBackground(ColorScheme.MainView_Background);
-        mas_Escuchadas.setLayout(new GridLayout(1,songs.size()));
-        mas_Escuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
+        /*JPanel jpMasEscuchadas = new JPanel();
+        jpMasEscuchadas.setBackground(ColorScheme.MainView_Background);
+        jpMasEscuchadas.setLayout(new GridLayout(1,songs.size()));
+        jpMasEscuchadas.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));*/
 
+        jspMasSongs = new ScrollSongs(songs);
 
 
         JLabel novedades = new JLabel("Novedades");
@@ -89,9 +91,9 @@ public class JPSongs extends JPanel {
         news.setBorder(BorderFactory.createEmptyBorder(0,0,10,2));
         news.setLayout(new GridLayout(1,songs.size()));
         //scrollPane.setViewportView(news);
-        //scrollPane.setViewportView(mas_Escuchadas);
+        //scrollPane.setViewportView(jpMasEscuchadas);
 
-        JScrollPane scrollPane1= new JScrollPane (news,JScrollPane.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        /*JScrollPane scrollPane1= new JScrollPane (news,JScrollPane.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         JScrollBar scrollPane= scrollPane1.getHorizontalScrollBar();
         scrollPane.setValue(scrollPane.getMaximum());
         JPanel[] separacioMas = new JPanel[songs.size()];
@@ -120,18 +122,18 @@ public class JPSongs extends JPanel {
             separacioMas[i].add(masButon[i], BorderLayout.CENTER);
             separacioNew[i].add(newButon[i], BorderLayout.CENTER);
             news.add(separacioNew[i]);
-            mas_Escuchadas.add(separacioMas[i]);
+            jpMasEscuchadas.add(separacioMas[i]);
             //news.add(scrollPane);
-        }
+        }*/
 
-        masEscuhadasText.add(masEscuchadas,BorderLayout.SOUTH);
-        masEscuhadasPanel.add(mas_Escuchadas,BorderLayout.CENTER);
+        masEscuhadasText.add(jlMasEscuchadasText,BorderLayout.SOUTH);
+        //masEscuhadasPanel.add(jspMasSongs,BorderLayout.CENTER);
 
         novedadesText.add(novedades,BorderLayout.SOUTH);
         novedadesPanel.add(news, BorderLayout.CENTER);
 
         partNort.add(masEscuhadasText);
-        partNort.add(masEscuhadasPanel);
+        partNort.add(jspMasSongs);
         partSud.add(novedadesText);
         partSud.add(novedadesPanel);
 
@@ -144,12 +146,7 @@ public class JPSongs extends JPanel {
 
     public void registerController(ActionListener controller){
 
-        for(int i=0; i< songs.size(); i++){
-
-            masButon[i].addActionListener(controller);
-            newButon[i].addActionListener(controller);
-
-        }
+        jspMasSongs.registerController(controller);
 
     }
 
