@@ -18,15 +18,25 @@ public class JPPianoCascadeView extends JPMainView {
     public JPPianoCascadeView(){
         setLayout(new BorderLayout());
 
+        JPanel jpPanel = new JPanel();
+        jpPanel.setLayout(new BoxLayout(jpPanel,BoxLayout.Y_AXIS));
+
+
+        JPanel jpCascade = new JPanel();
+        jpCascade.setBackground(Color.darkGray);
+        jpCascade.setMinimumSize(new Dimension(750,500));
+        jpCascade.setBorder(BorderFactory.createEmptyBorder(375,250,375,250));
 
         add(new JLColor("Piano cascade", ColorScheme.PRIMARY));
         //JPPiano
         jpPiano  = new JPPiano();
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
+
+        jpPanel.add(jpCascade);
+        jpPanel.add(jpPiano);
         add(jpNavBar,BorderLayout.WEST);
-        add(jpPiano,BorderLayout.SOUTH);
-        //add(jpMain,BorderLayout.CENTER);
+        add(jpPanel,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----

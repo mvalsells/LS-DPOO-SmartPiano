@@ -125,6 +125,9 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
                }else{ System.out.println("ERROR patata"); }
                break;
+           case JPPiano.PLAY_BUTTON:
+               
+               break;
            case JDPianoRegAdd.GuardarRec:
 
                endTime = System.currentTimeMillis();
