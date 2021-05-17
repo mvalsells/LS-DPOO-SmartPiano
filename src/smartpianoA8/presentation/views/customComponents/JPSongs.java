@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class JPSongs extends JPanel {
     public static final String SONG_PRESSED = "songPressed-";
-
-
     private ArrayList<Song> songs;
     private jpTiraCançons jpTiraCançonsMas;
     private jpTiraCançons jpTiraCançonsNew;
