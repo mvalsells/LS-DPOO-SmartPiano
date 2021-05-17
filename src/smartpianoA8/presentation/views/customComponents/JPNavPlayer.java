@@ -26,11 +26,11 @@ public class JPNavPlayer extends JPanel {
         barraInferior.setOpaque(false);
         barraInferior.setLayout(new BoxLayout(barraInferior, BoxLayout.X_AXIS));
 
-        playButton = new JBNavBar(playIcon);
-        pauseButton = new JBNavBar(pauseIcon);
-        nextButton = new JBNavBar(nextIcon);
-        previousButton = new JBNavBar(previousIcon);
-        stopButton = new JBNavBar(stopIcon);
+        playButton = new JBNavPlayer(playIcon);
+        pauseButton = new JBNavPlayer(pauseIcon);
+        nextButton = new JBNavPlayer(nextIcon);
+        previousButton = new JBNavPlayer(previousIcon);
+        stopButton = new JBNavPlayer(stopIcon);
 
         barraInferior.add(Box.createHorizontalStrut(BordersView.NavPlayer_Space));
         barraInferior.add(playButton);
