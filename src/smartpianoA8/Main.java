@@ -2,10 +2,6 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -13,16 +9,9 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PianoCascadeController;
 import smartpianoA8.presentation.Controller.PresentationController;
-import smartpianoA8.presentation.Controller.PresentationFacade;
-import smartpianoA8.presentation.views.JFSongsTable;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Classe principal per l'execució del programa
@@ -58,6 +47,11 @@ public class Main {
 
         MidiParser midiParser = new MidiParserImpl();
 
+        /*JPNavPlayer jpNavPlayer = new JPNavPlayer();
+        JFrame test = new JFrame();
+        test.add(jpNavPlayer);
+        test.setVisible(true);*/
+
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
 
@@ -73,7 +67,7 @@ public class Main {
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         try {
 
-            businessFacade.login("chros", "sDFDSfdsfffsd2344323!");
+            businessFacade.login("chris", "sDFDSfdsfffsd2344323!");
         } catch (UserManagerException e){
             e.printStackTrace();
         }
