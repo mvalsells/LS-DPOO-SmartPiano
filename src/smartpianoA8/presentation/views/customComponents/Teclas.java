@@ -15,7 +15,6 @@ public class Teclas {
         //this.code = code;
         this.nota = nota;
         this.isPlaying = defaultIsPlaying;
-
     }
 
     public int getNota(){return this.nota; }

@@ -26,13 +26,7 @@ public class BlackKey extends JButton implements Key {
     }
 
 
-
-
-    public String getColor(){
-        return "black";
-    }
     public void clicarNota(){
-        //posar blau
         setBackground(Color.lightGray);
     }
     public void desclicarNota(){

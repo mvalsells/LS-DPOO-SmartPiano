@@ -30,10 +30,6 @@ public class WhiteKey  extends JButton implements Key {
 
 
 
-
-    public String getColor(){
-        return "white";
-    }
     public void clicarNota(){
         //posar blau
         setBackground(Color.lightGray);

@@ -10,6 +10,7 @@ public class RectanglesCascada extends Rectangle implements Runnable{
     boolean started = false;
     private final static int margin = 4;
     private JPPiano pianoView;
+    private final Integer[] negres = {2,4,7,9,11,14,16,19,21,23,26,28,31,33,35};//començant per la 1
 
 
     public RectanglesCascada(int note, Long endTime, JPPiano pianoView){
@@ -20,20 +21,59 @@ public class RectanglesCascada extends Rectangle implements Runnable{
 
     @Override
     public void run(){
+
+        /******************************pintar tecla*******************/
+
         //colorejar una tecla
-        pianoView.pintarTecla(note);
+        /*if(isBlanca(note)) {
+            note = canviaNote(note, isBlanca(note));
+            pianoView.pintarTeclaBlanca(note);
+        }
+        else{
+            pianoView.pintarTeclaNegra(note);
+        }*/
+
+
         long inicial = System.currentTimeMillis();
         while(System.currentTimeMillis()-inicial <= endTime){
         }
+
+        /***************************despintar tecla********************/
+
         //tecla color inicial
-        pianoView.despintarTecla(note);
+        /*if(isBlanca(note)) {
+
+            pianoView.despintarTeclaBlanca(note);
+        }
+        else{
+            pianoView.despintarTeclaNegra(note);
+        }*/
+
+
+
     }
 
-    public void move(){
+    /*private int canviaNote(int note, Boolean isBlanca){
+        if(isBlanca){
+            if(note)
+        }else{
+
+        }
+
+        return ;
+    }*/
+
+    /*public void move(){
         y++;
         this.setLocation(x,y);
-    }
+    }*/
 
+    private Boolean isBlanca(int note){
+        for (Integer negre : negres) {
+            if (note == negre) return true;
+        }
+        return false;
+    }
 
     public int getVelocity() {
         return velocity;

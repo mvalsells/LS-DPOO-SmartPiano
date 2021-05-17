@@ -472,11 +472,17 @@ public class JPPiano extends JPanel {
         }
     }
 
-    public void pintarTecla(int note){
-        //.clicarNota();
+    public void pintarTeclaBlanca(int note){
+        whites[note].clicarNota();
     }
 
-    public void despintarTecla(int note){
-        //.desclicarNota();
+    public void despintarTeclaNegra(int note){
+        blacks[note].desclicarNota();
+    }
+    public void despintarTeclaBlanca(int note){
+        whites[note].desclicarNota();
+    }
+    public void pintarTeclaNegra(int note){
+        blacks[note].clicarNota();
     }
 }
