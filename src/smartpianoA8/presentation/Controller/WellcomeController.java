@@ -40,7 +40,7 @@ public class WellcomeController implements ActionListener {
      * Mètode per registrar el controller a la presentació
      * @param presentationController la presentació
      */
-    public void registerMasterController(PresentationController presentationController) {
+    public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
 

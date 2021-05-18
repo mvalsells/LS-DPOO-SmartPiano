@@ -82,7 +82,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
      * Mètode per registrar la classe a la presentació
      * @param presentationController presentaicó
      */
-    public void registerMasterController(PresentationController presentationController) {
+    public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
 

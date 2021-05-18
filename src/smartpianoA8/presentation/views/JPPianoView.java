@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 
 public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
-    private JPNavBar jpNavBar;
     private JPPiano jpPiano;
     private JDPianoRegAdd jdPianoRegAdd;
 
@@ -25,8 +24,6 @@ public class JPPianoView extends JPMainView {
         jpPiano = new JPPiano();
 
         //Final Packing
-        jpNavBar = new JPNavBar(JFMainFrame.PIANO);
-        add(jpNavBar,BorderLayout.WEST);
         add(jpPiano,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
@@ -39,7 +36,6 @@ public class JPPianoView extends JPMainView {
 
 
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
-        jpNavBar.registerController(actionListener);
         jdPianoRegAdd.registerControllerJDPianoRegAdd(actionListener);
         jpPiano.registerController(actionListener,keyListener,mouseListener);
     }
