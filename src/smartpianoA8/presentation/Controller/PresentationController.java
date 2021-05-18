@@ -263,7 +263,9 @@ public class PresentationController implements PresentationFacade{
 
 
 
+    public void loadPlaylistInPlayer() {
 
+    }
 
     public void playStatusInPlayer() {
         System.out.println("Yo, i'm playing...");
@@ -283,6 +285,10 @@ public class PresentationController implements PresentationFacade{
 
     public void stopStatusInPlayer() {
         System.out.println("Yo, ended playing...");
+    }
+
+    public void updatePlaylistInPlayer() {
+        System.out.println("Yo, updating playlist...");
     }
 
 }
