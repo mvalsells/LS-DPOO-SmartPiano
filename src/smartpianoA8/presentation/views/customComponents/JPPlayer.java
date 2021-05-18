@@ -20,6 +20,12 @@ public class JPPlayer extends JPanel {
     private static final ImageIcon nextIcon = new ImageIcon("Imagen/ImagenesReproductor/nextButton2.png");
     private static final ImageIcon stopIcon = new ImageIcon("Imagen/ImagenesReproductor/stopButton2.png");
 
+    public static final String PLAY_BUTTON = "PLAY";
+    public static final String PAUSE_BUTTON = "PAUSE";
+    public static final String NEXT_BUTTON = "NEXT";
+    public static final String PREVIOUS_BUTTON = "PREVIOUS";
+    public static final String STOP_BUTTON = "STOP";
+
     public JPPlayer() {
         setLayout(new BorderLayout());
         setBackground(ColorScheme.NavBar_Background);

@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.customComponents.JPPlayer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,9 @@ public class MainFrameController implements ActionListener {
             case JFMainFrame.PIANO_CASCADE:
                 presentationController.changeView(JFMainFrame.PIANO_CASCADE);
                 break;
+            //Player
+            case JPPlayer.PLAY_BUTTON:
+                System.out.println("testjeje");
         }
     }
 
