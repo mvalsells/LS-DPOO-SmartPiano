@@ -20,8 +20,6 @@ public class JPPianoView extends JPMainView {
     public JPPianoView(){
         setLayout(new BorderLayout());
 
-
-
         //ShowDialog
         jdPianoRegAdd = new JDPianoRegAdd();
         jpPiano = new JPPiano();
