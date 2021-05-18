@@ -9,6 +9,7 @@ import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
+import smartpianoA8.presentation.views.customComponents.JPPlayer;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class PresentationController implements PresentationFacade{
     private PianoCascadeController pianoCascadeController;
     private PlayerController playerController;
     private MainFrameController mainFrameController;
+    Thread jpPlayerControllerThread;
 
 
     // ---- Fi Atributs ----
@@ -58,6 +60,8 @@ public class PresentationController implements PresentationFacade{
         pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
         mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
+        playerController = new PlayerController();
+        jpPlayerControllerThread = new Thread(playerController);
     }
 
     /**
@@ -257,5 +261,28 @@ public class PresentationController implements PresentationFacade{
     }
     // ---- End Dialog/popups Methods
 
+
+
+
+
+    public void playStatusInPlayer() {
+        System.out.println("Yo, i'm playing...");
+    }
+
+    public void pauseStatusInPlayer() {
+        System.out.println("Yo, i'm paused...");
+    }
+
+    public void nextStatusInPlayer() {
+        System.out.println("Yo, changing to next song...");
+    }
+
+    public void previousStatusInPlayer() {
+        System.out.println("Yo, changing to previous song...");
+    }
+
+    public void stopStatusInPlayer() {
+        System.out.println("Yo, ended playing...");
+    }
 
 }

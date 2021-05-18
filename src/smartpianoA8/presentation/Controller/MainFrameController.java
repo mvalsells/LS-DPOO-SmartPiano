@@ -32,19 +32,19 @@ public class MainFrameController implements ActionListener {
                 break;
             //Player
             case JPPlayer.PLAY_BUTTON:
-                System.out.println("PATATA: play");
+                presentationController.playStatusInPlayer();
                 break;
             case JPPlayer.PAUSE_BUTTON:
-                System.out.println("PATATA: pause");
+                presentationController.pauseStatusInPlayer();
                 break;
             case JPPlayer.NEXT_BUTTON:
-                System.out.println("PATATA: next");
+                presentationController.nextStatusInPlayer();
                 break;
             case JPPlayer.PREVIOUS_BUTTON:
-                System.out.println("PATATA: prev");
+                presentationController.previousStatusInPlayer();
                 break;
             case JPPlayer.STOP_BUTTON:
-                System.out.println("PATATA: stop");
+                presentationController.stopStatusInPlayer();
                 break;
         }
     }
