@@ -18,15 +18,10 @@ public class PlayerController implements Runnable, ActionListener {
     private Sequence currentSequence;
     private Sequencer currentSequencer;
     Runnable runnable;
-    int position = 0;
 
-    public PlayerController(ArrayList<Song> songsToBePlayed) {
+    public PlayerController() {}
 
-        this.songsToBePlayed = songsToBePlayed;
-
-    }
-
-    public void modifySongs(){}
+    public void modifySongs() {}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -110,7 +105,8 @@ public class PlayerController implements Runnable, ActionListener {
 
     }
 
-    public int getPosition() {
-        return position;
+    public void setSongsToBePlayed(ArrayList<Song> songsToBePlayed) {
+        this.songsToBePlayed = songsToBePlayed;
     }
+
 }

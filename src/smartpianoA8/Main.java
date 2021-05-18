@@ -46,8 +46,9 @@ public class Main {
         test.add(song2);
         test.add(song3);
         test.add(song4);
-        PlayerController asd = new PlayerController(test);
+        PlayerController asd = new PlayerController();
         Thread thread = new Thread(asd);
+        asd.setSongsToBePlayed(test);
         thread.start();
 
         //Llegir fitxer config

@@ -78,7 +78,9 @@ public class JPPlayer extends JPanel {
         nextButton.addActionListener(controller);
         previousButton.addActionListener(controller);
         stopButton.addActionListener(controller);
-        progressBar.addAncestorListener((AncestorListener) controller);
     }
 
+    public void setCurrentStatus(int status) {
+        progressBar.setValue(status);
+    }
 }

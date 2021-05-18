@@ -39,6 +39,7 @@ public class PresentationController implements PresentationFacade{
     private ProfileController profileController;
     private PianoController pianoController;
     private PianoCascadeController pianoCascadeController;
+    private PlayerController playerController;
 
 
     // ---- Fi Atributs ----
