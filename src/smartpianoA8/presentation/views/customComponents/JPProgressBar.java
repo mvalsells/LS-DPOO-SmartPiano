@@ -22,7 +22,7 @@ public class JPProgressBar extends JProgressBar {
 
                 ancho = (int)(ancho*progress);
 
-                g.setColor(Color.PINK);
+                g.setColor(Color.ORANGE);
 
                 RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float(0, 0, ancho, alto, 4, 4);
                 //Rectangle rectangle = new Rectangle(5,5, ancho, alto);
