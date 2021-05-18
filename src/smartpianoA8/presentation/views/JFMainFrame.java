@@ -1,11 +1,9 @@
 package smartpianoA8.presentation.views;
 
+import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
-import smartpianoA8.presentation.views.customComponents.JPMainView;
-import smartpianoA8.presentation.views.customComponents.JPNavBar;
-import smartpianoA8.presentation.views.customComponents.JPPlayer;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +24,8 @@ public class JFMainFrame extends JFrame {
 
     //Private
     private JPSongs jpSongs;
-    private JPFavView jpFavView;
+    //private JPFavView jpFavView; //Substituida per JPPlaylistView
+    private JPPlaylistView jpPlaylistView;
     private JPPianoView jpPianoView;
     private JPProfileView jpProfileView;
     private JPPianoCascadeView jpPianoCascadeView;
@@ -38,7 +37,7 @@ public class JFMainFrame extends JFrame {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JFMainFrame(ArrayList<Song> masterSongs, User currentUser){
+    public JFMainFrame(ArrayList<Song> masterSongs, User currentUser,ArrayList<PlayList> hasPlayLists){
         //Frame
         setTitle("SmartPiano");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -47,7 +46,8 @@ public class JFMainFrame extends JFrame {
 
         //Panels (Navigation Bar options)
         jpSongs = new JPSongs(masterSongs);
-        jpFavView = new JPFavView();
+        //jpFavView = new JPFavView(); //Substituida per JPPlaylistView
+        jpPlaylistView = new JPPlaylistView(hasPlayLists,masterSongs);
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView(currentUser);
         jpPianoCascadeView = new JPPianoCascadeView();
@@ -57,9 +57,8 @@ public class JFMainFrame extends JFrame {
 
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
-
         jpCardPanel.add(jpSongs, SONGS);
-        jpCardPanel.add(jpFavView, FAVS);
+        jpCardPanel.add(jpPlaylistView, FAVS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
         jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
@@ -85,8 +84,8 @@ public class JFMainFrame extends JFrame {
         jpSongs.registerController(actionListener);
     }
 
-    public void registerFavViewControllers(ActionListener actionListener){
-        jpFavView.registerControllers(actionListener);
+    public void registerPlaylistViewControllers(ActionListener actionListener){
+        jpPlaylistView.registerControllers(actionListener);
     }
     public void registerProfileViewControllers(ActionListener actionListener){
         jpProfileView.registerControllers(actionListener);

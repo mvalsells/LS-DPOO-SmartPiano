@@ -1,6 +1,7 @@
 package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
@@ -292,4 +293,13 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  END song implementation
     // ------------------------------------------------------
 
+    // ------------------------------------------------------
+    //  START song implementation
+    // ------------------------------------------------------
+    @Override
+    public ArrayList<PlayList> getCurrentUserPlaylist(){return playListDAO.getPlayListsByUser(userManager.getCurrentUser());}
+
+    // ------------------------------------------------------
+    //  END song implementation
+    // ------------------------------------------------------
 }

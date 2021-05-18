@@ -10,8 +10,11 @@ import java.util.ArrayList;
 
 public class JPPlaylistSettings extends JPMainView {
 
-    JComboBox<Song> jcSongAdder;
-    JComboBox<Song> jcSongRemover;
+    private JComboBox<Song> jcSongAdder;
+    private JComboBox<Song> jcSongRemover;
+
+    private JButton jbAdder;
+    private JButton jbRemover;
 
     public JPPlaylistSettings( ArrayList<Song> songs, PlayList playList){
 
@@ -26,7 +29,7 @@ public class JPPlaylistSettings extends JPMainView {
 
         ArrayList<Song> songsPlaylistHas = playList.getSongs();
 
-        for(int i = 0;i<songsPlaylistHas.size();i++){
+        for(int i = 0;i<songs.size();i++){
             if(!songsPlaylistHas.contains(songs.get(i))){
                 jcSongAdder.addItem(songsPlaylistHas.get(i));
             }
@@ -39,8 +42,9 @@ public class JPPlaylistSettings extends JPMainView {
         }
 
         //Buttons
-        JButton jbAdder = new JBgeneral("Añadir",ColorScheme.DARK_GREEN);
-        JButton jbRemover = new JBgeneral("Eliminar",ColorScheme.DARK_GREEN);
+        jbAdder = new JBgeneral("Añadir",ColorScheme.DARK_GREEN);
+        jbRemover = new JBgeneral("Eliminar",ColorScheme.DARK_GREEN);
+
         groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()
                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING))
                     .addComponent(jlAdd)
@@ -59,6 +63,9 @@ public class JPPlaylistSettings extends JPMainView {
 
         jcSongAdder.addActionListener(controller);
         jcSongRemover.addActionListener(controller);
+
+        jbAdder.addActionListener(controller);
+        jbRemover.addActionListener(controller);
 
     }
 

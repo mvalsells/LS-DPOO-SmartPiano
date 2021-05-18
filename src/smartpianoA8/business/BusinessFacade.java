@@ -1,6 +1,7 @@
 package smartpianoA8.business;
 
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
@@ -48,6 +49,7 @@ public interface BusinessFacade {
     //Playlist
     //boolean newPlayList(String nom, String nomUsuari);
     //void removePlayList(int idPlayList);
+    ArrayList<PlayList> getCurrentUserPlaylist();
 
 
     //Altres

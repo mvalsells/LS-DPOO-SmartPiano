@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class JPSongs extends JPanel {
     public static final String SONG_PRESSED = "songPressed-";
     private ArrayList<Song> songs;
-    private jpTiraCançons jpTiraCançonsMas;
-    private jpTiraCançons jpTiraCançonsNew;
+    private JPTiraCancons jpTiraCançonsMas;
+    private JPTiraCancons jpTiraCançonsNew;
     public JPSongs(ArrayList<Song> songs){
         this.songs = songs;
         configureMenu();
@@ -50,8 +50,8 @@ public class JPSongs extends JPanel {
         novedadesPanel.setBackground(ColorScheme.MainView_Background);
 
 
-        jpTiraCançonsMas = new jpTiraCançons(songs,"Mas escuchadas");
-        jpTiraCançonsNew = new jpTiraCançons(songs,"Recientes");
+        jpTiraCançonsMas = new JPTiraCancons(songs,"Mas escuchadas");
+        jpTiraCançonsNew = new JPTiraCancons(songs,"Recientes");
 
         JLabel novedades = new JLabel("Novedades");
         novedades.setForeground(ColorScheme.PRIMARY);
@@ -80,6 +80,7 @@ public class JPSongs extends JPanel {
     public void registerController(ActionListener controller){
 
         jpTiraCançonsMas.registerController(controller);
+        jpTiraCançonsNew.registerController(controller);
 
     }
 

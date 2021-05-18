@@ -51,7 +51,7 @@ public class PresentationController implements PresentationFacade{
 
         //Controllers
         wellcomeController = new WellcomeController();
-        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser());
+        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
         songController = new SongController();
         favController = new FavController();
         profileController = new ProfileController();
@@ -77,7 +77,7 @@ public class PresentationController implements PresentationFacade{
         //Register views to their contrller
         //TODO falta wellcome controller, potser no es necessari
         jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerFavViewControllers(favController);
+        jfMainFrame.registerPlaylistViewControllers(favController);
         jfMainFrame.registerProfileViewControllers(profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
