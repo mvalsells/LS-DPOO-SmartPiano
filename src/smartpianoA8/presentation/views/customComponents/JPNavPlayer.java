@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views.customComponents;
 
 import javax.swing.*;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ public class JPNavPlayer extends JPanel {
     private JButton nextButton;
     private JButton previousButton;
     private JButton stopButton;
-    private JProgressBar progressBar;
+    private JPProgressBar progressBar;
 
     private static final ImageIcon playIcon = new ImageIcon("Imagen/ImagenesReproductor/playButton2.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Imagen/ImagenesReproductor/pauseButton2.png");
@@ -43,8 +44,12 @@ public class JPNavPlayer extends JPanel {
         previousButton = new JBNavPlayer(previousIcon);
         stopButton = new JBNavPlayer(stopIcon);
 
-        progressBar = new JProgressBar();
-        progressBar.setValue(100);
+
+        progressBar = new JPProgressBar();
+
+        //progressBar.setBackground(Color.GRAY);
+        //progressBar.setForeground(Color.PINK);
+        progressBar.setValue(80);
 
         barraSubInferior.add(progressBar);
 
@@ -71,5 +76,6 @@ public class JPNavPlayer extends JPanel {
         nextButton.addActionListener(controller);
         previousButton.addActionListener(controller);
         stopButton.addActionListener(controller);
+        progressBar.addAncestorListener((AncestorListener) controller);
     }
 }
