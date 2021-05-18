@@ -5,7 +5,7 @@ import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JPNavPlayer extends JPanel {
+public class JPPlayer extends JPanel {
 
     private JButton playButton;
     private JButton pauseButton;
@@ -20,7 +20,7 @@ public class JPNavPlayer extends JPanel {
     private static final ImageIcon nextIcon = new ImageIcon("Imagen/ImagenesReproductor/nextButton2.png");
     private static final ImageIcon stopIcon = new ImageIcon("Imagen/ImagenesReproductor/stopButton2.png");
 
-    public JPNavPlayer() {
+    public JPPlayer() {
         setLayout(new BorderLayout());
         setBackground(ColorScheme.NavBar_Background);
 
@@ -38,11 +38,11 @@ public class JPNavPlayer extends JPanel {
         barraSubInferior.setOpaque(false);
         barraSubInferior.setLayout(new BoxLayout(barraSubInferior, BoxLayout.X_AXIS));
 
-        playButton = new JBNavPlayer(playIcon);
-        pauseButton = new JBNavPlayer(pauseIcon);
-        nextButton = new JBNavPlayer(nextIcon);
-        previousButton = new JBNavPlayer(previousIcon);
-        stopButton = new JBNavPlayer(stopIcon);
+        playButton = new JBPlayer(playIcon);
+        pauseButton = new JBPlayer(pauseIcon);
+        nextButton = new JBPlayer(nextIcon);
+        previousButton = new JBPlayer(previousIcon);
+        stopButton = new JBPlayer(stopIcon);
 
 
         progressBar = new JPProgressBar();
@@ -63,6 +63,7 @@ public class JPNavPlayer extends JPanel {
         barraInferior.add(Box.createHorizontalStrut(BordersView.NavPlayer_Space));
         barraInferior.add(nextButton);
 
+        generalBorder.add(Box.createVerticalStrut(4));
         generalBorder.add(barraSubInferior);
         generalBorder.add(barraInferior);
 

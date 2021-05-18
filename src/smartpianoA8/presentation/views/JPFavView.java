@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class JPFavView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
-    private JPNavPlayer jpNavPlayer;
+    private JPPlayer jpNavPlayer;
     private JPanel jpMain;
     private JButton jbEditar;
     // ---- Fi Atributs ----
@@ -17,7 +17,7 @@ public class JPFavView extends JPMainView {
     public JPFavView(){
         setLayout(new BorderLayout());
 
-        jpNavPlayer = new JPNavPlayer();
+        jpNavPlayer = new JPPlayer();
 
         //Main JPanel
         jpMain = new JPMainView();
