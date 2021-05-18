@@ -60,7 +60,7 @@ public class BordersView {
     //MainView
     public static final int NavBar_EspaiEntreBotons = 40;
 
-    public static final int NavPlayer_Space = 60;
+    public static final int NavPlayer_Space = 30;
 
     /*GETTERS*/
 
