@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class JPFavView extends JPMainView {
     // ---- Inici Atributs ----
     private JPNavBar jpNavBar;
+    private JPNavPlayer jpNavPlayer;
     private JPanel jpMain;
     private JButton jbEditar;
     // ---- Fi Atributs ----
@@ -16,7 +17,7 @@ public class JPFavView extends JPMainView {
     public JPFavView(){
         setLayout(new BorderLayout());
 
-
+        jpNavPlayer = new JPNavPlayer();
 
         //Main JPanel
         jpMain = new JPMainView();
@@ -125,6 +126,8 @@ public class JPFavView extends JPMainView {
 
 
         jpMain.add(fons);
+
+        jpMain.add(jpNavPlayer, BorderLayout.SOUTH);
 
         //Packing
         jpNavBar = new JPNavBar(JFMainFrame.FAVS);
