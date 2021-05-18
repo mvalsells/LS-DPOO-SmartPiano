@@ -19,6 +19,11 @@ public class SQLPlayListDAO implements PlayListDAO{
     public SQLPlayListDAO(SQLConnector connector){
         this.connector = connector;
     }
+
+    public String TERM_PLAYLIST1 = "La meva primera playlist";
+    public String TERM_PLAYLIST2 = "La meva segona primer playlist";
+
+
     /**
      * Afegeix / Crea una Playlist a un usuari
      * @param name nom de la playlist
@@ -138,5 +143,23 @@ public class SQLPlayListDAO implements PlayListDAO{
 
         }
         return null;
+    }
+
+    @Override
+    public void newUserPlaylists(String username){
+
+        //1ra playlist
+        String query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
+                TERM_PLAYLIST1 + "', '" +
+                username + "');";
+
+        connector.insertQuery(query);
+
+        //2na playlist
+        query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
+                TERM_PLAYLIST2 + "', '" +
+                username + "');";
+
+        connector.insertQuery(query);
     }
 }
