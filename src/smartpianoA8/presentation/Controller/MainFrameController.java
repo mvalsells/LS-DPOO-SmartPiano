@@ -47,7 +47,7 @@ public class MainFrameController implements ActionListener {
                 presentationController.stopStatusInPlayer();
                 break;
             case JPPlayer.UPLOAD_BUTTON:
-                presentationController.updatePlaylistInPlayer();
+                presentationController.loadPlaylistInPlayer();
                 break;
         }
     }
