@@ -28,12 +28,12 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //Managers
     private UserManager userManager;
     private SongManager songManager;
-    /*
+
     //DAOs
     private SongDAO songDAO;
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
-    */
+
     /**
      * Constructor
      * @param userDAO DAO del control d'usuaris
@@ -45,6 +45,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
+        this.statsDAO = statsDAO;
+        this.playListDAO = playListDAO;
 
     }
 
