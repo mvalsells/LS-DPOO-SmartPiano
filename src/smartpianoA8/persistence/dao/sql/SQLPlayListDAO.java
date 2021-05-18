@@ -57,7 +57,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      * @param song cançó a treure de la PlayList amb el seu ID
      */
     @Override
-    public void removeSongFromPlayList(PlayList playList, Song song) {
+    public void removeSongFromPlayList(Song song,PlayList playList) {
         String query = "DELETE FROM SongPlaylist WHERE idSong = " + song.getIdSong() + ";";
         connector.deleteQuery(query);
     }
@@ -81,20 +81,20 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public ArrayList<PlayList> getPlayListsByUser(User user) {
-        ArrayList<PlayList> llista = null;
+        ArrayList<PlayList> llista = new ArrayList<>();
 
-        String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari LIKE '" + user.getUsername() + "';";
+        String query = "SELECT * FROM PlayList WHERE NomUsuari LIKE '" + user.getUsername() + "';";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
             }
-
+            return llista;
         }catch (SQLException e){
+            System.out.println("PATATA 2k mecagun");
             e.printStackTrace();//TODO aixo potser printa coses innecessaries
             return llista;
         }
-        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.Notes;
+import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
@@ -35,7 +36,7 @@ public class PresentationController implements PresentationFacade{
     //Controllers
     private WellcomeController wellcomeController;
     private SongController songController;
-    private FavController favController;
+    private PlaylistController playlistController;
     private ProfileController profileController;
     private PianoController pianoController;
     private PianoCascadeController pianoCascadeController;
@@ -58,7 +59,7 @@ public class PresentationController implements PresentationFacade{
         wellcomeController = new WellcomeController();
         jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
         songController = new SongController();
-        favController = new FavController();
+        playlistController = new PlaylistController();
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
         mainFrameController = new MainFrameController();
@@ -75,7 +76,7 @@ public class PresentationController implements PresentationFacade{
         //Register this controller to other controllers
         wellcomeController.registerPresentationController(this);
         songController.registerPresentationController(this);
-        favController.registerPresentationController(this);
+        playlistController.registerPresentationController(this);
         profileController.registerPresentationController(this);
         pianoController.registerPresentationController(this);
         pianoCascadeController.registerPresentationController(this);
@@ -84,7 +85,7 @@ public class PresentationController implements PresentationFacade{
         //Register views to their contrller
         //TODO falta wellcome controller, potser no es necessari
         jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerPlaylistViewControllers(favController);
+        jfMainFrame.registerPlaylistViewControllers(playlistController);
         jfMainFrame.registerProfileViewControllers(profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
@@ -199,8 +200,13 @@ public class PresentationController implements PresentationFacade{
     public void nuevasCanciones(){
         jfMainFrame.nuevaCanciones();
     }
-    // ---- Start FavView Methods
-    // ---- End FavView Methods
+    // ---- Start PlaylistView Methods
+    public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
+    public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
+    public String playlistViewGetJCTriarPlaylistString(){return jfMainFrame.playlistViewGetJCTriarPlaylistString();}
+    public void playlistAddSongToPlayList(Song song, PlayList playList){businessFacade.addSongToPlayList(song,playList);}
+    public void playlistRemoveSongToPlayList(Song song, PlayList playList){businessFacade.removeSongFromPlayList(song,playList);}
+    // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 
     /**

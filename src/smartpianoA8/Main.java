@@ -83,22 +83,22 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
-        /*try {
+        try {
 
             businessFacade.login("chris", "sDFDSfdsfffsd2344323!");
         } catch (UserManagerException e){
             e.printStackTrace();
-        }*/
-        /*PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
-        presentationController.registerAllControlers();*/
+        }
+        PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
+        presentationController.registerAllControlers();
 
-        try {
+        /*try {
             businessFacade.registerUser("Patata2k", "patata2k@gmail.com", "sDFDSfdsfffsd2344323!", "sDFDSfdsfffsd2344323!", User.TYPE_SMARTPIANO);
         } catch (PasswordException e) {
             e.printStackTrace();
         } catch (UserManagerException e) {
             e.printStackTrace();
-        }
+        }*/
 /*
         songDAO.registerPresentationFacade(presentationController);
 

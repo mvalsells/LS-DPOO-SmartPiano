@@ -10,42 +10,72 @@ import java.util.ArrayList;
 
 public class JPPlaylistSettings extends JPMainView {
 
-    private JComboBox<Song> jcSongAdder;
-    private JComboBox<Song> jcSongRemover;
+    private JComboBox<String> jcSongAdder;
+    private JComboBox<String> jcSongRemover;
 
     private JButton jbAdder;
     private JButton jbRemover;
 
+    public static final String ADD = "add";
+    public static final String REMOVE = "remove";
+
     public JPPlaylistSettings( ArrayList<Song> songs, PlayList playList){
 
-        GroupLayout groupLayout = new GroupLayout(this);
-        setLayout(groupLayout);
+        /*GroupLayout groupLayout = new GroupLayout(this);*/
+        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+
+        JPanel jpAdd  = new JPMainView();
+        jpAdd.setLayout(new FlowLayout());
+        JPanel jpRemove  = new JPMainView();
+        jpRemove.setLayout(new FlowLayout());
 
         JLabel jlAdd = new JLColor("Cancion a añadir: ", Color.WHITE);
         JLabel jlRemove = new JLColor("Cancion a eliminar: ", Color.WHITE);
 
-        jcSongAdder= new JComboBox<Song>();
-        jcSongRemover= new JComboBox<Song>();
+        jcSongAdder= new JComboBox<String>();
+        jcSongRemover= new JComboBox<String>();
 
         ArrayList<Song> songsPlaylistHas = playList.getSongs();
 
-        for(int i = 0;i<songs.size();i++){
-            if(!songsPlaylistHas.contains(songs.get(i))){
-                jcSongAdder.addItem(songsPlaylistHas.get(i));
+        if(songsPlaylistHas == null){
+
+            for(int i = 0;i<songs.size();i++) {
+                jcSongAdder.addItem(songs.get(i).getNom());
+            }
+        }else {
+            for (int i = 0; i < songs.size(); i++) {
+                if (!songsPlaylistHas.contains(songs.get(i))) {
+                    jcSongAdder.addItem(songsPlaylistHas.get(i).getNom());
+                }
+            }
+            for(int i = 0;i<songsPlaylistHas.size();i++){
+
+                jcSongRemover.addItem(songsPlaylistHas.get(i).getNom());
+
             }
         }
 
-        for(int i = 0;i<songsPlaylistHas.size();i++){
 
-            jcSongRemover.addItem(songsPlaylistHas.get(i));
-
-        }
 
         //Buttons
         jbAdder = new JBgeneral("Añadir",ColorScheme.DARK_GREEN);
+        jbAdder.setActionCommand(ADD);
         jbRemover = new JBgeneral("Eliminar",ColorScheme.DARK_GREEN);
+        jbRemover.setActionCommand(REMOVE);
+        //Tira cançons
+        JPTiraCancons jpTiraCancons = new JPTiraCancons(songsPlaylistHas,playList.getNom());
 
-        groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()
+        jpAdd.add(jlAdd);
+        jpAdd.add(jcSongAdder);
+        jpAdd.add(jbAdder);
+        jpRemove.add(jlRemove);
+        jpRemove.add(jcSongRemover);
+        jpRemove.add(jbRemover);
+
+        add(jpTiraCancons);
+        add(jpAdd);
+        add(jpRemove);
+        /*groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()
                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING))
                     .addComponent(jlAdd)
                     .addComponent(jlRemove)
@@ -55,7 +85,7 @@ public class JPPlaylistSettings extends JPMainView {
                 .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING))
                     .addComponent(jbAdder)
                     .addComponent(jbRemover)
-        );
+        );*/
 
     }
 
@@ -68,5 +98,9 @@ public class JPPlaylistSettings extends JPMainView {
         jbRemover.addActionListener(controller);
 
     }
+
+    public String getJCSongAdderString(){return (String)jcSongAdder.getSelectedItem();}
+    public String getJCSongRemoveString(){return (String)jcSongRemover.getSelectedItem();}
+
 
 }
