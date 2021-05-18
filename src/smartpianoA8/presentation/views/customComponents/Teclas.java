@@ -5,7 +5,6 @@ public class Teclas {
     public final static boolean defaultIsPlaying = false;
     public final static boolean trueIsPlaying = true;
 
-    //
     private int nota;
     private boolean isPlaying;
 

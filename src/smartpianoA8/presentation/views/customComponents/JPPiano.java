@@ -19,7 +19,6 @@ public class JPPiano extends JPanel {
     private JButton regButton;
     private JButton playButton;
 
-
     public JPPiano() {
 
         ImageView sombrejatSud = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
@@ -475,7 +474,6 @@ public class JPPiano extends JPanel {
     public void pintarTeclaBlanca(int note){
         whites[note].clicarNota();
     }
-
     public void despintarTeclaNegra(int note){
         blacks[note].desclicarNota();
     }
