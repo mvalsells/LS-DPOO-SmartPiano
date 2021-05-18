@@ -2,6 +2,10 @@ package smartpianoA8.presentation.views;
 
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
+import smartpianoA8.presentation.views.customComponents.JPNavBar;
+import smartpianoA8.presentation.views.customComponents.JPPlayer;
+import smartpianoA8.presentation.views.customComponents.JPSongs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,11 +25,13 @@ public class JFMainFrame extends JFrame {
     public static final String PIANO_CASCADE = "piano_cascade";
 
     //Private
-    private JPSongsView jpSongsView;
+    private JPSongs jpSongs;
     private JPFavView jpFavView;
     private JPPianoView jpPianoView;
     private JPProfileView jpProfileView;
     private JPPianoCascadeView jpPianoCascadeView;
+    private JPNavBar jpNavBar;
+    private JPPlayer jpPlayer;
 
     private CardLayout cards;
     private JPanel jpCardPanel;
@@ -34,35 +40,49 @@ public class JFMainFrame extends JFrame {
     // ---- Inici Constructors ----
     public JFMainFrame(ArrayList<Song> masterSongs, User currentUser){
         //Frame
-        JFrame frame  = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1085,660));
+        setTitle("SmartPiano");
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setPreferredSize(new Dimension(1085,660));
+        setLayout(new BorderLayout());
 
         //Panels (Navigation Bar options)
-        jpSongsView = new JPSongsView(masterSongs);
+        jpSongs = new JPSongs(masterSongs);
         jpFavView = new JPFavView();
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView(currentUser);
         jpPianoCascadeView = new JPPianoCascadeView();
+        jpPlayer = new JPPlayer();
+        jpNavBar = new JPNavBar();
+
 
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
 
-        jpCardPanel.add(jpSongsView, SONGS);
+        jpCardPanel.add(jpSongs, SONGS);
         jpCardPanel.add(jpFavView, FAVS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
         jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
-        frame.getContentPane().add(jpCardPanel);
-        frame.pack();
-        frame.setVisible(true);
+
+        JPanel jpCenter = new JPMainView();
+        jpCenter.setLayout(new BorderLayout());
+        jpCenter.add(jpCardPanel, BorderLayout.CENTER);
+        jpCenter.add(jpPlayer,BorderLayout.SOUTH);
+        getContentPane().add(jpCenter, BorderLayout.CENTER);
+        getContentPane().add(jpNavBar,BorderLayout.WEST);
+        pack();
+        setVisible(true);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
 
     //Controllers Registration
+    public void registerMainFrameController(ActionListener actionListener){
+        jpNavBar.registerController(actionListener);
+        jpPlayer.registerController(actionListener);
+    }
     public void registerSongViewControllers(ActionListener actionListener){
-        jpSongsView.registerControllers(actionListener);
+        jpSongs.registerController(actionListener);
     }
 
     public void registerFavViewControllers(ActionListener actionListener){
@@ -80,6 +100,7 @@ public class JFMainFrame extends JFrame {
 
     //Views managment
     public void changeViewTo(String newView){
+        jpNavBar.changeActiveElement(newView);
         switch (newView){
             case SONGS:
                 cards.show(jpCardPanel,SONGS);
@@ -103,7 +124,7 @@ public class JFMainFrame extends JFrame {
     // ---- Start SongView Methods
     //public int jpSongSetLastIDPressed(){jpSongsView.jpSongSetLastIDPressed();}
     public void nuevaCanciones() {
-        jpSongsView.nuevasCanciones();
+        jpSongs.nuevasCanciones();
     }
     // ---- End SongView Methods
     // ---- Start FavView Methods

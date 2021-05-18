@@ -8,22 +8,15 @@ import java.awt.event.ActionListener;
 
 public class JPFavView extends JPMainView {
     // ---- Inici Atributs ----
-    private JPNavBar jpNavBar;
-    private JPPlayer jpNavPlayer;
-    private JPanel jpMain;
+    //private JPanel jpMain;
     private JButton jbEditar;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPFavView(){
+               //Main JPanel
+        //add(new JLColor("FAV", ColorScheme.PRIMARY));
+        setBackground(new Color(12,14,22));
         setLayout(new BorderLayout());
-
-        jpNavPlayer = new JPPlayer();
-
-        //Main JPanel
-        jpMain = new JPMainView();
-        //jpMain.add(new JLColor("FAV", ColorScheme.PRIMARY));
-        jpMain.setBackground(new Color(12,14,22));
-        jpMain.setLayout(new BorderLayout());
 
         JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
@@ -125,19 +118,12 @@ public class JPFavView extends JPMainView {
         fons.add(partSud, BorderLayout.CENTER);
 
 
-        jpMain.add(fons);
+        add(fons);
 
-        jpMain.add(jpNavPlayer, BorderLayout.SOUTH);
-
-        //Packing
-        jpNavBar = new JPNavBar(JFMainFrame.FAVS);
-        add(jpNavBar,BorderLayout.WEST);
-        add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
     public void registerControllers(ActionListener actionListener) {
-        jpNavBar.registerController(actionListener);
         jbEditar.addActionListener(actionListener);
     }
 }

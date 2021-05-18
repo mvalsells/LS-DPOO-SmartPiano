@@ -9,13 +9,9 @@ import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
-import smartpianoA8.presentation.views.customComponents.Teclas;
 
-import javax.sound.midi.*;
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * CLasse pel controlador general de presentació
@@ -40,6 +36,7 @@ public class PresentationController implements PresentationFacade{
     private PianoController pianoController;
     private PianoCascadeController pianoCascadeController;
     private PlayerController playerController;
+    private MainFrameController mainFrameController;
 
 
     // ---- Fi Atributs ----
@@ -59,7 +56,7 @@ public class PresentationController implements PresentationFacade{
         favController = new FavController();
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
-
+        mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
     }
 
@@ -69,12 +66,13 @@ public class PresentationController implements PresentationFacade{
     public void registerAllControlers(){
 
         //Register this controller to other controllers
-        wellcomeController.registerMasterController(this);
-        songController.registerMasterController(this);
-        favController.registerMasterController(this);
-        profileController.registerMasterController(this);
-        pianoController.registerMasterController(this);
-        pianoCascadeController.registerMasterController(this);
+        wellcomeController.registerPresentationController(this);
+        songController.registerPresentationController(this);
+        favController.registerPresentationController(this);
+        profileController.registerPresentationController(this);
+        pianoController.registerPresentationController(this);
+        pianoCascadeController.registerPresentationController(this);
+        mainFrameController.registerPresentationController(this);
 
         //Register views to their contrller
         //TODO falta wellcome controller, potser no es necessari
@@ -83,6 +81,8 @@ public class PresentationController implements PresentationFacade{
         jfMainFrame.registerProfileViewControllers(profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
+        jfMainFrame.registerMainFrameController(mainFrameController);
+
 
     }
     //Change views

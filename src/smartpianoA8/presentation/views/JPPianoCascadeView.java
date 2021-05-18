@@ -10,16 +10,12 @@ import java.awt.event.MouseListener;
 
 public class JPPianoCascadeView extends JPMainView {
     // ---- Inici Atributs ----
-    private JPNavBar jpNavBar;
-
     private JPPiano jpPiano;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
     public JPPianoCascadeView(){
-        setLayout(new BorderLayout());
 
-        JPanel jpPanel = new JPanel();
-        jpPanel.setLayout(new BoxLayout(jpPanel,BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
 
         JPanel jpCascade = new JPanel();
@@ -31,16 +27,12 @@ public class JPPianoCascadeView extends JPMainView {
         //JPPiano
         jpPiano  = new JPPiano();
         //Final Packing
-        jpNavBar = new JPNavBar(JFMainFrame.SONGS);
 
-        jpPanel.add(jpCascade);
-        jpPanel.add(jpPiano);
-        add(jpNavBar,BorderLayout.WEST);
-        add(jpPanel,BorderLayout.CENTER);
+        add(jpCascade);
+        add(jpPiano,BorderLayout.SOUTH);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
-        jpNavBar.registerController(actionListener);
     }
 }

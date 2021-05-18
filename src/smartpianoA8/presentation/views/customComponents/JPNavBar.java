@@ -13,9 +13,14 @@ public class JPNavBar extends JPanel {
     private JButton jbPiano;
     private JButton jbProfile;
     private JButton jbCascade;
+
+    private ImageIcon iconSong;
+    private ImageIcon iconMyFav;
+    private ImageIcon iconPiano;
+    private ImageIcon iconProfile;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
-    public JPNavBar(String currentView){
+    public JPNavBar(){
         setLayout(new BorderLayout());
         setBackground(ColorScheme.NavBar_Background);
 
@@ -25,26 +30,13 @@ public class JPNavBar extends JPanel {
         jpNavBarNorth.setLayout(new BoxLayout(jpNavBarNorth,BoxLayout.Y_AXIS));
 
         // ---- START ImageIcon ----
-        ImageIcon iconSong = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
-        ImageIcon iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
-        ImageIcon iconPiano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
-        ImageIcon iconProfile = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
+        iconSong = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
+        iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
+        iconPiano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
+        iconProfile = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
 
         //Canviem el de la view actual
-        switch (currentView){
-            case JFMainFrame.SONGS:
-                iconSong = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
-                break;
-            case JFMainFrame.FAVS:
-                iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
-                break;
-            case JFMainFrame.PIANO:
-                iconPiano = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
-                break;
-            case JFMainFrame.PROFILE:
-                iconProfile = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
-                break;
-        }
+
         // ---- END ImageIcon ----
 
         jbSong = new JBNavBar(iconSong);
@@ -83,5 +75,22 @@ public class JPNavBar extends JPanel {
         jbPiano.addActionListener(controller);
         jbProfile.addActionListener(controller);
         jbCascade.addActionListener(controller);
+    }
+
+    public void changeActiveElement(String newView){
+        switch (newView){
+            case JFMainFrame.SONGS:
+                iconSong = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
+                break;
+            case JFMainFrame.FAVS:
+                iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
+                break;
+            case JFMainFrame.PIANO:
+                iconPiano = new ImageIcon("Imagen/ImagenesMenu/PianoSelect.jpg");
+                break;
+            case JFMainFrame.PROFILE:
+                iconProfile = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
+                break;
+        }
     }
 }

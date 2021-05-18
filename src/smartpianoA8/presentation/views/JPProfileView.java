@@ -17,7 +17,6 @@ public class JPProfileView extends JPMainView {
     private JPasswordField jpfNewPasword;
     private JPasswordField jpfRepeatNewPasword;
     private JButton jbSaveSettings;
-    private JPNavBar jpNavBar;
     private JPanel jpMain;
 
     //Placeholders
@@ -122,8 +121,6 @@ public class JPProfileView extends JPMainView {
         jpMain.add(Box.createHorizontalStrut(40),BorderLayout.EAST);
 
         //Final packing
-        jpNavBar = new JPNavBar(JFMainFrame.PROFILE);
-        add(jpNavBar,BorderLayout.WEST);
         add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
@@ -132,7 +129,6 @@ public class JPProfileView extends JPMainView {
         jbLogout.addActionListener(controller);
         jbDeleteAccount.addActionListener(controller);
         jbSaveSettings.addActionListener(controller);
-        jpNavBar.registerController(controller);
     }
 
     public ArrayList<String> profileViewGetData() {

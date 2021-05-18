@@ -41,7 +41,7 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
      * Mètode per registrar el controller a la presentació
      * @param presentationController presentaicó
      */
-    public void registerMasterController(PresentationController presentationController) {
+    public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
 
