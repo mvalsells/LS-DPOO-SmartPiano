@@ -25,8 +25,10 @@ public class PresentationController implements PresentationFacade{
 
     // ---- Inici Atributs ----
     private BusinessFacade businessFacade;
+    private MidiWritter midiWritter;
 
     private boolean isUploaded = false;
+
 
     //Frame
     private JFMainFrame jfMainFrame;
@@ -53,10 +55,25 @@ public class PresentationController implements PresentationFacade{
      */
     public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter){
         this.businessFacade = businessFacade;
+        this.midiWritter = midiWritter;
+        //Frames
 
         //Controllers
         wellcomeController = new WellcomeController();
+
+    }
+
+    /**
+     * Mètode per registrar els controllers
+     */
+
+    public void loginOK(){
+        //TODO Tancar/eliminar JFrame Wellcome
+
+        //Crear les vistes
         jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
+
+        //Crear els controllers
         songController = new SongController();
         favController = new FavController();
         profileController = new ProfileController();
@@ -65,16 +82,44 @@ public class PresentationController implements PresentationFacade{
         pianoCascadeController = new PianoCascadeController();
         playerController = new PlayerController();
         jpPlayerControllerThread = new Thread(playerController);
+
+        //Registar aquest controller als altres controllers
+        songController.registerPresentationController(this);
+        favController.registerPresentationController(this);
+        profileController.registerPresentationController(this);
+        pianoController.registerPresentationController(this);
+        pianoCascadeController.registerPresentationController(this);
+        mainFrameController.registerPresentationController(this);
+
+        //Registrar els controllers a les seves vistes
+        jfMainFrame.registerSongViewControllers(songController);
+        jfMainFrame.registerPlaylistViewControllers(favController);
+        jfMainFrame.registerProfileViewControllers(profileController);
+        jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
+        jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
+        jfMainFrame.registerMainFrameController(mainFrameController);
     }
 
-    /**
-     * Mètode per registrar els controllers
-     */
+    public void logoutOK(){
+        //TODO amagar/eliminar vista mainFrame
+
+        //Crear la vista
+        jfWellcomeFrame = new JFWellcomeFrame();
+
+        //Crear el controlles
+        wellcomeController = new WellcomeController();
+        wellcomeController.registerPresentationController(this);
+
+        //Registrar el controller a la vista
+        jfWellcomeFrame.registerController(wellcomeController);
+    }
+
+    /*
     public void registerAllControlers(){
 
         //Register this controller to other controllers
-        wellcomeController.registerPresentationController(this);
-        songController.registerPresentationController(this);
+        //wellcomeController.registerPresentationController(this);
+        /*songController.registerPresentationController(this);
         favController.registerPresentationController(this);
         profileController.registerPresentationController(this);
         pianoController.registerPresentationController(this);
@@ -92,6 +137,7 @@ public class PresentationController implements PresentationFacade{
 
 
     }
+    */
     //Change views
 
     /**
@@ -316,4 +362,20 @@ public class PresentationController implements PresentationFacade{
 
     }
 
+    public void wellcomeChangePanel(String newPanel) {
+        jfWellcomeFrame.changePanel(newPanel);
+    }
+
+    public ArrayList<String> wellcomeGetRegisterData(){
+        return jfWellcomeFrame.getRegisterData();
+    }
+
+    public ArrayList<String> wellcomeGetLoginData() {
+        return  jfWellcomeFrame.getLoginData();
+    }
+
+    public void login(String id, String password) throws UserManagerException{
+        businessFacade.login(id, password);
+        loginOK();
+    }
 }

@@ -21,10 +21,10 @@ public class JPProfileView extends JPMainView {
     private JButton jbSaveSettings;
 
     //Placeholders
-    private String PH_NEW_USERNAME = "Nuevo nombre de usuario";
-    private String PH_NEW_EMAIL = "Nuevo email";
-    private String PH_NEW_PASSWORD = "Nueva contraseña";
-    private String PH_REPEAT_PASSWORD = "Repetición de la nueva contrasenya";
+    private String PH_NEW_USERNAME = "  Nuevo nombre de usuario";
+    private String PH_NEW_EMAIL = "  Nuevo email";
+    private String PH_NEW_PASSWORD = "  Nueva contraseña";
+    private String PH_REPEAT_PASSWORD = "  Repetición de la nueva contrasenya";
 
     public static final String SAVE_SETTING = "SaveSetting";
     public static final String LOGOUT = "Logout";

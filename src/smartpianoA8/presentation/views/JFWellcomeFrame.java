@@ -5,6 +5,7 @@ import smartpianoA8.presentation.views.customComponents.BordersView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JFWellcomeFrame extends JFrame {
 
@@ -17,24 +18,24 @@ public class JFWellcomeFrame extends JFrame {
     private CardLayout cards;
     private JPanel mainPanel;
     private BordersView bordersView;
-    private JPLoginView JPLoginView;
-    private JPRegisterView JPRegisterView;
+    private JPLoginView jpLoginView;
+    private JPRegisterView jpRegisterView;
 
 
-    public JFWellcomeFrame(JPRegisterView JPRegisterView, JPLoginView JPLoginView){
+    public JFWellcomeFrame(){
+        setTitle("Wellcome - SmartPiano");
         cards = new CardLayout();
         mainPanel = new JPanel(cards);
         bordersView = new BordersView();
-        this.JPRegisterView = JPRegisterView;
-        this.JPLoginView = JPLoginView;
+        jpRegisterView = new JPRegisterView();
+        jpLoginView = new JPLoginView();
         createAndShowGUI();
     }
 
     public void createAndShowGUI(){
 
-        JFrame frame  = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1000,820));
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setPreferredSize(new Dimension(1000,820));
 
 
         /*ImageView JPRegisterView;
@@ -43,20 +44,20 @@ public class JFWellcomeFrame extends JFrame {
         ImageView JPLoginView;
         JPLoginView = this.CreateLoginView();*/
 
-        mainPanel.add(JPRegisterView.runRegister(),registerViewString);
-        mainPanel.add(JPLoginView.runLogin(),loginViewString);
+        mainPanel.add(jpRegisterView.runRegister(),registerViewString);
+        mainPanel.add(jpLoginView.runLogin(),loginViewString);
 
-        frame.getContentPane().add(mainPanel);
-        frame.pack();
-        frame.setVisible(true);
+        getContentPane().add(mainPanel);
+        pack();
+        setVisible(true);
 
     }
 
 
 
     public void registerController(ActionListener controller){
-        JPRegisterView.registerController(controller);
-        JPLoginView.registerController(controller);
+        jpRegisterView.registerController(controller);
+        jpLoginView.registerController(controller);
 
     }
     //Canvi panel view
@@ -66,6 +67,7 @@ public class JFWellcomeFrame extends JFrame {
     public void changeToLogin(){
         cards.show(mainPanel,loginViewString);
     }
+
     public void changePanel(String panel){
         switch (panel) {
             case chgToLogin:
@@ -90,26 +92,31 @@ public class JFWellcomeFrame extends JFrame {
     }
 */
     //Getters register
-    public String getRegisterNomString(){ return JPRegisterView.getNomString(); }
+   /* public String getRegisterNomString(){ return jpRegisterView.getNomString(); }
     public String getRegisterCorreuString(){
-        return JPRegisterView.getCorreuString();
+        return jpRegisterView.getCorreuString();
     }
     public String getRegisterContrasenyaString(){
-        return JPRegisterView.getContrasenyaString();
+        return jpRegisterView.getContrasenyaString();
     }
-    public Boolean isRegisterCheckBoxAcceptTandC(){return JPRegisterView.isCheckBoxAcceptTandC();}
+    public Boolean isRegisterCheckBoxAcceptTandC(){return jpRegisterView.isCheckBoxAcceptTandC();}
     public String getRegisterRepetirContrasenyaString(){
-        return JPRegisterView.getRepetirContrasenyaString();
+        return jpRegisterView.getRepetirContrasenyaString();
+    }
+*/
+    public ArrayList<String> getRegisterData() {
+        return jpRegisterView.getData();
     }
 
     //Getters login
-    public String getLoginNomString(){ return JPLoginView.getNomString();}
+   /* public String getLoginNomString(){ return jpLoginView.getNomString();}
     public String getLoginCorreuString(){
-        return JPLoginView.getCorreuString();
+        return jpLoginView.getCorreuString();
     }
     public String getLoginContrasenyaString(){
-        return JPLoginView.getContrasenyaString();
+        return jpLoginView.getContrasenyaString();
+    }*/
+    public ArrayList<String> getLoginData() {
+        return jpLoginView.getData();
     }
-
-
 }

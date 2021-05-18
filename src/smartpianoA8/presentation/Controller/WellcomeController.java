@@ -11,6 +11,8 @@ import smartpianoA8.presentation.views.JPRegisterView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Classe del controllador de benvinguda login/regitre
@@ -22,7 +24,6 @@ public class WellcomeController implements ActionListener {
 
 
     // ---- Inici Atributs ----
-    private JFWellcomeFrame JFWellcomeFrame;
     private PresentationController presentationController;
 
     // ---- Fi Atributs ----
@@ -31,7 +32,6 @@ public class WellcomeController implements ActionListener {
      * Constructor buit
      */
     public WellcomeController(){
-        //this.JFWellcomeFrame = JFWellcomeFrame;
     }
     // ---- Fi Constructors ----
     // ---- Inici Metodes ----
@@ -53,67 +53,64 @@ public class WellcomeController implements ActionListener {
 
         switch (e.getActionCommand()){
             case JPRegisterView.toLogin:
-                JFWellcomeFrame.changePanel(JFWellcomeFrame.chgToLogin);
+                presentationController.wellcomeChangePanel(JFWellcomeFrame.chgToLogin);
                 break;
             case JPLoginView.toRegister:
-                JFWellcomeFrame.changePanel(JFWellcomeFrame.chgToRegister);
+                presentationController.wellcomeChangePanel(JFWellcomeFrame.chgToRegister);
                 break;
             case JPRegisterView.tryRegister:
-
-                if(!JFWellcomeFrame.isRegisterCheckBoxAcceptTandC()) {
-                    System.out.println("No CheckBox");
-                }else {
-                    registerUser(JFWellcomeFrame.getRegisterNomString(), JFWellcomeFrame.getRegisterCorreuString(), JFWellcomeFrame.getRegisterContrasenyaString(), JFWellcomeFrame.getRegisterRepetirContrasenyaString());
-                }
+                registerUser();
                 break;
 
             case JPLoginView.tryLogin:
-                System.out.println(JFWellcomeFrame.getLoginNomString());
-                System.out.println(JFWellcomeFrame.getLoginCorreuString());
-                System.out.println(JFWellcomeFrame.getLoginContrasenyaString());
-                registerUser(JFWellcomeFrame.getLoginNomString(), JFWellcomeFrame.getLoginCorreuString(), JFWellcomeFrame.getLoginContrasenyaString(),JFWellcomeFrame.getRegisterRepetirContrasenyaString());
+                loginUser();
+                break;
+        }
+    }
 
+    private void loginUser() {
+        ArrayList<String> data = presentationController.wellcomeGetLoginData();
+        if (data.get(0) == null && data.get(1) != null){
+            try {
+                presentationController.login(data.get(0), data.get(1));
+            } catch (UserManagerException e){
+                presentationController.showWarningDialog("Datos de login incorrectos");
+            }
         }
     }
 
 
     /**
      * Mètode per registar un usuari
-     * @param username nom
-     * @param email email
-     * @param password contra
-     * @param passwordRepetition contra repetida x2
+     *
      */
-    private void registerUser(String username, String email, String password, String passwordRepetition){
-        try {
+    private void registerUser(){
+        ArrayList<String> data = presentationController.wellcomeGetRegisterData();
+        if(data.get(0).equals("false")) {
+            System.out.println("No CheckBox");
+        }else {
+            try {
+                presentationController.registerUser(data.get(1), data.get(2), data.get(3), data.get(4), User.TYPE_SMARTPIANO);
 
-            presentationController.registerUser(username, email, password, passwordRepetition, User.TYPE_SMARTPIANO);
-
-        } catch (PasswordException e) {
-
-            StringBuilder sb = new StringBuilder();
-
-            if (e.isHasNotLowerCase()) {
-                sb.append("- No tiene minuscula/s\n");
-                System.out.println("patata");
+            } catch (PasswordException e) {
+                StringBuilder message = new StringBuilder();
+                message.append("· La contraseña no cumple con los requisitos:\n");
+                if (e.isHasNotLowerCase()) {
+                    message.append("- No tiene minuscula/s\n");
+                }
+                if (e.isHasNotNumber()) {
+                    message.append("- No tiene numero/s\n");
+                }
+                if (e.isHasNotUpperCase()) {
+                    message.append("\t- No tiene mayuscula/s\n");
+                }
+                if (e.isPasswordToShort()) {
+                    message.append("\t- Es demasiado corta\n");
+                }
+                presentationController.showWarningDialog(message.toString());
+            } catch (UserManagerException e) {
+                e.isUsernameExists();
             }
-            if (e.isHasNotNumber()) {
-                sb.append("- No tiene numero/s\n");
-                System.out.println("patata");
-            }
-            if (e.isHasNotUpperCase()) {
-                sb.append("- No tiene mayuscula/s\n");
-                System.out.println("patata");
-            }
-            if (e.isPasswordToShort()) {
-                sb.append("- Es demasiado corta\n");
-                System.out.println("patata");
-            }
-
-            JOptionPane.showMessageDialog(JFWellcomeFrame,sb.toString(),"Contraseña incorrecta",JOptionPane.WARNING_MESSAGE);
-
-        } catch (UserManagerException e) {
-            e.isUsernameExists();
         }
     }
 

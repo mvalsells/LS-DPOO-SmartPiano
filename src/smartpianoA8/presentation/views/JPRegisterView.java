@@ -6,6 +6,7 @@ import smartpianoA8.presentation.views.customComponents.ImageView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPRegisterView extends JPanel  {
 
@@ -14,10 +15,15 @@ public class JPRegisterView extends JPanel  {
     public static final String toLogin = "ToLogin";
     public static final String tryRegister = "tryRegister";
 
-    public static final String hasNotLowerCase = "hasNotLowerCase";
+    /*public static final String hasNotLowerCase = "hasNotLowerCase";
     public static final String hasNotNumber = "hasNotNumber";
     public static final String hasNotUpperCase = "hasNotUpperCase";
-    public static final String passwordToShort = "passwordToShort";
+    public static final String passwordToShort = "passwordToShort";*/
+
+    private static final String PH_NAME = " Nombre";
+    private static final String PH_EMAIL = "  Correo";
+    private static final String PH_PASSWORD = "  Contraseña";
+    private static final String PH_PASSWORD_REPETITON = "  Repite la contraseña";
 
     private BordersView bordersView = new BordersView();
 
@@ -45,37 +51,7 @@ public class JPRegisterView extends JPanel  {
         ImageIcon googlePressed = new ImageIcon("Imagen/ImagenesRegister/RegistrarseGooglePressed.png");
         ImageIcon facebookPressed = new ImageIcon("Imagen/ImagenesRegister/RegistrarseFacebookPressed.png");
 
-        /*JPanel CapaSuperior = new JPanel();
-        JFrame frame = new JFrame();
 
-        frame.setLayout(new CardLayout());
-
-        panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
-        CapaSuperior.setLayout(new BorderLayout());
-
-
-        CapaSuperior.setOpaque(false);
-
-        JButton reg = new JButton("REGISTRAR-SE");
-        reg.setBackground(Color.orange);
-        reg.setSize(100,30);
-        reg.setVisible(true);
-
-        CapaSuperior.add(reg,BorderLayout.EAST);
-        panel.add(CapaSuperior,BorderLayout.CENTER);
-
-
-
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add("Ref_1",panel);
-        frame.pack();
-        frame.setVisible(true);
-        */
-        /*FRAME*/
-        /*Panell principal on anira imatge*/
-        //JPanel panel = new JPanel();
-        //panel.setBackground(Color.GRAY);
         panel.setLayout(new BorderLayout());
 
         /*-----------------------------------------PART SUPERIOR-----------------------------------------*/
@@ -179,25 +155,25 @@ public class JPRegisterView extends JPanel  {
 
 
         /*Creem les zones per escriure*/
-        nom = new JTextField("  Nom",20);
+        nom = new JTextField(PH_NAME,20);
         nom.setMaximumSize(new Dimension(281,39));
         nom.setForeground(new Color(255,255,255));
         nom.setBorder(BordersView.TextFieldBorder);
         nom.setOpaque(false);
 
-        correu = new JTextField("  Correu",20);
+        correu = new JTextField(PH_EMAIL,20);
         correu.setMaximumSize(new Dimension(281,39));
         correu.setForeground(new Color(255,255,255));
         correu.setBorder(BordersView.TextFieldBorder);
         correu.setOpaque(false);
 
-        contrasenya = new JTextField("  Contrasenya",20);
+        contrasenya = new JTextField(PH_PASSWORD,20);
         contrasenya.setMaximumSize(new Dimension(281,39));
         contrasenya.setForeground(new Color(255,255,255));
         contrasenya.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
         contrasenya.setOpaque(false);
 
-        repetirContrasenya = new JTextField("  Repetir Contrasenya",20);
+        repetirContrasenya = new JTextField(PH_PASSWORD_REPETITON,20);
         repetirContrasenya.setMaximumSize(new Dimension(281,39));
         repetirContrasenya.setForeground(new Color(255,255,255));
         repetirContrasenya.setBorder(BordersView.TextFieldBorder);
@@ -359,7 +335,7 @@ public class JPRegisterView extends JPanel  {
         registerButton.addActionListener(controller);
     }
 
-
+    /*
     public Boolean isCheckBoxAcceptTandC(){return acceptTandC.isSelected();}
 
     public String getNomString(){
@@ -374,8 +350,31 @@ public class JPRegisterView extends JPanel  {
     public String getRepetirContrasenyaString(){
         return repetirContrasenya.getText();
     }
+*/
 
-
-
-
+    public ArrayList<String> getData() {
+        ArrayList<String> data = new ArrayList<>();
+        data.add(String.valueOf(acceptTandC.isSelected()));
+        if (nom.getText().equals(PH_NAME)){
+            data.add(null);
+        } else {
+            data.add(nom.getText());
+        }
+        if (correu.getText().equals(PH_EMAIL)){
+            data.add(null);
+        } else {
+            data.add(correu.getText());
+        }
+        if (contrasenya.getText().equals(PH_PASSWORD)){
+            data.add(null);
+        } else {
+            data.add(contrasenya.getText());
+        }
+        if (repetirContrasenya.getText().equals(PH_PASSWORD_REPETITON)){
+            data.add(null);
+        } else {
+            data.add(repetirContrasenya.getText());
+        }
+        return data;
+    }
 }
