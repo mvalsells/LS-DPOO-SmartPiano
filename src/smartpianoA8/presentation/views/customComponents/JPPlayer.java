@@ -45,10 +45,15 @@ public class JPPlayer extends JPanel {
         barraSubInferior.setLayout(new BoxLayout(barraSubInferior, BoxLayout.X_AXIS));
 
         playButton = new JBPlayer(playIcon);
+        playButton.setActionCommand(PLAY_BUTTON);
         pauseButton = new JBPlayer(pauseIcon);
+        pauseButton.setActionCommand(PAUSE_BUTTON);
         nextButton = new JBPlayer(nextIcon);
+        nextButton.setActionCommand(NEXT_BUTTON);
         previousButton = new JBPlayer(previousIcon);
+        previousButton.setActionCommand(PREVIOUS_BUTTON);
         stopButton = new JBPlayer(stopIcon);
+        stopButton.setActionCommand(STOP_BUTTON);
 
 
         progressBar = new JPProgressBar();
