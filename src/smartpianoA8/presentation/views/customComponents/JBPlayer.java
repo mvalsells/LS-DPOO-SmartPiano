@@ -7,7 +7,7 @@ public class JBPlayer extends JButton {
 
     public JBPlayer(ImageIcon icon){
         setBackground(ColorScheme.NavBar_Background);
-        setPreferredSize(new Dimension(45,35));
+        setPreferredSize(new Dimension(45,30));
         setBorder(new BordersView().getGoogleButtonBorder());
         setBorderPainted(true);
         setIcon(icon);

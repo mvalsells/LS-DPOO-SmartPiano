@@ -36,7 +36,7 @@ public class JFMainFrame extends JFrame {
         //Frame
         JFrame frame  = new JFrame();
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1085,455));
+        frame.setPreferredSize(new Dimension(1085,660));
 
         //Panels (Navigation Bar options)
         jpSongsView = new JPSongsView(masterSongs);

@@ -66,6 +66,7 @@ public class JPPlayer extends JPanel {
         generalBorder.add(Box.createVerticalStrut(4));
         generalBorder.add(barraSubInferior);
         generalBorder.add(barraInferior);
+        generalBorder.add(Box.createVerticalStrut(8));
 
         add(generalBorder, BorderLayout.CENTER);
 
