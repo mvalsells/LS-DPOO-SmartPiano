@@ -13,6 +13,10 @@ import java.sql.SQLException;
  * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class SQLUserDAO implements UserDAO {
+
+    public String TERM_PLAYLIST1 = "Mi primera playlist";
+    public String TERM_PLAYLIST2 = "My sejunda primera plailis";
+
     private SQLConnector connector;
     public SQLUserDAO(SQLConnector connector){
         this.connector = connector;
@@ -32,6 +36,19 @@ public class SQLUserDAO implements UserDAO {
                             user.getPasswordHash() + "', '" +
                             user.getType() +
                             "');";
+        connector.insertQuery(query);
+        //1ra playlist
+        query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
+                TERM_PLAYLIST1 + "', '" +
+                user.getUsername() + "');";
+
+        connector.insertQuery(query);
+
+        //2na playlist
+        query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
+                TERM_PLAYLIST2 + "', '" +
+                user.getUsername() + "');";
+
         connector.insertQuery(query);
     }
 

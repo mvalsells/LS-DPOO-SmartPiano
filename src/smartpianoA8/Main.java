@@ -3,6 +3,8 @@ package smartpianoA8;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.business.entity.User;
+import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -81,22 +83,22 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
-        try {
+        /*try {
 
             businessFacade.login("chris", "sDFDSfdsfffsd2344323!");
         } catch (UserManagerException e){
             e.printStackTrace();
-        }
-        PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
-        presentationController.registerAllControlers();
+        }*/
+        /*PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
+        presentationController.registerAllControlers();*/
 
-        /*try {
-            businessFacade.registerUser("ChristianTestLele", "papaia@gmail.com", "sDFDSfdsfffsd2344323!", "sDFDSfdsfffsd2344323!", User.TYPE_SMARTPIANO);
+        try {
+            businessFacade.registerUser("Patata2k", "patata2k@gmail.com", "sDFDSfdsfffsd2344323!", "sDFDSfdsfffsd2344323!", User.TYPE_SMARTPIANO);
         } catch (PasswordException e) {
             e.printStackTrace();
         } catch (UserManagerException e) {
             e.printStackTrace();
-        }*/
+        }
 /*
         songDAO.registerPresentationFacade(presentationController);
 
