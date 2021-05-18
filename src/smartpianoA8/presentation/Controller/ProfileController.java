@@ -2,6 +2,8 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.JFStatisticsView;
+import smartpianoA8.presentation.views.JFTop5View;
 import smartpianoA8.presentation.views.JPProfileView;
 
 import java.awt.event.ActionEvent;
@@ -51,6 +53,11 @@ public class ProfileController implements ActionListener {
             case JPProfileView.SAVE_SETTING:
                 saveSettings();
                 break;
+            case JPProfileView.STATS:
+                new JFStatisticsView(null,null);
+                break;
+            case JPProfileView.TOP_5:
+                new JFTop5View(presentationController.getTop5());
         }
     }
 

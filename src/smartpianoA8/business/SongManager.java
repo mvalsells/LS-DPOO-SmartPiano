@@ -120,4 +120,10 @@ public class SongManager {
     public float getµsPerTickMidiNotes() {
         return midiParser.getusPerTick();
     }
+
+    public ArrayList<Song> getTop5(){
+        return songDAO.getTop5();
+    }
+    public Song getSong(int id){return songDAO.getSong(id);}
+
 }

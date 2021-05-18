@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class JPProfileView extends JPMainView {
     // ---- Inici Atributs ----
+    private JButton jbStats;
+    private JButton jbTop5;
     private JButton jbLogout;
     private JButton jbDeleteAccount;
     private JTextField jtfNewUsername;
@@ -17,7 +19,6 @@ public class JPProfileView extends JPMainView {
     private JPasswordField jpfNewPasword;
     private JPasswordField jpfRepeatNewPasword;
     private JButton jbSaveSettings;
-    private JPanel jpMain;
 
     //Placeholders
     private String PH_NEW_USERNAME = "Nuevo nombre de usuario";
@@ -28,18 +29,22 @@ public class JPProfileView extends JPMainView {
     public static final String SAVE_SETTING = "SaveSetting";
     public static final String LOGOUT = "Logout";
     public static final String DELETE_ACCOUNT = "DeleteAccount";
+    public static final String STATS = "Stats";
+    public static final String TOP_5 = "top5";
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
 
     public JPProfileView(User currentUser){
         setLayout(new BorderLayout());
-        jpMain = new JPMainView();
-        jpMain.setLayout(new BorderLayout());
         // ---- Start North ----
         JPanel jpTopBar = new JPMainView();
         jpTopBar.setLayout(new BorderLayout());
 
         JLabel jlNorth= new JLColor("Mi perfil", ColorScheme.PRIMARY);
+        jbStats = new JBgeneral("Estadisticas", ColorScheme.ORANGE_START);
+        jbStats.setActionCommand(STATS);
+        jbTop5 = new JBgeneral("Top 5", ColorScheme.ORANGE_START);
+        jbTop5.setActionCommand(TOP_5);
         jbLogout = new JBgeneral("Cerrar session", ColorScheme.ORANGE_START);
         jbLogout.setActionCommand(LOGOUT);
         jbDeleteAccount = new JBgeneral("Eliminar cuenta", ColorScheme.RED_DANGER);
@@ -52,6 +57,10 @@ public class JPProfileView extends JPMainView {
 
         //Top right
         JPanel jpTopRight = new JPMainView();
+        jpTopRight.add(jbTop5,BorderLayout.EAST);
+        jpTopRight.add(Box.createHorizontalStrut(3));
+        jpTopRight.add(jbStats,BorderLayout.EAST);
+        jpTopRight.add(Box.createHorizontalStrut(3));
         jpTopRight.add(jbLogout,BorderLayout.EAST);
         jpTopRight.add(Box.createHorizontalStrut(3));
         jpTopRight.add(jbDeleteAccount);
@@ -115,17 +124,17 @@ public class JPProfileView extends JPMainView {
 
 
         //JPProfileView pack
-        jpMain.add(jpTopBar, BorderLayout.NORTH);
-        jpMain.add(jpCenter, BorderLayout.CENTER);
-        jpMain.add(Box.createHorizontalStrut(40),BorderLayout.WEST);
-        jpMain.add(Box.createHorizontalStrut(40),BorderLayout.EAST);
+        add(jpTopBar, BorderLayout.NORTH);
+        add(jpCenter, BorderLayout.CENTER);
+        add(Box.createHorizontalStrut(40),BorderLayout.WEST);
+        add(Box.createHorizontalStrut(40),BorderLayout.EAST);
 
-        //Final packing
-        add(jpMain,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
     public void registerControllers(ActionListener controller){
+        jbStats.addActionListener(controller);
+        jbTop5.addActionListener(controller);
         jbLogout.addActionListener(controller);
         jbDeleteAccount.addActionListener(controller);
         jbSaveSettings.addActionListener(controller);

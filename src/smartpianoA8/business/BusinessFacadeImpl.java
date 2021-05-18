@@ -28,12 +28,12 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //Managers
     private UserManager userManager;
     private SongManager songManager;
-
+    /*
     //DAOs
     private SongDAO songDAO;
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
-
+    */
     /**
      * Constructor
      * @param userDAO DAO del control d'usuaris
@@ -278,7 +278,12 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return hmTeclas;
     }
 
-    public Song getSong(int id){return songDAO.getSong(id);}
+    public Song getSong(int id){return songManager.getSong(id);}
+
+    @Override
+    public ArrayList<Song> getTop5() {
+        return songManager.getTop5();
+    }
 
 
     // ------------------------------------------------------

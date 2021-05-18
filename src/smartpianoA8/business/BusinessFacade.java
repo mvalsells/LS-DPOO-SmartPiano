@@ -41,6 +41,7 @@ public interface BusinessFacade {
     float getMidiNotesMPQ();
     float getµsPerTickMidiNotes();
     Song getSong(int IDSong);
+    ArrayList<Song> getTop5();
     //void removeSong(Song song);
 
 

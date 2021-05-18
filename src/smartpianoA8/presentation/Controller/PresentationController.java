@@ -166,6 +166,11 @@ public class PresentationController implements PresentationFacade{
      * @return l'usuari
      */
     public User getCurrentUser(){return businessFacade.getCurrentUser();}
+
+    public ArrayList<Song> getTop5(){
+        return businessFacade.getTop5();
+    }
+
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
     // ---- End WellcomeFrame Methods
