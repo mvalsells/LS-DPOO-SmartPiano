@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.JPPlayer;
 
 import javax.sound.midi.*;
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class PlayerController implements Runnable, ActionListener {
     private Sequence currentSequence;
     private Sequencer currentSequencer;
     Runnable runnable;
+    int position = 0;
 
     public PlayerController(ArrayList<Song> songsToBePlayed) {
 
@@ -46,6 +48,35 @@ public class PlayerController implements Runnable, ActionListener {
                 currentSequencer.setSequence(currentSequence);
 
                 runnable = () -> {
+
+                    currentSequencer.start();
+
+
+
+                    //---------------------
+
+                    /*currentSequencer.start();
+
+                    ActionListener updateListener = new ActionListener(){
+                        public void actionPerformed(ActionEvent arg0) {
+                            position = (int)currentSequencer.getMicrosecondPosition();
+                            //jpPlayer.updateProgressBar((int)currentSequencer.getMicrosecondPosition());
+                            //progress.setValue((int)currentSequencer.getMicrosecondPosition());
+                        }
+                    };
+
+                    Timer timer = new Timer(40,updateListener);
+                    timer.start();
+
+                    while (currentSequencer.isRunning()) {}
+
+                    timer.stop();
+                    currentSequencer.stop();*/
+
+
+                    //----------------
+
+
 
                     final JProgressBar progress = new JProgressBar(0,(int)currentSequencer.getMicrosecondLength());
                     ActionListener updateListener = new ActionListener(){
@@ -77,5 +108,9 @@ public class PlayerController implements Runnable, ActionListener {
             }
         }
 
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

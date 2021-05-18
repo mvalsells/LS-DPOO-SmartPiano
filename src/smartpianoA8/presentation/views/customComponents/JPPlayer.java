@@ -80,4 +80,5 @@ public class JPPlayer extends JPanel {
         stopButton.addActionListener(controller);
         progressBar.addAncestorListener((AncestorListener) controller);
     }
+
 }

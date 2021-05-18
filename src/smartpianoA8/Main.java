@@ -46,9 +46,9 @@ public class Main {
         test.add(song2);
         test.add(song3);
         test.add(song4);
-        Thread thread = new Thread(new PlayerController(test));
+        PlayerController asd = new PlayerController(test);
+        Thread thread = new Thread(asd);
         thread.start();
-
 
         //Llegir fitxer config
         JsonReadable jsonReader = new JsonReadableImpl();

@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.views;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.Controller.PlayerController;
 import smartpianoA8.presentation.views.customComponents.JPMainView;
 import smartpianoA8.presentation.views.customComponents.JPNavBar;
 import smartpianoA8.presentation.views.customComponents.JPPlayer;
@@ -28,8 +29,6 @@ public class JPSongsView extends JPMainView {
 
         jpMain.add(jpSongs, BorderLayout.CENTER);
         jpMain.add(jpNavPlayer, BorderLayout.SOUTH);
-
-
 
         //Final Packing
         jpNavBar = new JPNavBar(JFMainFrame.SONGS);
