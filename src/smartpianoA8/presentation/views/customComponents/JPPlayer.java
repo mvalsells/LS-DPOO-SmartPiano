@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.views.customComponents;
 
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -12,6 +11,10 @@ public class JPPlayer extends JPanel {
     private JButton nextButton;
     private JButton previousButton;
     private JButton stopButton;
+    private JButton uploadButton;
+
+    private JComboBox<String> jComboBox;
+
     private JPProgressBar progressBar;
 
     private static final ImageIcon playIcon = new ImageIcon("Imagen/ImagenesReproductor/playButton2.png");
@@ -19,12 +22,14 @@ public class JPPlayer extends JPanel {
     private static final ImageIcon previousIcon = new ImageIcon("Imagen/ImagenesReproductor/previousButton2.png");
     private static final ImageIcon nextIcon = new ImageIcon("Imagen/ImagenesReproductor/nextButton2.png");
     private static final ImageIcon stopIcon = new ImageIcon("Imagen/ImagenesReproductor/stopButton2.png");
+    private static final ImageIcon uploadIcon = new ImageIcon("Imagen/ImagenesReproductor/uploadButton.png");
 
     public static final String PLAY_BUTTON = "PLAY";
     public static final String PAUSE_BUTTON = "PAUSE";
     public static final String NEXT_BUTTON = "NEXT";
     public static final String PREVIOUS_BUTTON = "PREVIOUS";
     public static final String STOP_BUTTON = "STOP";
+    public static final String UPLOAD_BUTTON = "UPLOAD";
 
     public JPPlayer() {
         setLayout(new BorderLayout());
@@ -44,6 +49,10 @@ public class JPPlayer extends JPanel {
         barraSubInferior.setOpaque(false);
         barraSubInferior.setLayout(new BoxLayout(barraSubInferior, BoxLayout.X_AXIS));
 
+        JPanel barraSubSelector = new JPanel();
+        barraSubSelector.setOpaque(false);
+        barraSubSelector.setLayout(new BoxLayout(barraSubSelector, BoxLayout.LINE_AXIS));
+
         playButton = new JBPlayer(playIcon);
         playButton.setActionCommand(PLAY_BUTTON);
         pauseButton = new JBPlayer(pauseIcon);
@@ -54,6 +63,15 @@ public class JPPlayer extends JPanel {
         previousButton.setActionCommand(PREVIOUS_BUTTON);
         stopButton = new JBPlayer(stopIcon);
         stopButton.setActionCommand(STOP_BUTTON);
+        uploadButton = new JBPlayer(uploadIcon);
+        uploadButton.setActionCommand(UPLOAD_BUTTON);
+
+        jComboBox = new JComboBox<>();
+        jComboBox.addItem("If you want to play your playlist you must select it before and update pressing the button ---->");
+        jComboBox.addItem("test1");
+        jComboBox.addItem("test2");
+        jComboBox.addItem("test3");
+
 
 
         progressBar = new JPProgressBar();
@@ -74,10 +92,18 @@ public class JPPlayer extends JPanel {
         barraInferior.add(Box.createHorizontalStrut(BordersView.NavPlayer_Space));
         barraInferior.add(nextButton);
 
+        barraSubSelector.add(jComboBox);
+        barraSubSelector.add(Box.createHorizontalStrut(BordersView.NavPlayer_Space));
+        barraSubSelector.add(uploadButton);
+
         generalBorder.add(Box.createVerticalStrut(4));
+
+        generalBorder.add(barraSubSelector);
         generalBorder.add(barraSubInferior);
         generalBorder.add(barraInferior);
         generalBorder.add(Box.createVerticalStrut(8));
+
+
 
         add(generalBorder, BorderLayout.CENTER);
 
@@ -89,6 +115,7 @@ public class JPPlayer extends JPanel {
         nextButton.addActionListener(controller);
         previousButton.addActionListener(controller);
         stopButton.addActionListener(controller);
+        uploadButton.addActionListener(controller);
     }
 
     public void setCurrentStatus(int status) {
