@@ -79,20 +79,6 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            //NavBar
-            case JFMainFrame.SONGS:
-                presentationController.changeView(JFMainFrame.SONGS);
-                break;
-            case JFMainFrame.FAVS:
-                presentationController.changeView(JFMainFrame.FAVS);
-                break;
-            case JFMainFrame.PIANO:
-                presentationController.changeView(JFMainFrame.PIANO_CASCADE);
-                break;
-            case JFMainFrame.PROFILE:
-                presentationController.changeView(JFMainFrame.PROFILE);
-                break;
-
             //PianoCascade View
             /*case bla:
                 break;*/

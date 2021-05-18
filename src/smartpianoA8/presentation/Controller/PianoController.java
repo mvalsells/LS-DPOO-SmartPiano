@@ -94,20 +94,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
    @Override
     public void actionPerformed(ActionEvent e) {
        switch (e.getActionCommand()) {
-           //NavBar
-           case JFMainFrame.SONGS:
-               presentationController.changeView(JFMainFrame.SONGS);
-               break;
-           case JFMainFrame.FAVS:
-               presentationController.changeView(JFMainFrame.FAVS);
-               break;
-           case JFMainFrame.PIANO:
-               presentationController.changeView(JFMainFrame.PIANO);
-               break;
-           case JFMainFrame.PROFILE:
-               presentationController.changeView(JFMainFrame.PROFILE);
-               break;
-               //Piano View
+           //Piano View
            case JPPiano.START_RECORDING:
                //Christian aqui tu action listener
                if(!isRecording){
