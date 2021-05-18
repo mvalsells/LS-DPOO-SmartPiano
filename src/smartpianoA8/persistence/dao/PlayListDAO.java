@@ -14,6 +14,12 @@ import java.util.ArrayList;
 public interface PlayListDAO{
 
     /**
+     * Crea les playlists inicials buides d'un usuari al registrar-se
+     * @param username l'username de l'usuari
+     */
+    void newUserPlaylists(String username);
+
+    /**
      * Mètode per crear una playlist
      * @param name nom de la playlist
      * @param username username propietari
