@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PlayerController extends Runnable implements ActionListener {
+public class PlayerController implements Runnable, ActionListener {
 
     ArrayList<Song> songsToBePlayed;
 
