@@ -26,7 +26,7 @@ public class RectanglesCascada extends Rectangle implements Runnable{
     public void run(){
         Boolean printable = isPrintable(note);
         Boolean isWhite = isBlanca(note);
-        /******************************pintar tecla*******************/
+
 
         //colorejar una tecla
         note = canviaNote(note, isWhite);
@@ -36,14 +36,10 @@ public class RectanglesCascada extends Rectangle implements Runnable{
             jppiano.pintarTeclaNegra(note);
         }
 
-
-
         //esperar el que dura la nota
         long inicial = System.currentTimeMillis();
         while(System.currentTimeMillis()-inicial <= endTime){
         }
-
-        /***************************despintar tecla********************/
 
         //tecla color inicial
         if(isWhite && printable) {
