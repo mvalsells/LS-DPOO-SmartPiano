@@ -1,12 +1,10 @@
 package smartpianoA8.persistence;
 
-import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.entity.Notes;
 
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,8 +29,8 @@ public class MidiParserImpl implements MidiParser {
     private long totalTicks = 0;
     private int trackResolution = 0;
     private int ticks_per_quarter;
-    private float µs_per_quarter;
-    private float µs_per_tick;
+    private float us_per_quarter;
+    private float us_per_tick;
 
     /**
      * Constructor
@@ -73,11 +71,11 @@ public class MidiParserImpl implements MidiParser {
             trackResolution = sequence.getResolution();
 
             ticks_per_quarter = sequence.getResolution();
-            µs_per_quarter = MPQ;
-            µs_per_tick = µs_per_quarter / ticks_per_quarter;
+            us_per_quarter = MPQ;
+            us_per_tick = us_per_quarter / ticks_per_quarter;
             //Microsegundos que tiene un tick = us_per_tick
-            System.out.println("Total µs_per_tick: " + µs_per_tick);
-            secondsPerTick = µs_per_tick / 1000000;
+            System.out.println("Total µs_per_tick: " + us_per_tick);
+            secondsPerTick = us_per_tick / 1000000;
             totalSongSeconds = sequence.getTickLength() * secondsPerTick;
             totalTicks = sequence.getTickLength();
 
@@ -277,7 +275,7 @@ public class MidiParserImpl implements MidiParser {
      * @return uS per tic
      */
     public float getusPerTick() {
-        return µs_per_tick;
+        return us_per_tick;
     }
 
 

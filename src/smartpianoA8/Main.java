@@ -2,6 +2,7 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -9,9 +10,11 @@ import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
+import smartpianoA8.presentation.Controller.PlayerController;
 import smartpianoA8.presentation.Controller.PresentationController;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  * Classe principal per l'execució del programa
@@ -33,6 +36,18 @@ public class Main {
         //Exit Status
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
+
+        ArrayList<Song> test = new ArrayList<>();
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
+        Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
+        Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
+        Song song4 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/298.mid",1,null,null);
+        test.add(song);
+        test.add(song2);
+        test.add(song3);
+        test.add(song4);
+        Thread thread = new Thread(new PlayerController(test));
+        thread.start();
 
 
         //Llegir fitxer config
