@@ -16,4 +16,5 @@ public class ColorScheme {
     public static final Color BlueButton =new Color(116,148,223);
     public static final Color DarkButton =new Color(159,159,159);
 
+    public static final Color DARK_GREEN = new Color(0,102,0);
 }

@@ -147,6 +147,8 @@ public class PresentationController implements PresentationFacade{
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
 
+    public void newUserPlaylists(String username){} //TODO playlist manager
+
     /**
      * Mètode per obtenir les cançons
      * @param id identificador de la cançó

@@ -53,6 +53,7 @@ public class SongController implements ActionListener {
             String[] split = e.getActionCommand().split("-");
 
             this.lastSongPressed = Integer.parseInt(split[1]);
+            System.out.println(lastSongPressed);
 
         }else{
             switch (e.getActionCommand()) {

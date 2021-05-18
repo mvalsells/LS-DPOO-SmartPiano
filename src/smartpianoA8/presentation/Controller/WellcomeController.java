@@ -88,7 +88,7 @@ public class WellcomeController implements ActionListener {
         try {
 
             presentationController.registerUser(username, email, password, passwordRepetition, User.TYPE_SMARTPIANO);
-            System.out.println("patata pringada");
+
         } catch (PasswordException e) {
 
             StringBuilder sb = new StringBuilder();
