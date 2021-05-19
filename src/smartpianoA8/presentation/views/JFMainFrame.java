@@ -43,6 +43,7 @@ public class JFMainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setPreferredSize(new Dimension(1085,680));
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
         //Panels (Navigation Bar options)
         jpSongs = new JPSongs(masterSongs);
@@ -85,7 +86,7 @@ public class JFMainFrame extends JFrame {
     }
 
     public void registerPlaylistViewControllers(ActionListener actionListener){
-        jpPlaylistView.registerControllers(actionListener);
+       jpPlaylistView.registerControllers(actionListener);
     }
     public void registerProfileViewControllers(ActionListener actionListener){
         jpProfileView.registerControllers(actionListener);

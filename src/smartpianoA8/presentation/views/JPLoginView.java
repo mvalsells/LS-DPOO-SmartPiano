@@ -346,10 +346,10 @@ public class JPLoginView extends JPanel  {
         } else {
             data.add(nom.getText());
         }
-        if (correu.getText().equals(PH_PASSWORD)){
+        if (contrasenya.getText().equals(PH_PASSWORD)){
             data.add(null);
         } else {
-            data.add(correu.getText());
+            data.add(contrasenya.getText());
         }
         return data;
     }

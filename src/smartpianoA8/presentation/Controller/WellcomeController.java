@@ -70,7 +70,7 @@ public class WellcomeController implements ActionListener {
 
     private void loginUser() {
         ArrayList<String> data = presentationController.wellcomeGetLoginData();
-        if (data.get(0) == null && data.get(1) != null){
+        if (data.get(0) != null && data.get(1) != null){
             try {
                 presentationController.login(data.get(0), data.get(1));
             } catch (UserManagerException e){

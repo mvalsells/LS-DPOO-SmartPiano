@@ -49,6 +49,7 @@ public class JFWellcomeFrame extends JFrame {
 
         getContentPane().add(mainPanel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
     }

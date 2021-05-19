@@ -20,6 +20,7 @@ public class JFSongsTable extends JFrame {
         setSize(600,350);
         setMinimumSize(new Dimension(600,350));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         DefaultTableModel tableModel = new DefaultTableModel(columnas, 0);
 

@@ -81,7 +81,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public ArrayList<PlayList> getPlayListsByUser(User user) {
-        ArrayList<PlayList> llista = null;
+        ArrayList<PlayList> llista = new ArrayList<>();
 
         String query = "SELECT Nom, NomUsuari, IDPlayList FROM PlayList WHERE NomUsuari LIKE '" + user.getUsername() + "';";
         ResultSet result = connector.selectQuery(query);
