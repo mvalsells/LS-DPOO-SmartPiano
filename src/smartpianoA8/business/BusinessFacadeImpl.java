@@ -308,6 +308,15 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     public void removeSongFromPlayList(PlayList playList, Song song){playListDAO.removeSongFromPlayList(song,playList);}
+
+    public Song getSongByName(String name){
+        return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
+    }
+
+    public PlayList getPlayListByName(String name){
+        return playListDAO.getPlayListByName(String name, userManager.getCurrentUser().getUsername());
+    }
+
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------

@@ -162,4 +162,26 @@ public class SQLPlayListDAO implements PlayListDAO{
 
         connector.insertQuery(query);
     }
+
+    /**
+     * Mètode per obtenir una playlist pel usenrame d'un usuari
+     * @param name nom de la playlist
+     * @param username nom de l'username
+     * @return la playlist
+     */
+    @Override
+    public PlayList getPlayListByName(String name, String username){
+        PlayList retorna = null;
+        String query = "SELECT * FROM PlayList WHERE Nom LIKE '" + name +"' AND NomUsuari LIKE '" + username +"'";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()) {
+                return new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+            }
+            return retorna;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return retorna;
+        }
+    }
 }

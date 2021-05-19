@@ -46,7 +46,7 @@ public interface SongDAO {
      * @param username nom de l'usauri
      * @return l'Arraylist de cançons
      */
-    ArrayList<Song> getSongByName(String name, String username);
+    Song getSongByName(String name, String username);
 
     /**
      * Metode que retorna les 5 top Songs per numero de reproduccions.

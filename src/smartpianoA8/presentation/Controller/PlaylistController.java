@@ -39,15 +39,15 @@ public class PlaylistController implements ActionListener {
 
         switch (e.getActionCommand()){
             case JPPlaylistSettings.ADD:
-                presentationController.playlistViewGetJCSongAdderString();
-                presentationController.playlistViewGetJCTriarPlaylistString();
-                presentationController.playlistAddSongToPlayList(metode per obtenir canço a partir del seu nom,metode per obtenir playlist a partir del seu nom); //TODO getSongByName(String name),getPlaylistByName(String name)
+                //TODO està bé això amb els paràmetres? (a sota)
+                presentationController.playlistAddSongToPlayList(presentationController.getSongByName(presentationController.playlistViewGetJCSongAdderString()),presentationController.getPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                 System.out.println(presentationController.playlistViewGetJCSongAdderString());
                 break;
             case JPPlaylistSettings.REMOVE:
+                //TODO està bé això amb els paràmetres? (a sota)
                 presentationController.playlistViewGetJCSongRemoveString();
                 presentationController.playlistViewGetJCTriarPlaylistString();
-                presentationController.playlistRemoveSongToPlayList(metode per obtenir canço a partir del seu nom,metode per obtenir playlist a partir del seu nom); //TODO getSongByName(String name),getPlaylistByName(String name)
+                presentationController.playlistRemoveSongToPlayList(presentationController.getSongByName(presentationController.playlistViewGetJCSongAdderString()), presentationController.getPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                 System.out.println(presentationController.playlistViewGetJCSongRemoveString());
                 break;
 

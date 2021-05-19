@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see PresentationController
  */
-public class PresentationController implements PresentationFacade{
+public class PresentationController implements PresentationFacade {
 
     // ---- Inici Atributs ----
     private BusinessFacade businessFacade;
@@ -50,10 +50,11 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Constructor amb els constructors de les diferents vistes
+     *
      * @param businessFacade façada de business
-     * @param midiWritter escriptor de midi
+     * @param midiWritter    escriptor de midi
      */
-    public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter){
+    public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
         //Frames
@@ -67,7 +68,7 @@ public class PresentationController implements PresentationFacade{
      * Mètode per registrar els controllers
      */
 
-    public void loginOK(){
+    public void loginOK() {
         //TODO Tancar/eliminar JFrame Wellcome
         jfWellcomeFrame.dispose();
 
@@ -78,7 +79,7 @@ public class PresentationController implements PresentationFacade{
         songController = new SongController();
         playlistController = new PlaylistController();
         profileController = new ProfileController();
-        pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
+        pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
         playerController = new PlayerController();
@@ -102,7 +103,7 @@ public class PresentationController implements PresentationFacade{
     }
 
     public void logoutOK() {
-        if (jfMainFrame != null){
+        if (jfMainFrame != null) {
             jfMainFrame.dispose();
         }
         //Crear la vista
@@ -120,9 +121,10 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per canviar de view
+     *
      * @param view la vista
      */
-    public void changeView(String view){
+    public void changeView(String view) {
         jfMainFrame.changeViewTo(view);
     }
 
@@ -130,22 +132,23 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per registrar un usuari
-     * @param username nom d'usuari
-     * @param email email
-     * @param password contra
+     *
+     * @param username           nom d'usuari
+     * @param email              email
+     * @param password           contra
      * @param passwordRepetition contra x2
-     * @param type tipus de compta
-     * @throws PasswordException control d'errors de la contrassenya
+     * @param type               tipus de compta
+     * @throws PasswordException    control d'errors de la contrassenya
      * @throws UserManagerException control d'erors de l'usuari i email
      */
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
-          businessFacade.registerUser(username, email, password, passwordRepetition,type);
+        businessFacade.registerUser(username, email, password, passwordRepetition, type);
     }
 
     /**
      * Mètode per desloguejar-se
      */
-    public void logout(){
+    public void logout() {
         businessFacade.logoutCurrentUser();
         logoutOK();
         //Canviar de vista que surti el Login
@@ -153,55 +156,68 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per actualitzar l'username
+     *
      * @param newUsername nou username
      * @return estat correcte o incorrecte
      */
-    public boolean updateUsername(String newUsername){
+    public boolean updateUsername(String newUsername) {
         return businessFacade.modifyCurrentUserName(newUsername);
     }
 
     /**
      * Mètode per actualitzar l'email
+     *
      * @param newEmail nou email
      * @return estat correcte o incorrecte
      */
-    public boolean updateEmail(String newEmail){
+    public boolean updateEmail(String newEmail) {
         return businessFacade.modifyCurrentUserEmail(newEmail);
     }
 
     /**
      * Mètode per actualitzar la contrassenya
-     * @param newPassword nova contra
+     *
+     * @param newPassword           nova contra
      * @param newPasswordRepetition nova contra x2
      * @throws PasswordException control d'errors de la contrassenya
      */
-    public void updatePassword(String newPassword, String newPasswordRepetition) throws PasswordException{
-        businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
+    public void updatePassword(String newPassword, String newPasswordRepetition) throws PasswordException {
+        businessFacade.modifyCurrentUserPassword(newPassword, newPasswordRepetition);
     }
 
-    public void newUserPlaylists(String username){} //TODO playlist manager
+    public void newUserPlaylists(String username) {
+    } //TODO playlist manager
 
     /**
      * Mètode per obtenir les cançons
+     *
      * @param id identificador de la cançó
      * @return la cnaçó
      */
-    public Song getSongByID(int id){return businessFacade.getSong(id);}
+    public Song getSongByID(int id) {
+        return businessFacade.getSong(id);
+    }
 
     /**
      * Mètode per obtenir les notes per les cnaçons en cascada
+     *
      * @param song la cançó
      * @return ArrayList d'ArrayList de notes, notes per cada canal
      */
-    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song){return businessFacade.getMidiNotes(song);}
+    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song) {
+        return businessFacade.getMidiNotes(song);
+    }
 
     /**
      * Mètode per obtenir informació sobre l'usuari logguejat actual
+     *
      * @return l'usuari
      */
-    public User getCurrentUser(){return businessFacade.getCurrentUser();}
+    public User getCurrentUser() {
+        return businessFacade.getCurrentUser();
+    }
 
-    public ArrayList<Song> getTop5(){
+    public ArrayList<Song> getTop5() {
         return businessFacade.getTop5();
     }
 
@@ -212,24 +228,53 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per obtenir l'última cançó clicada per operar amb ella
+     *
      * @return l'id de la cançó
      */
-    public int songControllerGetLastSongPressed(){return songController.getLastSongPressed();}
+    public int songControllerGetLastSongPressed() {
+        return songController.getLastSongPressed();
+    }
+
+
     // ---- End SongView Methods
 
     /**
      * Mètode per obtenir noves cançons
      */
     @Override
-    public void nuevasCanciones(){
+    public void nuevasCanciones() {
         jfMainFrame.nuevaCanciones();
     }
+
     // ---- Start PlaylistView Methods
-    public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
-    public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
-    public String playlistViewGetJCTriarPlaylistString(){return jfMainFrame.playlistViewGetJCTriarPlaylistString();}
-    public void playlistAddSongToPlayList(Song song, PlayList playList){businessFacade.addSongToPlayList(song,playList);}
-    public void playlistRemoveSongToPlayList(Song song, PlayList playList){businessFacade.removeSongFromPlayList(song,playList);}
+    public String playlistViewGetJCSongAdderString() {
+        return jfMainFrame.playlistViewGetJCSongAdderString();
+    }
+
+    public String playlistViewGetJCSongRemoveString() {
+        return jfMainFrame.playlistViewGetJCSongRemoveString();
+    }
+
+    public String playlistViewGetJCTriarPlaylistString() {
+        return jfMainFrame.playlistViewGetJCTriarPlaylistString();
+    }
+
+    public void playlistAddSongToPlayList(Song song, PlayList playList) {
+        businessFacade.addSongToPlayList(song, playList);
+    }
+
+    public void playlistRemoveSongToPlayList(Song song, PlayList playList) {
+        businessFacade.removeSongFromPlayList(song, playList);
+    }
+
+
+    public Song getSongByName(String name) {
+        return businessFacade.getSongByName(name);
+    }
+
+    public PlayList getPlayListByName(String name);
+        return businesFacade.getPlayListByName(name);
+    }
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 

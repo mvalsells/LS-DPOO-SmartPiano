@@ -52,6 +52,9 @@ public interface BusinessFacade {
     ArrayList<PlayList> getCurrentUserPlaylist();
     void addSongToPlayList(Song song, PlayList playList);
     void removeSongFromPlayList(Song song,PlayList playList);
+    Song getSongByName(String name);
+
+    PlayList getPlayListByName(String name);
 
 
     //Altres
