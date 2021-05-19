@@ -69,6 +69,7 @@ public class PresentationController implements PresentationFacade{
 
     public void loginOK(){
         //TODO Tancar/eliminar JFrame Wellcome
+        jfWellcomeFrame.dispose();
 
         //Crear les vistes
         jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
@@ -85,7 +86,7 @@ public class PresentationController implements PresentationFacade{
 
         //Registar aquest controller als altres controllers
         songController.registerPresentationController(this);
-        favController.registerPresentationController(this);
+        playlistController.registerPresentationController(this);
         profileController.registerPresentationController(this);
         pianoController.registerPresentationController(this);
         pianoCascadeController.registerPresentationController(this);
@@ -93,16 +94,17 @@ public class PresentationController implements PresentationFacade{
 
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerPlaylistViewControllers(favController);
+        jfMainFrame.registerPlaylistViewControllers(playerController);
         jfMainFrame.registerProfileViewControllers(profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
         jfMainFrame.registerMainFrameController(mainFrameController);
     }
 
-    public void logoutOK(){
-        //TODO amagar/eliminar vista mainFrame
-
+    public void logoutOK() {
+        if (jfMainFrame != null){
+            jfMainFrame.dispose();
+        }
         //Crear la vista
         jfWellcomeFrame = new JFWellcomeFrame();
 
@@ -114,30 +116,6 @@ public class PresentationController implements PresentationFacade{
         jfWellcomeFrame.registerController(wellcomeController);
     }
 
-    /*
-    public void registerAllControlers(){
-
-        //Register this controller to other controllers
-        wellcomeController.registerPresentationController(this);
-        songController.registerPresentationController(this);
-        favController.registerPresentationController(this);
-        profileController.registerPresentationController(this);
-        pianoController.registerPresentationController(this);
-        pianoCascadeController.registerPresentationController(this);
-        mainFrameController.registerPresentationController(this);
-
-        //Register views to their contrller
-        //TODO falta wellcome controller, potser no es necessari
-        jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerPlaylistViewControllers(playlistController);
-        jfMainFrame.registerProfileViewControllers(profileController);
-        jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
-        jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
-        jfMainFrame.registerMainFrameController(mainFrameController);
-
-
-    }
-    */
     //Change views
 
     /**
@@ -169,6 +147,7 @@ public class PresentationController implements PresentationFacade{
      */
     public void logout(){
         businessFacade.logoutCurrentUser();
+        logoutOK();
         //Canviar de vista que surti el Login
     }
 

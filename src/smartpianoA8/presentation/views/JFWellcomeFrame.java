@@ -34,7 +34,8 @@ public class JFWellcomeFrame extends JFrame {
 
     public void createAndShowGUI(){
 
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000,820));
 
 
