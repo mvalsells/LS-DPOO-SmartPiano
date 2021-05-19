@@ -22,6 +22,7 @@ public class PlayerController implements Runnable, ActionListener {
     private boolean isPlaying = false;
     private boolean isPaused = false;
     private int currentSong = 0;
+    private long whereWhenPaused = 0;
 
     public PlayerController() {}
 
@@ -181,7 +182,15 @@ public class PlayerController implements Runnable, ActionListener {
                     e.printStackTrace();
                 }
 
-                currentSequencer.start();
+
+                if(isPaused == false) {
+                    currentSequencer.start();
+                } else if (isPaused == true) {
+                    currentSequencer.setMicrosecondPosition(whereWhenPaused);
+                    currentSequencer.start();
+                }
+
+                isPaused = false;
 
                 while (currentSequencer.isRunning()) {
                     if(actionToDo == 2) {
@@ -196,6 +205,7 @@ public class PlayerController implements Runnable, ActionListener {
                         actionToDo = 0;
                         break;
                     } else if (actionToDo == 1) {
+                        whereWhenPaused = currentSequencer.getMicrosecondPosition();
                         currentSequencer.stop();
                         currentSong = currentSong - 1;
                         isPaused = true;
@@ -206,7 +216,9 @@ public class PlayerController implements Runnable, ActionListener {
                     }
                 }
 
-                currentSequencer.close();
+                if(!isPaused) {
+                    currentSequencer.close();
+                }
 
             }
 

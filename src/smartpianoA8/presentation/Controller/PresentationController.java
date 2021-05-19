@@ -310,10 +310,12 @@ public class PresentationController implements PresentationFacade{
         Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
         Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
         Song song4 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/298.mid",1,null,null);
-        test2.add(song);
-        test2.add(song2);
+        Song song5 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/85261.mid",1,null,null);
+        test2.add(song5);
         test2.add(song3);
+        test2.add(song2);
         test2.add(song4);
+        test2.add(song);
 
         playerController.setSongsToBePlayed(test2);
     }

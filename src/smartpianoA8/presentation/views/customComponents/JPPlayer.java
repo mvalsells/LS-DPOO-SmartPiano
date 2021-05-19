@@ -72,8 +72,6 @@ public class JPPlayer extends JPanel {
         jComboBox.addItem("test2");
         jComboBox.addItem("test3");
 
-
-
         progressBar = new JPProgressBar();
 
         //progressBar.setBackground(Color.GRAY);
