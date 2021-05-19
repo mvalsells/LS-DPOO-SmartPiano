@@ -216,9 +216,7 @@ public class PlayerController implements Runnable, ActionListener {
                     }
                 }
 
-                if(!isPaused) {
-                    currentSequencer.close();
-                }
+                currentSequencer.close();
 
             }
 
