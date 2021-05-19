@@ -24,66 +24,81 @@ public class JPTiraCancons extends JPMainView{
         JPanel jpAmbSongs = new JPMainView();
         jpAmbSongs.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        jbMasButton = new JButton[songs.size()];
+        if(songs==null) {
 
-        for(int i=0; i< songs.size(); i++){
+            JLabel jlNoHayCanciones = new JLColor("NO HAY CANCIONES EN TU PLAYLIST",Color.WHITE,new Font("Verdana",Font.BOLD,25));
+            JLabel jlTitul = new JLColor(titul,Color.white);
 
-            JPanel jpCanço = new JPMainView();
-            jpCanço.setLayout(new BoxLayout(jpCanço,BoxLayout.Y_AXIS));
+            add(jlTitul,BorderLayout.NORTH);
+            add(jlNoHayCanciones,BorderLayout.CENTER);
+        }else  {
+            jbMasButton = new JButton[songs.size()];
 
-            StringBuilder sbCommand = new StringBuilder();
-            sbCommand.append(JPSongs.SONG_PRESSED);
-            sbCommand.append(songs.get(i).getIdSong());
-            jbMasButton[i] = new JButton();
-            jbMasButton[i].setIcon(musicIcon);
-            jbMasButton[i].setActionCommand(sbCommand.toString());
-            jbMasButton[i].setBorder(BorderFactory.createEmptyBorder(0,0,0,15));
-            jbMasButton[i].setOpaque(false);
-            jbMasButton[i].setContentAreaFilled(false);
-            jbMasButton[i].setBorderPainted(false);
+            for (int i = 0; i < songs.size(); i++) {
 
-            String nomCanço = songs.get(i).getNom();
-            StringBuilder sbName = new StringBuilder();
+                JPanel jpCanço = new JPMainView();
+                jpCanço.setLayout(new BoxLayout(jpCanço, BoxLayout.Y_AXIS));
 
-            if(songs.get(i).getNom().length()>24){
-                int k = 0;
+                StringBuilder sbCommand = new StringBuilder();
+                sbCommand.append(JPSongs.SONG_PRESSED);
+                sbCommand.append(songs.get(i).getIdSong());
+                jbMasButton[i] = new JButton();
+                jbMasButton[i].setIcon(musicIcon);
+                jbMasButton[i].setActionCommand(sbCommand.toString());
+                jbMasButton[i].setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
+                jbMasButton[i].setOpaque(false);
+                jbMasButton[i].setContentAreaFilled(false);
+                jbMasButton[i].setBorderPainted(false);
 
-                while(k<songs.get(i).getNom().length()){
-                    if(k!=0){sbName.append("-<br/>");}else if(k==0){sbName.append("<html>");}
-                    sbName.append(nomCanço, k, Math.min(k+24,songs.get(i).getNom().length()));
+                String nomCanço = songs.get(i).getNom();
+                StringBuilder sbName = new StringBuilder();
 
-                    System.out.println(sbName.toString());
+                if (songs.get(i).getNom().length() > 24) {
+                    int k = 0;
 
-                    k += 25;
+                    while (k < songs.get(i).getNom().length()) {
+                        if (k != 0) {
+                            sbName.append("-<br/>");
+                        } else if (k == 0) {
+                            sbName.append("<html>");
+                        }
+                        sbName.append(nomCanço, k, Math.min(k + 24, songs.get(i).getNom().length()));
 
+                        System.out.println(sbName.toString());
+
+                        k += 25;
+
+                    }
+                    sbName.append("<html>");
+                } else {
+                    sbName.append(songs.get(i).getNom());
                 }
-                sbName.append("<html>");
-            }else{
-                sbName.append(songs.get(i).getNom());
+
+
+                JLabel jlSongNomText = new JLColor(sbName.toString(), ColorScheme.PRIMARY);
+                JLabel jlSongInfoText = new JLColor(songs.get(i).getAutor(), ColorScheme.Secondary);
+
+                jpCanço.add(jbMasButton[i]);
+                jpCanço.add(jlSongNomText);
+                jpCanço.add(jlSongInfoText);
+
+                jpAmbSongs.add(jpCanço);
+
             }
+            JScrollPane jsp = new JScrollPane(jpAmbSongs,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            jsp.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+            jsp.setOpaque(false);
+            jsp.getHorizontalScrollBar().setOpaque(false);
+            //jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
+            //jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
+            JLabel jlTitul = new JLColor(titul,Color.white);
 
-
-            JLabel jlSongNomText = new JLColor(sbName.toString(),ColorScheme.PRIMARY);
-            JLabel jlSongInfoText = new JLColor(songs.get(i).getAutor(),ColorScheme.Secondary);
-
-            jpCanço.add(jbMasButton[i]);
-            jpCanço.add(jlSongNomText);
-            jpCanço.add(jlSongInfoText);
-
-            jpAmbSongs.add(jpCanço);
-
+            add(jlTitul,BorderLayout.NORTH);
+            add(jsp,BorderLayout.CENTER);
         }
 
-        JScrollPane jsp = new JScrollPane(jpAmbSongs,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        jsp.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-        jsp.setOpaque(false);
-        jsp.getHorizontalScrollBar().setOpaque(false);
-        //jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
-        //jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
-        JLabel jlTitul = new JLColor(titul,Color.white);
 
-        add(jlTitul,BorderLayout.NORTH);
-        add(jsp,BorderLayout.CENTER);
+
 
     }
 

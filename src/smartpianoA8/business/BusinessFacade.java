@@ -50,6 +50,8 @@ public interface BusinessFacade {
     //boolean newPlayList(String nom, String nomUsuari);
     //void removePlayList(int idPlayList);
     ArrayList<PlayList> getCurrentUserPlaylist();
+    void addSongToPlayList(Song song, PlayList playList);
+    void removeSongFromPlayList(Song song,PlayList playList);
 
 
     //Altres

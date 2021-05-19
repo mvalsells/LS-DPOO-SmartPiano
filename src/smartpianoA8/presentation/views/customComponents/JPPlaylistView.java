@@ -15,6 +15,7 @@ public class JPPlaylistView extends JPMainView {
     private CardLayout cards;
     private JPanel jpCardPanel;
     private JPPlaylistSettings[] jpPlaylistSettings;
+    private JComboBox jcTriarPlaylist;
 
     private ArrayList<PlayList> hasPlayLists;
 
@@ -38,7 +39,7 @@ public class JPPlaylistView extends JPMainView {
 
         }
 
-        JComboBox jcTriarPlaylist = new JComboBox(stringBox);
+        jcTriarPlaylist = new JComboBox(stringBox);
         jcTriarPlaylist.setSelectedIndex(0);
         panellNord.add(jcTriarPlaylist);
 
@@ -46,7 +47,7 @@ public class JPPlaylistView extends JPMainView {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
         
-        
+        jpPlaylistSettings = new JPPlaylistSettings[hasPlayLists.size()];
         
         for(int i = 0; i<hasPlayLists.size();i++){
             
@@ -68,5 +69,10 @@ public class JPPlaylistView extends JPMainView {
             jpPlaylistSettings[i].registerController(controller);
         }
     }
+
+    public String getJCSongAdderString(){return jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].getJCSongAdderString();}
+    public String getJCSongRemoveString(){return jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].getJCSongRemoveString();}
+    public String getJCTriarPlaylistString(){return (String)jcTriarPlaylist.getSelectedItem();}
+
 
 }

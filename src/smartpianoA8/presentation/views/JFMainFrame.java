@@ -19,7 +19,7 @@ public class JFMainFrame extends JFrame {
     public static final String PIANO = "piano";
     public static final String PROFILE = "profile";
     public static final String SONGS = "songs";
-    public static final String FAVS = "favs";
+    public static final String PLAYLISTS = "playlists";
     public static final String PIANO_CASCADE = "piano_cascade";
 
     //Private
@@ -59,7 +59,7 @@ public class JFMainFrame extends JFrame {
         cards = new CardLayout();
         jpCardPanel = new JPanel(cards);
         jpCardPanel.add(jpSongs, SONGS);
-        jpCardPanel.add(jpPlaylistView, FAVS);
+        jpCardPanel.add(jpPlaylistView, PLAYLISTS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
         jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
@@ -105,8 +105,8 @@ public class JFMainFrame extends JFrame {
             case SONGS:
                 cards.show(jpCardPanel,SONGS);
                 break;
-            case FAVS:
-                cards.show(jpCardPanel,FAVS);
+            case PLAYLISTS:
+                cards.show(jpCardPanel,PLAYLISTS);
                 break;
             case PIANO:
                 cards.show(jpCardPanel,PIANO);
@@ -127,8 +127,11 @@ public class JFMainFrame extends JFrame {
         jpSongs.nuevasCanciones();
     }
     // ---- End SongView Methods
-    // ---- Start FavView Methods
-    // ---- End FavView Methods
+    // ---- Start PlaylistView Methods
+    public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}
+    public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}
+    public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}
+    // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
     public void pianoViewSetRecordingPressedIcon(){ jpPianoView.setRecordingPressedIcon(); }
     public void pianoViewSetRecordingUnpressedIcon(){

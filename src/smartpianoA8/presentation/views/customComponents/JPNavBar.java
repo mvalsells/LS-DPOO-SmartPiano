@@ -42,7 +42,7 @@ public class JPNavBar extends JPanel {
         jbSong = new JBNavBar(iconSong);
         jbSong.setActionCommand(JFMainFrame.SONGS);
         jbMyFav = new JBNavBar(iconMyFav);
-        jbMyFav.setActionCommand(JFMainFrame.FAVS);
+        jbMyFav.setActionCommand(JFMainFrame.PLAYLISTS);
         jbPiano = new JBNavBar(iconPiano);
         jbPiano.setActionCommand(JFMainFrame.PIANO);
         //TODO BORRAR es temporal
@@ -82,7 +82,7 @@ public class JPNavBar extends JPanel {
             case JFMainFrame.SONGS:
                 iconSong = new ImageIcon("Imagen/ImagenesMenu/CancionesSelect.jpg");
                 break;
-            case JFMainFrame.FAVS:
+            case JFMainFrame.PLAYLISTS:
                 iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritasSelect.jpg");
                 break;
             case JFMainFrame.PIANO:

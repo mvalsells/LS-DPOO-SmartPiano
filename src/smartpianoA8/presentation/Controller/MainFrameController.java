@@ -18,8 +18,8 @@ public class MainFrameController implements ActionListener {
             case JFMainFrame.SONGS:
                 presentationController.changeView(JFMainFrame.SONGS);
                 break;
-            case JFMainFrame.FAVS:
-                presentationController.changeView(JFMainFrame.FAVS);
+            case JFMainFrame.PLAYLISTS:
+                presentationController.changeView(JFMainFrame.PLAYLISTS);
                 break;
             case JFMainFrame.PIANO:
                 presentationController.changeView(JFMainFrame.PIANO);

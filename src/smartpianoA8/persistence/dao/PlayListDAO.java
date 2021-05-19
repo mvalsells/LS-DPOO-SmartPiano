@@ -38,7 +38,7 @@ public interface PlayListDAO{
      * @param playList la playlist
      * @param song la cançó
      */
-    void removeSongFromPlayList(PlayList playList, Song song);
+    void removeSongFromPlayList(Song song,PlayList playList);
 
     /**
      * Mètode per eliminar una playlist
