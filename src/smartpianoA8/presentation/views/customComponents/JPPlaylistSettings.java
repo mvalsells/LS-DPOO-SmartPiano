@@ -10,70 +10,29 @@ import java.util.ArrayList;
 
 public class JPPlaylistSettings extends JPMainView {
 
-    private JComboBox<String> jcSongAdder;
-    private JComboBox<String> jcSongRemover;
+    //Buttons amb action listeners
 
-    private JButton jbAdder;
-    private JButton jbRemover;
+    private JPTiraCancons jpTiraCancons;
+
+    //Vista
+    private JPPlailistEditor jpAdd;
+    private JPPlailistEditor jpRemove;
 
     public static final String ADD = "add";
     public static final String REMOVE = "remove";
 
-    public JPPlaylistSettings( ArrayList<Song> songs, PlayList playList){
+    public JPPlaylistSettings( ){
 
-        /*GroupLayout groupLayout = new GroupLayout(this);*/
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        /*GroupLayout groupLayout = new GroupLayout(this);*/
 
-        JPanel jpAdd  = new JPMainView();
-        jpAdd.setLayout(new FlowLayout());
-        JPanel jpRemove  = new JPMainView();
-        jpRemove.setLayout(new FlowLayout());
-
-        JLabel jlAdd = new JLColor("Cancion a añadir: ", Color.WHITE);
-        JLabel jlRemove = new JLColor("Cancion a eliminar: ", Color.WHITE);
-
-        jcSongAdder= new JComboBox<String>();
-        jcSongRemover= new JComboBox<String>();
-
-        ArrayList<Song> songsPlaylistHas = playList.getSongs();
-
-        if(songsPlaylistHas == null){
-
-            for(int i = 0;i<songs.size();i++) {
-                jcSongAdder.addItem(songs.get(i).getNom());
-            }
-            jcSongAdder.setSelectedIndex(0);
-        }else {
-            for (int i = 0; i < songs.size(); i++) {
-                if (!songsPlaylistHas.contains(songs.get(i))) {
-                    jcSongAdder.addItem(songsPlaylistHas.get(i).getNom());
-                }
-            }
-            for(int i = 0;i<songsPlaylistHas.size();i++){
-
-                jcSongRemover.addItem(songsPlaylistHas.get(i).getNom());
-
-            }
-            jcSongAdder.setSelectedIndex(0);
-            jcSongRemover.setSelectedIndex(0);
-        }
+        JComboBox<String> jComboBoxADD = new JComboBox<>();
+        JComboBox<String> jComboBoxRemove = new JComboBox<>();
 
 
-
-        //Buttons
-        jbAdder = new JBgeneral("Añadir",ColorScheme.DARK_GREEN);
-        jbAdder.setActionCommand(ADD);
-        jbRemover = new JBgeneral("Eliminar",ColorScheme.RED_DANGER);
-        jbRemover.setActionCommand(REMOVE);
-        //Tira cançons
-        JPTiraCancons jpTiraCancons = new JPTiraCancons(songsPlaylistHas,playList.getNom());
-
-        jpAdd.add(jlAdd);
-        jpAdd.add(jcSongAdder);
-        jpAdd.add(jbAdder);
-        jpRemove.add(jlRemove);
-        jpRemove.add(jcSongRemover);
-        jpRemove.add(jbRemover);
+        jpTiraCancons = new JPTiraCancons();
+        jpAdd = new JPPlailistEditor("Cancion a añadir: ","Añadir",ADD,jComboBoxADD);
+        jpRemove = new JPPlailistEditor("Cancion a eliminar: ","Eliminar",REMOVE,jComboBoxRemove);
 
         add(jpTiraCancons);
         add(jpAdd);
@@ -94,17 +53,26 @@ public class JPPlaylistSettings extends JPMainView {
 
     public void registerController(ActionListener controller){
 
-        jcSongAdder.addActionListener(controller);
-        jcSongRemover.addActionListener(controller);
 
-        jbAdder.addActionListener(controller);
-        jbRemover.addActionListener(controller);
 
+        jpAdd.registerController(controller);
+        jpRemove.registerController(controller);
+        //System.out.println("action: "+jbAdder.getActionCommand());
 
     }
 
-    public String getJCSongAdderString(){return (String)jcSongAdder.getSelectedItem();}
-    public String getJCSongRemoveString(){return (String)jcSongRemover.getSelectedItem();}
+    public void updateJPPlaylistSettings(ArrayList<Song> songs, PlayList playList){
+
+        jpTiraCancons.updateTira(playList.getSongs(),playList.getNom());
+
+        jpAdd.updateJPPlailistEditor(songs,playList,ADD);
+        jpRemove.updateJPPlailistEditor(songs, playList,REMOVE);
+        repaint();
+
+    }
+
+    public String getJCSongAdderString(){return (String)jpAdd.getJCSongString();}
+    public String getJCSongRemoveString(){return (String)jpRemove.getJCSongString();}
 
 
 }

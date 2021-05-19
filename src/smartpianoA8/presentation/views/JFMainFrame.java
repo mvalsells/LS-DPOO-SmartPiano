@@ -8,6 +8,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class JFMainFrame extends JFrame {
         //Panels (Navigation Bar options)
         jpSongs = new JPSongs(masterSongs);
         //jpFavView = new JPFavView(); //Substituida per JPPlaylistView
-        jpPlaylistView = new JPPlaylistView(hasPlayLists,masterSongs);
+        jpPlaylistView = new JPPlaylistView();
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView(currentUser);
         jpPianoCascadeView = new JPPianoCascadeView();
@@ -87,6 +88,7 @@ public class JFMainFrame extends JFrame {
     }
 
     public void registerPlaylistViewControllers(ActionListener actionListener){
+        System.out.println("Comprovacio");
        jpPlaylistView.registerControllers(actionListener);
     }
     public void registerProfileViewControllers(ActionListener actionListener){
@@ -129,6 +131,11 @@ public class JFMainFrame extends JFrame {
     }
     // ---- End SongView Methods
     // ---- Start PlaylistView Methods
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}
+    public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}
+
+    public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}
+
     public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}
     public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}

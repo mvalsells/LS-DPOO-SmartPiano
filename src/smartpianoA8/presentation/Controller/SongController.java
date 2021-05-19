@@ -47,13 +47,13 @@ public class SongController implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        System.out.println("EING");
         if (e.getActionCommand().contains(JPSongs.SONG_PRESSED)){
 
             String[] split = e.getActionCommand().split("-");
 
             this.lastSongPressed = Integer.parseInt(split[1]);
-            //System.out.println(lastSongPressed);
+            System.out.println(lastSongPressed);
 
         }
         switch (e.getActionCommand()) {
