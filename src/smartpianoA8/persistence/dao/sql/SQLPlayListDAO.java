@@ -44,6 +44,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void addSongToPlayList(Song song, PlayList playList) {
+        //TODO controlar que no repeteixin cançons
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
         connector.insertQuery(query);
@@ -88,8 +89,12 @@ public class SQLPlayListDAO implements PlayListDAO{
         try{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
+
+                ArrayList<Song> songs = getPlayListSongs(llista.get(llista.size()));
+                llista.get(llista.size()).setSongs(songs);
             }
             return llista;
+
         }catch (SQLException e){
             System.out.println("PATATA 2k mecagun");
             e.printStackTrace();
@@ -101,6 +106,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      * Retorna la PlayList buscada amb IDPlayList.
      * @param IDPlaylist ID de la PlayList a buscar les dades.
      * @return  PlayList demanada completa.
+     * @deprecated intentar no fer servir, si es fa servir no passa res però no té cançons
      */
     @Override
     public PlayList getPlayListData(int IDPlaylist) {
@@ -176,12 +182,19 @@ public class SQLPlayListDAO implements PlayListDAO{
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
-                return new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+                retorna = new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+            }
+
+            if(retorna != null) {
+                ArrayList<Song> songs = getPlayListSongs(retorna);
+                retorna.setSongs(songs);
+                return retorna;
             }
             return retorna;
+
         }catch(SQLException e){
             e.printStackTrace();
-            return retorna;
         }
+        return retorna;
     }
 }

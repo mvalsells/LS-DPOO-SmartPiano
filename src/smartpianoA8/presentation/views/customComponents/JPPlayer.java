@@ -2,9 +2,13 @@ package smartpianoA8.presentation.views.customComponents;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPPlayer extends JPanel {
+
+    int totalBarLong = 0;
 
     private JButton playButton;
     private JButton pauseButton;
@@ -14,6 +18,7 @@ public class JPPlayer extends JPanel {
     private JButton uploadButton;
 
     private JComboBox<String> jComboBox;
+    private ArrayList<String> playlistsNames;
 
     private JPProgressBar progressBar;
 
@@ -68,11 +73,6 @@ public class JPPlayer extends JPanel {
 
         jComboBox = new JComboBox<>();
         jComboBox.addItem("If you want to play your playlist you must select it before and update pressing the button ---->");
-        jComboBox.addItem("test1");
-        jComboBox.addItem("test2");
-        jComboBox.addItem("test3");
-
-
 
         progressBar = new JPProgressBar();
 
@@ -119,6 +119,47 @@ public class JPPlayer extends JPanel {
     }
 
     public void setCurrentStatus(int status) {
-        progressBar.setValue(status);
+
+        int status2 = status / 1000;
+        status2 = status2 / 1000;
+
+        System.out.println("Total: "+totalBarLong);
+        System.out.println("Current: " +status2);
+
+        progressBar.setValue((status2*100)/totalBarLong);
+
+
+        //progressBar.revalidate();
+        //progressBar.repaint();
+        //pasar status y maximo y hacer regla de tres
+    }
+
+    public void setPlaylistsNames(ArrayList<String> playlistsNames) {
+        //this.playlistsNames = playlistsNames;
+
+        //jComboBox.removeAll();
+
+        try {
+            for(int i = 0; i < playlistsNames.size(); i++) {
+                jComboBox.addItem(playlistsNames.get(i));
+            }
+        } catch (NullPointerException er) {
+            System.err.println("NO SONGS LOADED");
+        }
+
+        jComboBox.revalidate();
+        jComboBox.repaint();
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        jComboBox.addItem("ay");
+
+    }
+
+    public void setTotalBarLong(int totalBarLong) {
+        this.totalBarLong = totalBarLong / 1000;
+        this.totalBarLong = this.totalBarLong / 1000;
     }
 }

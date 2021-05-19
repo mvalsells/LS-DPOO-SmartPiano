@@ -165,4 +165,28 @@ public class JFMainFrame extends JFrame {
     }
     // ---- End ProfileView Methods
 
+
+
+
+
+
+
+
+
+
+
+    public JPPlayer getPlayerView() {
+        return jpPlayer;
+    }
+
+
+    public void setPlaylistsNames(ArrayList<String> playlistsNames) {
+
+        jpPlayer.setPlaylistsNames(playlistsNames);
+
+        //jpPlayer.removeAll();
+        jpPlayer.validate();
+        jpPlayer.repaint();
+    }
+
 }

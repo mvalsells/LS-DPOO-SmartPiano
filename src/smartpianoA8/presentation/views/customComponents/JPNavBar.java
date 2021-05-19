@@ -31,7 +31,7 @@ public class JPNavBar extends JPanel {
 
         // ---- START ImageIcon ----
         iconSong = new ImageIcon("Imagen/ImagenesMenu/Canciones.png");
-        iconMyFav = new ImageIcon("Imagen/ImagenesMenu/Mis_favoritas.jpg");
+        iconMyFav = new ImageIcon("Imagen/ImagenesMenu/MisPlaylist.png");
         iconPiano = new ImageIcon("Imagen/ImagenesMenu/Piano.jpg");
         iconProfile = new ImageIcon("Imagen/ImagenesMenu/Ajustes.jpg");
 

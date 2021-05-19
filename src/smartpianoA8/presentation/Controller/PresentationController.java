@@ -82,7 +82,7 @@ public class PresentationController implements PresentationFacade {
         pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
-        playerController = new PlayerController();
+        playerController = new PlayerController(jfMainFrame.getPlayerView());
         jpPlayerControllerThread = new Thread(playerController);
         jpPlayerControllerThread.start();
 
@@ -342,10 +342,18 @@ public class PresentationController implements PresentationFacade {
         Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
         Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
         Song song4 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/298.mid",1,null,null);
-        test2.add(song);
-        test2.add(song2);
+        Song song5 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/85261.mid",1,null,null);
+        test2.add(song5);
         test2.add(song3);
+        test2.add(song2);
         test2.add(song4);
+        test2.add(song);
+
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("peleleororor");
+        strings.add("yoyoy");
+        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
+        jfMainFrame.setPlaylistsNames(strings);
 
         playerController.setSongsToBePlayed(test2);
     }
