@@ -10,8 +10,13 @@ import java.util.ArrayList;
 public class JFTop5View extends JFrame{
     private static final Color gris = new Color(40,45,53);
     private static final Color lletrta = new Color(186,189,191);
+    private ArrayList<Song> topSongsComu;
+    private JPanel fons;
 
     public JFTop5View(ArrayList<Song> topSongs){
+        this.topSongsComu = topSongs;
+        this.fons = new JPanel();
+
         setResizable(true);
         setTitle("Top 5 cançons");
         setLocationRelativeTo(null);
@@ -25,7 +30,6 @@ public class JFTop5View extends JFrame{
 
 
         //fons
-        JPanel fons = new JPanel();
         fons.setLayout(new BoxLayout(fons, BoxLayout.Y_AXIS));
         fons.setBackground(Color.white);
 
@@ -119,13 +123,13 @@ public class JFTop5View extends JFrame{
                 AUTOR[i]= new JLabel("ARTISTA");
                 NUMREP[i]= new JLabel("REPRODUCCIONES");
             }else{
-                String strAutor = topSongs.get(j).getAutor();
+                String strAutor = topSongsComu.get(j).getAutor();
                 TOP[i]= new JLabel(""+i);
-                NOM[i]= new JLabel(topSongs.get(j).getNom());
-                NUMREP[i]= new JLabel(String.valueOf(topSongs.get(j).getNumReproduccions()));
+                NOM[i]= new JLabel(topSongsComu.get(j).getNom());
+                NUMREP[i]= new JLabel(String.valueOf(topSongsComu.get(j).getNumReproduccions()));
                 AUTOR[i]= new JLabel(strAutor);
 
-                if (strAutor.compareTo("Master") == 0) strAutor = topSongs.get(j).getNomUsuari();
+                if (strAutor.compareTo("Master") == 0) strAutor = topSongsComu.get(j).getNomUsuari();
                 j++;
                 //autor[i] = new JLabel(strAutor);
 
@@ -203,7 +207,11 @@ public class JFTop5View extends JFrame{
 
     }
 
-    public void updateTop5View(){
+    public void updateTop5View(ArrayList<Song> newTopSongs){
+        this.topSongsComu = newTopSongs;
 
+        //TODO porvar a treure això de sota a veure si funciona igual
+        fons.repaint();
+        fons.revalidate();
     }
 }
