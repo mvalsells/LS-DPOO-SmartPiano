@@ -151,7 +151,7 @@ public class JPTiraCancons extends JPMainView{
         this.controller = controller;
         /*for(int i=0; i< jpCanço.length; i++){
 
-            jpCanço[i].registerController(controller);
+            jbButton[i].addActionListener(controller);
             //newButon[i].addActionListener(controller);
 
         }*/

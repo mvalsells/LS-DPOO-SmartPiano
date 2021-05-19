@@ -40,14 +40,14 @@ public class JPPlailistEditor extends JPMainView{
             case JPPlaylistSettings.ADD:
                 if (songsPlaylistHas == null) {
                     System.out.println("COM entri aqui mecaguntoto");
-                    for (int i = 0; i < songs.size(); i++) {
+                    for (int i = 0; i < songs.size()-1; i++) {
                         jComboBox.addItem(songs.get(i).getNom());
                     }
                     jComboBox.setSelectedIndex(0);
                 } else {
-                    for (int i = 0; i < songs.size(); i++) {
+                    for (int i = 0; i < songs.size()-1; i++) {
                         if (!songsPlaylistHas.contains(songs.get(i))) {
-                            jComboBox.addItem(songsPlaylistHas.get(i).getNom());
+                            jComboBox.addItem(songs.get(i).getNom());
                         }
                     }
 
@@ -63,7 +63,6 @@ public class JPPlailistEditor extends JPMainView{
                         jComboBox.addItem(songsPlaylistHas.get(i).getNom());
 
                     }
-                    jComboBox.setSelectedIndex(0);
                 }
 
         }
