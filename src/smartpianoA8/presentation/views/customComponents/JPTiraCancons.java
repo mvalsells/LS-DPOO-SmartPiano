@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class JPTiraCancons extends JPMainView{
 
-    private JButton jbMasButton[];
+    private JButton jbButton[];
 
     private ArrayList<Song> songs;
 
@@ -32,7 +32,7 @@ public class JPTiraCancons extends JPMainView{
             add(jlTitul,BorderLayout.NORTH);
             add(jlNoHayCanciones,BorderLayout.CENTER);
         }else  {
-            jbMasButton = new JButton[songs.size()];
+            jbButton = new JButton[songs.size()];
 
             for (int i = 0; i < songs.size(); i++) {
 
@@ -42,13 +42,13 @@ public class JPTiraCancons extends JPMainView{
                 StringBuilder sbCommand = new StringBuilder();
                 sbCommand.append(JPSongs.SONG_PRESSED);
                 sbCommand.append(songs.get(i).getIdSong());
-                jbMasButton[i] = new JButton();
-                jbMasButton[i].setIcon(musicIcon);
-                jbMasButton[i].setActionCommand(sbCommand.toString());
-                jbMasButton[i].setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
-                jbMasButton[i].setOpaque(false);
-                jbMasButton[i].setContentAreaFilled(false);
-                jbMasButton[i].setBorderPainted(false);
+                jbButton[i] = new JButton();
+                jbButton[i].setIcon(musicIcon);
+                jbButton[i].setActionCommand(sbCommand.toString());
+                jbButton[i].setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
+                jbButton[i].setOpaque(false);
+                jbButton[i].setContentAreaFilled(false);
+                jbButton[i].setBorderPainted(false);
 
                 String nomCanço = songs.get(i).getNom();
                 StringBuilder sbName = new StringBuilder();
@@ -78,7 +78,7 @@ public class JPTiraCancons extends JPMainView{
                 JLabel jlSongNomText = new JLColor(sbName.toString(), ColorScheme.PRIMARY);
                 JLabel jlSongInfoText = new JLColor(songs.get(i).getAutor(), ColorScheme.Secondary);
 
-                jpCanço.add(jbMasButton[i]);
+                jpCanço.add(jbButton[i]);
                 jpCanço.add(jlSongNomText);
                 jpCanço.add(jlSongInfoText);
 
@@ -106,7 +106,7 @@ public class JPTiraCancons extends JPMainView{
 
         for(int i=0; i< songs.size(); i++){
 
-            jbMasButton[i].addActionListener(controller);
+            jbButton[i].addActionListener(controller);
             //newButon[i].addActionListener(controller);
 
         }

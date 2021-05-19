@@ -42,6 +42,7 @@ public class JPPlaylistSettings extends JPMainView {
             for(int i = 0;i<songs.size();i++) {
                 jcSongAdder.addItem(songs.get(i).getNom());
             }
+            jcSongAdder.setSelectedIndex(0);
         }else {
             for (int i = 0; i < songs.size(); i++) {
                 if (!songsPlaylistHas.contains(songs.get(i))) {
@@ -53,6 +54,8 @@ public class JPPlaylistSettings extends JPMainView {
                 jcSongRemover.addItem(songsPlaylistHas.get(i).getNom());
 
             }
+            jcSongAdder.setSelectedIndex(0);
+            jcSongRemover.setSelectedIndex(0);
         }
 
 
@@ -60,7 +63,7 @@ public class JPPlaylistSettings extends JPMainView {
         //Buttons
         jbAdder = new JBgeneral("Añadir",ColorScheme.DARK_GREEN);
         jbAdder.setActionCommand(ADD);
-        jbRemover = new JBgeneral("Eliminar",ColorScheme.DARK_GREEN);
+        jbRemover = new JBgeneral("Eliminar",ColorScheme.RED_DANGER);
         jbRemover.setActionCommand(REMOVE);
         //Tira cançons
         JPTiraCancons jpTiraCancons = new JPTiraCancons(songsPlaylistHas,playList.getNom());
@@ -96,6 +99,7 @@ public class JPPlaylistSettings extends JPMainView {
 
         jbAdder.addActionListener(controller);
         jbRemover.addActionListener(controller);
+
 
     }
 
