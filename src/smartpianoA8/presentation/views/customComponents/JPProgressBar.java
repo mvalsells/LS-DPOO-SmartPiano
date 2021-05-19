@@ -24,6 +24,8 @@ public class JPProgressBar extends JProgressBar {
 
                 g.setColor(Color.ORANGE);
 
+                ((Graphics2D) g).setBackground(ColorScheme.NavBar_Background);
+
                 RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float(0, 0, ancho, alto, 4, 4);
                 //Rectangle rectangle = new Rectangle(5,5, ancho, alto);
                 graphics2D.fill(roundedRectangle);
