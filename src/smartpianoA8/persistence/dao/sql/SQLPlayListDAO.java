@@ -45,6 +45,11 @@ public class SQLPlayListDAO implements PlayListDAO{
     @Override
     public void addSongToPlayList(Song song, PlayList playList) {
         //TODO controlar que no repeteixin cançons
+
+
+
+        String query = "SELECT ";
+
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
         connector.insertQuery(query);
@@ -132,8 +137,8 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public ArrayList<Song> getPlayListSongs(PlayList playList) {
-        ArrayList<Song> songs = null;
-        String query = "SELECT idSong FROM SongPlaylist WHERE IDPlayList LIKE '" + playList.getIdPlayList() + "';";
+        ArrayList<Song> songs = new ArrayList<>();
+        String query = "SELECT idSong FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
         ResultSet result = connector.selectQuery(query);
         String query2;
 
