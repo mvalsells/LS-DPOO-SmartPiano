@@ -339,6 +339,12 @@ public class PresentationController implements PresentationFacade {
         test2.add(song4);
         test2.add(song);
 
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("peleleororor");
+        strings.add("yoyoy");
+        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
+        jfMainFrame.setPlaylistsNames(strings);
+
         playerController.setSongsToBePlayed(test2);
     }
 
