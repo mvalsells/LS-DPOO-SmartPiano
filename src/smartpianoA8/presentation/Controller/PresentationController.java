@@ -82,7 +82,7 @@ public class PresentationController implements PresentationFacade {
         pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
-        playerController = new PlayerController();
+        playerController = new PlayerController(jfMainFrame.getPlayerView());
         jpPlayerControllerThread = new Thread(playerController);
         jpPlayerControllerThread.start();
 

@@ -161,6 +161,18 @@ public class JFMainFrame extends JFrame {
 
 
 
+
+
+
+
+
+
+
+    public JPPlayer getPlayerView() {
+        return jpPlayer;
+    }
+
+
     public void setPlaylistsNames(ArrayList<String> playlistsNames) {
 
         jpPlayer.setPlaylistsNames(playlistsNames);

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class JPPlayer extends JPanel {
 
+    int totalBarLong = 0;
+
     private JButton playButton;
     private JButton pauseButton;
     private JButton nextButton;
@@ -117,7 +119,19 @@ public class JPPlayer extends JPanel {
     }
 
     public void setCurrentStatus(int status) {
-        progressBar.setValue(status);
+
+        int status2 = status / 1000;
+        status2 = status2 / 1000;
+
+        System.out.println("Total: "+totalBarLong);
+        System.out.println("Current: " +status2);
+
+        progressBar.setValue((status2*100)/totalBarLong);
+
+
+        //progressBar.revalidate();
+        //progressBar.repaint();
+        //pasar status y maximo y hacer regla de tres
     }
 
     public void setPlaylistsNames(ArrayList<String> playlistsNames) {
@@ -142,5 +156,10 @@ public class JPPlayer extends JPanel {
 
         jComboBox.addItem("ay");
 
+    }
+
+    public void setTotalBarLong(int totalBarLong) {
+        this.totalBarLong = totalBarLong / 1000;
+        this.totalBarLong = this.totalBarLong / 1000;
     }
 }

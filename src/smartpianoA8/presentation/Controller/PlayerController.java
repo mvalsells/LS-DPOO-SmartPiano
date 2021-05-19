@@ -23,8 +23,11 @@ public class PlayerController implements Runnable, ActionListener {
     private boolean isPaused = false;
     private int currentSong = 0;
     private long whereWhenPaused = 0;
+    JPPlayer jpPlayer;
 
-    public PlayerController() {}
+    public PlayerController(JPPlayer jpPlayer) {
+        this.jpPlayer = jpPlayer;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -192,7 +195,12 @@ public class PlayerController implements Runnable, ActionListener {
 
                 isPaused = false;
 
+                jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
+
+                //todo pasar duracion total de la cancion para
+
                 while (currentSequencer.isRunning()) {
+                    jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
                     if(actionToDo == 2) {
                         //currentSong++;
                         currentSequencer.close();
