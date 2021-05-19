@@ -30,12 +30,6 @@ public class JFTop5View extends JFrame{
         fons.setBackground(Color.white);
 
 
-        //titol
-        //JLabel titol = new JLabel("TOP 5 CANÇONS REPRODUIDES WORLDWIDE");
-        //titol.setBorder(BorderFactory.createEmptyBorder(10,0,0,0));
-        //fons.add(titol);
-        //titol.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
         JPanel fonsBox = new JPanel();
         fonsBox.setLayout(new BoxLayout(fonsBox, BoxLayout.Y_AXIS));
@@ -58,7 +52,7 @@ public class JFTop5View extends JFrame{
         boxDalt.add(panellTitol, BorderLayout.CENTER);
 
         panellImatge.add(imatgeTop5);
-        //panellImatge.setMaximumSize(new Dimension(30,30));
+
         panellTitol.setLayout(new BorderLayout());
         JLabel titol = new JLabel("TOP 5 DPOO SONGS");
         titol.setFont(new Font("Verdana",Font.BOLD, 22));
@@ -94,10 +88,6 @@ public class JFTop5View extends JFrame{
         JPanel distincio = new JPanel();
         distincio.setLayout(new BorderLayout());
 
-        /*Calaix top*/
-       // Container calaixTop = this.getContentPane();
-       // calaixTop.setLayout(new GridLayout(5,1));
-        //GridLayout calaixTop = new GridLayout(5,1);
         JPanel[] calaixTop = new JPanel[6];
         JPanel[] calaixNom = new JPanel[6];
         JPanel[] calaixNumrep = new JPanel[6];
@@ -115,11 +105,7 @@ public class JFTop5View extends JFrame{
 
 
 
-        /*String[] tops = {"#","1","2","3","4","5"};
-        String[] noms = {"TITULO","TOP","TOP","TOP","TOP","TOP"};
-        String[] autors = {"ARTISTA","TOP","TOP","TOP","TOP","TOP"};
-        String[] reps = {"REPRODUCCIONES",topSongs.get(0).getNumReproduccions(),topSongs.get(1).getNumReproduccions(),topSongs.get(2).getNumReproduccions(),topSongs.get(3).getNumReproduccions(),topSongs.get(4).getNumReproduccions()};
-*/      int j = 0;
+        int j = 0;
         for(int i = 0; i<6; i++ ){
 
             calaixTop[i] = new JPanel();
@@ -156,27 +142,22 @@ public class JFTop5View extends JFrame{
 
             //algo pasa amb el nom
 
-            //NOM[i]= new JLabel("TOP"+i);
+
             NOM[i].setForeground(lletrta);
             NOM[i].setFont(negreta);
             NOM[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
 
 
-           // AUTOR[i]= new JLabel("TOP"+i);
+
             AUTOR[i].setForeground(lletrta);
             AUTOR[i].setFont(negreta);
             AUTOR[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
 
-
-            //NUMREP[i]= new JLabel("TOP"+i);
             NUMREP[i].setForeground(lletrta);
             NUMREP[i].setFont(negreta);
             NUMREP[i].setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
-
-
-
 
 
             calaixTop[i].add(TOP[i]);
@@ -204,12 +185,9 @@ public class JFTop5View extends JFrame{
         distincio.add(nom,BorderLayout.CENTER);
 
         panelBaix.add(autor,BorderLayout.CENTER);
-        //distincio.setBorder(BorderFactory.createEmptyBorder());
+
         panelBaix.add(numrep,BorderLayout.EAST);
         panelBaix.add(distincio,BorderLayout.WEST);
-        //((GridLayout)calaixTop.getLayout()).setHgap(10);
-        //((GridLayout)calaixTop.getLayout()).setVgap(10);
-
 
 
 
@@ -219,48 +197,13 @@ public class JFTop5View extends JFrame{
         fonsBox.add(boxDalt);
         fonsBox.add(boxBaix);
 
-        //calaixos
-        /*JPanel[] calaixos = new JPanel[5];
-        JLabel[] top = new JLabel[5];
-        JLabel[] nom = new JLabel[5];
-        JLabel[] numrep = new JLabel[5];
-        JLabel[] autor = new JLabel[5];
-        JLabel[] data = new JLabel[5];*/
 
-
-        //cada una
-        /*for(int i = 0; i<5; i++) {
-            calaixos[i] = new JPanel();
-            if(i % 2 !=0){
-                calaixos[i].setBackground(Color.white);
-            }else{
-                calaixos[i].setBackground(Color.lightGray);
-            }
-
-            top[i] = new JLabel("TOP " + (i+1));
-            top[i].setFont(negreta);
-            top[i].setBorder(BorderFactory.createEmptyBorder(5, 10, 1, 0));
-            nom[i] = new JLabel(topSongs.get(i).getNom());
-            nom[i].setBorder(BorderFactory.createEmptyBorder(5, 8, 1, 8));
-            numrep[i] = new JLabel(topSongs.get(i).getNumReproduccions() + " PLAYS");
-            numrep[i].setForeground(Color.orange);
-            numrep[i].setBorder(BorderFactory.createEmptyBorder(5, 8, 1, 8));
-            String strAutor = topSongs.get(i).getAutor();
-            if (strAutor.compareTo("Master") == 0) strAutor = topSongs.get(i).getNomUsuari();
-            autor[i] = new JLabel(strAutor);
-            autor[i].setBorder(BorderFactory.createEmptyBorder(5, 8, 1, 8));
-            data[i] = new JLabel(topSongs.get(i).getDataEnregistrament());
-            data[i].setBorder(BorderFactory.createEmptyBorder(5, 0, 1, 8));
-
-            calaixos[i].add(top[i]);
-            calaixos[i].add(numrep[i]);
-            calaixos[i].add(nom[i]);
-            calaixos[i].add(autor[i]);
-            calaixos[i].add(data[i]);
-            fons.add(calaixos[i]);
-        }*/
         add(fonsBox);
 
+
+    }
+
+    public void updateTop5View(){
 
     }
 }

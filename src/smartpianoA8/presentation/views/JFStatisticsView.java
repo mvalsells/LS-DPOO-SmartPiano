@@ -95,4 +95,8 @@ public class JFStatisticsView extends JFrame {
                     //TODO aqui no pq seria recarregar tot 2 cops
         //revalidate();
     }
+
+    public void updateStaticsView(){
+
+    }
 }
