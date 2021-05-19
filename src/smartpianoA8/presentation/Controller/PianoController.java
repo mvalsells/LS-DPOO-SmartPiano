@@ -185,6 +185,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         int key2 = e.getKeyCode();
 
+
         try {
             if (!hmTeclas.get(key2).isPlaying()) {
                 midiChannel.noteOn(hmTeclas.get(key2).getNota(), 127);

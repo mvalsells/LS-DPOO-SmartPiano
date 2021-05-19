@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views.customComponents;
+/*package smartpianoA8.presentation.views.customComponents;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -44,4 +44,4 @@ public class Eventos extends KeyAdapter {
             up = false;
         }
     }
-}
+}*/
