@@ -26,8 +26,6 @@ public class JPPianoView extends JPMainView {
         jdPianoRegAdd = new JDPianoRegAdd();
         jpPiano = new JPPiano();
         //Final Packing
-        jpNavBar = new JPNavBar();
-        add(jpNavBar,BorderLayout.WEST);
         add(jpPiano,BorderLayout.CENTER);
     }
     // ---- Fi Constructors ----
@@ -40,7 +38,6 @@ public class JPPianoView extends JPMainView {
 
 
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
-        jpNavBar.registerController(actionListener);
         jdPianoRegAdd.registerControllerJDPianoRegAdd(actionListener);
         jpPiano.registerController(actionListener,keyListener,mouseListener);
     }
