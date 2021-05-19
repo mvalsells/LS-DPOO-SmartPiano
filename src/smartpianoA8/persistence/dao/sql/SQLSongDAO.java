@@ -133,7 +133,7 @@ public class SQLSongDAO implements SongDAO {
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
     @Override
-    public void SongPlayed(int IDSong){ //TODO cridar aixo quan es reprodueixi una cançó
+    public void SongPlayed(int IDSong){
         String query = "SELECT NumReproduccions FROM Song WHERE idSong = " + IDSong + ";";
         ResultSet result = connector.selectQuery(query);
 
@@ -262,6 +262,28 @@ public class SQLSongDAO implements SongDAO {
     @Override
     public void registerPresentationFacade(PresentationFacade presentationFacade) {
         this.presentationFacade=presentationFacade;
+    }
+
+    /**
+     * Mèotde per obtenir una cançó pel seu nom i l'usuari propietari (pot ser Master)
+     * @param name nom de la cançó
+     * @param username nom de l'usauri
+     * @return l'Arraylist de cançons
+     */
+    @Override
+    public Song getSongByName(String name, String username){
+        Song songToReturn = null;
+        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE NomUsuari LIKE '" + username + "' AND Nom '" + name + "';";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()) {
+                return (songToReturn = new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+            }
+            return songToReturn;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return songToReturn;
+        }
     }
 
 }

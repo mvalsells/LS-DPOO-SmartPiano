@@ -302,8 +302,22 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
     @Override
     public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
+
     @Override
-    public void removeSongFromPlayList( Song song,PlayList playList){playListDAO.removeSongFromPlayList(song,playList);}
+    public void removeSongFromPlayList(Song song, PlayList playList) {
+        //TODO falta implamentar metode
+    }
+
+    public void removeSongFromPlayList(PlayList playList, Song song){playListDAO.removeSongFromPlayList(song,playList);}
+
+    public Song getSongByName(String name){
+        return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
+    }
+
+    public PlayList getPlayListByName(String name){
+        return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
+    }
+
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------

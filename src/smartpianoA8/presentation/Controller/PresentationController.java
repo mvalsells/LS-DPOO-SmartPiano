@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see PresentationController
  */
-public class PresentationController implements PresentationFacade{
+public class PresentationController implements PresentationFacade {
 
     // ---- Inici Atributs ----
     private BusinessFacade businessFacade;
@@ -43,17 +43,18 @@ public class PresentationController implements PresentationFacade{
     private PianoCascadeController pianoCascadeController;
     private PlayerController playerController;
     private MainFrameController mainFrameController;
-    Thread jpPlayerControllerThread;
+    private Thread jpPlayerControllerThread;
 
 
     // ---- Fi Atributs ----
 
     /**
      * Constructor amb els constructors de les diferents vistes
+     *
      * @param businessFacade façada de business
-     * @param midiWritter escriptor de midi
+     * @param midiWritter    escriptor de midi
      */
-    public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter){
+    public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
         //Frames
@@ -67,7 +68,7 @@ public class PresentationController implements PresentationFacade{
      * Mètode per registrar els controllers
      */
 
-    public void loginOK(){
+    public void loginOK() {
         //TODO Tancar/eliminar JFrame Wellcome
         jfWellcomeFrame.dispose();
 
@@ -78,11 +79,12 @@ public class PresentationController implements PresentationFacade{
         songController = new SongController();
         playlistController = new PlaylistController();
         profileController = new ProfileController();
-        pianoController = new PianoController(businessFacade.getHMTeclas(),midiWritter);
+        pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
         pianoCascadeController = new PianoCascadeController();
         playerController = new PlayerController();
         jpPlayerControllerThread = new Thread(playerController);
+        jpPlayerControllerThread.start();
 
         //Registar aquest controller als altres controllers
         songController.registerPresentationController(this);
@@ -102,7 +104,7 @@ public class PresentationController implements PresentationFacade{
     }
 
     public void logoutOK() {
-        if (jfMainFrame != null){
+        if (jfMainFrame != null) {
             jfMainFrame.dispose();
         }
         //Crear la vista
@@ -120,16 +122,17 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per canviar de view
+     *
      * @param view la vista
      */
-    public void changeView(String view){
+    public void changeView(String view) {
         jfMainFrame.changeViewTo(view);
     }
 
     // ---- Start Business Faced Methods
 
     /**
-     * Mètode per registrar un usuari
+     * Mètode per registrar un usuari, si el registre és correcte fa login
      * @param username nom d'usuari
      * @param email email
      * @param password contra
@@ -139,13 +142,16 @@ public class PresentationController implements PresentationFacade{
      * @throws UserManagerException control d'erors de l'usuari i email
      */
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
+        businessFacade.registerUser(username, email, password, passwordRepetition, type);
           businessFacade.registerUser(username, email, password, passwordRepetition,type);
+          businessFacade.login(username,password);
+          loginOK();
     }
 
     /**
      * Mètode per desloguejar-se
      */
-    public void logout(){
+    public void logout() {
         businessFacade.logoutCurrentUser();
         logoutOK();
         //Canviar de vista que surti el Login
@@ -153,6 +159,7 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per actualitzar l'username
+     *
      * @param newUsername nou username
      * @return estat correcte o incorrecte
      */
@@ -162,6 +169,7 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per actualitzar l'email
+     *
      * @param newEmail nou email
      * @return estat correcte o incorrecte
      */
@@ -183,25 +191,34 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per obtenir les cançons
+     *
      * @param id identificador de la cançó
      * @return la cnaçó
      */
-    public Song getSongByID(int id){return businessFacade.getSong(id);}
+    public Song getSongByID(int id) {
+        return businessFacade.getSong(id);
+    }
 
     /**
      * Mètode per obtenir les notes per les cnaçons en cascada
+     *
      * @param song la cançó
      * @return ArrayList d'ArrayList de notes, notes per cada canal
      */
-    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song){return businessFacade.getMidiNotes(song);}
+    public ArrayList<ArrayList<Notes>> getBusinesMidiNotes(Song song) {
+        return businessFacade.getMidiNotes(song);
+    }
 
     /**
      * Mètode per obtenir informació sobre l'usuari logguejat actual
+     *
      * @return l'usuari
      */
-    public User getCurrentUser(){return businessFacade.getCurrentUser();}
+    public User getCurrentUser() {
+        return businessFacade.getCurrentUser();
+    }
 
-    public ArrayList<Song> getTop5(){
+    public ArrayList<Song> getTop5() {
         return businessFacade.getTop5();
     }
 
@@ -212,18 +229,24 @@ public class PresentationController implements PresentationFacade{
 
     /**
      * Mètode per obtenir l'última cançó clicada per operar amb ella
+     *
      * @return l'id de la cançó
      */
-    public int songControllerGetLastSongPressed(){return songController.getLastSongPressed();}
+    public int songControllerGetLastSongPressed() {
+        return songController.getLastSongPressed();
+    }
+
+
     // ---- End SongView Methods
 
     /**
      * Mètode per obtenir noves cançons
      */
     @Override
-    public void nuevasCanciones(){
+    public void nuevasCanciones() {
         jfMainFrame.nuevaCanciones();
     }
+
     // ---- Start PlaylistView Methods
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
@@ -301,13 +324,28 @@ public class PresentationController implements PresentationFacade{
     public void loadPlaylistInPlayer() {
         System.out.println("Yo, updating playlist...");
         isUploaded = true;
+
+        ArrayList<Song> test2 = new ArrayList<>();
+        Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
+        Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
+        Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
+        Song song4 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/298.mid",1,null,null);
+        test2.add(song);
+        test2.add(song2);
+        test2.add(song3);
+        test2.add(song4);
+
+        playerController.setSongsToBePlayed(test2);
     }
 
     public void playStatusInPlayer() {
         System.out.println("Yo, i'm playing...");
         if(isUploaded) {
+            playerController.setActionToDo(0);
             System.out.println("Is plating");
             //todo
+        } else {
+            JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -315,29 +353,38 @@ public class PresentationController implements PresentationFacade{
         System.out.println("Yo, i'm paused...");
         if(isUploaded) {
             //todo
+            playerController.setActionToDo(1);
             System.out.println("Is pausing");
+        } else {
+            JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void nextStatusInPlayer() {
         System.out.println("Yo, changing to next song...");
         if(isUploaded) {
+            playerController.setActionToDo(2);
             System.out.println("Is nexting");
             //todo
+        } else {
+            JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void previousStatusInPlayer() {
         System.out.println("Yo, changing to previous song...");
         if(isUploaded) {
+            playerController.setActionToDo(3);
             System.out.println("Is previosing");
-            //todo
+        } else {
+            JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void stopStatusInPlayer() {
         System.out.println("Yo, ended playing...");
         if(isUploaded) {
+            playerController.setActionToDo(4);
             System.out.println("Is stopped");
             JOptionPane.showMessageDialog(new Frame(), "You stopped the entire playlist.\nIf you want to play it again you have to re-upload the playlist.", "PLAYLIST STOPPED (NEED TO RE-UPDATE)", JOptionPane.ERROR_MESSAGE);
             //todo

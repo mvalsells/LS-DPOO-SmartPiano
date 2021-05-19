@@ -37,6 +37,4 @@ public interface StatsDAO {
      * @return ArrayList amb els valors dits
      */
     ArrayList<Double> getDataMinuts(String user);
-
-
 }

@@ -11,6 +11,11 @@ public class JFStatisticsView extends JFrame {
 
     private static final Color color1 = new Color(255, 218,255);
     private static final Color color2 = new Color(194, 250, 255);
+    private ArrayList<Double> valorsMinutsComu;
+    private ArrayList<Integer> valorReproduccionsComu;
+    private JPanel fons;
+    private GraficsStatisticsEsquerra graficEsquerra;
+    private GraficsStatisticsDreta graficDreta;
 
     /**
      * Constructor de la vista
@@ -19,6 +24,8 @@ public class JFStatisticsView extends JFrame {
      */
     public JFStatisticsView(ArrayList<Double> valorsMinuts, ArrayList<Integer> valorsReproduccions){
         //parametres
+        this.valorsMinutsComu = valorsMinuts;
+        this.valorReproduccionsComu = valorsReproduccions;
 
         setResizable(true);
         setTitle("Estadístiques");
@@ -31,7 +38,6 @@ public class JFStatisticsView extends JFrame {
         //pack();
 
         //fons |__|
-        JPanel fons = new JPanel();
         fons.setLayout(new BorderLayout());
         add(fons);
 
@@ -85,14 +91,29 @@ public class JFStatisticsView extends JFrame {
         dreta.add(llegenda1, BorderLayout.SOUTH);
         esquerra.add(llegenda2, BorderLayout.SOUTH);
 
-        GraficsStatisticsEsquerra graficEsquerra = new GraficsStatisticsEsquerra(valorsMinuts, color1);
-        GraficsStatisticsDreta graficDreta = new GraficsStatisticsDreta(valorsReproduccions,color2);
+        graficEsquerra = new GraficsStatisticsEsquerra(valorsMinuts, color1);
+        graficDreta = new GraficsStatisticsDreta(valorReproduccionsComu, color2);
         graficDreta.setBackground(Color.white);
         graficEsquerra.setBackground(Color.white);
         esquerra.add(graficEsquerra, BorderLayout.CENTER);
         dreta.add(graficDreta, BorderLayout.CENTER);
-        //repaint();//TODO es pot fer això 2 per actualitzar la pantalla (stats.repaint() i stats.revalidate() des del controller)
-                    //TODO aqui no pq seria recarregar tot 2 cops
-        //revalidate();
+
+    }
+
+    /**
+     * Mètode per actualitzar els valors de les grafiques
+     * @param nousValorsMinuts ArrayList de minuts reproduits
+     * @param nousValorsReproduccions ArrayList de reproduccions fetes
+     */
+    //TODO executar això quan tinguem noves dades de la bbdd, que és quan: -es reprodueixi una nova cançó
+    public void updateStaticsView(ArrayList<Double> nousValorsMinuts, ArrayList<Integer> nousValorsReproduccions){
+        this.valorsMinutsComu = nousValorsMinuts;
+        this.valorReproduccionsComu = nousValorsReproduccions;
+        //TODO porvar a treure això de sota a veure si funciona igual
+        graficDreta.repaint();
+        graficDreta.revalidate();
+
+        graficEsquerra.repaint();
+        graficDreta.revalidate();
     }
 }

@@ -41,6 +41,14 @@ public interface SongDAO {
     Song getSong(int IDSong);
 
     /**
+     * Mèotde per obtenir una cançó pel seu nom i l'usuari propietari (pot ser Master)
+     * @param name nom de la cançó
+     * @param username nom de l'usauri
+     * @return l'Arraylist de cançons
+     */
+    Song getSongByName(String name, String username);
+
+    /**
      * Metode que retorna les 5 top Songs per numero de reproduccions.
      * @return ArrayList<Song> amb les 5 millor songs
      */
@@ -50,7 +58,7 @@ public interface SongDAO {
      * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
-    void SongPlayed(int IDSong);
+    void SongPlayed(int IDSong); //TODO cridar aixo quan es reprodueixi una cançó
 
     /**
      * Retorna totes les cançons de l'usuari "Master"

@@ -20,7 +20,7 @@ public class JPRegisterView extends JPanel  {
     public static final String hasNotUpperCase = "hasNotUpperCase";
     public static final String passwordToShort = "passwordToShort";*/
 
-    private static final String PH_NAME = " Nombre";
+    private static final String PH_USERNAME = "  Nombre de usuario";
     private static final String PH_EMAIL = "  Correo";
     private static final String PH_PASSWORD = "  Contraseña";
     private static final String PH_PASSWORD_REPETITON = "  Repite la contraseña";
@@ -155,7 +155,7 @@ public class JPRegisterView extends JPanel  {
 
 
         /*Creem les zones per escriure*/
-        nom = new JTextField(PH_NAME,20);
+        nom = new JTextField(PH_USERNAME,20);
         nom.setMaximumSize(new Dimension(281,39));
         nom.setForeground(new Color(255,255,255));
         nom.setBorder(BordersView.TextFieldBorder);
@@ -355,7 +355,7 @@ public class JPRegisterView extends JPanel  {
     public ArrayList<String> getData() {
         ArrayList<String> data = new ArrayList<>();
         data.add(String.valueOf(acceptTandC.isSelected()));
-        if (nom.getText().equals(PH_NAME)){
+        if (nom.getText().equals(PH_USERNAME)){
             data.add(null);
         } else {
             data.add(nom.getText());

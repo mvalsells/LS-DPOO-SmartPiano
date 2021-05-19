@@ -92,7 +92,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             return llista;
         }catch (SQLException e){
             System.out.println("PATATA 2k mecagun");
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
             return llista;
         }
     }
@@ -114,7 +114,7 @@ public class SQLPlayListDAO implements PlayListDAO{
 
             }
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
         }
         return null;
     }
@@ -138,7 +138,7 @@ public class SQLPlayListDAO implements PlayListDAO{
                 songs.add(new Song(result2.getInt("idSong"), result2.getFloat("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("DataEnregistrament"), result2.getString("Directori"), result2.getInt("isPublic"), result2.getString("NomUsuari"), result2.getString("Midi")));
             }
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
             return songs;
 
         }
@@ -161,5 +161,27 @@ public class SQLPlayListDAO implements PlayListDAO{
                 username + "');";
 
         connector.insertQuery(query);
+    }
+
+    /**
+     * Mètode per obtenir una playlist pel usenrame d'un usuari
+     * @param name nom de la playlist
+     * @param username nom de l'username
+     * @return la playlist
+     */
+    @Override
+    public PlayList getPlayListByName(String name, String username){
+        PlayList retorna = null;
+        String query = "SELECT * FROM PlayList WHERE Nom LIKE '" + name +"' AND NomUsuari LIKE '" + username +"'";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            while(result.next()) {
+                return new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+            }
+            return retorna;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return retorna;
+        }
     }
 }

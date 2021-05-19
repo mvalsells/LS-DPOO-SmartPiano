@@ -79,7 +79,7 @@ public class SQLUserDAO implements UserDAO {
 
             }
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
         }
         return null;
     }
@@ -101,7 +101,7 @@ public class SQLUserDAO implements UserDAO {
 
             }
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
         }
         return null;
     }
@@ -195,7 +195,7 @@ public class SQLUserDAO implements UserDAO {
             //cap coincideix però algun s'ha trobat
             return false;
         }catch (SQLException e){
-            e.printStackTrace();//TODO aixo potser printa coses innecessaries
+            e.printStackTrace();
             System.out.print("ERROR: No s'ha trobat CAP usuari (SQLUserDAO)");
         return false;
         }
