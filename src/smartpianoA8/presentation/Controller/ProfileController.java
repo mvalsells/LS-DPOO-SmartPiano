@@ -54,10 +54,13 @@ public class ProfileController implements ActionListener {
                 saveSettings();
                 break;
             case JPProfileView.STATS:
-                new JFStatisticsView(null,null);
+                new JFStatisticsView(presentationController.getNumMinutsCurrentUser(), presentationController.getNumReproducionsCurrentUser());
                 break;
             case JPProfileView.TOP_5:
                 new JFTop5View(presentationController.getTop5());
+            case JPProfileView.DELETE_ACCOUNT:
+                presentationController.removeCurrentUser();
+                break;
         }
     }
 

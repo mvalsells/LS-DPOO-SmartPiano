@@ -55,9 +55,11 @@ public interface BusinessFacade {
     void removeSongFromPlayList(Song song,PlayList playList);
     PlayList getPlayListByName(String name);
 
+    //Stats
+    ArrayList<Integer> getNumReproducionsCurrentUser();
+    ArrayList<Double> getNumMinutsCurrentUser();
+
 
     //Altres
-    boolean startDB();
-
     HashMap<Integer, Teclas> getHMTeclas();
 }

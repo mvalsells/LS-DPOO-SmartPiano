@@ -51,14 +51,6 @@ public class BusinessFacadeImpl implements BusinessFacade{
 
     }
 
-    /**
-     * Mètde per inicialitzar la BBDD
-     * @return boolean true: creació correcte, false: incorrecta
-     */
-    @Override
-    public boolean startDB() {
-        return false;
-    }
 
     // ------------------------------------------------------
     //  START user implementation
@@ -318,7 +310,24 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
     }
 
+
+
     // ------------------------------------------------------
     //  END song implementation
+    // ------------------------------------------------------
+    // ------------------------------------------------------
+    //  START stats implementation
+    // ------------------------------------------------------
+    @Override
+    public ArrayList<Integer> getNumReproducionsCurrentUser() {
+        return statsDAO.getDataReproduccions(userManager.getCurrentUser().getUsername());
+    }
+
+    @Override
+    public ArrayList<Double> getNumMinutsCurrentUser() {
+        return statsDAO.getDataMinuts(userManager.getCurrentUser().getUsername());
+    }
+    // ------------------------------------------------------
+    //  END stats implementation
     // ------------------------------------------------------
 }

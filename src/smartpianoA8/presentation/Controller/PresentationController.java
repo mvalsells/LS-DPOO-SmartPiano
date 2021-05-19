@@ -222,8 +222,36 @@ public class PresentationController implements PresentationFacade {
         return businessFacade.getTop5();
     }
 
+    public ArrayList<Integer> getNumReproducionsCurrentUser(){
+        return businessFacade.getNumReproducionsCurrentUser();
+    }
+    public ArrayList<Double> getNumMinutsCurrentUser(){
+        return businessFacade.getNumMinutsCurrentUser();
+    }
+
+    public void removeCurrentUser(){
+        businessFacade.removeCurrentUser();
+        logoutOK();
+    }
+
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
+    public void wellcomeChangePanel(String newPanel) {
+        jfWellcomeFrame.changePanel(newPanel);
+    }
+
+    public ArrayList<String> wellcomeGetRegisterData(){
+        return jfWellcomeFrame.getRegisterData();
+    }
+
+    public ArrayList<String> wellcomeGetLoginData() {
+        return  jfWellcomeFrame.getLoginData();
+    }
+
+    public void login(String id, String password) throws UserManagerException{
+        businessFacade.login(id, password);
+        loginOK();
+    }
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
 
@@ -403,20 +431,4 @@ public class PresentationController implements PresentationFacade {
 
     }
 
-    public void wellcomeChangePanel(String newPanel) {
-        jfWellcomeFrame.changePanel(newPanel);
-    }
-
-    public ArrayList<String> wellcomeGetRegisterData(){
-        return jfWellcomeFrame.getRegisterData();
-    }
-
-    public ArrayList<String> wellcomeGetLoginData() {
-        return  jfWellcomeFrame.getLoginData();
-    }
-
-    public void login(String id, String password) throws UserManagerException{
-        businessFacade.login(id, password);
-        loginOK();
-    }
 }
