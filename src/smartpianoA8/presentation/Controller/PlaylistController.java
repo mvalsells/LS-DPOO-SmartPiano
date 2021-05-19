@@ -36,18 +36,18 @@ public class PlaylistController implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        System.out.println("PATATA MALDITAN ");
         switch (e.getActionCommand()){
             case JPPlaylistSettings.ADD:
                 //TODO està bé això amb els paràmetres? (a sota)
-                presentationController.playlistAddSongToPlayList(presentationController.getSongByName(presentationController.playlistViewGetJCSongAdderString()),presentationController.getPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
+                presentationController.playlistAddSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()),presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                 System.out.println(presentationController.playlistViewGetJCSongAdderString());
                 break;
             case JPPlaylistSettings.REMOVE:
                 //TODO està bé això amb els paràmetres? (a sota)
                 presentationController.playlistViewGetJCSongRemoveString();
                 presentationController.playlistViewGetJCTriarPlaylistString();
-                presentationController.playlistRemoveSongToPlayList(presentationController.getSongByName(presentationController.playlistViewGetJCSongAdderString()), presentationController.getPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
+                presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                 System.out.println(presentationController.playlistViewGetJCSongRemoveString());
                 break;
 

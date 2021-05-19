@@ -31,9 +31,9 @@ public class JPPianoView extends JPMainView {
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
 
-    public void setRecordingPressedIcon(){ jpPiano.setPressedIcon(); }
-    public void setRecordingUnpressedIcon(){
-        jpPiano.setUnpressedIcon();
+    public void setRecordingPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }
+    public void setRecordingUnpressedIcon(JButton button){
+        jpPiano.setUnpressedIcon(button);
     }
 
 

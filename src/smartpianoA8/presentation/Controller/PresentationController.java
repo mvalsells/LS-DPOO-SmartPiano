@@ -253,21 +253,23 @@ public class PresentationController implements PresentationFacade {
     public String playlistViewGetJCTriarPlaylistString(){return jfMainFrame.playlistViewGetJCTriarPlaylistString();}
     public void playlistAddSongToPlayList(Song song, PlayList playList){businessFacade.addSongToPlayList(song,playList);}
     public void playlistRemoveSongToPlayList(Song song, PlayList playList){businessFacade.removeSongFromPlayList(song,playList);}
+    public PlayList playlistGetPlayListByName(String name){return businessFacade.getPlayListByName(name);}
+    public Song songGetSongByName(String name){return businessFacade.getSongByName(name);}
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 
     /**
      * Mètode per establir el botó de REC actiu
      */
-    public void pianoViewSetRecordingPressedIcon(){
-        jfMainFrame.pianoViewSetRecordingPressedIcon();
+    public void pianoViewSetRecordingPressedIcon(JButton button){
+        jfMainFrame.pianoViewSetRecordingPressedIcon(button);
     }
 
     /**
      * Mètode per establir el botó de REC inactiu
      */
-    public void pianoViewSetRecordingUnpressedIcon(){
-        jfMainFrame.pianoViewSetRecordingUnpressedIcon();
+    public void pianoViewSetRecordingUnpressedIcon(JButton button){
+        jfMainFrame.pianoViewSetRecordingUnpressedIcon(button);
     }
 
     /**
