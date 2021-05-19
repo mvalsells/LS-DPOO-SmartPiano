@@ -152,7 +152,7 @@ public class Song {
     /**
      * Getter de l'ID
      * @return int ID
-     * @deprecated
+     *
      */
     public int getIdSong() {
         return idSong;

@@ -48,6 +48,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
+        this.songDAO = songDAO;
 
     }
 

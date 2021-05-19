@@ -95,8 +95,8 @@ public class SQLPlayListDAO implements PlayListDAO{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
 
-                ArrayList<Song> songs = getPlayListSongs(llista.get(llista.size()));
-                llista.get(llista.size()).setSongs(songs);
+                ArrayList<Song> songs = getPlayListSongs(llista.get(llista.size()-1));
+                llista.get(llista.size()-1).setSongs(songs);
             }
             return llista;
 

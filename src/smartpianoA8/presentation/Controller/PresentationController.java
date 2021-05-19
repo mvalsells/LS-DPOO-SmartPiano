@@ -96,7 +96,7 @@ public class PresentationController implements PresentationFacade {
 
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerPlaylistViewControllers(playerController);
+        jfMainFrame.registerPlaylistViewControllers(playlistController);
         jfMainFrame.registerProfileViewControllers(profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
@@ -221,6 +221,9 @@ public class PresentationController implements PresentationFacade {
     public ArrayList<Song> getTop5() {
         return businessFacade.getTop5();
     }
+    //Temporal
+    public ArrayList<Song> getAllSongs(){return businessFacade.getMasterSongs();}
+    public ArrayList<PlayList> getUserPlaylists(){return businessFacade.getCurrentUserPlaylist();}
 
     // ---- END Business Faced Methods
     // ---- Start WellcomeFrame Methods
@@ -248,6 +251,13 @@ public class PresentationController implements PresentationFacade {
     }
 
     // ---- Start PlaylistView Methods
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
+        jfMainFrame.registerPlaylistViewControllers(playlistController);
+    }
+    public void playlistViewUpdateJPPlaylistSettings(){jfMainFrame.playlistViewUpdateJPPlaylistSettings(getUserPlaylists(),getAllSongs());}
+
+    public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}
+
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
     public String playlistViewGetJCTriarPlaylistString(){return jfMainFrame.playlistViewGetJCTriarPlaylistString();}
