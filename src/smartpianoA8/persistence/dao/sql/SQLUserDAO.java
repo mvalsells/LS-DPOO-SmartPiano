@@ -37,6 +37,11 @@ public class SQLUserDAO implements UserDAO {
                             user.getType() +
                             "');";
         connector.insertQuery(query);
+
+
+
+
+
         //1ra playlist
         query = "INSERT INTO PlayList(Nom, NomUsuari) VALUES ('" +
                 TERM_PLAYLIST1 + "', '" +
@@ -50,6 +55,21 @@ public class SQLUserDAO implements UserDAO {
                 user.getUsername() + "');";
 
         connector.insertQuery(query);
+
+
+
+
+
+        //stats
+        for (int i = 0; i < 24; i++) {
+            query = "INSERT INTO Stats(NumCancons, NumMinuts, Hora, NomUsuari) VALUES ('" +
+                    0 + "', '" +
+                    0 + "', '" +
+                    i + "', '" +
+                    user + "');";
+            connector.insertQuery(query);
+        }
+
     }
 
     /**

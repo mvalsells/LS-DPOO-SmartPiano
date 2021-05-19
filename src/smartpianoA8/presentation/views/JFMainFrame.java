@@ -134,9 +134,9 @@ public class JFMainFrame extends JFrame {
     public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
-    public void pianoViewSetRecordingPressedIcon(){ jpPianoView.setRecordingPressedIcon(); }
-    public void pianoViewSetRecordingUnpressedIcon(){
-        jpPianoView.setRecordingUnpressedIcon();
+    public void pianoViewSetRecordingPressedIcon(JButton button){ jpPianoView.setRecordingPressedIcon(button); }
+    public void pianoViewSetRecordingUnpressedIcon(JButton button){
+        jpPianoView.setRecordingUnpressedIcon(button);
     }
 
     public void pianoViewJDRun(){jpPianoView.jdRun();}

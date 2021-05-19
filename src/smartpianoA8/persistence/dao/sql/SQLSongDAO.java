@@ -271,19 +271,18 @@ public class SQLSongDAO implements SongDAO {
      * @return l'Arraylist de cançons
      */
     @Override
-    public ArrayList<Song> getSongByName(String name, String username){
-        ArrayList<Song> retorna = new ArrayList<>();
-
+    public Song getSongByName(String name, String username){
+        Song songToReturn = null;
         String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE NomUsuari LIKE '" + username + "' AND Nom '" + name + "';";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
-                retorna.add(new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+                return (songToReturn = new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
             }
-            return retorna;
+            return songToReturn;
         }catch (SQLException e){
             e.printStackTrace();
-            return retorna;
+            return songToReturn;
         }
     }
 

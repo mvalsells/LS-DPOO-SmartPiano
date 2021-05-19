@@ -20,6 +20,14 @@ public interface PlayListDAO{
     void newUserPlaylists(String username);
 
     /**
+     * Mètode per obtenir una playlist pel usenrame d'un usuari
+     * @param name nom de la playlist
+     * @param username nom de l'username
+     * @return la playlist
+     */
+    PlayList getPlayListByName(String name, String username);
+
+    /**
      * Mètode per crear una playlist
      * @param name nom de la playlist
      * @param username username propietari

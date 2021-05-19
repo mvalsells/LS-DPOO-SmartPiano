@@ -8,6 +8,7 @@ import smartpianoA8.presentation.views.customComponents.Key;
 import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.sound.midi.*;
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
@@ -27,7 +28,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private HashMap<Integer, Teclas> hmTeclas;
     private final static boolean DEFAULT_IS_RECORDING = false;
     private final static boolean TRUE_IS_RECORDING = true;
-    boolean isRecording = DEFAULT_IS_RECORDING;
+    private boolean isRecording = DEFAULT_IS_RECORDING;
+    private final static boolean DEFAULT_IS_NOTESACTIVE = false;
+    private final static boolean TRUE_IS_NOTESACTIVE = true;
+    private boolean isNotesActive = DEFAULT_IS_NOTESACTIVE;
     private long endTime = 0;
 
 
@@ -99,13 +103,13 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                //Christian aqui tu action listener
                if(!isRecording){
                    //StartRecording
-                   presentationController.pianoViewSetRecordingPressedIcon();
+                   presentationController.pianoViewSetRecordingPressedIcon((JButton)e.getSource());
                    isRecording = TRUE_IS_RECORDING;
                    System.out.println("IS RECORDING...");
                    midiWritter.startRecording();
                }else if (isRecording){
                    //StopRecording
-                   presentationController.pianoViewSetRecordingUnpressedIcon();
+                   presentationController.pianoViewSetRecordingUnpressedIcon((JButton)e.getSource());
                    System.out.println("IS NOT RECORDING...");
                    isRecording = DEFAULT_IS_RECORDING;
                    midiWritter.endRecording();
@@ -115,6 +119,20 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                break;
            case JPPiano.PLAY_BUTTON:
                
+               break;
+           case JPPiano.NOTES_BUTTON:
+               if(!isNotesActive){
+                   //StartRecording
+                   presentationController.pianoViewSetRecordingPressedIcon((JButton)e.getSource());
+                   isNotesActive = TRUE_IS_NOTESACTIVE;
+
+
+               }else if (isNotesActive){
+                   //StopRecording
+                   presentationController.pianoViewSetRecordingUnpressedIcon((JButton)e.getSource());
+                   isNotesActive = DEFAULT_IS_NOTESACTIVE;
+
+               }
                break;
            case JDPianoRegAdd.GuardarRec:
 

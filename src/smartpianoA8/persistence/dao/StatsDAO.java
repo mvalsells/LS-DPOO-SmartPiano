@@ -16,7 +16,7 @@ public interface StatsDAO {
      * Mètode que posa a 0 tots els minuts i reprod d'un usuari havent-hi 0 entrades a la seva taula abans.
      * @param user nom de l'usuari nou creat per fer el config/constructor a la BBDD
      */
-    void startupStats(String user);     //TODO cridar la funció quan es crei un nou usuari
+    void startupStats(String user);
 
     /**
      *  Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
