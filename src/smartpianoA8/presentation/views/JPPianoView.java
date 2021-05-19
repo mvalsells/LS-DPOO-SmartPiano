@@ -26,7 +26,7 @@ public class JPPianoView extends JPMainView {
         jdPianoRegAdd = new JDPianoRegAdd();
         jpPiano = new JPPiano();
         //Final Packing
-        jpNavBar = new JPNavBar(/*JFMainFrame.PIANO*/);
+        jpNavBar = new JPNavBar();
         add(jpNavBar,BorderLayout.WEST);
         add(jpPiano,BorderLayout.CENTER);
     }

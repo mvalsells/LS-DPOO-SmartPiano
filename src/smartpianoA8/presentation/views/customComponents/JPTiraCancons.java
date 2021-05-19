@@ -89,8 +89,8 @@ public class JPTiraCancons extends JPMainView{
             jsp.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
             jsp.setOpaque(false);
             jsp.getHorizontalScrollBar().setOpaque(false);
-            //jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
-            //jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
+            jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
+            jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
             JLabel jlTitul = new JLColor(titul,Color.white);
 
             add(jlTitul,BorderLayout.NORTH);

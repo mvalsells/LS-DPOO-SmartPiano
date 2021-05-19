@@ -129,7 +129,7 @@ public class PresentationController implements PresentationFacade{
     // ---- Start Business Faced Methods
 
     /**
-     * Mètode per registrar un usuari
+     * Mètode per registrar un usuari, si el registre és correcte fa login
      * @param username nom d'usuari
      * @param email email
      * @param password contra
@@ -140,6 +140,8 @@ public class PresentationController implements PresentationFacade{
      */
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
           businessFacade.registerUser(username, email, password, passwordRepetition,type);
+          businessFacade.login(username,password);
+          loginOK();
     }
 
     /**

@@ -75,12 +75,11 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
      * @param e
      * @deprecated No hauria d'estar aquí sinó un controlador per sobre
      */
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            //PianoCascade View
-            /*case bla:
-                break;*/
+
         }
     }
 
