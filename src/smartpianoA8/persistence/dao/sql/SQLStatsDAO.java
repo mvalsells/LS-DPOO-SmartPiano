@@ -33,7 +33,7 @@ public class SQLStatsDAO implements StatsDAO {
                     user + "');";
             connector.insertQuery(query);
         }
-    }   //TODO cridar la funció quan es crei un nou usuari
+    }
 
     /**
      * incrementa +1 un num reproduccions
@@ -92,7 +92,7 @@ public class SQLStatsDAO implements StatsDAO {
      * @param username   NomUsuari UserName de l'usuari que l'ha reproduit (actual)
      */
     @Override
-    public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username) {    //TODO cridar la funció quan es reprodueixi
+    public void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username) {
         updateNumMinuts(LocalTime.now().getHour(), duradaSong, username);
         updateNumReproduccions(LocalTime.now().getHour(), username);
     }
