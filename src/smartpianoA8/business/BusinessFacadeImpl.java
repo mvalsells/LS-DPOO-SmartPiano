@@ -300,14 +300,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public ArrayList<PlayList> getCurrentUserPlaylist(){
         return playListDAO.getPlayListsByUser(userManager.getCurrentUser());
     }
-    public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
-
     @Override
-    public void removeSongFromPlayList(Song song, PlayList playList) {
-        //TODO falta implamentar metode
-    }
-
-    public void removeSongFromPlayList(PlayList playList, Song song){playListDAO.removeSongFromPlayList(song,playList);}
+    public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
+    @Override
+    public void removeSongFromPlayList( Song song,PlayList playList){playListDAO.removeSongFromPlayList(song,playList);}
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------

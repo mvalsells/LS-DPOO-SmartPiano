@@ -15,9 +15,11 @@ public class JPPiano extends JPanel {
 
     public static final String START_RECORDING = "startRecording";
     public static final String PLAY_BUTTON = "startPlaying";
+    public static final String NOTES_BUTTON = "notesButton";
 
     private JButton regButton;
     private JButton playButton;
+    private JButton notesButton;
 
     public JPPiano() {
 
@@ -188,10 +190,11 @@ public class JPPiano extends JPanel {
         panellTextBotonsNorthWest.setOpaque(false);
         panellTextBotonsNorthWest.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel textBotonsNorth = new JTPianoButtonText( 20, 5, 5, 5);
-        textBotonsNorth.setText("NOTAS - TIPO");
+        textBotonsNorth.setText("     NOTAS");
 
         /*West*/
-        JButton notesButton = new JBPianoButton();
+        notesButton = new JBPianoButton();
+        notesButton.setActionCommand(NOTES_BUTTON);
 
 
         /*East*/
@@ -388,11 +391,11 @@ public class JPPiano extends JPanel {
         westBotoPianoWest.add(panellTextBotonsWestWest,BorderLayout.NORTH);
 
         panellTextBotonsNorthWest.add(textBotonsNorth);
-        panellTextBotonsSouthWest.add(textBotonsSouth);
+        //panellTextBotonsSouthWest.add(textBotonsSouth);
         eastBotoPianoWest.add(panellTextBotonsNorthWest,BorderLayout.NORTH);
-        eastBotoPianoWest.add(notesButton,BorderLayout.WEST);
-        eastBotoPianoWest.add(panellTextBotonsSouthWest,BorderLayout.SOUTH);
-        eastBotoPianoWest.add(tipoButton);
+        eastBotoPianoWest.add(notesButton,BorderLayout.CENTER);
+        //eastBotoPianoWest.add(panellTextBotonsSouthWest,BorderLayout.SOUTH);
+        //eastBotoPianoWest.add(tipoButton);
 
         //EastBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,0,0,100));
         //WestBotoPianoWest.setBorder(BorderFactory.createEmptyBorder(0,100,0,0));
@@ -449,17 +452,18 @@ public class JPPiano extends JPanel {
         add(posicioCentral,BorderLayout.CENTER);
     }
 
-    public void setPressedIcon(){
-        regButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));
+    public void setPressedIcon(JButton button){
+        button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));
     }
-    public void setUnpressedIcon(){
-        regButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
+    public void setUnpressedIcon(JButton button){
+        button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
     }
 
     public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
 
         regButton.addActionListener(controller);
         playButton.addActionListener(controller);
+        notesButton.addActionListener(controller);
 
         for (BlackKey black : blacks) {
             black.addKeyListener(keyListener);

@@ -236,15 +236,15 @@ public class PresentationController implements PresentationFacade{
     /**
      * Mètode per establir el botó de REC actiu
      */
-    public void pianoViewSetRecordingPressedIcon(){
-        jfMainFrame.pianoViewSetRecordingPressedIcon();
+    public void pianoViewSetRecordingPressedIcon(JButton button){
+        jfMainFrame.pianoViewSetRecordingPressedIcon(button);
     }
 
     /**
      * Mètode per establir el botó de REC inactiu
      */
-    public void pianoViewSetRecordingUnpressedIcon(){
-        jfMainFrame.pianoViewSetRecordingUnpressedIcon();
+    public void pianoViewSetRecordingUnpressedIcon(JButton button){
+        jfMainFrame.pianoViewSetRecordingUnpressedIcon(button);
     }
 
     /**
