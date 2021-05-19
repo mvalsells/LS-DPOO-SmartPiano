@@ -123,8 +123,8 @@ public class JPPlayer extends JPanel {
         int status2 = status / 1000;
         status2 = status2 / 1000;
 
-        System.out.println("Total: "+totalBarLong);
-        System.out.println("Current: " +status2);
+        //System.out.println("Total: "+totalBarLong);
+        //System.out.println("Current: " +status2);
 
         progressBar.setValue((status2*100)/totalBarLong);
 

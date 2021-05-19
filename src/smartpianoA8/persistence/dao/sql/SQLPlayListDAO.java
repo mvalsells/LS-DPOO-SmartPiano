@@ -44,11 +44,6 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void addSongToPlayList(Song song, PlayList playList) {
-        //TODO controlar que no repeteixin cançons
-
-
-
-        //String query = "SELECT ";
 
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
