@@ -24,6 +24,7 @@ public class MidiWritterImpl implements MidiWritter {
     private long startTime = 0;
     Sequencer finalSequencer;
     SongDAO songDAO;
+    private long finalTime = 0;
 
     private static final int TYPE_SINGLE_TRACK = 0;
     private static final int TYPE_PARALLEL_TRACKS = 1;
@@ -74,6 +75,7 @@ public class MidiWritterImpl implements MidiWritter {
     public void endRecording() {
         recording = false;
         sequencer.stopRecording();
+        finalTime = System.currentTimeMillis();
 
         try {
             finalSequencer = MidiSystem.getSequencer();
@@ -122,7 +124,7 @@ public class MidiWritterImpl implements MidiWritter {
     public void saveRecording(String userName, String songName, boolean isPublic, long totalTimeInMilis) {
         makeUserDirectory(userName);
         saveToFile(userName, songName);
-        addSongToDatabase(userName, songName, isPublic, totalTimeInMilis-startTime);
+        addSongToDatabase(userName, songName, isPublic, /*totalTimeInMilis*/finalTime-startTime);
     }
 
     /**
