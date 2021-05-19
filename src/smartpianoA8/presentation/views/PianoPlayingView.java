@@ -46,7 +46,7 @@ public class PianoPlayingView extends JFrame implements MouseListener, KeyListen
 
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
-    private final Eventos eventos = new Eventos();
+    //private final Eventos eventos = new Eventos();
 
 
     MidiChannel channel;

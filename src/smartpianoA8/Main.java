@@ -275,6 +275,8 @@ public class Main {
         //System.out.println("leleleleel");
 
         //JFPianoView pianoView = new JFPianoView();
+        //
+        //
         //JFWellcomeFrame wellcomeFrame = new JFWellcomeFrame();
         //WellcomeController wellcomeController = new WellcomeController();
         //PianoPlayingView pianoPlayingView = new PianoPlayingView();
