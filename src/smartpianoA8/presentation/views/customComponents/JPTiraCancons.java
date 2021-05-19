@@ -81,7 +81,7 @@ public class JPTiraCancons extends JPMainView{
             jpCanço = new JPCanco[songs.size()];
 
             jlTitul.setText(titul);
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
             for (int i = 0; i < songs.size(); i++) {
 
                 StringBuilder sbCommand = new StringBuilder();
