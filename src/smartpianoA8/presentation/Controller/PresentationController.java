@@ -390,9 +390,8 @@ public class PresentationController implements PresentationFacade {
 
     public void loadPlaylistInPlayer() {
         System.out.println("Yo, updating playlist...");
-        isUploaded = true;
 
-        ArrayList<Song> test2 = new ArrayList<>();
+        /*ArrayList<Song> test2 = new ArrayList<>();
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
         Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
         Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
@@ -402,7 +401,7 @@ public class PresentationController implements PresentationFacade {
         test2.add(song3);
         test2.add(song2);
         test2.add(song4);
-        test2.add(song);
+        test2.add(song);*/
 
         ArrayList<String> strings = new ArrayList<>();
         strings.add("awadsdas");
@@ -411,7 +410,9 @@ public class PresentationController implements PresentationFacade {
         if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
             JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
         } else {
-            playerController.setSongsToBePlayed(test2);//bertu to do .. getplaylistsongsbyplaylistname
+            isUploaded = true;
+            playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
+            //playerController.setSongsToBePlayed(test2);//bertu to do .. getplaylistsongsbyplaylistname
         }
         System.out.println(jfMainFrame.getJComboBoxString());
         jfMainFrame.setPlaylistsNames(strings);
