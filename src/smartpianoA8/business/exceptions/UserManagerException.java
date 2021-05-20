@@ -63,6 +63,14 @@ public class UserManagerException extends Exception{
     }
 
     /**
+     * Getter de l'estat del correu incorrecte
+     * @return true/false de l'estat
+     */
+    public boolean isEmailIncorrect() {
+        return emailIncorrect;
+    }
+
+    /**
      * Mètode per convertir a String els estats
      * @implNote per debugging només
      * @return String amb els estats

@@ -17,7 +17,7 @@ public class JPRegisterView extends JPanel  {
     private static final String PH_USERNAME = "  Nombre de usuario";
     private static final String PH_EMAIL = "  Correo";
     private static final String PH_PASSWORD = "  Contraseña";
-    private static final String PH_PASSWORD_REPETITON = "  Repite la contraseña";
+    private static final String PH_PASSWORD_REPETITON = "  Contraseña";
 
     private BordersView bordersView = new BordersView();
 
