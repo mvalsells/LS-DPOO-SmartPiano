@@ -11,14 +11,8 @@ import java.util.ArrayList;
 public class JPRegisterView extends JPanel  {
 
 
-    //ImageView imageView = new ImageView();
     public static final String toLogin = "ToLogin";
     public static final String tryRegister = "tryRegister";
-
-    /*public static final String hasNotLowerCase = "hasNotLowerCase";
-    public static final String hasNotNumber = "hasNotNumber";
-    public static final String hasNotUpperCase = "hasNotUpperCase";
-    public static final String passwordToShort = "passwordToShort";*/
 
     private static final String PH_USERNAME = "  Nombre de usuario";
     private static final String PH_EMAIL = "  Correo";
@@ -30,8 +24,8 @@ public class JPRegisterView extends JPanel  {
 
     private JTextField nom;
     private JTextField correu;
-    private JTextField contrasenya;
-    private JTextField repetirContrasenya;
+    private JPasswordField contrasenya;
+    private JPasswordField repetirContrasenya;
 
     private JButton iniciarSessio;//Canivat
     private JButton registerButton;//canviat
@@ -167,13 +161,13 @@ public class JPRegisterView extends JPanel  {
         correu.setBorder(BordersView.TextFieldBorder);
         correu.setOpaque(false);
 
-        contrasenya = new JTextField(PH_PASSWORD,20);
+        contrasenya = new JPasswordField(PH_PASSWORD,20);
         contrasenya.setMaximumSize(new Dimension(281,39));
         contrasenya.setForeground(new Color(255,255,255));
         contrasenya.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
         contrasenya.setOpaque(false);
 
-        repetirContrasenya = new JTextField(PH_PASSWORD_REPETITON,20);
+        repetirContrasenya = new JPasswordField(PH_PASSWORD_REPETITON,20);
         repetirContrasenya.setMaximumSize(new Dimension(281,39));
         repetirContrasenya.setForeground(new Color(255,255,255));
         repetirContrasenya.setBorder(BordersView.TextFieldBorder);
@@ -365,15 +359,17 @@ public class JPRegisterView extends JPanel  {
         } else {
             data.add(correu.getText());
         }
-        if (contrasenya.getText().equals(PH_PASSWORD)){
+        String pass = String.valueOf(contrasenya.getPassword());
+        if (pass.equals(PH_PASSWORD)){
             data.add(null);
         } else {
-            data.add(contrasenya.getText());
+            data.add(pass);
         }
-        if (repetirContrasenya.getText().equals(PH_PASSWORD_REPETITON)){
+        pass = String.valueOf(repetirContrasenya.getPassword());
+        if (pass.equals(PH_PASSWORD_REPETITON)){
             data.add(null);
         } else {
-            data.add(repetirContrasenya.getText());
+            data.add(pass);
         }
         return data;
     }

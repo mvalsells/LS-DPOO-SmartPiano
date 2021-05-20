@@ -22,7 +22,7 @@ public class JPLoginView extends JPanel  {
     private JButton registrarse;//Canviat
     private JTextField nom;
     private JTextField correu;
-    private JTextField contrasenya;
+    private JPasswordField contrasenya;
     private JButton loginButton;
 
     public JPLoginView() {
@@ -199,7 +199,7 @@ public class JPLoginView extends JPanel  {
         correu.setBorder(BordersView.TextFieldBorder);
         correu.setOpaque(false);
 
-        contrasenya = new JTextField(PH_PASSWORD,20);
+        contrasenya = new JPasswordField(PH_PASSWORD,20);
         contrasenya.setMaximumSize(new Dimension(281,39));
         contrasenya.setForeground(new Color(255,255,255));
         contrasenya.setBorder(BordersView.TextFieldBorder);
@@ -327,7 +327,7 @@ public class JPLoginView extends JPanel  {
         registrarse.addActionListener(controller);
         loginButton.addActionListener(controller);
     }
-
+/*
     public String getNomString(){
         return this.nom.getText();
     }
@@ -338,7 +338,7 @@ public class JPLoginView extends JPanel  {
         return this.contrasenya.getText();
     }
 
-
+*/
     public ArrayList<String> getData() {
         ArrayList<String> data = new ArrayList<>();
         if (nom.getText().equals(PH_LOGIN)){
@@ -346,10 +346,11 @@ public class JPLoginView extends JPanel  {
         } else {
             data.add(nom.getText());
         }
-        if (contrasenya.getText().equals(PH_PASSWORD)){
+        String pass = String.valueOf(contrasenya.getPassword());
+        if (pass.equals(PH_PASSWORD)){
             data.add(null);
         } else {
-            data.add(contrasenya.getText());
+            data.add(pass);
         }
         return data;
     }
