@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.JPPlayer;
 import smartpianoA8.presentation.views.customComponents.JPPlaylistSettings;
 import smartpianoA8.presentation.views.customComponents.JPPlaylistView;
 import smartpianoA8.presentation.views.customComponents.JPSongs;
@@ -20,8 +21,7 @@ public class PlaylistController implements ActionListener {
     /**
      * Consructor buit
      */
-    public PlaylistController(){
-
+    public PlaylistController() {
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
