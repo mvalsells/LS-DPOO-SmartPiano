@@ -26,7 +26,7 @@ public class JFStatisticsView extends JFrame {
         //parametres
         this.valorsMinutsComu = valorsMinuts;
         this.valorReproduccionsComu = valorsReproduccions;
-
+        this.fons = new JPanel();
         setResizable(true);
         setTitle("Estadístiques");
         setLocationRelativeTo(null);
