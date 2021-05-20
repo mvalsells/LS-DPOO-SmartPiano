@@ -37,7 +37,7 @@ public class SQLStatsDAO implements StatsDAO {
     }
 
     /**
-     * incrementa +1 un num reproduccions
+     * Mètode per incrementar +1 un num reproduccions
      */
     private void updateNumReproduccions(int hora, String user) {
         String query = "SELECT NumCancons FROM Stats WHERE NomUsuari LIKE '" + user + "' AND Hora = " + hora + ";";
