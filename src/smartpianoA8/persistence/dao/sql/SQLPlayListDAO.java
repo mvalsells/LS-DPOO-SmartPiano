@@ -203,7 +203,7 @@ public class SQLPlayListDAO implements PlayListDAO{
 
     public ArrayList<Song> getPlayListSongsByPlayListName(String name, String username){
         ArrayList<Song> songs = new ArrayList<>();
-        String query = "SELECT idSong FROM SongPlaylist WHERE Nom LIKE '" + name + "' AND ;";
+        String query = "SELECT idSong FROM SongPlaylist WHERE Nom LIKE '" + name + "';";
         ResultSet result = connector.selectQuery(query);
 
         String query2;
