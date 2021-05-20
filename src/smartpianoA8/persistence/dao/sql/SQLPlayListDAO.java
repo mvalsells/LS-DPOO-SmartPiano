@@ -219,7 +219,7 @@ public class SQLPlayListDAO implements PlayListDAO{
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return songs;
 
     }
 }
