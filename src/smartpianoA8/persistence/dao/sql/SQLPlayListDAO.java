@@ -204,6 +204,7 @@ public class SQLPlayListDAO implements PlayListDAO{
     public ArrayList<Song> getPlayListSongsByPlayListName(String name, String username){
         ArrayList<Song> songs = new ArrayList<>();
         int IdPlayList;
+
         //obtenir la id de la playlist
         String query = "SELECT IdPlayList FROM PlayList WHERE Nom LIKE '" + name + "' AND NomUsuari LIKE '" + username + "';";
         ResultSet result = connector.selectQuery(query);
@@ -230,8 +231,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             return songs;
         }catch (SQLException e){
             e.printStackTrace();
+            return songs;
         }
-        return songs;
-
     }
 }
