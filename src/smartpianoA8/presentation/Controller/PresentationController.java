@@ -316,6 +316,9 @@ public class PresentationController implements PresentationFacade {
     public void playlistRemoveSongToPlayList(Song song, PlayList playList){businessFacade.removeSongFromPlayList(song,playList);}
     public PlayList playlistGetPlayListByName(String name){return businessFacade.getPlayListByName(name);}
     public Song songGetSongByName(String name){return businessFacade.getSongByName(name);}
+    public ArrayList<Song> getPlayListSongsByPlayListName(String name){
+        return businessFacade.getPlayListSongsByPlayListName(name);
+    }
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 

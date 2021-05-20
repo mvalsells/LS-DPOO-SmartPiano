@@ -119,6 +119,9 @@ public class WellcomeController implements ActionListener {
                 if (e.isUsernameExists()){
                     message.append("· Ya existe un usuario con este nombre de usuario\n");
                 }
+                if (e.isEmailIncorrect()){
+                    message.append("· El formato del correo es incorrecto");
+                }
             }
         } else {
           message.append("Por favor rellene todos los campos");

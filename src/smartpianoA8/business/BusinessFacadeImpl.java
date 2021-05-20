@@ -309,6 +309,9 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
     }
 
+    public ArrayList<Song> getPlayListSongsByPlayListName(String name){
+        return playListDAO.getPlayListSongsByPlayListName(name, userManager.getCurrentUser().getUsername());
+    }
 
 
     // ------------------------------------------------------
