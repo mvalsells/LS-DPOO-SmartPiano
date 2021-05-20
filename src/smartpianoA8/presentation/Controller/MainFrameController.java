@@ -19,6 +19,8 @@ public class MainFrameController implements ActionListener {
                 presentationController.changeView(JFMainFrame.SONGS);
                 break;
             case JFMainFrame.PLAYLISTS:
+                System.out.println("nosecifunsiona");
+                presentationController.playlistViewUpdateJPPlaylistView(presentationController.getUserPlaylists(),presentationController.getAllSongs());
                 presentationController.changeView(JFMainFrame.PLAYLISTS);
                 break;
             case JFMainFrame.PIANO:

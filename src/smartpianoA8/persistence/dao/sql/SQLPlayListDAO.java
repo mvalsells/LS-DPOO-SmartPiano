@@ -44,6 +44,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void addSongToPlayList(Song song, PlayList playList) {
+
         String query = "INSERT INTO SongPlaylist(idSong, IDPlayList) VALUES ('" +
                 song.getIdSong() + "', '" + playList.getIdPlayList() + "');";
         connector.insertQuery(query);
@@ -88,8 +89,12 @@ public class SQLPlayListDAO implements PlayListDAO{
         try{
             while(result.next()) {
                 llista.add(new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari")));
+
+                ArrayList<Song> songs = getPlayListSongs(llista.get(llista.size()-1));
+                llista.get(llista.size()-1).setSongs(songs);
             }
             return llista;
+
         }catch (SQLException e){
             System.out.println("PATATA 2k mecagun");
             e.printStackTrace();
@@ -101,6 +106,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      * Retorna la PlayList buscada amb IDPlayList.
      * @param IDPlaylist ID de la PlayList a buscar les dades.
      * @return  PlayList demanada completa.
+     * @deprecated intentar no fer servir, si es fa servir no passa res però no té cançons
      */
     @Override
     public PlayList getPlayListData(int IDPlaylist) {
@@ -126,20 +132,23 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public ArrayList<Song> getPlayListSongs(PlayList playList) {
-        ArrayList<Song> songs = null;
-        String query = "SELECT idSong FROM SongPlaylist WHERE IDPlayList LIKE '" + playList.getIdPlayList() + "';";
+        ArrayList<Song> songs = new ArrayList<>();
+        String query = "SELECT idSong FROM SongPlaylist WHERE IdPlayList = " + playList.getIdPlayList() + ";";
         ResultSet result = connector.selectQuery(query);
-        String query2;
 
+        String query2;
         try{
             while(result.next()) {
-                query2 = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari FROM Song WHERE IDSong = " + result.getInt("idSong") + ";";
+                query2 = "SELECT * FROM Song WHERE idSong = " + result.getInt("idSong") + ";";
                 ResultSet result2 = connector.selectQuery(query2);
+                result2.next();
+                //System.out.println(result2.getInt("idSong"));
                 songs.add(new Song(result2.getInt("idSong"), result2.getFloat("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("DataEnregistrament"), result2.getString("Directori"), result2.getInt("isPublic"), result2.getString("NomUsuari"), result2.getString("Midi")));
             }
+            return songs;
         }catch (SQLException e){
             e.printStackTrace();
-            return songs;
+
 
         }
         return null;
@@ -176,12 +185,19 @@ public class SQLPlayListDAO implements PlayListDAO{
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()) {
-                return new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+                retorna = new PlayList(result.getString("Nom"), result.getInt("IDPlayList"), result.getString("NomUsuari"));
+            }
+
+            if(retorna != null) {
+                ArrayList<Song> songs = getPlayListSongs(retorna);
+                retorna.setSongs(songs);
+                return retorna;
             }
             return retorna;
+
         }catch(SQLException e){
             e.printStackTrace();
-            return retorna;
         }
+        return retorna;
     }
 }

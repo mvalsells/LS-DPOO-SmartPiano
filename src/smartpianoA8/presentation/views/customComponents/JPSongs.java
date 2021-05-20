@@ -49,9 +49,16 @@ public class JPSongs extends JPanel {
         novedadesPanel.setLayout(new BorderLayout());
         novedadesPanel.setBackground(ColorScheme.MainView_Background);
 
+        /*//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        ArrayList<Song> patataSongs = new ArrayList<>();
+        patataSongs.add(songs.get(0));
+        patataSongs.add(songs.get(1));
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
-        jpTiraCançonsMas = new JPTiraCancons(songs,"Mas escuchadas");
-        jpTiraCançonsNew = new JPTiraCancons(songs,"Recientes");
+        jpTiraCançonsMas = new JPTiraCancons();
+        jpTiraCançonsMas.updateTira(songs,"Mas escuchadas");
+        jpTiraCançonsNew = new JPTiraCancons();
+        jpTiraCançonsNew.updateTira(songs,"Recientes");
 
         JLabel novedades = new JLabel("Novedades");
         novedades.setForeground(ColorScheme.PRIMARY);

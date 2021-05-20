@@ -1,5 +1,6 @@
 package smartpianoA8.business.entity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +23,7 @@ public class PlayList {
         this.nom = nom;
         this.idPlayList = idPlayList;
         this.nomUsuari = nomUsuari;
-        ArrayList<Song> songs = new ArrayList<Song>();
+        this.songs = new ArrayList<>();
 
     }
 
@@ -81,5 +82,13 @@ public class PlayList {
      */
     public int getIdPlayList() {
         return idPlayList;
+    }
+
+    /**
+     * Mètode que afageix en bulk cançons
+     * @param songs les cançons
+     */
+    public void setSongs(ArrayList<Song> songs){
+        this.songs = songs;
     }
 }

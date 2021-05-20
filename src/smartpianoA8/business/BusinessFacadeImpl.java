@@ -48,6 +48,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
+        this.songDAO = songDAO;
 
     }
 
@@ -300,7 +301,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
         //TODO falta implamentar metode
     }
 
-    public void removeSongFromPlayList(PlayList playList, Song song){playListDAO.removeSongFromPlayList(song,playList);}
+    public void removeSongFromPlayList(PlayList playList, Song song){
+        playListDAO.removeSongFromPlayList(song,playList);}
 
     public Song getSongByName(String name){
         return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
