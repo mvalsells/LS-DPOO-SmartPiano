@@ -21,6 +21,8 @@ public class JPProfileView extends JPMainView {
     private JPasswordField jpfRepeatNewPasword;
     private JButton jbSaveSettings;
     private JPPiano jpPiano;
+    private JPPrimarySecondaryText jpUsernameText;
+    private JPPrimarySecondaryText jpEmailText;
 
     //Placeholders
     private String PH_NEW_USERNAME = "  Nuevo nombre de usuario";
@@ -83,8 +85,8 @@ public class JPProfileView extends JPMainView {
         jpUsername.setLayout(new BoxLayout(jpUsername,BoxLayout.Y_AXIS));
         jtfNewUsername = new JTFsettings(PH_NEW_USERNAME);
         jtfNewUsername.setMaximumSize(new Dimension(400, 20));
-        JPanel text=new JPPrimarySecondaryText("Nombre de usuario", currentUser.getUsername());
-        jpUsername.add(text);
+        jpUsernameText = new JPPrimarySecondaryText("Nombre de usuario", currentUser.getUsername());
+        jpUsername.add(jpUsernameText);
         jpUsername.add(Box.createVerticalStrut(5));
         jpUsername.add(jtfNewUsername);
         jpUsername.add(Box.createVerticalStrut(10));
@@ -94,7 +96,8 @@ public class JPProfileView extends JPMainView {
         jpEmail.setLayout(new BoxLayout(jpEmail,BoxLayout.Y_AXIS));
         jtfNewEmail = new JTFsettings(PH_NEW_EMAIL);
         jtfNewEmail.setMaximumSize(new Dimension(400, 20));
-        jpEmail.add(new JPPrimarySecondaryText("Email", currentUser.getEmail()));
+        jpEmailText = new JPPrimarySecondaryText("Email", currentUser.getEmail());
+        jpEmail.add(jpEmailText);
         jpEmail.add(Box.createVerticalStrut(5));
         jpEmail.add(jtfNewEmail);
         jpEmail.add(Box.createVerticalStrut(10));
@@ -149,6 +152,7 @@ public class JPProfileView extends JPMainView {
         jbLogout.addActionListener(actionListener);
         jbDeleteAccount.addActionListener(actionListener);
         jbSaveSettings.addActionListener(actionListener);
+        jpPiano.registerController(actionListener,mouseListener);
     }
 
     public ArrayList<String> profileViewGetData() {
@@ -176,5 +180,14 @@ public class JPProfileView extends JPMainView {
             data.add(repetitionNewPassword);
         }
         return data;
+    }
+
+    public void updateText(String username, String email){
+        if (username!= null) {
+            jpUsernameText.setSecondaryText(username);
+        }
+        if (email!=null){
+            jpEmailText.setSecondaryText(email);
+        }
     }
 }

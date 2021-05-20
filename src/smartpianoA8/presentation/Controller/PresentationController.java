@@ -353,8 +353,9 @@ public class PresentationController implements PresentationFacade {
     public ArrayList<String> profileViewGetData(){
         return jfMainFrame.profileViewGetData();
     }
-    public void profileViewRegenerate(){
-        jfMainFrame.profileViewRegenerate();
+    public void profileViewUpdateText(){
+        User tmpUser = businessFacade.getCurrentUser();
+        jfMainFrame.profileViewUpdateText(tmpUser.getUsername(), tmpUser.getEmail());
     }
     // ---- End ProfileView Methods
     // ---- Start Dialog/popups Methods

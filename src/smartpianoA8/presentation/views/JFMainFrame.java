@@ -8,7 +8,6 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class JFMainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1085,680));
         setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
 
         //Panels (Navigation Bar options)
         jpSongs = new JPSongs(masterSongs);
@@ -161,10 +160,8 @@ public class JFMainFrame extends JFrame {
         return jpProfileView.profileViewGetData();
     }
 
-    public void profileViewRegenerate(){
-        jpProfileView.removeAll();
-        jpProfileView.revalidate();
-        jpProfileView.repaint();
+    public void profileViewUpdateText(String username, String email){
+        jpProfileView.updateText(username, email);
     }
     // ---- End ProfileView Methods
 

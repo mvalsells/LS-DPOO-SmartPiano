@@ -110,7 +110,7 @@ public class ProfileController implements ActionListener, MouseListener {
         if (!message.toString().equals("")){
             presentationController.showWarningDialog(message.toString());
         }
-        presentationController.profileViewRegenerate();
+        presentationController.profileViewUpdateText();
     }
 
     /**
