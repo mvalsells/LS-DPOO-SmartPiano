@@ -93,18 +93,22 @@ public class ProfileController implements ActionListener, MouseListener {
                 message.append("·Contraseña actualizada\n");
             }
         } catch (PasswordException exeception){
-            message.append("· La contraseña no cumple con los requisitos:\n");
-            if (exeception.isHasNotLowerCase()) {
-                message.append("- No tiene minuscula/s\n");
-            }
-            if (exeception.isHasNotNumber()) {
-                message.append("- No tiene numero/s\n");
-            }
-            if (exeception.isHasNotUpperCase()) {
-                message.append("\t- No tiene mayuscula/s\n");
-            }
-            if (exeception.isPasswordToShort()) {
-                message.append("\t- Es demasiado corta\n");
+            if (exeception.isPasswordsDifferent()){
+                message.append("· Las contraseñas no coinciden\n");
+            } else {
+                message.append("· La contraseña no cumple con los requisitos:\n");
+                if (exeception.isHasNotLowerCase()) {
+                    message.append("- No tiene minuscula/s\n");
+                }
+                if (exeception.isHasNotNumber()) {
+                    message.append("- No tiene numero/s\n");
+                }
+                if (exeception.isHasNotUpperCase()) {
+                    message.append("\t- No tiene mayuscula/s\n");
+                }
+                if (exeception.isPasswordToShort()) {
+                    message.append("\t- Es demasiado corta\n");
+                }
             }
         }
         if (!message.toString().equals("")){
