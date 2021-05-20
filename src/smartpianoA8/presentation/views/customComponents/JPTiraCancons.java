@@ -146,6 +146,66 @@ public class JPTiraCancons extends JPMainView{
         repaint();
     }
 
+    /*public void updateWhenAdd(Song song,String type){
+
+        switch (type){
+            case JPPlaylistSettings.ADD:
+                jpCanço.
+
+                jlTitul.setText(titul);
+
+                for (int i = 0; i < songs.size(); i++) {
+
+                    StringBuilder sbCommand = new StringBuilder();
+                    sbCommand.append(JPSongs.SONG_PRESSED);
+                    sbCommand.append(songs.get(i).getIdSong());
+
+
+                    JButton jbTMP = new JButton();
+                    jbTMP.setActionCommand(sbCommand.toString());
+                    jbTMP.addActionListener(controller);
+
+                    String nomCanço = songs.get(i).getNom();
+                    StringBuilder sbName = new StringBuilder();
+
+                    if (songs.get(i).getNom().length() > 24) {
+                        int k = 0;
+
+                        while (k < songs.get(i).getNom().length()) {
+                            if (k != 0) {
+                                sbName.append("-<br/>");
+                            } else if (k == 0) {
+                                sbName.append("<html>");
+                            }
+                            sbName.append(nomCanço, k, Math.min(k + 24, songs.get(i).getNom().length()));
+
+                            System.out.println(sbName.toString());
+
+                            k += 25;
+
+                        }
+                        sbName.append("<html>");
+                    } else {
+                        sbName.append(songs.get(i).getNom());
+                    }
+
+
+
+                    jpCanço[i] = new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor());
+
+
+                    jpAmbSongs.add(jpCanço[i]);
+
+                }
+
+
+
+        }
+
+        }
+
+    }*/
+
     public void registerController(ActionListener controller){
 
         this.controller = controller;

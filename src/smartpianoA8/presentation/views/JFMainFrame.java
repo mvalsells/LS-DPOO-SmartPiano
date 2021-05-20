@@ -134,6 +134,9 @@ public class JFMainFrame extends JFrame {
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}
     public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}
 
+    public void playlistViewUpdateWhenAdd(Song song){jpPlaylistView.updateWhenAdd(song);}
+    public void playlistViewUpdateWhenRemove(Song song){jpPlaylistView.updateWhenRemove(song);}
+
     public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}
 
     public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}

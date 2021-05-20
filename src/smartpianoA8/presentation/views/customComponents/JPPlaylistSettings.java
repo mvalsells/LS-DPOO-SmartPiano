@@ -70,6 +70,18 @@ public class JPPlaylistSettings extends JPMainView {
         repaint();
 
     }
+    public void updateWhenAdd(Song song){
+
+        jpAdd.updateWhenAdd(song,ADD);
+        jpRemove.updateWhenAdd(song,REMOVE);
+
+    }
+    public void updateWhenRemove(Song song){
+
+        jpAdd.updateWhenRemove(song,ADD);
+        jpRemove.updateWhenRemove(song,REMOVE);
+
+    }
 
     public String getJCSongAdderString(){return (String)jpAdd.getJCSongString();}
     public String getJCSongRemoveString(){return (String)jpRemove.getJCSongString();}

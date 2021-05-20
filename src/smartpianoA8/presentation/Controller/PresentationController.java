@@ -290,6 +290,9 @@ public class PresentationController implements PresentationFacade {
     }
     public void playlistViewUpdateJPPlaylistSettings(){jfMainFrame.playlistViewUpdateJPPlaylistSettings(getUserPlaylists(),getAllSongs());}
 
+    public void playlistViewUpdateWhenAdd(Song song){jfMainFrame.playlistViewUpdateWhenAdd(song);}
+    public void playlistViewUpdateWhenRemove(Song song){jfMainFrame.playlistViewUpdateWhenRemove(song);}
+
     public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}
 
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}

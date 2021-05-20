@@ -68,6 +68,27 @@ public class JPPlailistEditor extends JPMainView{
         }
 
     }
+
+    public void updateWhenAdd(Song song, String type){
+        switch (type){
+            case JPPlaylistSettings.ADD:
+                jComboBox.removeItem(song.getNom());
+                break;
+            case JPPlaylistSettings.REMOVE:
+                jComboBox.addItem(song.getNom());
+                break;
+        }
+    }
+    public void updateWhenRemove(Song song, String type){
+        switch (type){
+            case JPPlaylistSettings.ADD:
+                jComboBox.addItem(song.getNom());
+                break;
+            case JPPlaylistSettings.REMOVE:
+                jComboBox.removeItem(song.getNom());
+                break;
+        }
+    }
     public void registerController(ActionListener controller){
         this.jComboBox.addActionListener(controller);
         this.jButton.addActionListener(controller);

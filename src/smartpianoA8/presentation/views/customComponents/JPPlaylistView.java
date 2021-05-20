@@ -76,7 +76,7 @@ public class JPPlaylistView extends JPMainView {
             jcTriarPlaylist.addItem(hasPlayLists.get(i).getNom());
 
         }
-        jcTriarPlaylist.setSelectedIndex(0);
+        //jcTriarPlaylist.setSelectedIndex(0);
 
         jpPlaylistSettings = new JPPlaylistSettings[hasPlayLists.size()];
 
@@ -100,6 +100,19 @@ public class JPPlaylistView extends JPMainView {
                 jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateJPPlaylistSettings(songs,hasPlayLists.get(jcTriarPlaylist.getSelectedIndex()));
 
     }
+
+    public void updateWhenAdd(Song song){
+
+        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenAdd(song);
+
+    }
+    public void updateWhenRemove(Song song){
+
+        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenRemove(song);
+
+    }
+
+
 
     public void registerControllers(ActionListener controller) {
         jbSelectPlaylist.addActionListener(controller);

@@ -44,11 +44,13 @@ public class PlaylistController implements ActionListener {
             case JPPlaylistSettings.ADD:
                 System.out.println(presentationController.playlistViewGetJCSongAdderString());
                 presentationController.playlistAddSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()),presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
-                presentationController.playlistViewUpdateJPPlaylistSettings();
+                //presentationController.playlistViewUpdateJPPlaylistSettings();
+                presentationController.playlistViewUpdateWhenAdd(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()));
                 break;
             case JPPlaylistSettings.REMOVE:
                 presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
-                presentationController.playlistViewUpdateJPPlaylistSettings();
+                //presentationController.playlistViewUpdateJPPlaylistSettings();
+                presentationController.playlistViewUpdateWhenRemove(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
                 break;
             case JPPlaylistView.MOSTRAR_PLAYLIST:
                 //System.out.println("PATATA MALDITAN ");
