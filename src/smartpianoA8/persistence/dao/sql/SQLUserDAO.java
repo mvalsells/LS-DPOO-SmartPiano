@@ -62,9 +62,7 @@ public class SQLUserDAO implements UserDAO {
 
         //stats
         for (int i = 0; i < 24; i++) {
-            query = "INSERT INTO Stats(NumCancons, NumMinuts, Hora, NomUsuari) VALUES ('" +
-                    0 + "', '" +
-                    0 + "', '" +
+            query = "INSERT INTO Stats(Hora, NomUsuari) VALUES ('" +
                     i + "', '" +
                     user.getUsername() + "');";
             connector.insertQuery(query);
