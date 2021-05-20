@@ -17,7 +17,7 @@ public class JPTiraCancons extends JPMainView{
 
     private JLabel jlNoHayCanciones;
     private JLabel jlTitul;
-    private JPCanco[] jpCanço;
+    private ArrayList<JPCanco> jpCanço;
     //private JLabel jlSongNomText;
     //private JLabel jlSongInfoText;
 
@@ -78,7 +78,7 @@ public class JPTiraCancons extends JPMainView{
 
         }else  {
             //jbButton = new JButton[songs.size()];
-            jpCanço = new JPCanco[songs.size()];
+            jpCanço = new ArrayList<>();
 
             jlTitul.setText(titul);
 
@@ -131,10 +131,10 @@ public class JPTiraCancons extends JPMainView{
                 jpCanço.add(jbTMP);
                 jpCanço.add(jlSongNomText);
                 jpCanço.add(jlSongInfoText);*/
-                jpCanço[i] = new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor());
+                jpCanço.add(new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor()));
                 //jpCanço.repaint();
 
-                jpAmbSongs.add(jpCanço[i]);
+                jpAmbSongs.add(jpCanço.get(i));
                 //jpAmbSongs.repaint();
                 //jpAmbSongs.revalidate();
             }
