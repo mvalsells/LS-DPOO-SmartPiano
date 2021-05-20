@@ -11,21 +11,8 @@ public class JPTeclesTeclat extends JPanel {
 
 
     public JPTeclesTeclat(){
-        JPanel teclat = new JPanel(null){
-            @Override
-            public Dimension getPreferredSize() {
-                int count = getComponentCount();
-                Component last = getComponent(count - 1);
-                Rectangle bounds = last.getBounds();
-                int width = 10 + bounds.x + bounds.width;
-                int height = 10 + bounds.y + bounds.height;
-
-                return new Dimension(width, height);
-            }
-
-
-        };
-        teclat.setBackground(Color.BLACK);
+        setBackground(Color.BLACK);
+        setLayout(null);
         //teclat.addKeyListener(this);
         char lletresBlack = '0';
         for (int i = 0; i < blacks.length; i++) {
@@ -41,7 +28,7 @@ public class JPTeclesTeclat extends JPanel {
             }
             blacks[i].setForeground(Color.WHITE);
             blacks[i].setFont(new Font("Verdana", Font.PLAIN, 6));
-            teclat.add(blacks[i]);
+            add(blacks[i]);
         }
 
         char lletresWhite = 'a';
@@ -57,10 +44,9 @@ public class JPTeclesTeclat extends JPanel {
                 lletresWhite = 'a';
                 whites[i].setText(String.valueOf(lletresWhite));
             }
-            teclat.add(whites[i]);
+            add(whites[i]);
 
         }
-        add(teclat);
     }
 
     public void registerController(MouseListener mouseListener){
@@ -70,5 +56,16 @@ public class JPTeclesTeclat extends JPanel {
         for (WhiteKey white : whites) {
             white.addMouseListener(mouseListener);
         }
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        int count = getComponentCount();
+        Component last = getComponent(count - 1);
+        Rectangle bounds = last.getBounds();
+        int width = 10 + bounds.x + bounds.width;
+        int height = 10 + bounds.y + bounds.height;
+
+        return new Dimension(width, height);
     }
 }
