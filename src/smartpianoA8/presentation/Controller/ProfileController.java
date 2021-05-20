@@ -5,10 +5,15 @@ import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFStatisticsView;
 import smartpianoA8.presentation.views.JFTop5View;
 import smartpianoA8.presentation.views.JPProfileView;
+import smartpianoA8.presentation.views.customComponents.Key;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Classe controller del perfil
@@ -16,7 +21,7 @@ import java.util.ArrayList;
  * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  */
-public class ProfileController implements ActionListener {
+public class ProfileController implements ActionListener, MouseListener {
     // ---- Inici Atributs ----
     private PresentationController presentationController;
     // ---- Fi Atributs ----
@@ -106,5 +111,67 @@ public class ProfileController implements ActionListener {
             presentationController.showWarningDialog(message.toString());
         }
         presentationController.profileViewRegenerate();
+    }
+
+    /**
+     * Invoked when the mouse button has been clicked (pressed
+     * and released) on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when a mouse button has been pressed on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+        //Show dialog
+
+        //Check if key alredy in use
+
+        //Update new key
+
+        Key key = (Key) e.getSource();
+        HashMap<Integer, Teclas> hmTecles = presentationController.getHMteclas();
+
+        hmTecles.get(key);
+
+    }
+
+    /**
+     * Invoked when a mouse button has been released on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when the mouse enters a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when the mouse exits a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

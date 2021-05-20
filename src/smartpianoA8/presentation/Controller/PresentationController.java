@@ -11,10 +11,12 @@ import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
 import smartpianoA8.presentation.views.customComponents.JPPlayer;
+import smartpianoA8.presentation.views.customComponents.Teclas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * CLasse pel controlador general de presentació
@@ -97,7 +99,7 @@ public class PresentationController implements PresentationFacade {
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
         jfMainFrame.registerPlaylistViewControllers(playlistController);
-        jfMainFrame.registerProfileViewControllers(profileController);
+        jfMainFrame.registerProfileViewControllers(profileController, profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
         jfMainFrame.registerMainFrameController(mainFrameController);
@@ -230,6 +232,10 @@ public class PresentationController implements PresentationFacade {
     }
     public ArrayList<Double> getNumMinutsCurrentUser(){
         return businessFacade.getNumMinutsCurrentUser();
+    }
+
+    public HashMap<Integer, Teclas> getHMteclas(){
+        return businessFacade.getHMTeclas();
     }
 
     public void removeCurrentUser(){

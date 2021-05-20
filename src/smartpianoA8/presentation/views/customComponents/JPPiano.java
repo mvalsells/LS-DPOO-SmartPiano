@@ -475,6 +475,21 @@ public class JPPiano extends JPanel {
         }
     }
 
+    public void registerController(ActionListener controller, MouseListener mouseListener){
+
+        regButton.addActionListener(controller);
+        playButton.addActionListener(controller);
+        notesButton.addActionListener(controller);
+
+        for (BlackKey black : blacks) {
+            black.addMouseListener(mouseListener);
+        }
+        for (WhiteKey white : whites) {
+            white.addMouseListener(mouseListener);
+        }
+    }
+
+
     public void pintarTeclaBlanca(int note){
         whites[note].clicarNota();
     }

@@ -91,8 +91,8 @@ public class JFMainFrame extends JFrame {
         System.out.println("Comprovacio");
        jpPlaylistView.registerControllers(actionListener);
     }
-    public void registerProfileViewControllers(ActionListener actionListener){
-        jpProfileView.registerControllers(actionListener);
+    public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener){
+        jpProfileView.registerControllers(actionListener, mouseListener);
     }
     public void registerPianoViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);

@@ -6,6 +6,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class JPProfileView extends JPMainView {
@@ -19,6 +20,7 @@ public class JPProfileView extends JPMainView {
     private JPasswordField jpfNewPasword;
     private JPasswordField jpfRepeatNewPasword;
     private JButton jbSaveSettings;
+    private JPPiano jpPiano;
 
     //Placeholders
     private String PH_NEW_USERNAME = "  Nuevo nombre de usuario";
@@ -73,8 +75,8 @@ public class JPProfileView extends JPMainView {
 
         // ---- End north ----
         // ---- Start center ----
-        JPanel jpCenter = new JPMainView();
-        jpCenter.setLayout(new BoxLayout(jpCenter,BoxLayout.Y_AXIS));
+        JPanel jpUserSettings = new JPMainView();
+        jpUserSettings.setLayout(new BoxLayout(jpUserSettings,BoxLayout.Y_AXIS));
 
         //Username
         JPanel jpUsername = new JPMainView();
@@ -115,11 +117,20 @@ public class JPProfileView extends JPMainView {
         jbSaveSettings = new JBgeneral("Guardar ajustes", ColorScheme.ORANGE_START);
         jbSaveSettings.setActionCommand(SAVE_SETTING);
 
+        //userSettings pack
+        jpUserSettings.add(jpUsername);
+        jpUserSettings.add(jpEmail);
+        jpUserSettings.add(jpPassword);
+        jpUserSettings.add(jbSaveSettings);
+
+        //Piano
+        jpPiano = new JPPiano();
+
         //Center pack
-        jpCenter.add(jpUsername);
-        jpCenter.add(jpEmail);
-        jpCenter.add(jpPassword);
-        jpCenter.add(jbSaveSettings);
+        JPanel jpCenter = new JPMainView();
+        jpCenter.add(jpUserSettings);
+        jpCenter.add(jpPiano);
+
         // ---- End center
 
 
@@ -132,12 +143,12 @@ public class JPProfileView extends JPMainView {
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
-    public void registerControllers(ActionListener controller){
-        jbStats.addActionListener(controller);
-        jbTop5.addActionListener(controller);
-        jbLogout.addActionListener(controller);
-        jbDeleteAccount.addActionListener(controller);
-        jbSaveSettings.addActionListener(controller);
+    public void registerControllers(ActionListener actionListener, MouseListener mouseListener){
+        jbStats.addActionListener(actionListener);
+        jbTop5.addActionListener(actionListener);
+        jbLogout.addActionListener(actionListener);
+        jbDeleteAccount.addActionListener(actionListener);
+        jbSaveSettings.addActionListener(actionListener);
     }
 
     public ArrayList<String> profileViewGetData() {
