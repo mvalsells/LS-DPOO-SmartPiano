@@ -72,12 +72,19 @@ public class UserManager {
 
 
     public boolean modifyCurrentUserEmail(String newEmail){
-        return modifyEmail(currentUser, newEmail);
+
+        if (modifyEmail(currentUser.getEmail(), newEmail)){
+            currentUser.setEmail(newEmail);
+            return true;
+        } else {
+            return false;
+        }
     }
-    private boolean modifyEmail(User user, String newEmail){
+    private boolean modifyEmail(String currentEmail, String newEmail){
         newEmail = newEmail.toLowerCase();
-        if (userDAO.getUserByUsername(user.getUsername()) != null && checkEmail(newEmail)) {
-            userDAO.updateDataUser(user.getEmail(), User.TERM_EMAIL, newEmail);
+        User tmpUser = userDAO.getUserByEmail(newEmail);
+        if (tmpUser == null && checkEmail(newEmail)) {
+            userDAO.updateDataUser(currentEmail, User.TERM_EMAIL, newEmail);
             currentUser.setEmail(newEmail);
             return true;
         }else {
@@ -110,20 +117,20 @@ public class UserManager {
 
 
     public boolean modifyCurrentUserName(String newUsername){
-        if (modifyUsername(currentUser, newUsername)){
+        if (modifyUsername(currentUser.getEmail(), newUsername)){
             currentUser.setUsername(newUsername);
             return true;
         } else {
             return false;
         }
     }
-    private boolean modifyUsername(User user, String newUsername){
-
-        if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.updateDataUser(user.getEmail(), User.TERM_USERNAME, newUsername);
+    private boolean modifyUsername(String currentEmail, String newUsername){
+        User tmpUser = userDAO.getUserByUsername(newUsername);
+        if (tmpUser == null) {
+            userDAO.updateDataUser(currentEmail, User.TERM_USERNAME, newUsername);
             return true;
         }else {
-            System.err.println("Not able to change Username from user: " + user.getUsername());
+            //System.err.println("Not able to change Username from user: " + user.getUsername());
             return false;
         }
 
