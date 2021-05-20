@@ -74,4 +74,12 @@ public interface PlayListDAO{
      * @return Arraylist de cançons
      */
     ArrayList<Song> getPlayListSongs(PlayList playList);
+
+    /**
+     * Mètode per obtenir les cançons d'una playlist
+     * @param name el nom de la playlist
+     * @param username el nom d'usuari propietari
+     * @return ArrayList de songs
+     */
+    ArrayList<Song> getPlayListSongsByPlayListName(String name, String username);
 }
