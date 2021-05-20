@@ -110,6 +110,7 @@ public class JFStatisticsView extends JFrame {
         this.valorsMinutsComu = nousValorsMinuts;
         this.valorReproduccionsComu = nousValorsReproduccions;
         //TODO porvar a treure això de sota a veure si funciona igual
+        //TODO prova si no funciona, fer repaint i revalidate de "fons.repaint//fons.revalidate"
         graficDreta.repaint();
         graficDreta.revalidate();
 

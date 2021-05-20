@@ -50,9 +50,14 @@ public class GraficsStatisticsEsquerra extends JPanel {
         //valors laterals
         Double max = Collections.max(minuts);
         double salt = max/24.0;
-        for(int i = 0; i<24; i+=2) {
-            temp = (int) (max - salt*i);
-            grafics2d.drawString(Integer.toString(temp), (float)(width + width_inicial + 7), (float) (i*heigh/23.0 + heigh_inicial +5));
+        if(max == 0.0) {
+            grafics2d.drawString("N/A", (float) (width + width_inicial + 7), (float) (1.0 * heigh / 23.0 + heigh_inicial + 5));
+
+        }else {
+            for (int i = 0; i < 24; i += 2) {
+                temp = (int) (max - salt * i);
+                grafics2d.drawString(Integer.toString(temp), (float) (width + width_inicial + 7), (float) (i * heigh / 23.0 + heigh_inicial + 5));
+            }
         }
 
     }
