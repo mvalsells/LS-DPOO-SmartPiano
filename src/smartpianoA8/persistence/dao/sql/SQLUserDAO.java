@@ -66,7 +66,7 @@ public class SQLUserDAO implements UserDAO {
                     0 + "', '" +
                     0 + "', '" +
                     i + "', '" +
-                    user + "');";
+                    user.getUsername() + "');";
             connector.insertQuery(query);
         }
 

@@ -58,6 +58,7 @@ public class ProfileController implements ActionListener {
                 break;
             case JPProfileView.TOP_5:
                 new JFTop5View(presentationController.getTop5());
+                break;
             case JPProfileView.DELETE_ACCOUNT:
                 presentationController.removeCurrentUser();
                 break;

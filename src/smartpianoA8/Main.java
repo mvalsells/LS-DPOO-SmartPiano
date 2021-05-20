@@ -3,6 +3,7 @@ package smartpianoA8;
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
 import smartpianoA8.business.UserManager;
+import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
@@ -15,9 +16,12 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PlayerController;
 import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.views.JFSongsTable;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Classe principal per l'execució del programa
@@ -84,23 +88,18 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
-        /*try {
-
-            businessFacade.login("chris", "sDFDSfdsfffsd2344323!");
-        } catch (UserManagerException e){
-            e.printStackTrace();
-        }*/
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
         presentationController.logoutOK();
-
-/*        try {
+/*
+        try {
+            userDAO.addUser(new User("a","a@a.com", User.TYPE_SMARTPIANO,UserManager.encryptPassword("a")));
             businessFacade.registerUser("Patata2k", "patata2k@gmail.com", "sDFDSfdsfffsd2344323!", "sDFDSfdsfffsd2344323!", User.TYPE_SMARTPIANO);
         } catch (PasswordException e) {
             e.printStackTrace();
         } catch (UserManagerException e) {
             e.printStackTrace();
         }
-/*
+
         songDAO.registerPresentationFacade(presentationController);
 
         //Song
@@ -137,9 +136,9 @@ public class Main {
         //System.out.println("lele");
 
 
-*/
 
 
+//*/
 /*
         //
         // ------------------------------

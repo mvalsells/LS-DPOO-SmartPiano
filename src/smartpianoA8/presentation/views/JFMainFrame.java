@@ -41,11 +41,11 @@ public class JFMainFrame extends JFrame {
     public JFMainFrame(ArrayList<Song> masterSongs, User currentUser,ArrayList<PlayList> hasPlayLists){
         //Frame
         setTitle("SmartPiano");
-        setLocationRelativeTo(null);
         //setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1085,680));
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
         //Panels (Navigation Bar options)
         jpSongs = new JPSongs(masterSongs);

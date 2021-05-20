@@ -86,31 +86,45 @@ public class WellcomeController implements ActionListener {
      */
     private void registerUser(){
         ArrayList<String> data = presentationController.wellcomeGetRegisterData();
+        StringBuilder message = new StringBuilder();
         if(data.get(0).equals("false")) {
-            System.out.println("No CheckBox");
-        }else {
+            message.append("Para continuar accepte los términos y condicions");
+        }else if (data.get(1) != null && data.get(2) != null && data.get(3) != null && data.get(4) != null) {
             try {
                 presentationController.registerUser(data.get(1), data.get(2), data.get(3), data.get(4), User.TYPE_SMARTPIANO);
-
             } catch (PasswordException e) {
-                StringBuilder message = new StringBuilder();
-                message.append("· La contraseña no cumple con los requisitos:\n");
-                if (e.isHasNotLowerCase()) {
-                    message.append("- No tiene minuscula/s\n");
+
+                if (e.isPasswordsDifferent()){
+                    message.append("· Las contrseñas no coinciden");
+                } else {
+                    message.append("· La contraseña no cumple con los requisitos:\n");
+                    if (e.isHasNotLowerCase()) {
+                        message.append("- No tiene minuscula/s\n");
+                    }
+                    if (e.isHasNotNumber()) {
+                        message.append("- No tiene numero/s\n");
+                    }
+                    if (e.isHasNotUpperCase()) {
+                        message.append("\t- No tiene mayuscula/s\n");
+                    }
+                    if (e.isPasswordToShort()) {
+                        message.append("\t- Es demasiado corta\n");
+                    }
                 }
-                if (e.isHasNotNumber()) {
-                    message.append("- No tiene numero/s\n");
-                }
-                if (e.isHasNotUpperCase()) {
-                    message.append("\t- No tiene mayuscula/s\n");
-                }
-                if (e.isPasswordToShort()) {
-                    message.append("\t- Es demasiado corta\n");
-                }
-                presentationController.showWarningDialog(message.toString());
+
             } catch (UserManagerException e) {
-                e.isUsernameExists();
+                if (e.isEmailExists()){
+                    message.append("· Ya existe un usuario con este correo\n");
+                }
+                if (e.isUsernameExists()){
+                    message.append("· Ya existe un usuario con este nombre de usuario\n");
+                }
             }
+        } else {
+          message.append("Por favor rellene todos los campos");
+        }
+        if (!message.toString().equals("")) {
+            presentationController.showWarningDialog(message.toString());
         }
     }
 

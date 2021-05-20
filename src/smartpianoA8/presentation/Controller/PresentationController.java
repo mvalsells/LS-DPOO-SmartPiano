@@ -143,9 +143,9 @@ public class PresentationController implements PresentationFacade {
      */
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
         businessFacade.registerUser(username, email, password, passwordRepetition, type);
-          businessFacade.registerUser(username, email, password, passwordRepetition,type);
-          businessFacade.login(username,password);
-          loginOK();
+        showWarningDialog("Registro correcto");
+        businessFacade.login(username,password);
+        loginOK();
     }
 
     /**
