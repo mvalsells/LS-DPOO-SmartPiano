@@ -20,7 +20,7 @@ public class JPProfileView extends JPMainView {
     private JPasswordField jpfNewPasword;
     private JPasswordField jpfRepeatNewPasword;
     private JButton jbSaveSettings;
-    private JPPiano jpPiano;
+    private JPTeclesTeclat jpTeclat;
     private JPPrimarySecondaryText jpUsernameText;
     private JPPrimarySecondaryText jpEmailText;
 
@@ -127,12 +127,12 @@ public class JPProfileView extends JPMainView {
         jpUserSettings.add(jbSaveSettings);
 
         //Piano
-        jpPiano = new JPPiano();
-
+        jpTeclat = new JPTeclesTeclat();
+        jpTeclat.setBackground(Color.PINK);
         //Center pack
         JPanel jpCenter = new JPMainView();
         jpCenter.add(jpUserSettings);
-        jpCenter.add(jpPiano);
+        jpCenter.add(jpTeclat);
 
         // ---- End center
 
@@ -152,7 +152,7 @@ public class JPProfileView extends JPMainView {
         jbLogout.addActionListener(actionListener);
         jbDeleteAccount.addActionListener(actionListener);
         jbSaveSettings.addActionListener(actionListener);
-        jpPiano.registerController(actionListener,mouseListener);
+        jpTeclat.registerController(mouseListener);
     }
 
     public ArrayList<String> profileViewGetData() {

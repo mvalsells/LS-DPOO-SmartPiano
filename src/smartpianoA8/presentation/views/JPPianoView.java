@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 
 public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
-    private JPNavBar jpNavBar;
     private JPPiano jpPiano;
     private JDPianoRegAdd jdPianoRegAdd;
 
