@@ -103,6 +103,8 @@ public class PresentationController implements PresentationFacade {
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
         jfMainFrame.registerMainFrameController(mainFrameController);
+
+        jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
     }
 
     public void logoutOK() {
@@ -226,6 +228,18 @@ public class PresentationController implements PresentationFacade {
     //Temporal
     public ArrayList<Song> getAllSongs(){return businessFacade.getMasterSongs();}
     public ArrayList<PlayList> getUserPlaylists(){return businessFacade.getCurrentUserPlaylist();}
+
+    public ArrayList<String> getUserPlaylistsStrings() {
+
+        ArrayList<String> stringPlaylists = new ArrayList<>();
+        ArrayList<PlayList> playLists = businessFacade.getCurrentUserPlaylist();
+
+        for (PlayList playList : playLists) {
+            stringPlaylists.add(playList.getNom());
+        }
+
+        return stringPlaylists;
+    }
 
     public ArrayList<Integer> getNumReproducionsCurrentUser(){
         return businessFacade.getNumReproducionsCurrentUser();
@@ -388,12 +402,18 @@ public class PresentationController implements PresentationFacade {
         test2.add(song);
 
         ArrayList<String> strings = new ArrayList<>();
-        strings.add("peleleororor");
-        strings.add("yoyoy");
-        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
+        strings.add("awadsdas");
+        strings.add("dsfsdfdss");
+
+        if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
+            JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
+        } else {
+            playerController.setSongsToBePlayed(test2);//bertu to do .. getplaylistsongsbyplaylistname
+        }
+        System.out.println(jfMainFrame.getJComboBoxString());
         jfMainFrame.setPlaylistsNames(strings);
 
-        playerController.setSongsToBePlayed(test2);
+        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
 
     public void playStatusInPlayer() {

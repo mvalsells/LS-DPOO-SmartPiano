@@ -172,6 +172,9 @@ public class JFMainFrame extends JFrame {
 
 
 
+    public String getJComboBoxString() {
+        return jpPlayer.getJComboBoxStringSelected();
+    }
 
 
 
