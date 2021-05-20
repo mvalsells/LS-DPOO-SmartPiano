@@ -201,9 +201,10 @@ public class SQLPlayListDAO implements PlayListDAO{
         return retorna;
     }
 
+
     public ArrayList<Song> getPlayListSongsByPlayListName(String name, String username){
         ArrayList<Song> songs = new ArrayList<>();
-        int IdPlayList;
+        int IdPlayList = 0; //impedir que comenci a null
 
         //obtenir la id de la playlist
         String query = "SELECT IdPlayList FROM PlayList WHERE Nom LIKE '" + name + "' AND NomUsuari LIKE '" + username + "';";
