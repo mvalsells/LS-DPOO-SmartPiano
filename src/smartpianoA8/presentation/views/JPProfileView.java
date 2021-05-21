@@ -6,6 +6,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class JPProfileView extends JPMainView {
     private JPTeclesTeclat jpTeclat;
     private JPPrimarySecondaryText jpUsernameText;
     private JPPrimarySecondaryText jpEmailText;
+    private JDChangeKey jdSelectKey;
+
 
     //Placeholders
     private String PH_NEW_USERNAME = "  Nuevo nombre de usuario";
@@ -143,16 +146,18 @@ public class JPProfileView extends JPMainView {
         add(Box.createHorizontalStrut(40),BorderLayout.WEST);
         add(Box.createHorizontalStrut(40),BorderLayout.EAST);
 
+        jdSelectKey = new JDChangeKey();
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
-    public void registerControllers(ActionListener actionListener, MouseListener mouseListener){
+    public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jbStats.addActionListener(actionListener);
         jbTop5.addActionListener(actionListener);
         jbLogout.addActionListener(actionListener);
         jbDeleteAccount.addActionListener(actionListener);
         jbSaveSettings.addActionListener(actionListener);
         jpTeclat.registerController(mouseListener);
+        jdSelectKey.registerKeyListener(keyListener);
     }
 
     public ArrayList<String> profileViewGetData() {
@@ -190,4 +195,12 @@ public class JPProfileView extends JPMainView {
             jpEmailText.setSecondaryText(email);
         }
     }
+
+    public void showDialog(String primary, String secondary){
+        jdSelectKey.show(primary,secondary);
+    }
+    public void closeDialog(){
+        jdSelectKey.close();
+    }
+
 }

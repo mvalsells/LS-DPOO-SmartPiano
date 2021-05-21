@@ -73,8 +73,9 @@ public class PresentationController implements PresentationFacade {
 
     public void loginOK() {
         //TODO Tancar/eliminar JFrame Wellcome
-        jfWellcomeFrame.dispose();
-
+        if (jfWellcomeFrame != null) {
+            jfWellcomeFrame.dispose();
+        }
         //Crear les vistes
         jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
 
@@ -100,7 +101,7 @@ public class PresentationController implements PresentationFacade {
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
         jfMainFrame.registerPlaylistViewControllers(playlistController,playlistController);
-        jfMainFrame.registerProfileViewControllers(profileController, profileController);
+        jfMainFrame.registerProfileViewControllers(profileController, profileController, profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
         jfMainFrame.registerMainFrameController(mainFrameController);
@@ -387,6 +388,12 @@ public class PresentationController implements PresentationFacade {
     public void profileViewUpdateText(){
         User tmpUser = businessFacade.getCurrentUser();
         jfMainFrame.profileViewUpdateText(tmpUser.getUsername(), tmpUser.getEmail());
+    }
+    public void profileViewShowDialog(String primary, String secondary){
+        jfMainFrame.profileViewShowDialog(primary,secondary);
+    }
+    public void profileViewCloseDialog(){
+        jfMainFrame.profileViewCloseDialog();
     }
     // ---- End ProfileView Methods
     // ---- Start Dialog/popups Methods

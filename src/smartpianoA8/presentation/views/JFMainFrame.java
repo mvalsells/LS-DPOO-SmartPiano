@@ -90,8 +90,8 @@ public class JFMainFrame extends JFrame {
     public void registerPlaylistViewControllers(ActionListener actionListener, ItemListener itemListener){
        jpPlaylistView.registerControllers(actionListener,itemListener);
     }
-    public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener){
-        jpProfileView.registerControllers(actionListener, mouseListener);
+    public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
+        jpProfileView.registerControllers(actionListener, mouseListener, keyListener);
     }
     public void registerPianoViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);
@@ -162,6 +162,12 @@ public class JFMainFrame extends JFrame {
 
     public void profileViewUpdateText(String username, String email){
         jpProfileView.updateText(username, email);
+    }
+    public void profileViewShowDialog(String primary, String secondary){
+        jpProfileView.showDialog(primary,secondary);
+    }
+    public void profileViewCloseDialog(){
+        jpProfileView.closeDialog();
     }
     // ---- End ProfileView Methods
 
