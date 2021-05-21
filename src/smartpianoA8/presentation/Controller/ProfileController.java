@@ -31,7 +31,8 @@ public class ProfileController implements ActionListener, MouseListener {
      * Consructor buit
      */
     public ProfileController(){
-        hmReal = presentationController.getHMteclas();
+        hmReal = new HashMap<>();
+        //hmReal = presentationController.getHMteclas();
         hmProfile = new HashMap<>();
         for (Map.Entry<Integer, Tecla> en: hmReal.entrySet()){
             hmProfile.put(en.getValue().getNota(),en.getKey());
