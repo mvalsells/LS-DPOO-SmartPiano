@@ -20,8 +20,8 @@ public class SQLPlayListDAO implements PlayListDAO{
         this.connector = connector;
     }
 
-    public String TERM_PLAYLIST1 = "Mi primera playlist";
-    public String TERM_PLAYLIST2 = "My sejunda primera plailis";
+    public String TERM_PLAYLIST1 = "La meu primera llista";
+    public String TERM_PLAYLIST2 = "Ma segona llista";
 
 
     /**
