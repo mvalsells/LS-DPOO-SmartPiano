@@ -5,9 +5,11 @@ import smartpianoA8.presentation.views.customComponents.JPPlayer;
 
 import javax.sound.midi.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -177,54 +179,55 @@ public class PlayerController implements Runnable, ActionListener {
                     currentSequencer = MidiSystem.getSequencer();
                     currentSequencer.open();
                     currentSequencer.setSequence(currentSequence);
-                } catch (InvalidMidiDataException e) {
-                    e.printStackTrace();
-                } catch (MidiUnavailableException e) {
+
+                    if(isPaused == false) {
+                        currentSequencer.start();
+                    } else if (isPaused == true) {
+                        currentSequencer.setMicrosecondPosition(whereWhenPaused);
+                        currentSequencer.start();
+                    }
+
+                    isPaused = false;
+
+                    jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
+
+                    //todo pasar duracion total de la cancion para
+
+                    while (currentSequencer.isRunning()) {
+                        jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
+                        if(actionToDo == 2) {
+                            //currentSong++;
+                            currentSequencer.close();
+                            actionToDo = 0;
+                            break;
+                        } else if (actionToDo == 3) {
+                            //currentSong--;
+                            currentSong = currentSong - 2;
+                            currentSequencer.close();
+                            actionToDo = 0;
+                            break;
+                        } else if (actionToDo == 1) {
+                            whereWhenPaused = currentSequencer.getMicrosecondPosition();
+                            currentSequencer.stop();
+                            currentSong = currentSong - 1;
+                            isPaused = true;
+                            break;
+                        } else if (actionToDo == 4) {
+                            currentSequencer.close();
+                            break;
+                        }
+                    }
+
+                    currentSequencer.close();
+                } catch (InvalidMidiDataException | MidiUnavailableException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: "+songDirectory+"\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\n\033The song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                    currentSong++;
                 }
 
 
-                if(isPaused == false) {
-                    currentSequencer.start();
-                } else if (isPaused == true) {
-                    currentSequencer.setMicrosecondPosition(whereWhenPaused);
-                    currentSequencer.start();
-                }
 
-                isPaused = false;
-
-                jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
-
-                //todo pasar duracion total de la cancion para
-
-                while (currentSequencer.isRunning()) {
-                    jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
-                    if(actionToDo == 2) {
-                        //currentSong++;
-                        currentSequencer.close();
-                        actionToDo = 0;
-                        break;
-                    } else if (actionToDo == 3) {
-                        //currentSong--;
-                        currentSong = currentSong - 2;
-                        currentSequencer.close();
-                        actionToDo = 0;
-                        break;
-                    } else if (actionToDo == 1) {
-                        whereWhenPaused = currentSequencer.getMicrosecondPosition();
-                        currentSequencer.stop();
-                        currentSong = currentSong - 1;
-                        isPaused = true;
-                        break;
-                    } else if (actionToDo == 4) {
-                        currentSequencer.close();
-                        break;
-                    }
-                }
-
-                currentSequencer.close();
 
             }
 
