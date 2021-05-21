@@ -7,8 +7,18 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el panel interactivo asociado al piano, aquí se le asignara no solamente
+ * el panel general donde el piano esta incluido, sino que además, incluye los register controller al igual que las funciones las cuales pasan
+ * la información de que tecla ha sido pulsada.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 
 public class JPPiano extends JPanel {
+
     public static int OCTAVES = 3;
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
@@ -21,6 +31,9 @@ public class JPPiano extends JPanel {
     private JButton playButton;
     private JButton notesButton;
 
+    /**
+     * Controler on conte tots els panels que formen part del piano.
+     */
     public JPPiano() {
 
         ImageView sombrejatSud = new ImageView(new ImageIcon("Imagen/ImagenesMenu/SombrejatSud.jpg").getImage());
@@ -83,7 +96,7 @@ public class JPPiano extends JPanel {
         eastCentre.setBackground(new Color(50,51,51));
 
         JPanel teclat = new JPanel(null){
-            @Override
+          @Override
             public Dimension getPreferredSize() {
                 int count = getComponentCount();
                 Component last = getComponent(count - 1);
@@ -450,14 +463,30 @@ public class JPPiano extends JPanel {
         add(lateralEast,BorderLayout.EAST);
         add(lateralWest,BorderLayout.WEST);
         add(posicioCentral,BorderLayout.CENTER);
-    }
+    }// Cierre del constructor
 
+    /**
+     * Método que envia el nuevo icono cuando el boton de reg es pulsado.
+     * @param button boton asignado que cambiara el icono.
+     */
     public void setPressedIcon(JButton button){
         button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));
-    }
+    }//Cierre del método
+
+    /**
+     * Método que envia el icono cuando el boton de reg vuelve a ser pulsado.
+     * @param button boton asignado que cambiara el icono.
+     */
     public void setUnpressedIcon(JButton button){
         button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
-    }
+    }//Cierre del método
+
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
 
     public void registerController(ActionListener controller, KeyListener keyListener, MouseListener mouseListener){
 
@@ -473,7 +502,13 @@ public class JPPiano extends JPanel {
             white.addKeyListener(keyListener);
             white.addMouseListener(mouseListener);
         }
-    }
+    }//Cierre del método
+
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller controlador asocioado a los botones.
+     * @param mouseListener controlador asociado al ratón.
+     */
 
     public void registerController(ActionListener controller, MouseListener mouseListener){
 
@@ -487,19 +522,37 @@ public class JPPiano extends JPanel {
         for (WhiteKey white : whites) {
             white.addMouseListener(mouseListener);
         }
-    }
+    }//Cierre del método
 
-
+    /**
+     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * @param note posición del array de blancas, de la tecla seleccionada.
+     */
     public void pintarTeclaBlanca(int note){
         whites[note].clicarNota();
-    }
+    }//Cierre del metodo
+
+    /**
+     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * @param note posición del array de blancas, de la tecla seleccionada.
+     */
     public void despintarTeclaNegra(int note){
         blacks[note].desclicarNota();
-    }
+    }//Cierre del metodo
+
+    /**
+     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * @param note posición del array de blancas, de la tecla seleccionada.
+     */
     public void despintarTeclaBlanca(int note){
         whites[note].desclicarNota();
-    }
+    }//Cierre del metodo
+
+    /**
+     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * @param note posición del array de blancas, de la tecla seleccionada.
+     */
     public void pintarTeclaNegra(int note){
         blacks[note].clicarNota();
-    }
-}
+    }//Cierre del metodo
+}//Cierre de la classe
