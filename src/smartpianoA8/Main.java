@@ -84,18 +84,18 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
-
+/*
         try {
             businessFacade.login("marcv","1234Marc");
         } catch (UserManagerException e) {
             e.printStackTrace();
         }
-
+*/
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
-        presentationController.loginOK();
-        presentationController.changeView(JFMainFrame.PROFILE);
+       // presentationController.loginOK();
+       // presentationController.changeView(JFMainFrame.PROFILE);
 
-        //        presentationController.logoutOK();
+        presentationController.logoutOK();
         songDAO.registerPresentationFacade(presentationController);
 
 
