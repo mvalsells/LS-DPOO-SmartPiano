@@ -82,4 +82,14 @@ public interface PlayListDAO{
      * @return ArrayList de songs
      */
     ArrayList<Song> getPlayListSongsByPlayListName(String name, String username);
+
+    /**
+     * Mètode que comprova si una playlist existent està buida
+     * @param name nom de la playlist
+     * @param user nom de l'usuari
+     * @return
+     */
+    Boolean isPlayListEmpty(String name, String user);
+
+    Boolean doesPlayListExist(String nom, String user);
 }

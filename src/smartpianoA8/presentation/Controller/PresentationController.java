@@ -326,6 +326,13 @@ public class PresentationController implements PresentationFacade {
     public ArrayList<Song> getPlayListSongsByPlayListName(String name){
         return businessFacade.getPlayListSongsByPlayListName(name);
     }
+    public Boolean isPlayListEmpty(String nom){
+        return businessFacade.isPlayListEmpty(nom);
+    }
+    public Boolean doesPlayListExists(String nom){
+        return businessFacade.doesPlayListExist(nom);
+    }
+
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 

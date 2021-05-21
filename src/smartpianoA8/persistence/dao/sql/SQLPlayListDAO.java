@@ -235,4 +235,34 @@ public class SQLPlayListDAO implements PlayListDAO{
             return songs;
         }
     }
+
+    @Override
+    public Boolean isPlayListEmpty(String nom, String user){
+        PlayList playList = getPlayListByName(nom, user);
+        if(playList == null || playList.getSongs() == null){
+            return true;
+        }else{
+           return false;
+        }
+    }
+
+    @Override
+    public Boolean doesPlayListExist(String nom, String user){
+        PlayList retorna = null;
+        String query = "SELECT * FROM PlayList WHERE Nom LIKE '" + nom +"' AND NomUsuari LIKE '" + user +"'";
+        ResultSet result = connector.selectQuery(query);
+        try{
+            result.next();
+
+            if(retorna == null){
+                return false;
+            }else {
+                return true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

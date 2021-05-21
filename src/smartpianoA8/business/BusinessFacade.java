@@ -56,6 +56,9 @@ public interface BusinessFacade {
     PlayList getPlayListByName(String name);
     ArrayList<Song> getPlayListSongsByPlayListName(String name);
 
+    Boolean doesPlayListExist(String nom);
+    public Boolean isPlayListEmpty(String nom);
+
     //Stats
     ArrayList<Integer> getNumReproducionsCurrentUser();
     ArrayList<Double> getNumMinutsCurrentUser();

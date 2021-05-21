@@ -299,20 +299,26 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public void removeSongFromPlayList(Song song, PlayList playList) {
         playListDAO.removeSongFromPlayList(song,playList);
     }
-
+@Override
     public Song getSongByName(String name){
         return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
     }
-
+@Override
     public PlayList getPlayListByName(String name){
         return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
     }
-
+@Override
     public ArrayList<Song> getPlayListSongsByPlayListName(String name){
         return playListDAO.getPlayListSongsByPlayListName(name, userManager.getCurrentUser().getUsername());
     }
-
-
+@Override
+    public Boolean doesPlayListExist(String nom){
+        return playListDAO.doesPlayListExist(nom, userManager.getCurrentUser().getUsername());
+    }
+    @Override
+    public Boolean isPlayListEmpty(String nom){
+        return playListDAO.isPlayListEmpty(nom, userManager.getCurrentUser().getUsername());
+    }
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------

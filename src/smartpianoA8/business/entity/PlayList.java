@@ -56,7 +56,12 @@ public class PlayList {
      * @return ArrayList<Song></Song> amb les cançons
      */
     public ArrayList<Song> getSongs(){
-        return this.songs;
+        if(songs.size() == 0) {
+            return null;
+        }
+        else {
+            return this.songs;
+        }
     }
 
     /**
