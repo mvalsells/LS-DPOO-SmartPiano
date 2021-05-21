@@ -75,6 +75,7 @@ public class JPTiraCancons extends JPMainView{
         if(songs==null) {
 
             jlTitul.setText(titul);
+            jpCanço = new ArrayList<>();
 
         }else  {
             //jbButton = new JButton[songs.size()];

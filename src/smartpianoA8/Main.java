@@ -16,7 +16,6 @@ import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PlayerController;
 import smartpianoA8.presentation.Controller.PresentationController;
-import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFSongsTable;
 
 import java.io.FileNotFoundException;
@@ -99,6 +98,7 @@ public class Main {
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
        // presentationController.loginOK();
        // presentationController.changeView(JFMainFrame.PROFILE);
+        songDAO.registerPresentationFacade(presentationController);
         presentationController.logoutOK();
 /*
         try {

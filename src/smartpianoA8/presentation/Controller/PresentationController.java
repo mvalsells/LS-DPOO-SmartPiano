@@ -316,6 +316,8 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemove(Song song){jfMainFrame.playlistViewUpdateWhenRemove(song);}
 
     public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}
+    public void playlistJDPlaylistCreatorRun()  {  jfMainFrame.playlistJDPlaylistCreatorRun(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/ }
+    public void playlistJDPlaylistCreatorClose(){  jfMainFrame.playlistJDPlaylistCreatorClose(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/}
 
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
@@ -431,9 +433,14 @@ public class PresentationController implements PresentationFacade {
         if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
             JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
         } else {
-            isUploaded = true;
-            playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
-            //playerController.setSongsToBePlayed(test2);//bertu to do .. getplaylistsongsbyplaylistname
+            if(!businessFacade.doesPlayListExist(jfMainFrame.getJComboBoxString())) {
+                JOptionPane.showMessageDialog(new Frame(), "This playlist does not exist.. :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
+            } else if (businessFacade.isPlayListEmpty(jfMainFrame.getJComboBoxString())) {
+                JOptionPane.showMessageDialog(new Frame(), "This playlist is empty.\nYou have to add songs to play them!", "PLAYLIST EMPTY", JOptionPane.ERROR_MESSAGE);
+            } else {
+                playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
+                isUploaded = true;
+            }
         }
         System.out.println(jfMainFrame.getJComboBoxString());
         //jfMainFrame.setPlaylistsNames(strings);

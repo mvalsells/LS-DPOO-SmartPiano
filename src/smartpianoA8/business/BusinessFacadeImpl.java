@@ -286,7 +286,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
 
     // ------------------------------------------------------
-    //  START song implementation
+    //  START playlist implementation
     // ------------------------------------------------------
     @Override
     public ArrayList<PlayList> getCurrentUserPlaylist(){

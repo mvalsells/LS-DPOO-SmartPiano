@@ -137,6 +137,8 @@ public class JFMainFrame extends JFrame {
     public void playlistViewUpdateWhenRemove(Song song){jpPlaylistView.updateWhenRemove(song);}
 
     public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}
+    public void playlistJDPlaylistCreatorRun()  {  jpPlaylistView.jdPlaylistCreatorRun();  }
+    public void playlistJDPlaylistCreatorClose(){  jpPlaylistView.jdPlaylistCreatorClose();}
 
     public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}
