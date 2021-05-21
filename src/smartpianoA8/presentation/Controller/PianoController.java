@@ -117,7 +117,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                }else{ System.out.println("ERROR patata"); }
                break;
            case JPPiano.PLAY_BUTTON:
-               
+               //Start cascade!TODO startCascade(o com hagi de ser);
                break;
            case JPPiano.NOTES_BUTTON:
                if(!isNotesActive){

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class JPPlayer extends JPanel {
 
@@ -18,7 +19,6 @@ public class JPPlayer extends JPanel {
     private JButton uploadButton;
 
     private JComboBox<String> jComboBox;
-    private ArrayList<String> playlistsNames;
 
     private JPProgressBar progressBar;
 
@@ -72,7 +72,8 @@ public class JPPlayer extends JPanel {
         uploadButton.setActionCommand(UPLOAD_BUTTON);
 
         jComboBox = new JComboBox<>();
-        jComboBox.addItem("If you want to play your playlist you must select it before and update pressing the button ---->");
+
+        //jComboBox.addItem("If you want to play your playlist you must select it before and update pressing the button ---->");
 
         progressBar = new JPProgressBar();
 
@@ -137,8 +138,10 @@ public class JPPlayer extends JPanel {
     public void setPlaylistsNames(ArrayList<String> playlistsNames) {
         //this.playlistsNames = playlistsNames;
 
-        //jComboBox.removeAll();
+        jComboBox.removeAllItems();
 
+
+        jComboBox.addItem("If you want to play your playlist you must select it before and update pressing the button ---->");
         try {
             for(int i = 0; i < playlistsNames.size(); i++) {
                 jComboBox.addItem(playlistsNames.get(i));
@@ -161,5 +164,9 @@ public class JPPlayer extends JPanel {
     public void setTotalBarLong(int totalBarLong) {
         this.totalBarLong = totalBarLong / 1000;
         this.totalBarLong = this.totalBarLong / 1000;
+    }
+
+    public String getJComboBoxStringSelected() {
+        return Objects.requireNonNull(jComboBox.getSelectedItem()).toString();
     }
 }

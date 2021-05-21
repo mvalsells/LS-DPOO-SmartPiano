@@ -25,8 +25,8 @@ public class JPPlailistEditor extends JPMainView{
         this.jButton = new JBgeneral(buttonString,ColorScheme.DARK_GREEN);
         this.jButton.setActionCommand(actionCommand);
         add(jLabel);
-        add(jButton);
         add(jComboBox);
+        add(jButton);
 
     }
 

@@ -54,6 +54,7 @@ public interface BusinessFacade {
     void addSongToPlayList(Song song, PlayList playList);
     void removeSongFromPlayList(Song song,PlayList playList);
     PlayList getPlayListByName(String name);
+    ArrayList<Song> getPlayListSongsByPlayListName(String name);
 
     //Stats
     ArrayList<Integer> getNumReproducionsCurrentUser();

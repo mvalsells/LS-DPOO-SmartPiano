@@ -2,7 +2,6 @@ package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Notes;
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import java.awt.event.*;
@@ -50,7 +49,7 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
      */
     @Override
     public void run(){
-        Song song = presentationController.getSongByID(presentationController.songControllerGetLastSongPressed());
+        Song song = presentationController.getSongByID(presentationController.getLastSongPressed());
         this.partitura = presentationController.getBusinesMidiNotes(song);
         this.canal1 = partitura.get(1);
 

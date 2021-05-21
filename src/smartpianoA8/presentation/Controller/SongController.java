@@ -19,7 +19,7 @@ public class SongController implements ActionListener {
 
     // ---- Inici Atributs ----
     PresentationController presentationController;
-    int lastSongPressed;
+
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
@@ -52,15 +52,8 @@ public class SongController implements ActionListener {
 
             String[] split = e.getActionCommand().split("-");
 
-            this.lastSongPressed = Integer.parseInt(split[1]);
-            System.out.println(lastSongPressed);
-
-        }
-        switch (e.getActionCommand()) {
-            //Song View
-            case JPSongs.SONG_PRESSED:
-                e.getID();
-
+            presentationController.setLastSongPressed(Integer.parseInt(split[1]));
+            System.out.println(Integer.parseInt(split[1]));
 
         }
 
@@ -70,6 +63,6 @@ public class SongController implements ActionListener {
      * Mètode per obtenir quina ha sigut la última cançó clicada i operar amb ella
      * @return l'id de la cançó
      */
-    public int getLastSongPressed(){return lastSongPressed;}
+
 
 }
