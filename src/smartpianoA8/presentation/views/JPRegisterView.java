@@ -8,6 +8,17 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el panel interactivo asociado al registro, aquí se le asignara no solamente
+ * el panel general donde estan todas la funciones para registrarse, sino que además, incluye los register controller al igual que la funcion
+ * para controlar que los datos se creen correctamente.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
+
+
 public class JPRegisterView extends JPanel  {
 
 
@@ -31,11 +42,18 @@ public class JPRegisterView extends JPanel  {
     private JButton registerButton;//canviat
     private JCheckBox acceptTandC;//Canviat
 
+    /**
+     * Constructor de JPRegisterView.
+     */
     public JPRegisterView() {
         iniciarSessio = new JButton();
         registerButton = new JButton();
-    }
+    }//Cierre constructor
 
+    /**
+     * Método en el cual se encuentran todos los componentes asociados a la view como los JPanels, imagenes o textos.
+     * @return Devuelve el panel creado.
+     */
     public ImageView runRegister(){
         bordersView = new BordersView();
 
@@ -322,30 +340,22 @@ public class JPRegisterView extends JPanel  {
 
 
 
-    }
+    }//Cierre del método
 
+
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller controlador asocioado a los botones.
+     */
     public void registerController(ActionListener controller) {
         iniciarSessio.addActionListener(controller);
         registerButton.addActionListener(controller);
     }
 
-    /*
-    public Boolean isCheckBoxAcceptTandC(){return acceptTandC.isSelected();}
-
-    public String getNomString(){
-        return nom.getText();
-    }
-    public String getCorreuString(){
-        return correu.getText();
-    }
-    public String getContrasenyaString(){
-        return contrasenya.getText();
-    }
-    public String getRepetirContrasenyaString(){
-        return repetirContrasenya.getText();
-    }
-*/
-
+    /**
+     * Método que comprueba que los datos introduciodos tiene el formato correcto.
+     * @return Devuelve si los datos han sido correctos o ha habido algún fallo
+     */
     public ArrayList<String> getData() {
         ArrayList<String> data = new ArrayList<>();
         data.add(String.valueOf(acceptTandC.isSelected()));
@@ -372,5 +382,5 @@ public class JPRegisterView extends JPanel  {
             data.add(pass);
         }
         return data;
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase
