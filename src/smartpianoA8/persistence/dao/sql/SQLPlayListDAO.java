@@ -201,16 +201,30 @@ public class SQLPlayListDAO implements PlayListDAO{
         return retorna;
     }
 
+
     public ArrayList<Song> getPlayListSongsByPlayListName(String name, String username){
         ArrayList<Song> songs = new ArrayList<>();
-        String query = "SELECT idSong FROM SongPlaylist WHERE IdPlayList = " + username + ";";
+        int IdPlayList = 0; //impedir que comenci a null
+
+        //obtenir la id de la playlist
+        String query = "SELECT IdPlayList FROM PlayList WHERE Nom LIKE '" + name + "' AND NomUsuari LIKE '" + username + "';";
         ResultSet result = connector.selectQuery(query);
 
-        String query2;
+        try {
+            result.next();
+            IdPlayList = result.getInt("IdPlayList");
+        }catch (SQLException e){
+            e.printStackTrace();
+            return songs;
+        }
+
+        //obtenir les idSong de la IdPlayList
+        query = "SELECT idSong FROM SongPlaylist WHERE IdPlayList = " + IdPlayList + ";";
+        result = connector.selectQuery(query);
         try{
             while(result.next()) {
-                query2 = "SELECT * FROM Song WHERE idSong = " + result.getInt("idSong") + ";";
-                ResultSet result2 = connector.selectQuery(query2);
+                query = "SELECT * FROM Song WHERE idSong = " + result.getInt("idSong") + ";";
+                ResultSet result2 = connector.selectQuery(query);
                 result2.next();
                 //System.out.println(result2.getInt("idSong"));
                 songs.add(new Song(result2.getInt("idSong"), result2.getFloat("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("DataEnregistrament"), result2.getString("Directori"), result2.getInt("isPublic"), result2.getString("NomUsuari"), result2.getString("Midi")));
@@ -218,8 +232,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             return songs;
         }catch (SQLException e){
             e.printStackTrace();
+            return songs;
         }
-        return songs;
-
     }
 }
