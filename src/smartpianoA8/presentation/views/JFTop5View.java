@@ -123,16 +123,26 @@ public class JFTop5View extends JFrame{
                 AUTOR[i]= new JLabel("ARTISTA");
                 NUMREP[i]= new JLabel("REPRODUCCIONES");
             }else{
-                String strAutor = topSongsComu.get(j).getAutor();
-                TOP[i]= new JLabel(""+i);
-                NOM[i]= new JLabel(topSongsComu.get(j).getNom());
-                NUMREP[i]= new JLabel(String.valueOf(topSongsComu.get(j).getNumReproduccions()));
-                AUTOR[i]= new JLabel(strAutor);
+                if(topSongsComu.get(j).getNumReproduccions() == 0){
+                    TOP[i] = new JLabel("");
+                    NOM[i] = new JLabel("");
+                    NUMREP[i] = new JLabel("");
+                    AUTOR[i] = new JLabel("");
+                }else {
+                    String strAutor = topSongsComu.get(j).getAutor();
+                    TOP[i] = new JLabel("" + i);
+                    NOM[i] = new JLabel(topSongsComu.get(j).getNom());
+                    NUMREP[i] = new JLabel(String.valueOf(topSongsComu.get(j).getNumReproduccions()));
 
-                if (strAutor.compareTo("Master") == 0) strAutor = topSongsComu.get(j).getNomUsuari();
-                j++;
-                //autor[i] = new JLabel(strAutor);
+                    if (strAutor.compareTo("Master") != 0) {
+                        strAutor = topSongsComu.get(j).getAutor();
+                    } else {
+                        strAutor = topSongsComu.get(j).getNomUsuari();
+                    }
 
+                    AUTOR[i] = new JLabel(strAutor);
+                    j++;
+                }
 
             }
 
