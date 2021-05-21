@@ -245,9 +245,9 @@ public class SQLPlayListDAO implements PlayListDAO{
     @Override
     public Boolean isPlayListEmpty(String nom, String user){
         PlayList playList = getPlayListByName(nom, user);
-        int quant = playList.getSongs().size();
+        //int quant = playList.getSongs().size();
 
-        if(playList.getSongs() == null || quant == 0){
+        if(playList.getSongs() == null){
             return true;
         }else{
            return false;

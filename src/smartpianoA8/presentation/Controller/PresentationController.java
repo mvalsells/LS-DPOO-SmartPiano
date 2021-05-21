@@ -424,12 +424,17 @@ public class PresentationController implements PresentationFacade {
         if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
             JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
         } else {
-            isUploaded = true;
-            playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
-            //playerController.setSongsToBePlayed(test2);//bertu to do .. getplaylistsongsbyplaylistname
+            if(!businessFacade.doesPlayListExist(jfMainFrame.getJComboBoxString())) {
+                JOptionPane.showMessageDialog(new Frame(), "This playlist does not exist.. :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
+            } else if (businessFacade.isPlayListEmpty(jfMainFrame.getJComboBoxString())) {
+                JOptionPane.showMessageDialog(new Frame(), "This playlist is empty.\nYou have to add songs to play them!", "PLAYLIST EMPTY", JOptionPane.ERROR_MESSAGE);
+            } else {
+                playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
+                isUploaded = true;
+            }
         }
         System.out.println(jfMainFrame.getJComboBoxString());
-        //jfMainFrame.setPlaylistsNames(strings);
+        jfMainFrame.setPlaylistsNames(strings);
 
         //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
