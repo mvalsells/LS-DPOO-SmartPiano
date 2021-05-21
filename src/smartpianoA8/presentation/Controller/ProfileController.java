@@ -152,7 +152,7 @@ public class ProfileController implements ActionListener, MouseListener, KeyList
         ultimaNota = key.getNote();
         //Show dialog
         dialogShown = true;
-        presentationController.profileViewShowDialog("Presione la tecla a assignar a la nota " + ultimaNota,"");
+        presentationController.profileViewShowDialog("Presione la tecla a assignar a la tecla del piano numero " + (ultimaNota-47),"");
 
     }
 
@@ -207,30 +207,31 @@ public class ProfileController implements ActionListener, MouseListener, KeyList
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Key pressed");
+
+        //hmProfile: Key=int nota Value= int VK_TECLA
+        //hmReal: Key=int VK_TEcla Value= int Tecla
+
         if (dialogShown) {
             int presseKey = e.getKeyCode();
             //Check if key alredy in use
             if (hmReal.get(presseKey) == null) {
-                System.out.println(e.getKeyCode() + " - " + e.getKeyChar());
                 //No exsiteix, actualitzar
-                /*int teclaVKAntiga = hmProfile.get(ultimaNota);
+                int teclaVKAntiga = hmProfile.get(ultimaNota);
                 Tecla teclaPiano = hmReal.get(teclaVKAntiga);
                 hmReal.remove(teclaVKAntiga);
                 teclaPiano.setNota(ultimaNota);
                 hmReal.put(presseKey, teclaPiano);
-                hmProfile.replace(ultimaNota, presseKey);*/
+                hmProfile.replace(ultimaNota, presseKey);
+                //TODO Actualitzar valors tecles
                 presentationController.profileViewCloseDialog();
+                presentationController.setHMteclas(hmReal);
                 dialogShown=false;
             } else {
-                //JA existeix, no actualitzar
-
-                presentationController.profileViewShowDialog("Tecla ya assignada a otra nota","Prueba otra");
+                int notaPressedKey = hmReal.get(presseKey).getNota()-47;
+                presentationController.profileViewShowDialog("Tecla ya assignada a la tecla numero " + notaPressedKey + " del piano","Prueba otra");
             }
         }
 
-
-        HashMap<Integer, Tecla> hmTecles = presentationController.getHMteclas();
         //Integer lletra del teclat fisica
         //Tecla
 

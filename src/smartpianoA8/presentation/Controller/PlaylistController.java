@@ -74,6 +74,7 @@ public class PlaylistController implements ActionListener, ItemListener{
                     JOptionPane.showMessageDialog(new Frame(),"Estas Seuro????????", "YO NO LO HARIA EHHHHHHHHH",JOptionPane.ERROR_MESSAGE);
                     presentationController.playlistJDPlaylistCreatorClose();
                     JOptionPane.showMessageDialog(new Frame(),"Te JODES", "PD: DOGECOIN",JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         }
 

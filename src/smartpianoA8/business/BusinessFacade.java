@@ -66,4 +66,5 @@ public interface BusinessFacade {
 
     //Altres
     HashMap<Integer, Tecla> getHMTeclas();
+    void setHmTeclas(HashMap<Integer, Tecla> hmTeclas);
 }

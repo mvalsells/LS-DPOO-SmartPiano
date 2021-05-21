@@ -266,6 +266,10 @@ public class PresentationController implements PresentationFacade {
     public HashMap<Integer, Tecla> getHMteclas(){
         return businessFacade.getHMTeclas();
     }
+    public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
+        businessFacade.setHmTeclas(hmTeclas);
+        pianoController.setHmTeclas(hmTeclas);
+    }
 
     public void removeCurrentUser(){
         businessFacade.removeCurrentUser();

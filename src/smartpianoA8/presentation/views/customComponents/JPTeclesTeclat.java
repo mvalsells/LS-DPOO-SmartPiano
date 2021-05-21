@@ -14,36 +14,13 @@ public class JPTeclesTeclat extends JPanel {
         setBackground(Color.BLACK);
         setLayout(null);
         //teclat.addKeyListener(this);
-        char lletresBlack = '0';
         for (int i = 0; i < blacks.length; i++) {
             blacks[i] = new BlackKey(i);
-
-            if(lletresBlack < 'a'){
-                blacks[i].setText(String.valueOf(lletresBlack));
-                lletresBlack++;
-
-            }else {
-                lletresBlack = '0';
-                blacks[i].setText(String.valueOf(lletresBlack));
-            }
-            blacks[i].setForeground(Color.WHITE);
-            blacks[i].setFont(new Font("Verdana", Font.PLAIN, 6));
             add(blacks[i]);
         }
-
-        char lletresWhite = 'a';
         for (int i = 0; i < whites.length; i++) {
 
             whites[i] = new WhiteKey(i);
-            if(lletresWhite < 'z'){
-                //whites[i].setAlignmentX(0);
-                whites[i].setText(String.valueOf(lletresWhite));
-
-                lletresWhite ++;
-            }else {
-                lletresWhite = 'a';
-                whites[i].setText(String.valueOf(lletresWhite));
-            }
             add(whites[i]);
 
         }

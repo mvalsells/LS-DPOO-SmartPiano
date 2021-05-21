@@ -131,7 +131,6 @@ public class JPProfileView extends JPMainView {
 
         //Piano
         jpTeclat = new JPTeclesTeclat();
-        //jpTeclat.setBackground(Color.PINK);
         //Center pack
         JPanel jpCenter = new JPMainView();
         jpCenter.add(jpUserSettings);
