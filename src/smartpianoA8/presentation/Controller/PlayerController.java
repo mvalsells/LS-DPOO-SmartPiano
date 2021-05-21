@@ -25,6 +25,7 @@ public class PlayerController implements Runnable, ActionListener {
     private boolean isPaused = false;
     private int currentSong = 0;
     private long whereWhenPaused = 0;
+    private boolean isClosed = false;
     JPPlayer jpPlayer;
 
     public PlayerController(JPPlayer jpPlayer) {
@@ -162,10 +163,14 @@ public class PlayerController implements Runnable, ActionListener {
 
     public void setActionToDo(int actionToDo) {
         this.actionToDo = actionToDo;
+        if(actionToDo == 4) {
+            isClosed = true;
+        }
     }
 
     private void playThePlayer() {
 
+        isClosed = false;
         while (isPlaying) {
 
             for(currentSong = 0; currentSong < songsToBePlayed.size(); currentSong++) {
@@ -175,7 +180,11 @@ public class PlayerController implements Runnable, ActionListener {
                 //TODO SEND MILISECONDS TO DAO presentationcontroller.settaltaltal -> businessfacade.settaltaltal ..... actualitzarBBDDEstadistiques(LocalTime duradaSong, String username);
 
                 try {
-                    currentSequence = MidiSystem.getSequence(songDirectory);
+                    if(!isClosed) {
+                        currentSequence = MidiSystem.getSequence(songDirectory);
+                    }else {
+
+                    }
                     currentSequencer = MidiSystem.getSequencer();
                     currentSequencer.open();
                     currentSequencer.setSequence(currentSequence);
@@ -218,19 +227,25 @@ public class PlayerController implements Runnable, ActionListener {
                             break;
                         } else if (actionToDo == 4) {
                             currentSequencer.close();
+                            isClosed = true;
+                            isPlaying = false;
                             break;
                         }
                     }
 
                     currentSequencer.close();
-                } catch (InvalidMidiDataException | MidiUnavailableException e) {
+                } catch (FileNotFoundException e) {
+                    //if(!isClosed) {
+                        JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + songDirectory + "\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\nThe song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                        //currentSong++;
+                        isPlaying = false;
+
+                    //}
+                    break;
+
+                } catch (InvalidMidiDataException | MidiUnavailableException | IOException e) {
                     e.printStackTrace();
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: "+songDirectory+"\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\nThe song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
-                    currentSong++;
                 }
-
-
 
 
             }
