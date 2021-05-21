@@ -434,7 +434,7 @@ public class PresentationController implements PresentationFacade {
             }
         }
         System.out.println(jfMainFrame.getJComboBoxString());
-        jfMainFrame.setPlaylistsNames(strings);
+        //jfMainFrame.setPlaylistsNames(strings);
 
         //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }

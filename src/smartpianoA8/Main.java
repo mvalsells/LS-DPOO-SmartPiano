@@ -89,6 +89,7 @@ public class Main {
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
+        songDAO.registerPresentationFacade(presentationController);
         presentationController.logoutOK();
 /*
         try {
