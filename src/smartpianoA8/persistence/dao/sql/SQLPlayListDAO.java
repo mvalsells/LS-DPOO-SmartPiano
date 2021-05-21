@@ -97,7 +97,7 @@ public class SQLPlayListDAO implements PlayListDAO{
 
         }catch (SQLException e){
             System.out.println("PATATA 2k mecagun");
-            e.printStackTrace();
+            //e.printStackTrace();
             return llista;
         }
     }
@@ -120,7 +120,7 @@ public class SQLPlayListDAO implements PlayListDAO{
 
             }
         }catch (SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -147,7 +147,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             }
             return songs;
         }catch (SQLException e){
-            e.printStackTrace();
+           // e.printStackTrace();
 
 
         }
@@ -196,7 +196,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             return retorna;
 
         }catch(SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return retorna;
     }
@@ -214,7 +214,7 @@ public class SQLPlayListDAO implements PlayListDAO{
             result.next();
             IdPlayList = result.getInt("IdPlayList");
         }catch (SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return songs;
         }
 
@@ -231,11 +231,17 @@ public class SQLPlayListDAO implements PlayListDAO{
             }
             return songs;
         }catch (SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return songs;
         }
     }
 
+    /**
+     * Mètode que comprova si una playlist està buida
+     * @param nom nom de la playlist
+     * @param user nom de l'usuari
+     * @return true: buida, false: plena
+     */
     @Override
     public Boolean isPlayListEmpty(String nom, String user){
         PlayList playList = getPlayListByName(nom, user);
@@ -248,6 +254,12 @@ public class SQLPlayListDAO implements PlayListDAO{
         }
     }
 
+    /**
+     * Mètode per mirar si una playlist existeix
+     * @param nom nom de la playlist
+     * @param user user de la playlist
+     * @return true: existeix, false: no existeix
+     */
     @Override
     public Boolean doesPlayListExist(String nom, String user){
         int id = 0;
