@@ -222,7 +222,7 @@ public class PlayerController implements Runnable, ActionListener {
                 } catch (InvalidMidiDataException | MidiUnavailableException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: "+songDirectory+"\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\n\033The song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: "+songDirectory+"\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\nThe song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
                     currentSong++;
                 }
 
