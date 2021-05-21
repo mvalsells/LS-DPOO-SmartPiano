@@ -248,13 +248,13 @@ public class SQLPlayListDAO implements PlayListDAO{
 
     @Override
     public Boolean doesPlayListExist(String nom, String user){
-        PlayList retorna = null;
+        int id = 0;
         String query = "SELECT * FROM PlayList WHERE Nom LIKE '" + nom +"' AND NomUsuari LIKE '" + user +"'";
         ResultSet result = connector.selectQuery(query);
         try{
             result.next();
-
-            if(retorna == null){
+            id = result.getInt("IdPlayList");
+            if(id == 0){
                 return false;
             }else {
                 return true;
