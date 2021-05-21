@@ -137,7 +137,7 @@ public class UserManager {
     }
 
 
-    public static String encryptPassword(String input){
+    private String encryptPassword(String input){
         String toReturn = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");

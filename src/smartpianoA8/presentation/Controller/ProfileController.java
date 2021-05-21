@@ -1,19 +1,16 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFStatisticsView;
 import smartpianoA8.presentation.views.JFTop5View;
 import smartpianoA8.presentation.views.JPProfileView;
 import smartpianoA8.presentation.views.customComponents.Key;
-import smartpianoA8.presentation.views.customComponents.Teclas;
+import smartpianoA8.presentation.views.customComponents.Tecla;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Classe controller del perfil
@@ -24,14 +21,21 @@ import java.util.HashMap;
 public class ProfileController implements ActionListener, MouseListener {
     // ---- Inici Atributs ----
     private PresentationController presentationController;
+    private HashMap<Integer, Tecla> hmReal;
+    private HashMap<Integer, Integer> hmProfile;
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
 
+    //TODO canviar Javadoc
     /**
      * Consructor buit
      */
     public ProfileController(){
-
+        hmReal = presentationController.getHMteclas();
+        hmProfile = new HashMap<>();
+        for (Map.Entry<Integer, Tecla> en: hmReal.entrySet()){
+            hmProfile.put(en.getValue().getNota(),en.getKey());
+        }
     }
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
@@ -136,17 +140,39 @@ public class ProfileController implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        //Show dialog
-
-        //Check if key alredy in use
-
-        //Update new key
+        //hmProfile: Key= int Nota Value= int VK_TECLA
+        //hmReal: Key= int VK_TECLA Value= Tecla
 
         Key key = (Key) e.getSource();
-        HashMap<Integer, Teclas> hmTecles = presentationController.getHMteclas();
+        int nota = key.getNote();
+        //Show dialog
 
-        hmTecles.get(key);
+        int presseKey = KeyEvent.VK_Y;
+        //Check if key alredy in use
+        if (hmReal.get(presseKey) == null){
+            //No exsiteix, actualitzar
+            int teclaVKAntiga = hmProfile.get(nota);
+            Tecla teclaPiano = hmReal.get(teclaVKAntiga);
+            hmReal.remove(teclaVKAntiga);
+            teclaPiano.setNota(nota);
+            hmReal.put(presseKey,teclaPiano);
+            hmProfile.replace(nota,presseKey);
+        } else {
+            //JA existeix, no actualitzar
+        }
 
+
+
+        HashMap<Integer, Tecla> hmTecles = presentationController.getHMteclas();
+        //Integer lletra del teclat fisica
+        //Tecla
+
+        /*
+        Buscar la Tecla (classe piano) que te la nota key.getNote() i assignar-ho al Integer del teclat físic
+         */
+        hmTecles.get(key); //Quina nota a actualitzar
+        System.out.println("E: " + e.getSource());
+        System.out.println("Key " + key.getNote());
     }
 
     /**

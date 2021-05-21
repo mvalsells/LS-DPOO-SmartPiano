@@ -6,7 +6,7 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
-import smartpianoA8.presentation.views.customComponents.Teclas;
+import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,5 +61,5 @@ public interface BusinessFacade {
 
 
     //Altres
-    HashMap<Integer, Teclas> getHMTeclas();
+    HashMap<Integer, Tecla> getHMTeclas();
 }

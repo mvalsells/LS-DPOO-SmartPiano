@@ -10,8 +10,7 @@ import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
-import smartpianoA8.presentation.views.customComponents.JPPlayer;
-import smartpianoA8.presentation.views.customComponents.Teclas;
+import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
@@ -234,7 +233,7 @@ public class PresentationController implements PresentationFacade {
         return businessFacade.getNumMinutsCurrentUser();
     }
 
-    public HashMap<Integer, Teclas> getHMteclas(){
+    public HashMap<Integer, Tecla> getHMteclas(){
         return businessFacade.getHMTeclas();
     }
 

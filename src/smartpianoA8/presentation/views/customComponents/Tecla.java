@@ -1,6 +1,6 @@
 package smartpianoA8.presentation.views.customComponents;
 
-public class Teclas {
+public class Tecla {
 
     public final static boolean defaultIsPlaying = false;
     public final static boolean trueIsPlaying = true;
@@ -9,7 +9,7 @@ public class Teclas {
     private boolean isPlaying;
 
 
-    public Teclas(/*String code,*/int nota){
+    public Tecla(/*String code,*/int nota){
 
         //this.code = code;
         this.nota = nota;
@@ -20,4 +20,7 @@ public class Teclas {
     public void setIsPlaying(boolean b){this.isPlaying=b;};
     public boolean isPlaying(){return this.isPlaying;};
 
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
 }

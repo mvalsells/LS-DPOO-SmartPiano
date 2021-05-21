@@ -6,14 +6,13 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
-import smartpianoA8.persistence.HtmlScrapping;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.Teclas;
+import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -246,9 +245,9 @@ public class BusinessFacadeImpl implements BusinessFacade{
      * Mètode per obtenir un HashMap de notes en ordre
      * @return Hashmap complert de notes
      */
-    public  HashMap<Integer, Teclas> getHMTeclas(){
+    public  HashMap<Integer, Tecla> getHMTeclas(){
 
-        HashMap<Integer, Teclas> hmTeclas = new HashMap<>();
+        HashMap<Integer, Tecla> hmTeclas = new HashMap<>();
 
         int valorMusical = 48;
         int codeTecla = KeyEvent.VK_A;
@@ -263,7 +262,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
                 sb.append('_');
                 sb.append(j);
 
-                hmTeclas.put(codeTecla,new Teclas(/*sb.toString(),*/valorMusical));
+                hmTeclas.put(codeTecla,new Tecla(/*sb.toString(),*/valorMusical));
                 valorMusical++;
                 codeTecla++;
                 if(codeTecla==KeyEvent.VK_Z+1){
