@@ -6,6 +6,7 @@ import smartpianoA8.business.entity.Song;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 public class JPPlaylistSettings extends JPMainView {
@@ -53,6 +54,7 @@ public class JPPlaylistSettings extends JPMainView {
 
     public void registerController(ActionListener controller){
 
+        jpTiraCancons.registerController(controller);
 
 
         jpAdd.registerController(controller);
@@ -70,14 +72,17 @@ public class JPPlaylistSettings extends JPMainView {
         repaint();
 
     }
-    public void updateWhenAdd(Song song){
+    public void updateWhenAdd(Song song,ActionListener controller){
 
+        jpTiraCancons.updateWhenAdd(song);
+        jpTiraCancons.registerControllerLastButton(controller);
         jpAdd.updateWhenAdd(song,ADD);
         jpRemove.updateWhenAdd(song,REMOVE);
 
     }
     public void updateWhenRemove(Song song){
 
+        jpTiraCancons.updateWhenRemove(song);
         jpAdd.updateWhenRemove(song,ADD);
         jpRemove.updateWhenRemove(song,REMOVE);
 

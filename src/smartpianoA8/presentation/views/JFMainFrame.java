@@ -8,6 +8,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -86,9 +87,8 @@ public class JFMainFrame extends JFrame {
         jpSongs.registerController(actionListener);
     }
 
-    public void registerPlaylistViewControllers(ActionListener actionListener){
-        System.out.println("Comprovacio");
-       jpPlaylistView.registerControllers(actionListener);
+    public void registerPlaylistViewControllers(ActionListener actionListener, ItemListener itemListener){
+       jpPlaylistView.registerControllers(actionListener,itemListener);
     }
     public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener){
         jpProfileView.registerControllers(actionListener, mouseListener);
@@ -133,7 +133,7 @@ public class JFMainFrame extends JFrame {
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}
     public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}
 
-    public void playlistViewUpdateWhenAdd(Song song){jpPlaylistView.updateWhenAdd(song);}
+    public void playlistViewUpdateWhenAdd(Song song,ActionListener controller){jpPlaylistView.updateWhenAdd(song,controller);}
     public void playlistViewUpdateWhenRemove(Song song){jpPlaylistView.updateWhenRemove(song);}
 
     public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}

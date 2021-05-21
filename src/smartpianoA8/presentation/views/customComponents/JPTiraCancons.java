@@ -98,7 +98,6 @@ public class JPTiraCancons extends JPMainView{
 
                 JButton jbTMP = new JButton();
                 jbTMP.setActionCommand(sbCommand.toString());
-                jbTMP.addActionListener(controller);
 
                 String nomCanço = songs.get(i).getNom();
                 StringBuilder sbName = new StringBuilder();
@@ -131,6 +130,7 @@ public class JPTiraCancons extends JPMainView{
                 jpCanço.add(jbTMP);
                 jpCanço.add(jlSongNomText);
                 jpCanço.add(jlSongInfoText);*/
+
                 jpCanço.add(new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor()));
                 //jpCanço.repaint();
 
@@ -146,75 +146,77 @@ public class JPTiraCancons extends JPMainView{
         repaint();
     }
 
-    /*public void updateWhenAdd(Song song,String type){
-
-        switch (type){
-            case JPPlaylistSettings.ADD:
-                jpCanço.
-
-                jlTitul.setText(titul);
-
-                for (int i = 0; i < songs.size(); i++) {
-
-                    StringBuilder sbCommand = new StringBuilder();
-                    sbCommand.append(JPSongs.SONG_PRESSED);
-                    sbCommand.append(songs.get(i).getIdSong());
+    public void updateWhenAdd(Song song){
 
 
-                    JButton jbTMP = new JButton();
-                    jbTMP.setActionCommand(sbCommand.toString());
-                    jbTMP.addActionListener(controller);
-
-                    String nomCanço = songs.get(i).getNom();
-                    StringBuilder sbName = new StringBuilder();
-
-                    if (songs.get(i).getNom().length() > 24) {
-                        int k = 0;
-
-                        while (k < songs.get(i).getNom().length()) {
-                            if (k != 0) {
-                                sbName.append("-<br/>");
-                            } else if (k == 0) {
-                                sbName.append("<html>");
-                            }
-                            sbName.append(nomCanço, k, Math.min(k + 24, songs.get(i).getNom().length()));
-
-                            System.out.println(sbName.toString());
-
-                            k += 25;
-
-                        }
-                        sbName.append("<html>");
-                    } else {
-                        sbName.append(songs.get(i).getNom());
-                    }
+        StringBuilder sbCommand = new StringBuilder();
+        sbCommand.append(JPSongs.SONG_PRESSED);
+        sbCommand.append(song.getIdSong());
 
 
+        JButton jbTMP = new JButton();
+        jbTMP.setActionCommand(sbCommand.toString());
+        jbTMP.addActionListener(controller);
 
-                    jpCanço[i] = new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor());
+        String nomCanço = song.getNom();
+        StringBuilder sbName = new StringBuilder();
 
+        if (song.getNom().length() > 24) {
+            int k = 0;
 
-                    jpAmbSongs.add(jpCanço[i]);
-
+            while (k < song.getNom().length()) {
+                if (k != 0) {
+                    sbName.append("-<br/>");
+                } else if (k == 0) {
+                    sbName.append("<html>");
                 }
+                sbName.append(nomCanço, k, Math.min(k + 24, song.getNom().length()));
 
+                System.out.println(sbName.toString());
 
+                k += 25;
 
+            }
+            sbName.append("<html>");
+        } else {
+            sbName.append(song.getNom());
         }
 
-        }
+        jpCanço.add( new JPCanco(jbTMP,sbName.toString(),song.getAutor()));
 
-    }*/
+        jpAmbSongs.add(jpCanço.get(jpCanço.size()-1));
+
+        repaint();
+
+    }
+    public void updateWhenRemove(Song song){
+
+        for(int i=0;i<jpCanço.size();i++){
+
+            Integer id = Integer.parseInt(jpCanço.get(i).getIDButton());
+
+            if (id == song.getIdSong()){
+                jpAmbSongs.remove(jpCanço.get(i));
+            }
+        }
+        repaint();
+    }
+
+    public void registerControllerLastButton(ActionListener controller){
+
+        jpCanço.get(jpCanço.size()-1).registerController(controller);
+
+    }
 
     public void registerController(ActionListener controller){
 
-        this.controller = controller;
-        /*for(int i=0; i< jpCanço.length; i++){
+        if(jpCanço != null) {
+            for (int i = 0; i < jpCanço.size(); i++) {
 
-            jbButton[i].addActionListener(controller);
-            //newButon[i].addActionListener(controller);
+                jpCanço.get(i).registerController(controller);
+                //newButon[i].addActionListener(controller);
 
-        }*/
-
+            }
+        }
     }
 }

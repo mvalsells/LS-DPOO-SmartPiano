@@ -47,6 +47,8 @@ public class PresentationController implements PresentationFacade {
     private MainFrameController mainFrameController;
     private Thread jpPlayerControllerThread;
 
+    //Last id song pressed
+    private int lastSongPressed;
 
     // ---- Fi Atributs ----
 
@@ -98,7 +100,7 @@ public class PresentationController implements PresentationFacade {
 
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
-        jfMainFrame.registerPlaylistViewControllers(playlistController);
+        jfMainFrame.registerPlaylistViewControllers(playlistController,playlistController);
         jfMainFrame.registerProfileViewControllers(profileController, profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
         jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
@@ -121,7 +123,20 @@ public class PresentationController implements PresentationFacade {
         //Registrar el controller a la vista
         jfWellcomeFrame.registerController(wellcomeController);
     }
-
+    /**
+     * Setter atribut atribuir el ID de l'lultima canço que s'apreta
+     *
+     * @param songID
+     */
+    public void setLastSongPressed(int songID){this.lastSongPressed = songID;}
+    /**
+     * Getter per obtenir l'última cançó clicada per operar amb ella
+     *
+     * @return l'id de la cançó
+     */
+    public int getLastSongPressed() {
+        return lastSongPressed;
+    }
     //Change views
 
     /**
@@ -278,14 +293,7 @@ public class PresentationController implements PresentationFacade {
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
 
-    /**
-     * Mètode per obtenir l'última cançó clicada per operar amb ella
-     *
-     * @return l'id de la cançó
-     */
-    public int songControllerGetLastSongPressed() {
-        return songController.getLastSongPressed();
-    }
+
 
 
     // ---- End SongView Methods
@@ -300,11 +308,11 @@ public class PresentationController implements PresentationFacade {
 
     // ---- Start PlaylistView Methods
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
-        jfMainFrame.registerPlaylistViewControllers(playlistController);
+        jfMainFrame.registerPlaylistViewControllers(playlistController,playlistController);
     }
     public void playlistViewUpdateJPPlaylistSettings(){jfMainFrame.playlistViewUpdateJPPlaylistSettings(getUserPlaylists(),getAllSongs());}
 
-    public void playlistViewUpdateWhenAdd(Song song){jfMainFrame.playlistViewUpdateWhenAdd(song);}
+    public void playlistViewUpdateWhenAdd(Song song){jfMainFrame.playlistViewUpdateWhenAdd(song,playlistController);}
     public void playlistViewUpdateWhenRemove(Song song){jfMainFrame.playlistViewUpdateWhenRemove(song);}
 
     public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}

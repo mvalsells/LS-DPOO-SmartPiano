@@ -21,7 +21,7 @@ public class JPPlaylistView extends JPMainView {
     private JPanel jpCardPanel;
     private JPPlaylistSettings[] jpPlaylistSettings;
     private JComboBox jcTriarPlaylist;
-    private JButton jbSelectPlaylist;
+
 
     //private ArrayList<PlayList> hasPlayLists;
 
@@ -37,11 +37,10 @@ public class JPPlaylistView extends JPMainView {
         JPanel panellNord = new JPMainView();
         panellNord.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        jbSelectPlaylist = new JBgeneral("Mostrar",ColorScheme.DARK_GREEN);
-        jbSelectPlaylist.setActionCommand(MOSTRAR_PLAYLIST);
+
         jcTriarPlaylist = new JComboBox();
         panellNord.add(jcTriarPlaylist);
-        panellNord.add(jbSelectPlaylist);
+
 
         /*----------------------------------------Part centre(CardPanel)----------------------------------------*/
         cards = new CardLayout();
@@ -101,9 +100,9 @@ public class JPPlaylistView extends JPMainView {
 
     }
 
-    public void updateWhenAdd(Song song){
+    public void updateWhenAdd(Song song,ActionListener controller){
 
-        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenAdd(song);
+        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenAdd(song,controller);
 
     }
     public void updateWhenRemove(Song song){
@@ -114,8 +113,8 @@ public class JPPlaylistView extends JPMainView {
 
 
 
-    public void registerControllers(ActionListener controller) {
-        jbSelectPlaylist.addActionListener(controller);
+    public void registerControllers(ActionListener controller,ItemListener itemListener) {
+        jcTriarPlaylist.addItemListener(itemListener);
         if(jpPlaylistSettings!=null){
 
             for(int i=0;i<jpPlaylistSettings.length;i++){
