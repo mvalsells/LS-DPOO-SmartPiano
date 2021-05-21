@@ -1,12 +1,10 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.presentation.views.customComponents.JPPlayer;
-import smartpianoA8.presentation.views.customComponents.JPPlaylistSettings;
-import smartpianoA8.presentation.views.customComponents.JPPlaylistView;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
+import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -58,11 +56,24 @@ public class PlaylistController implements ActionListener, ItemListener{
                     presentationController.playlistViewUpdateWhenAdd(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()));
                     break;
                 case JPPlaylistSettings.REMOVE:
-                    presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
-                    //presentationController.playlistViewUpdateJPPlaylistSettings();
-                    presentationController.playlistViewUpdateWhenRemove(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
+                    try {
+                        presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
+                        //presentationController.playlistViewUpdateJPPlaylistSettings();
+                        presentationController.playlistViewUpdateWhenRemove(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
+                    }catch (NullPointerException exception){
+                        JOptionPane.showMessageDialog(new Frame(),"Esta playlist ya esta vacia!\nAntes de eliminar una canicon deberias añadirla", "No hay canciones a eliminar!",JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
+                case JPPlaylistView.NEW_PLAYLIST:
+                    presentationController.playlistJDPlaylistCreatorRun();
+                    break;
+                case JPPlaylistView.DELETE_PLAYLIST:
 
+                    break;
+                case JDPlaylistCreator.DISCARD_PLAYLIST:
+                    JOptionPane.showMessageDialog(new Frame(),"Estas Seuro????????", "YO NO LO HARIA EHHHHHHHHH",JOptionPane.ERROR_MESSAGE);
+                    presentationController.playlistJDPlaylistCreatorClose();
+                    JOptionPane.showMessageDialog(new Frame(),"Te JODES", "PD: DOGECOIN",JOptionPane.ERROR_MESSAGE);
             }
         }
 

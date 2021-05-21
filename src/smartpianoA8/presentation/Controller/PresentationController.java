@@ -315,6 +315,8 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemove(Song song){jfMainFrame.playlistViewUpdateWhenRemove(song);}
 
     public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}
+    public void playlistJDPlaylistCreatorRun()  {  jfMainFrame.playlistJDPlaylistCreatorRun(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/ }
+    public void playlistJDPlaylistCreatorClose(){  jfMainFrame.playlistJDPlaylistCreatorClose(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/}
 
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
