@@ -202,8 +202,12 @@ public class PlayerController implements Runnable, ActionListener {
                             break;
                         } else if (actionToDo == 3) {
                             //currentSong--;
-                            currentSong = currentSong - 2;
-                            currentSequencer.close();
+                            if(currentSong == 0) {
+                                currentSong = songsToBePlayed.size()-1;
+                            }else {
+                                currentSong = currentSong - 2;
+                                currentSequencer.close();
+                            }
                             actionToDo = 0;
                             break;
                         } else if (actionToDo == 1) {
@@ -237,27 +241,22 @@ public class PlayerController implements Runnable, ActionListener {
 
     private void pauseThePlayer() {
 
-        currentSequencer.stop();
-
     }
 
     private void nextTheSong() {
 
         currentSong++;
-        currentSequencer.close();
 
     }
 
     private void previousTheSong() {
 
         currentSong--;
-        currentSequencer.close();
 
     }
 
     private void endThePlayer() {
 
-        currentSequencer.close();
 
     }
 
