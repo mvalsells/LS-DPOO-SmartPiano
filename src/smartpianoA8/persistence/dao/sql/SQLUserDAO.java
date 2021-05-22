@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class SQLUserDAO implements UserDAO {
 
     public String TERM_PLAYLIST1 = "Mi primera playlist";
-    public String TERM_PLAYLIST2 = "My sejunda primera plailis";
+    public String TERM_PLAYLIST2 = "Mi playlist demo";
 
     private SQLConnector connector;
     public SQLUserDAO(SQLConnector connector){
