@@ -16,7 +16,9 @@ public class BlackKey extends JButton implements Key {
         setBackground (Color.BLACK);
         setBounds (left, 10, BWD, HT);
         setBorder(BorderFactory.createLineBorder(Color.BLACK,11));
-
+        setOpaque(true);
+        setForeground(Color.WHITE);
+        setBorderPainted(true);
 
 
     }
@@ -26,10 +28,6 @@ public class BlackKey extends JButton implements Key {
     }
 
 
-    public void clicarNota(){
-        setBackground(Color.lightGray);
-    }
-    public void desclicarNota(){
-        setBackground(Color.BLACK);
-    }
+    public void clicarNota(){setBackground(Color.RED); setBorder(BorderFactory.createLineBorder(Color.RED,11));}
+    public void desclicarNota(){setBackground(Color.BLACK);setBorder(BorderFactory.createLineBorder(Color.BLACK,11));}
 }

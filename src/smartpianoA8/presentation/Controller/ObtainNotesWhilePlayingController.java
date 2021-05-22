@@ -4,7 +4,10 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.customComponents.JPPiano;
 
 import javax.sound.midi.*;
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ObtainNotesWhilePlayingController implements Receiver {
@@ -38,7 +41,9 @@ public class ObtainNotesWhilePlayingController implements Receiver {
             this.myReceiver = sequencer.getReceiver();
             sequencer.getTransmitter().setReceiver(this);
             sequencer.start();
-        } catch (InvalidMidiDataException | IOException | MidiUnavailableException e) {
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + file + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+        } catch (InvalidMidiDataException | MidiUnavailableException | IOException e) {
             e.printStackTrace();
         }
 
@@ -69,7 +74,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                     jppiano.pintarTeclaNegra(note);
                 }
 
-                System.out.println("NOTE: " + shortMessage.getData1() + " ON. At time: " + System.currentTimeMillis());
+                System.out.println("NOTE: (" + isWhite + ") " + note +" ON. At time: " + System.currentTimeMillis());
                 //sendOnNotes(shortMessage.getData1());
             }
             if (shortMessage.getCommand() == ShortMessage.NOTE_OFF) {
@@ -84,7 +89,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 else if (!isWhite && printable){
                     jppiano.despintarTeclaNegra(note);
                 }
-                System.out.println("NOTE: " + shortMessage.getData1() + " OFF. At time: " + System.currentTimeMillis());
+                System.out.println("NOTE: (" + isWhite + ") " + note + " OFF. At time: " + System.currentTimeMillis());
                 //sendOffNotes(shortMessage.getData1());
             }
         }
@@ -165,10 +170,13 @@ public class ObtainNotesWhilePlayingController implements Receiver {
     }
 
     private Boolean isBlanca(int note){
-        for (Integer negre : negres) {
-            if (note == negre) return true;
+
+        for(int i=0;i<negres.length-1;i++){
+
+            if(note==negres[i]){return false;}
+
         }
-        return false;
+        return true;
     }
 
     public int sendOnNotes(int note) {
