@@ -7,10 +7,7 @@ import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class JFMainFrame extends JFrame {
@@ -119,8 +116,8 @@ public class JFMainFrame extends JFrame {
     }
 
 
-    public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener){
-        jpProfileView.registerControllers(actionListener, mouseListener);
+    public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
+        jpProfileView.registerControllers(actionListener, mouseListener,keyListener);
     }
     public void registerPianoViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);
@@ -183,19 +180,6 @@ public class JFMainFrame extends JFrame {
      */
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}//Cierre del método
 
-    /**
-     * Método que indica los ajustes de la playlist
-     * @param hasPlayLists Parámetro que indica el array de Playlist.
-     * @param songs Parámetro que indica el array de songs.
-     */
-    public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}//Cierre del método
-
-    /**
-     * Método que actualiza el playlist cuando se le añade una canción.
-     * @param song Parámetro que indica el tipos song
-     * @param controller Controlador asocioado al action listener.
-     */
-    public void playlistViewUpdateWhenAdd(Song song,ActionListener controller){jpPlaylistView.updateWhenAdd(song,controller);}//Cierre del método
 
     public void playlistViewUpdateWhenAddSong(Song song,ActionListener controller){jpPlaylistView.updateWhenAddSong(song,controller);}
     public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}
