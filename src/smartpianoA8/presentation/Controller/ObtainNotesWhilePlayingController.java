@@ -23,7 +23,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
     private Boolean printable ;
     private Boolean isWhite ;
 
-    private final Integer[] negres = {2,4,7,9,11,14,16,19,21,23,26,28,31,33,35};//començant per la 1
+    private final Integer[] negres = {49,51,54,56,58,61,63,66,68,70,73,75,78,80,82};
 
     public ObtainNotesWhilePlayingController(JPPiano jpPiano) {
         this.jppiano = jpPiano;
@@ -112,58 +112,58 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         if(isBlanca) {
             switch (note){
                 case 48:
-                    return 1;
+                    return 0;
                 case 50:
-                    return 2;
+                    return 1;
                 case 52:
-                    return 3;
+                    return 2;
                 case 53:
-                    return 4;
+                    return 3;
                 case 55:
-                    return 5;
+                    return 4;
                 case 57:
-                    return 6;
+                    return 5;
                 case 59:
-                    return 7;
+                    return 6;
                 case 60:
-                    return 8;
+                    return 7;
                 case 62:
-                    return 9;
+                    return 8;
                 case 64:
-                    return 10;
+                    return 9;
                 case 65:
-                    return 11;
+                    return 10;
                 case 67:
-                    return 12;
+                    return 11;
                 case 69:
-                    return 13;
+                    return 12;
                 case 71:
-                    return 14;
+                    return 13;
                 case 72:
-                    return 15;
+                    return 14;
             }
         }else{
             switch (note){
                 case 49:
-                    return 1;
+                    return 0;
                 case 51:
-                    return 2;
+                    return 1;
                 case 53:
-                    return 3;
+                    return 2;
                 case 56:
-                    return 4;
+                    return 3;
                 case 58:
-                    return 5;
+                    return 4;
                 case 61:
-                    return 6;
+                    return 5;
                 case 63:
-                    return 7;
+                    return 6;
                 case 66:
-                    return 8;
+                    return 7;
                 case 68:
-                    return 9;
+                    return 8;
                 case 70:
-                    return 10;
+                    return 9;
             }
         }
         return newNote;
