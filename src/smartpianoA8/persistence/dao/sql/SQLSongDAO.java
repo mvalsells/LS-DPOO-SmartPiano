@@ -277,10 +277,9 @@ public class SQLSongDAO implements SongDAO {
         String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE (NomUsuari LIKE '" + username + "' OR NomUsuari LIKE 'MASTER') AND Nom LIKE '" + name + "'";
         ResultSet result = connector.selectQuery(query);
         try{
-            while(result.next()) {
-                return (songToReturn = new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
-            }
-            return songToReturn;
+            result.next();
+            return (songToReturn = new Song(result.getInt("NumReproduccions"), result.getInt("idSong"), result.getFloat("Duracio"), result.getString("Nom"), result.getString("Autor"), result.getString("DataEnregistrament"), result.getString("Directori"), result.getInt("isPublic"), result.getString("NomUsuari"), result.getString("Midi")));
+
         }catch (SQLException e){
             e.printStackTrace();
             return songToReturn;

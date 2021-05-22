@@ -96,8 +96,6 @@ public class SQLPlayListDAO implements PlayListDAO{
             return llista;
 
         }catch (SQLException e){
-            System.out.println("PATATA 2k mecagun");
-            //e.printStackTrace();
             return llista;
         }
     }
@@ -119,8 +117,7 @@ public class SQLPlayListDAO implements PlayListDAO{
                 }
 
             }
-        }catch (SQLException e){
-            //e.printStackTrace();
+        }catch (SQLException ignored){
         }
         return null;
     }
@@ -146,9 +143,7 @@ public class SQLPlayListDAO implements PlayListDAO{
                 songs.add(new Song(result2.getInt("idSong"), result2.getFloat("Duracio"), result2.getString("Nom"), result2.getString("Autor"), result2.getString("DataEnregistrament"), result2.getString("Directori"), result2.getInt("isPublic"), result2.getString("NomUsuari"), result2.getString("Midi")));
             }
             return songs;
-        }catch (SQLException e){
-           // e.printStackTrace();
-
+        }catch (SQLException ignored){
 
         }
         return null;
