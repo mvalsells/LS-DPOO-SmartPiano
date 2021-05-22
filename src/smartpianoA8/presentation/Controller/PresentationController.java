@@ -318,7 +318,7 @@ public class PresentationController implements PresentationFacade {
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
         jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());}
     public void playlistRemovePlaylist(String playlistName){
-        if(!playlistName.equals("")) {
+        if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
             jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
         }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
