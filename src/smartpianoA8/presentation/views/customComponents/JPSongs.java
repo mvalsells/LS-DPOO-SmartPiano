@@ -91,7 +91,10 @@ public class JPSongs extends JPanel {
 
     }
 
-    public void nuevasCanciones() {
+    public void nuevasCanciones(Song song) {
+
+        jpTiraCançonsNew.updateWhenAdd(song);
+        jpTiraCançonsMas.updateWhenAdd(song);
 
     }
 

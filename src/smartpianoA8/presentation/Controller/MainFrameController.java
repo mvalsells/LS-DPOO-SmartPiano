@@ -35,7 +35,7 @@ public class MainFrameController implements ActionListener {
                 break;
             case JFMainFrame.PLAYLISTS:
                 if(isShowingPlaylists==NOT_SHOWING) {
-                    presentationController.playlistViewUpdateJPPlaylistView(presentationController.getUserPlaylists(),presentationController.getAllSongs());
+                    presentationController.playlistViewUpdateJPPlaylistView(presentationController.getUserPlaylists(),presentationController.getMasterSongs());
                     presentationController.changeView(JFMainFrame.PLAYLISTS);
                     isShowingPlaylists = SHOWING;
                     isShowingSongs=NOT_SHOWING;isShowingPiano=NOT_SHOWING; isShowingProfile=NOT_SHOWING;isShowingPianoCascade=NOT_SHOWING;
@@ -83,6 +83,8 @@ public class MainFrameController implements ActionListener {
                 break;
         }
     }
+
+    public boolean isShowingSongs(){return isShowingSongs;}
 
     public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;

@@ -72,6 +72,7 @@ public class JPPlaylistSettings extends JPMainView {
         repaint();
 
     }
+
     public void updateWhenAddSong(Song song,ActionListener controller){
 
         jpTiraCancons.updateWhenAdd(song);

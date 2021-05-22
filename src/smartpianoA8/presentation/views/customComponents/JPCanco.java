@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+
 public class JPCanco extends JPMainView {
 
     private JButton jButton;
@@ -28,6 +29,10 @@ public class JPCanco extends JPMainView {
 
     }
 
+    /**
+     * Getter que retornarà el ID de la canço assignat al ActionComand del botó
+     * @return
+     */
     public String getIDButton(){
 
         String[] string =  jButton.getActionCommand().split("-");
@@ -35,6 +40,10 @@ public class JPCanco extends JPMainView {
         return string[1];
     }
 
+    /**
+     * Funció que assignarà el ActionListener al botó referent a la canço
+     * @param controller
+     */
     public void registerController(ActionListener controller){
 
         this.jButton.addActionListener(controller);

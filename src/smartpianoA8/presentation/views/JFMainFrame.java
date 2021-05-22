@@ -10,6 +10,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a la parte del main
+ * al igual que todas sus respectivas funciones para poder controlar el frame
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
+
 public class JFMainFrame extends JFrame {
     // ---- Inici Atributs ----
 
@@ -108,17 +117,33 @@ public class JFMainFrame extends JFrame {
      */
     public void registerPlaylistViewControllers(ActionListener actionListener, ItemListener itemListener){
        jpPlaylistView.registerControllers(actionListener,itemListener);
-    }
+    }//Cierre del método
 
-
+    /**
+     * Método para controlar los controles relacionados con la playlistView
+     * @param controller Controlador asociado a los botones
+     */
     public void playlistViewUpdateRegisterControllerForPlaylistSetting(ActionListener controller){
         jpPlaylistView.updateRegisterControllerForPlaylistSetting(controller);
-    }
+    }//Cierre del método
 
 
+    /**
+     * Método con el que se controla todos los listeners generados en la clase PianoCascadeView.
+     * @param actionListener controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
     public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpProfileView.registerControllers(actionListener, mouseListener,keyListener);
-    }
+    }//Cierre del método
+
+    /**
+     * Método con el que se controla todos los listeners generados en la clase PianoCascadeView.
+     * @param actionListener controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
     public void registerPianoViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);
     }//Cierre del método
@@ -168,8 +193,8 @@ public class JFMainFrame extends JFrame {
     /**
      * Método que inica la nueva canción
      */
-    public void nuevaCanciones() {
-        jpSongs.nuevasCanciones();
+    public void nuevaCanciones(Song song) {
+        jpSongs.nuevasCanciones(song);
     }//Cierre del método
     // ---- End SongView Methods
     // ---- Start PlaylistView Methods
@@ -181,33 +206,109 @@ public class JFMainFrame extends JFrame {
      */
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}//Cierre del método
 
+    /**
+     * Método que se usa para el update de la playlist.
+     * @param song Parámetro song que es de tipo song.
+     * @param controller  controlador asocioado a los botones.
+     */
+    public void playlistViewUpdateWhenAddSong(Song song,ActionListener controller){jpPlaylistView.updateWhenAddSong(song,controller);}//Cierre del método
 
-    public void playlistViewUpdateWhenAddSong(Song song,ActionListener controller){jpPlaylistView.updateWhenAddSong(song,controller);}
-    public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}
+    /**
+     * Método que se usa para el update de la playlist.
+     * @param song Parámetro song que es de tipo song.
+     */
+    public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}//Cierre del método
 
-    public void playlistViewUpdateRegisterControllersWhenNewPlaylist(ActionListener actionListener,PlayList playlist,ArrayList<Song> songs){ jpPlaylistView.updateRegisterControllerWhenNewPlaylist(actionListener, playlist,songs); }
+    /**
+     * Método que activa mediante el register controller cuando hay una nueva playlist
+     * @param actionListener Controler para los botones.
+     * @param playlist Array donde se encuentran todas las playlist
+     * @param songs Parámetro song que es de tipo song.
+     */
+    public void playlistViewUpdateRegisterControllersWhenNewPlaylist(ActionListener actionListener,PlayList playlist,ArrayList<Song> songs){ jpPlaylistView.updateRegisterControllerWhenNewPlaylist(actionListener, playlist,songs); }//Cierre del método
 
-    public void playlistViewUpdateRegisterControllerWhenDeletePlaylist(){ jpPlaylistView.updateRegisterControllerWhenDeletePlaylist(); }
+    /**
+     * Método que activa mediante el register controller cuando se elimina una playlist
+     */
+    public void playlistViewUpdateRegisterControllerWhenDeletePlaylist(){ jpPlaylistView.updateRegisterControllerWhenDeletePlaylist(); }//Cierre del método
 
-    public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}
-    public void playlistJDPlaylistCreatorRun()  {  jpPlaylistView.jdPlaylistCreatorRun();  }
-    public void playlistJDPlaylistCreatorClose(){  jpPlaylistView.jdPlaylistCreatorClose();}
+    /**
+     * Método para cambair la vista.
+     * @param newView Parámetro que indica la nueva vista.
+     */
+    public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}//Cierre del método
+
+    /**
+     * Método para runear la playlist
+     */
+    public void playlistJDPlaylistCreatorRun()  {  jpPlaylistView.jdPlaylistCreatorRun();  }//Cierre del método
+
+    /**
+     * Método para parar la playlist
+     */
+    public void playlistJDPlaylistCreatorClose(){  jpPlaylistView.jdPlaylistCreatorClose();}//Cierre del método
+
+    /**
+     * Método para poner el textFiel.
+     * @return el parámetro del texto.
+     */
     public String jdPlaylistGetTextFieldString(){return jpPlaylistView.jdPlaylistGetTextFieldString();}
 
+    /**
+     * Método que indica en string la canción añadida.
+     * @return la cancion añadida.
+     */
     public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}
-    public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}
-    public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}
+
+    /**
+     * Método para saber la canción que queremos borar.
+     * @return la canción que queremos borar.
+     */
+    public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}//Cierre del método
+
+    /**
+     * Método para triar la playlist.
+     * @return playlist triada.
+     */
+    public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}//Cierre del método
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
-    public void pianoViewSetRecordingPressedIcon(JButton button){ jpPianoView.setRecordingPressedIcon(button); }
+
+    /**
+     * Método para controlar cuando se apreta el boton de reg para gravar
+     * @param button Controlador del boton de reg
+     */
+    public void pianoViewSetRecordingPressedIcon(JButton button){ jpPianoView.setRecordingPressedIcon(button); }//Cierre del método
+
+    /**
+     * Método para controlar cuando se apreta el boton de reg para guardar
+     * @param button Controlador del boton de reg
+     */
     public void pianoViewSetRecordingUnpressedIcon(JButton button){
         jpPianoView.setRecordingUnpressedIcon(button);
-    }
+    }//Cierre del método
 
-    public void pianoViewJDRun(){jpPianoView.jdRun();}
-    public void pianoViewJDClose(){jpPianoView.jdClose();}
-    public String pianoViewJDGetTextFieldString(){return jpPianoView.getTextFieldString();}
-    public boolean pianoViewJDIsCheckBoxSelected(){return jpPianoView.isCheckBoxSelected();}
+    /**
+     * Método para runear la vista.
+     */
+    public void pianoViewJDRun(){jpPianoView.jdRun();}//Cierre del método
+
+    /**
+     * Método para parar la vista.
+     */
+    public void pianoViewJDClose(){jpPianoView.jdClose();}//Cierre del método
+
+    /**
+     * Método que debuelve el string de la canción
+     * @return el string de la canción.
+     */
+    public String pianoViewJDGetTextFieldString(){return jpPianoView.getTextFieldString();}//Cierre del método
+
+    /**
+     * Método que comprueba que has seleccionado la CheckBox
+     * @return si has seleccionado la CheckBox
+     */
+    public boolean pianoViewJDIsCheckBoxSelected(){return jpPianoView.isCheckBoxSelected();}//Cierre del método
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
     // ---- End PianoCascadeView Methods

@@ -14,7 +14,6 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -242,7 +241,8 @@ public class PresentationController implements PresentationFacade {
         return businessFacade.getTop5();
     }
     //Temporal
-    public ArrayList<Song> getAllSongs(){return businessFacade.getMasterSongs();}
+    public ArrayList<Song> getMasterSongs(){return businessFacade.getMasterSongs();}
+    public ArrayList<Song> getPublicAndMasterSongs(){return businessFacade.getPublicAndMasterSongs();}
     public ArrayList<PlayList> getUserPlaylists(){return businessFacade.getCurrentUserPlaylist();}
 
     public ArrayList<String> getUserPlaylistsStrings() {
@@ -307,8 +307,10 @@ public class PresentationController implements PresentationFacade {
      * Mètode per obtenir noves cançons
      */
     @Override
-    public void nuevasCanciones() {
-        jfMainFrame.nuevaCanciones();
+    public void nuevasCanciones(Song song) {
+        if(mainFrameController.isShowingSongs()) {
+            jfMainFrame.nuevaCanciones(song);
+        }
     }
 
     // ---- Start PlaylistView Methods
@@ -321,7 +323,7 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), getPublicAndMasterSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));

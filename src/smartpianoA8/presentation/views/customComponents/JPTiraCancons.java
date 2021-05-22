@@ -60,13 +60,18 @@ public class JPTiraCancons extends JPMainView{
         jsp.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         jsp.setOpaque(false);
         jsp.getHorizontalScrollBar().setOpaque(false);
-        //jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
-        //jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
+        jsp.getHorizontalScrollBar().getComponent(1).setVisible(false);
+        jsp.getHorizontalScrollBar().getComponent(0).setVisible(false);
         add(jsp,BorderLayout.CENTER);
 
 
     }
 
+    /**
+     * Funcio que omple el panell associat a un JScrollPane on es mostraran les cançons que conte una playlist. Rep per parametre les cançons de la playlist i el seu titul.
+     * @param songs
+     * @param titul
+     */
     public void updateTira(ArrayList<Song> songs, String titul){
 
         jpAmbSongs.removeAll();
@@ -147,6 +152,10 @@ public class JPTiraCancons extends JPMainView{
         repaint();
     }
 
+    /**
+     * Funció que donada una canço passada per parametre l'afegeix al panell per a ser mostrada i actualitza la vista
+     * @param song
+     */
     public void updateWhenAdd(Song song){
 
 
@@ -157,7 +166,7 @@ public class JPTiraCancons extends JPMainView{
 
         JButton jbTMP = new JButton();
         jbTMP.setActionCommand(sbCommand.toString());
-        jbTMP.addActionListener(controller);
+        //jbTMP.addActionListener(controller);
 
         String nomCanço = song.getNom();
         StringBuilder sbName = new StringBuilder();
@@ -190,6 +199,11 @@ public class JPTiraCancons extends JPMainView{
         repaint();
 
     }
+
+    /**
+     * Funció que donada una canço passada per parametre l'elimina del panell i actualitza la vista
+     * @param song
+     */
     public void updateWhenRemove(Song song){
 
         for(int i=0;i<jpCanço.size();i++){
@@ -203,12 +217,20 @@ public class JPTiraCancons extends JPMainView{
         repaint();
     }
 
+    /**
+     * Funció que passarà el ActionListener per a ser implementat en l'ultim butó afegit.
+     * @param controller
+     */
     public void registerControllerLastButton(ActionListener controller){
 
         jpCanço.get(jpCanço.size()-1).registerController(controller);
 
     }
 
+    /**
+     * Funció que passarà el ActionListener per a ser implementat.
+     * @param controller
+     */
     public void registerController(ActionListener controller){
 
         if(jpCanço != null) {
