@@ -7,12 +7,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el frame donde se encuentran el panel asociado al Top5,
+ * además también podemos encotnrar la función para actalizar el Frame.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JFTop5View extends JFrame{
     private static final Color gris = new Color(40,45,53);
     private static final Color lletrta = new Color(186,189,191);
     private ArrayList<Song> topSongsComu;
     private JPanel fons;
 
+    /**
+     * Contructor de la clase JFTop5View
+     * @param topSongs Parametro donde indica en el arraylist las posiciones de las canciones.
+     */
     public JFTop5View(ArrayList<Song> topSongs){
         this.topSongsComu = topSongs;
         this.fons = new JPanel();
@@ -215,7 +227,7 @@ public class JFTop5View extends JFrame{
         add(fonsBox);
 
 
-    }
+    }//Cierre del constructor
 
     /**
      * Mètode per actualitzar els valors del top view
@@ -228,5 +240,5 @@ public class JFTop5View extends JFrame{
         //TODO porvar a treure això de sota a veure si funciona igual
         fons.repaint();
         fons.revalidate();
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

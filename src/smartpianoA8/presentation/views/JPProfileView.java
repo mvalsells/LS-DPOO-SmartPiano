@@ -10,6 +10,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el panel interactivo asociado a la edicion del perfil del usaurio, aquí se le asignara no solamente
+ * el panel general donde estan todas la funciones para editar el menu, sino que además, incluye los register controller al igual que la función
+ * para controlar que los datos se pasen correctamente.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPProfileView extends JPMainView {
     // ---- Inici Atributs ----
     private JButton jbStats;
@@ -41,6 +50,10 @@ public class JPProfileView extends JPMainView {
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
 
+    /**
+     *Constructor donde contiene todos los paneles de la clase para hacer login.
+     * @param currentUser Parametro por el cual se pasa el usuario que quiere verificar sus datos.
+     */
     public JPProfileView(User currentUser){
         setLayout(new BorderLayout());
         // ---- Start North ----
@@ -146,9 +159,16 @@ public class JPProfileView extends JPMainView {
         add(Box.createHorizontalStrut(40),BorderLayout.EAST);
 
         jdSelectKey = new JDChangeKey();
-    }
+    }//Cierre constructor
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
+
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param actionListener controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jbStats.addActionListener(actionListener);
         jbTop5.addActionListener(actionListener);
@@ -157,8 +177,12 @@ public class JPProfileView extends JPMainView {
         jbSaveSettings.addActionListener(actionListener);
         jpTeclat.registerController(mouseListener);
         jdSelectKey.registerKeyListener(keyListener);
-    }
+    }//Cierre del método
 
+    /**
+     *Método que comprueba si hay informacion rellenada en el perfil sino muestra ese espacio vacio.
+     * @return Devuelve si hay infromacion rellenada en el perfil.
+     */
     public ArrayList<String> profileViewGetData() {
         ArrayList<String> data = new ArrayList<>();
         if (jtfNewUsername.getText().equals(PH_NEW_USERNAME) || jtfNewUsername.getText().equals("")){
@@ -184,8 +208,13 @@ public class JPProfileView extends JPMainView {
             data.add(repetitionNewPassword);
         }
         return data;
-    }
+    }//Cierre del método
 
+    /**
+     * Método que compureba si los datos no sea null, si es asi muestran el texto indicado con el tipo secundario.
+     * @param username Parámetro que indica el nombre del usuario.
+     * @param email Parámetro que indica el correo del usuario.
+     */
     public void updateText(String username, String email){
         if (username!= null) {
             jpUsernameText.setSecondaryText(username);
@@ -193,13 +222,22 @@ public class JPProfileView extends JPMainView {
         if (email!=null){
             jpEmailText.setSecondaryText(email);
         }
-    }
+    }//Cierre del método
 
+    /**
+     * Método que indica si el texto es el primario o el secundario.
+     * @param primary Parámetro que indica que el texto indiccado es primario
+     * @param secondary Parámetro que indica que el texto indicado es secundario
+     */
     public void showDialog(String primary, String secondary){
         jdSelectKey.show(primary,secondary);
-    }
+    }//Cierre del método
+
+    /**
+     * Método que indica que se debe cerrar el Dialog
+     */
     public void closeDialog(){
         jdSelectKey.close();
-    }
+    }//Cierre del método
 
-}
+}//Cierre de la clase

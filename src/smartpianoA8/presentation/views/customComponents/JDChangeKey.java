@@ -11,7 +11,7 @@ public class JDChangeKey extends JDialog {
 
 
         setVisible(false);
-        setPreferredSize(new Dimension(350,100));
+        setPreferredSize(new Dimension(400,100));
         setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
         setLocationRelativeTo(null);
 

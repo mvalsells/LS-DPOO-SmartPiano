@@ -32,7 +32,7 @@ public class JPPiano extends JPanel {
     private JButton notesButton;
 
     /**
-     * Controler on conte tots els panels que formen part del piano.
+     * Constructor donde contiene todos los paneles de la clase piano.
      */
     public JPPiano() {
 

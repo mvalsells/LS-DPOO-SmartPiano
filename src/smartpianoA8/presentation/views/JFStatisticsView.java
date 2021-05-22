@@ -7,6 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a las estadisticas,
+ * además también podemos encotnrar las funciones para actualizar el frame.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JFStatisticsView extends JFrame {
 
     private static final Color color1 = new Color(255, 218,255);
@@ -98,7 +106,7 @@ public class JFStatisticsView extends JFrame {
         esquerra.add(graficEsquerra, BorderLayout.CENTER);
         dreta.add(graficDreta, BorderLayout.CENTER);
 
-    }
+    }//Cierre del constructor
 
     /**
      * Mètode per actualitzar els valors de les grafiques
@@ -116,5 +124,5 @@ public class JFStatisticsView extends JFrame {
 
         graficEsquerra.repaint();
         graficDreta.revalidate();
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

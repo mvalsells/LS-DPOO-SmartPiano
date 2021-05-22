@@ -1,11 +1,6 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.*;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-
+/*
 public class JPFavView extends JPMainView {
     // ---- Inici Atributs ----
     //private JPanel jpMain;
@@ -126,4 +121,4 @@ public class JPFavView extends JPMainView {
     public void registerControllers(ActionListener actionListener) {
         jbEditar.addActionListener(actionListener);
     }
-}
+}*/
