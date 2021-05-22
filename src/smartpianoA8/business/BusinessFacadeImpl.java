@@ -34,6 +34,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
 
+    //TEMP - TESTING
+    HashMap<Integer, Tecla> hmTeclas;
     /**
      * Constructor
      * @param userDAO DAO del control d'usuaris
@@ -42,12 +44,38 @@ public class BusinessFacadeImpl implements BusinessFacade{
      * @param statsDAO DAO del control d'estadístiques
      * @param midiParser DAO de l'editor de MIDI
      */
+
     public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
         this.songDAO = songDAO;
+
+        //TEMP - TESTING
+        hmTeclas = new HashMap<>();
+
+        int valorMusical = 48;
+        int codeTecla = KeyEvent.VK_A;
+
+        for(int i = 0; i< JPPiano.OCTAVES; i++){
+
+            for(int j=0; j<12;j++){
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.append(i);
+                sb.append('_');
+                sb.append(j);
+
+                hmTeclas.put(codeTecla,new Tecla(/*sb.toString(),*/valorMusical));
+                valorMusical++;
+                codeTecla++;
+                if(codeTecla==KeyEvent.VK_Z+1){
+                    codeTecla = KeyEvent.VK_0;
+                }
+            }
+        }
 
     }
 
@@ -247,30 +275,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
      */
     public  HashMap<Integer, Tecla> getHMTeclas(){
 
-        HashMap<Integer, Tecla> hmTeclas = new HashMap<>();
-
-        int valorMusical = 48;
-        int codeTecla = KeyEvent.VK_A;
-
-        for(int i = 0; i< JPPiano.OCTAVES; i++){
-
-            for(int j=0; j<12;j++){
-
-                StringBuilder sb = new StringBuilder();
-
-                sb.append(i);
-                sb.append('_');
-                sb.append(j);
-
-                hmTeclas.put(codeTecla,new Tecla(/*sb.toString(),*/valorMusical));
-                valorMusical++;
-                codeTecla++;
-                if(codeTecla==KeyEvent.VK_Z+1){
-                    codeTecla = KeyEvent.VK_0;
-                }
-            }
-        }
         return hmTeclas;
+    }
+
+    public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
+        this.hmTeclas = hmTeclas;
     }
 
     public Song getSong(int id){return songManager.getSong(id);}

@@ -276,5 +276,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
     }
 
-
+    public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
+        this.hmTeclas = hmTeclas;
+    }
 }

@@ -4,14 +4,25 @@ import smartpianoA8.business.entity.Song;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a la tabla de las canciones,
+ * con toda la infomración de la canción.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JFSongsTable extends JFrame {
 
     private final String[] columnas = {"Nombre", "Autor", "Duración", "Fecha Publicación", "Usuario", "Publica"};
 
+    /**
+     * Contructor del JFSongsTable donde contiene todos los panels asociados a esta clase
+     * @param songs  Parametro donde indica en el arraylist de canciones.
+     */
     public JFSongsTable(ArrayList<Song> songs) {
 
         setTitle("Tabla Canciones Descargadas");
@@ -38,5 +49,5 @@ public class JFSongsTable extends JFrame {
 
         setVisible(true);
 
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

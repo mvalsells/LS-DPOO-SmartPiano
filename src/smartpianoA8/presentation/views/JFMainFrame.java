@@ -38,6 +38,13 @@ public class JFMainFrame extends JFrame {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
+
+    /**
+     * Constructor de la clase JFMainFrame
+     * @param masterSongs Parámetro donde se encuentran las masterSongs en el arraylist.
+     * @param currentUser Parámetro que indica el nombre del usuario.
+     * @param hasPlayLists Parámetro donde se encuentran las hasPlayList en el arraylist.
+     */
     public JFMainFrame(ArrayList<Song> masterSongs, User currentUser,ArrayList<PlayList> hasPlayLists){
         //Frame
         setTitle("SmartPiano");
@@ -74,19 +81,34 @@ public class JFMainFrame extends JFrame {
         getContentPane().add(jpNavBar,BorderLayout.WEST);
         pack();
         setVisible(true);
-    }
-    // ---- Fi Constructors ----
+    }//Cierre del constructor
+
     // ---- Inici Mètodes ----
 
     //Controllers Registration
+
+    /**
+     * Método que sirve para controlar los action listeners en el main frame.
+     * @param actionListener Controlador asocioado a los actionListener.
+     */
     public void registerMainFrameController(ActionListener actionListener){
         jpNavBar.registerController(actionListener);
         jpPlayer.registerController(actionListener);
-    }
+    }//Cierre del método
+
+    /**
+     * Método que sirve para controlar los action listeners en el songs view.
+     * @param actionListener Controlador asocioado a los actionListener.
+     */
     public void registerSongViewControllers(ActionListener actionListener){
         jpSongs.registerController(actionListener);
-    }
+    }//Cierre del método
 
+    /**
+     * Método para controlar los controlers de la clase PlayList
+     * @param actionListener Controlador asocioado a los actionListener.
+     * @param itemListener Controlador asocioado a los itemListener.
+     */
     public void registerPlaylistViewControllers(ActionListener actionListener, ItemListener itemListener){
        jpPlaylistView.registerControllers(actionListener,itemListener);
     }
@@ -102,12 +124,24 @@ public class JFMainFrame extends JFrame {
     }
     public void registerPianoViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoView.registerControllers(actionListener, mouseListener, keyListener);
-    }
+    }//Cierre del método
+
+    /**
+     * Método con el que se controla todos los listeners generados en la clase PianoCascadeView.
+     * @param actionListener controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
     public void registerPianoCascadeViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
         jpPianoCascadeView.registerControllers(actionListener, mouseListener, keyListener);
-    }
+    }//Cierre del método
 
     //Views managment
+
+    /**
+     * Método para poder cambiar mediante cards, de view.
+     * @param newView Parámetro que indica la nueva vista a la que queremos cambiar.
+     */
     public void changeViewTo(String newView){
         jpNavBar.changeActiveElement(newView);
         switch (newView){
@@ -127,18 +161,41 @@ public class JFMainFrame extends JFrame {
                 cards.show(jpCardPanel,PIANO_CASCADE);
                 break;
         }
-    }
+    }//Cierre del método
 
 
     // ---- Start SongView Methods
     //public int jpSongSetLastIDPressed(){jpSongsView.jpSongSetLastIDPressed();}
+
+    /**
+     * Método que inica la nueva canción
+     */
     public void nuevaCanciones() {
         jpSongs.nuevasCanciones();
-    }
+    }//Cierre del método
     // ---- End SongView Methods
     // ---- Start PlaylistView Methods
-    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}
-    public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}
+
+    /**
+     * Método que indica la vista de la playlist
+     * @param hasPlayLists Parámetro que indica el array de Playlist.
+     * @param songs Parámetro que indica el array de songs.
+     */
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}//Cierre del método
+
+    /**
+     * Método que indica los ajustes de la playlist
+     * @param hasPlayLists Parámetro que indica el array de Playlist.
+     * @param songs Parámetro que indica el array de songs.
+     */
+    public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}//Cierre del método
+
+    /**
+     * Método que actualiza el playlist cuando se le añade una canción.
+     * @param song Parámetro que indica el tipos song
+     * @param controller Controlador asocioado al action listener.
+     */
+    public void playlistViewUpdateWhenAdd(Song song,ActionListener controller){jpPlaylistView.updateWhenAdd(song,controller);}//Cierre del método
 
     public void playlistViewUpdateWhenAddSong(Song song,ActionListener controller){jpPlaylistView.updateWhenAddSong(song,controller);}
     public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}
@@ -170,33 +227,61 @@ public class JFMainFrame extends JFrame {
     // ---- Start PianoCascadeView Methods
     // ---- End PianoCascadeView Methods
     // ---- Start ProfileView Methods
+
+    /**
+     * Método que retorna la información del perfil.
+     * @return Retorna la información del perfil.
+     */
     public ArrayList<String> profileViewGetData() {
         return jpProfileView.profileViewGetData();
-    }
+    }//Cierre del método
 
+    /**
+     * Método en el que se actualiza el texto.
+     * @param username Parámetro donde hay el nombre de usuario.
+     * @param email Parámetro donde hay el correo.
+     */
     public void profileViewUpdateText(String username, String email){
         jpProfileView.updateText(username, email);
-    }
+    }//Cierre del método
+
+    /**
+     * Método en el que aparece el showDialog
+     * @param primary Parámetro del texto primario.
+     * @param secondary Parámetro del texto
+     */
+    public void profileViewShowDialog(String primary, String secondary){
+        jpProfileView.showDialog(primary,secondary);
+    }//Cierre del método
+
+    /**
+     * Método en el que se cierra el showDialog
+     */
+    public void profileViewCloseDialog(){
+        jpProfileView.closeDialog();
+    }//Cierre del método
     // ---- End ProfileView Methods
 
-
-
-
-
-
-
-
+    /**
+     * Método del ComboBox
+     * @return Retorna el comboBox.
+     */
     public String getJComboBoxString() {
         return jpPlayer.getJComboBoxStringSelected();
-    }
+    }//Cierre del método
 
-
-
+    /**
+     * Método que retorna la playerview.
+     * @return Retorna la playerview.
+     */
     public JPPlayer getPlayerView() {
         return jpPlayer;
-    }
+    }//Cierre del método
 
-
+    /**
+     * Método para mostrar la lista de nombres
+     * @param playlistsNames Parámetro en el que estan los nombres en el arraylist
+     */
     public void setPlaylistsNames(ArrayList<String> playlistsNames) {
 
         jpPlayer.setPlaylistsNames(playlistsNames);
@@ -204,6 +289,6 @@ public class JFMainFrame extends JFrame {
         //jpPlayer.removeAll();
         jpPlayer.validate();
         jpPlayer.repaint();
-    }
+    }//Cierre del método
 
-}
+}//Cierre de la clase

@@ -8,6 +8,15 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el panel interactivo asociado al login, aquí se le asignara no solamente
+ * el panel general donde estan todas la funciones para inicar sesión, sino que además, incluye los register controller al igual que la función
+ * para controlar que los datos se creen correctamente.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPLoginView extends JPanel  {
 
     public static final String toRegister = "toRegister";
@@ -25,10 +34,17 @@ public class JPLoginView extends JPanel  {
     private JPasswordField contrasenya;
     private JButton loginButton;
 
+    /**
+     * Constructor del JPLoginView
+     */
     public JPLoginView() {
 
     }
 
+    /**
+     * Método donde se muestran todos los paneles asociados a las vistas del login.
+     * @return Los paneles asociados a las vistas del login.
+     */
     public ImageView runLogin() {
 
         ImageView panel = new ImageView(new ImageIcon("Imagen/ImagenesLogin/LoginImage.jpg").getImage());
@@ -321,24 +337,21 @@ public class JPLoginView extends JPanel  {
         frame.setVisible(true);*/
 
         return panel;
-    }
+    }//Cierre del método
 
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller controlador asocioado a los botones.
+     */
     public void registerController(ActionListener controller) {
         registrarse.addActionListener(controller);
         loginButton.addActionListener(controller);
-    }
-/*
-    public String getNomString(){
-        return this.nom.getText();
-    }
-    public String getCorreuString(){
-        return this.correu.getText();
-    }
-    public String getContrasenyaString(){
-        return this.contrasenya.getText();
-    }
+    }//Cierre del método
 
-*/
+    /**
+     * Método que comprueba que los datos introduciodos tiene el formato correcto.
+     * @return Devuelve si los datos han sido correctos o ha habido algún fallo
+     */
     public ArrayList<String> getData() {
         ArrayList<String> data = new ArrayList<>();
         if (nom.getText().equals(PH_LOGIN)){
@@ -353,5 +366,5 @@ public class JPLoginView extends JPanel  {
             data.add(pass);
         }
         return data;
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

@@ -8,7 +8,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
-
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el panel interactivo asociado al piano, aquí se le asignara no solamente
+ * el panel general donde estan todas la funciones para editar el menu, sino que además, incluye las funciones para guardar las canciones gravadas al igual que ejecutar
+ * esa accion de gravar.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
     private JPPiano jpPiano;
@@ -16,6 +24,10 @@ public class JPPianoView extends JPMainView {
 
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
+
+    /**
+     * Constructor de JPPianoView
+     */
     public JPPianoView(){
         setLayout(new BorderLayout());
 
@@ -26,26 +38,54 @@ public class JPPianoView extends JPMainView {
         jpPiano = new JPPiano();
         //Final Packing
         add(jpPiano,BorderLayout.CENTER);
-    }
-    // ---- Fi Constructors ----
+    }//Cierre del constructor
+
     // ---- Inici Mètodes ----
 
-    public void setRecordingPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }
+    /**
+     * Método que una vex recibe que el boton esta recording, envia esa función.
+     * @param button Botón indicado en este caso para ejecutar la función de recording.
+     */
+    public void setRecordingPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }//Cierre del método
+
+    /**
+     * Método que una vex recibe que el boton ha acabado de hacer recording, envia esa función.
+     * @param button Botón indicado en este caso para ejecutar la función de recording.
+     */
     public void setRecordingUnpressedIcon(JButton button){
         jpPiano.setUnpressedIcon(button);
-    }
+    }//Cierre del método
 
-
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param actionListener controlador asocioado a los botones.
+     * @param keyListener controlador asociado a las teclas del ordenador.
+     * @param mouseListener controlador asociado al ratón.
+     */
     public void registerControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener) {
         jdPianoRegAdd.registerControllerJDPianoRegAdd(actionListener);
         jpPiano.registerController(actionListener,keyListener,mouseListener);
-    }
+    }//Cierre del método
 
-    public void jdRun() {jdPianoRegAdd.run();    }
+    /**
+     * Método que empieza la función de recording.
+     */
+    public void jdRun() {jdPianoRegAdd.run();    }//Cierre del método
 
-    public void jdClose() { jdPianoRegAdd.close();}
+    /**
+     * Método que finaliza la función de recording.
+     */
+    public void jdClose() { jdPianoRegAdd.close();}//Cierre del método
 
-    public String getTextFieldString() { return jdPianoRegAdd.getTextFieldString();}
+    /**
+     * Método que coje el String que se guarda en el panel del reg.
+     * @return El String que se guarda en el panel del reg.
+     */
+    public String getTextFieldString() { return jdPianoRegAdd.getTextFieldString();}//Cierre del método
 
-    public boolean isCheckBoxSelected() { return jdPianoRegAdd.isCheckBoxSelected();}
-}
+    /**
+     * Método que mira si el CheckBox está seleccionado.
+     * @return Si el CheckBox está seleccionado.
+     */
+    public boolean isCheckBoxSelected() { return jdPianoRegAdd.isCheckBoxSelected();}//Cierre del método
+}//Cierre de la clase
