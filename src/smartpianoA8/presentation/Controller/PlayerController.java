@@ -27,6 +27,7 @@ public class PlayerController implements Runnable, ActionListener {
     private long whereWhenPaused = 0;
     private boolean isClosed = false;
     JPPlayer jpPlayer;
+    private int countError = 1;
 
     public PlayerController(JPPlayer jpPlayer) {
         this.jpPlayer = jpPlayer;
@@ -53,6 +54,7 @@ public class PlayerController implements Runnable, ActionListener {
                 case 0:
                     //Case 0 is being played
                     playThePlayer();
+                    countError = 1;
                     isPlaying = true;
                     break;
                 case 1:
@@ -173,74 +175,76 @@ public class PlayerController implements Runnable, ActionListener {
         isClosed = false;
         while (isPlaying) {
 
-            for(currentSong = 0; currentSong < songsToBePlayed.size(); currentSong++) {
+            for(currentSong = 0; currentSong < songsToBePlayed.size() && !isClosed; currentSong++) {
 
                 songDirectory = new File(songsToBePlayed.get(currentSong).getDirectori());
 
-                //TODO SEND MILISECONDS TO DAO presentationcontroller.settaltaltal -> businessfacade.settaltaltal ..... actualitzarBBDDEstadistiques(LocalTime duradaSong, String username);
-
                 try {
-                    if(!isClosed) {
+                    //if(!isClosed) {
                         currentSequence = MidiSystem.getSequence(songDirectory);
-                    }else {
+                        currentSequencer = MidiSystem.getSequencer();
+                        currentSequencer.open();
+                        currentSequencer.setSequence(currentSequence);
 
-                    }
-                    currentSequencer = MidiSystem.getSequencer();
-                    currentSequencer.open();
-                    currentSequencer.setSequence(currentSequence);
-
-                    if(isPaused == false) {
-                        currentSequencer.start();
-                    } else if (isPaused == true) {
-                        currentSequencer.setMicrosecondPosition(whereWhenPaused);
-                        currentSequencer.start();
-                    }
-
-                    isPaused = false;
-
-                    jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
-
-                    //todo pasar duracion total de la cancion para
-
-                    while (currentSequencer.isRunning()) {
-                        jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
-                        if(actionToDo == 2) {
-                            //currentSong++;
-                            currentSequencer.close();
-                            actionToDo = 0;
-                            break;
-                        } else if (actionToDo == 3) {
-                            //currentSong--;
-                            if(currentSong == 0) {
-                                currentSong = songsToBePlayed.size()-1;
-                            }else {
-                                currentSong = currentSong - 2;
-                                currentSequencer.close();
-                            }
-                            actionToDo = 0;
-                            break;
-                        } else if (actionToDo == 1) {
-                            whereWhenPaused = currentSequencer.getMicrosecondPosition();
-                            currentSequencer.stop();
-                            currentSong = currentSong - 1;
-                            isPaused = true;
-                            break;
-                        } else if (actionToDo == 4) {
-                            currentSequencer.close();
-                            isClosed = true;
-                            isPlaying = false;
-                            break;
+                        if(isPaused == false) {
+                            currentSequencer.start();
+                        } else if (isPaused == true) {
+                            currentSequencer.setMicrosecondPosition(whereWhenPaused);
+                            currentSequencer.start();
                         }
-                    }
 
-                    currentSequencer.close();
+                        isPaused = false;
+
+                        jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
+
+                        //todo pasar duracion total de la cancion para
+
+                        while (currentSequencer.isRunning()) {
+                            jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
+                            if(actionToDo == 2) {
+                                //currentSong++;
+                                currentSequencer.close();
+                                actionToDo = 0;
+                                break;
+                            } else if (actionToDo == 3) {
+                                //currentSong--;
+                                if(currentSong == 0) {
+                                    currentSong = songsToBePlayed.size()-1;
+                                }else {
+                                    currentSong = currentSong - 2;
+                                    currentSequencer.close();
+                                }
+                                actionToDo = 0;
+                                break;
+                            } else if (actionToDo == 1) {
+                                whereWhenPaused = currentSequencer.getMicrosecondPosition();
+                                currentSequencer.stop();
+                                currentSong = currentSong - 1;
+                                isPaused = true;
+                                break;
+                            } else if (actionToDo == 4) {
+                                currentSequencer.close();
+                                isClosed = true;
+                                isPlaying = false;
+                                break;
+                            }
+                        }
+
+                        currentSequencer.close();
+                    //}
+
+
                 } catch (FileNotFoundException e) {
                     //if(!isClosed) {
-                        JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + songDirectory + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
-                        //currentSong++;
+                    JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + songDirectory + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.\n\nThe player will auto close in 4 failed attempts. Current:"+countError, "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                    //isPlaying = false;
+                    countError = countError + 1;
+                    if(countError == 4) {
+                        actionToDo = 4;
+                        isClosed = true;
                         isPlaying = false;
-
-                    //}
+                        //currentSequencer.close();
+                    }
                     break;
 
                 } catch (InvalidMidiDataException | MidiUnavailableException | IOException e) {

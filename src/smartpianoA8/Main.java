@@ -45,20 +45,6 @@ public class Main {
         final int EXIT_UnableToReadConfigFile = 1;
         final int EXIT_UnableToConnectToDDBB = 2;
 
-        /*ArrayList<Song> test = new ArrayList<>();
-        Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
-        Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
-        Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
-        Song song4 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/298.mid",1,null,null);
-        test.add(song);
-        test.add(song2);
-        test.add(song3);
-        test.add(song4);
-        PlayerController asd = new PlayerController();
-        Thread thread = new Thread(asd);
-        asd.setSongsToBePlayed(test);
-        thread.start();*/
-
         //Llegir fitxer config
         JsonReadable jsonReader = new JsonReadableImpl();
 
