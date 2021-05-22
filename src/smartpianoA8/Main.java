@@ -82,6 +82,11 @@ public class Main {
 
         MidiWritter midiWritter = new MidiWritterImpl(songDAO);
 
+        //Business <-> Persitence
+        HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
+        Timer timer = new Timer();
+        timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
+
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
 /*

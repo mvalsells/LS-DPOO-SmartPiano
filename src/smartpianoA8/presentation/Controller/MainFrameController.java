@@ -8,7 +8,18 @@ import java.awt.event.ActionListener;
 
 public class MainFrameController implements ActionListener {
     // ---- Inici Atributs ----
+
+    public static final Boolean SHOWING = true;
+    public static final Boolean NOT_SHOWING = false;
+
     private PresentationController presentationController;
+
+    private Boolean isShowingSongs = SHOWING;
+    private Boolean isShowingPlaylists = NOT_SHOWING;
+    private Boolean isShowingPiano = NOT_SHOWING;
+    private Boolean isShowingProfile = NOT_SHOWING;
+    private Boolean isShowingPianoCascade = NOT_SHOWING;
+
     // ---- Fi Atributs ----
     // ---- Inici Constructor ----
     @Override
@@ -16,21 +27,40 @@ public class MainFrameController implements ActionListener {
         switch (e.getActionCommand()) {
             //NavBar
             case JFMainFrame.SONGS:
-                presentationController.changeView(JFMainFrame.SONGS);
+                if(isShowingSongs==NOT_SHOWING) {
+                    presentationController.changeView(JFMainFrame.SONGS);
+                    isShowingSongs = SHOWING;
+                    isShowingPlaylists=NOT_SHOWING;isShowingPiano=NOT_SHOWING; isShowingProfile=NOT_SHOWING;isShowingPianoCascade=NOT_SHOWING;
+                }
                 break;
             case JFMainFrame.PLAYLISTS:
-                System.out.println("nosecifunsiona");
-                presentationController.playlistViewUpdateJPPlaylistView(presentationController.getUserPlaylists(),presentationController.getAllSongs());
-                presentationController.changeView(JFMainFrame.PLAYLISTS);
+                if(isShowingPlaylists==NOT_SHOWING) {
+                    presentationController.playlistViewUpdateJPPlaylistView(presentationController.getUserPlaylists(),presentationController.getAllSongs());
+                    presentationController.changeView(JFMainFrame.PLAYLISTS);
+                    isShowingPlaylists = SHOWING;
+                    isShowingSongs=NOT_SHOWING;isShowingPiano=NOT_SHOWING; isShowingProfile=NOT_SHOWING;isShowingPianoCascade=NOT_SHOWING;
+                }
                 break;
             case JFMainFrame.PIANO:
-                presentationController.changeView(JFMainFrame.PIANO);
+                if(isShowingPiano==NOT_SHOWING) {
+                    presentationController.changeView(JFMainFrame.PIANO);
+                    isShowingPiano = SHOWING;
+                    isShowingSongs=NOT_SHOWING;isShowingPlaylists=NOT_SHOWING; isShowingProfile=NOT_SHOWING;isShowingPianoCascade=NOT_SHOWING;
+                }
                 break;
             case JFMainFrame.PROFILE:
-                presentationController.changeView(JFMainFrame.PROFILE);
+                if(isShowingProfile==NOT_SHOWING) {
+                    presentationController.changeView(JFMainFrame.PROFILE);
+                    isShowingProfile = SHOWING;
+                    isShowingSongs=NOT_SHOWING;isShowingPlaylists=NOT_SHOWING; isShowingPiano=NOT_SHOWING;isShowingPianoCascade=NOT_SHOWING;
+                }
                 break;
             case JFMainFrame.PIANO_CASCADE:
-                presentationController.changeView(JFMainFrame.PIANO_CASCADE);
+                if(isShowingPianoCascade==NOT_SHOWING) {
+                    presentationController.changeView(JFMainFrame.PIANO_CASCADE);
+                    isShowingPianoCascade = SHOWING;
+                    isShowingSongs=NOT_SHOWING;isShowingPlaylists=NOT_SHOWING; isShowingPiano=NOT_SHOWING;isShowingProfile=NOT_SHOWING;
+                }
                 break;
             //Player
             case JPPlayer.PLAY_BUTTON:

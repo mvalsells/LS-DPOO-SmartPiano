@@ -39,7 +39,6 @@ public class JPPlailistEditor extends JPMainView{
         switch (type) {
             case JPPlaylistSettings.ADD:
                 if (songsPlaylistHas == null) {
-                    System.out.println("COM entri aqui mecaguntoto");
                     for (int i = 0; i < songs.size()-1; i++) {
                         jComboBox.addItem(songs.get(i).getNom());
                     }

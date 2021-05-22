@@ -143,6 +143,7 @@ public class JFMainFrame extends JFrame {
         jpNavBar.changeActiveElement(newView);
         switch (newView){
             case SONGS:
+
                 cards.show(jpCardPanel,SONGS);
                 break;
             case PLAYLISTS:
