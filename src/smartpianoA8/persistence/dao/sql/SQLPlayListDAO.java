@@ -59,7 +59,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      */
     @Override
     public void removeSongFromPlayList(Song song,PlayList playList) {
-        String query = "DELETE FROM SongPlaylist WHERE idSong =  " + song.getIdSong() + " AND ;";
+        String query = "DELETE FROM SongPlaylist WHERE idSong = " + song.getIdSong() + " AND IdPlaylist = " + playList.getIdPlayList() + ";";
         connector.deleteQuery(query);
     }
 

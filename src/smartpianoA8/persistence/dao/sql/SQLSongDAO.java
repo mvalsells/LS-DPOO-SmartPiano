@@ -178,7 +178,7 @@ public class SQLSongDAO implements SongDAO {
     @Override
     public ArrayList<Song> getPublicCreatedSongs(){
         ArrayList<Song> retorna = new ArrayList<>();
-        String query = "SELECT IDSong, NumReproduccions, Nom, Autor, Duracio, DataEnregistrament, Directori, isPublic, NomUsuari, Midi FROM Song WHERE isPublic = 1 AND NOT NomUsuari 'Master';";
+        String query = "SELECT * FROM Song WHERE isPublic = 1 AND NOT NomUsuari LIKE 'Master';";
         ResultSet result = connector.selectQuery(query);
         try{
             while(result.next()){
