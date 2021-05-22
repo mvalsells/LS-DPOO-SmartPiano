@@ -10,6 +10,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a la parte del main
+ * al igual que todas sus respectivas funciones para poder controlar el frame
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
+
 public class JFMainFrame extends JFrame {
     // ---- Inici Atributs ----
 
