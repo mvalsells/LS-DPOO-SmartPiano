@@ -157,7 +157,7 @@ public class JPPlaylistView extends JPMainView {
 
         if(jpPlaylistSettings!=null){
 
-            for(int i=0;i<jpPlaylistSettings.size()-1;i++){
+            for(int i=0;i<jpPlaylistSettings.size();i++){
                 jpPlaylistSettings.get(i).registerController(controller);
             }
 
@@ -186,7 +186,7 @@ public class JPPlaylistView extends JPMainView {
         jpPlaylistSettings.remove(jcTriarPlaylist.getSelectedIndex());
         jcTriarPlaylist.removeItemAt(jcTriarPlaylist.getSelectedIndex());
 
-
+        repaint();
 
     }
 
