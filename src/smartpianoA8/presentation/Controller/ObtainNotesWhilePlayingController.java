@@ -42,12 +42,22 @@ public class ObtainNotesWhilePlayingController implements Receiver {
 
             if (shortMessage.getCommand() == ShortMessage.NOTE_ON) {
                 System.out.println("NOTE: " + shortMessage.getData1() + " ON. At time: " + System.currentTimeMillis());
+                sendOnNotes(shortMessage.getData1());
             }
             if (shortMessage.getCommand() == ShortMessage.NOTE_OFF) {
                 System.out.println("NOTE: " + shortMessage.getData1() + " OFF. At time: " + System.currentTimeMillis());
+                sendOffNotes(shortMessage.getData1());
             }
         }
 
+    }
+
+    public int sendOnNotes(int note) {
+        return note;
+    }
+
+    public int sendOffNotes(int note) {
+        return note;
     }
 
     @Override
