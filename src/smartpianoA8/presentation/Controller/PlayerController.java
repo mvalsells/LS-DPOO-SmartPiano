@@ -236,7 +236,7 @@ public class PlayerController implements Runnable, ActionListener {
                     currentSequencer.close();
                 } catch (FileNotFoundException e) {
                     //if(!isClosed) {
-                        JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + songDirectory + "\nYour program have to download it first with the HTMLScrapping feature!\nPlease, to solve this stay more time playing in the app.\nThe song will be downloaded according to the time stablished in your config file.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + songDirectory + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
                         //currentSong++;
                         isPlaying = false;
 
