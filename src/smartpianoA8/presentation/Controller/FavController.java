@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Classe controller de la vista de preferits
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou  PAU SNTACREU PAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREUPAU SNTACREU
  * @see ActionListener
  */
 public class FavController implements ActionListener {

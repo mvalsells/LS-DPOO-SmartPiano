@@ -43,7 +43,6 @@ public class JPPlailistEditor extends JPMainView{
                     for (int i = 0; i < songs.size()-1; i++) {
                         jComboBox.addItem(songs.get(i).getNom());
                     }
-                    jComboBox.setSelectedIndex(0);
                 } else {
                     for (int i = 0; i < songs.size()-1; i++) {
                         if (!songsPlaylistHas.contains(songs.get(i))) {
@@ -51,8 +50,8 @@ public class JPPlailistEditor extends JPMainView{
                         }
                     }
 
-                    jComboBox.setSelectedIndex(0);
                 }
+                jComboBox.setSelectedIndex(0);
                 break;
             case JPPlaylistSettings.REMOVE:
                 if (songsPlaylistHas == null) {

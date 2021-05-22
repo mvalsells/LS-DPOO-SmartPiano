@@ -53,13 +53,13 @@ public class PlaylistController implements ActionListener, ItemListener{
                     System.out.println(presentationController.playlistViewGetJCSongAdderString());
                     presentationController.playlistAddSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                     //presentationController.playlistViewUpdateJPPlaylistSettings();
-                    presentationController.playlistViewUpdateWhenAdd(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()));
+                    presentationController.playlistViewUpdateWhenAddSong(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongAdderString()));
                     break;
                 case JPPlaylistSettings.REMOVE:
                     try {
                         presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                         //presentationController.playlistViewUpdateJPPlaylistSettings();
-                        presentationController.playlistViewUpdateWhenRemove(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
+                        presentationController.playlistViewUpdateWhenRemoveSong(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
                     }catch (NullPointerException exception){
                         JOptionPane.showMessageDialog(new Frame(),"Esta playlist ya esta vacia!\nAntes de eliminar una canicon deberias añadirla", "No hay canciones a eliminar!",JOptionPane.ERROR_MESSAGE);
                     }
@@ -68,12 +68,23 @@ public class PlaylistController implements ActionListener, ItemListener{
                     presentationController.playlistJDPlaylistCreatorRun();
                     break;
                 case JPPlaylistView.DELETE_PLAYLIST:
-
+                    presentationController.playlistRemovePlaylist(presentationController.playlistViewGetJCTriarPlaylistString());
+                    break;
+                case JDPlaylistCreator.CREATE_PLAYLIST:
+                    if(!(presentationController.jdPlaylistGetTextFieldString().equals(""))&&!(presentationController.playlistDoesPlayListExists(presentationController.jdPlaylistGetTextFieldString()))) {
+                        presentationController.playlistAddPlayList(presentationController.jdPlaylistGetTextFieldString());
+                        presentationController.playlistJDPlaylistCreatorClose();
+                    }else if(presentationController.jdPlaylistGetTextFieldString().equals("")&&!(presentationController.playlistDoesPlayListExists(presentationController.jdPlaylistGetTextFieldString()))){
+                        JOptionPane.showMessageDialog(new Frame(),"No le has puesto nombre a la Playlist!", "Dale un nombre!",JOptionPane.ERROR_MESSAGE);
+                    }else if(!(presentationController.jdPlaylistGetTextFieldString().equals(""))&&(presentationController.playlistDoesPlayListExists(presentationController.jdPlaylistGetTextFieldString()))){
+                        JOptionPane.showMessageDialog(new Frame(),"Esta Playlist ya existe, dale otro nombre.", "Ya tienes una Playlist con este nombre",JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 case JDPlaylistCreator.DISCARD_PLAYLIST:
-                    JOptionPane.showMessageDialog(new Frame(),"Estas Seuro????????", "YO NO LO HARIA EHHHHHHHHH",JOptionPane.ERROR_MESSAGE);
+
                     presentationController.playlistJDPlaylistCreatorClose();
-                    JOptionPane.showMessageDialog(new Frame(),"Te JODES", "PD: DOGECOIN",JOptionPane.ERROR_MESSAGE);
+
+                    break;
             }
         }
 

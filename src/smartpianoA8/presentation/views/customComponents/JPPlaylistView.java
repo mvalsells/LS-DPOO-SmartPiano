@@ -21,7 +21,7 @@ public class JPPlaylistView extends JPMainView {
 
     private CardLayout cards;
     private JPanel jpCardPanel;
-    private JPPlaylistSettings[] jpPlaylistSettings;
+    private ArrayList<JPPlaylistSettings> jpPlaylistSettings;
     private JComboBox jcTriarPlaylist;
     private JDPlaylistCreator jdPlaylistCreator;
 
@@ -80,9 +80,18 @@ public class JPPlaylistView extends JPMainView {
     public void updateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){
 
         jcTriarPlaylist.removeAllItems();
-        jpCardPanel.removeAll();
+        /*jpCardPanel.removeAll();
+        jbNewPlaylist.removeAll();
+        jbDeletePlaylist.removeAll();
+        jdPlaylistCreator.removeAll();
 
+        jdPlaylistCreator = new JDPlaylistCreator();
 
+        jbNewPlaylist = new JBgeneral("Crear Playlist",ColorScheme.DARK_GREEN);
+        jbNewPlaylist.setActionCommand(NEW_PLAYLIST);
+
+        jbDeletePlaylist = new JBgeneral("Eliminar Playlist",ColorScheme.RED_DANGER);
+        jbDeletePlaylist.setActionCommand(DELETE_PLAYLIST);*/
 
         for(int i = 0;i<hasPlayLists.size();i++){
 
@@ -91,7 +100,7 @@ public class JPPlaylistView extends JPMainView {
         }
         //jcTriarPlaylist.setSelectedIndex(0);
 
-        jpPlaylistSettings = new JPPlaylistSettings[hasPlayLists.size()];
+        jpPlaylistSettings = new ArrayList<>();
 
         for(int i = 0; i<hasPlayLists.size();i++){
 
@@ -99,9 +108,9 @@ public class JPPlaylistView extends JPMainView {
             jpPlaylistSettingsStringName.append(JP_PLAYLIST_SETTINGS_STRING);
             jpPlaylistSettingsStringName.append(hasPlayLists.get(i).getNom());
             System.out.println(jpPlaylistSettingsStringName);
-            jpPlaylistSettings[i] = new JPPlaylistSettings();
-            jpPlaylistSettings[i].updateJPPlaylistSettings(songs,hasPlayLists.get(i));
-            jpCardPanel.add(jpPlaylistSettings[i],jpPlaylistSettingsStringName.toString());
+            jpPlaylistSettings.add(new JPPlaylistSettings());
+            jpPlaylistSettings.get(i).updateJPPlaylistSettings(songs,hasPlayLists.get(i));
+            jpCardPanel.add(jpPlaylistSettings.get(i),jpPlaylistSettingsStringName.toString());
 
         }
         repaint();
@@ -110,45 +119,84 @@ public class JPPlaylistView extends JPMainView {
     public void updateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){
 
                 System.out.println("Funciona?");
-                jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateJPPlaylistSettings(songs,hasPlayLists.get(jcTriarPlaylist.getSelectedIndex()));
+                jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateJPPlaylistSettings(songs,hasPlayLists.get(jcTriarPlaylist.getSelectedIndex()));
 
     }
 
-    public void updateWhenAdd(Song song,ActionListener controller){
+    public void updateWhenAddSong(Song song,ActionListener controller){
 
-        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenAdd(song,controller);
+        jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenAddSong(song,controller);
 
     }
-    public void updateWhenRemove(Song song){
+    public void updateWhenRemoveSong(Song song){
 
-        jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].updateWhenRemove(song);
+        jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenRemoveSong(song);
 
     }
 
 
 
     public void registerControllers(ActionListener controller,ItemListener itemListener) {
+
+
         jcTriarPlaylist.addItemListener(itemListener);
         jbNewPlaylist.addActionListener(controller);
         jbDeletePlaylist.addActionListener(controller);
         jdPlaylistCreator.registerControllerJDPlaylist(controller);
         if(jpPlaylistSettings!=null){
 
-            for(int i=0;i<jpPlaylistSettings.length;i++){
-                jpPlaylistSettings[i].registerController(controller);
+            for(int i=0;i<jpPlaylistSettings.size()-1;i++){
+                jpPlaylistSettings.get(i).registerController(controller);
             }
 
         }
 
     }
 
+    public void updateRegisterControllerForPlaylistSetting(ActionListener controller){
+
+        if(jpPlaylistSettings!=null){
+
+            for(int i=0;i<jpPlaylistSettings.size()-1;i++){
+                jpPlaylistSettings.get(i).registerController(controller);
+            }
+
+        }
+
+    }
+
+
+    public void updateRegisterControllerWhenNewPlaylist(ActionListener controller,PlayList playlist,ArrayList<Song> songs){
+
+        StringBuilder jpPlaylistSettingsStringName = new StringBuilder();
+        jpPlaylistSettingsStringName.append(JP_PLAYLIST_SETTINGS_STRING);
+        jpPlaylistSettingsStringName.append(playlist.getNom());
+
+        jcTriarPlaylist.addItem(playlist.getNom());
+        jpPlaylistSettings.add(new JPPlaylistSettings());
+        jpPlaylistSettings.get(jpPlaylistSettings.size()-1).updateJPPlaylistSettings(songs,playlist);
+        jpPlaylistSettings.get(jpPlaylistSettings.size()-1).registerController(controller);
+        jpCardPanel.add(jpPlaylistSettings.get(jpPlaylistSettings.size()-1),jpPlaylistSettingsStringName.toString());
+        repaint();
+
+    }
+    public void updateRegisterControllerWhenDeletePlaylist(){
+
+        jpCardPanel.remove(jcTriarPlaylist.getSelectedIndex());
+        jpPlaylistSettings.remove(jcTriarPlaylist.getSelectedIndex());
+        jcTriarPlaylist.removeItemAt(jcTriarPlaylist.getSelectedIndex());
+
+
+
+    }
+
     public void jdPlaylistCreatorRun()  {  jdPlaylistCreator.run();  }
     public void jdPlaylistCreatorClose(){  jdPlaylistCreator.close();}
 
-    public String getJCSongAdderString(){return jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].getJCSongAdderString();}
-    public String getJCSongRemoveString(){return jpPlaylistSettings[jcTriarPlaylist.getSelectedIndex()].getJCSongRemoveString();}
+    public String getJCSongAdderString(){return jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).getJCSongAdderString();}
+    public String getJCSongRemoveString(){return jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).getJCSongRemoveString();}
     public String getJCTriarPlaylistString(){return (String)jcTriarPlaylist.getSelectedItem();}
-
+    public String jdPlaylistGetTextFieldString(){return jdPlaylistCreator.getTextFieldString();}
 
     public void changeViewTo(String newView){
 

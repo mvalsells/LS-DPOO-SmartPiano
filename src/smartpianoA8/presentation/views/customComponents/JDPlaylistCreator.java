@@ -56,7 +56,9 @@ public class JDPlaylistCreator extends JDialog {
     /**
      * Funció per mostrar el JDiagram
      */
-    public void run(){  this.setVisible(true);}
+    public void run(){
+        this.setVisible(true);
+    }
 
     /**
      * Funcio per a tencar el JDiagram

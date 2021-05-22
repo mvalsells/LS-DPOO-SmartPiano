@@ -72,7 +72,7 @@ public class JPPlaylistSettings extends JPMainView {
         repaint();
 
     }
-    public void updateWhenAdd(Song song,ActionListener controller){
+    public void updateWhenAddSong(Song song,ActionListener controller){
 
         jpTiraCancons.updateWhenAdd(song);
         jpTiraCancons.registerControllerLastButton(controller);
@@ -80,7 +80,7 @@ public class JPPlaylistSettings extends JPMainView {
         jpRemove.updateWhenAdd(song,REMOVE);
 
     }
-    public void updateWhenRemove(Song song){
+    public void updateWhenRemoveSong(Song song){
 
         jpTiraCancons.updateWhenRemove(song);
         jpAdd.updateWhenRemove(song,ADD);

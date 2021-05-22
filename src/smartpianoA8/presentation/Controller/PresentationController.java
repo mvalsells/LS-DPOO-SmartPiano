@@ -14,6 +14,7 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -307,20 +308,36 @@ public class PresentationController implements PresentationFacade {
 
     // ---- Start PlaylistView Methods
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
-        jfMainFrame.registerPlaylistViewControllers(playlistController,playlistController);
+        jfMainFrame.playlistViewUpdateRegisterControllerForPlaylistSetting(playlistController);
     }
-    public void playlistViewUpdateJPPlaylistSettings(){jfMainFrame.playlistViewUpdateJPPlaylistSettings(getUserPlaylists(),getAllSongs());}
 
-    public void playlistViewUpdateWhenAdd(Song song){jfMainFrame.playlistViewUpdateWhenAdd(song,playlistController);}
-    public void playlistViewUpdateWhenRemove(Song song){jfMainFrame.playlistViewUpdateWhenRemove(song);}
+
+    public void playlistViewUpdateWhenAddSong(Song song){jfMainFrame.playlistViewUpdateWhenAddSong(song,playlistController);}
+    public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
+
+    public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());}
+    public void playlistRemovePlaylist(String playlistName){
+        if(!playlistName.equals("")) {
+            businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
+            jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
+        }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
+    }
+
+    /*public void playlistViewUpdateRegisterControllerWhenNewPlaylist(String playlistName){
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistName);
+    }*/
 
     public void playlistViewChangeViewTo(String newView){jfMainFrame.playlistViewChangeViewTo(newView);}
     public void playlistJDPlaylistCreatorRun()  {  jfMainFrame.playlistJDPlaylistCreatorRun(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/ }
     public void playlistJDPlaylistCreatorClose(){  jfMainFrame.playlistJDPlaylistCreatorClose(); /*jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());*/}
 
+
     public String playlistViewGetJCSongAdderString(){return jfMainFrame.playlistViewGetJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jfMainFrame.playlistViewGetJCSongRemoveString();}
     public String playlistViewGetJCTriarPlaylistString(){return jfMainFrame.playlistViewGetJCTriarPlaylistString();}
+    public String jdPlaylistGetTextFieldString(){return jfMainFrame.jdPlaylistGetTextFieldString();}
+
     public void playlistAddSongToPlayList(Song song, PlayList playList){businessFacade.addSongToPlayList(song,playList);}
     public void playlistRemoveSongToPlayList(Song song, PlayList playList){businessFacade.removeSongFromPlayList(song,playList);}
     public PlayList playlistGetPlayListByName(String name){return businessFacade.getPlayListByName(name);}
@@ -331,7 +348,7 @@ public class PresentationController implements PresentationFacade {
     public Boolean isPlayListEmpty(String nom){
         return businessFacade.isPlayListEmpty(nom);
     }
-    public Boolean doesPlayListExists(String nom){
+    public Boolean playlistDoesPlayListExists(String nom){
         return businessFacade.doesPlayListExist(nom);
     }
 

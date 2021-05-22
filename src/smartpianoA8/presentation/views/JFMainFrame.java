@@ -90,6 +90,13 @@ public class JFMainFrame extends JFrame {
     public void registerPlaylistViewControllers(ActionListener actionListener, ItemListener itemListener){
        jpPlaylistView.registerControllers(actionListener,itemListener);
     }
+
+
+    public void playlistViewUpdateRegisterControllerForPlaylistSetting(ActionListener controller){
+        jpPlaylistView.updateRegisterControllerForPlaylistSetting(controller);
+    }
+
+
     public void registerProfileViewControllers(ActionListener actionListener, MouseListener mouseListener){
         jpProfileView.registerControllers(actionListener, mouseListener);
     }
@@ -133,12 +140,17 @@ public class JFMainFrame extends JFrame {
     public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jpPlaylistView.updateJPPlaylistView(hasPlayLists,songs);}
     public void playlistViewUpdateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){ jpPlaylistView.updateJPPlaylistSettings(hasPlayLists,songs);}
 
-    public void playlistViewUpdateWhenAdd(Song song,ActionListener controller){jpPlaylistView.updateWhenAdd(song,controller);}
-    public void playlistViewUpdateWhenRemove(Song song){jpPlaylistView.updateWhenRemove(song);}
+    public void playlistViewUpdateWhenAddSong(Song song,ActionListener controller){jpPlaylistView.updateWhenAddSong(song,controller);}
+    public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}
+
+    public void playlistViewUpdateRegisterControllersWhenNewPlaylist(ActionListener actionListener,PlayList playlist,ArrayList<Song> songs){ jpPlaylistView.updateRegisterControllerWhenNewPlaylist(actionListener, playlist,songs); }
+
+    public void playlistViewUpdateRegisterControllerWhenDeletePlaylist(){ jpPlaylistView.updateRegisterControllerWhenDeletePlaylist(); }
 
     public void playlistViewChangeViewTo(String newView){jpPlaylistView.changeViewTo(newView);}
     public void playlistJDPlaylistCreatorRun()  {  jpPlaylistView.jdPlaylistCreatorRun();  }
     public void playlistJDPlaylistCreatorClose(){  jpPlaylistView.jdPlaylistCreatorClose();}
+    public String jdPlaylistGetTextFieldString(){return jpPlaylistView.jdPlaylistGetTextFieldString();}
 
     public String playlistViewGetJCSongAdderString(){return jpPlaylistView.getJCSongAdderString();}
     public String playlistViewGetJCSongRemoveString(){return jpPlaylistView.getJCSongRemoveString();}
