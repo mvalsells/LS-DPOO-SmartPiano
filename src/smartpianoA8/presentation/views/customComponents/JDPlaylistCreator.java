@@ -63,8 +63,7 @@ public class JDPlaylistCreator extends JDialog {
     /**
      * Funcio per a tencar el JDiagram
      */
-    public void close(){
-        this.setVisible(false);
+    public void close(){ jTextField.setText(""); this.setVisible(false);
     }
 
     /**

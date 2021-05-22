@@ -87,7 +87,7 @@ public class JDPianoRegAdd extends JDialog {
     }
 
     public void run(){ this.setVisible(true);}
-    public void close(){ this.setVisible(false);}
+    public void close(){ jTextField.setText(""); ; this.setVisible(false);}
 
     public String getTextFieldString(){return jTextField.getText();}
     public boolean isCheckBoxSelected(){return jcbCheckBox.isSelected();}
