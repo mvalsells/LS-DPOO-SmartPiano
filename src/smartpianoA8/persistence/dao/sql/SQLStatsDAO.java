@@ -79,9 +79,9 @@ public class SQLStatsDAO implements StatsDAO {
                     "AND Hora = " + hora + ";";
             connector.updateQuery(query);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de minuts/segons");
+        } catch (SQLException ignored) {
+           // e.printStackTrace();
+           // System.out.println("SQLSTATSDAO ERROR no es pot obtenir el numero de minuts/segons");
         }
 
     }
