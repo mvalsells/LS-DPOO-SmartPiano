@@ -71,8 +71,8 @@ public class SQLPlayListDAO implements PlayListDAO{
     public void removePlayList(PlayList playList) {
 
         //borrar la playlist sencera (data playlist)
-        String query = "DELETE FROM SongPlaylist WHERE IDPlayList = " + playList.getIdPlayList() + ";";
-        connector.selectQuery(query);
+        String query = "DELETE FROM SongPlaylist WHERE IdPlayList = " + playList.getIdPlayList() + ";";
+        connector.deleteQuery(query);
     }
 
     /**
