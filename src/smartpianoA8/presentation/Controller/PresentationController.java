@@ -321,11 +321,13 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
             jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
+            jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
+            System.out.println("eliminando...");
         }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
     }
 
@@ -435,7 +437,7 @@ public class PresentationController implements PresentationFacade {
     public void loadPlaylistInPlayer() {
         System.out.println("Yo, updating playlist...");
 
-        /*ArrayList<Song> test2 = new ArrayList<>();
+        ArrayList<Song> test2 = new ArrayList<>();
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
         Song song2 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/37900.mid",1,null,null);
         Song song3 = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/110325.mid",1,null,null);
@@ -445,11 +447,7 @@ public class PresentationController implements PresentationFacade {
         test2.add(song3);
         test2.add(song2);
         test2.add(song4);
-        test2.add(song);*/
-
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add("awadsdas");
-        strings.add("dsfsdfdss");
+        test2.add(song);
 
         if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
             JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
@@ -459,12 +457,12 @@ public class PresentationController implements PresentationFacade {
             } else if (businessFacade.isPlayListEmpty(jfMainFrame.getJComboBoxString())) {
                 JOptionPane.showMessageDialog(new Frame(), "This playlist is empty.\nYou have to add songs to play them!", "PLAYLIST EMPTY", JOptionPane.ERROR_MESSAGE);
             } else {
-                playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
+                //playerController.setSongsToBePlayed(businessFacade.getPlayListSongsByPlayListName(jfMainFrame.getJComboBoxString()));
+                playerController.setSongsToBePlayed(test2);
                 isUploaded = true;
             }
         }
         System.out.println(jfMainFrame.getJComboBoxString());
-        //jfMainFrame.setPlaylistsNames(strings);
 
         //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
