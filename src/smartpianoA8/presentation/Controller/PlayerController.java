@@ -175,12 +175,12 @@ public class PlayerController implements Runnable, ActionListener {
         isClosed = false;
         while (isPlaying) {
 
-            for(currentSong = 0; currentSong < songsToBePlayed.size() && !isClosed; currentSong++) {
+            for(currentSong = 0; currentSong < songsToBePlayed.size(); currentSong++) {
 
                 songDirectory = new File(songsToBePlayed.get(currentSong).getDirectori());
 
                 try {
-                    //if(!isClosed) {
+                    if(!isClosed) {
                         currentSequence = MidiSystem.getSequence(songDirectory);
                         currentSequencer = MidiSystem.getSequencer();
                         currentSequencer.open();
@@ -231,7 +231,7 @@ public class PlayerController implements Runnable, ActionListener {
                         }
 
                         currentSequencer.close();
-                    //}
+                    }
 
 
                 } catch (FileNotFoundException e) {
