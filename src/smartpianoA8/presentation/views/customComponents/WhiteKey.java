@@ -20,8 +20,8 @@ public class WhiteKey  extends JButton implements Key {
         setBackground (Color.WHITE);
         setBounds (left, 10, WWD, WHT);
         setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        //setOpaque(true);
-        //setForeground(Color.WHITE);
+        setOpaque(true);
+        setForeground(Color.WHITE);
     }
 
     public int getNote () {
