@@ -89,4 +89,24 @@ public class MainFrameController implements ActionListener {
     public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }
+
+    public void setShowingPiano(Boolean showingPiano) {
+        isShowingPiano = showingPiano;
+    }
+
+    public void setShowingPianoCascade(Boolean showingPianoCascade) {
+        isShowingPianoCascade = showingPianoCascade;
+    }
+
+    public void setShowingPlaylists(Boolean showingPlaylists) {
+        isShowingPlaylists = showingPlaylists;
+    }
+
+    public void setShowingProfile(Boolean showingProfile) {
+        isShowingProfile = showingProfile;
+    }
+
+    public void setShowingSongs(Boolean showingSongs) {
+        isShowingSongs = showingSongs;
+    }
 }

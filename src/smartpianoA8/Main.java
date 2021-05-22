@@ -2,25 +2,15 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
-import smartpianoA8.business.UserManager;
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.business.entity.User;
-import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
-import smartpianoA8.presentation.Controller.PlayerController;
 import smartpianoA8.presentation.Controller.PresentationController;
-import smartpianoA8.presentation.views.JFMainFrame;
-import smartpianoA8.presentation.views.JFSongsTable;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -75,6 +65,10 @@ public class Main {
 
         //Business <-> Presentation
         BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
+
+        //Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
+        //ObtainNotesWhilePlaying obtainNotesWhilePlaying = new ObtainNotesWhilePlaying();
+        //obtainNotesWhilePlaying.playAndGet(song);
 /*
         try {
             businessFacade.login("marcv","1234Marc");
