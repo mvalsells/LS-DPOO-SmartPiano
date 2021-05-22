@@ -19,17 +19,17 @@ import java.util.ArrayList;
 public class PianoCascadeController implements Runnable, ActionListener, KeyListener, MouseListener {
 
     private PresentationController presentationController;
-    private ArrayList<ArrayList<Notes>> partitura;
-    private ArrayList<Notes> canal1;
-    private float maxMilis;
+    //private ArrayList<ArrayList<Notes>> partitura;
+    //private ArrayList<Notes> canal1;
+    //private float maxMilis;
     private JPPiano jppiano;
 
     /**
      * Constructor
      */
     public PianoCascadeController(JPPiano jpPiano) {//pasarle la cancion y datos
-        this.partitura = null;
-        this.canal1 = null;
+        //this.partitura = null;
+        //this.canal1 = null;
         //this.maxMilis = null;
         this.jppiano = jpPiano;
 

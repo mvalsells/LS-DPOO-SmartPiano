@@ -41,7 +41,8 @@ public class PresentationController implements PresentationFacade {
     private PlaylistController playlistController;
     private ProfileController profileController;
     private PianoController pianoController;
-    private PianoCascadeController pianoCascadeController;
+    //private PianoCascadeController pianoCascadeController;
+    private ObtainNotesWhilePlayingController obtainNotesWhilePlayingController;
     private Thread pianoCascadeThread;
     private PlayerController playerController;
     private MainFrameController mainFrameController;
@@ -87,20 +88,22 @@ public class PresentationController implements PresentationFacade {
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
-        pianoCascadeController = new PianoCascadeController(jfMainFrame.getJpPiano());
+        //pianoCascadeController = new PianoCascadeController(jfMainFrame.getJpPiano());
+        obtainNotesWhilePlayingController = new ObtainNotesWhilePlayingController(jfMainFrame.getJpPiano());
         playerController = new PlayerController(jfMainFrame.getPlayerView());
         jpPlayerControllerThread = new Thread(playerController);
         jpPlayerControllerThread.start();
 
         //Thread
-        pianoCascadeThread = new Thread(pianoCascadeController);
+        //pianoCascadeThread = new Thread(pianoCascadeController);
 
         //Registar aquest controller als altres controllers
         songController.registerPresentationController(this);
         playlistController.registerPresentationController(this);
         profileController.registerPresentationController(this);
         pianoController.registerPresentationController(this);
-        pianoCascadeController.registerPresentationController(this);
+        //pianoCascadeController.registerPresentationController(this);
+        obtainNotesWhilePlayingController.registerPresentationController(this);
         mainFrameController.registerPresentationController(this);
 
         //Registrar els controllers a les seves vistes
@@ -411,7 +414,8 @@ public class PresentationController implements PresentationFacade {
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
     public void startCascade(){
-        pianoCascadeThread.start();
+        /*pianoCascadeThread.start();*/
+        obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
     }
 
     public float getMaxMilis(){
