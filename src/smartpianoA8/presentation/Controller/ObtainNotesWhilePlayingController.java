@@ -70,6 +70,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 note = canviaNote(note, isWhite);
                 if(isWhite && printable){
                     jppiano.pintarTeclaBlanca(note);
+                    jppiano.repainAllBlacks();
                 }else if(!isWhite && printable){
                     jppiano.pintarTeclaNegra(note);
                 }
@@ -83,8 +84,8 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 isWhite = isBlanca(note);
                 note = canviaNote(note, isWhite);
                 if(isWhite && printable) {
-
                     jppiano.despintarTeclaBlanca(note);
+                    jppiano.repainAllBlacks();
                 }
                 else if (!isWhite && printable){
                     jppiano.despintarTeclaNegra(note);

@@ -508,7 +508,11 @@ public class JPPiano extends JPanel {
     public void pintarTeclaBlanca(int note){
         whites[note].clicarNota();
     }//Cierre del metodo
-
+    public void repainAllBlacks(){
+        for(int i = 0; i<blacks.length-1;i++){
+            blacks[i].repaint();
+        }
+    }
     /**
      * Método que encia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
