@@ -321,11 +321,13 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName),getAllSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
             jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
+            jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
+            System.out.println("eliminando...");
         }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
     }
 
@@ -447,10 +449,6 @@ public class PresentationController implements PresentationFacade {
         test2.add(song4);
         test2.add(song);*/
 
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add("awadsdas");
-        strings.add("dsfsdfdss");
-
         if(jfMainFrame.getJComboBoxString().equals("If you want to play your playlist you must select it before and update pressing the button ---->")) {
             JOptionPane.showMessageDialog(new Frame(), "This is not a valid playlist! :(\nSelect a valid one.", "PLAYLIST NOT VALID", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -464,7 +462,6 @@ public class PresentationController implements PresentationFacade {
             }
         }
         System.out.println(jfMainFrame.getJComboBoxString());
-        //jfMainFrame.setPlaylistsNames(strings);
 
         //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }

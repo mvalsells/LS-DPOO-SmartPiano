@@ -73,6 +73,7 @@ public class PlaylistController implements ActionListener, ItemListener{
                 case JDPlaylistCreator.CREATE_PLAYLIST:
                     if(!(presentationController.jdPlaylistGetTextFieldString().equals(""))&&!(presentationController.playlistDoesPlayListExists(presentationController.jdPlaylistGetTextFieldString()))) {
                         presentationController.playlistAddPlayList(presentationController.jdPlaylistGetTextFieldString());
+                        //add presentation add to player
                         presentationController.playlistJDPlaylistCreatorClose();
                     }else if(presentationController.jdPlaylistGetTextFieldString().equals("")&&!(presentationController.playlistDoesPlayListExists(presentationController.jdPlaylistGetTextFieldString()))){
                         JOptionPane.showMessageDialog(new Frame(),"No le has puesto nombre a la Playlist!", "Dale un nombre!",JOptionPane.ERROR_MESSAGE);
