@@ -123,6 +123,8 @@ public class JPPlaylistView extends JPMainView {
 
     }
 
+
+
     public void updateWhenAddSong(Song song,ActionListener controller){
 
         jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenAddSong(song,controller);

@@ -168,8 +168,8 @@ public class JFMainFrame extends JFrame {
     /**
      * Método que inica la nueva canción
      */
-    public void nuevaCanciones() {
-        jpSongs.nuevasCanciones();
+    public void nuevaCanciones(Song song) {
+        jpSongs.nuevasCanciones(song);
     }//Cierre del método
     // ---- End SongView Methods
     // ---- Start PlaylistView Methods

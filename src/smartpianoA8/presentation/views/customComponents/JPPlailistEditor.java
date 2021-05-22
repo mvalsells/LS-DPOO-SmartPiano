@@ -53,9 +53,7 @@ public class JPPlailistEditor extends JPMainView{
                 jComboBox.setSelectedIndex(0);
                 break;
             case JPPlaylistSettings.REMOVE:
-                if (songsPlaylistHas == null) {
-
-                } else {
+                if (songsPlaylistHas != null) {
                     for(int i = 0;i<songsPlaylistHas.size();i++){
 
                         jComboBox.addItem(songsPlaylistHas.get(i).getNom());
