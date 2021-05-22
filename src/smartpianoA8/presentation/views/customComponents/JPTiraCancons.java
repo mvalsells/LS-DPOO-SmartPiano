@@ -196,7 +196,7 @@ public class JPTiraCancons extends JPMainView{
 
         jpAmbSongs.add(jpCanço.get(jpCanço.size()-1));
 
-        repaint();
+        revalidate();
 
     }
 

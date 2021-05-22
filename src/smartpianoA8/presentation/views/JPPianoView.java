@@ -78,6 +78,15 @@ public class JPPianoView extends JPMainView {
     public void jdClose() { jdPianoRegAdd.close();}//Cierre del método
 
     /**
+     * Getter que debuelve el ànel del piano
+     * @return
+     */
+    public JPPiano getJpPiano(){
+        JPPiano extra =  this.jpPiano;
+
+        return extra;}//Cierre del método
+
+    /**
      * Método que coje el String que se guarda en el panel del reg.
      * @return El String que se guarda en el panel del reg.
      */

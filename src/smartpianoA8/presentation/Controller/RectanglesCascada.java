@@ -38,9 +38,11 @@ public class RectanglesCascada extends Rectangle implements Runnable{
 
         //esperar el que dura la nota
         long inicial = System.currentTimeMillis();
+        System.out.println("patata que anem");
         while(System.currentTimeMillis()-inicial <= endTime){
-        }
 
+        }
+        System.out.println("patata que cremem");
         //tecla color inicial
         if(isWhite && printable) {
 
@@ -49,6 +51,7 @@ public class RectanglesCascada extends Rectangle implements Runnable{
         else if (!isWhite && printable){
             jppiano.despintarTeclaNegra(note);
         }
+        return;
     }
 
     private Boolean isPrintable(int note){
