@@ -192,6 +192,13 @@ public class JPPlaylistView extends JPMainView {
 
     }
 
+    public void addSongInJCBadder(Song song){
+        for(int i = 0;i<jcTriarPlaylist.getItemCount();i++) {
+            jpPlaylistSettings.get(i).addSongInJCBadder(song);
+            repaint();
+        }
+    }
+
     public void jdPlaylistCreatorRun()  {  jdPlaylistCreator.run();  }
     public void jdPlaylistCreatorClose(){  jdPlaylistCreator.close();}
 

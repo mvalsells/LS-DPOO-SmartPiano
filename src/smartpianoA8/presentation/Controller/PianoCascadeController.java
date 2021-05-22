@@ -21,17 +21,17 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
     private PresentationController presentationController;
     private ArrayList<ArrayList<Notes>> partitura;
     private ArrayList<Notes> canal1;
-    private final Long maxMilis;
+    private float maxMilis;
     private JPPiano jppiano;
 
     /**
      * Constructor
      */
-    public PianoCascadeController() {//pasarle la cancion y datos
+    public PianoCascadeController(JPPiano jpPiano) {//pasarle la cancion y datos
         this.partitura = null;
         this.canal1 = null;
-        this.maxMilis = null;
-        this.jppiano = null;
+        //this.maxMilis = null;
+        this.jppiano = jpPiano;
 
     }
 
@@ -49,9 +49,11 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
      */
     @Override
     public void run(){
-        Song song = presentationController.getSongByID(presentationController.getLastSongPressed());
+        /*Song song = presentationController.getSongByID(presentationController.getLastSongPressed());
         this.partitura = presentationController.getBusinesMidiNotes(song);
         this.canal1 = partitura.get(1);
+
+        maxMilis = presentationController.getMaxMilis();
 
         long inicial = System.currentTimeMillis();
         long actual = System.currentTimeMillis()-inicial;
@@ -67,8 +69,17 @@ public class PianoCascadeController implements Runnable, ActionListener, KeyList
                 i++;
             }
             actual = System.currentTimeMillis()-inicial;
-        }
+        }*/
+
+
+
+
+
     }
+
+
+    public void setJppiano(JPPiano jpPiano){
+        this.jppiano=jpPiano;}
 
     /**
      * @param e

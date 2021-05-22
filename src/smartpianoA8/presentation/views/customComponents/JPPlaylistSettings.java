@@ -89,6 +89,10 @@ public class JPPlaylistSettings extends JPMainView {
 
     }
 
+    public void addSongInJCBadder(Song song){
+        jpAdd.addSongInJCBadder(song);
+    }
+
     public String getJCSongAdderString(){return (String)jpAdd.getJCSongString();}
     public String getJCSongRemoveString(){return (String)jpRemove.getJCSongString();}
 

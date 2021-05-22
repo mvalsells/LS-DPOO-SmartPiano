@@ -85,6 +85,7 @@ public class MainFrameController implements ActionListener {
     }
 
     public boolean isShowingSongs(){return isShowingSongs;}
+    public boolean isShowingPlaylists(){return isShowingPlaylists;}
 
     public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;

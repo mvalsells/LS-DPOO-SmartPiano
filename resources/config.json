@@ -6,6 +6,6 @@
     "dbPort": 3306,
     "dbUser": "a8-app",
     "dbPassword": "qVT1lm3Z8Dkuo7vL",
-    "timeScrapping": 5
+    "timeScrapping": 1
   }
 }

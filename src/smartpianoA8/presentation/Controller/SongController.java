@@ -55,6 +55,9 @@ public class SongController implements ActionListener {
             presentationController.setLastSongPressed(Integer.parseInt(split[1]));
             System.out.println(Integer.parseInt(split[1]));
 
+            presentationController.changeView(JFMainFrame.PIANO);
+            presentationController.startCascade();
+
         }
 
     }

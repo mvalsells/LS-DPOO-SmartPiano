@@ -35,7 +35,7 @@ public class JFMainFrame extends JFrame {
     private JPPlaylistView jpPlaylistView;
     private JPPianoView jpPianoView;
     private JPProfileView jpProfileView;
-    private JPPianoCascadeView jpPianoCascadeView;
+    //private JPPianoCascadeView jpPianoCascadeView;
     private JPNavBar jpNavBar;
     private JPPlayer jpPlayer;
 
@@ -66,7 +66,7 @@ public class JFMainFrame extends JFrame {
         jpPlaylistView = new JPPlaylistView();
         jpPianoView = new JPPianoView();
         jpProfileView = new JPProfileView(currentUser);
-        jpPianoCascadeView = new JPPianoCascadeView();
+        //jpPianoCascadeView = new JPPianoCascadeView();
         jpPlayer = new JPPlayer();
         jpNavBar = new JPNavBar();
 
@@ -77,7 +77,7 @@ public class JFMainFrame extends JFrame {
         jpCardPanel.add(jpPlaylistView, PLAYLISTS);
         jpCardPanel.add(jpPianoView, PIANO);
         jpCardPanel.add(jpProfileView, PROFILE);
-        jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
+        //jpCardPanel.add(jpPianoCascadeView,PIANO_CASCADE);
 
         JPanel jpCenter = new JPMainView();
         jpCenter.setLayout(new BorderLayout());
@@ -154,9 +154,9 @@ public class JFMainFrame extends JFrame {
      * @param keyListener controlador asociado a las teclas del ordenador.
      * @param mouseListener controlador asociado al ratón.
      */
-    public void registerPianoCascadeViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
-        jpPianoCascadeView.registerControllers(actionListener, mouseListener, keyListener);
-    }//Cierre del método
+    //public void registerPianoCascadeViewControllers(ActionListener actionListener, MouseListener mouseListener, KeyListener keyListener){
+     //   jpPianoCascadeView.registerControllers(actionListener, mouseListener, keyListener);
+    //}//Cierre del método
 
     //Views managment
 
@@ -180,9 +180,9 @@ public class JFMainFrame extends JFrame {
             case PROFILE:
                 cards.show(jpCardPanel,PROFILE);
                 break;
-            case PIANO_CASCADE:
+            /*case PIANO_CASCADE:
                 cards.show(jpCardPanel,PIANO_CASCADE);
-                break;
+                break;*/
         }
     }//Cierre del método
 
@@ -193,8 +193,15 @@ public class JFMainFrame extends JFrame {
     /**
      * Método que inica la nueva canción
      */
-    public void nuevaCanciones(Song song) {
-        jpSongs.nuevasCanciones(song);
+    public void nuevaCanciones(Song song,String type) {
+        switch (type) {
+            case "SONGS":
+                jpSongs.nuevasCanciones(song);
+                break;
+            case "PLAYLISTS":
+                jpPlaylistView.addSongInJCBadder(song);
+
+        }
     }//Cierre del método
     // ---- End SongView Methods
     // ---- Start PlaylistView Methods
@@ -363,6 +370,12 @@ public class JFMainFrame extends JFrame {
     public JPPlayer getPlayerView() {
         return jpPlayer;
     }//Cierre del método
+
+    /**
+     * Método que retorna el panel del piano.
+     * @return
+     */
+    public JPPiano getJpPiano(){return jpPianoView.getJpPiano();}
 
     /**
      * Método para mostrar la lista de nombres

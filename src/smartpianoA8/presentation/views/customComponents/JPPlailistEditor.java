@@ -39,11 +39,11 @@ public class JPPlailistEditor extends JPMainView{
         switch (type) {
             case JPPlaylistSettings.ADD:
                 if (songsPlaylistHas == null) {
-                    for (int i = 0; i < songs.size()-1; i++) {
+                    for (int i = 0; i < songs.size(); i++) {
                         jComboBox.addItem(songs.get(i).getNom());
                     }
                 } else {
-                    for (int i = 0; i < songs.size()-1; i++) {
+                    for (int i = 0; i < songs.size(); i++) {
                         if (!songsPlaylistHas.contains(songs.get(i))) {
                             jComboBox.addItem(songs.get(i).getNom());
                         }
@@ -85,6 +85,11 @@ public class JPPlailistEditor extends JPMainView{
                 break;
         }
     }
+
+    public void addSongInJCBadder(Song song){
+        jComboBox.addItem(song.getNom());
+    }
+
     public void registerController(ActionListener controller){
         this.jComboBox.addActionListener(controller);
         this.jButton.addActionListener(controller);

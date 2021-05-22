@@ -42,6 +42,7 @@ public class PresentationController implements PresentationFacade {
     private ProfileController profileController;
     private PianoController pianoController;
     private PianoCascadeController pianoCascadeController;
+    private Thread pianoCascadeThread;
     private PlayerController playerController;
     private MainFrameController mainFrameController;
     private Thread jpPlayerControllerThread;
@@ -60,6 +61,7 @@ public class PresentationController implements PresentationFacade {
     public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
+
         //Frames
 
         //Controllers
@@ -85,10 +87,13 @@ public class PresentationController implements PresentationFacade {
         profileController = new ProfileController();
         pianoController = new PianoController(businessFacade.getHMTeclas(), midiWritter);
         mainFrameController = new MainFrameController();
-        pianoCascadeController = new PianoCascadeController();
+        pianoCascadeController = new PianoCascadeController(jfMainFrame.getJpPiano());
         playerController = new PlayerController(jfMainFrame.getPlayerView());
         jpPlayerControllerThread = new Thread(playerController);
         jpPlayerControllerThread.start();
+
+        //Thread
+        pianoCascadeThread = new Thread(pianoCascadeController);
 
         //Registar aquest controller als altres controllers
         songController.registerPresentationController(this);
@@ -103,7 +108,7 @@ public class PresentationController implements PresentationFacade {
         jfMainFrame.registerPlaylistViewControllers(playlistController,playlistController);
         jfMainFrame.registerProfileViewControllers(profileController, profileController, profileController);
         jfMainFrame.registerPianoViewControllers(pianoController, pianoController, pianoController);
-        jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
+        //jfMainFrame.registerPianoCascadeViewControllers(pianoCascadeController, pianoController, pianoController);
         jfMainFrame.registerMainFrameController(mainFrameController);
 
         jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
@@ -122,7 +127,8 @@ public class PresentationController implements PresentationFacade {
 
         //Registrar el controller a la vista
         jfWellcomeFrame.registerController(wellcomeController);
-    }
+
+        }
     /**
      * Setter atribut atribuir el ID de l'lultima canço que s'apreta
      *
@@ -308,9 +314,12 @@ public class PresentationController implements PresentationFacade {
      */
     @Override
     public void nuevasCanciones(Song song) {
-        if(mainFrameController.isShowingSongs()) {
-            jfMainFrame.nuevaCanciones(song);
+
+        if(jfMainFrame!=null) {
+            jfMainFrame.nuevaCanciones(song, "SONGS");
+            jfMainFrame.nuevaCanciones(song, "PLAYLISTS");
         }
+
     }
 
     // ---- Start PlaylistView Methods
@@ -401,7 +410,16 @@ public class PresentationController implements PresentationFacade {
     public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
+    public void startCascade(){
+        pianoCascadeThread.start();
+    }
 
+    public float getMaxMilis(){
+        System.out.println("milis: " + businessFacade.getTotalTicks());
+        System.out.println("segundos: " + businessFacade.getTotalSongSeconds());
+        System.out.println("micros: " + businessFacade.getµsPerTickMidiNotes()*businessFacade.getTotalTicks());
+
+        return businessFacade.getTotalTicks();}
     // ---- End PianoCascadeView Methods
     // ---- Start ProfileView Methods
 
