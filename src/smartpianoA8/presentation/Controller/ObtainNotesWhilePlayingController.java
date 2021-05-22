@@ -69,7 +69,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                     jppiano.pintarTeclaNegra(note);
                 }
 
-                System.out.println("NOTE: " + shortMessage.getData1() + " ON. At time: " + System.currentTimeMillis());
+                System.out.println("NOTE: (" + isWhite + ") " + note +" ON. At time: " + System.currentTimeMillis());
                 //sendOnNotes(shortMessage.getData1());
             }
             if (shortMessage.getCommand() == ShortMessage.NOTE_OFF) {
@@ -84,7 +84,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 else if (!isWhite && printable){
                     jppiano.despintarTeclaNegra(note);
                 }
-                System.out.println("NOTE: " + shortMessage.getData1() + " OFF. At time: " + System.currentTimeMillis());
+                System.out.println("NOTE: (" + isWhite + ") " + note + " OFF. At time: " + System.currentTimeMillis());
                 //sendOffNotes(shortMessage.getData1());
             }
         }
@@ -165,10 +165,13 @@ public class ObtainNotesWhilePlayingController implements Receiver {
     }
 
     private Boolean isBlanca(int note){
-        for (Integer negre : negres) {
-            if (note == negre) return true;
+
+        for(int i=0;i<negres.length-1;i++){
+
+            if(note==negres[i]){return false;}
+
         }
-        return false;
+        return true;
     }
 
     public int sendOnNotes(int note) {

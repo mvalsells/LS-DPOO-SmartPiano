@@ -19,9 +19,9 @@ public class WhiteKey  extends JButton implements Key {
         // I think metal looks better!
         setBackground (Color.WHITE);
         setBounds (left, 10, WWD, WHT);
-        //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        //setOpaque(true);
-        //setForeground(Color.WHITE);
+        setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        setOpaque(true);
+        setForeground(Color.WHITE);
     }
 
     public int getNote () {
@@ -30,11 +30,6 @@ public class WhiteKey  extends JButton implements Key {
 
 
 
-    public void clicarNota(){
-        //posar blau
-        setBackground(Color.lightGray);
-    }
-    public void desclicarNota(){
-        setBackground(Color.WHITE);
-    }
+    public void clicarNota(){setBackground(Color.BLUE);/*setBorder(BorderFactory.createLineBorder(Color.blue,1));*/}
+    public void desclicarNota(){ setBackground(Color.WHITE);/*setBorder(BorderFactory.createLineBorder(Color.white,1));*/ }
 }
