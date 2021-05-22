@@ -338,6 +338,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public Boolean isPlayListEmpty(String nom){
         return playListDAO.isPlayListEmpty(nom, userManager.getCurrentUser().getUsername());
     }
+
+    @Override
+    public ArrayList<Song> getPublicAndMasterSongs() {
+        return songDAO.getPublicAndMasterSongs();
+    }
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------
