@@ -281,27 +281,6 @@ public class PresentationController implements PresentationFacade {
     public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
         businessFacade.setHmTeclas(hmTeclas);
         pianoController.setHmTeclas(hmTeclas);
-
-        // Prova per guardar-ho al arxiu
-        //TODO hauria d'anar a persistence
-        /*String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
-        try {
-            StringBuilder textToWrite = new StringBuilder();
-            textToWrite.append("key,nota\n");
-            FileWriter fw = new FileWriter(ruta,false);
-            for (Map.Entry<Integer, Tecla> en: hmTeclas.entrySet()){
-                textToWrite.append(en.getKey());
-                textToWrite.append(",");
-                textToWrite.append(en.getValue().getNota());
-                textToWrite.append("\n");
-            }
-            fw.write(textToWrite.toString());
-            fw.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public void removeCurrentUser(){

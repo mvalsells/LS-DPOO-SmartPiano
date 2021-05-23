@@ -7,6 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Esta clase se encarga de contener y crear toda la vista asociada al apartado de la opción de reproducir la música.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPPlayer extends JPanel {
 
     int totalBarLong = 0;
@@ -36,6 +42,9 @@ public class JPPlayer extends JPanel {
     public static final String STOP_BUTTON = "STOP";
     public static final String UPLOAD_BUTTON = "UPLOAD";
 
+    /**
+     * Constructor de la clase el cual contiene los tipos para crear las vistas.
+     */
     public JPPlayer() {
         setLayout(new BorderLayout());
         setBackground(ColorScheme.NavBar_Background);
@@ -108,8 +117,12 @@ public class JPPlayer extends JPanel {
 
         add(generalBorder, BorderLayout.CENTER);
 
-    }
+    }//Cierre del constructor
 
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller Parámetro ascoiado al ActionListener
+     */
     public void registerController(ActionListener controller){
         playButton.addActionListener(controller);
         pauseButton.addActionListener(controller);
@@ -117,8 +130,12 @@ public class JPPlayer extends JPanel {
         previousButton.addActionListener(controller);
         stopButton.addActionListener(controller);
         uploadButton.addActionListener(controller);
-    }
+    }//Cierre del método
 
+    /**
+     * Método que envia el estado actual para actualizar la progres bar
+     * @param status El estado actual para actualizar la progres bar.
+     */
     public void setCurrentStatus(int status) {
 
         int status2 = status / 1000;
@@ -133,8 +150,12 @@ public class JPPlayer extends JPanel {
         //progressBar.revalidate();
         //progressBar.repaint();
         //pasar status y maximo y hacer regla de tres
-    }
+    }//Cierre del método
 
+    /**
+     * Método que envia el nombre de la playlist.
+     * @param playlistsNames nombre de la playlist.
+     */
     public void setPlaylistsNames(ArrayList<String> playlistsNames) {
         //this.playlistsNames = playlistsNames;
 
@@ -153,20 +174,32 @@ public class JPPlayer extends JPanel {
         jComboBox.revalidate();
         jComboBox.repaint();
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que añade un item cuando el action event es pulsado.
+     * @param e añade un item cuando el action event es pulsado.
+     */
     public void actionPerformed(ActionEvent e) {
 
         jComboBox.addItem("ay");
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que envia la longitud total de la barra.
+     * @param totalBarLong longitud total de la barra.
+     */
     public void setTotalBarLong(int totalBarLong) {
         this.totalBarLong = totalBarLong / 1000;
         this.totalBarLong = this.totalBarLong / 1000;
-    }
+    }//Cierre del método
 
+    /**
+     * Método que recibe que comboBox ha sido seleccionado.
+     * @return Devuelve el nombre del item selecionado.
+     */
     public String getJComboBoxStringSelected() {
         return Objects.requireNonNull(jComboBox.getSelectedItem()).toString();
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

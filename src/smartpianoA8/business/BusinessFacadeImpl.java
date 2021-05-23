@@ -6,6 +6,7 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.FileDeletor;
 import smartpianoA8.persistence.HashMapFile;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
@@ -29,6 +30,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //Managers
     private UserManager userManager;
     private SongManager songManager;
+    private FileDeletor fileDeletor;
 
     //DAOs
     private SongDAO songDAO;
@@ -46,13 +48,14 @@ public class BusinessFacadeImpl implements BusinessFacade{
      * @param hmFile DAO del hashMap
      */
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HashMapFile hmFile){
-        userManager = new UserManager(userDAO);
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HashMapFile hmFile, FileDeletor fileDeletor){
+        userManager = new UserManager(userDAO, fileDeletor);
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
         this.songDAO = songDAO;
         this.hmFile=hmFile;
+        this.fileDeletor = fileDeletor;
 
     }
 
@@ -163,6 +166,12 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START song implementation
     // ------------------------------------------------------
+
+    @Override
+    public void removeSongFromDBAndLocal(Song song) {
+        songDAO.removeSong(song.getIdSong());
+        fileDeletor.removeSongFromUser(getCurrentUser().getUsername(), song.getNom());
+    }
 
     /**
      * Mètode que afegeix una cançó per l'usuari

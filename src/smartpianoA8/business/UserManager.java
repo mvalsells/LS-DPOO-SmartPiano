@@ -3,6 +3,7 @@ package smartpianoA8.business;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.FileDeletor;
 import smartpianoA8.persistence.dao.UserDAO;
 
 import java.math.BigInteger;
@@ -21,6 +22,7 @@ public class UserManager {
     //Atributs
     private UserDAO userDAO;
     private User currentUser;
+    private FileDeletor fileDeletor;
 
     //Constructor
 
@@ -29,9 +31,10 @@ public class UserManager {
      * @param userDAO DAO dels usuaris de la bbdd
      * @see smartpianoA8.persistence.dao.sql.SQLUserDAO
      */
-    public UserManager(UserDAO userDAO){
+    public UserManager(UserDAO userDAO, FileDeletor fileDeletor){
         this.userDAO = userDAO;
         currentUser = null;
+        this.fileDeletor = fileDeletor;
     }
 
     /**
@@ -86,6 +89,8 @@ public class UserManager {
      */
     public void removeCurrentUser(){
         if (userDAO.getUserByUsername(currentUser.getUsername()) != null) {
+            fileDeletor.removeHMFileByUser(currentUser.getUsername());
+            fileDeletor.removeUserSongsWhenDeletedUser(currentUser.getUsername());
             userDAO.removeUser(currentUser);
         }
     }

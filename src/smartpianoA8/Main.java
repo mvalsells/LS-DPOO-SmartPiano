@@ -49,6 +49,8 @@ public class Main {
 
         MidiParser midiParser = new MidiParserImpl();
 
+        FileDeletor fileDeletor = new FileDeletorImpl();
+
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
 
@@ -66,7 +68,7 @@ public class Main {
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, hmFile);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, hmFile, fileDeletor);
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
         //ObtainNotesWhilePlaying obtainNotesWhilePlaying = new ObtainNotesWhilePlaying();
