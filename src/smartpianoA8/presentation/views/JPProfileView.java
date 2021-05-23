@@ -2,6 +2,7 @@ package smartpianoA8.presentation.views;
 
 import smartpianoA8.business.entity.User;
 import smartpianoA8.presentation.views.customComponents.*;
+import smartpianoA8.presentation.views.customComponents.profile.*;
 
 import javax.swing.*;
 import java.awt.*;

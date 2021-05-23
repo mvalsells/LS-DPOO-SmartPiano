@@ -1,6 +1,8 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.songs;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.JLColor;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
  * @version 1/05/2222.
  */
-public class JPTiraCancons extends JPMainView{
+public class JPTiraCancons extends JPMainView {
 
     //private JButton[] jbButton;
 

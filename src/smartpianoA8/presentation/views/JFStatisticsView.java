@@ -1,7 +1,7 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.GraficsStatisticsDreta;
-import smartpianoA8.presentation.views.customComponents.GraficsStatisticsEsquerra;
+import smartpianoA8.presentation.views.customComponents.statistics.GraficsStatisticsDreta;
+import smartpianoA8.presentation.views.customComponents.statistics.GraficsStatisticsEsquerra;
 
 import javax.swing.*;
 import java.awt.*;

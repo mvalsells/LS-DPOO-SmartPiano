@@ -1,7 +1,9 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.playlist;
 
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
+import smartpianoA8.presentation.views.customComponents.songs.JPTiraCancons;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

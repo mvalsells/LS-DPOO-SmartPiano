@@ -1,4 +1,9 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.playlist;
+
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.FontBase;
+import smartpianoA8.presentation.views.customComponents.JBgeneral;
+import smartpianoA8.presentation.views.customComponents.JLColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +33,7 @@ public class JDPlaylistCreator extends JDialog {
 
         JPanel jpExtraFlow = new JPanel(new FlowLayout());
         jpExtraFlow.setOpaque(false);
-        JLabel jlTextPlaylist = new JLColor("Nombre de la playlist", ColorScheme.PRIMARY,FontBase.TitularRegAdd);
+        JLabel jlTextPlaylist = new JLColor("Nombre de la playlist", ColorScheme.PRIMARY, FontBase.TitularRegAdd);
         jTextField = new JTextField();
         jTextField.setPreferredSize(new Dimension(295,24));
         jTextField.setBorder(BorderFactory.createLineBorder(ColorScheme.Secondary,2));

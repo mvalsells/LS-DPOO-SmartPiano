@@ -1,4 +1,6 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.profile;
+
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicProgressBarUI;
