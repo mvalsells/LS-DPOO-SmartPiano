@@ -6,7 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ *
+ * Esta clase se encarga principalmente de poder ejecutar el scrollPane de las canciones que tiene una playlist, es decir,
+ * con una playlist indica las canciones que contiene.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPTiraCancons extends JPMainView{
 
     //private JButton[] jbButton;
@@ -26,9 +33,9 @@ public class JPTiraCancons extends JPMainView{
     //private ArrayList<Song> songs;
 
 
-
-
-
+    /**
+     * Constructor de la clase JPTiraCancons
+     */
     public JPTiraCancons(){
 
         setLayout(new BorderLayout());
@@ -65,7 +72,7 @@ public class JPTiraCancons extends JPMainView{
         add(jsp,BorderLayout.CENTER);
 
 
-    }
+    }//Cierre del constructor
 
     /**
      * Funcio que omple el panell associat a un JScrollPane on es mostraran les cançons que conte una playlist. Rep per parametre les cançons de la playlist i el seu titul.
@@ -150,7 +157,7 @@ public class JPTiraCancons extends JPMainView{
         }
 
         repaint();
-    }
+    }//Cierre del método
 
     /**
      * Funció que donada una canço passada per parametre l'afegeix al panell per a ser mostrada i actualitza la vista
@@ -198,7 +205,7 @@ public class JPTiraCancons extends JPMainView{
 
         revalidate();
 
-    }
+    }//Cierre del método
 
     /**
      * Funció que donada una canço passada per parametre l'elimina del panell i actualitza la vista
@@ -215,7 +222,7 @@ public class JPTiraCancons extends JPMainView{
             }
         }
         repaint();
-    }
+    }//Cierre del método
 
     /**
      * Funció que passarà el ActionListener per a ser implementat en l'ultim butó afegit.
@@ -225,7 +232,7 @@ public class JPTiraCancons extends JPMainView{
 
         jpCanço.get(jpCanço.size()-1).registerController(controller);
 
-    }
+    }//Cierre del método
 
     /**
      * Funció que passarà el ActionListener per a ser implementat.
@@ -241,5 +248,5 @@ public class JPTiraCancons extends JPMainView{
 
             }
         }
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

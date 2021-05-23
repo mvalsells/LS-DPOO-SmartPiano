@@ -17,7 +17,7 @@ public class BlackKey extends JButton implements Key {
         setBounds (left, 10, BWD, HT);
         setBorder(BorderFactory.createLineBorder(Color.BLACK,11));
         setOpaque(true);
-        setForeground(Color.WHITE);
+        setForeground(Color.BLACK);
         setBorderPainted(true);
 
 
