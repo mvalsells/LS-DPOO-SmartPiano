@@ -197,7 +197,7 @@ public class PlayerController implements Runnable, ActionListener {
 
                         jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
 
-                        //todo pasar duracion total de la cancion para
+
 
                         while (currentSequencer.isRunning()) {
                             jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());

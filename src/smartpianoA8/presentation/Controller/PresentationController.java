@@ -75,7 +75,7 @@ public class PresentationController implements PresentationFacade {
      */
 
     public void loginOK() {
-        //TODO Tancar/eliminar JFrame Wellcome
+
         if (jfWellcomeFrame != null) {
             jfWellcomeFrame.dispose();
         }
@@ -487,7 +487,6 @@ public class PresentationController implements PresentationFacade {
         }
         System.out.println(jfMainFrame.getJComboBoxString());
 
-        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
 
     public void playStatusInPlayer() {
@@ -495,7 +494,7 @@ public class PresentationController implements PresentationFacade {
         if(isUploaded) {
             playerController.setActionToDo(0);
             System.out.println("Is plating");
-            //todo
+
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
@@ -504,7 +503,7 @@ public class PresentationController implements PresentationFacade {
     public void pauseStatusInPlayer() {
         System.out.println("Yo, i'm paused...");
         if(isUploaded) {
-            //todo
+
             playerController.setActionToDo(1);
             System.out.println("Is pausing");
         } else {
@@ -517,7 +516,7 @@ public class PresentationController implements PresentationFacade {
         if(isUploaded) {
             playerController.setActionToDo(2);
             System.out.println("Is nexting");
-            //todo
+
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
@@ -539,7 +538,7 @@ public class PresentationController implements PresentationFacade {
             playerController.setActionToDo(4);
             System.out.println("Is stopped");
             JOptionPane.showMessageDialog(new Frame(), "You stopped the entire playlist.\nIf you want to play it again you have to re-upload the playlist.", "PLAYLIST STOPPED (NEED TO RE-UPDATE)", JOptionPane.ERROR_MESSAGE);
-            //todo
+
         }
         isUploaded = false;
 

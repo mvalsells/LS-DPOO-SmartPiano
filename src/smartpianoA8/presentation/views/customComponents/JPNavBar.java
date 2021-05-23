@@ -45,7 +45,7 @@ public class JPNavBar extends JPanel {
         jbMyFav.setActionCommand(JFMainFrame.PLAYLISTS);
         jbPiano = new JBNavBar(iconPiano);
         jbPiano.setActionCommand(JFMainFrame.PIANO);
-        //TODO BORRAR es temporal
+
         jbCascade = new JButton("Cascade");
         jbCascade.setActionCommand(JFMainFrame.PIANO_CASCADE);
 

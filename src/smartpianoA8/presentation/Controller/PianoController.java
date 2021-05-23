@@ -117,7 +117,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                }else{ System.out.println("ERROR patata"); }
                break;
            case JPPiano.PLAY_BUTTON:
-               //Start cascade!TODO startCascade(o com hagi de ser);
                break;
            case JPPiano.NOTES_BUTTON:
                if(!isNotesActive){
@@ -139,13 +138,13 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
                if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), true, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), false, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();

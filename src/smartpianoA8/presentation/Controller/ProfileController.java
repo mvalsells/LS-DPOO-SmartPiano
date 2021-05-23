@@ -222,7 +222,7 @@ public class ProfileController implements ActionListener, MouseListener, KeyList
                 teclaPiano.setNota(ultimaNota);
                 hmReal.put(presseKey, teclaPiano);
                 hmProfile.replace(ultimaNota, presseKey);
-                //TODO Actualitzar valors tecles
+
                 presentationController.profileViewCloseDialog();
                 presentationController.setHMteclas(hmReal);
                 dialogShown=false;
