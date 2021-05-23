@@ -6,6 +6,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Calsse de marges personalitzats pel projecte. Es recullen mèotdes per modificar el marge/border utilitat i adaptar-lo cada cop a un component que el necessiti
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class BordersView {
 
     /*Classe on inicialitzarem els borders*/
@@ -65,69 +70,135 @@ public class BordersView {
     /*GETTERS*/
 
     /*IniciView*/
+
+    /**
+     * Mètode per iniciar un border per botons
+     * @return
+     */
     public Border getIniciViewButtonBorder(){
 
         return this.IniciViewButtonBorder;
 
     }
     /*Register and Login*/
+
+    /**
+     * Mètode per obtenir un border per redistribuir l'espai de la pantalla del login i registre a la part sod i no utilitzar l'espai
+     * Eleva els elements més amunt del límit inferior
+     * @return Border en questió
+     */
     public Border getOmplirSouthPrincipalBorder(){
 
         return this.OmplirSouthPrincipalBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border per redistribuir i omplir l'espai de la dreta (est) i deixar un marge per no utilitar-lo
+     * @return  Border en questió
+     */
     public Border getOmplirEstBorder(){
 
         return this.OmplirEstBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border per redistribuir i omplir l'espai de l'esquerra (oest) i deixar un marge per no utilitar-lo
+     * @return  Border en questió
+     */
     public Border getOmplirOestBorder(){
 
         return this.OmplirOestBorder;
 
     }
 
+    /**
+     * Mètode per obtenir el border dels botons amb només text a dins
+     * @return el Border en questió
+     */
     public Border getButtonTextBorder(){
 
         return this.ButtonTextBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border pels requadres on s'hi introdueix text
+     * @return el Border en questió
+     */
     public Border getEntreTextFieldBorder(){
 
         return this.EntreTextFieldBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border pel botó de canvi entre Login i Register
+     * @return el Border en questió
+     */
     public Border getTopButtonBorder(){
 
         return this.TopButtonBorder;
 
     }
+
+    /**
+     * Mèotde per obtenir un border pel botó d'entrar i accedir
+     * @return el border en questió
+     */
     public Border getEntreButtonBorder(){
 
         return this.EntreButtonBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border pel botó de register amb facebook
+     * @return el border en questió
+     */
     public Border getFacebookButtonBorder(){
 
         return this.FacebookButtonBorder;
 
     }
+
+    /**
+     * Mèotde per obtenir un border pel botó de register amb google
+     * @return el border en questió
+     */
     public Border getGoogleButtonBorder(){
 
         return this.GoogleButtonBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border per la zona interior (emplenada de color) del botó de login
+     * @return el border en questió
+     */
     public Border getEntreButtonButtonBorder(){
 
         return this.EntreButtonButtonBorder;
 
     }
+
+    /**
+     * Mètode per obtenir un border per la zona inferior de la vista de login i register
+     * @deprecated es substitueix amb getOmplirSouthPrincipalBorder()
+     * @return el border en questió
+     */
     public Border getButtonLineBorder(){
 
         return this.ButtonLineBorder;
 
     }
     /*JPRegisterView*/
+
+    /**
+     * M`
+     * @return
+     */
     public Border getRegisterButtonBorder(){
 
         return this.RegisterButtonBorder;
