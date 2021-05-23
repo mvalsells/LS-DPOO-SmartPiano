@@ -187,6 +187,9 @@ public class PlayerController implements Runnable, ActionListener {
                         currentSequencer.open();
                         currentSequencer.setSequence(currentSequence);
 
+                        presentationController.actualitzarEstadistiques(currentSequence.getMicrosecondLength());
+                        //presentationController.updateStatsView();
+
                         if(isPaused == false) {
                             currentSequencer.start();
                         } else if (isPaused == true) {
@@ -198,8 +201,6 @@ public class PlayerController implements Runnable, ActionListener {
 
                         jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
 
-                        presentationController.actualitzarEstadistiques(currentSequence.getMicrosecondLength());
-                        presentationController.updateStatsView();
                         while (currentSequencer.isRunning()) {
                             jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
                             if(actionToDo == 2) {
