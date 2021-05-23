@@ -12,18 +12,38 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
+/**
+ * Classe per la organització d'utilitats i eines pels Usuaris
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class UserManager {
     //Atributs
     private UserDAO userDAO;
     private User currentUser;
 
     //Constructor
+
+    /**
+     * Constructor amb l'accés a la DAO de la bbdd per Usuaris
+     * @param userDAO DAO dels usuaris de la bbdd
+     * @see smartpianoA8.persistence.dao.sql.SQLUserDAO
+     */
     public UserManager(UserDAO userDAO){
         this.userDAO = userDAO;
         currentUser = null;
     }
 
-
+    /**
+     * Mètode per registrar un nou usuari, enviabnt totes les dades necessaries des de la vista
+     * @param username String nom d'usuari
+     * @param email String email
+     * @param password String contrassenya
+     * @param passwordRepetition String repetició de la contrassenya
+     * @param type String tipus d'usuari (smartpiano / google / facebook)
+     * @throws PasswordException Exepció del control d'errors de la contrassenya
+     * @throws UserManagerException Exepció del control d'errors del nom d'usuari i el correu
+     */
     public void registerUser (String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
         email = email.toLowerCase();
         username = username.toLowerCase();
@@ -49,7 +69,12 @@ public class UserManager {
         }
     }
 
-
+    /**
+     * Mètode per comprobar el login d'un usuari
+     * @param id Int id de l'usuari
+     * @param password String contrassenya de l'usuari
+     * @throws UserManagerException Exepció pel control d'errors i problemes del nom d'usuari i email
+     */
     public void login(String id, String password) throws UserManagerException {
         id = id.toLowerCase();
         currentUser = userDAO.loginUser(id, encryptPassword(password));
@@ -57,20 +82,20 @@ public class UserManager {
 
     //TODO opt encontrar usuario segun id y comprobar en el manager si contra correctas o no.
 
-
+    /**
+     * Mètode per eliminar l'usuari loggejat completament
+     */
     public void removeCurrentUser(){
-        removeUser(currentUser);
-    }
-    private boolean removeUser(User user){
-        if (userDAO.getUserByUsername(user.getUsername()) != null) {
-            userDAO.removeUser(user);
-            return true;
-        } else {
-            return false;
+        if (userDAO.getUserByUsername(currentUser.getUsername()) != null) {
+            userDAO.removeUser(currentUser);
         }
     }
 
-
+    /**
+     *
+     * @param newEmail
+     * @return
+     */
     public boolean modifyCurrentUserEmail(String newEmail){
 
         if (modifyEmail(currentUser.getEmail(), newEmail)){
