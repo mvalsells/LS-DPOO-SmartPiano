@@ -13,11 +13,10 @@ import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.awt.event.KeyEvent;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 

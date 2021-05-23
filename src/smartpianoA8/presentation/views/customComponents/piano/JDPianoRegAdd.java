@@ -1,4 +1,9 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.piano;
+
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.FontBase;
+import smartpianoA8.presentation.views.customComponents.JBgeneral;
+import smartpianoA8.presentation.views.customComponents.JLColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +46,7 @@ public class JDPianoRegAdd extends JDialog {
 
         panel.setBackground(ColorScheme.PopUpsBackground);
 
-        JLabel jlTextTitul = new JLColor("Nombre de la grabación", ColorScheme.PRIMARY,FontBase.TitularRegAdd);
+        JLabel jlTextTitul = new JLColor("Nombre de la grabación", ColorScheme.PRIMARY, FontBase.TitularRegAdd);
         //.setBorder(BorderFactory.createEmptyBorder(0,0,0,this.getWidth()/2));
         jTextField = new JTextField();
         jTextField.setMaximumSize(new Dimension(295,48));
