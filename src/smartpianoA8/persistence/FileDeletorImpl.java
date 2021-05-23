@@ -10,9 +10,10 @@ public class FileDeletorImpl implements FileDeletor {
 
     public FileDeletorImpl() {}
 
-    public void removeUserSongsWhenDeletedUser(User user) {
+    @Override
+    public void removeUserSongsWhenDeletedUser(String user) {
         try {
-            FileUtils.deleteDirectory(new File("resources/midiFiles/"+user.getUsername()));
+            FileUtils.deleteDirectory(new File("resources/midiFiles/"+user));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -49,7 +49,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
      */
 
     public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HashMapFile hmFile, FileDeletor fileDeletor){
-        userManager = new UserManager(userDAO);
+        userManager = new UserManager(userDAO, fileDeletor);
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
