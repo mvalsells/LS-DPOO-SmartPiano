@@ -340,6 +340,9 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     @Override
+    public ArrayList<Song> getUserAndMasterSongs(String username){return songManager.getUserAndMasterSongs(username);}
+
+    @Override
     public ArrayList<Song> getPublicAndMasterSongs() {
         return songDAO.getPublicAndMasterSongs();
     }

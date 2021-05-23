@@ -211,10 +211,11 @@ public class ObtainNotesWhilePlayingController implements Receiver {
 
     @Override
     public void close() {
-
-        jppiano.setPlayButtonUnpressedIcon();
-        sequencer.close();
-        jppiano.repaintAllTeclas();
+        if(sequencer!=null) {
+            jppiano.setPlayButtonUnpressedIcon();
+            sequencer.close();
+            jppiano.repaintAllTeclas();
+        }
     }
 
 }

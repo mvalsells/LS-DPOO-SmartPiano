@@ -80,7 +80,7 @@ public class PresentationController implements PresentationFacade {
             jfWellcomeFrame.dispose();
         }
         //Crear les vistes
-        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
+        jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
 
         //Crear els controllers
         songController = new SongController();
@@ -336,7 +336,7 @@ public class PresentationController implements PresentationFacade {
     }
 
     // ---- Start PlaylistView Methods
-    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));
         jfMainFrame.playlistViewUpdateRegisterControllerForPlaylistSetting(playlistController);
     }
 
@@ -345,7 +345,7 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), getPublicAndMasterSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
