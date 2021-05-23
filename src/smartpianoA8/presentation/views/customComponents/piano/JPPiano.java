@@ -1,4 +1,6 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.piano;
+
+import smartpianoA8.presentation.views.customComponents.ImageView;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -444,6 +446,9 @@ public class JPPiano extends JPanel {
 
     }// Cierre del constructor
 
+    /**
+     * Método para repintar las teclas cuando se para la reprodución de una canción
+     */
     public void repaintAllTeclas(){
 
         for(int i = 0;i<whites.length-1;i++){
@@ -458,7 +463,7 @@ public class JPPiano extends JPanel {
     }
 
     /**
-     * Método que envia el nuevo icono cuando el boton de reg es pulsado.
+     * Método que cambia el icono a un boton enviado como parámetro.
      * @param button boton asignado que cambiara el icono.
      */
     public void setPressedIcon(JButton button){
@@ -466,14 +471,20 @@ public class JPPiano extends JPanel {
     }//Cierre del método
 
     /**
-     * Método que envia el icono cuando el boton de reg vuelve a ser pulsado.
+     * Método que cambia el icono a un boton enviado como parámetro.
      * @param button boton asignado que cambiara el icono.
      */
     public void setUnpressedIcon(JButton button){
         button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
     }//Cierre del método
 
+    /**
+     * Método que cambia el icono al boton playButton.
+     */
     public void setPlayButtonPressedIcon(){playButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));}
+    /**
+     * Método que cambia el icono al boton playButton.
+     */
     public void setPlayButtonUnpressedIcon(){playButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));}
 
     /**
@@ -499,25 +510,6 @@ public class JPPiano extends JPanel {
         }
     }//Cierre del método
 
-    /**
-     * Método con el que se controla todos los listeners generados en esta clase.
-     * @param controller controlador asocioado a los botones.
-     * @param mouseListener controlador asociado al ratón.
-     */
-
-    public void registerController(ActionListener controller, MouseListener mouseListener){
-
-        regButton.addActionListener(controller);
-        playButton.addActionListener(controller);
-        notesButton.addActionListener(controller);
-
-        for (BlackKey black : blacks) {
-            black.addMouseListener(mouseListener);
-        }
-        for (WhiteKey white : whites) {
-            white.addMouseListener(mouseListener);
-        }
-    }//Cierre del método
 
     /**
      * Método que envia la posición del array de blancas, de la tecla seleccionada.

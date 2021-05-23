@@ -1,14 +1,18 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.playlist;
 
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.JBgeneral;
+import smartpianoA8.presentation.views.customComponents.JLColor;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class JPPlailistEditor extends JPMainView{
+public class JPPlailistEditor extends JPMainView {
 
     private JComboBox<String> jComboBox;
 
@@ -22,7 +26,7 @@ public class JPPlailistEditor extends JPMainView{
 
         this.jLabel = new JLColor(info, Color.WHITE);
 
-        this.jButton = new JBgeneral(buttonString,ColorScheme.DARK_GREEN);
+        this.jButton = new JBgeneral(buttonString, ColorScheme.DARK_GREEN);
         this.jButton.setActionCommand(actionCommand);
         add(jLabel);
         add(jComboBox);

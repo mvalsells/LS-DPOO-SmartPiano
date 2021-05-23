@@ -1,8 +1,11 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.JFMainFrame;
-import smartpianoA8.presentation.views.customComponents.*;
+import smartpianoA8.presentation.views.customComponents.playlist.JDPlaylistCreator;
+import smartpianoA8.presentation.views.customComponents.playlist.JPPlaylistSettings;
+import smartpianoA8.presentation.views.customComponents.playlist.JPPlaylistView;
+import smartpianoA8.presentation.views.customComponents.songs.JPSongs;
+import smartpianoA8.presentation.views.customComponents.songs.JPTiraCancons;
 
 import javax.swing.*;
 import java.awt.*;

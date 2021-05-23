@@ -233,11 +233,9 @@ public class JFTop5View extends JFrame{
      * Mètode per actualitzar els valors del top view
      * @param newTopSongs les noves top Songs en ArrayList<Song>
      */
-    //TODO executar això quan tinguem noves dades de la bbdd, que és quan: -es reprodueixi una nova cançó
     public void updateTop5View(ArrayList<Song> newTopSongs){
         this.topSongsComu = newTopSongs;
 
-        //TODO porvar a treure això de sota a veure si funciona igual
         fons.repaint();
         fons.revalidate();
     }//Cierre del método

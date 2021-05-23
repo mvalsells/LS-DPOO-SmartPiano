@@ -1,7 +1,7 @@
 package smartpianoA8.presentation.views;
 
-import smartpianoA8.presentation.views.customComponents.GraficsStatisticsDreta;
-import smartpianoA8.presentation.views.customComponents.GraficsStatisticsEsquerra;
+import smartpianoA8.presentation.views.customComponents.statistics.GraficsStatisticsDreta;
+import smartpianoA8.presentation.views.customComponents.statistics.GraficsStatisticsEsquerra;
 
 import javax.swing.*;
 import java.awt.*;
@@ -117,16 +117,9 @@ public class JFStatisticsView extends JFrame {
     public void updateStaticsView(ArrayList<Double> nousValorsMinuts, ArrayList<Integer> nousValorsReproduccions){
         this.valorsMinutsComu = nousValorsMinuts;
         this.valorReproduccionsComu = nousValorsReproduccions;
-        //TODO porvar a treure això de sota a veure si funciona igual
-        //TODO prova si no funciona, fer repaint i revalidate de "fons.repaint//fons.revalidate"
-
 
         graficEsquerra.actualitzaVista(nousValorsMinuts);
         graficDreta.actualitzaVista(nousValorsReproduccions);
-        //graficDreta.repaint();
-        //graficDreta.revalidate();
 
-        //graficEsquerra.repaint();
-        //graficDreta.revalidate();
     }//Cierre del método
 }//Cierre de la clase

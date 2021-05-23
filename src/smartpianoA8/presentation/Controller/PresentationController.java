@@ -402,18 +402,23 @@ public class PresentationController implements PresentationFacade {
 
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
-
+    /**
+     * Método para resaltar las teclas negras cuando las blancas son pintadas. Le pasamos el valor de la tecla blanca asi sabemos que nregra resaltar.
+     * @param nota
+     */
     public void pianoViewRepainAllBlacks(int nota){jfMainFrame.pianoViewRepainAllBlacks(nota);}
 
     /**
-     * Mètode per establir el botó de REC actiu
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetPressedIcon(JButton button){
         jfMainFrame.pianoViewSetPressedIcon(button);
     }
 
     /**
-     * Mètode per establir el botó de REC inactiu
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetUnpressedIcon(JButton button){
         jfMainFrame.pianoViewSetUnpressedIcon(button);
@@ -447,8 +452,9 @@ public class PresentationController implements PresentationFacade {
     // ---- Start PianoCascadeView Methods
     public Boolean pianoCascadeIsNoteWhite(int nota){return obtainNotesWhilePlayingController.isBlanca(nota);}
     public int pianoCascadeCanviNote(int note,boolean isNoteWhite){return obtainNotesWhilePlayingController.canviaNote(note,isNoteWhite);}
-    public void startCascade(){
+    public void startCascade() {
         /*pianoCascadeThread.start();*/
+
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
         pianoController.setIsPlaying(true);
     }

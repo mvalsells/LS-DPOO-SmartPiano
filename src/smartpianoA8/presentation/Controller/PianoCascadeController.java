@@ -1,11 +1,8 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 
 import java.awt.event.*;
-import java.util.ArrayList;
 
 /**
  * Classe controller de la vista de les notes en cascada

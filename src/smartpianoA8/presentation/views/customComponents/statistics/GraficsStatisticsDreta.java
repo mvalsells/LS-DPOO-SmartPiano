@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.statistics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -101,8 +101,8 @@ public class GraficsStatisticsDreta extends JPanel {
 
     public void actualitzaVista(ArrayList<Integer> dades){
         this.reproduccions = dades;
-        repaint();
-        revalidate();
+        //repaint();
+        //revalidate();
         setVisible(false);
         setVisible(true);
     }

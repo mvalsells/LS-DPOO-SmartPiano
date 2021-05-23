@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.statistics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -95,8 +95,8 @@ public class GraficsStatisticsEsquerra extends JPanel {
 
     public void actualitzaVista(ArrayList<Double> dades){
         this.minuts = dades;
-        repaint();
-        revalidate();
+        //repaint();
+        //revalidate();
         setVisible(false);
         setVisible(true);
     }

@@ -1,4 +1,8 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.profile;
+
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.JLColor;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
 
 import javax.swing.*;
 /**
