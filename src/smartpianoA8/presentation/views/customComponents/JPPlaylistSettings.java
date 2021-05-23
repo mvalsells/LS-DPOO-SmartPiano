@@ -4,11 +4,17 @@ import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente controlar todoas las acciones que puede hacerse en la playlist como lo son la de
+ * añadir una canción o eliminarla.
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPPlaylistSettings extends JPMainView {
 
     //Buttons amb action listeners
@@ -22,6 +28,9 @@ public class JPPlaylistSettings extends JPMainView {
     public static final String ADD = "add";
     public static final String REMOVE = "remove";
 
+    /**
+     * Constructor de la clase JPPlaylistSettings
+     */
     public JPPlaylistSettings( ){
 
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
@@ -50,8 +59,12 @@ public class JPPlaylistSettings extends JPMainView {
                     .addComponent(jbRemover)
         );*/
 
-    }
+    }//Cierre del constructor
 
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller Parámetro ascoiado al ActionListener
+     */
     public void registerController(ActionListener controller){
 
         jpTiraCancons.registerController(controller);
@@ -63,6 +76,11 @@ public class JPPlaylistSettings extends JPMainView {
 
     }
 
+    /**
+     * Método que actualiza la plyalist con la cancón indicada.
+     * @param playList Parámetro que indica la playlist que selecciono.
+     * @param songs Parámetro que indica la canción que selecciono.
+     */
     public void updateJPPlaylistSettings(ArrayList<Song> songs, PlayList playList){
 
         jpTiraCancons.updateTira(playList.getSongs(),playList.getNom());
@@ -71,8 +89,13 @@ public class JPPlaylistSettings extends JPMainView {
         jpRemove.updateJPPlailistEditor(songs, playList,REMOVE);
         repaint();
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que actualiza cuando hay una nueva canción.
+     * @param song Parámetro que indica la canción que selecciono.
+     * @param controller Parámetro que controla el ActionListener de los botones
+     */
     public void updateWhenAddSong(Song song,ActionListener controller){
 
         jpTiraCancons.updateWhenAdd(song);
@@ -80,21 +103,39 @@ public class JPPlaylistSettings extends JPMainView {
         jpAdd.updateWhenAdd(song,ADD);
         jpRemove.updateWhenAdd(song,REMOVE);
 
-    }
+    }//Cierre del método
+
+    /**
+     * Método que actualiza cuando hay una se borra una canción.
+     * @param song Parámetro que indica la canción que selecciono.
+     */
     public void updateWhenRemoveSong(Song song){
 
         jpTiraCancons.updateWhenRemove(song);
         jpAdd.updateWhenRemove(song,ADD);
         jpRemove.updateWhenRemove(song,REMOVE);
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que añade la canción a la Playlist.
+     * @param song Parámetro que indica la canción que selecciono.
+     */
     public void addSongInJCBadder(Song song){
         jpAdd.addSongInJCBadder(song);
-    }
+    }//Cierre del método
 
-    public String getJCSongAdderString(){return (String)jpAdd.getJCSongString();}
-    public String getJCSongRemoveString(){return (String)jpRemove.getJCSongString();}
+    /**
+     * Método que devuelve la canción como string
+     * @return la canción como string.
+     */
+    public String getJCSongAdderString(){return (String)jpAdd.getJCSongString();}//Cierre del método
+
+    /**
+     * Método que devuelve la canión en string que se quiere eliminar.
+     * @return la canión en string que se quiere eliminar.
+     */
+    public String getJCSongRemoveString(){return (String)jpRemove.getJCSongString();}//Cierre del método
 
 
-}
+}//Cierre de la clase

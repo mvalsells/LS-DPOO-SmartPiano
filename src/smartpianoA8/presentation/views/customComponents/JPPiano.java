@@ -520,7 +520,7 @@ public class JPPiano extends JPanel {
     }//Cierre del método
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void pintarTeclaBlanca(int note){
@@ -608,9 +608,9 @@ public class JPPiano extends JPanel {
                 break;
 
         }
-    }
+    }//Cierre del método
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void despintarTeclaNegra(int note){
@@ -618,7 +618,7 @@ public class JPPiano extends JPanel {
     }//Cierre del metodo
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void despintarTeclaBlanca(int note){
@@ -626,7 +626,7 @@ public class JPPiano extends JPanel {
     }//Cierre del metodo
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void pintarTeclaNegra(int note){
