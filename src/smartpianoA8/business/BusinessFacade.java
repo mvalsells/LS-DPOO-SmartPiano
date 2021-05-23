@@ -161,7 +161,16 @@ public interface BusinessFacade {
      * @return Arraylist de PlayLists
      */
     ArrayList<PlayList> getCurrentUserPlaylist();
+    /**
+     *Mètode per afegir una playlist a l'usuari
+     * @param name Nom de la playlist
+     * @param username nom de l'usuari
+     */
     void addPlayList(String name, String username);
+    /**
+     * Mètode per eliminar una playlist
+     * @param playList la nova playlist
+     */
     void removePlayList(PlayList playList);
     void addSongToPlayList(Song song, PlayList playList);
     void removeSongFromPlayList(Song song,PlayList playList);

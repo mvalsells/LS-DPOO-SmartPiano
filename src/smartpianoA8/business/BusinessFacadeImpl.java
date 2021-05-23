@@ -332,15 +332,30 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return playListDAO.getPlayListsByUser(userManager.getCurrentUser());
     }
 
+    /**
+     *Mètode per afegir una playlist a l'usuari
+     * @param name Nom de la playlist
+     * @param username nom de l'usuari
+     */
     @Override
     public void addPlayList(String name, String username) {
         playListDAO.addPlayList(name,username);
     }
+
+    /**
+     * Mètode per eliminar una playlist
+     * @param playList la nova playlist
+     */
     @Override
     public void removePlayList(PlayList playList){
         playListDAO.removePlayList(playList);
     }
 
+    /**
+     * Afegir una cançó a la playlist
+     * @param song
+     * @param playList
+     */
     @Override
     public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
 
