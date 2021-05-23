@@ -210,7 +210,7 @@ public class SQLUserDAO implements UserDAO {
                     return true;//un existeix i és username
                 }
             }
-            //cap coincideix però algun s'ha trobat
+            //cap coincideix pero algun s'ha trobat
             return false;
         }catch (SQLException e){
             e.printStackTrace();

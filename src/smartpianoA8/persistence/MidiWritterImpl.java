@@ -220,7 +220,7 @@ public class MidiWritterImpl implements MidiWritter {
      * @param data2 segona dada
      * @param instant instant
      * @return un Event Midi
-     * @throws InvalidMidiDataException control pròpi per errors
+     * @throws InvalidMidiDataException control propi per errors
      */
     private static MidiEvent createMidiEvent(int command, int channel, int data1, int data2, long instant) {
         ShortMessage shortMessage = new ShortMessage();

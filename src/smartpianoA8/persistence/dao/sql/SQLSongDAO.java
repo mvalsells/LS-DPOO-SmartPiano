@@ -173,7 +173,7 @@ public class SQLSongDAO implements SongDAO {
 
     /**
      * Retorna totes les cançons publiques i que no siguin de Master
-     * @return Arraylist de cançons que no són de Master però sí públiques
+     * @return Arraylist de cançons que no són de Master pero sí públiques
      */
     @Override
     public ArrayList<Song> getPublicCreatedSongs(){

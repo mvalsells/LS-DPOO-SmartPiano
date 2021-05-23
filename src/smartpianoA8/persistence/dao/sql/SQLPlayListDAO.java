@@ -104,7 +104,7 @@ public class SQLPlayListDAO implements PlayListDAO{
      * Retorna la PlayList buscada amb IDPlayList.
      * @param IDPlaylist ID de la PlayList a buscar les dades.
      * @return  PlayList demanada completa.
-     * @deprecated intentar no fer servir, si es fa servir no passa res però no té cançons
+     * @deprecated intentar no fer servir, si es fa servir no passa res pero no té cançons
      */
     @Override
     public PlayList getPlayListData(int IDPlaylist) {

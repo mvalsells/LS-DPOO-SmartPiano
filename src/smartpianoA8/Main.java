@@ -24,7 +24,7 @@ import java.util.TimerTask;
  */
 public class Main {
     /**
-     * Mètode principal per executar el programa
+     * Metode principal per executar el programa
      * @param args arguemnts de la linia cmd (N/A)
      * @throws InterruptedException interrupció de sortida del programam
      */

@@ -419,7 +419,7 @@ public class BusinessFacadeImpl implements BusinessFacade{
     }
 
     /**
-     * Mèotde per obtenir les cançons d'un usuari pròpies i del Master
+     * Mèotde per obtenir les cançons d'un usuari propies i del Master
      * @param username nom d'usuari
      * @return Arraylist de les cançons
      */

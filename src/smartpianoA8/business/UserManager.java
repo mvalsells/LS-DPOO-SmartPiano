@@ -111,7 +111,7 @@ public class UserManager {
     }
 
     /**
-     * Mètode per realitar l'acció de canviar l'email amb la lògica de realitzar l'acció
+     * Mètode per realitar l'acció de canviar l'email amb la logica de realitzar l'acció
      * @param currentEmail String email actual
      * @param newEmail String email nou demanat
      * @return boolean true: completat false: no completat
@@ -147,7 +147,7 @@ public class UserManager {
     }
 
     /**
-     * Mètode per canviar de contrassenya. Lògica de realitzar l'acció.
+     * Mètode per canviar de contrassenya. Logica de realitzar l'acció.
      * @param user User usuari a qui canviar la contrassenya
      * @param newPassword String nova contrassenya
      * @param newPasswordRepetition String repetició de la novas contrassenya
@@ -182,7 +182,7 @@ public class UserManager {
     }
 
     /**
-     * Mètode amb la lògica del canvi de nom d'usuari
+     * Mètode amb la logica del canvi de nom d'usuari
      * @param currentEmail String email actual (necessari per mantenir la tracabilitat de l'usuari en questió
      * @param newUsername String usuari actual
      * @return boolean amb true: s'ha pogut o permés i false: no s'ha permés

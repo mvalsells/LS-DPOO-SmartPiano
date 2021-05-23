@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Classe que permet utilitzar un botó pròpi personalitzat pel reproductor
+ * Classe que permet utilitzar un botó propi personalitzat pel reproductor
  * @version 1.0
  * @see JButton
  * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
