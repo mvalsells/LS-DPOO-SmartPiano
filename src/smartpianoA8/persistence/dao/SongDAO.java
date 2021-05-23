@@ -90,7 +90,7 @@ public interface SongDAO {
      * Reotorna les cançons publiques i després les de Master, en aquest ordre
      * @return ArrayList de cançons publiques i després Master.
      */
-    public ArrayList<Song> getPublicAndMasterSongs();
+    ArrayList<Song> getPublicAndMasterSongs();
 
     /**
      * Mètode per registrar la Presentation Facade

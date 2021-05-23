@@ -94,8 +94,8 @@ public class GraficsStatisticsEsquerra extends JPanel {
     }
 
     /**
-     *
-     * @param dades
+     * Mètode que actualitza la vista de la gràfica
+     * @param dades nova arraylist de Double amb les dades noves a mostrar
      */
     public void actualitzaVista(ArrayList<Double> dades){
         this.minuts = dades;
