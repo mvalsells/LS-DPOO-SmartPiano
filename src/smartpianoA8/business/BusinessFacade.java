@@ -133,11 +133,15 @@ public interface BusinessFacade {
     float getµsPerTickMidiNotes();
     /**
      * Mètode per obtenir una Song sol·licitada
-     * @param id int id de la song
+     * @param IDSong int id de la song
      * @return la Song en questió
      */
     Song getSong(int IDSong);
     Song getSongByName(String name);
+    /**
+     * Mètode per obtenir el top5 de cançons
+     * @return ArrayList del top 5 amb les songs
+     */
     ArrayList<Song> getTop5();
     ArrayList<Song> getUserAndMasterSongs(String username);
     ArrayList<Song> getPublicAndMasterSongs();
@@ -152,6 +156,10 @@ public interface BusinessFacade {
     //Playlist
     //boolean newPlayList(String nom, String nomUsuari);
     //void removePlayList(int idPlayList);
+    /**
+     * Mètode per obtenir les playlists de l'usuari
+     * @return Arraylist de PlayLists
+     */
     ArrayList<PlayList> getCurrentUserPlaylist();
     void addPlayList(String name, String username);
     void removePlayList(PlayList playList);

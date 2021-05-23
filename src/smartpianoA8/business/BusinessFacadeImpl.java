@@ -305,6 +305,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
      */
     public Song getSong(int id){return songManager.getSong(id);}
 
+    /**
+     * Mètode per obtenir el top5 de cançons
+     * @return ArrayList del top 5 amb les songs
+     */
     @Override
     public ArrayList<Song> getTop5() {
         return songManager.getTop5();
@@ -318,6 +322,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START playlist implementation
     // ------------------------------------------------------
+
+    /**
+     * Mètode per obtenir les playlists de l'usuari
+     * @return Arraylist de PlayLists
+     */
     @Override
     public ArrayList<PlayList> getCurrentUserPlaylist(){
         return playListDAO.getPlayListsByUser(userManager.getCurrentUser());
