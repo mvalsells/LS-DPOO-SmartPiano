@@ -6,5 +6,6 @@ public interface FileDeletor {
 
     public void removeUserSongsWhenDeletedUser(String user);
     public void removeHMFileByUser(String user);
+    public void removeSongFromUser(String user, String song);
 
 }

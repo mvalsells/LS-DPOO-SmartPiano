@@ -167,6 +167,12 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  START song implementation
     // ------------------------------------------------------
 
+    @Override
+    public void removeSongFromDBAndLocal(Song song) {
+        songDAO.removeSong(song.getIdSong());
+        fileDeletor.removeSongFromUser(getCurrentUser().getUsername(), song.getNom());
+    }
+
     /**
      * Mètode que afegeix una cançó per l'usuari
      * @param song Song nova

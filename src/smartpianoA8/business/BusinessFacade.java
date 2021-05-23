@@ -46,6 +46,7 @@ public interface BusinessFacade {
     ArrayList<Song> getTop5();
     ArrayList<Song> getUserAndMasterSongs(String username);
     ArrayList<Song> getPublicAndMasterSongs();
+    void removeSongFromDBAndLocal(Song song);
     //void removeSong(Song song);
 
 

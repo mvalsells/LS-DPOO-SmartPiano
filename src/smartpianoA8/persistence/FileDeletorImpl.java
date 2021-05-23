@@ -25,4 +25,10 @@ public class FileDeletorImpl implements FileDeletor {
         FileUtils.deleteQuietly(file);
     }
 
+    @Override
+    public void removeSongFromUser(String user, String song) {
+        File file = new File("resources/midiFiles/"+user+"/"+song+".mid");
+        FileUtils.deleteQuietly(file);
+    }
+
 }
