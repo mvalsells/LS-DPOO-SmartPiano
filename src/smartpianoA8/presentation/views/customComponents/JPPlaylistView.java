@@ -9,6 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se encarga principalmente de mostrar el contenido generado en el apartado de las playlist
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPPlaylistView extends JPMainView {
 
     public static final String JP_PLAYLIST_SETTINGS_STRING = "PlaylistSettings_";
@@ -30,6 +37,9 @@ public class JPPlaylistView extends JPMainView {
 
     //private ArrayList<PlayList> hasPlayLists;
 
+    /**
+     * Constructor de la clase donde se definen los paneles y elementos que contiene la clase
+     */
     public JPPlaylistView(/**/) {
 
         //this.hasPlayLists = hasPlayLists;
@@ -75,8 +85,13 @@ public class JPPlaylistView extends JPMainView {
         add(panellNord,BorderLayout.NORTH);
         add(jpCardPanel,BorderLayout.CENTER);
 
-    }
+    }//Cierre del constructor
 
+    /**
+     * Método que actualiza la plyalist con la cancón indicada.
+     * @param hasPlayLists Parámetro que indica la playlist que selecciono.
+     * @param songs Parámetro que indica la canción que selecciono.
+     */
     public void updateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){
 
         jcTriarPlaylist.removeAllItems();
@@ -115,30 +130,46 @@ public class JPPlaylistView extends JPMainView {
 
         }
         repaint();
-    }
+    }//Cierre del método
 
+    /**
+     * Método que actualiza la plyalist con la cancón indicada.
+     * @param hasPlayLists Parámetro que indica la playlist que selecciono.
+     * @param songs Parámetro que indica la canción que selecciono.
+     */
     public void updateJPPlaylistSettings(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){
 
                 System.out.println("Funciona?");
                 jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateJPPlaylistSettings(songs,hasPlayLists.get(jcTriarPlaylist.getSelectedIndex()));
 
-    }
+    }//Cierre del método
 
-
-
+    /**
+     * Método que actualiza cuando hay una nueva canción.
+     * @param song Parámetro que indica la canción que selecciono.
+     * @param controller Parámetro que controla el ActionListener de los botones
+     */
     public void updateWhenAddSong(Song song,ActionListener controller){
 
         jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenAddSong(song,controller);
 
-    }
+    }//Cierre del método
+
+    /**
+     * Método que actualiza cuando hay una se borra una canción.
+     * @param song Parámetro que indica la canción que selecciono.
+     */
     public void updateWhenRemoveSong(Song song){
 
         jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenRemoveSong(song);
 
-    }
+    }//Cierre del método
 
-
-
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller Parámetro ascoiado al ActionListener
+     * @param itemListener Parámetro asociado al ItemListener
+     */
     public void registerControllers(ActionListener controller,ItemListener itemListener) {
 
 
@@ -154,8 +185,12 @@ public class JPPlaylistView extends JPMainView {
 
         }
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que actualiza el Register Controller en la clase.
+     * @param controller Parámetro ascoiado al ActionListener.
+     */
     public void updateRegisterControllerForPlaylistSetting(ActionListener controller){
 
         if(jpPlaylistSettings!=null){
@@ -166,9 +201,14 @@ public class JPPlaylistView extends JPMainView {
 
         }
 
-    }
+    }//Cierre del método
 
-
+    /**
+     * Método que actualiza el Register Controller cuando se añade una nueva canción.
+     * @param controller Parámetro ascoiado al ActionListener.
+     * @param playlist Parámetro sobre la playlist.
+     * @param songs Parámetro que indica la canción que selecciono.
+     */
     public void updateRegisterControllerWhenNewPlaylist(ActionListener controller,PlayList playlist,ArrayList<Song> songs){
 
         StringBuilder jpPlaylistSettingsStringName = new StringBuilder();
@@ -182,7 +222,11 @@ public class JPPlaylistView extends JPMainView {
         jpCardPanel.add(jpPlaylistSettings.get(jpPlaylistSettings.size()-1),jpPlaylistSettingsStringName.toString());
         repaint();
 
-    }
+    }//Cierre del método
+
+    /**
+     * Método que actualiza el Register Controller cuando se elimina la playlist
+     */
     public void updateRegisterControllerWhenDeletePlaylist(){
 
         jpCardPanel.remove(jcTriarPlaylist.getSelectedIndex());
@@ -191,23 +235,57 @@ public class JPPlaylistView extends JPMainView {
 
         repaint();
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que añade la canción a la Playlist.
+     * @param song Parámetro que indica la canción que selecciono.
+     */
     public void addSongInJCBadder(Song song){
         for(int i = 0;i<jcTriarPlaylist.getItemCount();i++) {
             jpPlaylistSettings.get(i).addSongInJCBadder(song);
             repaint();
         }
-    }
+    }//Cierre del método
 
-    public void jdPlaylistCreatorRun()  {  jdPlaylistCreator.run();  }
-    public void jdPlaylistCreatorClose(){  jdPlaylistCreator.close();}
+    /**
+     * Método para runear la playlist
+     */
+    public void jdPlaylistCreatorRun()  {  jdPlaylistCreator.run();  }//Cierre del método
 
-    public String getJCSongAdderString(){return jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).getJCSongAdderString();}
+    /**
+     * Método para parar la playlist
+     */
+    public void jdPlaylistCreatorClose(){  jdPlaylistCreator.close();}//Cierre del método
+
+    /**
+     * Método que devuelve la canción como string
+     * @return la canción como string.
+     */
+    public String getJCSongAdderString(){return jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).getJCSongAdderString();}//Cierre del método
+
+    /**
+     * Método que devuelve la canión en string que se quiere eliminar.
+     * @return la canión en string que se quiere eliminar.
+     */
     public String getJCSongRemoveString(){return jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).getJCSongRemoveString();}
-    public String getJCTriarPlaylistString(){return (String)jcTriarPlaylist.getSelectedItem();}
-    public String jdPlaylistGetTextFieldString(){return jdPlaylistCreator.getTextFieldString();}
 
+    /**
+     * Método que te permite triar la playlist visualizando el String.
+     * @return la playlist visualizanda como String.
+     */
+    public String getJCTriarPlaylistString(){return (String)jcTriarPlaylist.getSelectedItem();}//Cierro del método
+
+    /**
+     * Método para obtener el titulo de la playlist introducido.
+     * @return El titulo de la playlist introducido.
+     */
+    public String jdPlaylistGetTextFieldString(){return jdPlaylistCreator.getTextFieldString();}//Cierre del método
+
+    /**
+     * Método que permite cambiar la vista.
+     * @param newView Parámetro que indica la nueva vista.
+     */
     public void changeViewTo(String newView){
 
         StringBuilder sb = new StringBuilder();
@@ -216,6 +294,6 @@ public class JPPlaylistView extends JPMainView {
         System.out.println(sb.toString());
         cards.show(jpCardPanel,sb.toString());
 
-    }
+    }//Cierre del método
 
-}
+}//Cierre de la clase

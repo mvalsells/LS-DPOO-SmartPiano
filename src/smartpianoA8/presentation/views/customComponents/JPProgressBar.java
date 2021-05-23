@@ -4,9 +4,21 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-
+/**
+ *
+ * Esta clase se emcarga principalmente de controlar la barra de progreso en el momento en el que el usuario quiere usar
+ * el reproductor de canciones.
+ *
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPProgressBar extends JProgressBar {
 
+    /**
+     * Constructor de la clase donde se le asigna el color de la barra, al igual que la creación de esta y de sus
+     * parámetros.
+     */
     public JPProgressBar() {
 
         setUI(new BasicProgressBarUI() {
@@ -36,6 +48,6 @@ public class JPProgressBar extends JProgressBar {
         setBorderPainted(false);
         setForeground(Color.PINK);
         setBackground(Color.GRAY);*/
-    }
+    }//Cierre del constructor
 
-}
+}//Cierre de la clase
