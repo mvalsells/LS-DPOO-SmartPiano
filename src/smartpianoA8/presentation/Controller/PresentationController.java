@@ -103,7 +103,6 @@ public class PresentationController implements PresentationFacade {
         obtainNotesWhilePlayingController = new ObtainNotesWhilePlayingController(jfMainFrame.getJpPiano());
         playerController = new PlayerController(jfMainFrame.getPlayerView());
         jpPlayerControllerThread = new Thread(playerController);
-        jpPlayerControllerThread.start();
 
         //Thread
         //pianoCascadeThread = new Thread(pianoCascadeController);
@@ -117,6 +116,7 @@ public class PresentationController implements PresentationFacade {
         obtainNotesWhilePlayingController.registerPresentationController(this);
         playlistController.registerPresentationController(this);
         mainFrameController.registerPresentationController(this);
+        playerController.registerPresentationController(this);
 
         //Registrar els controllers a les seves vistes
         jfMainFrame.registerSongViewControllers(songController);
@@ -127,6 +127,8 @@ public class PresentationController implements PresentationFacade {
         jfMainFrame.registerMainFrameController(mainFrameController);
 
         jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
+
+        jpPlayerControllerThread.start();
     }
 
     public void logoutOK() {
@@ -495,8 +497,6 @@ public class PresentationController implements PresentationFacade {
         JOptionPane.showMessageDialog(jfMainFrame,message,"Atención",JOptionPane.WARNING_MESSAGE);
     }
     // ---- End Dialog/popups Methods
-
-
 
 
 

@@ -113,7 +113,6 @@ public class JFStatisticsView extends JFrame {
      * @param nousValorsMinuts ArrayList de minuts reproduits
      * @param nousValorsReproduccions ArrayList de reproduccions fetes
      */
-    //TODO executar això quan tinguem noves dades de la bbdd, que és quan: -es reprodueixi una nova cançó
     public void updateStaticsView(ArrayList<Double> nousValorsMinuts, ArrayList<Integer> nousValorsReproduccions){
         this.valorsMinutsComu = nousValorsMinuts;
         this.valorReproduccionsComu = nousValorsReproduccions;

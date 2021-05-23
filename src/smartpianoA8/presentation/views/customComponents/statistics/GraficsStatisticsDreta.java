@@ -99,10 +99,14 @@ public class GraficsStatisticsDreta extends JPanel {
         g2d.translate(-(float)x,-(float)y);
     }
 
+    /**
+     * Mètode per actualitzar les estadístiques i la seva vista
+     * @param dades nova arraylist de dades
+     */
     public void actualitzaVista(ArrayList<Integer> dades){
         this.reproduccions = dades;
-        repaint();
-        revalidate();
+        //repaint();
+        //revalidate();
         setVisible(false);
         setVisible(true);
     }
