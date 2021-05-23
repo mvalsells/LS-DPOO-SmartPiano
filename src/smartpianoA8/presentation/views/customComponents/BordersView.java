@@ -73,7 +73,7 @@ public class BordersView {
 
     /**
      * Mètode per iniciar un border per botons
-     * @return
+     * @return Border en questió a obtenir
      */
     public Border getIniciViewButtonBorder(){
 
