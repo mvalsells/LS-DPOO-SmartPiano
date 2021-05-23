@@ -319,6 +319,7 @@ public class PresentationController implements PresentationFacade {
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
 
+    public void removeSongFromDBAndLocal(Song song){businessFacade.removeSongFromDBAndLocal(song);}
 
 
 
@@ -331,8 +332,8 @@ public class PresentationController implements PresentationFacade {
     public void nuevasCanciones(Song song) {
 
         if(jfMainFrame!=null) {
-            jfMainFrame.nuevaCanciones(song, "SONGS");
-            jfMainFrame.nuevaCanciones(song, "PLAYLISTS");
+            jfMainFrame.nuevaCanciones(song, "SONGS",songController);
+            jfMainFrame.nuevaCanciones(song, "PLAYLISTS",null);
         }
 
     }

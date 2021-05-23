@@ -60,7 +60,7 @@ public class PlaylistController implements ActionListener, ItemListener{
             String[] split = e.getActionCommand().split("-");
 
             presentationController.playlistViewUpdateWhenRemoveSong(presentationController.getSongByID(Integer.parseInt(split[1])),PresentationController.ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS);
-
+            presentationController.removeSongFromDBAndLocal(presentationController.getSongByID(Integer.parseInt(split[1])));
         }else {
 
             switch (e.getActionCommand()) {

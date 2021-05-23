@@ -193,10 +193,10 @@ public class JFMainFrame extends JFrame {
     /**
      * Método que inica la nueva canción
      */
-    public void nuevaCanciones(Song song,String type) {
+    public void nuevaCanciones(Song song,String type,ActionListener controller) {
         switch (type) {
             case "SONGS":
-                jpSongs.nuevasCanciones(song);
+                jpSongs.nuevasCanciones(song,controller);
                 break;
             case "PLAYLISTS":
                 jpPlaylistView.addSongInJCBadder(song);

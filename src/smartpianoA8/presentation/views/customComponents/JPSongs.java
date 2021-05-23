@@ -113,10 +113,13 @@ public class JPSongs extends JPanel {
      * Método que actualiza la vista cuando hay una nueva canción.
      * @param song Parámetro que indica que canción se le ha añadido.
      */
-    public void nuevasCanciones(Song song) {
+    public void nuevasCanciones(Song song,ActionListener controller) {
 
         jpTiraCançonsNew.updateWhenAdd(song);
+        jpTiraCançonsNew.registerControllerLastButton(controller);
         jpTiraCançonsMas.updateWhenAdd(song);
+        jpTiraCançonsMas.registerControllerLastButton(controller);
+
 
     }//Cierre del método
 

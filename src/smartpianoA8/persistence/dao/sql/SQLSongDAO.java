@@ -38,7 +38,7 @@ public class SQLSongDAO implements SongDAO {
                 song.getPublic() + "', '" +
                 username + "');";
         connector.insertQuery(query);
-        presentationFacade.nuevasCanciones(song);
+        presentationFacade.nuevasCanciones(getSongByName(song.getNom(),username));
     }
 
 

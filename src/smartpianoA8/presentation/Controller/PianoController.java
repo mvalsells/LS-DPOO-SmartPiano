@@ -154,12 +154,22 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                    //Guardar record i ferla publica
 
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), true, endTime);
+                   try {
+                       Thread.sleep(100);
+                   } catch (InterruptedException interruptedException) {
+                       interruptedException.printStackTrace();
+                   }
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
 
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), false, endTime);
+                   try {
+                       Thread.sleep(100);
+                   } catch (InterruptedException interruptedException) {
+                       interruptedException.printStackTrace();
+                   }
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(presentationController.pianoViewJDGetTextFieldString().equals("")){

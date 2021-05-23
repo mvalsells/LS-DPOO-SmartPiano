@@ -51,10 +51,12 @@ public class SongController implements ActionListener {
 
         if (e.getActionCommand().contains(JPSongs.SONG_PRESSED)){
 
+            System.out.println(e.getActionCommand());
+
             String[] split = e.getActionCommand().split("-");
 
             presentationController.setLastSongPressed(Integer.parseInt(split[1]));
-
+            System.out.println(Integer.parseInt(split[1]));
             presentationController.changeView(JFMainFrame.PIANO);
             presentationController.mainFrameControllerSetShowingPiano(true);
             presentationController.mainFrameControllerSetShowingPlaylists(false);
@@ -68,7 +70,7 @@ public class SongController implements ActionListener {
             String[] split = e.getActionCommand().split("-");
 
             presentationController.playlistViewUpdateWhenRemoveSong(presentationController.getSongByID(Integer.parseInt(split[1])),PresentationController.ELIMINAR_FROM_SONGS);
-
+            presentationController.removeSongFromDBAndLocal(presentationController.getSongByID(Integer.parseInt(split[1])));
         }
 
     }

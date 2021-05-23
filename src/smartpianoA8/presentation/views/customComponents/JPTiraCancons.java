@@ -203,6 +203,7 @@ public class JPTiraCancons extends JPMainView{
         sbCommand_1.append(JPSongs.SONG_PRESSED);
         sbCommand_1.append(song.getIdSong());
 
+
         JButton jbTMP = new JButton();
         jbTMP.setActionCommand(sbCommand_1.toString());
         //jbTMP.addActionListener(controller);
