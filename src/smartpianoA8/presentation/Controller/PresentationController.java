@@ -275,7 +275,7 @@ public class PresentationController implements PresentationFacade {
         for (PlayList playList : playLists) {
             stringPlaylists.add(playList.getNom());
         }
-    }
+
 
         return stringPlaylists;
     }
@@ -336,11 +336,11 @@ public class PresentationController implements PresentationFacade {
     @Override
     public void nuevasCanciones(Song song) {
 
-        if(jfMainFrame!=null) {
-            jfMainFrame.nuevaCanciones(song, "SONGS",songController);
-            jfMainFrame.nuevaCanciones(song, "PLAYLISTS",null);
+        if (jfMainFrame != null) {
+            jfMainFrame.nuevaCanciones(song, "SONGS", songController);
+            jfMainFrame.nuevaCanciones(song, "PLAYLISTS", null);
         }
-
+    }
     public void updateStatsView(){
         if(jfStatisticsView!=null){
             jfStatisticsView.updateStaticsView(businessFacade.getNumMinutsCurrentUser(), businessFacade.getNumReproducionsCurrentUser());
