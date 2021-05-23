@@ -35,7 +35,8 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private final static boolean DEFAULT_IS_PLAYING = false;
     private final static boolean TRUE_IS_PLAYING = true;
     private long endTime = 0;
-
+    private boolean isNoteWhite;
+    private int note;
 
 
     //Atributs a canviar
@@ -151,13 +152,13 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
                if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), true, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), false, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
@@ -203,6 +204,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
         try {
             if (!hmTeclas.get(key2).isPlaying()) {
+
                 midiChannel.noteOn(hmTeclas.get(key2).getNota(), 127);
                 hmTeclas.get(key2).setIsPlaying(Tecla.trueIsPlaying);
                 if (midiWritter.getIsRecording()) {
@@ -210,7 +212,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                 }
             }
         }catch (NullPointerException epa){
-            System.err.println("PATATA OUT OF BOUNDS");
         }
 
 
@@ -255,6 +256,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void mousePressed(MouseEvent e) {
 
         Key key = (Key) e.getSource();
+
         midiChannel.noteOn(key.getNote(), 127);
         if(midiWritter.getIsRecording()) {
             midiWritter.setOnMessage(key.getNote(), System.currentTimeMillis());
@@ -280,7 +282,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        Key key = (Key) e.getSource();
+        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
+        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
+        presentationController.pianoViewRepainAllBlacks(note);
     }
 
     /**
@@ -289,7 +294,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
      */
     @Override
     public void mouseExited(MouseEvent e) {
-
+        Key key = (Key) e.getSource();
+        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
+        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
+        presentationController.pianoViewRepainAllBlacks(note);
     }
 
     public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {

@@ -19,8 +19,8 @@ import java.io.IOException;
 public class ObtainNotesWhilePlayingController implements Receiver {
 
     private Receiver myReceiver;
-    Sequence sequence;
-    Sequencer sequencer;
+    private Sequence sequence;
+    private Sequencer sequencer;
 
     private PresentationController presentationController;
     private JPPiano jppiano;
@@ -39,7 +39,9 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         File file = new File(songToPlay.getDirectori());
 
         try {
+
             sequence = MidiSystem.getSequence(file);
+
             sequencer = MidiSystem.getSequencer();
             sequencer.setSequence(sequence);
             sequencer.open();
@@ -47,11 +49,14 @@ public class ObtainNotesWhilePlayingController implements Receiver {
             sequencer.getTransmitter().setReceiver(this);
             sequencer.start();
             jppiano.setPlayButtonPressedIcon();
+
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + file + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
         } catch (InvalidMidiDataException | MidiUnavailableException | IOException e) {
             e.printStackTrace();
         }
+
+
 
     }
 
@@ -114,6 +119,13 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 System.out.println("NOTE: (" + isWhite + ") " + note + " OFF. At time: " + System.currentTimeMillis());
                 //sendOffNotes(shortMessage.getData1());
             }
+
+        }
+
+        if(sequencer.isRunning()){
+
+        }else {
+            closeLed();
         }
 
     }
@@ -127,7 +139,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         return false;
     }
 
-    private int canviaNote(int note, Boolean isBlanca){
+    public int canviaNote(int note, Boolean isBlanca){
         int newNote = 0;
 
         //la nota ja està entre 48 i 72, es pot printar directamet
@@ -191,7 +203,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         return newNote;
     }
 
-    private Boolean isBlanca(int note){
+    public Boolean isBlanca(int note){
 
         for(int i=0;i<negres.length-1;i++){
 
@@ -211,9 +223,15 @@ public class ObtainNotesWhilePlayingController implements Receiver {
 
     @Override
     public void close() {
+        if(sequencer!=null) {
+            jppiano.setPlayButtonUnpressedIcon();
+            sequencer.close();
+            jppiano.repaintAllTeclas();
+        }
+    }
 
+    private void closeLed() {
         jppiano.setPlayButtonUnpressedIcon();
-        sequencer.close();
         jppiano.repaintAllTeclas();
     }
 

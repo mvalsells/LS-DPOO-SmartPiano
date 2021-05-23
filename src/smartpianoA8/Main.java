@@ -2,6 +2,7 @@ package smartpianoA8;
 
 import smartpianoA8.business.BusinessFacade;
 import smartpianoA8.business.BusinessFacadeImpl;
+import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.*;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -9,6 +10,7 @@ import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
 import smartpianoA8.persistence.dao.sql.*;
 import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.views.JFMainFrame;
 
 import java.io.FileNotFoundException;
 import java.util.Timer;
@@ -47,6 +49,8 @@ public class Main {
 
         MidiParser midiParser = new MidiParserImpl();
 
+        FileDeletor fileDeletor = new FileDeletorImpl();
+
         //Connexió BBDD
         SQLConnector connectorSQL = new SQLConnector(jsonReader.getDbUser(),jsonReader.getDbPassword(),jsonReader.getDbAddress(),jsonReader.getDbPort(),jsonReader.getDbName());
 
@@ -57,28 +61,20 @@ public class Main {
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
         MidiWritter midiWritter = new MidiWritterImpl(songDAO);
+        HashMapFile hmFile = new HashMapFileImpl();
 
-        //Business <-> Persitence
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, hmFile, fileDeletor);
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
         //ObtainNotesWhilePlaying obtainNotesWhilePlaying = new ObtainNotesWhilePlaying();
         //obtainNotesWhilePlaying.playAndGet(song);
-/*
-        try {
-            businessFacade.login("marcv","1234Marc");
-        } catch (UserManagerException e) {
-            e.printStackTrace();
-        }
-*/
+
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
-       // presentationController.loginOK();
-       // presentationController.changeView(JFMainFrame.PROFILE);
 
         presentationController.logoutOK();
         songDAO.registerPresentationFacade(presentationController);

@@ -14,8 +14,11 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * CLasse pel controlador general de presentació
@@ -62,7 +65,6 @@ public class PresentationController implements PresentationFacade {
     public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
-
         //Frames
 
         //Controllers
@@ -75,12 +77,12 @@ public class PresentationController implements PresentationFacade {
      */
 
     public void loginOK() {
-        //TODO Tancar/eliminar JFrame Wellcome
+
         if (jfWellcomeFrame != null) {
             jfWellcomeFrame.dispose();
         }
         //Crear les vistes
-        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
+        jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
 
         //Crear els controllers
         songController = new SongController();
@@ -215,8 +217,6 @@ public class PresentationController implements PresentationFacade {
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
 
-    public void newUserPlaylists(String username){} //TODO playlist manager
-
     /**
      * Mètode per obtenir les cançons
      *
@@ -274,7 +274,7 @@ public class PresentationController implements PresentationFacade {
     }
 
     public HashMap<Integer, Tecla> getHMteclas(){
-        return businessFacade.getHMTeclas();
+     return businessFacade.getHMTeclas();
     }
     public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
         businessFacade.setHmTeclas(hmTeclas);
@@ -336,7 +336,7 @@ public class PresentationController implements PresentationFacade {
     }
 
     // ---- Start PlaylistView Methods
-    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));
         jfMainFrame.playlistViewUpdateRegisterControllerForPlaylistSetting(playlistController);
     }
 
@@ -345,13 +345,13 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), getPublicAndMasterSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
             jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
             jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
-            System.out.println("eliminando...");
+            //System.out.println("eliminando...");
         }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
     }
 
@@ -385,6 +385,8 @@ public class PresentationController implements PresentationFacade {
 
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
+
+    public void pianoViewRepainAllBlacks(int nota){jfMainFrame.pianoViewRepainAllBlacks(nota);}
 
     /**
      * Mètode per establir el botó de REC actiu
@@ -426,6 +428,8 @@ public class PresentationController implements PresentationFacade {
     public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
+    public Boolean pianoCascadeIsNoteWhite(int nota){return obtainNotesWhilePlayingController.isBlanca(nota);}
+    public int pianoCascadeCanviNote(int note,boolean isNoteWhite){return obtainNotesWhilePlayingController.canviaNote(note,isNoteWhite);}
     public void startCascade(){
         /*pianoCascadeThread.start();*/
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
@@ -438,11 +442,8 @@ public class PresentationController implements PresentationFacade {
     }
 
     public float getMaxMilis(){
-        System.out.println("milis: " + businessFacade.getTotalTicks());
-        System.out.println("segundos: " + businessFacade.getTotalSongSeconds());
-        System.out.println("micros: " + businessFacade.getµsPerTickMidiNotes()*businessFacade.getTotalTicks());
-
-        return businessFacade.getTotalTicks();}
+        return businessFacade.getTotalTicks();
+    }
 
 
     /**
@@ -477,7 +478,7 @@ public class PresentationController implements PresentationFacade {
 
 
     public void loadPlaylistInPlayer() {
-        System.out.println("Yo, updating playlist...");
+        //System.out.println("Yo, updating playlist...");
 
         /*ArrayList<Song> test2 = new ArrayList<>();
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
@@ -505,59 +506,55 @@ public class PresentationController implements PresentationFacade {
         }
         System.out.println(jfMainFrame.getJComboBoxString());
 
-        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
 
     public void playStatusInPlayer() {
-        System.out.println("Yo, i'm playing...");
+        //System.out.println("Yo, i'm playing...");
         if(isUploaded) {
             playerController.setActionToDo(0);
-            System.out.println("Is plating");
-            //todo
+            //System.out.println("Is plating");
+
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void pauseStatusInPlayer() {
-        System.out.println("Yo, i'm paused...");
+        //System.out.println("Yo, i'm paused...");
         if(isUploaded) {
-            //todo
             playerController.setActionToDo(1);
-            System.out.println("Is pausing");
+            //System.out.println("Is pausing");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void nextStatusInPlayer() {
-        System.out.println("Yo, changing to next song...");
+        //System.out.println("Yo, changing to next song...");
         if(isUploaded) {
             playerController.setActionToDo(2);
-            System.out.println("Is nexting");
-            //todo
+            //System.out.println("Is nexting");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void previousStatusInPlayer() {
-        System.out.println("Yo, changing to previous song...");
+        //System.out.println("Yo, changing to previous song...");
         if(isUploaded) {
             playerController.setActionToDo(3);
-            System.out.println("Is previosing");
+            //System.out.println("Is previosing");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void stopStatusInPlayer() {
-        System.out.println("Yo, ended playing...");
+        //System.out.println("Yo, ended playing...");
         if(isUploaded) {
             playerController.setActionToDo(4);
-            System.out.println("Is stopped");
+            //System.out.println("Is stopped");
             JOptionPane.showMessageDialog(new Frame(), "You stopped the entire playlist.\nIf you want to play it again you have to re-upload the playlist.", "PLAYLIST STOPPED (NEED TO RE-UPDATE)", JOptionPane.ERROR_MESSAGE);
-            //todo
         }
         isUploaded = false;
 

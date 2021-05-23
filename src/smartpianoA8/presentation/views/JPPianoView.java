@@ -70,6 +70,8 @@ public class JPPianoView extends JPMainView {
         jpPiano.registerController(actionListener,keyListener,mouseListener);
     }//Cierre del método
 
+    public void repainAllBlacks(int nota){jpPiano.repainAllBlacks(nota);}
+
     /**
      * Método que empieza la función de recording.
      */
