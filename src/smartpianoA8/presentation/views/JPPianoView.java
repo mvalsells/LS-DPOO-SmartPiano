@@ -43,21 +43,19 @@ public class JPPianoView extends JPMainView {
     // ---- Inici Mètodes ----
 
     /**
-     * Método que una vez recibe que el boton esta recording, cambia la imagen
-     * @param button Botón indicado en este caso para ejecutar la función de recording.
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void setPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }//Cierre del método
 
     /**
-     * Método que una vez recibe el boton ha acabado de hacer recording, cambia la imagen
-     * @param button Botón indicado en este caso para ejecutar la función de recording.
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void setUnpressedIcon(JButton button){
         jpPiano.setUnpressedIcon(button);
     }//Cierre del método
 
-    public void setPlayButtonPressedIcon(){jpPiano.setPlayButtonPressedIcon();}
-    public void setPlayButtonUnpressedIcon(){jpPiano.setPlayButtonUnpressedIcon();}
 
     /**
      * Método con el que se controla todos los listeners generados en esta clase.
@@ -69,7 +67,10 @@ public class JPPianoView extends JPMainView {
         jdPianoRegAdd.registerControllerJDPianoRegAdd(actionListener);
         jpPiano.registerController(actionListener,keyListener,mouseListener);
     }//Cierre del método
-
+    /**
+     * Método para resaltar las teclas negras cuando las blancas son pintadas. Le pasamos el valor de la tecla blanca asi sabemos que nregra resaltar.
+     * @param nota
+     */
     public void repainAllBlacks(int nota){jpPiano.repainAllBlacks(nota);}
 
     /**

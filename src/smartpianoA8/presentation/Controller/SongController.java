@@ -56,7 +56,6 @@ public class SongController implements ActionListener {
             String[] split = e.getActionCommand().split("-");
 
             presentationController.setLastSongPressed(Integer.parseInt(split[1]));
-            System.out.println(Integer.parseInt(split[1]));
             presentationController.changeView(JFMainFrame.PIANO);
             presentationController.mainFrameControllerSetShowingPiano(true);
             presentationController.mainFrameControllerSetShowingPlaylists(false);
