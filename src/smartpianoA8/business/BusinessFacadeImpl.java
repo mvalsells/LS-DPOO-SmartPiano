@@ -157,6 +157,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return userManager.modifyCurrentUserName(newUserName);
     }
 
+    /**
+     * Mètode per obtenir l'usuari actual loguejat
+     * @return User loguejat
+     */
     @Override
     public User getCurrentUser(){
         return userManager.getCurrentUser();
@@ -168,6 +172,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  START song implementation
     // ------------------------------------------------------
 
+    /**
+     * Mètode per eliminar una cançó totalement
+     * @param song la Song a borrar compelta
+     */
     @Override
     public void removeSongFromDBAndLocal(Song song) {
         songDAO.removeSong(song.getIdSong());
@@ -282,12 +290,25 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return hmFile.read(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mèotde per configurar les notes del hashmap
+     * @param hmTeclas Tecla a canviar el hashmap
+     */
     public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
         hmFile.write(hmTeclas,userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per obtenir una Song sol·licitada
+     * @param id int id de la song
+     * @return la Song en questió
+     */
     public Song getSong(int id){return songManager.getSong(id);}
 
+    /**
+     * Mètode per obtenir el top5 de cançons
+     * @return ArrayList del top 5 amb les songs
+     */
     @Override
     public ArrayList<Song> getTop5() {
         return songManager.getTop5();
@@ -301,6 +322,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START playlist implementation
     // ------------------------------------------------------
+
+    /**
+     * Mètode per obtenir les playlists de l'usuari
+     * @return Arraylist de PlayLists
+     */
     @Override
     public ArrayList<PlayList> getCurrentUserPlaylist(){
         return playListDAO.getPlayListsByUser(userManager.getCurrentUser());
