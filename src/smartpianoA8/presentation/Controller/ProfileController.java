@@ -78,6 +78,7 @@ public class ProfileController implements ActionListener, MouseListener, KeyList
         }
     }
 
+
     private void saveSettings() {
         ArrayList<String> data = presentationController.profileViewGetData();
         StringBuilder message = new StringBuilder();
