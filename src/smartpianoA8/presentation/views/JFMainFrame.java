@@ -293,7 +293,10 @@ public class JFMainFrame extends JFrame {
     public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}//Cierre del método
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
-
+    /**
+     * Método para resaltar las teclas negras cuando las blancas son pintadas. Le pasamos el valor de la tecla blanca asi sabemos que nregra resaltar.
+     * @param nota
+     */
     public void pianoViewRepainAllBlacks(int nota){jpPianoView.repainAllBlacks(nota);}
 
     /**
