@@ -5,7 +5,12 @@ import smartpianoA8.presentation.views.JFMainFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-
+/**
+ * Classe que conté i crea un JPanel amb la barra de navegació lateral
+ * @version 1.0
+ * @see JLabel
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class JPNavBar extends JPanel {
     // ---- Inici Atributs ----
     private JButton jbSong;
@@ -19,6 +24,10 @@ public class JPNavBar extends JPanel {
     private ImageIcon iconProfile;
     // ---- Fi Atributs ----
     // ---- Inici Constructors ----
+
+    /**
+     * Constructor que carrega tots els elements
+     */
     public JPNavBar(){
         setLayout(new BorderLayout());
         setBackground(ColorScheme.NavBar_Background);
@@ -65,6 +74,12 @@ public class JPNavBar extends JPanel {
 
     // ---- Fi Constructors ----
     // ---- Inici Mètodes ----
+
+    /**
+     * Mètode que afegeix i registra els elements ActionListener
+     * @see ActionListener
+     * @param controller Controlador del ActionListener
+     */
     public void registerController(ActionListener controller){
         jbSong.addActionListener(controller);
         jbMyFav.addActionListener(controller);
@@ -72,6 +87,10 @@ public class JPNavBar extends JPanel {
         jbProfile.addActionListener(controller);
     }
 
+    /**
+     * Mètode que detecta quan es clica un botó i s'ha de canviar de finestra
+     * @param newView nova vista que es demana clicar
+     */
     public void changeActiveElement(String newView){
         switch (newView){
             case JFMainFrame.SONGS:

@@ -12,7 +12,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+Classe que carrega el reproductor inferior per les playlists
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see ActionListener
+ * @see Runnable
+ */
 public class PlayerController implements Runnable, ActionListener {
 
     private ArrayList<Song> songsToBePlayed;
@@ -30,15 +36,26 @@ public class PlayerController implements Runnable, ActionListener {
     private int countError = 1;
     private PresentationController presentationController;
 
+    /**
+     * Constructor que només carrega el panell de fons
+     * @param jpPlayer panell de fons
+     */
     public PlayerController(JPPlayer jpPlayer) {
         this.jpPlayer = jpPlayer;
     }
 
+    /**
+     * No s'implemtna aquest mètode
+     * @param e --
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
 
+    /**
+     * Mètode run del thread
+     */
     @Override
     public void run() {
 
@@ -82,82 +99,6 @@ public class PlayerController implements Runnable, ActionListener {
 
         }
 
-        /*for (int i = 0; i < songsToBePlayed.size(); i++) {
-
-            songDirectory = new File(songsToBePlayed.get(i).getDirectori());
-
-            try {
-
-                currentSequence = MidiSystem.getSequence(songDirectory);
-                currentSequencer = MidiSystem.getSequencer();
-                currentSequencer.open();
-                currentSequencer.setSequence(currentSequence);
-
-                //no hace falta modificar
-                //runnable = () -> {
-
-                    currentSequencer.start();
-
-
-
-                    //---------------------
-
-                    currentSequencer.start();
-
-                    ActionListener updateListener = new ActionListener(){
-                        public void actionPerformed(ActionEvent arg0) {
-                            position = (int)currentSequencer.getMicrosecondPosition();
-                            //jpPlayer.updateProgressBar((int)currentSequencer.getMicrosecondPosition());
-                            //progress.setValue((int)currentSequencer.getMicrosecondPosition());
-                        }
-                    };
-
-                    Timer timer = new Timer(40,updateListener);
-                    timer.start();
-
-                    while (currentSequencer.isRunning()) {}
-
-                    timer.stop();
-                    currentSequencer.stop();
-
-
-                    //----------------
-
-
-
-                    //final JProgressBar progress = new JProgressBar(0,(int)currentSequencer.getMicrosecondLength());
-                    //ActionListener updateListener = new ActionListener(){
-                    //    public void actionPerformed(ActionEvent arg0) {
-                    //        progress.setValue((int)currentSequencer.getMicrosecondPosition());
-                    //    }
-                    //};
-                    //Timer timer = new Timer(40,updateListener);
-                    currentSequencer.start();
-                    //timer.start();
-                    while(currentSequencer.isRunning()){}
-                    //JOptionPane.showMessageDialog(null, progress);
-                    currentSequencer.close();
-                    //timer.stop();
-
-                //};
-                //runnable.run();
-
-
-                //SwingUtilities.invokeLater(runnable);
-
-                /*currentSequencer.start();
-
-                while(currentSequencer.isRunning()) {
-
-
-
-                }
-
-            } catch (InvalidMidiDataException | IOException | MidiUnavailableException e) {
-                e.printStackTrace();
-            }
-        }*/
-
     }
 
     /**
@@ -179,6 +120,9 @@ public class PlayerController implements Runnable, ActionListener {
         }
     }
 
+    /**
+     * Mètode per executar el PLAY del botó
+     */
     private void playThePlayer() {
 
         isClosed = false;
@@ -268,22 +212,34 @@ public class PlayerController implements Runnable, ActionListener {
 
     }
 
+    /**
+     * Mètode per pausar el reproductor
+     */
     private void pauseThePlayer() {
 
     }
 
+    /**
+     * Mètode per accedir a la seguent cançó
+     */
     private void nextTheSong() {
 
         currentSong++;
 
     }
 
+    /**
+     * Mètode per recular de cançó
+     */
     private void previousTheSong() {
 
         currentSong--;
 
     }
 
+    /**
+     * Mètode per sortir del reproductor
+     */
     private void endThePlayer() {
 
 
