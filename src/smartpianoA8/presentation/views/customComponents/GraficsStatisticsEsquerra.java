@@ -95,8 +95,8 @@ public class GraficsStatisticsEsquerra extends JPanel {
 
     public void actualitzaVista(ArrayList<Double> dades){
         this.minuts = dades;
-        repaint();
-        revalidate();
+        //repaint();
+        //revalidate();
         setVisible(false);
         setVisible(true);
     }

@@ -101,8 +101,8 @@ public class GraficsStatisticsDreta extends JPanel {
 
     public void actualitzaVista(ArrayList<Integer> dades){
         this.reproduccions = dades;
-        repaint();
-        revalidate();
+        //repaint();
+        //revalidate();
         setVisible(false);
         setVisible(true);
     }
