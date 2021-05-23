@@ -141,6 +141,7 @@ public class PlayerController implements Runnable, ActionListener {
 
                         presentationController.actualitzarEstadistiques(currentSequence.getMicrosecondLength());
                         presentationController.updateStatsView();
+                        presentationController.songPlayed(songsToBePlayed.get(currentSong).getIdSong());
 
                         if(isPaused == false) {
                             currentSequencer.start();

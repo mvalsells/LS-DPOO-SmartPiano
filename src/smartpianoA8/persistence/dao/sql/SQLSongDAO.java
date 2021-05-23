@@ -133,7 +133,7 @@ public class SQLSongDAO implements SongDAO {
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
     @Override
-    public void SongPlayed(int IDSong){
+    public void songPlayed(int IDSong){
         String query = "SELECT NumReproduccions FROM Song WHERE idSong = " + IDSong + ";";
         ResultSet result = connector.selectQuery(query);
 
@@ -141,7 +141,7 @@ public class SQLSongDAO implements SongDAO {
             result.next();//get select once
 
             int reproduccions = result.getInt("NumReproduccions") + 1;
-            query = "UPDATE Song SET NumReproduccions " + reproduccions + " WHERE idSong = " + IDSong + ";";
+            query = "UPDATE Song SET NumReproduccions = " + reproduccions + " WHERE idSong = " + IDSong + ";";
             connector.updateQuery(query);
 
         } catch (SQLException e) {
