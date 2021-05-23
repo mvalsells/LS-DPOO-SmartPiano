@@ -35,7 +35,8 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private final static boolean DEFAULT_IS_PLAYING = false;
     private final static boolean TRUE_IS_PLAYING = true;
     private long endTime = 0;
-
+    private boolean isNoteWhite;
+    private int note;
 
 
     //Atributs a canviar
@@ -203,6 +204,9 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
         try {
             if (!hmTeclas.get(key2).isPlaying()) {
+                isNoteWhite = presentationController.pianoCascadeIsNoteWhite(hmTeclas.get(key2).getNota());
+                note = presentationController.pianoCascadeCanviNote(hmTeclas.get(key2).getNota(),isNoteWhite);
+                presentationController.pianoViewRepainAllBlacks(note);
                 midiChannel.noteOn(hmTeclas.get(key2).getNota(), 127);
                 hmTeclas.get(key2).setIsPlaying(Tecla.trueIsPlaying);
                 if (midiWritter.getIsRecording()) {
@@ -210,7 +214,6 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                 }
             }
         }catch (NullPointerException epa){
-            System.err.println("PATATA OUT OF BOUNDS");
         }
 
 
@@ -255,6 +258,9 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void mousePressed(MouseEvent e) {
 
         Key key = (Key) e.getSource();
+        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
+        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
+        presentationController.pianoViewRepainAllBlacks(note);
         midiChannel.noteOn(key.getNote(), 127);
         if(midiWritter.getIsRecording()) {
             midiWritter.setOnMessage(key.getNote(), System.currentTimeMillis());

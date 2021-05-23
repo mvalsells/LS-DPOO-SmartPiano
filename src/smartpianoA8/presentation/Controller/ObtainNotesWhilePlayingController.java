@@ -139,7 +139,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         return false;
     }
 
-    private int canviaNote(int note, Boolean isBlanca){
+    public int canviaNote(int note, Boolean isBlanca){
         int newNote = 0;
 
         //la nota ja està entre 48 i 72, es pot printar directamet
@@ -203,7 +203,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         return newNote;
     }
 
-    private Boolean isBlanca(int note){
+    public Boolean isBlanca(int note){
 
         for(int i=0;i<negres.length-1;i++){
 
