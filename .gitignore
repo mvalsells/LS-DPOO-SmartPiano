@@ -4,7 +4,6 @@
 #User custom
 .DS_Store
 *.mid
-*.txt
 
 # User-specific stuff
 .idea/**/workspace.xml
