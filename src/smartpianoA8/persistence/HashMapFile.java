@@ -9,6 +9,11 @@ import java.util.HashMap;
  * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public interface HashMapFile {
+    /**
+     * Mètode per escriure al fitxer amb:
+     * @param hmTeclas tecla a editar la tecla física del PC
+     * @param username nom d'usuari a modificar
+     */
     void write(HashMap<Integer, Tecla> hmTeclas, String username);
     HashMap<Integer, Tecla> read(String username);
 }
