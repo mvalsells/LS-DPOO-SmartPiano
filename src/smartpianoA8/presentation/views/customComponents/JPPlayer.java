@@ -1,5 +1,7 @@
 package smartpianoA8.presentation.views.customComponents;
 
+import smartpianoA8.presentation.views.customComponents.profile.JPProgressBar;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

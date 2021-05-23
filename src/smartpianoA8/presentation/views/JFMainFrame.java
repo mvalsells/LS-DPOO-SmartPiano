@@ -6,6 +6,8 @@ import smartpianoA8.business.entity.User;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.customComponents.*;
 import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
+import smartpianoA8.presentation.views.customComponents.playlist.JPPlaylistView;
+import smartpianoA8.presentation.views.customComponents.songs.JPSongs;
 
 import javax.swing.*;
 import java.awt.*;

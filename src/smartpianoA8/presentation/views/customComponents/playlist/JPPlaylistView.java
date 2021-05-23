@@ -1,8 +1,11 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.playlist;
 
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.Controller.PresentationController;
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.JBgeneral;
+import smartpianoA8.presentation.views.customComponents.JPMainView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +58,7 @@ public class JPPlaylistView extends JPMainView {
         JPanel panellNord = new JPMainView();
         panellNord.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        jbNewPlaylist = new JBgeneral("Crear Playlist",ColorScheme.DARK_GREEN);
+        jbNewPlaylist = new JBgeneral("Crear Playlist", ColorScheme.DARK_GREEN);
         jbNewPlaylist.setActionCommand(NEW_PLAYLIST);
 
         jbDeletePlaylist = new JBgeneral("Eliminar Playlist",ColorScheme.RED_DANGER);

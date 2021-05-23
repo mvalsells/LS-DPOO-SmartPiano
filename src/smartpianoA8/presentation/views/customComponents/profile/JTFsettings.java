@@ -1,4 +1,7 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.profile;
+
+import smartpianoA8.presentation.views.customComponents.BordersView;
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
 
 import javax.swing.*;
 

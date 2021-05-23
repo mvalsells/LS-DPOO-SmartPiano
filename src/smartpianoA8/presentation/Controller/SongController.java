@@ -1,14 +1,11 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.business.entity.Notes;
-import smartpianoA8.business.entity.Song;
 import smartpianoA8.presentation.views.JFMainFrame;
-import smartpianoA8.presentation.views.customComponents.JPSongs;
-import smartpianoA8.presentation.views.customComponents.JPTiraCancons;
+import smartpianoA8.presentation.views.customComponents.songs.JPSongs;
+import smartpianoA8.presentation.views.customComponents.songs.JPTiraCancons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  * Classe controller de les cançons

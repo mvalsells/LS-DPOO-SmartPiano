@@ -1,6 +1,9 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.songs;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.customComponents.BordersView;
+import smartpianoA8.presentation.views.customComponents.ColorScheme;
+import smartpianoA8.presentation.views.customComponents.FontBase;
 
 import javax.swing.*;
 import java.awt.*;
