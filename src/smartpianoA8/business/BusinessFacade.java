@@ -166,6 +166,12 @@ public interface BusinessFacade {
      */
     void removeSongFromDBAndLocal(Song song);
     //void removeSong(Song song);
+    /**
+     * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
+     * @param IDsong id de la cançó a la que augmentar el num de reproduccions
+     */
+    void songPlayed(int IDsong);
+
 
 
     //Playlist

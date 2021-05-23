@@ -263,6 +263,13 @@ public class PresentationController implements PresentationFacade {
     public User getCurrentUser() {
         return businessFacade.getCurrentUser();
     }
+    /**
+     * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
+     * @param IDsong id de la cançó a la que augmentar el num de reproduccions
+     */
+    public void songPlayed(int IDsong){
+        businessFacade.songPlayed(IDsong);
+    }
 
     /**
      * Mètode per obtenir les cançons de master
