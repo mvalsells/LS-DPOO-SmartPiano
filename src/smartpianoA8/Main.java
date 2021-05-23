@@ -72,17 +72,9 @@ public class Main {
         //ObtainNotesWhilePlaying obtainNotesWhilePlaying = new ObtainNotesWhilePlaying();
         //obtainNotesWhilePlaying.playAndGet(song);
 
-        try {
-            businessFacade.login("marcv","1234Marc");
-        } catch (UserManagerException e) {
-            e.printStackTrace();
-        }
-
         PresentationController presentationController = new PresentationController(businessFacade,midiWritter);
-        presentationController.loginOK();
-        presentationController.changeView(JFMainFrame.PROFILE);
 
-       // presentationController.logoutOK();
+        presentationController.logoutOK();
         songDAO.registerPresentationFacade(presentationController);
 
 
