@@ -137,6 +137,11 @@ public interface BusinessFacade {
      * @return la Song en questió
      */
     Song getSong(int IDSong);
+    /**
+     * Obtenir el nom d'una cançó
+     * @param name Strin nom
+     * @return la cançó DE L'USUARI amb el nom demanat
+     */
     Song getSongByName(String name);
     /**
      * Mètode per obtenir el top5 de cançons
@@ -172,9 +177,29 @@ public interface BusinessFacade {
      * @param playList la nova playlist
      */
     void removePlayList(PlayList playList);
+    /**
+     * Afegir una cançó a la playlist
+     * @param song
+     * @param playList
+     */
     void addSongToPlayList(Song song, PlayList playList);
+    /**
+     * Eliminar una cançó d'una playlist
+     * @param song la cançó
+     * @param playList la playlist a modificar
+     */
     void removeSongFromPlayList(Song song,PlayList playList);
+    /**
+     * Mèotde per obtenir un aplylist per nom (i usuari)
+     * @param name nom de la playlist
+     * @return la playlist
+     */
     PlayList getPlayListByName(String name);
+    /**
+     * Mètode per obtenir les cançons d'una playlist pel nom
+     * @param name nom de la playlist
+     * @return  les cançons de la playlist
+     */
     ArrayList<Song> getPlayListSongsByPlayListName(String name);
 
     Boolean doesPlayListExist(String nom);

@@ -359,23 +359,47 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
 
+    /**
+     * Eliminar una cançó d'una playlist
+     * @param song la cançó
+     * @param playList la playlist a modificar
+     */
     @Override
     public void removeSongFromPlayList(Song song, PlayList playList) {
         playListDAO.removeSongFromPlayList(song,playList);
     }
-@Override
+
+    /**
+     * Obtenir el nom d'una cançó
+     * @param name Strin nom
+     * @return la cançó DE L'USUARI amb el nom demanat
+     */
+    @Override
     public Song getSongByName(String name){
         return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    /**
+     * Mèotde per obtenir un aplylist per nom (i usuari)
+     * @param name nom de la playlist
+     * @return la playlist
+     */
+    @Override
     public PlayList getPlayListByName(String name){
         return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    /**
+     * Mètode per obtenir les cançons d'una playlist pel nom
+     * @param name nom de la playlist
+     * @return  les cançons de la playlist
+     */
+    @Override
     public ArrayList<Song> getPlayListSongsByPlayListName(String name){
         return playListDAO.getPlayListSongsByPlayListName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    @Override
     public Boolean doesPlayListExist(String nom){
         return playListDAO.doesPlayListExist(nom, userManager.getCurrentUser().getUsername());
     }

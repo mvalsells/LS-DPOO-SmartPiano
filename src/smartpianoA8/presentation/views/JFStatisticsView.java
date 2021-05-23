@@ -120,10 +120,6 @@ public class JFStatisticsView extends JFrame {
 
         graficEsquerra.actualitzaVista(nousValorsMinuts);
         graficDreta.actualitzaVista(nousValorsReproduccions);
-        //graficDreta.repaint();
-        //graficDreta.revalidate();
 
-        //graficEsquerra.repaint();
-        //graficDreta.revalidate();
     }//Cierre del método
 }//Cierre de la clase
