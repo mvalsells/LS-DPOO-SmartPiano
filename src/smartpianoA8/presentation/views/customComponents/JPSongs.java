@@ -7,20 +7,34 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ *
+ * Esta clase se emcarga principalmente de controlar el JPanel asociado a las cancioens de esa manera el usuario
+ * podra acceder al panel donde se encuentran todas las canciones.
+ *
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPSongs extends JPanel {
     public static final String SONG_PRESSED = "songPressed-";
     private ArrayList<Song> songs;
     private JPTiraCancons jpTiraCançonsMas;
     private JPTiraCancons jpTiraCançonsNew;
+    BordersView bordersView = new BordersView();
+    /**
+     *Constructor de la clase JPSongs
+     * @param songs Parámetro que indica la canción como un array de ellas.
+     */
     public JPSongs(ArrayList<Song> songs){
         this.songs = songs;
         configureMenu();
-    }
-    BordersView bordersView = new BordersView();
+    }//Cierre del constructor
+
+    /**
+     * Método donde se implementa todos los paneles y vistas asociadas a la clase.
+     */
     private void configureMenu(){
-
-
-
 
         setBackground(new Color(12,14,22));
         setLayout(new BorderLayout());
@@ -82,21 +96,29 @@ public class JPSongs extends JPanel {
         add(fons);
 
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param controller controlador asocioado a los botones.
+     */
     public void registerController(ActionListener controller){
 
         jpTiraCançonsMas.registerController(controller);
         jpTiraCançonsNew.registerController(controller);
 
-    }
+    }//Cierre del método
 
+    /**
+     * Método que actualiza la vista cuando hay una nueva canción.
+     * @param song Parámetro que indica que canción se le ha añadido.
+     */
     public void nuevasCanciones(Song song) {
 
         jpTiraCançonsNew.updateWhenAdd(song);
         jpTiraCançonsMas.updateWhenAdd(song);
 
-    }
+    }//Cierre del método
 
 
-}
+}//Cierre de la clase

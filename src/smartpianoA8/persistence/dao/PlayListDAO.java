@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Interficie pel control de playlists a la bbdd
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public interface PlayListDAO{
 

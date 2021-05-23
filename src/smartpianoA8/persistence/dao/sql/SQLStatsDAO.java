@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Classe pel control de gràfiques de la bbdd
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class SQLStatsDAO implements StatsDAO {
     private SQLConnector connector;

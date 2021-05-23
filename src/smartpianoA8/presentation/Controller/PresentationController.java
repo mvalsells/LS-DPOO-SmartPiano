@@ -14,13 +14,16 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * CLasse pel controlador general de presentació
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see PresentationController
  */
 public class PresentationController implements PresentationFacade {
@@ -62,7 +65,6 @@ public class PresentationController implements PresentationFacade {
     public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
-
         //Frames
 
         //Controllers
@@ -80,7 +82,7 @@ public class PresentationController implements PresentationFacade {
             jfWellcomeFrame.dispose();
         }
         //Crear les vistes
-        jfMainFrame = new JFMainFrame(businessFacade.getMasterSongs(), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
+        jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
 
         //Crear els controllers
         songController = new SongController();
@@ -274,11 +276,63 @@ public class PresentationController implements PresentationFacade {
     }
 
     public HashMap<Integer, Tecla> getHMteclas(){
-        return businessFacade.getHMTeclas();
+        String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
+        HashMap<Integer, Tecla> hmTecles = new HashMap<>();
+        try {
+            FileReader fr = new FileReader(ruta);
+            BufferedReader br = new BufferedReader(fr);
+            if(br.readLine().equals("key,nota")){
+               String line;
+               while ((line=br.readLine())!=null){
+                   String[] split = line.split(",");
+                   hmTecles.put(Integer.valueOf(split[0]), new Tecla(Integer.valueOf(split[1])));
+               }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*
+        try {
+            FileInputStream fis = new FileInputStream(sb.toString());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            HashMap<Integer, Tecla> hm = ois.read();
+            return hm;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;*/
+        return  hmTecles; //businessFacade.getHMTeclas();
     }
     public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
         businessFacade.setHmTeclas(hmTeclas);
-        pianoController.setHmTeclas(hmTeclas);
+        pianoController.setHmTeclas(/*hmTeclas*/getHMteclas());
+
+        // Prova per guardar-ho al arxiu
+        //TODO hauria d'anar a persistence
+        String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
+        try {
+            StringBuilder textToWrite = new StringBuilder();
+            textToWrite.append("key,nota\n");
+            FileWriter fw = new FileWriter(ruta,false);
+            for (Map.Entry<Integer, Tecla> en: hmTeclas.entrySet()){
+                textToWrite.append(en.getKey());
+                textToWrite.append(",");
+                textToWrite.append(en.getValue().getNota());
+                textToWrite.append("\n");
+            }
+            fw.write(textToWrite.toString());
+            fw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeCurrentUser(){
@@ -304,6 +358,16 @@ public class PresentationController implements PresentationFacade {
         businessFacade.login(id, password);
         loginOK();
     }
+
+
+
+    public void mainFrameControllerSetShowingPiano(Boolean showingPiano) { mainFrameController.setShowingPiano(showingPiano); }
+
+    public void mainFrameControllerSetShowingPlaylists(Boolean showingPlaylists) { mainFrameController.setShowingPlaylists(showingPlaylists); }
+
+    public void mainFrameControllerSetShowingProfile(Boolean showingProfile) { mainFrameController.setShowingProfile(showingProfile); }
+
+    public void mainFrameControllerSetShowingSongs(Boolean showingSongs) { mainFrameController.setShowingSongs(showingSongs); }
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
 
@@ -326,7 +390,7 @@ public class PresentationController implements PresentationFacade {
     }
 
     // ---- Start PlaylistView Methods
-    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists, ArrayList<Song> songs){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,songs);
+    public void playlistViewUpdateJPPlaylistView(ArrayList<PlayList> hasPlayLists){jfMainFrame.playlistViewUpdateJPPlaylistView(hasPlayLists,businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));
         jfMainFrame.playlistViewUpdateRegisterControllerForPlaylistSetting(playlistController);
     }
 
@@ -335,13 +399,13 @@ public class PresentationController implements PresentationFacade {
     public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
-        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), getPublicAndMasterSongs());jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
+        jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}
     public void playlistRemovePlaylist(String playlistName){
         if(playlistName!=null) {
             businessFacade.removePlayList(playlistGetPlayListByName(playlistName));
             jfMainFrame.playlistViewUpdateRegisterControllerWhenDeletePlaylist();
             jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());
-            System.out.println("eliminando...");
+            //System.out.println("eliminando...");
         }else{JOptionPane.showMessageDialog(jfMainFrame,"No hay playlists a eliminar! Crea una antes","Atención",JOptionPane.WARNING_MESSAGE);}
     }
 
@@ -379,16 +443,19 @@ public class PresentationController implements PresentationFacade {
     /**
      * Mètode per establir el botó de REC actiu
      */
-    public void pianoViewSetRecordingPressedIcon(JButton button){
-        jfMainFrame.pianoViewSetRecordingPressedIcon(button);
+    public void pianoViewSetPressedIcon(JButton button){
+        jfMainFrame.pianoViewSetPressedIcon(button);
     }
 
     /**
      * Mètode per establir el botó de REC inactiu
      */
-    public void pianoViewSetRecordingUnpressedIcon(JButton button){
-        jfMainFrame.pianoViewSetRecordingUnpressedIcon(button);
+    public void pianoViewSetUnpressedIcon(JButton button){
+        jfMainFrame.pianoViewSetUnpressedIcon(button);
     }
+
+    /*public void pianoViewSetPlayButtonPressedIcon(){jfMainFrame.pianoViewSetPlayButtonPressedIcon();}
+    public void pianoViewSetPlayButtonUnpressedIcon(){jfMainFrame.pianoViewSetPlayButtonUnpressedIcon();}*/
 
     /**
      * Mètode per activar el botó JD
@@ -416,16 +483,18 @@ public class PresentationController implements PresentationFacade {
     public void startCascade(){
         /*pianoCascadeThread.start();*/
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
+        pianoController.setIsPlaying(true);
+    }
+    public void stopCascade(){
+        obtainNotesWhilePlayingController.close();
+        pianoController.setIsPlaying(false);
+
     }
 
     public float getMaxMilis(){
-        System.out.println("milis: " + businessFacade.getTotalTicks());
-        System.out.println("segundos: " + businessFacade.getTotalSongSeconds());
-        System.out.println("micros: " + businessFacade.getµsPerTickMidiNotes()*businessFacade.getTotalTicks());
+        return businessFacade.getTotalTicks();
+    }
 
-        return businessFacade.getTotalTicks();}
-    // ---- End PianoCascadeView Methods
-    // ---- Start ProfileView Methods
 
     /**
      * Mètode per obtenir informació sobre el perfil
@@ -459,7 +528,7 @@ public class PresentationController implements PresentationFacade {
 
 
     public void loadPlaylistInPlayer() {
-        System.out.println("Yo, updating playlist...");
+        //System.out.println("Yo, updating playlist...");
 
         /*ArrayList<Song> test2 = new ArrayList<>();
         Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
@@ -490,10 +559,10 @@ public class PresentationController implements PresentationFacade {
     }
 
     public void playStatusInPlayer() {
-        System.out.println("Yo, i'm playing...");
+        //System.out.println("Yo, i'm playing...");
         if(isUploaded) {
             playerController.setActionToDo(0);
-            System.out.println("Is plating");
+            //System.out.println("Is plating");
 
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
@@ -501,44 +570,41 @@ public class PresentationController implements PresentationFacade {
     }
 
     public void pauseStatusInPlayer() {
-        System.out.println("Yo, i'm paused...");
+        //System.out.println("Yo, i'm paused...");
         if(isUploaded) {
-
             playerController.setActionToDo(1);
-            System.out.println("Is pausing");
+            //System.out.println("Is pausing");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void nextStatusInPlayer() {
-        System.out.println("Yo, changing to next song...");
+        //System.out.println("Yo, changing to next song...");
         if(isUploaded) {
             playerController.setActionToDo(2);
-            System.out.println("Is nexting");
-
+            //System.out.println("Is nexting");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void previousStatusInPlayer() {
-        System.out.println("Yo, changing to previous song...");
+        //System.out.println("Yo, changing to previous song...");
         if(isUploaded) {
             playerController.setActionToDo(3);
-            System.out.println("Is previosing");
+            //System.out.println("Is previosing");
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void stopStatusInPlayer() {
-        System.out.println("Yo, ended playing...");
+        //System.out.println("Yo, ended playing...");
         if(isUploaded) {
             playerController.setActionToDo(4);
-            System.out.println("Is stopped");
+            //System.out.println("Is stopped");
             JOptionPane.showMessageDialog(new Frame(), "You stopped the entire playlist.\nIf you want to play it again you have to re-upload the playlist.", "PLAYLIST STOPPED (NEED TO RE-UPDATE)", JOptionPane.ERROR_MESSAGE);
-
         }
         isUploaded = false;
 

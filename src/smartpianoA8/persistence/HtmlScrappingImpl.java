@@ -22,7 +22,7 @@ import java.util.TimerTask;
 /**
  * Classe per l'obtenció de cançons d'internet
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see Runnable
  * @see TimerTask
  */
@@ -72,7 +72,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                 //Elements entry = document.select("table-bordered result-table");
                 //System.out.println("lele");
 
-                System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
+                //System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
 
                 for(Element table : document.select("table[class=table-bordered result-table]")) {
 

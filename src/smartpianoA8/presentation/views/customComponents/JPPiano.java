@@ -113,6 +113,7 @@ public class JPPiano extends JPanel {
         for (int i = 0; i < blacks.length; i++) {
             blacks[i] = new BlackKey(i);
             teclat.add(blacks[i]);
+
         }
         for (int i = 0; i < whites.length; i++) {
 
@@ -440,7 +441,21 @@ public class JPPiano extends JPanel {
         add(lateralEast,BorderLayout.EAST);
         add(lateralWest,BorderLayout.WEST);
         add(posicioCentral,BorderLayout.CENTER);
+
     }// Cierre del constructor
+
+    public void repaintAllTeclas(){
+
+        for(int i = 0;i<whites.length-1;i++){
+            whites[i].desclicarNota();
+        }
+
+        for(int i = 0;i<blacks.length-1;i++){
+            blacks[i].desclicarNota();
+            //blacks[i].requestFocusInWindow();
+        }
+
+    }
 
     /**
      * Método que envia el nuevo icono cuando el boton de reg es pulsado.
@@ -457,6 +472,9 @@ public class JPPiano extends JPanel {
     public void setUnpressedIcon(JButton button){
         button.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));
     }//Cierre del método
+
+    public void setPlayButtonPressedIcon(){playButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButtonPressed.jpg"));}
+    public void setPlayButtonUnpressedIcon(){playButton.setIcon(new ImageIcon("Imagen/ImagenesMenu/RegButton.jpg"));}
 
     /**
      * Método con el que se controla todos los listeners generados en esta clase.
@@ -502,7 +520,7 @@ public class JPPiano extends JPanel {
     }//Cierre del método
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void pintarTeclaBlanca(int note){
@@ -510,7 +528,89 @@ public class JPPiano extends JPanel {
     }//Cierre del metodo
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método para resaltar las teclas negras cuando las blancas son pintadas. Le pasamos el valor de la tecla blanca asi sabemos que nregra resaltar.
+     * @param nota
+     */
+    public void repainAllBlacks(int nota){
+        switch (nota){
+
+            case 0:
+                blacks[0].requestFocusInWindow();
+                break;
+            case 1:
+                blacks[0].requestFocusInWindow();
+                blacks[1].requestFocusInWindow();
+                break;
+            case 2:
+                blacks[1].requestFocusInWindow();
+                break;
+            case 3:
+                blacks[2].requestFocusInWindow();
+                break;
+            case 4:
+                blacks[2].requestFocusInWindow();
+                blacks[3].requestFocusInWindow();
+                break;
+            case 5:
+                blacks[3].requestFocusInWindow();
+                blacks[4].requestFocusInWindow();
+                break;
+            case 6:
+                blacks[4].requestFocusInWindow();
+                break;
+            case 7:
+                blacks[5].requestFocusInWindow();
+                break;
+            case 8:
+                blacks[5].requestFocusInWindow();
+                blacks[6].requestFocusInWindow();
+                break;
+            case 9:
+                blacks[6].requestFocusInWindow();
+                break;
+            case 10:
+                blacks[7].requestFocusInWindow();
+                break;
+            case 11:
+                blacks[7].requestFocusInWindow();
+                blacks[8].requestFocusInWindow();
+                break;
+            case 12:
+                blacks[8].requestFocusInWindow();
+                blacks[9].requestFocusInWindow();
+                break;
+            case 13:
+                blacks[9].requestFocusInWindow();
+                break;
+            case 14:
+                blacks[10].requestFocusInWindow();
+                break;
+            case 15:
+                blacks[10].requestFocusInWindow();
+                blacks[11].requestFocusInWindow();
+                break;
+            case 16:
+                blacks[11].requestFocusInWindow();
+                break;
+            case 17:
+                blacks[12].requestFocusInWindow();
+                break;
+            case 18:
+                blacks[12].requestFocusInWindow();
+                blacks[13].requestFocusInWindow();
+                break;
+            case 19:
+                blacks[13].requestFocusInWindow();
+                blacks[14].requestFocusInWindow();
+                break;
+            case 20:
+                blacks[14].requestFocusInWindow();
+                break;
+
+        }
+    }//Cierre del método
+    /**
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void despintarTeclaNegra(int note){
@@ -518,7 +618,7 @@ public class JPPiano extends JPanel {
     }//Cierre del metodo
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void despintarTeclaBlanca(int note){
@@ -526,7 +626,7 @@ public class JPPiano extends JPanel {
     }//Cierre del metodo
 
     /**
-     * Método que encia la posición del array de blancas, de la tecla seleccionada.
+     * Método que envia la posición del array de blancas, de la tecla seleccionada.
      * @param note posición del array de blancas, de la tecla seleccionada.
      */
     public void pintarTeclaNegra(int note){

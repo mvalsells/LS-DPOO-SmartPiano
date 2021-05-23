@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe que construeix les opcions d'enregistrar una cançó en format de finestra de diàleg
+ * @version 1.0
+ * @see JDialog
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ */
 public class JDPianoRegAdd extends JDialog {
 
     public static final String GuardarRec = "saveRec";
@@ -19,7 +25,9 @@ public class JDPianoRegAdd extends JDialog {
     private JButton jbPlayButton;
     private JButton jbPauseButton;
 
-
+    /**
+     * Constructor que prepara i genera la finestra de diàleg per mostrar-la més endavant, amb els botons, textos i components necessaris
+     */
     public JDPianoRegAdd(){
 
         ImageIcon playButton = new ImageIcon(new ImageIcon("Imagen/ImagenesMenu/playButton.png").getImage());
@@ -86,12 +94,32 @@ public class JDPianoRegAdd extends JDialog {
         pack();
     }
 
+    /**
+     * Mètode per iniciar la vista de la finestra
+     */
     public void run(){ this.setVisible(true);}
+
+    /**
+     * Mètode per tancar la finestra de diàleg
+     */
     public void close(){ jTextField.setText(""); ; this.setVisible(false);}
 
+    /**
+     * Mètode per obtenir el text escrit en el camp de text del nom
+     * @return
+     */
     public String getTextFieldString(){return jTextField.getText();}
+
+    /**
+     * Mètode per obtenir l'estat de la casella de si la gravació és pública o privada
+     * @return
+     */
     public boolean isCheckBoxSelected(){return jcbCheckBox.isSelected();}
 
+    /**
+     * Mètode per unir un controller a la vista en questió i controlar-la
+     * @param controller Controller necessari
+     */
     public void registerControllerJDPianoRegAdd(ActionListener controller){
         jbAdd.addActionListener(controller);
         jbDiscard.addActionListener(controller);

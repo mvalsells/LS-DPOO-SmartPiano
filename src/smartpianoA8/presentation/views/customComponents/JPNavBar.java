@@ -12,7 +12,6 @@ public class JPNavBar extends JPanel {
     private JButton jbMyFav;
     private JButton jbPiano;
     private JButton jbProfile;
-    private JButton jbCascade;
 
     private ImageIcon iconSong;
     private ImageIcon iconMyFav;
@@ -46,8 +45,6 @@ public class JPNavBar extends JPanel {
         jbPiano = new JBNavBar(iconPiano);
         jbPiano.setActionCommand(JFMainFrame.PIANO);
 
-        jbCascade = new JButton("Cascade");
-        jbCascade.setActionCommand(JFMainFrame.PIANO_CASCADE);
 
 
         jpNavBarNorth.add(Box.createVerticalStrut(BordersView.NavBar_EspaiEntreBotons/2));
@@ -56,7 +53,6 @@ public class JPNavBar extends JPanel {
         jpNavBarNorth.add(jbMyFav);
         jpNavBarNorth.add(Box.createVerticalStrut(BordersView.NavBar_EspaiEntreBotons));
         jpNavBarNorth.add(jbPiano);
-        jpNavBarNorth.add(jbCascade);
 
         //Panell General south
         jbProfile = new JBNavBar(iconProfile);
@@ -74,7 +70,6 @@ public class JPNavBar extends JPanel {
         jbMyFav.addActionListener(controller);
         jbPiano.addActionListener(controller);
         jbProfile.addActionListener(controller);
-        jbCascade.addActionListener(controller);
     }
 
     public void changeActiveElement(String newView){

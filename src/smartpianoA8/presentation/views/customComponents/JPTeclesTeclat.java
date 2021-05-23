@@ -3,13 +3,24 @@ package smartpianoA8.presentation.views.customComponents;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
-
+/**
+ *
+ * Esta clase se encarga principalmente de crear una tecla en funcion de la cantidad de teclas blancas o negras que
+ * se le han predefinido dependiendo de las octavas destinadas.
+ *
+ *
+ * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
+ * @version 1/05/2021.
+ */
 public class JPTeclesTeclat extends JPanel {
     public static int OCTAVES = 3;
     private final WhiteKey[] whites = new WhiteKey[7 * OCTAVES + 1];
     private final BlackKey[] blacks = new BlackKey[5 * OCTAVES];
 
 
+    /**
+     * Constructor de la clase JPTeclesTeclat
+     */
     public JPTeclesTeclat(){
         setBackground(Color.BLACK);
         setLayout(null);
@@ -24,8 +35,12 @@ public class JPTeclesTeclat extends JPanel {
             add(whites[i]);
 
         }
-    }
+    }//Cierre del constructor
 
+    /**
+     * Método con el que se controla todos los listeners generados en esta clase.
+     * @param mouseListener controlador asocioado al raton.
+     */
     public void registerController(MouseListener mouseListener){
         for (BlackKey black : blacks) {
             black.addMouseListener(mouseListener);
@@ -33,7 +48,7 @@ public class JPTeclesTeclat extends JPanel {
         for (WhiteKey white : whites) {
             white.addMouseListener(mouseListener);
         }
-    }
+    }//Cierre del método
 
     @Override
     public Dimension getPreferredSize() {
@@ -44,5 +59,5 @@ public class JPTeclesTeclat extends JPanel {
         int height = 10 + bounds.y + bounds.height;
 
         return new Dimension(width, height);
-    }
-}
+    }//Cierre del método
+}//Cierre de la clase

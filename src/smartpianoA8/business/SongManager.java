@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Classe que controla les cançons, MANAGER
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class SongManager {
 
@@ -104,6 +104,13 @@ public class SongManager {
     public ArrayList<Song> getMasterSongs() {
         return songDAO.getMasterSongs();
     }
+
+    /**
+     * Reotorna les cançons de l'usuari, les públiques (i no usuari) i després les de Master, en aquest ordre
+     * @param username nom d'usuari USERNAME (no email) per enviar a buscar cançons
+     * @return ArrayList amb les cançons de l'usuari, les publiques (no de l'usuari) i les Master
+     */
+    public ArrayList<Song> getUserAndMasterSongs(String username){return songDAO.getUserAndMasterSongs(username);}
 
     /**
      * Getter de MPQ de les notes MIDI

@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
  * Classe amb les accions i mètodes d'accés i control de Business
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class BusinessFacadeImpl implements BusinessFacade{
 
@@ -338,6 +338,9 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public Boolean isPlayListEmpty(String nom){
         return playListDAO.isPlayListEmpty(nom, userManager.getCurrentUser().getUsername());
     }
+
+    @Override
+    public ArrayList<Song> getUserAndMasterSongs(String username){return songManager.getUserAndMasterSongs(username);}
 
     @Override
     public ArrayList<Song> getPublicAndMasterSongs() {

@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * Interfície-façada per la implementació de mètodes i accions de la categoria de Business
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public interface BusinessFacade {
 
@@ -44,6 +44,7 @@ public interface BusinessFacade {
     Song getSong(int IDSong);
     Song getSongByName(String name);
     ArrayList<Song> getTop5();
+    ArrayList<Song> getUserAndMasterSongs(String username);
     ArrayList<Song> getPublicAndMasterSongs();
     //void removeSong(Song song);
 

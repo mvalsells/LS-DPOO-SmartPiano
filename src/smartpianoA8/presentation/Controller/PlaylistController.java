@@ -1,6 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.views.JFMainFrame;
 import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
@@ -45,6 +46,13 @@ public class PlaylistController implements ActionListener, ItemListener{
 
             presentationController.setLastSongPressed(Integer.parseInt(split[1]));
             System.out.println(Integer.parseInt(split[1]));
+
+            presentationController.changeView(JFMainFrame.PIANO);
+            presentationController.mainFrameControllerSetShowingPiano(true);
+            presentationController.mainFrameControllerSetShowingPlaylists(false);
+            presentationController.mainFrameControllerSetShowingProfile(false);
+            presentationController.mainFrameControllerSetShowingSongs(false);
+            presentationController.startCascade();
 
         }else {
 

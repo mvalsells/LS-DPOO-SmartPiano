@@ -12,7 +12,7 @@ import java.io.Reader;
 /**
  * Classe per la lectura i configuració de la bbdd i el fitxer de configuració
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see JsonReadable
  */
 public class JsonReadableImpl implements JsonReadable {

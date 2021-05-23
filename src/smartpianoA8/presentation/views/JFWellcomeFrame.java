@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * además también podemos encotnrar los register controllers al igual que sus resoectivas acciones.
  * para controlar que los datos se creen correctamente.
  *
- * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
- * @version 1/05/2021.
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @version 1.0
  */
 public class JFWellcomeFrame extends JFrame {
 
@@ -109,32 +109,7 @@ public class JFWellcomeFrame extends JFrame {
                 break;
         }
 
-    }//Cierre del método
-/*
-    public CardLayout getCards(){
-
-        return this.cards;
-
     }
-    public JPanel getMainPanel(){
-
-        return this.mainPanel;
-
-    }
-*/
-    //Getters register
-   /* public String getRegisterNomString(){ return jpRegisterView.getNomString(); }
-    public String getRegisterCorreuString(){
-        return jpRegisterView.getCorreuString();
-    }
-    public String getRegisterContrasenyaString(){
-        return jpRegisterView.getContrasenyaString();
-    }
-    public Boolean isRegisterCheckBoxAcceptTandC(){return jpRegisterView.isCheckBoxAcceptTandC();}
-    public String getRegisterRepetirContrasenyaString(){
-        return jpRegisterView.getRepetirContrasenyaString();
-    }
-*/
 
     /**
      * Método donde almacena la información del register.
@@ -144,15 +119,6 @@ public class JFWellcomeFrame extends JFrame {
         return jpRegisterView.getData();
     }//Cierre del método.
 
-    //Getters login
-   /* public String getLoginNomString(){ return jpLoginView.getNomString();}
-    public String getLoginCorreuString(){
-        return jpLoginView.getCorreuString();
-    }
-    public String getLoginContrasenyaString(){
-        return jpLoginView.getContrasenyaString();
-    }*/
-
     /**
      * Método donde contiene la información del login almacenada en el arraylist de login.
      * @return La información del login almacenada en el arraylist de login.
@@ -160,4 +126,4 @@ public class JFWellcomeFrame extends JFrame {
     public ArrayList<String> getLoginData() {
         return jpLoginView.getData();
     }//Cierre del método
-}//Cierre del método
+}

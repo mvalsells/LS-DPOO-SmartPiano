@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a la parte del main
  * al igual que todas sus respectivas funciones para poder controlar el frame
  *
- * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
- * @version 1/05/2021.
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @version 1.0
  */
 
 public class JFMainFrame extends JFrame {
@@ -168,7 +168,6 @@ public class JFMainFrame extends JFrame {
         jpNavBar.changeActiveElement(newView);
         switch (newView){
             case SONGS:
-
                 cards.show(jpCardPanel,SONGS);
                 break;
             case PLAYLISTS:
@@ -285,15 +284,18 @@ public class JFMainFrame extends JFrame {
      * Método para controlar cuando se apreta el boton de reg para gravar
      * @param button Controlador del boton de reg
      */
-    public void pianoViewSetRecordingPressedIcon(JButton button){ jpPianoView.setRecordingPressedIcon(button); }//Cierre del método
+    public void pianoViewSetPressedIcon(JButton button){ jpPianoView.setPressedIcon(button); }//Cierre del método
 
     /**
      * Método para controlar cuando se apreta el boton de reg para guardar
      * @param button Controlador del boton de reg
      */
-    public void pianoViewSetRecordingUnpressedIcon(JButton button){
-        jpPianoView.setRecordingUnpressedIcon(button);
+    public void pianoViewSetUnpressedIcon(JButton button){
+        jpPianoView.setUnpressedIcon(button);
     }//Cierre del método
+
+    public void pianoViewSetPlayButtonPressedIcon(){jpPianoView.setPlayButtonPressedIcon();}
+    public void pianoViewSetPlayButtonUnpressedIcon(){jpPianoView.setPlayButtonUnpressedIcon();}
 
     /**
      * Método para runear la vista.
