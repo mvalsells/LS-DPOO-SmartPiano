@@ -480,6 +480,8 @@ public class PresentationController implements PresentationFacade {
 
 
 
+
+
     public void loadPlaylistInPlayer() {
         //System.out.println("Yo, updating playlist...");
 
