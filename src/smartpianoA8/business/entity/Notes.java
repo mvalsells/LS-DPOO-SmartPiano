@@ -3,7 +3,7 @@ package smartpianoA8.business.entity;
 /**
  * Entity de nota MIDI
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class Notes {
 

@@ -6,7 +6,7 @@ import smartpianoA8.business.exceptions.UserManagerException;
 /**
  * Interfície pel control d'usuaris de la bbdd
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public interface UserDAO {
 

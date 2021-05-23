@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Classe que controla les cançons, MANAGER
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class SongManager {
 
