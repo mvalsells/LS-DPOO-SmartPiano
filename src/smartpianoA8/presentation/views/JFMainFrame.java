@@ -200,7 +200,7 @@ public class JFMainFrame extends JFrame {
                 break;
             case "PLAYLISTS":
                 jpPlaylistView.addSongInJCBadder(song);
-
+                break;
         }
     }//Cierre del método
     // ---- End SongView Methods

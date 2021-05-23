@@ -36,7 +36,7 @@ public class JFTop5View extends JFrame{
         setMinimumSize(new Dimension(1400,450));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(false);
 
         Font negreta = new Font("ABeeZee", Font.PLAIN,14);
 

@@ -17,6 +17,7 @@ import smartpianoA8.presentation.views.customComponents.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.awt.event.KeyEvent;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -363,6 +364,14 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public ArrayList<Double> getNumMinutsCurrentUser() {
         return statsDAO.getDataMinuts(userManager.getCurrentUser().getUsername());
+    }
+
+    @Override
+    public void actualitzarEstadistiques(long microseconds){
+        long totalSegons = microseconds/1000000L;
+        int minutsAfegir = (int) (totalSegons/60);
+        int segonsAfegir = (int) (totalSegons-minutsAfegir);
+        statsDAO.actualitzarBBDDEstadistiques(minutsAfegir, segonsAfegir, userManager.getCurrentUser().getUsername());
     }
     // ------------------------------------------------------
     //  END stats implementation
