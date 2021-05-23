@@ -22,7 +22,6 @@ import java.util.ArrayList;
  */
 public class WellcomeController implements ActionListener {
 
-
     // ---- Inici Atributs ----
     private PresentationController presentationController;
 
