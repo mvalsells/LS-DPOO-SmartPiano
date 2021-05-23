@@ -196,36 +196,53 @@ public class BordersView {
     /*JPRegisterView*/
 
     /**
-     * M`
-     * @return
+     * Mètode per obtenir el border del botó de registrar-se
+     * @return el border en questió
      */
     public Border getRegisterButtonBorder(){
 
         return this.RegisterButtonBorder;
 
     }
+
+    /**
+     * Mètode per obtenir el border de la barra de títol/text de registrar-se
+     * @return el border en questió
+     */
     public Border getRegisterTitularBorder(){
 
         return this.RegisterTitularBorder;
 
     }
+
+    /**
+     * Mètode per obtenir el border del quadre de text més superior (amb espai per sobre) dels camps de text de registrar-se
+     * @return el border en questió
+     */
     public Border getRegisterTopTextFieldBorder(){
 
         return this.RegisterTopTextFieldBorder;
 
     }
     /*JPLoginView*/
+
+    /**
+     * Mèotde per obtenir el border pel botó de logguejar-se
+     * @return el border en questió
+     */
     public Border getLoginButtonBorder(){
 
         return this.LoginButtonBorder;
 
     }
+
+    /**
+     * Mètode per obtenir el border del quadre de text més superior (amb espai per sobre) dels camps de text de loguejar-se
+     * @return el border en questió
+     */
     public Border getLoginTopTextFieldBorder(){
 
         return this.LoginTopTextFieldBorder;
 
     }
-
-
-
 }

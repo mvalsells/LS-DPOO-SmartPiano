@@ -63,9 +63,8 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         if (midiMessage instanceof ShortMessage) {
             ShortMessage shortMessage = (ShortMessage) midiMessage;
 
-
-
-            if (shortMessage.getCommand() == ShortMessage.NOTE_ON) {
+            // Notas en ON
+            if (shortMessage.getCommand() == ShortMessage.NOTE_ON && shortMessage.getData2() != 0) {
 
                 note = shortMessage.getData1();
                 printable = isPrintable(note);
@@ -83,8 +82,24 @@ public class ObtainNotesWhilePlayingController implements Receiver {
 
                 System.out.println("NOTE: (" + isWhite + ") " + note +" ON. At time: " + System.currentTimeMillis());
                 //sendOnNotes(shortMessage.getData1());
-            }
-            if (shortMessage.getCommand() == ShortMessage.NOTE_OFF) {
+
+            // Notas en OFF pero con señal de ON
+            }else if (shortMessage.getCommand() == ShortMessage.NOTE_ON && shortMessage.getData2() == 0) {
+                note = shortMessage.getData1();
+                printable = isPrintable(note);
+                isWhite = isBlanca(note);
+                note = canviaNote(note, isWhite);
+                if(isWhite && printable) {
+                    jppiano.despintarTeclaBlanca(note);
+                    jppiano.repainAllBlacks(note);
+                }
+                else if (!isWhite && printable){
+                    jppiano.despintarTeclaNegra(note);
+                }
+                System.out.println("NOTE: (" + isWhite + ") " + note + " OFF. At time: " + System.currentTimeMillis());
+                //sendOffNotes(shortMessage.getData1());
+            // Notas en OFF normales
+            }else if (shortMessage.getCommand() == ShortMessage.NOTE_OFF) {
                 note = shortMessage.getData1();
                 printable = isPrintable(note);
                 isWhite = isBlanca(note);
