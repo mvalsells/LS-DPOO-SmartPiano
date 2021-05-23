@@ -20,6 +20,10 @@ public class JFTop5View extends JFrame{
     private static final Color lletrta = new Color(186,189,191);
     private ArrayList<Song> topSongsComu;
     private JPanel fons;
+    private JLabel[] TOP = new JLabel[6];
+    private JLabel[] NOM = new JLabel[6];
+    private JLabel[] NUMREP = new JLabel[6];
+    private JLabel[] AUTOR = new JLabel[6];
 
     /**
      * Contructor de la clase JFTop5View
@@ -108,10 +112,7 @@ public class JFTop5View extends JFrame{
         JPanel[] calaixNom = new JPanel[6];
         JPanel[] calaixNumrep = new JPanel[6];
         JPanel[] calaixAutor = new JPanel[6];
-        JLabel[] TOP = new JLabel[6];
-        JLabel[] NOM = new JLabel[6];
-        JLabel[] NUMREP = new JLabel[6];
-        JLabel[] AUTOR = new JLabel[6];
+
 
         top.setBorder(BorderFactory.createEmptyBorder(0,0,130,30));
         nom.setBorder(BorderFactory.createEmptyBorder(0,0,130,180));
@@ -235,6 +236,22 @@ public class JFTop5View extends JFrame{
      */
     public void updateTop5View(ArrayList<Song> newTopSongs){
         this.topSongsComu = newTopSongs;
+
+        /*for (int i=0; i<6;i++){
+            String strAutor = topSongsComu.get(i).getAutor();
+            TOP[i].setText();
+            NOM[i] = new JLabel(topSongsComu.get(i).getNom());
+            NUMREP[i] = new JLabel(String.valueOf(topSongsComu.get(i).getNumReproduccions()));
+
+            if (strAutor.compareTo("Master") != 0) {
+                strAutor = topSongsComu.get(i).getAutor();
+            } else {
+                strAutor = topSongsComu.get(i).getNomUsuari();
+            }
+
+            AUTOR[i] = new JLabel(strAutor);
+        }*/
+
 
         fons.repaint();
         fons.revalidate();

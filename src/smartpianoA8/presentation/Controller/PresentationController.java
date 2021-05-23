@@ -84,14 +84,14 @@ public class PresentationController implements PresentationFacade {
 
     public void loginOK() {
 
+
+        //Crear les vistes
+        jfStatisticsView = new JFStatisticsView(businessFacade.getNumMinutsCurrentUser(), businessFacade.getNumReproducionsCurrentUser());
+        jfTop5View = new JFTop5View(businessFacade.getTop5());
+        jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
         if (jfWellcomeFrame != null) {
             jfWellcomeFrame.dispose();
         }
-        //Crear les vistes
-        jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
-        jfStatisticsView = new JFStatisticsView(businessFacade.getNumMinutsCurrentUser(), businessFacade.getNumReproducionsCurrentUser());
-        jfTop5View = new JFTop5View(businessFacade.getTop5());
-
 
         //Crear els controllers
         songController = new SongController();
