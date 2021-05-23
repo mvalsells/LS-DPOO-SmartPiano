@@ -57,7 +57,7 @@ public class JFMainFrame extends JFrame {
         setTitle("SmartPiano");
         //setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(1085,680));
+        setPreferredSize(new Dimension(1085,760));
         setLayout(new BorderLayout());
         //setLocationRelativeTo(null);
 
