@@ -386,6 +386,8 @@ public class PresentationController implements PresentationFacade {
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 
+    public void pianoViewRepainAllBlacks(int nota){jfMainFrame.pianoViewRepainAllBlacks(nota);}
+
     /**
      * Mètode per establir el botó de REC actiu
      */
@@ -426,6 +428,8 @@ public class PresentationController implements PresentationFacade {
     public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
+    public Boolean pianoCascadeIsNoteWhite(int nota){return obtainNotesWhilePlayingController.isBlanca(nota);}
+    public int pianoCascadeCanviNote(int note,boolean isNoteWhite){return obtainNotesWhilePlayingController.canviaNote(note,isNoteWhite);}
     public void startCascade(){
         /*pianoCascadeThread.start();*/
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
