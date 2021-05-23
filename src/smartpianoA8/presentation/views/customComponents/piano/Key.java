@@ -1,4 +1,4 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.piano;
 
 /**
  * Esta interficie se encarga de definir los parámetros de las notas, ya sea para la dimensión como para la cantidad

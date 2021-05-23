@@ -13,11 +13,10 @@ import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
 import smartpianoA8.persistence.dao.StatsDAO;
 import smartpianoA8.persistence.dao.UserDAO;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.awt.event.KeyEvent;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -157,6 +156,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return userManager.modifyCurrentUserName(newUserName);
     }
 
+    /**
+     * Mètode per obtenir l'usuari actual loguejat
+     * @return User loguejat
+     */
     @Override
     public User getCurrentUser(){
         return userManager.getCurrentUser();
@@ -168,6 +171,10 @@ public class BusinessFacadeImpl implements BusinessFacade{
     //  START song implementation
     // ------------------------------------------------------
 
+    /**
+     * Mètode per eliminar una cançó totalement
+     * @param song la Song a borrar compelta
+     */
     @Override
     public void removeSongFromDBAndLocal(Song song) {
         songDAO.removeSong(song.getIdSong());
@@ -282,12 +289,25 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return hmFile.read(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mèotde per configurar les notes del hashmap
+     * @param hmTeclas Tecla a canviar el hashmap
+     */
     public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
         hmFile.write(hmTeclas,userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per obtenir una Song sol·licitada
+     * @param id int id de la song
+     * @return la Song en questió
+     */
     public Song getSong(int id){return songManager.getSong(id);}
 
+    /**
+     * Mètode per obtenir el top5 de cançons
+     * @return ArrayList del top 5 amb les songs
+     */
     @Override
     public ArrayList<Song> getTop5() {
         return songManager.getTop5();
@@ -301,51 +321,115 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START playlist implementation
     // ------------------------------------------------------
+
+    /**
+     * Mètode per obtenir les playlists de l'usuari
+     * @return Arraylist de PlayLists
+     */
     @Override
     public ArrayList<PlayList> getCurrentUserPlaylist(){
         return playListDAO.getPlayListsByUser(userManager.getCurrentUser());
     }
 
+    /**
+     *Mètode per afegir una playlist a l'usuari
+     * @param name Nom de la playlist
+     * @param username nom de l'usuari
+     */
     @Override
     public void addPlayList(String name, String username) {
         playListDAO.addPlayList(name,username);
     }
+
+    /**
+     * Mètode per eliminar una playlist
+     * @param playList la nova playlist
+     */
     @Override
     public void removePlayList(PlayList playList){
         playListDAO.removePlayList(playList);
     }
 
+    /**
+     * Afegir una cançó a la playlist
+     * @param song
+     * @param playList
+     */
     @Override
     public void addSongToPlayList(Song song, PlayList playList){playListDAO.addSongToPlayList(song,playList);}
 
+    /**
+     * Eliminar una cançó d'una playlist
+     * @param song la cançó
+     * @param playList la playlist a modificar
+     */
     @Override
     public void removeSongFromPlayList(Song song, PlayList playList) {
         playListDAO.removeSongFromPlayList(song,playList);
     }
-@Override
+
+    /**
+     * Obtenir el nom d'una cançó
+     * @param name Strin nom
+     * @return la cançó DE L'USUARI amb el nom demanat
+     */
+    @Override
     public Song getSongByName(String name){
         return songDAO.getSongByName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    /**
+     * Mèotde per obtenir un aplylist per nom (i usuari)
+     * @param name nom de la playlist
+     * @return la playlist
+     */
+    @Override
     public PlayList getPlayListByName(String name){
         return playListDAO.getPlayListByName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    /**
+     * Mètode per obtenir les cançons d'una playlist pel nom
+     * @param name nom de la playlist
+     * @return  les cançons de la playlist
+     */
+    @Override
     public ArrayList<Song> getPlayListSongsByPlayListName(String name){
         return playListDAO.getPlayListSongsByPlayListName(name, userManager.getCurrentUser().getUsername());
     }
-@Override
+
+    /**
+     * Mètode per comprovar si una playlist existeix
+     * @param nom nom de la playlist
+     * @return true: existeix false: no existeix
+     */
+    @Override
     public Boolean doesPlayListExist(String nom){
         return playListDAO.doesPlayListExist(nom, userManager.getCurrentUser().getUsername());
     }
+
+    /**
+     * Mèotde per coneixre si la playlist està buida
+     * @param nom nom de la playlist a comprovar
+     * @return true: si, false: nope
+     */
     @Override
     public Boolean isPlayListEmpty(String nom){
         return playListDAO.isPlayListEmpty(nom, userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mèotde per obtenir les cançons d'un usuari pròpies i del Master
+     * @param username nom d'usuari
+     * @return Arraylist de les cançons
+     */
     @Override
     public ArrayList<Song> getUserAndMasterSongs(String username){return songManager.getUserAndMasterSongs(username);}
 
+    /**
+     * Mètode per obtenir els cançons públiques i de Master per un usauri
+     * @return Arraylist de cançons
+     */
     @Override
     public ArrayList<Song> getPublicAndMasterSongs() {
         return songDAO.getPublicAndMasterSongs();
@@ -356,16 +440,28 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START stats implementation
     // ------------------------------------------------------
+    /**
+     * Mètode per obtenir la quantitat de reproduccions d'un usuari
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     @Override
     public ArrayList<Integer> getNumReproducionsCurrentUser() {
         return statsDAO.getDataReproduccions(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per obtenir la duració en minuts de la cançó actual
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     @Override
     public ArrayList<Double> getNumMinutsCurrentUser() {
         return statsDAO.getDataMinuts(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per actualitzar les estadístiques
+     * @param microseconds microsegons que dura la cançó reproduida
+     */
     @Override
     public void actualitzarEstadistiques(long microseconds){
         long totalSegons = microseconds/1000000L;

@@ -1,9 +1,9 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.persistence.MidiWritter;
-import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.Key;
+import smartpianoA8.presentation.views.customComponents.piano.JDPianoRegAdd;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.Key;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.sound.midi.*;
@@ -154,22 +154,14 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                    //Guardar record i ferla publica
 
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), true, endTime);
-                   try {
-                       Thread.sleep(100);
-                   } catch (InterruptedException interruptedException) {
-                       interruptedException.printStackTrace();
-                   }
+
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
 
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), false, endTime);
-                   try {
-                       Thread.sleep(100);
-                   } catch (InterruptedException interruptedException) {
-                       interruptedException.printStackTrace();
-                   }
+
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(presentationController.pianoViewJDGetTextFieldString().equals("")){

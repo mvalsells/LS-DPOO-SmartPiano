@@ -1,7 +1,6 @@
 package smartpianoA8.presentation.Controller;
 
-import smartpianoA8.presentation.views.JPPianoView;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 
 import java.awt.*;
 

@@ -5,6 +5,7 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.customComponents.*;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 
 import javax.swing.*;
 import java.awt.*;
@@ -293,25 +294,26 @@ public class JFMainFrame extends JFrame {
     public String playlistViewGetJCTriarPlaylistString(){return jpPlaylistView.getJCTriarPlaylistString();}//Cierre del método
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
-
+    /**
+     * Método para resaltar las teclas negras cuando las blancas son pintadas. Le pasamos el valor de la tecla blanca asi sabemos que nregra resaltar.
+     * @param nota
+     */
     public void pianoViewRepainAllBlacks(int nota){jpPianoView.repainAllBlacks(nota);}
 
     /**
-     * Método para controlar cuando se apreta el boton de reg para gravar
-     * @param button Controlador del boton de reg
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetPressedIcon(JButton button){ jpPianoView.setPressedIcon(button); }//Cierre del método
 
     /**
-     * Método para controlar cuando se apreta el boton de reg para guardar
-     * @param button Controlador del boton de reg
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetUnpressedIcon(JButton button){
         jpPianoView.setUnpressedIcon(button);
     }//Cierre del método
 
-    public void pianoViewSetPlayButtonPressedIcon(){jpPianoView.setPlayButtonPressedIcon();}
-    public void pianoViewSetPlayButtonUnpressedIcon(){jpPianoView.setPlayButtonUnpressedIcon();}
 
     /**
      * Método para runear la vista.
