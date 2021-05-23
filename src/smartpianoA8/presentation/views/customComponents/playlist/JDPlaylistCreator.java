@@ -77,6 +77,10 @@ public class JDPlaylistCreator extends JDialog {
      */
     public String getTextFieldString(){return jTextField.getText();}
 
+    /**
+     * Método para registrar los actionListeners
+     * @param controller
+     */
     public void registerControllerJDPlaylist(ActionListener controller){
         jbCreate.addActionListener(controller);
         jbDiscard.addActionListener(controller);
