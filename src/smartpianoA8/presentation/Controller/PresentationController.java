@@ -271,11 +271,29 @@ public class PresentationController implements PresentationFacade {
         businessFacade.songPlayed(IDsong);
     }
 
+    /**
+     * Mètode per obtenir les cançons de master
+     * @return ArrayList de les cançons de master
+     */
     //Temporal
     public ArrayList<Song> getMasterSongs(){return businessFacade.getMasterSongs();}
+
+    /**
+     * Mètode per obtenir les cançons publiques i de master
+     * @return Arraylist de les cançons
+     */
     public ArrayList<Song> getPublicAndMasterSongs(){return businessFacade.getPublicAndMasterSongs();}
+
+    /**
+     * Mètode per obtenir les palylists de l'usuari
+     * @return ArrayList de PlayLists
+     */
     public ArrayList<PlayList> getUserPlaylists(){return businessFacade.getCurrentUserPlaylist();}
 
+    /**
+     * Mèotde per
+     * @return
+     */
     public ArrayList<String> getUserPlaylistsStrings() {
 
         ArrayList<String> stringPlaylists = new ArrayList<>();
