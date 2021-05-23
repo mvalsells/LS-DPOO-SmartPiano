@@ -1,4 +1,7 @@
-package smartpianoA8.presentation.views.customComponents;
+package smartpianoA8.presentation.views.customComponents.piano;
+
+import smartpianoA8.presentation.views.customComponents.ImageView;
+import smartpianoA8.presentation.views.customComponents.JTPianoButtonText;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

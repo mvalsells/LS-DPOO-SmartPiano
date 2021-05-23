@@ -5,6 +5,7 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.customComponents.*;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 
 import javax.swing.*;
 import java.awt.*;

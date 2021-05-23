@@ -1,6 +1,6 @@
 package smartpianoA8.persistence;
 
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.awt.event.KeyEvent;

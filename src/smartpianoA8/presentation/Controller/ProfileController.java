@@ -1,13 +1,10 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.exceptions.PasswordException;
-import smartpianoA8.presentation.views.JFStatisticsView;
-import smartpianoA8.presentation.views.JFTop5View;
 import smartpianoA8.presentation.views.JPProfileView;
-import smartpianoA8.presentation.views.customComponents.Key;
+import smartpianoA8.presentation.views.customComponents.piano.Key;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
-import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;

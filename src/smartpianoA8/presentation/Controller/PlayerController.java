@@ -160,10 +160,18 @@ public class PlayerController implements Runnable, ActionListener {
 
     }
 
+    /**
+     * Setter que modifica la canción a ser reproducida
+     * @param songsToBePlayed
+     */
     public void setSongsToBePlayed(ArrayList<Song> songsToBePlayed) {
         this.songsToBePlayed = songsToBePlayed;
     }
 
+    /**
+     * Setter que modifica la acción a hacer
+     * @param actionToDo
+     */
     public void setActionToDo(int actionToDo) {
         this.actionToDo = actionToDo;
         if(actionToDo == 4) {
@@ -280,6 +288,10 @@ public class PlayerController implements Runnable, ActionListener {
 
     }
 
+    /**
+     * Método para registrar el controlador
+     * @param presentationController
+     */
     public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
     }

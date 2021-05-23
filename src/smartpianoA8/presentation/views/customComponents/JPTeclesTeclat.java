@@ -1,5 +1,8 @@
 package smartpianoA8.presentation.views.customComponents;
 
+import smartpianoA8.presentation.views.customComponents.piano.BlackKey;
+import smartpianoA8.presentation.views.customComponents.piano.WhiteKey;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;

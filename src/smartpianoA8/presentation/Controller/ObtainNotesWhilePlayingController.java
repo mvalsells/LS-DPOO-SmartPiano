@@ -1,7 +1,7 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.business.entity.Song;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
 
 import javax.sound.midi.*;
 import javax.swing.*;

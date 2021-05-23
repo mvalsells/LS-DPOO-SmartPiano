@@ -1,9 +1,9 @@
 package smartpianoA8.presentation.Controller;
 
 import smartpianoA8.persistence.MidiWritter;
-import smartpianoA8.presentation.views.customComponents.JDPianoRegAdd;
-import smartpianoA8.presentation.views.customComponents.JPPiano;
-import smartpianoA8.presentation.views.customComponents.Key;
+import smartpianoA8.presentation.views.customComponents.piano.JDPianoRegAdd;
+import smartpianoA8.presentation.views.customComponents.piano.JPPiano;
+import smartpianoA8.presentation.views.customComponents.piano.Key;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.sound.midi.*;
