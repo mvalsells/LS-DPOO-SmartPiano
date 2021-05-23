@@ -20,10 +20,6 @@ public class Song {
     private final String nomUsuari;
     private final String midi;
 
-    //TODO eliminar midi
-    //todo implementar forma de obtener datos de canciones guardados en la BBDD segun el usuario quiera. (getAllSongsByName
-    // y cuando se quiera alguna cancion en especifico recuperarla con una funcion que devuelva Song.)
-
     /**
      * Constructor amb les dades de la cançó SI ÉS NOVA
      * @param idSong int ID identificador de la DDBB

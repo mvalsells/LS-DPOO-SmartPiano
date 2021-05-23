@@ -280,6 +280,8 @@ public class JFMainFrame extends JFrame {
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 
+    public void pianoViewRepainAllBlacks(int nota){jpPianoView.repainAllBlacks(nota);}
+
     /**
      * Método para controlar cuando se apreta el boton de reg para gravar
      * @param button Controlador del boton de reg
