@@ -434,6 +434,15 @@ public class BusinessFacadeImpl implements BusinessFacade{
     public ArrayList<Song> getPublicAndMasterSongs() {
         return songDAO.getPublicAndMasterSongs();
     }
+
+    /**
+     * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
+     * @param IDsong id de la cançó a la que augmentar el num de reproduccions
+     */
+    @Override
+    public void songPlayed(int IDsong){
+        songDAO.songPlayed(IDsong);
+    }
     // ------------------------------------------------------
     //  END song implementation
     // ------------------------------------------------------

@@ -58,7 +58,7 @@ public interface SongDAO {
      * Metode que augmenta un cop el nombre de reproduccions d'una cançó per tots els usuaris pel top5
      * @param IDSong id de la cançó a la que augmentar el num de reproduccions
      */
-    void SongPlayed(int IDSong);
+    void songPlayed(int IDSong);
 
     /**
      * Retorna totes les cançons de l'usuari "Master"
