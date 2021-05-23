@@ -64,7 +64,7 @@ public class SQLSongDAO implements SongDAO {
     @Override
     public void removeSong(int IDSong) {
         //borra la cançó total (data)
-        String query = "DELETE FROM Users WHERE NomUsuari = " + IDSong + ";";
+        String query = "DELETE FROM Song WHERE idSong = " + IDSong + ";";
         connector.deleteQuery(query);
     }
 
