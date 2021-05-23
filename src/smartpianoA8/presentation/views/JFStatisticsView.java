@@ -42,7 +42,7 @@ public class JFStatisticsView extends JFrame {
         setMinimumSize(new Dimension(1000,800));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(false);
         //pack();
 
         //fons |__|

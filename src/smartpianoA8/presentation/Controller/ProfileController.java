@@ -68,10 +68,12 @@ public class ProfileController implements ActionListener, MouseListener, KeyList
                 saveSettings();
                 break;
             case JPProfileView.STATS:
-                new JFStatisticsView(presentationController.getNumMinutsCurrentUser(), presentationController.getNumReproducionsCurrentUser());
+                //new JFStatisticsView(presentationController.getNumMinutsCurrentUser(), presentationController.getNumReproducionsCurrentUser());
+                presentationController.showStatistics();
                 break;
             case JPProfileView.TOP_5:
-                new JFTop5View(presentationController.getTop5());
+                //new JFTop5View(presentationController.getTop5());
+                presentationController.showTop5();
                 break;
             case JPProfileView.DELETE_ACCOUNT:
                 presentationController.removeCurrentUser();

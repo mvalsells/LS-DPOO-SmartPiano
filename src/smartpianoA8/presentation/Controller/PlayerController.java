@@ -28,6 +28,7 @@ public class PlayerController implements Runnable, ActionListener {
     private boolean isClosed = false;
     JPPlayer jpPlayer;
     private int countError = 1;
+    private PresentationController presentationController;
 
     public PlayerController(JPPlayer jpPlayer) {
         this.jpPlayer = jpPlayer;
@@ -197,8 +198,8 @@ public class PlayerController implements Runnable, ActionListener {
 
                         jpPlayer.setTotalBarLong((int)currentSequencer.getMicrosecondLength());
 
-
-
+                        presentationController.actualitzarEstadistiques(currentSequence.getMicrosecondLength());
+                        presentationController.updateStatsView();
                         while (currentSequencer.isRunning()) {
                             jpPlayer.setCurrentStatus((int)currentSequencer.getMicrosecondPosition());
                             if(actionToDo == 2) {
@@ -277,6 +278,10 @@ public class PlayerController implements Runnable, ActionListener {
     private void endThePlayer() {
 
 
+    }
+
+    public void registerPresentationController(PresentationController presentationController) {
+        this.presentationController = presentationController;
     }
 
 }

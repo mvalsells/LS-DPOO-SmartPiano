@@ -67,6 +67,7 @@ public interface BusinessFacade {
     //Stats
     ArrayList<Integer> getNumReproducionsCurrentUser();
     ArrayList<Double> getNumMinutsCurrentUser();
+    void actualitzarEstadistiques(long microseconds);
 
 
     //Altres

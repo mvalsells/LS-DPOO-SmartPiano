@@ -23,7 +23,7 @@ public interface StatsDAO {
      * @param duradaSong durada en LocalTime de la cançó
      * @param username NomUsuari UserName de l'usuari que l'ha reproduit (actual)
      */
-    void actualitzarBBDDEstadistiques(LocalTime duradaSong, String username);   //TODO cridar la funció quan es reprodueixi
+    void actualitzarBBDDEstadistiques(int minutsAfegir, int segonsAfegir, String username);   //TODO cridar la funció quan es reprodueixi
 
 
     /**

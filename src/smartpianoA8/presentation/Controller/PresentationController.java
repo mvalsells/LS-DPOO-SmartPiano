@@ -9,6 +9,8 @@ import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
 import smartpianoA8.persistence.MidiWritter;
 import smartpianoA8.presentation.views.JFMainFrame;
+import smartpianoA8.presentation.views.JFStatisticsView;
+import smartpianoA8.presentation.views.JFTop5View;
 import smartpianoA8.presentation.views.JFWellcomeFrame;
 import smartpianoA8.presentation.views.customComponents.Tecla;
 
@@ -39,6 +41,8 @@ public class PresentationController implements PresentationFacade {
     //Frame
     private JFMainFrame jfMainFrame;
     private JFWellcomeFrame jfWellcomeFrame;
+    private JFStatisticsView jfStatisticsView;
+    private JFTop5View jfTop5View;
 
     //Controllers
     private WellcomeController wellcomeController;
@@ -85,6 +89,9 @@ public class PresentationController implements PresentationFacade {
         }
         //Crear les vistes
         jfMainFrame = new JFMainFrame(businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()), businessFacade.getCurrentUser(), businessFacade.getCurrentUserPlaylist());
+        jfStatisticsView = new JFStatisticsView(businessFacade.getNumMinutsCurrentUser(), businessFacade.getNumReproducionsCurrentUser());
+        jfTop5View = new JFTop5View(businessFacade.getTop5());
+
 
         //Crear els controllers
         songController = new SongController();
@@ -108,6 +115,7 @@ public class PresentationController implements PresentationFacade {
         pianoController.registerPresentationController(this);
         //pianoCascadeController.registerPresentationController(this);
         obtainNotesWhilePlayingController.registerPresentationController(this);
+        playlistController.registerPresentationController(this);
         mainFrameController.registerPresentationController(this);
 
         //Registrar els controllers a les seves vistes
@@ -124,6 +132,12 @@ public class PresentationController implements PresentationFacade {
     public void logoutOK() {
         if (jfMainFrame != null) {
             jfMainFrame.dispose();
+        }
+        if (jfTop5View != null) {
+            jfTop5View.dispose();
+        }
+        if (jfStatisticsView!=null){
+            jfTop5View.dispose();
         }
         //Crear la vista
         jfWellcomeFrame = new JFWellcomeFrame();
@@ -248,9 +262,6 @@ public class PresentationController implements PresentationFacade {
         return businessFacade.getCurrentUser();
     }
 
-    public ArrayList<Song> getTop5() {
-        return businessFacade.getTop5();
-    }
     //Temporal
     public ArrayList<Song> getMasterSongs(){return businessFacade.getMasterSongs();}
     public ArrayList<Song> getPublicAndMasterSongs(){return businessFacade.getPublicAndMasterSongs();}
@@ -264,15 +275,9 @@ public class PresentationController implements PresentationFacade {
         for (PlayList playList : playLists) {
             stringPlaylists.add(playList.getNom());
         }
+    }
 
         return stringPlaylists;
-    }
-
-    public ArrayList<Integer> getNumReproducionsCurrentUser(){
-        return businessFacade.getNumReproducionsCurrentUser();
-    }
-    public ArrayList<Double> getNumMinutsCurrentUser(){
-        return businessFacade.getNumMinutsCurrentUser();
     }
 
     public HashMap<Integer, Tecla> getHMteclas(){
@@ -336,6 +341,13 @@ public class PresentationController implements PresentationFacade {
             jfMainFrame.nuevaCanciones(song, "PLAYLISTS",null);
         }
 
+    public void updateStatsView(){
+        if(jfStatisticsView!=null){
+            jfStatisticsView.updateStaticsView(businessFacade.getNumMinutsCurrentUser(), businessFacade.getNumReproducionsCurrentUser());
+        }
+        if (jfTop5View!=null){
+            jfTop5View.updateTop5View(businessFacade.getTop5());
+        }
     }
 
     // ---- Start PlaylistView Methods
@@ -561,6 +573,18 @@ public class PresentationController implements PresentationFacade {
         }
         isUploaded = false;
 
+    }
+
+    public void showTop5(){
+        jfTop5View.setVisible(true);
+    }
+
+    public void showStatistics(){
+        jfStatisticsView.setVisible(true);
+    }
+
+    public void actualitzarEstadistiques(long microseconds){
+        businessFacade.actualitzarEstadistiques(microseconds);
     }
 
 }
