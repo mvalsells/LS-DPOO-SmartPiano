@@ -15,6 +15,7 @@ public class JPCanco extends JPMainView {
 
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
+
         this.jbCancion = jbCancion;
         jbCancion.setIcon(musicIcon);
         jbCancion.setOpaque(false);
