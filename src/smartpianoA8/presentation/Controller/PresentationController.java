@@ -20,7 +20,7 @@ import java.util.HashMap;
 /**
  * CLasse pel controlador general de presentació
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see PresentationController
  */
 public class PresentationController implements PresentationFacade {

@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * Classe pel controlador de la vista del piano
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  * @see MouseListener
  * @see KeyListener

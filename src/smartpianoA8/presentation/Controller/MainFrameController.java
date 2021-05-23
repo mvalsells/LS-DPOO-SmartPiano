@@ -6,6 +6,12 @@ import smartpianoA8.presentation.views.customComponents.JPPlayer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe pel control del frame principal on reposen les diferents pantalles
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see ActionListener
+ */
 public class MainFrameController implements ActionListener {
     // ---- Inici Atributs ----
 

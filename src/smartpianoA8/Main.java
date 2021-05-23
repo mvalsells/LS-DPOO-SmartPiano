@@ -17,7 +17,7 @@ import java.util.TimerTask;
 /**
  * Classe principal per l'execució del programa
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou.
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @implNote Es recomana borrar el cache de cançons de tant en tant
  */
 public class Main {

@@ -10,6 +10,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Classe per obtenir notes de cançons, processar-les i enviar ordres de pintar el piano
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see Receiver
+ */
 public class ObtainNotesWhilePlayingController implements Receiver {
 
     private Receiver myReceiver;

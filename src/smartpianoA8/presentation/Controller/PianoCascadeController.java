@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Classe controller de la vista de les notes en cascada
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see Runnable
  * @see ActionListener
  * @see KeyListener

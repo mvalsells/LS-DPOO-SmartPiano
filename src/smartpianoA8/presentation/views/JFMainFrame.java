@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * Esta clase se encarga principalmente de mostrar el frame donde se encuentran los paneles asociados a la parte del main
  * al igual que todas sus respectivas funciones para poder controlar el frame
  *
- * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
- * @version 1/05/2021.
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @version 1.0
  */
 
 public class JFMainFrame extends JFrame {

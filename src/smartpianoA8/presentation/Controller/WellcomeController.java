@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Classe del controllador de benvinguda login/regitre
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  */
 public class WellcomeController implements ActionListener {

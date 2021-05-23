@@ -282,10 +282,18 @@ public class UserManager {
         }
     }
 
+    /**
+     * Mètode per deslogejar l'usuari actual
+     * S'elimina de currentUser
+     */
     public void logoutCurrentUser() {
         currentUser=null;
     }
 
+    /**
+     * Mètode per obtenir les dades de l'usuari actual
+     * @return
+     */
     public User getCurrentUser() {
         return currentUser;
     }

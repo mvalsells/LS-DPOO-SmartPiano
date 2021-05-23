@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Classe controller de les cançons
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  */
 public class SongController implements ActionListener {

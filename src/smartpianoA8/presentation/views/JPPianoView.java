@@ -15,7 +15,7 @@ import java.awt.event.MouseListener;
  * esa accion de gravar.
  *
  * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
- * @version 1/05/2021.
+ * @version 1.0
  */
 public class JPPianoView extends JPMainView {
     // ---- Inici Atributs ----
