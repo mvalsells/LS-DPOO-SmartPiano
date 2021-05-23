@@ -119,10 +119,14 @@ public class JFStatisticsView extends JFrame {
         this.valorReproduccionsComu = nousValorsReproduccions;
         //TODO porvar a treure això de sota a veure si funciona igual
         //TODO prova si no funciona, fer repaint i revalidate de "fons.repaint//fons.revalidate"
-        graficDreta.repaint();
-        graficDreta.revalidate();
 
-        graficEsquerra.repaint();
-        graficDreta.revalidate();
+
+        graficEsquerra.actualitzaVista(nousValorsMinuts);
+        graficDreta.actualitzaVista(nousValorsReproduccions);
+        //graficDreta.repaint();
+        //graficDreta.revalidate();
+
+        //graficEsquerra.repaint();
+        //graficDreta.revalidate();
     }//Cierre del método
 }//Cierre de la clase
