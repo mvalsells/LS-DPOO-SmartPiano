@@ -39,7 +39,6 @@ public class MidiParserImpl implements MidiParser {
         tracks = new ArrayList<ArrayList<Notes>>();
     }
 
-    //TODO ARREGLAR EL PORQUE ALGUNAS CANCIONES EMPIEZAN EN EL TIEMPO 500-700-12341421323412133 EN LUGAR DE EN EL SEGUNDO 0.
 
     /**
      * Mètode per la creació d'una cançó MIDI

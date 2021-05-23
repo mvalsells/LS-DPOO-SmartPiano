@@ -77,7 +77,7 @@ public class PresentationController implements PresentationFacade {
      */
 
     public void loginOK() {
-        //TODO Tancar/eliminar JFrame Wellcome
+
         if (jfWellcomeFrame != null) {
             jfWellcomeFrame.dispose();
         }
@@ -216,8 +216,6 @@ public class PresentationController implements PresentationFacade {
     public void updatePassword(String newPassword, String newPasswordRepetition) throws PasswordException{
         businessFacade.modifyCurrentUserPassword(newPassword,newPasswordRepetition);
     }
-
-    public void newUserPlaylists(String username){} //TODO playlist manager
 
     /**
      * Mètode per obtenir les cançons
@@ -409,6 +407,8 @@ public class PresentationController implements PresentationFacade {
     // ---- End PlaylistView Methods
     // ---- Start PianoView Methods
 
+    public void pianoViewRepainAllBlacks(int nota){jfMainFrame.pianoViewRepainAllBlacks(nota);}
+
     /**
      * Mètode per establir el botó de REC actiu
      */
@@ -449,6 +449,8 @@ public class PresentationController implements PresentationFacade {
     public boolean pianoViewJDIsCheckBoxSelected(){return jfMainFrame.pianoViewJDIsCheckBoxSelected();}
     // ---- End PianoView Methods
     // ---- Start PianoCascadeView Methods
+    public Boolean pianoCascadeIsNoteWhite(int nota){return obtainNotesWhilePlayingController.isBlanca(nota);}
+    public int pianoCascadeCanviNote(int note,boolean isNoteWhite){return obtainNotesWhilePlayingController.canviaNote(note,isNoteWhite);}
     public void startCascade(){
         /*pianoCascadeThread.start();*/
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
@@ -525,7 +527,6 @@ public class PresentationController implements PresentationFacade {
         }
         System.out.println(jfMainFrame.getJComboBoxString());
 
-        //TODO VER CON PAU Y ALBERT PARA OBTENER LOS NOMBRES DE LAS PLAYLISTS. AHORA FUNCIONA SOLO CON EL BOTON DE PUSHUP PLAYLIST. MODIFICAR.
     }
 
     public void playStatusInPlayer() {
@@ -533,7 +534,7 @@ public class PresentationController implements PresentationFacade {
         if(isUploaded) {
             playerController.setActionToDo(0);
             //System.out.println("Is plating");
-            //todo
+
         } else {
             JOptionPane.showMessageDialog(new Frame(), "Action neede before play.\nYou need to upload a playlist first.", "ACTION NEEDED (NEED TO UPDATE)", JOptionPane.ERROR_MESSAGE);
         }
