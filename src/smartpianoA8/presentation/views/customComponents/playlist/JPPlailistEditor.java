@@ -19,6 +19,13 @@ public class JPPlailistEditor extends JPMainView {
     private JLColor jLabel;
     private JButton jButton;
 
+    /**
+     * Constructor que inicializa el panel para añadir/eliminar canciones de una playlists
+     * @param info
+     * @param buttonString
+     * @param actionCommand
+     * @param jComboBox
+     */
     public JPPlailistEditor(String info,String buttonString,String actionCommand,JComboBox<String> jComboBox){
         setLayout(new FlowLayout());
 
@@ -34,6 +41,12 @@ public class JPPlailistEditor extends JPMainView {
 
     }
 
+    /**
+     * Método para inicializar/actualizar las conciones que se pueden añadir/eliminar del parametro Playlist.
+     * @param songs
+     * @param playList
+     * @param type
+     */
     public void updateJPPlailistEditor(ArrayList<Song> songs, PlayList playList,String type){
 
         setLayout(new FlowLayout());
@@ -69,6 +82,11 @@ public class JPPlailistEditor extends JPMainView {
 
     }
 
+    /**
+     * Método para acutalizar la combobox del panel dada una canción cuando fue añadida
+     * @param song
+     * @param type
+     */
     public void updateWhenAdd(Song song, String type){
         switch (type){
             case JPPlaylistSettings.ADD:
@@ -79,6 +97,11 @@ public class JPPlailistEditor extends JPMainView {
                 break;
         }
     }
+    /**
+     * Método para acutalizar la combobox del panel dada una canción cuando fue eliminada
+     * @param song
+     * @param type
+     */
     public void updateWhenRemove(Song song, String type){
         switch (type){
             case JPPlaylistSettings.ADD:
@@ -90,13 +113,26 @@ public class JPPlailistEditor extends JPMainView {
         }
     }
 
+    /**
+     * Médoto para añadir una canción a la comboBox
+     * @param song
+     */
     public void addSongInJCBadder(Song song){
         jComboBox.addItem(song.getNom());
     }
 
+    /**
+     * Método para registrar los ActionListeners
+     * @param controller
+     */
     public void registerController(ActionListener controller){
         this.jComboBox.addActionListener(controller);
         this.jButton.addActionListener(controller);
     }
+
+    /**
+     * Getter para obtener el item seleccionado en la comboBox
+     * @return
+     */
     public String getJCSongString(){return (String)jComboBox.getSelectedItem();}
 }
