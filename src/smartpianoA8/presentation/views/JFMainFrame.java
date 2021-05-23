@@ -300,21 +300,19 @@ public class JFMainFrame extends JFrame {
     public void pianoViewRepainAllBlacks(int nota){jpPianoView.repainAllBlacks(nota);}
 
     /**
-     * Método para controlar cuando se apreta el boton de reg para gravar
-     * @param button Controlador del boton de reg
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetPressedIcon(JButton button){ jpPianoView.setPressedIcon(button); }//Cierre del método
 
     /**
-     * Método para controlar cuando se apreta el boton de reg para guardar
-     * @param button Controlador del boton de reg
+     * Método que cambia el icono a un boton enviado como parámetro.
+     * @param button boton asignado que cambiara el icono.
      */
     public void pianoViewSetUnpressedIcon(JButton button){
         jpPianoView.setUnpressedIcon(button);
     }//Cierre del método
 
-    public void pianoViewSetPlayButtonPressedIcon(){jpPianoView.setPlayButtonPressedIcon();}
-    public void pianoViewSetPlayButtonUnpressedIcon(){jpPianoView.setPlayButtonUnpressedIcon();}
 
     /**
      * Método para runear la vista.

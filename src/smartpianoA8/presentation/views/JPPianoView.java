@@ -56,8 +56,6 @@ public class JPPianoView extends JPMainView {
         jpPiano.setUnpressedIcon(button);
     }//Cierre del método
 
-    public void setPlayButtonPressedIcon(){jpPiano.setPlayButtonPressedIcon();}
-    public void setPlayButtonUnpressedIcon(){jpPiano.setPlayButtonUnpressedIcon();}
 
     /**
      * Método con el que se controla todos los listeners generados en esta clase.

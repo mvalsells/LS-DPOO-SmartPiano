@@ -444,6 +444,9 @@ public class JPPiano extends JPanel {
 
     }// Cierre del constructor
 
+    /**
+     * Método para repintar las teclas cuando se para la reprodución de una canción
+     */
     public void repaintAllTeclas(){
 
         for(int i = 0;i<whites.length-1;i++){
