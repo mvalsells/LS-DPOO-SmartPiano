@@ -17,7 +17,7 @@ public class WhiteKey  extends JButton implements Key {
                 - pos / 7;
         int left = 10 + WWD * pos;
         // I think metal looks better!
-        setBackground (Color.WHITE);
+        setBackground (Color.white);
         setBounds (left, 10, WWD, WHT);
         setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         setOpaque(true);

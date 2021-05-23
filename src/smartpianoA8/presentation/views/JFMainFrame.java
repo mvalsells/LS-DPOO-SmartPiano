@@ -168,7 +168,6 @@ public class JFMainFrame extends JFrame {
         jpNavBar.changeActiveElement(newView);
         switch (newView){
             case SONGS:
-
                 cards.show(jpCardPanel,SONGS);
                 break;
             case PLAYLISTS:
@@ -285,15 +284,18 @@ public class JFMainFrame extends JFrame {
      * Método para controlar cuando se apreta el boton de reg para gravar
      * @param button Controlador del boton de reg
      */
-    public void pianoViewSetRecordingPressedIcon(JButton button){ jpPianoView.setRecordingPressedIcon(button); }//Cierre del método
+    public void pianoViewSetPressedIcon(JButton button){ jpPianoView.setPressedIcon(button); }//Cierre del método
 
     /**
      * Método para controlar cuando se apreta el boton de reg para guardar
      * @param button Controlador del boton de reg
      */
-    public void pianoViewSetRecordingUnpressedIcon(JButton button){
-        jpPianoView.setRecordingUnpressedIcon(button);
+    public void pianoViewSetUnpressedIcon(JButton button){
+        jpPianoView.setUnpressedIcon(button);
     }//Cierre del método
+
+    public void pianoViewSetPlayButtonPressedIcon(){jpPianoView.setPlayButtonPressedIcon();}
+    public void pianoViewSetPlayButtonUnpressedIcon(){jpPianoView.setPlayButtonUnpressedIcon();}
 
     /**
      * Método para runear la vista.

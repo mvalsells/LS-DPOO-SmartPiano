@@ -304,6 +304,16 @@ public class PresentationController implements PresentationFacade {
         businessFacade.login(id, password);
         loginOK();
     }
+
+
+
+    public void mainFrameControllerSetShowingPiano(Boolean showingPiano) { mainFrameController.setShowingPiano(showingPiano); }
+
+    public void mainFrameControllerSetShowingPlaylists(Boolean showingPlaylists) { mainFrameController.setShowingPlaylists(showingPlaylists); }
+
+    public void mainFrameControllerSetShowingProfile(Boolean showingProfile) { mainFrameController.setShowingProfile(showingProfile); }
+
+    public void mainFrameControllerSetShowingSongs(Boolean showingSongs) { mainFrameController.setShowingSongs(showingSongs); }
     // ---- End WellcomeFrame Methods
     // ---- Start SongView Methods
 
@@ -379,16 +389,19 @@ public class PresentationController implements PresentationFacade {
     /**
      * Mètode per establir el botó de REC actiu
      */
-    public void pianoViewSetRecordingPressedIcon(JButton button){
-        jfMainFrame.pianoViewSetRecordingPressedIcon(button);
+    public void pianoViewSetPressedIcon(JButton button){
+        jfMainFrame.pianoViewSetPressedIcon(button);
     }
 
     /**
      * Mètode per establir el botó de REC inactiu
      */
-    public void pianoViewSetRecordingUnpressedIcon(JButton button){
-        jfMainFrame.pianoViewSetRecordingUnpressedIcon(button);
+    public void pianoViewSetUnpressedIcon(JButton button){
+        jfMainFrame.pianoViewSetUnpressedIcon(button);
     }
+
+    /*public void pianoViewSetPlayButtonPressedIcon(){jfMainFrame.pianoViewSetPlayButtonPressedIcon();}
+    public void pianoViewSetPlayButtonUnpressedIcon(){jfMainFrame.pianoViewSetPlayButtonUnpressedIcon();}*/
 
     /**
      * Mètode per activar el botó JD
@@ -416,6 +429,12 @@ public class PresentationController implements PresentationFacade {
     public void startCascade(){
         /*pianoCascadeThread.start();*/
         obtainNotesWhilePlayingController.playAndGet(businessFacade.getSong(lastSongPressed));
+        pianoController.setIsPlaying(true);
+    }
+    public void stopCascade(){
+        obtainNotesWhilePlayingController.close();
+        pianoController.setIsPlaying(false);
+
     }
 
     public float getMaxMilis(){
@@ -424,8 +443,7 @@ public class PresentationController implements PresentationFacade {
         System.out.println("micros: " + businessFacade.getµsPerTickMidiNotes()*businessFacade.getTotalTicks());
 
         return businessFacade.getTotalTicks();}
-    // ---- End PianoCascadeView Methods
-    // ---- Start ProfileView Methods
+
 
     /**
      * Mètode per obtenir informació sobre el perfil

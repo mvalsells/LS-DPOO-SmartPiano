@@ -98,8 +98,9 @@ public class JPPlaylistView extends JPMainView {
             jcTriarPlaylist.addItem(hasPlayLists.get(i).getNom());
 
         }
-        //jcTriarPlaylist.setSelectedIndex(0);
-
+        if(jcTriarPlaylist!=null) {
+            jcTriarPlaylist.setSelectedIndex(0);
+        }
         jpPlaylistSettings = new ArrayList<>();
 
         for(int i = 0; i<hasPlayLists.size();i++){

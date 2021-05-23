@@ -46,15 +46,18 @@ public class JPPianoView extends JPMainView {
      * Método que una vex recibe que el boton esta recording, envia esa función.
      * @param button Botón indicado en este caso para ejecutar la función de recording.
      */
-    public void setRecordingPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }//Cierre del método
+    public void setPressedIcon(JButton button){ jpPiano.setPressedIcon(button); }//Cierre del método
 
     /**
      * Método que una vex recibe que el boton ha acabado de hacer recording, envia esa función.
      * @param button Botón indicado en este caso para ejecutar la función de recording.
      */
-    public void setRecordingUnpressedIcon(JButton button){
+    public void setUnpressedIcon(JButton button){
         jpPiano.setUnpressedIcon(button);
     }//Cierre del método
+
+    public void setPlayButtonPressedIcon(){jpPiano.setPlayButtonPressedIcon();}
+    public void setPlayButtonUnpressedIcon(){jpPiano.setPlayButtonUnpressedIcon();}
 
     /**
      * Método con el que se controla todos los listeners generados en esta clase.

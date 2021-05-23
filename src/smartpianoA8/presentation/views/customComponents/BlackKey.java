@@ -19,7 +19,7 @@ public class BlackKey extends JButton implements Key {
         setOpaque(true);
         setForeground(Color.WHITE);
         setBorderPainted(true);
-
+        //requestFocusInWindow();
 
     }
 
