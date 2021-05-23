@@ -71,9 +71,10 @@ public class SQLStatsDAO implements StatsDAO {
             segons = result.getInt("NumSegons") + segonsAfegir;
             minuts = result.getInt("NumMinuts") + minutsAfegir;
 
-            if (segons >= 60) {
+            while(segons >= 60) {
                 minuts++;
                 segons -= 60;
+                if(segons <= 60) segons = 0;
             }
 
             query = "UPDATE Stats SET NumMinuts = " + minuts + ", NumSegons = " + segons + " WHERE NomUsuari LIKE '" + user + "' " +
@@ -87,12 +88,7 @@ public class SQLStatsDAO implements StatsDAO {
 
     }
 
-    /**
-     * Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
-     *
-     * @param duradaSong durada en LocalTime de la cançó
-     * @param username   NomUsuari UserName de l'usuari que l'ha reproduit (actual)
-     */
+
     @Override
     public void actualitzarBBDDEstadistiques(int minutsAfegir, int segonsAfegir, String username) {
         updateNumMinuts(LocalTime.now().getHour(), minutsAfegir, segonsAfegir, username);

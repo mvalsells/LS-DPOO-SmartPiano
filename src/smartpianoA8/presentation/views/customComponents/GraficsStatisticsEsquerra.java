@@ -13,7 +13,7 @@ import java.util.Collections;
  * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class GraficsStatisticsEsquerra extends JPanel {
-    private final ArrayList<Double> minuts;
+    private ArrayList<Double> minuts;
     private final Color rosa;
 
     /**
@@ -91,6 +91,14 @@ public class GraficsStatisticsEsquerra extends JPanel {
         g2d.drawString(text,0,0);
         g2d.rotate(-Math.toRadians(45));
         g2d.translate(-(float)x,-(float)y);
+    }
+
+    public void actualitzaVista(ArrayList<Double> dades){
+        this.minuts = dades;
+        repaint();
+        revalidate();
+        setVisible(false);
+        setVisible(true);
     }
 
 

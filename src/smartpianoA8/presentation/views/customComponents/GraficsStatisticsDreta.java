@@ -3,6 +3,7 @@ package smartpianoA8.presentation.views.customComponents;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,7 +16,7 @@ import java.util.Collections;
  */
 public class GraficsStatisticsDreta extends JPanel {
     private final Color color;
-    private final ArrayList<Integer> reproduccions;
+    private ArrayList<Integer> reproduccions;
 
     /**
      * Constructor amb l'Array de dades de l'eix X i el color a utilitzar (modificable)
@@ -96,5 +97,13 @@ public class GraficsStatisticsDreta extends JPanel {
         g2d.drawString(text,0,0);
         g2d.rotate(-Math.toRadians(45));//sempre es rota a 45º
         g2d.translate(-(float)x,-(float)y);
+    }
+
+    public void actualitzaVista(ArrayList<Integer> dades){
+        this.reproduccions = dades;
+        repaint();
+        revalidate();
+        setVisible(false);
+        setVisible(true);
     }
 }
