@@ -61,8 +61,8 @@ public class MidiParserImpl implements MidiParser {
                 sequencer.setSequence(sequence);
                 MPQ = sequencer.getTempoInMPQ();
                 BPM = sequencer.getTempoInBPM();
-                System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + MPQ);
-                System.out.println("Song Tempo In BPM (Not Needed) " + sequencer.getTempoInBPM());
+                //System.out.println("\nSong Tempo (MicroSeconds Per Quarter Note): " + MPQ);
+                //System.out.println("Song Tempo In BPM (Not Needed) " + sequencer.getTempoInBPM());
                 //sequencer.start();
             } catch (MidiUnavailableException e) {
                 e.printStackTrace();
@@ -79,10 +79,10 @@ public class MidiParserImpl implements MidiParser {
             totalSongSeconds = sequence.getTickLength() * secondsPerTick;
             totalTicks = sequence.getTickLength();
 
-            System.out.println("Total song seconds: " + totalSongSeconds);
-            System.out.println("Seconds per tick: " + secondsPerTick);
-            System.out.println("Total ticks in Midi File: " + sequence.getTickLength());
-            System.out.println("ATTENTION, To get the time every tick takes in the song multiply the endTime-startTime * seconds_per_tick (getSecondsPerTick) (IN TICKS)\n");
+            //System.out.println("Total song seconds: " + totalSongSeconds);
+            //System.out.println("Seconds per tick: " + secondsPerTick);
+            //System.out.println("Total ticks in Midi File: " + sequence.getTickLength());
+            //System.out.println("ATTENTION, To get the time every tick takes in the song multiply the endTime-startTime * seconds_per_tick (getSecondsPerTick) (IN TICKS)\n");
 
             //System.out.println("Longitud de Canción: " + sequence.getTickLength() + " ticks. Resolución de: " + sequence.getResolution() + " PPQ - Pulses per quarter note");
             //System.out.println("Attention: Time in notes are saved as Ticks. startTime = 0 (starts at tick 0) endTime = 128 (end at tick 128). EVERY TICK HAVE A DURATION OF: PLAYBACK SECONDS ABOVE.");
@@ -99,7 +99,7 @@ public class MidiParserImpl implements MidiParser {
                 channel = trackNumber;
                 ArrayList<Notes> notes = new ArrayList<Notes>();
 
-                System.out.println("The Channels are the different instruments playing at same time in one song. Also, command channels. Max channels per MIDI: 16.");
+                //System.out.println("The Channels are the different instruments playing at same time in one song. Also, command channels. Max channels per MIDI: 16.");
 
                 for (int i = 0; i < track.size(); i++) {
                     MidiEvent midiEvent = track.get(i);
@@ -119,7 +119,7 @@ public class MidiParserImpl implements MidiParser {
                             String noteName = NOTE_NAMES[note];
                             //if(pitch < 21 || pitch > 109)
                             if(velocity > 0) {
-                                System.out.println("Channel: " + shortMessage.getChannel() + ", Note ON, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", startTime: " + time);
+                                //System.out.println("Channel: " + shortMessage.getChannel() + ", Note ON, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", startTime: " + time);
 
                                 Notes n = new Notes(time, channel, velocity, pitch, noteName + octave);
                                 notes.add(n);
@@ -137,7 +137,7 @@ public class MidiParserImpl implements MidiParser {
                             octave = (pitch / 12) - 1;
                             String noteName = NOTE_NAMES[note];
                             //if(pitch < 21 || pitch > 109)
-                            System.out.println("Channel: " + shortMessage.getChannel() + ", Note OFF, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", endTime: " + time);
+                            //System.out.println("Channel: " + shortMessage.getChannel() + ", Note OFF, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", endTime: " + time);
                             for(Notes n : notes) {
                                 if(n.getNote() == pitch & n.getEndTime() == 0) {
                                     n.setEndTime(time);
@@ -155,7 +155,7 @@ public class MidiParserImpl implements MidiParser {
                             octave = (pitch / 12) - 1;
                             String noteName = NOTE_NAMES[note];
                             //if(pitch < 21 || pitch > 109)
-                            System.out.println("Channel: " + shortMessage.getChannel() + ", Note OFF, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", endTime: " + time);
+                            //System.out.println("Channel: " + shortMessage.getChannel() + ", Note OFF, key: " + pitch + ", noteName: " + noteName + octave + ", velocity: " + velocity + ", endTime: " + time);
                             for(Notes n : notes) {
                                 if(n.getNote() == pitch & n.getEndTime() == 0) {
                                     n.setEndTime(time);
@@ -274,6 +274,7 @@ public class MidiParserImpl implements MidiParser {
      * Getter dels microsegons per tic
      * @return uS per tic
      */
+    @Override
     public float getusPerTick() {
         return us_per_tick;
     }

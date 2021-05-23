@@ -125,7 +125,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
         if(sequencer.isRunning()){
 
         }else {
-            close();
+            closeLed();
         }
 
     }
@@ -225,9 +225,14 @@ public class ObtainNotesWhilePlayingController implements Receiver {
     public void close() {
         if(sequencer!=null) {
             jppiano.setPlayButtonUnpressedIcon();
-            //sequencer.close();
+            sequencer.close();
             jppiano.repaintAllTeclas();
         }
+    }
+
+    private void closeLed() {
+        jppiano.setPlayButtonUnpressedIcon();
+        jppiano.repaintAllTeclas();
     }
 
 }
