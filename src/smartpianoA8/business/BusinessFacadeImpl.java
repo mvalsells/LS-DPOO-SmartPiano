@@ -6,6 +6,7 @@ import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
 import smartpianoA8.business.exceptions.PasswordException;
 import smartpianoA8.business.exceptions.UserManagerException;
+import smartpianoA8.persistence.HashMapFile;
 import smartpianoA8.persistence.MidiParser;
 import smartpianoA8.persistence.dao.PlayListDAO;
 import smartpianoA8.persistence.dao.SongDAO;
@@ -33,9 +34,8 @@ public class BusinessFacadeImpl implements BusinessFacade{
     private SongDAO songDAO;
     private PlayListDAO playListDAO;
     private StatsDAO statsDAO;
+    private HashMapFile hmFile;
 
-    //TEMP - TESTING
-    HashMap<Integer, Tecla> hmTeclas;
     /**
      * Constructor
      * @param userDAO DAO del control d'usuaris
@@ -43,39 +43,16 @@ public class BusinessFacadeImpl implements BusinessFacade{
      * @param playListDAO DAO del control de playlists
      * @param statsDAO DAO del control d'estadístiques
      * @param midiParser DAO de l'editor de MIDI
+     * @param hmFile DAO del hashMap
      */
 
-    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser){
+    public BusinessFacadeImpl(UserDAO userDAO, SongDAO songDAO, PlayListDAO playListDAO, StatsDAO statsDAO, MidiParser midiParser, HashMapFile hmFile){
         userManager = new UserManager(userDAO);
         songManager = new SongManager(songDAO, midiParser);
         this.statsDAO = statsDAO;
         this.playListDAO = playListDAO;
         this.songDAO = songDAO;
-
-        //TEMP - TESTING
-        hmTeclas = new HashMap<>();
-
-        int valorMusical = 48;
-        int codeTecla = KeyEvent.VK_A;
-
-        for(int i = 0; i< JPPiano.OCTAVES; i++){
-
-            for(int j=0; j<12;j++){
-
-                StringBuilder sb = new StringBuilder();
-
-                sb.append(i);
-                sb.append('_');
-                sb.append(j);
-
-                hmTeclas.put(codeTecla,new Tecla(/*sb.toString(),*/valorMusical));
-                valorMusical++;
-                codeTecla++;
-                if(codeTecla==KeyEvent.VK_Z+1){
-                    codeTecla = KeyEvent.VK_0;
-                }
-            }
-        }
+        this.hmFile=hmFile;
 
     }
 
@@ -97,6 +74,24 @@ public class BusinessFacadeImpl implements BusinessFacade{
     @Override
     public void registerUser(String username, String email, String password, String passwordRepetition, String type) throws PasswordException, UserManagerException {
         userManager.registerUser(username, email, password, passwordRepetition, type);
+
+        HashMap<Integer,Tecla> hmTeclas = new HashMap<>();
+        int valorMusical = 48;
+        int codeTecla = KeyEvent.VK_A;
+
+        for(int i = 0; i< JPPiano.OCTAVES; i++){
+
+            for(int j=0; j<12;j++){
+
+                hmTeclas.put(codeTecla,new Tecla(valorMusical));
+                valorMusical++;
+                codeTecla++;
+                if(codeTecla==KeyEvent.VK_Z+1){
+                    codeTecla = KeyEvent.VK_0;
+                }
+            }
+        }
+        hmFile.write(hmTeclas,username);
     }
 
     /**
@@ -274,12 +269,11 @@ public class BusinessFacadeImpl implements BusinessFacade{
      * @return Hashmap complert de notes
      */
     public  HashMap<Integer, Tecla> getHMTeclas(){
-
-        return hmTeclas;
+        return hmFile.read(userManager.getCurrentUser().getUsername());
     }
 
     public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
-        this.hmTeclas = hmTeclas;
+        hmFile.write(hmTeclas,userManager.getCurrentUser().getUsername());
     }
 
     public Song getSong(int id){return songManager.getSong(id);}

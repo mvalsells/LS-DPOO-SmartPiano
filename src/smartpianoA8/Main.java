@@ -59,14 +59,14 @@ public class Main {
         StatsDAO statsDAO = new SQLStatsDAO(connectorSQL);
 
         MidiWritter midiWritter = new MidiWritterImpl(songDAO);
+        HashMapFile hmFile = new HashMapFileImpl();
 
-        //Business <-> Persitence
         HtmlScrapping htmlScrapping = new HtmlScrappingImpl(songDAO);
         Timer timer = new Timer();
         timer.schedule((TimerTask) htmlScrapping,0, jsonReader.gettimeScrapping()*60000L);
 
         //Business <-> Presentation
-        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser);
+        BusinessFacade businessFacade = new BusinessFacadeImpl(userDAO, songDAO, playListDAO, statsDAO, midiParser, hmFile);
 
         //Song song = new Song(0,0,null,null,null,"resources/midiFiles/ChristianTestLele/88196.mid",1,null,null);
         //ObtainNotesWhilePlaying obtainNotesWhilePlaying = new ObtainNotesWhilePlaying();

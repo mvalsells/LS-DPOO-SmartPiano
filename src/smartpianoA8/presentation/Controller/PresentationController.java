@@ -276,46 +276,15 @@ public class PresentationController implements PresentationFacade {
     }
 
     public HashMap<Integer, Tecla> getHMteclas(){
-        String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
-        HashMap<Integer, Tecla> hmTecles = new HashMap<>();
-        try {
-            FileReader fr = new FileReader(ruta);
-            BufferedReader br = new BufferedReader(fr);
-            if(br.readLine().equals("key,nota")){
-               String line;
-               while ((line=br.readLine())!=null){
-                   String[] split = line.split(",");
-                   hmTecles.put(Integer.valueOf(split[0]), new Tecla(Integer.valueOf(split[1])));
-               }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        /*
-        try {
-            FileInputStream fis = new FileInputStream(sb.toString());
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            HashMap<Integer, Tecla> hm = ois.read();
-            return hm;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;*/
-        return  hmTecles; //businessFacade.getHMTeclas();
+     return businessFacade.getHMTeclas();
     }
     public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
         businessFacade.setHmTeclas(hmTeclas);
-        pianoController.setHmTeclas(/*hmTeclas*/getHMteclas());
+        pianoController.setHmTeclas(hmTeclas);
 
         // Prova per guardar-ho al arxiu
         //TODO hauria d'anar a persistence
-        String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
+        /*String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
         try {
             StringBuilder textToWrite = new StringBuilder();
             textToWrite.append("key,nota\n");
@@ -332,7 +301,7 @@ public class PresentationController implements PresentationFacade {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void removeCurrentUser(){
