@@ -120,5 +120,11 @@ public class JPSongs extends JPanel {
 
     }//Cierre del método
 
+    public void updateWhenRemoveSong(Song song){
+
+        jpTiraCançonsNew.updateWhenRemove(song);
+        jpTiraCançonsMas.updateWhenRemove(song);
+        revalidate();
+    }
 
 }//Cierre de la clase

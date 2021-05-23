@@ -31,7 +31,9 @@ public class PresentationController implements PresentationFacade {
     // ---- Inici Atributs ----
     private BusinessFacade businessFacade;
     private MidiWritter midiWritter;
-
+    public static final String ELIMINAR_FROM_SONGS = "eliminarFromSongs";
+    public static final String ELIMINAR_FROM_PLAYLISTS = "eliminarFromPlaylists";
+    public static final String ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS = "eliminarFromPlaylistsWhileInPlaylists";
     private boolean isUploaded = false;
 
     //Frame
@@ -363,7 +365,7 @@ public class PresentationController implements PresentationFacade {
 
 
     public void playlistViewUpdateWhenAddSong(Song song){jfMainFrame.playlistViewUpdateWhenAddSong(song,playlistController);}
-    public void playlistViewUpdateWhenRemoveSong(Song song){jfMainFrame.playlistViewUpdateWhenRemoveSong(song);}
+    public void playlistViewUpdateWhenRemoveSong(Song song,String type){ jfMainFrame.UpdateWhenRemoveSong(song,type); }
 
     public void playlistAddPlayList(String playlistName){businessFacade.addPlayList(playlistName,getCurrentUser().getUsername());
         jfMainFrame.playlistViewUpdateRegisterControllersWhenNewPlaylist(playlistController,playlistGetPlayListByName(playlistName), businessFacade.getUserAndMasterSongs(getCurrentUser().getUsername()));jfMainFrame.setPlaylistsNames(getUserPlaylistsStrings());}

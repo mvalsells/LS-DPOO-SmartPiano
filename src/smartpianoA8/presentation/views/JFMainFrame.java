@@ -3,6 +3,7 @@ package smartpianoA8.presentation.views;
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
 import smartpianoA8.business.entity.User;
+import smartpianoA8.presentation.Controller.PresentationController;
 import smartpianoA8.presentation.views.customComponents.*;
 
 import javax.swing.*;
@@ -223,7 +224,20 @@ public class JFMainFrame extends JFrame {
      * Método que se usa para el update de la playlist.
      * @param song Parámetro song que es de tipo song.
      */
-    public void playlistViewUpdateWhenRemoveSong(Song song){jpPlaylistView.updateWhenRemoveSong(song);}//Cierre del método
+    public void UpdateWhenRemoveSong(Song song, String type){
+
+        switch (type) {
+            case PresentationController.ELIMINAR_FROM_PLAYLISTS:
+                jpPlaylistView.updateWhenRemoveSong(song,PresentationController.ELIMINAR_FROM_PLAYLISTS);
+                break;
+            case PresentationController.ELIMINAR_FROM_SONGS:
+                jpSongs.updateWhenRemoveSong(song);
+                break;
+            case PresentationController.ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS:
+                jpPlaylistView.updateWhenRemoveSong(song,PresentationController.ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS);
+                break;
+        }
+    }//Cierre del método
 
     /**
      * Método que activa mediante el register controller cuando hay una nueva playlist

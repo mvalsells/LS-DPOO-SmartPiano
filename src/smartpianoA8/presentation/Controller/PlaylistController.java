@@ -54,6 +54,13 @@ public class PlaylistController implements ActionListener, ItemListener{
             presentationController.mainFrameControllerSetShowingSongs(false);
             presentationController.startCascade();
 
+        }else if(e.getActionCommand().contains(JPTiraCancons.PAPELERA)){
+            System.out.println("ENTRA PROFA PLS V2");
+
+            String[] split = e.getActionCommand().split("-");
+
+            presentationController.playlistViewUpdateWhenRemoveSong(presentationController.getSongByID(Integer.parseInt(split[1])),PresentationController.ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS);
+
         }else {
 
             switch (e.getActionCommand()) {
@@ -67,7 +74,7 @@ public class PlaylistController implements ActionListener, ItemListener{
                     try {
                         presentationController.playlistRemoveSongToPlayList(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()), presentationController.playlistGetPlayListByName(presentationController.playlistViewGetJCTriarPlaylistString()));
                         //presentationController.playlistViewUpdateJPPlaylistSettings();
-                        presentationController.playlistViewUpdateWhenRemoveSong(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()));
+                        presentationController.playlistViewUpdateWhenRemoveSong(presentationController.songGetSongByName(presentationController.playlistViewGetJCSongRemoveString()),PresentationController.ELIMINAR_FROM_PLAYLISTS);
                     }catch (NullPointerException exception){
                         JOptionPane.showMessageDialog(new Frame(),"Esta playlist ya esta vacia!\nAntes de eliminar una canicon deberias añadirla", "No hay canciones a eliminar!",JOptionPane.ERROR_MESSAGE);
                     }

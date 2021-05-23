@@ -12,11 +12,13 @@ import java.util.ArrayList;
  * con una playlist indica las canciones que contiene.
  *
  * @author Marc Valsells, Pau Santacreu, Christian Hasko, Albert Garangou y Albert Clarimón.
- * @version 1/05/2021.
+ * @version 1/05/2222.
  */
 public class JPTiraCancons extends JPMainView{
 
     //private JButton[] jbButton;
+
+    public static final String PAPELERA = "deleteSong-";
 
     private ActionListener controller;
 
@@ -47,7 +49,7 @@ public class JPTiraCancons extends JPMainView{
         JPanel jpExtra = new JPMainView();
         jpExtra.setLayout(new BoxLayout(jpExtra,BoxLayout.Y_AXIS));
 
-        jlNoHayCanciones = new JLColor("NO HAY CANCIONES EN TU PLAYLIST",Color.WHITE,new Font("Verdana",Font.BOLD,25));
+        jlNoHayCanciones = new JLColor("NO HAY CANCIONES EN TU PLAYLIST",Color.WHITE,new Font("Verdana",Font.BOLD,22));
         jlTitul = new JLColor("",Color.white);
 
         add(jlTitul,BorderLayout.NORTH);
@@ -97,9 +99,9 @@ public class JPTiraCancons extends JPMainView{
 
             for (int i = 0; i < songs.size(); i++) {
 
-                StringBuilder sbCommand = new StringBuilder();
-                sbCommand.append(JPSongs.SONG_PRESSED);
-                sbCommand.append(songs.get(i).getIdSong());
+                StringBuilder sbCommand_1 = new StringBuilder();
+                sbCommand_1.append(JPSongs.SONG_PRESSED);
+                sbCommand_1.append(songs.get(i).getIdSong());
 
                 /*jbButton[i] = new JButton();
                 jbButton[i].setIcon(musicIcon);
@@ -109,13 +111,20 @@ public class JPTiraCancons extends JPMainView{
                 jbButton[i].setContentAreaFilled(false);
                 jbButton[i].setBorderPainted(false);*/
 
-                JButton jbTMP = new JButton();
-                jbTMP.setActionCommand(sbCommand.toString());
+                JButton jbCanco = new JButton();
+                jbCanco.setActionCommand(sbCommand_1.toString());
+
+                StringBuilder sbCommand_2 = new StringBuilder();
+                sbCommand_2.append(PAPELERA);
+                sbCommand_2.append(songs.get(i).getIdSong());
+
+                JButton jbPapelera = new JButton();
+                jbPapelera.setActionCommand(sbCommand_2.toString());
 
                 String nomCanço = songs.get(i).getNom();
                 StringBuilder sbName = new StringBuilder();
 
-                if (songs.get(i).getNom().length() > 24) {
+                if (songs.get(i).getNom().length() > 21) {
                     int k = 0;
 
                     while (k < songs.get(i).getNom().length()) {
@@ -124,16 +133,40 @@ public class JPTiraCancons extends JPMainView{
                         } else if (k == 0) {
                             sbName.append("<html>");
                         }
-                        sbName.append(nomCanço, k, Math.min(k + 24, songs.get(i).getNom().length()));
+                        sbName.append(nomCanço, k, Math.min(k + 21, songs.get(i).getNom().length()));
 
                         System.out.println(sbName.toString());
 
-                        k += 25;
+                        k += 22;
 
                     }
                     sbName.append("<html>");
                 } else {
                     sbName.append(songs.get(i).getNom());
+                }
+
+                String nomAutor = songs.get(i).getAutor();
+                StringBuilder sbAutor = new StringBuilder();
+
+                if (songs.get(i).getAutor().length() > 21) {
+                    int k = 0;
+
+                    while (k < songs.get(i).getAutor().length()) {
+                        if (k != 0) {
+                            sbAutor.append("-<br/>");
+                        } else if (k == 0) {
+                            sbAutor.append("<html>");
+                        }
+                        sbAutor.append(nomAutor, k, Math.min(k + 21, songs.get(i).getAutor().length()));
+
+                        System.out.println(sbAutor.toString());
+
+                        k += 22;
+
+                    }
+                    sbAutor.append("<html>");
+                } else {
+                    sbAutor.append(songs.get(i).getAutor());
                 }
 
 
@@ -144,7 +177,7 @@ public class JPTiraCancons extends JPMainView{
                 jpCanço.add(jlSongNomText);
                 jpCanço.add(jlSongInfoText);*/
 
-                jpCanço.add(new JPCanco(jbTMP,sbName.toString(),songs.get(i).getAutor()));
+                jpCanço.add(new JPCanco(jbCanco,sbName.toString(),sbAutor.toString(),jbPapelera));
                 //jpCanço.repaint();
 
                 jpAmbSongs.add(jpCanço.get(i));
@@ -166,19 +199,25 @@ public class JPTiraCancons extends JPMainView{
     public void updateWhenAdd(Song song){
 
 
-        StringBuilder sbCommand = new StringBuilder();
-        sbCommand.append(JPSongs.SONG_PRESSED);
-        sbCommand.append(song.getIdSong());
-
+        StringBuilder sbCommand_1 = new StringBuilder();
+        sbCommand_1.append(JPSongs.SONG_PRESSED);
+        sbCommand_1.append(song.getIdSong());
 
         JButton jbTMP = new JButton();
-        jbTMP.setActionCommand(sbCommand.toString());
+        jbTMP.setActionCommand(sbCommand_1.toString());
         //jbTMP.addActionListener(controller);
+
+        StringBuilder sbCommand_2 = new StringBuilder();
+        sbCommand_2.append(PAPELERA);
+        sbCommand_2.append(song.getIdSong());
+
+        JButton jbPapelera = new JButton();
+        jbPapelera.setActionCommand(sbCommand_2.toString());
 
         String nomCanço = song.getNom();
         StringBuilder sbName = new StringBuilder();
 
-        if (song.getNom().length() > 24) {
+        if (song.getNom().length()-1 > 21) {
             int k = 0;
 
             while (k < song.getNom().length()) {
@@ -187,11 +226,11 @@ public class JPTiraCancons extends JPMainView{
                 } else if (k == 0) {
                     sbName.append("<html>");
                 }
-                sbName.append(nomCanço, k, Math.min(k + 24, song.getNom().length()));
+                sbName.append(nomCanço, k, Math.min(k + 21, song.getNom().length()));
 
                 System.out.println(sbName.toString());
 
-                k += 25;
+                k += 22;
 
             }
             sbName.append("<html>");
@@ -199,7 +238,31 @@ public class JPTiraCancons extends JPMainView{
             sbName.append(song.getNom());
         }
 
-        jpCanço.add( new JPCanco(jbTMP,sbName.toString(),song.getAutor()));
+        String nomAutor = song.getAutor();
+        StringBuilder sbAutor = new StringBuilder();
+
+        if (song.getAutor().length() > 21) {
+            int k = 0;
+
+            while (k < song.getAutor().length()) {
+                if (k != 0) {
+                    sbAutor.append("-<br/>");
+                } else if (k == 0) {
+                    sbAutor.append("<html>");
+                }
+                sbAutor.append(nomAutor, k, Math.min(k + 21, song.getAutor().length()));
+
+                System.out.println(sbAutor.toString());
+
+                k += 22;
+
+            }
+            sbAutor.append("<html>");
+        } else {
+            sbAutor.append(song.getAutor());
+        }
+
+        jpCanço.add( new JPCanco(jbTMP,sbName.toString(),sbAutor.toString(),jbPapelera));
 
         jpAmbSongs.add(jpCanço.get(jpCanço.size()-1));
 

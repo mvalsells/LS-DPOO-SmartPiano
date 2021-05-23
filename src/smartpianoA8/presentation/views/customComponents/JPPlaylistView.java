@@ -2,6 +2,7 @@ package smartpianoA8.presentation.views.customComponents;
 
 import smartpianoA8.business.entity.PlayList;
 import smartpianoA8.business.entity.Song;
+import smartpianoA8.presentation.Controller.PresentationController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -159,10 +160,16 @@ public class JPPlaylistView extends JPMainView {
      * Método que actualiza cuando hay una se borra una canción.
      * @param song Parámetro que indica la canción que selecciono.
      */
-    public void updateWhenRemoveSong(Song song){
+    public void updateWhenRemoveSong(Song song,String type){
+        switch (type) {
+            case PresentationController.ELIMINAR_FROM_PLAYLISTS:
+                jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenRemoveSong(song);
+                break;
+            case PresentationController.ELIMINAR_FROM_SONGS_WHILE_IN_PLAYLISTS:
 
-        jpPlaylistSettings.get(jcTriarPlaylist.getSelectedIndex()).updateWhenRemoveSong(song);
-
+                for(int i = 0; i<jpPlaylistSettings.size();i++){ jpPlaylistSettings.get(i).updateWhenRemoveSong(song); }
+                break;
+        }
     }//Cierre del método
 
     /**
