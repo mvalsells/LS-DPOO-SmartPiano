@@ -89,6 +89,7 @@ public class UserManager {
      */
     public void removeCurrentUser(){
         if (userDAO.getUserByUsername(currentUser.getUsername()) != null) {
+            fileDeletor.removeHMFileByUser(currentUser.getUsername());
             fileDeletor.removeUserSongsWhenDeletedUser(currentUser.getUsername());
             userDAO.removeUser(currentUser);
         }

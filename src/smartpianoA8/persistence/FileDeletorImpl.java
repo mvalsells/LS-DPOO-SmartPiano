@@ -19,4 +19,10 @@ public class FileDeletorImpl implements FileDeletor {
         }
     }
 
+    @Override
+    public void removeHMFileByUser(String user) {
+        File file = new File("resources/hmFiles/"+user+".txt");
+        FileUtils.deleteQuietly(file);
+    }
+
 }
