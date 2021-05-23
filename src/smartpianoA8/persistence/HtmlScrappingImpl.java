@@ -28,10 +28,7 @@ import java.util.TimerTask;
  */
 public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
 
-    //mover a persistence
-    //controler que reacciona a datos para actualizar vista capa presentation
-    //definir en businesslogic que hablase con persistence como dao y actualizase un controller
-    //!!!!!! TODO interficie para ver si hay nueva data y pasar arraylist. separo capa presentacion con business
+
 
     private static final String url1 = "https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=";
     private static int page = 0;
@@ -75,14 +72,14 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                 //Elements entry = document.select("table-bordered result-table");
                 //System.out.println("lele");
 
-                System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
+                //System.out.println("\n\nThere are " + document.select("table[class=table-bordered result-table]").size() + " songs in a single table. (Songs per page)\n\n");
 
                 for(Element table : document.select("table[class=table-bordered result-table]")) {
 
                     for(Element row : table.select("tr")) {
 
                         Elements tds = row.select("td");
-                        //TODO save tds in an arraylist of midisong with all data for every row for every table.
+
                         //System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
 
                         switch (counter) {
@@ -205,7 +202,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
         }
     }
 
-    //todo preguntar como recortar escalas a pol
+
 
     //public HtmlScrapping(/*UserDAO userDAO*/){
     //}
@@ -234,7 +231,7 @@ public class HtmlScrappingImpl extends TimerTask implements HtmlScrapping {
                 for(Element row : table.select("tr")) {
 
                     Elements tds = row.select("td");
-                    //TODO save tds in an arraylist of midisong with all data for every row for every table.
+
                     System.out.println(tds.get(0).text() + "->" + tds.get(1).text());
 
                     switch (counter) {

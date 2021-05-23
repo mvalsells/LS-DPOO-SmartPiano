@@ -152,13 +152,13 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
                if(presentationController.pianoViewJDIsCheckBoxSelected()&&!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), true, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();
                }else if(!(presentationController.pianoViewJDGetTextFieldString().equals(""))){
                    //Guardar record i NO ferla publica
-                   //todo modify username and add song to database
+
                    midiWritter.saveRecording(presentationController.getCurrentUser().getUsername(), presentationController.pianoViewJDGetTextFieldString(), false, endTime);
                    //la funcio que retorna la string es: JFMainFrame.jdGetTextFieldString();
                    presentationController.pianoViewJDClose();

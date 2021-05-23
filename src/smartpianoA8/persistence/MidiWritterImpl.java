@@ -60,7 +60,7 @@ public class MidiWritterImpl implements MidiWritter {
             sequencer.open();
             sequencer.recordEnable(pianoTrack, 0);
             sequencer.startRecording();
-            System.out.println("Started recording...");
+            //System.out.println("Started recording...");
             recording = true;
             startTime = System.currentTimeMillis();
         } catch (InvalidMidiDataException | MidiUnavailableException e) {
