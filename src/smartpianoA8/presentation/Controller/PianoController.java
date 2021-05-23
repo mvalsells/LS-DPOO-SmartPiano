@@ -204,9 +204,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
 
         try {
             if (!hmTeclas.get(key2).isPlaying()) {
-                isNoteWhite = presentationController.pianoCascadeIsNoteWhite(hmTeclas.get(key2).getNota());
-                note = presentationController.pianoCascadeCanviNote(hmTeclas.get(key2).getNota(),isNoteWhite);
-                presentationController.pianoViewRepainAllBlacks(note);
+
                 midiChannel.noteOn(hmTeclas.get(key2).getNota(), 127);
                 hmTeclas.get(key2).setIsPlaying(Tecla.trueIsPlaying);
                 if (midiWritter.getIsRecording()) {
@@ -258,9 +256,7 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     public void mousePressed(MouseEvent e) {
 
         Key key = (Key) e.getSource();
-        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
-        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
-        presentationController.pianoViewRepainAllBlacks(note);
+
         midiChannel.noteOn(key.getNote(), 127);
         if(midiWritter.getIsRecording()) {
             midiWritter.setOnMessage(key.getNote(), System.currentTimeMillis());
@@ -286,7 +282,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        Key key = (Key) e.getSource();
+        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
+        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
+        presentationController.pianoViewRepainAllBlacks(note);
     }
 
     /**
@@ -295,7 +294,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
      */
     @Override
     public void mouseExited(MouseEvent e) {
-
+        Key key = (Key) e.getSource();
+        isNoteWhite = presentationController.pianoCascadeIsNoteWhite(key.getNote());
+        note = presentationController.pianoCascadeCanviNote(key.getNote(),isNoteWhite);
+        presentationController.pianoViewRepainAllBlacks(note);
     }
 
     public void setHmTeclas(HashMap<Integer, Tecla> hmTeclas) {
