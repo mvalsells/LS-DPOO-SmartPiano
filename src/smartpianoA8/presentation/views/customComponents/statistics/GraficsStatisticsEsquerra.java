@@ -93,6 +93,10 @@ public class GraficsStatisticsEsquerra extends JPanel {
         g2d.translate(-(float)x,-(float)y);
     }
 
+    /**
+     *
+     * @param dades
+     */
     public void actualitzaVista(ArrayList<Double> dades){
         this.minuts = dades;
         //repaint();
