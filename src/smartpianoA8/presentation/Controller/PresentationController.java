@@ -14,8 +14,11 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * CLasse pel controlador general de presentació
@@ -62,7 +65,6 @@ public class PresentationController implements PresentationFacade {
     public PresentationController(BusinessFacade businessFacade, MidiWritter midiWritter) {
         this.businessFacade = businessFacade;
         this.midiWritter = midiWritter;
-
         //Frames
 
         //Controllers
@@ -274,11 +276,49 @@ public class PresentationController implements PresentationFacade {
     }
 
     public HashMap<Integer, Tecla> getHMteclas(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("resources/hmFiles/");
+        sb.append(businessFacade.getCurrentUser().getUsername());
+        sb.append(".hm");
+        /*
+        try {
+            FileInputStream fis = new FileInputStream(sb.toString());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            HashMap<Integer, Tecla> hm = ois.read();
+            return hm;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;*/
         return businessFacade.getHMTeclas();
     }
     public void setHMteclas(HashMap<Integer, Tecla> hmTeclas){
         businessFacade.setHmTeclas(hmTeclas);
         pianoController.setHmTeclas(hmTeclas);
+
+        // Prova per guardar-ho al arxiu
+        //TODO hauria d'anar a persistence
+        String ruta = "resources/hmFiles/"+businessFacade.getCurrentUser().getUsername()+".txt";
+        try {
+            StringBuilder textToWrite = new StringBuilder();
+            textToWrite.append("key,nota\n");
+            FileWriter fw = new FileWriter(ruta,false);
+            for (Map.Entry<Integer, Tecla> en: hmTeclas.entrySet()){
+                textToWrite.append(en.getKey());
+                textToWrite.append(",");
+                textToWrite.append(en.getValue().getNota());
+                textToWrite.append("\n");
+            }
+            fw.write(textToWrite.toString());
+            fw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeCurrentUser(){
