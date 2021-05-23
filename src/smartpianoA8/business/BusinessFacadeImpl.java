@@ -399,18 +399,38 @@ public class BusinessFacadeImpl implements BusinessFacade{
         return playListDAO.getPlayListSongsByPlayListName(name, userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per comprovar si una playlist existeix
+     * @param nom nom de la playlist
+     * @return true: existeix false: no existeix
+     */
     @Override
     public Boolean doesPlayListExist(String nom){
         return playListDAO.doesPlayListExist(nom, userManager.getCurrentUser().getUsername());
     }
+
+    /**
+     * Mèotde per coneixre si la playlist està buida
+     * @param nom nom de la playlist a comprovar
+     * @return true: si, false: nope
+     */
     @Override
     public Boolean isPlayListEmpty(String nom){
         return playListDAO.isPlayListEmpty(nom, userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mèotde per obtenir les cançons d'un usuari pròpies i del Master
+     * @param username nom d'usuari
+     * @return Arraylist de les cançons
+     */
     @Override
     public ArrayList<Song> getUserAndMasterSongs(String username){return songManager.getUserAndMasterSongs(username);}
 
+    /**
+     * Mètode per obtenir els cançons públiques i de Master per un usauri
+     * @return Arraylist de cançons
+     */
     @Override
     public ArrayList<Song> getPublicAndMasterSongs() {
         return songDAO.getPublicAndMasterSongs();
@@ -421,16 +441,28 @@ public class BusinessFacadeImpl implements BusinessFacade{
     // ------------------------------------------------------
     //  START stats implementation
     // ------------------------------------------------------
+    /**
+     * Mètode per obtenir la quantitat de reproduccions d'un usuari
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     @Override
     public ArrayList<Integer> getNumReproducionsCurrentUser() {
         return statsDAO.getDataReproduccions(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per obtenir la duració en minuts de la cançó actual
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     @Override
     public ArrayList<Double> getNumMinutsCurrentUser() {
         return statsDAO.getDataMinuts(userManager.getCurrentUser().getUsername());
     }
 
+    /**
+     * Mètode per actualitzar les estadístiques
+     * @param microseconds microsegons que dura la cançó reproduida
+     */
     @Override
     public void actualitzarEstadistiques(long microseconds){
         long totalSegons = microseconds/1000000L;

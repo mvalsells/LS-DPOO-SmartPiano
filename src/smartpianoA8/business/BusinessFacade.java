@@ -148,7 +148,17 @@ public interface BusinessFacade {
      * @return ArrayList del top 5 amb les songs
      */
     ArrayList<Song> getTop5();
+    /**
+     * Mèotde per obtenir les cançons d'un usuari pròpies i del Master
+     * @param username nom d'usuari
+     * @return Arraylist de les cançons
+     */
     ArrayList<Song> getUserAndMasterSongs(String username);
+
+    /**
+     * Mètode per obtenir els cançons públiques i de Master per un usauri
+     * @return Arraylist de cançons
+     */
     ArrayList<Song> getPublicAndMasterSongs();
     /**
      * Mètode per eliminar una cançó totalement
@@ -202,12 +212,34 @@ public interface BusinessFacade {
      */
     ArrayList<Song> getPlayListSongsByPlayListName(String name);
 
+    /**
+     * Mètode per comprovar si una playlist existeix
+     * @param nom nom de la playlist
+     * @return true: existeix false: no existeix
+     */
     Boolean doesPlayListExist(String nom);
+    /**
+     * Mèotde per coneixre si la playlist està buida
+     * @param nom nom de la playlist a comprovar
+     * @return true: si, false: nope
+     */
     public Boolean isPlayListEmpty(String nom);
 
     //Stats
+    /**
+     * Mètode per obtenir la quantitat de reproduccions d'un usuari
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     ArrayList<Integer> getNumReproducionsCurrentUser();
+    /**
+     * Mètode per obtenir la duració en minuts de la cançó actual
+     * @return ArrayList de valors de minuts per cada hora de 0 a 23
+     */
     ArrayList<Double> getNumMinutsCurrentUser();
+    /**
+     * Mètode per actualitzar les estadístiques
+     * @param microseconds microsegons que dura la cançó reproduida
+     */
     void actualitzarEstadistiques(long microseconds);
 
 
