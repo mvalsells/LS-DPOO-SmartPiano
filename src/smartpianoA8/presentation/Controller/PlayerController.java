@@ -247,7 +247,7 @@ public class PlayerController implements Runnable, ActionListener {
 
     /**
      * Método para registrar el controlador
-     * @param presentationController
+     * @param presentationController controlador de la presentació
      */
     public void registerPresentationController(PresentationController presentationController) {
         this.presentationController = presentationController;
