@@ -22,7 +22,7 @@ import java.util.TimerTask;
 /**
  * Classe per l'obtenció de cançons d'internet
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see Runnable
  * @see TimerTask
  */

@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Classe la creació i lectura de cançons MIDI
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see MidiParser
  */
 public class MidiParserImpl implements MidiParser {

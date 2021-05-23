@@ -4,7 +4,7 @@ package smartpianoA8.business.exceptions;
  * Exepció per noms d'usuari i email
  * @see smartpianoA8.business.entity.User
  * @version 1.0
- * @author Albert Clarimont, Christian Hasko, Marc Valsells i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class UserManagerException extends Exception{
     boolean usernameExists;

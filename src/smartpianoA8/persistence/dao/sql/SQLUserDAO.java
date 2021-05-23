@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * Classe pel control d'usuaris de la bbdd
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class SQLUserDAO implements UserDAO {
 

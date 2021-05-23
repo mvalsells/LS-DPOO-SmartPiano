@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Entity de playlist
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
 public class PlayList {
     private String nom;

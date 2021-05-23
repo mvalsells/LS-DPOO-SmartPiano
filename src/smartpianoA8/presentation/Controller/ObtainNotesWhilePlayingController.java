@@ -10,6 +10,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Classe per obtenir notes de cançons, processar-les i enviar ordres de pintar el piano
+ * @version 1.0
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @see Receiver
+ */
 public class ObtainNotesWhilePlayingController implements Receiver {
 
     private Receiver myReceiver;
@@ -30,7 +36,6 @@ public class ObtainNotesWhilePlayingController implements Receiver {
     }
 
     public void playAndGet(Song songToPlay) {
-
         File file = new File(songToPlay.getDirectori());
 
         try {
@@ -41,6 +46,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
             this.myReceiver = sequencer.getReceiver();
             sequencer.getTransmitter().setReceiver(this);
             sequencer.start();
+            jppiano.setPlayButtonPressedIcon();
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(new Frame(), "You don't have downloaded the song you're trying to play.\nDirectory: " + file + "\nYour program have to download it first with the HTMLScrapping feature if it's a program song.\nPlease, to solve this stay more time playing in the app. The song will be downloaded according to the time stablished in your config file.\nIf it's a user song and you don't have the midi file you can't play it.", "FILE NOT FOUND", JOptionPane.ERROR_MESSAGE);
         } catch (InvalidMidiDataException | MidiUnavailableException | IOException e) {
@@ -70,7 +76,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 note = canviaNote(note, isWhite);
                 if(isWhite && printable){
                     jppiano.pintarTeclaBlanca(note);
-                    jppiano.repainAllBlacks();
+                    jppiano.repainAllBlacks(note);
                 }else if(!isWhite && printable){
                     jppiano.pintarTeclaNegra(note);
                 }
@@ -85,7 +91,7 @@ public class ObtainNotesWhilePlayingController implements Receiver {
                 note = canviaNote(note, isWhite);
                 if(isWhite && printable) {
                     jppiano.despintarTeclaBlanca(note);
-                    jppiano.repainAllBlacks();
+                    jppiano.repainAllBlacks(note);
                 }
                 else if (!isWhite && printable){
                     jppiano.despintarTeclaNegra(note);
@@ -190,7 +196,10 @@ public class ObtainNotesWhilePlayingController implements Receiver {
 
     @Override
     public void close() {
+
+        jppiano.setPlayButtonUnpressedIcon();
         sequencer.close();
+        jppiano.repaintAllTeclas();
     }
 
 }

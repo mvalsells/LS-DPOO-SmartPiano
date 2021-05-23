@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Classe controller del perfil
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  */
 public class ProfileController implements ActionListener, MouseListener, KeyListener {

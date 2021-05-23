@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Calsse per la creació de cançons MIDI
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see MidiWritter
  */
 public class MidiWritterImpl implements MidiWritter {

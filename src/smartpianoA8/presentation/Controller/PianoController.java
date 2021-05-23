@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * Classe pel controlador de la vista del piano
  * @version 1.0
- * @author Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
+ * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  * @see ActionListener
  * @see MouseListener
  * @see KeyListener
@@ -31,6 +31,9 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
     private final static boolean DEFAULT_IS_NOTESACTIVE = false;
     private final static boolean TRUE_IS_NOTESACTIVE = true;
     private boolean isNotesActive = DEFAULT_IS_NOTESACTIVE;
+    private boolean isPlaying;
+    private final static boolean DEFAULT_IS_PLAYING = false;
+    private final static boolean TRUE_IS_PLAYING = true;
     private long endTime = 0;
 
 
@@ -102,13 +105,13 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                //Christian aqui tu action listener
                if(!isRecording){
                    //StartRecording
-                   presentationController.pianoViewSetRecordingPressedIcon((JButton)e.getSource());
+                   presentationController.pianoViewSetPressedIcon((JButton)e.getSource());
                    isRecording = TRUE_IS_RECORDING;
                    System.out.println("IS RECORDING...");
                    midiWritter.startRecording();
                }else if (isRecording){
                    //StopRecording
-                   presentationController.pianoViewSetRecordingUnpressedIcon((JButton)e.getSource());
+                   presentationController.pianoViewSetUnpressedIcon((JButton)e.getSource());
                    System.out.println("IS NOT RECORDING...");
                    isRecording = DEFAULT_IS_RECORDING;
                    midiWritter.endRecording();
@@ -117,18 +120,27 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
                }else{ System.out.println("ERROR patata"); }
                break;
            case JPPiano.PLAY_BUTTON:
-               //Start cascade!TODO startCascade(o com hagi de ser);
+               if(!isPlaying){
+                    presentationController.startCascade();
+                    isPlaying = TRUE_IS_PLAYING;
+
+               }else if (isPlaying){
+
+                    presentationController.stopCascade();
+                    isPlaying = DEFAULT_IS_PLAYING;
+               }
+
                break;
            case JPPiano.NOTES_BUTTON:
                if(!isNotesActive){
                    //StartRecording
-                   presentationController.pianoViewSetRecordingPressedIcon((JButton)e.getSource());
+                   presentationController.pianoViewSetPressedIcon((JButton)e.getSource());
                    isNotesActive = TRUE_IS_NOTESACTIVE;
 
 
                }else if (isNotesActive){
                    //StopRecording
-                   presentationController.pianoViewSetRecordingUnpressedIcon((JButton)e.getSource());
+                   presentationController.pianoViewSetUnpressedIcon((JButton)e.getSource());
                    isNotesActive = DEFAULT_IS_NOTESACTIVE;
 
                }
@@ -166,6 +178,10 @@ public class PianoController implements ActionListener, MouseListener, KeyListen
            /*case JPPiano.PLAY_BUTTON:
                presentationController*/
        }
+    }
+
+    public void setIsPlaying(Boolean isPlaying){
+       this.isPlaying = isPlaying;
     }
 
     /**
