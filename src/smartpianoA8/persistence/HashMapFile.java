@@ -4,7 +4,7 @@ import smartpianoA8.presentation.views.customComponents.Tecla;
 
 import java.util.HashMap;
 /**
- * Classe per
+ * Classe per la creació i disseny del HashMap incrustat en un fitxer per les tecles del piano (keymapping)
  * @version 1.0
  * @author Pau Santacreu, Albert Clarimont, Marc Valsells, Christian Hasko i Albert Garangou
  */
