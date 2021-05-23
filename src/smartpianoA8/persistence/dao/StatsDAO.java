@@ -19,9 +19,10 @@ public interface StatsDAO {
     void startupStats(String user);
 
     /**
-     *  Actualitza la duració i num de reproducions. S'ha de cridar cada cop que es reprodueix una cançó.
-     * @param duradaSong durada en LocalTime de la cançó
-     * @param username NomUsuari UserName de l'usuari que l'ha reproduit (actual)
+     * Mètode per actualitzar els valors des del programa a la bbdd de les reproduccions i minuts
+     * @param minutsAfegir minuts extres a afegir
+     * @param segonsAfegir segons extres a afegir
+     * @param username nom d'usuari a modificar
      */
     void actualitzarBBDDEstadistiques(int minutsAfegir, int segonsAfegir, String username);   //TODO cridar la funció quan es reprodueixi
 

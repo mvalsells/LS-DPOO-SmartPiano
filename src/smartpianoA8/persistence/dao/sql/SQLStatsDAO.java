@@ -89,10 +89,10 @@ public class SQLStatsDAO implements StatsDAO {
     }
 
     /**
-     * Mètode per actualitzar els valors de la BBDD quan es reprodueix uan cançó
-     * @param minutsAfegir
-     * @param segonsAfegir
-     * @param username NomUsuari UserName de l'usuari que l'ha reproduit (actual)
+     * Mètode per actualitzar els valors des del programa a la bbdd de les reproduccions i minuts
+     * @param minutsAfegir minuts extres a afegir
+     * @param segonsAfegir segons extres a afegir
+     * @param username nom d'usuari a modificar
      */
     @Override
     public void actualitzarBBDDEstadistiques(int minutsAfegir, int segonsAfegir, String username) {
