@@ -196,7 +196,7 @@ public class PlayerController implements Runnable, ActionListener {
                         currentSequencer.setSequence(currentSequence);
 
                         presentationController.actualitzarEstadistiques(currentSequence.getMicrosecondLength());
-                        //presentationController.updateStatsView();
+                        presentationController.updateStatsView();
 
                         if(isPaused == false) {
                             currentSequencer.start();
