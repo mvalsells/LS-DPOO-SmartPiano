@@ -6,4 +6,4 @@ This is my 2nd project working with Java and object-oriented programming, first 
 
 Project requirements, database structure and final report can be found in the NO-CODI folder.
 
-**Note:** I know there is a database login and password in resources/config.json, the database server was created only for development purpose and was deleted in July 2021. Nothing to worry about.
+**Note:** I know there is a database login and password in resources/config.json, the database server was created only for development purpose and was deleted in July 2021, before making this repository public. Nothing to worry about.
