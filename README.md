@@ -2,7 +2,7 @@
 Projecte 2n Semestre - Disseny i Programació Orientat a Objectes, Curs 2020-21
 
 ## Description
-This is my 2nd project working with Java and object-oriented programming, first one with UI (Swing), it was developed by me and my colleagues Albert Clarimon, Christian Hasko, Pau Santacreu abd Albert Garangou. Being the second one, it is obvious that there are things to improve but, in general, I am happy with the results.
+This is my 2nd project working with Java and object-oriented programming, first one with UI (Swing), it was developed by me and my colleagues Albert Clarimon, Christian Hasko, Pau Santacreu and Albert Garangou. Being the second one, it is obvious that there are things to improve but, in general, I am happy with the results.
 
 Project requirements, database structure and final report can be found in the NO-CODI folder.
 
